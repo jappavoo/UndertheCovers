@@ -1,5 +1,5 @@
-	.intel_syntax noprefix	 // set assembly language format to intel
-	
+	.intel_syntax noprefix   // set assembly language format to intel
+ 	
 	.data                    // Place the following in the data area
 myvar:	.quad 0x00000000000000ff // place the 8 byte value at a location who's
 	                         // address we can refer to by the symbolic
