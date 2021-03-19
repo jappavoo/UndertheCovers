@@ -3,7 +3,7 @@
 	.data                    // Place the following in the data area
 myvar:	.quad 0x00000000000000ff // place the 8 byte value at a location who's
 	                         // address we can refer to by the symbolic
-	                         // name c
+	                         // name myvar
 	
 	.text                    // Place the following in the area that
 	                         // instruction should be encoded and stored

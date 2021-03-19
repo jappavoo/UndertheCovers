@@ -1,4 +1,9 @@
-all: simple main
+.PHONEY: all
+
+all: popcnt simple main
+
+popcnt: popcnt.S
+	gcc --static  -g -nostartfiles -nolibc popcnt.S -o popcnt
 
 simple: simple.S
 	gcc --static  -g -nostartfiles -nolibc simple.S -o simple
