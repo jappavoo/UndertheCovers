@@ -9,7 +9,7 @@ myvar:	.quad 0x00000000000000ff // place the 8 byte value at a location who's
 	                         // instruction should be encoded and stored
 	                         // for historical reasons it is called text
 	.global _start
-_foo:                          // The linker knows to mark the _start address
+_start:                          // The linker knows to mark the _start address
                               	 // as location where execution should begin.
 	                         // The OS will be sure to setup the CPU so that the
 	                         // program counter is initialized with this address
