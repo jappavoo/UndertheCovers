@@ -12,4 +12,4 @@ main: main.S
 	gcc --static -g main.S -o main
 
 clean:
-	rm main simple *.o
+	rm popcnt main simple *.o
