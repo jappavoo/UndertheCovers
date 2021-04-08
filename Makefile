@@ -7,4 +7,5 @@ book:
 
 pub:
 	ghp-import -n -p -f underthecovers/_build/html
+	echo "Published: https://jappavoo.github.io/UndertheCovers"
 

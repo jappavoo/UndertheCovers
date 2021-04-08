@@ -10,6 +10,9 @@ author                      : Jonathan Appavoo  # The author of the book
 copyright                   : "2021"  # Copyright year to be placed in the footer
 logo                        : logo.jpg  # A path to the book logo
 
+repository:
+  url: https://github.com/jappavoo/UndertheCovers
+  path_to_book: underthecovers
 
 launch_buttons:
   jupyterhub_url: "https://jupyterhub-opf-jupyterhub.apps.zero.massopen.cloud"  # The URL for your JupyterHub. (e.g., https://datahub.berkeley.edu)
