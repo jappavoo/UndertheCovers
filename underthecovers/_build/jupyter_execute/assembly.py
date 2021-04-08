@@ -9,7 +9,7 @@ To do this we will use three terminal sessions one terminal to run an ascii edit
 An editor allows us to create and udpate plain text ascii files. An editor is the core tool of a programmer!  Programming is all about writing software in the form of ascii files that encode what we want the computer to do in some language or another (in our case assembly and C). So far you my have been taught to use various Integrated Development Environments (IDEs) that include an editor, build system and debugger within them.  In this class we will strip things down to there traditional bare essentials so you can get an idea of how things are really working and how IDE's are themselves constructed.  
 
 from IPython.display import IFrame
-IFrame('http://localhost:8888/terminals/2', 1000, 600)
+IFrame('../../../terminals/1', 1000, 600)
 
 - `emacs popcnt.S`
 
@@ -38,7 +38,7 @@ The following is a version of this code that is verbosely documented: [popcnt.S]
 ## Building: Terminal to run our build commands
 
 from IPython.display import IFrame
-IFrame('http://localhost:8888/terminals/3', 1000, 200)
+IFrame('../../../terminals/2', 1000, 200)
 
 - gcc --static -g -nostartfiles -nolibc popcnt.S -o popcnt
 
@@ -57,7 +57,7 @@ Later on we will see how to use another tool called make to further simplify and
 ## Debugger: Terminal to run our debugger -- actually it is much more than just a debugger
 
 from IPython.display import IFrame
-IFrame('http://localhost:8888/terminals/4', 1000, 800)
+IFrame('../../../terminals/3', 1000, 800)
 
 - `gdb -tui popcnt`
 
