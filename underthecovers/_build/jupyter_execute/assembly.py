@@ -90,5 +90,3 @@ If you type help you will get a list of the major commands that gdb support for 
 
 Ok lets write a new program that does something else
 
-from IPython.display import IFrame
-IFrame('http://localhost:8888/terminals/2', 1000, 600)
