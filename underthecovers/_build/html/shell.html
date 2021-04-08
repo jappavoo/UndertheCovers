@@ -1,0 +1,533 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>UNIX – An operating System Built by Programmers for Programmers &#8212; UndertheCovers</title>
+    
+  <link rel="stylesheet" href="_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/sphinx-book-theme.e7340bb3dbd8dde6db86f25597f54a1b.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.d3f166471bb80abb5163.js">
+
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.7d483ff0a819d6edff12ce0b1ead3928.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Lets write some assembly code" href="assembly.html" />
+    <link rel="prev" title="Under the Covers : The Secret Life of Software" href="intro.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="index.html">
+  
+  <img src="_static/logo.jpg" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">UndertheCovers</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
+   Under the Covers : The Secret Life of Software
+  </a>
+ </li>
+</ul>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   UNIX  – An operating System Built by Programmers for Programmers
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="assembly.html">
+   Lets write some assembly code
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="testmyst.html">
+   Myst Test
+  </a>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/shell.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+            <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                    data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                    title="Fullscreen mode"><i
+                        class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/jappavoo/UndertheCovers/master?urlpath=tree/underthecovers/shell.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        <a class="jupyterhub-button" href="https://jupyterhub-opf-jupyterhub.apps.zero.massopen.cloud/hub/user-redirect/git-pull?repo=https://github.com/jappavoo/UndertheCovers&urlpath=tree/UndertheCovers/underthecovers/shell.ipynb&branch=master"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch JupyterHub" data-toggle="tooltip"
+                data-placement="left"><img class="jupyterhub-button-logo"
+                    src="_static/images/logo_jupyterhub.svg"
+                    alt="Interact on JupyterHub">JupyterHub</button></a>
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i>
+            Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-shell-progammable-interface-to-the-computer">
+   The Shell – Progammable Interface to the computer
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#getting-started-the-terminal-and-this-book">
+     Getting started – The Terminal and this book
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#command-line-anatomy">
+     Command Line Anatomy
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#echo-printing-something-to-the-sceen">
+     echo – printing something to the sceen
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#comments-ignoring-everthing-else">
+     comments – Ignoring everthing else
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ls-listing-the-contents-of-a-directory">
+     ls – listing the contents of a directory
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+        </nav>
+        
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="unix-an-operating-system-built-by-programmers-for-programmers">
+<h1>UNIX  – An operating System Built by Programmers for Programmers<a class="headerlink" href="#unix-an-operating-system-built-by-programmers-for-programmers" title="Permalink to this headline">¶</a></h1>
+<p>The UNIX operating system was built by master programmers who valued programmablity and productivity.  In some sense learning to work on the UNIX systems is a right of passage that not only teaches you how to be productive on a computer runnig the UNIX operating system but teaching you to think and act like a programmer.</p>
+<div class="section" id="the-shell-progammable-interface-to-the-computer">
+<h2>The Shell – Progammable Interface to the computer<a class="headerlink" href="#the-shell-progammable-interface-to-the-computer" title="Permalink to this headline">¶</a></h2>
+<p>Given its history and programmer bent UNIX’s primary interface – or way of interacting with it to get things done is a program called the “shell”.  In the following sections we will introduce various aspects of the shell, UNIX and fundamental ideas common to all modern operating systems.</p>
+<div class="section" id="getting-started-the-terminal-and-this-book">
+<h3>Getting started – The Terminal and this book<a class="headerlink" href="#getting-started-the-terminal-and-this-book" title="Permalink to this headline">¶</a></h3>
+<p>To work with a UNIX computer you must establish, one way or another, a plain text (ASCII) interactive session.
+We will learn what ASCII is later… for the moment is away of entering and displaying the basic english characters, numeric digits, and standard punctuation.</p>
+<p>To do this you must start a “Terminal” session.  A “Terminal” is an ASCII application that is designed to accept characters from your keyboard and send them to a program and similarly characters sent from the remote program will be displayed by the terminal program for you to read.</p>
+<p>On Windows you can start a terminal by using the PowerShell program and on OSX you can use the Terminal Application.</p>
+<p>The next step, after starting a terminal emulator, is to connect it to a computer running UNIX. Today we typically use a program called <code class="docutils literal notranslate"><span class="pre">ssh</span></code> to establish this connection. Both Windows and OSX come with <code class="docutils literal notranslate"><span class="pre">ssh</span></code> that you can invoke from within the terminal.   <code class="docutils literal notranslate"><span class="pre">ssh</span></code> takes a hostname of the computer as an arugment and then uses network protocols to establish a terminal connection to the specified computer.   In response to establishing the connection the UNIX computer will prompt you to identify yourself with your username and password.  This is called logging.</p>
+<p>Uppon succesfully logging in the remote UNIX computer will start a shell programming running for you and from that point on anything you do or see in that terminal window is going to or coming from that remote computer.   So that terminal connection is actually a window into another computer!  You can start more windows to create more concurrent connections to the same or other remote computers.  Doing so can be very useful to improve your productivity.</p>
+<p>However to make life a little easier in this book we use features of Jupyter to both create terminal sessions and establish connections to a UNIX computer from within the pages of the book themselves.  This allows you to directly and immediately explore the things we discuss.</p>
+<p>We do encourage you to poke around outside of this book using a terminal emulator and ssh to get a better feel for what is actually happening and so that you can have more control.  In the ‘real world’ (and in later classes) you will be expected to understand how to use your personal computers, tablets and even phones to establish terminal connections to other computers and know how to get work done on them.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>from IPython.display import IFrame
+IFrame<span class="o">(</span><span class="s1">&#39;http://localhost:8888/terminals/1&#39;</span>, <span class="m">800</span>, <span class="m">400</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>from: can&#39;t read /var/mail/IPython.display
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>bash: syntax error near unexpected token `&#39;http://localhost:8888/terminals/1&#39;,&#39;
+</pre></div>
+</div>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="command-line-anatomy">
+<h3>Command Line Anatomy<a class="headerlink" href="#command-line-anatomy" title="Permalink to this headline">¶</a></h3>
+<p>Our interactions with the shell are “line oriented”.
+That is to say that once we are connected to the shell it will be waiting for us to enter a command.
+To indicate this it will print a “prompt” at the beginning of a line.  Cannonically the prompt is often  (If you are intested you can lookup how to customize the prompt to something you prefer)</p>
+<p>Commands are a plain text “key” words that the shell will “execute” for us.
+To get the shell to do something we enter the command along with any arguments and modifies and then press
+enter or return key to terminate the line and submit it to the shell.  At this point the shell will analyize the line we entered and will execute the command it it can.</p>
+<p>If we like we can place multiple commands to execute one after the other on a line by seperating them with a semicolon.  <code class="docutils literal notranslate"><span class="pre">;</span></code></p>
+</div>
+<div class="section" id="echo-printing-something-to-the-sceen">
+<h3>echo – printing something to the sceen<a class="headerlink" href="#echo-printing-something-to-the-sceen" title="Permalink to this headline">¶</a></h3>
+<p>Perhaps the most basic command that we can issue to the shell is the <code class="docutils literal notranslate"><span class="pre">echo</span></code> comand.  <code class="docutils literal notranslate"><span class="pre">echo</span></code> allows us to print a message.  For the moment this might seem like a silly command but later we will see that the shell is not just designed to be an interactive interface but also a powerful programming language that we can use to quickly automate things and construct our own commands out of the exiting ones.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">echo</span> <span class="s2">&quot;Hello World foo bar&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hello World foo bar
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="comments-ignoring-everthing-else">
+<h3>comments – Ignoring everthing else<a class="headerlink" href="#comments-ignoring-everthing-else" title="Permalink to this headline">¶</a></h3>
+<p>Another very trival thing we can do is tell the shell to ignore every thing else on the line using the comment character.  In bash this character is the hash character <code class="docutils literal notranslate"><span class="pre">#</span></code>.  A line with the <code class="docutils literal notranslate"><span class="pre">#</span></code> at the beginning of it will be ignored complete and as such there will be no output from it and the shell will simply print out prompt on the next newline.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># this is a comment</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">echo</span> <span class="s2">&quot;Hello World&quot;</span>  <span class="c1"># we can use echo to print to the screen</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hello World
+</pre></div>
+</div>
+</div>
+</div>
+<p>The first example above the <code class="docutils literal notranslate"><span class="pre">#</span></code> at the beginning of the line causes the shell to ignore everything else on the line.  In second example we see that the shell ignores everthing after the # but continues to execute what preceeds it.</p>
+</div>
+<div class="section" id="ls-listing-the-contents-of-a-directory">
+<h3>ls – listing the contents of a directory<a class="headerlink" href="#ls-listing-the-contents-of-a-directory" title="Permalink to this headline">¶</a></h3>
+<p>With no additional arguments the <code class="docutils literal notranslate"><span class="pre">ls</span></code> command will print out the contents of the current working directory.  That is to say it will print the names of the files and directories that are contained in the current directory.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ls
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Untitled.md  assembly.ipynb   <span class=" -Color -Color-Bold -Color-Bold-Magenta">logo.jpg</span>        shell2.md
+<span class=" -Color -Color-Bold -Color-Bold-Blue">_build</span>       assembly2.ipynb  references.bib  <span class=" -Color -Color-Bold -Color-Bold-Blue">src</span>
+_config.yml  assembly2.md     shell.ipynb     testmyst.md
+_toc.yml     intro.md         shell2.ipynb    testmyst.md~
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ls -l
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>total 144
+drwxrwxr-x 5 jappavoo jappavoo  4096 Mar 18 19:05 <span class=" -Color -Color-Bold -Color-Bold-Blue">_build</span>
+-rw-rw-r-- 1 jappavoo jappavoo   688 Mar 18 19:01 _config.yml
+-rw-rw-r-- 1 jappavoo jappavoo   125 Mar 19 11:27 _toc.yml
+-rw-rw-r-- 1 jappavoo jappavoo 14868 Mar 19 05:54 assembly.ipynb
+-rw-rw-r-- 1 jappavoo jappavoo   158 Mar 18 18:58 content.md
+-rw-rw-r-- 1 jappavoo jappavoo   217 Mar 18 18:58 intro.md
+-rw-rw-r-- 1 jappavoo jappavoo 70347 Mar 18 18:45 <span class=" -Color -Color-Bold -Color-Bold-Magenta">logo.jpg</span>
+-rw-rw-r-- 1 jappavoo jappavoo  3706 Mar 18 18:58 markdown.md
+-rw-rw-r-- 1 jappavoo jappavoo  3372 Mar 18 18:58 notebooks.ipynb
+-rw-rw-r-- 1 jappavoo jappavoo  5563 Mar 18 18:58 references.bib
+-rw-rw-r-- 1 jappavoo jappavoo 13289 Mar 19 12:07 shell.ipynb
+drwxrwxr-x 2 jappavoo jappavoo  4096 Mar 19 05:52 <span class=" -Color -Color-Bold -Color-Bold-Blue">src</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ls -a
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Bold -Color-Bold-Blue">.</span>                   _config.yml     intro.md         references.bib
+<span class=" -Color -Color-Bold -Color-Bold-Blue">..</span>                  _toc.yml        <span class=" -Color -Color-Bold -Color-Bold-Magenta">logo.jpg</span>         shell.ipynb
+<span class=" -Color -Color-Bold -Color-Bold-Blue">.ipynb_checkpoints</span>  assembly.ipynb  markdown.md      <span class=" -Color -Color-Bold -Color-Bold-Blue">src</span>
+<span class=" -Color -Color-Bold -Color-Bold-Blue">_build</span>              content.md      notebooks.ipynb
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ls .
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Bold -Color-Bold-Blue">_build</span>       assembly.ipynb  <span class=" -Color -Color-Bold -Color-Bold-Magenta">logo.jpg</span>         references.bib
+_config.yml  content.md      markdown.md      shell.ipynb
+_toc.yml     intro.md        notebooks.ipynb  <span class=" -Color -Color-Bold -Color-Bold-Blue">src</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ls ..
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CONDUCT.md       <span class=" -Color -Color-Bold -Color-Bold-Green">LICENSE</span>    requirements.txt
+CONTRIBUTING.md  README.md  <span class=" -Color -Color-Bold -Color-Bold-Blue">underthecovers</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ls /
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Bold -Color-Bold-Cyan">bin</span>   <span class=" -Color -Color-Bold -Color-Bold-Blue">dev</span>  <span class=" -Color -Color-Bold -Color-Bold-Blue">home</span>  <span class=" -Color -Color-Bold -Color-Bold-Cyan">lib32</span>  <span class=" -Color -Color-Bold -Color-Bold-Cyan">libx32</span>      <span class=" -Color -Color-Bold -Color-Bold-Blue">media</span>  <span class=" -Color -Color-Bold -Color-Bold-Blue">opt</span>   <span class=" -Color -Color-Bold -Color-Bold-Blue">root</span>  <span class=" -Color -Color-Bold -Color-Bold-Cyan">sbin</span>  <span class=" -Color -Color-Bold -Color-Bold-Blue">srv</span>       <span class=" -Color -Color-Bold -Color-Bold-Blue">sys</span>  <span class=" -Color -Color-Bold -Color-Bold-Blue">usr</span>
+<span class=" -Color -Color-Bold -Color-Bold-Blue">boot</span>  <span class=" -Color -Color-Bold -Color-Bold-Blue">etc</span>  <span class=" -Color -Color-Bold -Color-Bold-Cyan">lib</span>   <span class=" -Color -Color-Bold -Color-Bold-Cyan">lib64</span>  <span class=" -Color -Color-Bold -Color-Bold-Blue">lost+found</span>  <span class=" -Color -Color-Bold -Color-Bold-Blue">mnt</span>    <span class=" -Color -Color-Bold -Color-Bold-Blue">proc</span>  <span class=" -Color -Color-Bold -Color-Bold-Blue">run</span>   <span class=" -Color -Color-Bold -Color-Bold-Blue">snap</span>  swap.img  <span class=" -Color -Color-Black -Color-Black-BGGreen">tmp</span>  <span class=" -Color -Color-Bold -Color-Bold-Blue">var</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ls /home
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Bold -Color-Bold-Blue">jappavoo</span>  <span class=" -Color -Color-Bold -Color-Bold-Blue">ubuntu</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ls /home/jappavoo
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;#raw.asm#&#39;      <span class=" -Color -Color-Bold -Color-Bold-Blue">UndertheCovers</span>                           installKvm
+ <span class=" -Color -Color-Bold -Color-Bold-Blue">06</span>              Untitled.ipynb                           <span class=" -Color -Color-Bold -Color-Bold-Blue">juypter</span>
+ <span class=" -Color -Color-Bold -Color-Bold-Blue">6502</span>            Untitled1.sh                             <span class=" -Color -Color-Bold -Color-Bold-Blue">masmtest</span>
+ <span class=" -Color -Color-Bold -Color-Bold-Blue">CS210TextBook</span>   <span class=" -Color -Color-Bold -Color-Bold-Blue">anaconda3</span>                                mkKvm
+ <span class=" -Color -Color-Bold -Color-Bold-Blue">Om</span>              <span class=" -Color -Color-Bold -Color-Bold-Blue">compress</span>                                 resetKvm
+ <span class=" -Color -Color-Bold -Color-Bold-Blue">Symbi-OS</span>        <span class=" -Color -Color-Bold -Color-Bold-Red">google-chrome-stable_current_amd64.deb</span>   <span class=" -Color -Color-Bold -Color-Bold-Blue">tmp</span>
+ <span class=" -Color -Color-Bold -Color-Bold-Blue">UASM</span>            <span class=" -Color -Color-Bold -Color-Bold-Blue">hostKernel</span>                               <span class=" -Color -Color-Bold -Color-Bold-Blue">yasmtest</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">echo</span> <span class="s2">&quot;\$ date&quot;</span><span class="p">;</span> date
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>$ date
+Fri Mar 19 12:13:02 UTC 2021
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "bash"
+        },
+        kernelOptions: {
+            kernelName: "bash",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'bash'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+    <a class='left-prev' id="prev-link" href="intro.html" title="previous page">Under the Covers : The Secret Life of Software</a>
+    <a class='right-next' id="next-link" href="assembly.html" title="next page">Lets write some assembly code</a>
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Jonathan Appavoo<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="_static/js/index.d3f166471bb80abb5163.js"></script>
+
+
+    
+  </body>
+</html>
