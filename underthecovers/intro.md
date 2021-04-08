@@ -1,7 +1,4 @@
-Welcome to your Jupyter Book
-============================
+Under the Covers : The Secret Life of Software
+=====================================
 
-This is a small sample book to give you a feel for how book content is
-structured.
-
-Check out the content pages bundled with this sample book to get started.
+In this book we will look under the covers to learn exactly what software is and how it works.  
