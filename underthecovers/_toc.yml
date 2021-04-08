@@ -2,6 +2,15 @@
 # Learn more at https://jupyterbook.org/customize/toc.html
 #
 - file: intro
-- file: shell
+- file: PartI_TheUNIXDevelopmentEnvironment
+- file: PartI_GettingStarted_TheTerminal
+- file: PartI_Shell_Basics
+- file: PartI_Files
+- file: PartI_Editors
+- file: PartI_Shell_Programming
+- file: PartI_Make
+- file: PartI_Source_Code_Control_Git
+- file: PartII_TheVonNeumannArchitectureandAssemblyProgramming
+- file: PartII_GettingStarted
 - file: assembly
-- file: testmyst
+- file: PartIII_Into_the_Light_C
