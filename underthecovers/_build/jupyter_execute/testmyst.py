@@ -1,9 +1,20 @@
-# Myst Test
+#!/usr/bin/env python
+# coding: utf-8
 
-```{note}
-Here is a note
-```
+# # Myst Test
+# 
+# ```{note}
+# Here is a note
+# ```
 
-!ls
+# In[1]:
+
+
+get_ipython().system('ls')
+
+
+# In[2]:
+
 
 ls
+

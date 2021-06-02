@@ -15,5 +15,8 @@ repository:
   path_to_book: underthecovers
   branch: main
 
+html:
+  use_repository_button: true
 launch_buttons:
-  jupyterhub_url: "https://jupyterhub-opf-jupyterhub.apps.zero.massopen.cloud"  # The URL for your JupyterHub. (e.g., https://datahub.berkeley.edu)
+  notebook_interface: jupyterlab
+  jupyterhub_url: "" # "https://jupyterhub-opf-jupyterhub.apps.zero.massopen.cloud"  # The URL for your JupyterHub. (e.g., https://datahub.berkeley.edu)

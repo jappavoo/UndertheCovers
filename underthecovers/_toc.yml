@@ -2,15 +2,31 @@
 # Learn more at https://jupyterbook.org/customize/toc.html
 #
 - file: intro
-- file: PartI_TheUNIXDevelopmentEnvironment
-- file: PartI_GettingStarted_TheTerminal
-- file: PartI_Shell_Basics
-- file: PartI_Files
-- file: PartI_Editors
-- file: PartI_Shell_Programming
-- file: PartI_Make
-- file: PartI_Source_Code_Control_Git
-- file: PartII_TheVonNeumannArchitectureandAssemblyProgramming
-- file: PartII_GettingStarted
-- file: assembly
-- file: PartIII_Into_the_Light_C
+  numbered: true
+
+- part: "The Unix Development Environment"
+  chapters:
+  - file: unix/intro
+  # Getting Started The Terminal
+  - file: unix/terminal
+  # Shell Basics
+  - file: unix/shell
+  # Files
+  - file: unix/files
+  # Editors
+  - file: unix/editors
+  # Shell Advanced 
+  - file: unix/shelladvanced
+  # Make
+  - file: unix/make
+  # Git
+  - file: unix/git
+
+- part: "The Belly of the Beast: Assembly Programming"
+  chapters:
+  - file: assembly/TheVonNeumannArchitecture
+  - file: assembly/assembly
+  
+- part: "Into the Light : C Programming"
+  chapters:
+  - file: C/intro

@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Myst Test &#8212; UndertheCovers</title>
+    <title>Operating Systems &#8212; UndertheCovers</title>
     
   <link href="_static/css/theme.css" rel="stylesheet" />
   <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -124,14 +124,11 @@
 
     <div class="dropdown-buttons">
         <!-- ipynb file if we had a myst markdown file -->
-        <a class="dropdown-buttons"
-            href="_sources/testmyst.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download notebook file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
+        
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="_sources/testmyst.md"><button type="button"
+        <a class="dropdown-buttons" href="_sources/UNIXsidebar.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.md</button></a>
+                data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
             onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
@@ -167,7 +164,7 @@
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
         
-        <a class="binder-button" href="https://mybinder.org/v2/gh/jappavoo/UndertheCovers/main?urlpath=lab/tree/underthecovers/testmyst.md"><button type="button"
+        <a class="binder-button" href="https://mybinder.org/v2/gh/jappavoo/UndertheCovers/main?urlpath=lab/tree/underthecovers/UNIXsidebar.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
                 data-placement="left"><img class="binder-button-logo"
                     src="_static/images/logo_binder.svg"
@@ -184,6 +181,55 @@
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show">
             
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Operating Systems
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#computer">
+     Computer
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#programmer-vs-user">
+       Programmer vs User
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#useful">
+     Useful
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#why-unix">
+   Why UNIX
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#unix-organization-philosiphy">
+     UNIX organization / philosiphy
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#bottomline">
+     Bottomline
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -192,39 +238,34 @@
         
               <div>
                 
-  <div class="section" id="myst-test">
-<h1>Myst Test<a class="headerlink" href="#myst-test" title="Permalink to this headline">¶</a></h1>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Here is a note</p>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>ls
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>assembly	C	     logo.jpg	     src	  unix
-assembly.ipynb	_config.yml  references.bib  testmyst.md  UNIXsidebar.ipynb
-_build		intro.md     shell.ipynb     _toc.yml
-</pre></div>
+  <div class="section" id="operating-systems">
+<h1>Operating Systems<a class="headerlink" href="#operating-systems" title="Permalink to this headline">¶</a></h1>
+<p>We call the collection of software that we use to make a “computer”  “useful” an operating system.  But what do we mean by computer and useful.</p>
+<div class="section" id="computer">
+<h2>Computer<a class="headerlink" href="#computer" title="Permalink to this headline">¶</a></h2>
+<p>Today a computer can take many forms from desktop Personal Computers (PCs), laptops, mobile phones, tablets, building scale super-comptures, etc.  In some sense the defining property we care about is that the device supports a classic model for programming it – we call this model the VonNeumman architecture.   We will discuss this model in much more detail when we start considering exactly how software and hardware work.  For the moment it suffices to say that programming it means being able to apply your knowledge of a programming language and existing software to have the computer do something you want it too.  For example, edit photos, play music, maintain a list of grocery items, calculate PI, send email, browse the web, test if a molecule might have promise as a new vacine, automatically adjust the temperature of your home, control a car, etc.</p>
+<div class="section" id="programmer-vs-user">
+<h3>Programmer vs User<a class="headerlink" href="#programmer-vs-user" title="Permalink to this headline">¶</a></h3>
+<p>To be honest many people simply care that the computer can run existing programs we will call these folks “Users”  However, “Programmers” are a special type of user.  Programmers use Operating system, and other software tools to create new programs themselves.  As a matter of fact some programmers simply focus on developing programs that make writing programs easier – like the folks that develop the operating system software, programming languages, editors, etc.</p>
 </div>
 </div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ls</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Bold -Color-Bold-Blue">assembly</span>/       <span class=" -Color -Color-Bold -Color-Bold-Blue">C</span>/           <span class=" -Color -Color-Bold -Color-Bold-Magenta">logo.jpg</span>        <span class=" -Color -Color-Bold -Color-Bold-Blue">src</span>/         <span class=" -Color -Color-Bold -Color-Bold-Blue">unix</span>/
-assembly.ipynb  _config.yml  references.bib  testmyst.md  UNIXsidebar.ipynb
-<span class=" -Color -Color-Bold -Color-Bold-Blue">_build</span>/         intro.md     shell.ipynb     _toc.yml
-</pre></div>
+<div class="section" id="useful">
+<h2>Useful<a class="headerlink" href="#useful" title="Permalink to this headline">¶</a></h2>
+<p>So from our perspective, the main aspects of the operating system, that we care about, is that it makes it ease for programmers to create new programs and does not hide things from us so that we can explore how programs (and  computers) work.</p>
+<p>Operating Systems are designed and created with specific uses and hardware in mind.  Some are designed for special purpose computers and the programs that are expected to run on them like computers built into an airplane to control is various parts or a super-computer which is expected to run complex and large scientific simulation programs.  While other operating systems are designed primarily to enable users to install and run commercial grade programs on their personal devices.  These operating systems while they do want programmers to write new programs they are designed to hide most of these aspects from their target user who mainly just wants to use programs written by others.  The interface of these operating systems tend to focus on graphics and visually oriented ways of interacting with programs.</p>
 </div>
 </div>
+<div class="section" id="why-unix">
+<h1>Why UNIX<a class="headerlink" href="#why-unix" title="Permalink to this headline">¶</a></h1>
+<p>UNIX on the other hand assumes that its users are primarily programmers.  Its design and collection of tools are not meant to be particularly user friendly rather it is designed to all programmers to be very productive and also to support a broad range of programming tools.  Many of the concepts and mechanisms of UNIX underly other operating systems but have been hidden or obscured to make things easier for non-programmer users.</p>
+<div class="section" id="unix-organization-philosiphy">
+<h2>UNIX organization / philosiphy<a class="headerlink" href="#unix-organization-philosiphy" title="Permalink to this headline">¶</a></h2>
+<p>Given its programming focus UNIX is organized around two categories of software – kernel and user.  The kernel is a componet of the UNIX that most users of UNIX do not directly interact with.  It is the core software that is used to manage the various devices of the computer and construct an environment that allows programmers to create new users programs.  The idea is that very little is really built into UNIX rather its users are enouraged to write lots of small programs that extended the functionality of the kernel to do useful things.  The kernel main job is to provide the ability to run new program, provide those programs with access to the hardware, and common ways for programs to interconnect.</p>
+<p>I know this all sounds a bit recursive – welcome to computer science.  As you start interacting with UNIX it will make more sense.</p>
+</div>
+<div class="section" id="bottomline">
+<h2>Bottomline<a class="headerlink" href="#bottomline" title="Permalink to this headline">¶</a></h2>
+<p>To this end, out of the box, UNIX comes with the kernel and a large collection of existing programs that permit a programmer to write more programs that they and others can use.   In this class we will focus on what a program really is, how they are constructed and along the way the core tools, skills and ideas that underly all of computing.  Given UNIX’s programmer focus and transprancy it is an good choice for us and learning how to be productive in the UNIX environment will teach us a lot about how to be productive programmers period.</p>
 </div>
 </div>
 
@@ -237,16 +278,16 @@ assembly.ipynb  _config.yml  references.bib  testmyst.md  UNIXsidebar.ipynb
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "python"
+            mode: "bash"
         },
         kernelOptions: {
-            kernelName: "python3",
+            kernelName: "bash",
             path: "./."
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'python3'</script>
+    <script>kernelName = 'bash'</script>
 
               </div>
               
