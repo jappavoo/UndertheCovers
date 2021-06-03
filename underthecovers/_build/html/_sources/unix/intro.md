@@ -10,7 +10,7 @@ kernelspec:
   name: python3
 ---
 
-# The Unix Operating Systems
+# Operating Systems
 
 We call the collection of software that we use to make a "computer"  "useful" an operating system.  But what exactly does this mean?
 
@@ -43,3 +43,6 @@ I know this all sounds a bit recursive -- welcome to computer science.  As we st
 
 To this end, out of the box, UNIX comes with the kernel and a large collection of existing programs that permit a programmer to write more programs that they and others can use.   In this class we will focus on what a program really is, how they are constructed and along the way the core tools, skills and ideas that underly all of computing.  Given UNIX's programmer focus and transprancy it is an good choice for us and learning how to be productive in the UNIX environment will teach us a lot about how to be productive programmers period.
 
+```{note}
+An example of an admonition with a title.
+```
