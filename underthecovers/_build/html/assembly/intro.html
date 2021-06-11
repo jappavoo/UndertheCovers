@@ -53,7 +53,7 @@
     <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="2. The Von Neumman Architecture" href="vonNeumannArchitecture.html" />
+    <link rel="next" title="2. The von Neumman Architecture" href="vonNeumannArchitecture.html" />
     <link rel="prev" title="3. UNIX – An operating System Built by Programmers for Programmers" href="../unix/shell.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -126,7 +126,7 @@
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="vonNeumannArchitecture.html">
-   2. The Von Neumman Architecture
+   2. The von Neumman Architecture
   </a>
  </li>
  <li class="toctree-l1">
@@ -342,7 +342,7 @@ unique values ranging from <span class="math notranslate nohighlight">\(00000000
 </tbody>
 </table>
 <blockquote>
-<div><p>The 6502 was designed and first built in 1975 but continues to be used today. It has 151 simple operations versus the thousands of complex operations supported by an modern <a class="reference external" href="https://en.wikipedia.org/wiki/X86-64">Intel X86-64 processor</a> which is widely used in laptops to supercomputers.  The following article discusses how to calculate the number of operations in Intex x86-64 processor support and why it is hard;  <span class="xref myst">“Enumerating x86-64 – It’s Not as Easy as Counting”</span>.   Given the simplicity of the 6502 we will often use it to first get our heads around an idea or mechanism, before looking the same thing on an Intel X86-64 based computer.</p>
+<div><p>The 6502 was designed and first built in 1975 but continues to be used today. It has 151 simple operations versus the thousands of complex operations supported by an modern <a class="reference external" href="https://en.wikipedia.org/wiki/X86-64">Intel X86-64 processor</a> which is widely used in computers ranging from laptops to supercomputers.  The following article discusses how to calculate the number of operations an Intel x86-64 processor supports and why it is hard to do so;  <span class="xref myst">“Enumerating x86-64 – It’s Not as Easy as Counting”</span>.   Given the simplicity of the 6502 we will often use it to first get our heads around an idea or mechanism, before looking at the same thing on an Intel X86-64 based computer.</p>
 </div></blockquote>
 <p>A program written directly in machine code is a sequence of binary values.  The following is a small 6502 machine code program that calculates <span class="math notranslate nohighlight">\(1+1\)</span>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">00011000</span><span class="p">,</span> <span class="mi">10101001</span><span class="p">,</span> <span class="mi">00000001</span><span class="p">,</span> <span class="mi">01101001</span><span class="p">,</span> <span class="mi">00000001</span>
@@ -401,13 +401,13 @@ unique values ranging from <span class="math notranslate nohighlight">\(00000000
 </pre></div>
 </div>
 <blockquote>
-<div><p>Using and editor we could write the above into a file (eg. 6502add.s) and then use a 6502 assembler to translate it into 6502 machine code. eg.</p>
+<div><p>Using an editor we could write the above into a file (eg. 6502add.s) and then use a 6502 assembler to translate it into 6502 machine code. eg.</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>ca65 6502add.s -l 6502add.lst
 </pre></div>
 </div>
 <p>This would produce new file that has the machine code verison that could be loaded and run on a 6502 based computer.</p>
 </div></blockquote>
-<p>Unlike our previous machine code version the assembly language version is written using the memonics and also has comments thus making it at least “readable” by a human.  However, unlike other programming languages you might be familar with you likely still cannot REALLY read it.  Eg. you probably cannot tell that it a simple program to add two numbers.</p>
+<p>Unlike our previous machine code version the assembly language version is written using the memonics and also has comments thus making it at least “readable” by a human.  However, unlike other programming languages that you might be familar with you likely still cannot REALLY read it.  Eg. you probably cannot tell that it a simple program to add two numbers or how and why it works.</p>
 <p>To understand assembly language we need to understand what the operations of the CPU are and what they do.  And to achieve this we must understand the basic functioning of the CPU and the rest of the hardware that makes up the computer.</p>
 <blockquote>
 <div><p>The jump from machine code to assembly code illustrates an important pattern that we will see applied over and over again – Program Translation. Rather than needing to understand and remember of all the details of machine code a programmer can simply learn the assembly language and then rely on the assembler to translate it correctly into machine code.  The assembler is a program who’s job is to do this translation – in some sense it acts like a machine code programmer that we give an assembly code version of our program to.   In a similar manner we can design another programming language and write assembly programs that translate that language into assembly language and then use the assembler to translate the result into machine code.   A programmer that learns our new language need never now about assembly or machine language.</p>
@@ -441,7 +441,7 @@ unique values ranging from <span class="math notranslate nohighlight">\(00000000
         <div class='prev-next-bottom'>
             
     <a class='left-prev' id="prev-link" href="../unix/shell.html" title="previous page"><span class="section-number">3. </span>UNIX  – An operating System Built by Programmers for Programmers</a>
-    <a class='right-next' id="next-link" href="vonNeumannArchitecture.html" title="next page"><span class="section-number">2. </span>The Von Neumman Architecture</a>
+    <a class='right-next' id="next-link" href="vonNeumannArchitecture.html" title="next page"><span class="section-number">2. </span>The von Neumman Architecture</a>
 
         </div>
         
