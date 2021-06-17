@@ -49,6 +49,8 @@
         const thebe_selector_output = ".output"
     </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="4. UNIX – An operating System Built by Programmers for Programmers" href="shell.html" />
@@ -245,8 +247,8 @@
             <nav id="bd-toc-nav">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#information-management-and-processing">
-   3.1. Information Management and Processing
+  <a class="reference internal nav-link" href="#information-management">
+   3.1. Information Management
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -278,6 +280,18 @@
    </li>
   </ul>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercises">
+   3.4. Exercises
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#a-unix-file-is-a-physical-object-that-exists-on-the-computer-s-harddrive-true-or-false">
+     3.4.1. A UNIX file is a physical object that exists on the computer’s harddrive:  True or False?
+    </a>
+   </li>
+  </ul>
+ </li>
 </ul>
 
             </nav>
@@ -292,8 +306,8 @@
   <div class="section" id="organizing-and-managing-information-as-a-tree-of-files-and-directories">
 <h1><span class="section-number">3. </span>Organizing and Managing Information as a Tree of Files and Directories<a class="headerlink" href="#organizing-and-managing-information-as-a-tree-of-files-and-directories" title="Permalink to this headline">¶</a></h1>
 <p>Before we get our hands dirty there are a few “ideas” that are worth understanding in order to make our UNIX adventure a little easier.</p>
-<div class="section" id="information-management-and-processing">
-<h2><span class="section-number">3.1. </span>Information Management and Processing<a class="headerlink" href="#information-management-and-processing" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="information-management">
+<h2><span class="section-number">3.1. </span>Information Management<a class="headerlink" href="#information-management" title="Permalink to this headline">¶</a></h2>
 <p><img alt="pdp11" src="../_images/Files-Cabinets.jpg" /></p>
 <p>Using computers and managing information has become synonymous.   You probably take for granted that everyone knowns what a computer “file” and “folder” are and that they have always existed.</p>
 <p>This, however, is not true and a fundamental contribution of operating systems was standardizing the notion of files and their organization into a hiearchical tree structure.</p>
@@ -301,7 +315,7 @@
 </div>
 <div class="section" id="files">
 <h2><span class="section-number">3.2. </span>Files<a class="headerlink" href="#files" title="Permalink to this headline">¶</a></h2>
-<p><img align="right" src="../images/file.pdf">In UNIX a file is an abstract object that we can store information in.  In particular we can write contents too and read contents from it. Beyond the information it contains a file has associated with it several other descriptive facts.  Examples of these facts include:</p>
+<p><img align="right" src="../images/file.pdf">In UNIX a file is an abstract object that can store information.  In particular we can write contents too and read contents from it. Beyond the information it contains a file has associated with it several other descriptive facts.  Examples of these facts include:</p>
 <ul class="simple">
 <li><p>who owns the file</p></li>
 <li><p>the length of the file (measured in <span class="xref myst">bytes</span>)</p></li>
@@ -311,8 +325,9 @@
 <li><p>the time that the descriptive facts where last changed (eg the file permissions were modified)</p></li>
 </ul>
 <p>We think of the contents of the file as the “data” of the file and we think of other information as the “meta-data” of the file.</p>
+<p>One last thing to note is that at this point we are not distiguishing the type of information that the data of a file contains – rather files just contain a collection of <span class="xref myst">bytes</span>.  The bytes of the file might encode <a class="reference internal" href="terminal.html"><span class="doc std std-doc">ascii</span></a> data, image data, audio data, an executable program, etc.  As we will see later it will be up to us to decide how we want to treat the contents of a file by what we do with it (eg open it in a text editor versus opening it in a music player).</p>
 <blockquote>
-<div><p>Why do say that a file is an “abstract” object?  Well when it comes to computers most of the things we think of as “real” are just constructions of software.  An operating system like UNIX is responsible for providing us with such things like files but in reality there is rarely a single physical object that corresponds to any given file.  Rather it is the job of the operating system to use the resources of the computer to create an abstract file object if we ask it to do so.</p>
+<div><p>Why do say that a file is an “abstract” object?  Well when it comes to computers most of the things we think of as “real” are just constructions of software.  An operating system like UNIX is responsible for providing us with things like files but in reality there is rarely a single physical object that corresponds to any given file.  Rather it is the job of the operating system to use the resources of the computer to create an abstract file object if we ask it to do so and ensure that it behaves as expected.</p>
 </div></blockquote>
 </div>
 <div class="section" id="directory-tree">
@@ -327,30 +342,40 @@ While files serve as a great building block for managing information they are no
 <p>Perhaps the most important thing to realize is that a UNIX user is allowed to create directories and files and name them as they see fit.  This ability allows a user to flexibility organize their information in an way they like and makes sense to them. To get a better handle on this let’s walk through a simple abstract example.  Later we will repeat this example but using UNIX commands to get a more exact understanding.</p>
 <p>Lets assume that you are a CS student and like poetry and want to organize yourself.  To this end you might choose to create the following directory and file structure.</p>
 <p><img alt="dirtree" src="../_images/dirtree.pdf" /></p>
-<p>In this diagram we use circles to represent directories and rectangles to represent files.  The name of a directory or file is its label.  Arrows are used to show the entires of a particular directory (A file cannot contain have any arrows starting from it).</p>
+<p>In this diagram we use circles to represent directories and rectangles to represent files.  The name of a directory or file is its label.  Arrows are used to show the entries of a particular directory (A file cannot have any arrows starting from it).</p>
 <div class="section" id="home-directory">
 <h4><span class="section-number">3.3.1.1. </span>HOME Directory<a class="headerlink" href="#home-directory" title="Permalink to this headline">¶</a></h4>
 <p>The above diagram assumes that we are the user “jonathan” who has a directory that they own.  By creating files and sub-directories within the “jonathan” directory we can organize our information. This personal user directory in UNIX this is called the users <strong>HOME</strong> directory and its name matches the users UNIX user name.   We will say more about this when we revisit this example.</p>
 <p>Here the user, jonathan, has created two sub-directories - Poetry and Classes. Inside the Poetry directory the user has created one sub-directory (Vogon – to store their favorite Vogon poetry and two files (ToBitOrToByte and OdeToASemicolon, two poems they have written).</p>
-<p>Similarly we that the user has create more complex directory structure to organize their class work.  One thing to note is that to keep things sensible names of entries in a single directory must be unique.  However, in different directories entries can have the same name – as we can see with the three “Problem1” files at the bottom of the figure.  Each of these are in different directories.</p>
+<p>Similarly we see that the user has create a more complex directory structure to organize their class work.  One thing to note is that to keep things sensible names of entries in a single directory must be unique.  However, in different directories entries can have the same name – as we can see with the three “Problem1” files at the bottom of the figure.  Each of these are in different directories.</p>
 </div>
 <div class="section" id="paths-and-the-root">
 <h4><span class="section-number">3.3.1.2. </span>PATHS and the ROOT<a class="headerlink" href="#paths-and-the-root" title="Permalink to this headline">¶</a></h4>
-<p>As a matter of fact from the above diagram we can see that the unique name of a file or directory is really a composition of that traces a path though the tree.   In UNIX the very top of the tree is the one directory that always exists and is not a sub-directory of any other directory.  This directory is called the <strong>ROOT</strong> directory.  For reasons we will see later in UNIX the <strong>ROOT</strong> directories name is <strong>/</strong> all by itself.</p>
-<p>For example the name of the Problem1 files at the bottom of the diagram are:</p>
+<p>As a matter of fact from the above diagram we can see that the unique name of a file or directory is really a composition of the directories that traces a <strong>path</strong> though the tree.</p>
+<p>In UNIX the very top of the tree is the one directory that always exists and is not a sub-directory of any other directory.  This directory is called the <strong>ROOT</strong> directory. In UNIX the <strong>ROOT</strong> directory’s name <strong>/</strong>.  This might seem odd at first but as we will see in a minute it is consistent with the UNIX way of name a full pathway in the tree.</p>
+<p>With this in mind the names of the three Problem1 files at the bottom of the diagram are composed by joining the name of the directories leading to them along with their name at the end.</p>
 <ul class="simple">
-<li><p>/ + home + jonathan + Classes + CS + 210 + Assignment1 + Problem1</p></li>
-<li><p>/ + home + jonathan + Classes + CS + 210 + Assignment2 + Problem1</p></li>
-<li><p>/ + home + jonathan + Classes + CS + 210 + Assignment3 + Problem1</p></li>
+<li><p>/ <span class="math notranslate nohighlight">\(+\)</span> home <span class="math notranslate nohighlight">\(+\)</span> jonathan <span class="math notranslate nohighlight">\(+\)</span> Classes <span class="math notranslate nohighlight">\(+\)</span> CS <span class="math notranslate nohighlight">\(+\)</span> 210 <span class="math notranslate nohighlight">\(+\)</span> Assignment1 <span class="math notranslate nohighlight">\(+\)</span> Problem1</p></li>
+<li><p>/ <span class="math notranslate nohighlight">\(+\)</span> home <span class="math notranslate nohighlight">\(+\)</span> jonathan <span class="math notranslate nohighlight">\(+\)</span> Classes <span class="math notranslate nohighlight">\(+\)</span> CS <span class="math notranslate nohighlight">\(+\)</span> 210 <span class="math notranslate nohighlight">\(+\)</span> Assignment2 <span class="math notranslate nohighlight">\(+\)</span> Problem1</p></li>
+<li><p>/ <span class="math notranslate nohighlight">\(+\)</span> home <span class="math notranslate nohighlight">\(+\)</span> jonathan <span class="math notranslate nohighlight">\(+\)</span> Classes <span class="math notranslate nohighlight">\(+\)</span> CS <span class="math notranslate nohighlight">\(+\)</span> 210 <span class="math notranslate nohighlight">\(+\)</span> Assignment3 <span class="math notranslate nohighlight">\(+\)</span> Problem1</p></li>
 </ul>
-<p>In UNIX the way we actually will specify the path name of a file or directory will be to seperate the indepdenent components with the “/” character.  So the above three files as proper unix path names would be:</p>
+<p>In UNIX the notation for a full path name of a file or directory is joining the indepdenent components with the “/” character.  So the above three files as proper unix path names would be:</p>
 <ul class="simple">
 <li><p>/home/jonathan/Classes/CS/210/Assignment1/Problem1</p></li>
 <li><p>/home/jonathan/Classes/CS/210/Assignment2/Problem1</p></li>
 <li><p>/home/jonathan/Classes/CS/210/Assignment3/Problem1</p></li>
 </ul>
-<p>Remember “/” by itself is the name of the root directory and the full name of any other directory or file begins with / and then is composed of all the parent directories sperated by an additional /.</p>
+<p>Remember “/” by itself is the name of the root directory and the full name of any other directory or file begins with / and then is composed of all the parent directories sperated by an additional / and ends with the final name of the file or directory being identified.</p>
 </div>
+</div>
+</div>
+<div class="section" id="exercises">
+<h2><span class="section-number">3.4. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="a-unix-file-is-a-physical-object-that-exists-on-the-computer-s-harddrive-true-or-false">
+<h3><span class="section-number">3.4.1. </span>A UNIX file is a physical object that exists on the computer’s harddrive:  True or False?<a class="headerlink" href="#a-unix-file-is-a-physical-object-that-exists-on-the-computer-s-harddrive-true-or-false" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><p>False: A file is an abstract object that the operating system provides.  While it is true that for many files the  data and meta-data are stored in fragments on one more or more drives this need not be true for all files.</p>
+</div></blockquote>
 </div>
 </div>
 </div>
