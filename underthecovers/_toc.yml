@@ -6,8 +6,8 @@ parts:
   chapters:
   - file: unix/intro
   - file: unix/terminal
-  - file: unix/shell
   - file: unix/files
+  - file: unix/shell
   - file: unix/editors
   - file: unix/shelladvanced
   - file: unix/make
