@@ -1,14 +1,27 @@
-.PHONEY: all book pub clean
+.PHONEY: all textbook_build textbookfixlinks textbookimages textbookpub textbookclean build pub clean
 
-all: book pub
+TB_DIR=${PWD}/textbook
 
-book:
-	jupyter-book build underthecovers
+all: build 
 
-pub:
-	ghp-import -n -p -f underthecovers/_build/html
+build: textbookfixlinks
+
+clean: textbookclean
+
+textbook_build:
+	jupyter-book build --path-output ${TB_DIR} --config ${PWD}/underthecovers/tb_config.yml --toc ${PWD}/underthecovers/tb_toc.yml underthecovers
+
+textbookimages: textbook_build
+	-mkdir ${TB_DIR}/_build/html/images
+	cp underthecovers/images/* ${TB_DIR}/_build/html/images
+
+textbookfixlinks:  textbookimages
+	./fixlinks.sh ${TB_DIR}/_build/html
+
+textbookpub: textbookimages
+	ghp-import -n -p -f ${TB_DIR}/_build/html
 	echo "Published: https://jappavoo.github.io/UndertheCovers"
 
-clean: 
-	${RM} -rf  underthecovers/_build
+textbookclean: 
+	${RM} -rf  ${TB_DIR}
 

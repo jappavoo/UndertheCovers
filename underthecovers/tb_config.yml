@@ -1,0 +1,23 @@
+#######################################################################################
+# A default configuration that will be loaded for all jupyter books
+# See the documentation for help and more options: 
+# https://jupyterbook.org/customize/config.html
+
+#######################################################################################
+# Book settings
+title                       : UndertheCovers  # The title of the book. Will be placed in the left navbar.
+author                      : Jonathan Appavoo  # The author of the book
+copyright                   : "2021"  # Copyright year to be placed in the footer
+logo                        : logo.jpg  # A path to the book logo
+
+repository:
+  url: https://github.com/jappavoo/UndertheCovers
+  path_to_book: underthecovers
+  branch: main
+
+html:
+  use_repository_button: true
+
+launch_buttons:
+  notebook_interface: jupyterlab
+  jupyterhub_url: "https://jupyterhub-opf-jupyterhub.apps.zero.massopen.cloud"  # The URL for your JupyterHub. (e.g., https://datahub.berkeley.edu)
