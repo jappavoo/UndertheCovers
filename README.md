@@ -15,16 +15,16 @@ Makefiles are used to automate the the workflow both for building and publishing
 
 ## Companion Container
 
-There is a companion container available in this repository:
+There is a companion container available here:
 
 https://github.com/jappavoo/bu-cs-book-dev
 
 
-The container has:
+Once built the container has:
 - all the software required to follow along and do the examples and exercises 
 - all the software required to author, build and publish the books
 
-The easiest way for a reader of these books to use the container is to  use the launch button on one of the pages.  This will launch the container on the jupyterhub service specified, clone the books contents into the container and start a jupyter server on the container for you to interact with.  The launch button also automatically redirects the browser to open a connection to the newly launched jupyter server.  
+The easiest way for a reader of these books to use the container is to  via the launch button on one of the pages.  This will launch the container on the jupyterhub service specified, clone the books contents into the container and start a jupyter server on the container for you to interact with.  The launch button also automatically redirects the browser to open a connection to the newly launched jupyter server.  
 
 The container can however also be used manually by cloning its [repository](https://github.com/jappavoo/bu-cs-book-dev) and using its [Makefile](https://github.com/jappavoo/bu-cs-book-dev/blob/main/Makefile).  
 
@@ -32,11 +32,11 @@ The container can however also be used manually by cloning its [repository](http
 
 ### Editing content
 
-The easiest way to work on the content of the book is via the companion container.  Launching the container will start a jupyter server.  If doing this locally, via the container repository's [Makefile](https://github.com/jappavoo/bu-cs-book-dev/blob/main/Makefile), the startup will provide a local url to connect to the container.  Starting in this manner also mounts you home directory of your local machine.  You can then navigate to a checkout of this repo and freely edit the content.  
+The easiest way to work on the content of the book is via the companion container.  Launching the container will start a jupyter server.  If doing this locally, via the container repository's [Makefile](https://github.com/jappavoo/bu-cs-book-dev/blob/main/Makefile), the startup will provide a local url to connect to the container.  Starting in this manner also mounts your home directory of your local machine.  You can then navigate to a checkout of this repo and freely edit the content.  
 
 ### The Makefile 
 
-The top-level [Makefile](Makefile) of this repository automates the tasks of building and publishing the content into html versions. 
+The top-level [Makefile](Makefile) of this repository automates the tasks of building and publishing the content html versions. 
 
 Running `make` on its own or running `make help` will list the supported targets and briefly state what each does.
 
@@ -53,7 +53,7 @@ The build targets will create self-contained html versions of the books in the f
 - `lecturenotes/_build/html`
 - `labmanual/_build/html`
 
-To view it locally simply open the `index.html` file of the appropriate subdirectory.  You can use these directories to host the book manually on an arbitrary webserver.  
+To view it locally simply open the `index.html` file of the appropriate subdirectory.  You can use these directories to host the book manually on an arbitrary web server.  
 
 ### Automatic Hosting of the book
 
