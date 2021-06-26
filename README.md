@@ -36,7 +36,7 @@ The easiest way to work on the content of the book is via the companion containe
 
 ### The Makefile 
 
-The top-level [Makefile](Makefile) of this repository automates the tasks of building and publishing the content html versions. 
+The top-level [Makefile](Makefile) of this repository automates the tasks of building and publishing the content as html versions. 
 
 Running `make` on its own or running `make help` will list the supported targets and briefly state what each does.
 
