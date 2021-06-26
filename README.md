@@ -1,30 +1,75 @@
-# UndertheCovers
+Under the Covers : The Secret Life of Software
+==============================================
+![logo](underthecovers/logo.jpg)
 
-Course Notes for CS210
+This repository is the source material for the textbook (TB), lecture notes (LN), and lab manual (LM) for BU CAS CS210.  
 
-## Usage
+The current published master versions can be found here:
+1) [Text Book](https://jappavoo.github.io/UndertheCovers/textbook)
+2) [Lecture Notes](https://jappavoo.github.io/UndertheCovers/lecturenotes)
+3) [Lab Manual](https://jappavoo.github.io/UndertheCovers/labmanual)
 
-### Building the book
+This material is composed largely of jupyter notebooks and supporting files. It is organized and built into the TB, LN, and LM  using jupyter-books (see credits). 
 
-If you'd like to develop on and build the UndertheCovers book, you should:
+Makefiles are used to automate the the workflow both for building and publishing.  
 
-- Clone this repository and run
-- Run `pip install -r requirements.txt` (it is recommended you do this within a virtual environment)
-- (Recommended) Remove the existing `UndertheCovers/_build/` directory
-- Run `jupyter-book build UndertheCovers/`
+## Companion Container
 
-A fully-rendered HTML version of the book will be built in `UndertheCovers/_build/html/`.
+There is a companion container available in this repository:
 
-### Hosting the book
+https://github.com/jappavoo/bu-cs-book-dev
 
-The html version of the book is hosted on the `gh-pages` branch of this repo. A GitHub actions workflow has been created that automatically builds and pushes the book to this branch on a push or pull request to main.
 
-If you wish to disable this automation, you may remove the GitHub actions workflow and build the book manually by:
+The container has:
+- all the software required to follow along and do the examples and exercises 
+- all the software required to author, build and publish the books
 
-- Navigating to your local build; and running,
-- `ghp-import -n -p -f UndertheCovers/_build/html`
+The easiest way for a reader of these books to use the container is to  use the launch button on one of the pages.  This will launch the container on the jupyterhub service specified, clone the books contents into the container and start a jupyter server on the container for you to interact with.  The launch button also automatically redirects the browser to open a connection to the newly launched jupyter server.  
 
-This will automatically push your build to the `gh-pages` branch. More information on this hosting process can be found [here](https://jupyterbook.org/publish/gh-pages.html#manually-host-your-book-with-github-pages).
+The container can however also be used manually by cloning its [repository](https://github.com/jappavoo/bu-cs-book-dev) and using its [Makefile](https://github.com/jappavoo/bu-cs-book-dev/blob/main/Makefile).  
+
+## Developing and Contributing to  the books
+
+### Editing content
+
+The easiest way to work on the content of the book is via the companion container.  Launching the container will start a jupyter server.  If doing this locally, via the container repository's [Makefile](https://github.com/jappavoo/bu-cs-book-dev/blob/main/Makefile), the startup will provide a local url to connect to the container.  Starting in this manner also mounts you home directory of your local machine.  You can then navigate to a checkout of this repo and freely edit the content.  
+
+### The Makefile 
+
+The top-level [Makefile](Makefile) of this repository automates the tasks of building and publishing the content into html versions. 
+
+Running `make` on its own or running `make help` will list the supported targets and briefly state what each does.
+
+### Building the html versions
+
+The Makefile has build targets to run the 'juypter-book' on the source files.  The build targets are:
+- `make build` to build all the books
+- `make build-tb` to build just the text book
+- `make build-ln` to build just the lecture notes
+- `make build-lm` to build just the lab manual
+
+The build targets will create self-contained html versions of the books in the following subdirectories respectively:
+- `textbook/_build/html`
+- `lecturenotes/_build/html`
+- `labmanual/_build/html`
+
+To view it locally simply open the `index.html` file of the appropriate subdirectory.  You can use these directories to host the book manually on an arbitrary webserver.  
+
+### Automatic Hosting of the book
+
+The html versions of the book can be automatically hosted via the [GitHub Pages](https://pages.github.com) service.  The Makefile's pub targets uses [ghp-import](https://github.com/c-w/ghp-import) tool to push the built content to the `gh-pages` branch of the repo.  The targets are:
+- `make pub` to publish all the books
+- `make pub-tb` to publish just the text book
+- `make pub-ln` to publish just the lecture notes
+- `make pub-lm` to publish just the lab manual
+
+> Note if you are using a fork or independent copy of the repo the urls to the book locations will be different than the hardcoded ones at the top of this page as you are working on a different repo. 
+
+More information on this hosting process can be found [here](https://jupyterbook.org/publish/gh-pages.html#manually-host-your-book-with-github-pages).
+
+
+
+
 
 ## Contributors
 

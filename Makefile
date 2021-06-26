@@ -1,27 +1,25 @@
-.PHONEY: all textbook_build textbookfixlinks textbookimages textbookpub textbookclean build pub clean
+.PHONEY: help build-bk pub-bk clean-bk build-ln pub-ln clean-ln build-lm pub-lm clean-lm build pub clean
 
-TB_DIR=${PWD}/textbook
+help:
+# http://marmelab.com/blog/2016/02/29/auto-documented-makefile.html
+	@grep -E '^[a-zA-Z0-9_%/-]+:.*?## .*$$' $(MAKEFILE_LIST) |  awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
 
-all: build 
+build: ## build all materials 
+build: build-bk
 
-build: textbookfixlinks
+pub: ## publish all materials to github pages
+pub: pub-bk
 
-clean: textbookclean
+clean: ## cleanup/remove all build files
+clean: clean-bk
 
-textbook_build:
-	jupyter-book build --path-output ${TB_DIR} --config ${PWD}/underthecovers/tb_config.yml --toc ${PWD}/underthecovers/tb_toc.yml underthecovers
+build-bk: ## build only the textbook
+	make --no-print-directory -f textbook.mk build
 
-textbookimages: textbook_build
-	-mkdir ${TB_DIR}/_build/html/images
-	cp underthecovers/images/* ${TB_DIR}/_build/html/images
+pub-bk: ## publish only the textbook to github pages 
+	make --no-print-directory -f textbook.mk pub
 
-textbookfixlinks:  textbookimages
-	./fixlinks.sh ${TB_DIR}/_build/html
+clean-bk: ## cleanup/remove only textbook build files
+	make --no-print-directory -f textbook.mk clean
 
-textbookpub: textbookimages
-	ghp-import -n -p -f ${TB_DIR}/_build/html
-	echo "Published: https://jappavoo.github.io/UndertheCovers"
-
-textbookclean: 
-	${RM} -rf  ${TB_DIR}
 
