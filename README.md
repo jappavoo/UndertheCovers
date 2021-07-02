@@ -68,9 +68,6 @@ The html versions of the book can be automatically hosted via the [GitHub Pages]
 More information on this hosting process can be found [here](https://jupyterbook.org/publish/gh-pages.html#manually-host-your-book-with-github-pages).
 
 
-
-
-
 ## Contributors
 
 We welcome and recognize all contributions. You can see a list of current contributors in the [contributors tab](https://github.com/jappavoo/underthecovers/graphs/contributors).
