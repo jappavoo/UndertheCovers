@@ -2,3 +2,190 @@ Under the Covers : The Secret Life of Software
 ==============================================
 
 In this book we will look under the covers to learn exactly what software is and how it works.  
+
+This textbook was developed for Boston University's College of Arts and Sciences Computer Science CS210 Computer Systems Class.
+
+The following documents the topics, concepts and skills covered.  This is mainly to communicate the intent of this material and as a working template as the material is developed.
+
+**PART I**: The Unix Software development environment
+- UNIX: An operating systems by programmers for programmers
+- Shell Basics:  
+  - The Terminal and Command line environment
+  - Files and Directories
+  - The Bourne Again Shell 
+      - External vs Internal commands
+        - Internal
+          - comments
+          - echo
+          - variables
+          - conditions and if
+          - loops
+        - External
+          - ls
+          - cat
+          - grep
+          - wc
+          - sort
+          - uniq
+          - bc
+          - man
+        - Shell Scripts
+      - I/O and Process Control
+          - I/O redirection
+          - pipes
+          - background vs foreground
+          - ps and jobs
+      - Users and Groups
+          - usernames, user ids, group names and group ids
+          - permissions: owner, group, others
+          - root
+- Automation using Make
+    - targets vs rules
+    - variables
+- Version Contol 
+    - files and directories as a "living" thing - Tracking and managing changes
+    - GIT - Distributed Version Control 
+        - Repositories
+        - Clone
+        - Commits
+        - Branches
+        - Merging
+        - Rebasing
+        - Pushing
+        - Pulling
+        - Forking
+        - Pull Requests
+     - Programming as a Social Activity and GIT Ettique 
+     - GIT Based Services: GitHub and GitLab      
+     
+**PART II**: The Von Neumman Architecture through Assembly Programming 
+- Von Neumman Archecture
+    - The Byte
+    - Memory
+    - The CPU
+        - Registers
+        - Opcodes
+        - The Loop
+- Assembly Language and Machine Level Debuggers
+    - Assembler - GAS
+    - Addresses vs Symbols
+        - Linker - GNU LD
+    - Debugger -- GDB
+        - tool for exploring memory, registers and controlling cpu
+        - source level debugger: mapping symbols and source code to memory
+    - Integer Data Representation
+       - 1, 2, 4, 8 byte unsigned
+       - 1, 2, 4, 8 byte signed
+       - add, sub, mult, inc, dec, 
+    - Boolean Data and Flags
+        - Logic - cmp 
+        - Bitwise - test
+        - and, or, xor, 
+    - Flow Control
+        - Conditional Execution
+        - Jumps
+        - IF Then Else
+        - Loops
+        - Switch
+    - Functions and the Stack
+       - Calling Conventions
+    - Working with Memory
+       - Addresses and Addressing Modes
+       - Variables and Data structures
+          - Intrinsics
+          - Arrays
+          - Hetrogenous Data
+          - Lists and Trees
+    - Code and Data 
+        - code pointers
+        - jump tables
+        - self modifying code
+    - Linking
+        - object files
+        - libraries
+        - address space layout and linker scripts
+    - System Calls and UNIX ABI
+        - exit
+        - write
+        - read
+        - open
+        - close
+    
+**PART III** : C Programming briding the gap between Assembly and the rest of the software stack.
+- C vs Assembly
+    - Tool Chain 
+        - preprocessor
+        - compiler
+        - assembler
+        - linker
+        - loader
+    - C vs LibC
+        - syntax that is translated into assembly
+        - library of standard functions
+            - effectivley becomes part of the language
+            - C interface to UNIX system calls
+            - Builds on UNIX system calls to provide richer IO primitives
+                - write vs printf
+                - read vs scanf
+- C Syntax
+    - functions 
+        - main
+    - variables
+        - global
+        - local - stack
+        - types
+            - integers 
+            - floats
+                - IEEE 
+        - assignment
+        - constants
+        - addresses and pointers
+    - basic syntax
+        - statements and logic
+            - !, &&, ||
+        - working with bits:
+            - bitwise operators
+                - ~, &, |, ^, >>, <<
+                - common idioms
+                    - masking
+                    - testing and setting bits
+        - ternary operator
+        - if, then else
+        - goto
+        - do while, while
+        - for
+        - switch
+        - C to assembly and assembly to C
+            - fancy things the compiler does
+            - writing optimization friendly code
+        - debugger and C
+    - working with memory 
+        - structures
+        - unions
+        - pointers to structures and unions
+        - alignment
+        - endianess
+        - arrays
+        - address space revisited
+            - text, bss, data, heap, stack
+            - loader and the OS
+            - mmap
+            - malloc
+        - link lists and other data structures
+- LibC
+    - standard IO -- streams
+    - fork
+    - pthreads_create 
+- Other Libraries
+    - your own
+    - libm
+    - gnump
+    - uthash
+- Caching and C
+- C and hardware control
+
+   
+   
+
+
+
