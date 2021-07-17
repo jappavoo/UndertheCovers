@@ -1,0 +1,1452 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>4. The Shell – Progammable User Interface to the computer &#8212; UndertheCovers</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="1. Introduction: Assembly Programming" href="../assembly/intro.html" />
+    <link rel="prev" title="3. Organizing and Managing Information as a Tree of Files and Directories" href="files.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      <img src="../_static/logo.jpg" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">UndertheCovers</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro_tb.html">
+   Under the Covers : The Secret Life of Software
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  The Unix Development Environment
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
+   1. Operating Systems and UNIX
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="terminal.html">
+   2. What is a Terminal and why do we still use them?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="files.html">
+   3. Organizing and Managing Information as a Tree of Files and Directories
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   4. The Shell – Progammable User Interface to the computer
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  The Belly of the Beast: The von Neumann Architecture and Assembly Programming
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../assembly/intro.html">
+   1. Introduction: Assembly Programming
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../assembly/vonNeumannArchitecture.html">
+   2. The von Neumman Architecture
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../assembly/assembly.html">
+   3. Lets write some assembly code
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/unix/shell.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/jappavoo/UndertheCovers"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/jappavoo/UndertheCovers/main?urlpath=lab/tree/underthecovers/unix/shell.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        <a class="jupyterhub-button" href="https://jupyterhub-opf-jupyterhub.apps.zero.massopen.cloud/hub/spawn?jupyter-book:latest/hub/user-redirect/git-pull?repo=https://github.com/jappavoo/UndertheCovers&urlpath=lab/tree/UndertheCovers/underthecovers/unix/shell.ipynb&branch=main"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch JupyterHub" data-toggle="tooltip"
+                data-placement="left"><img class="jupyterhub-button-logo"
+                    src="../_static/images/logo_jupyterhub.svg"
+                    alt="Interact on JupyterHub">JupyterHub</button></a>
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#getting-started-the-terminal-and-this-book">
+   4.1. Getting started – The Terminal and this book
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#command-line-anatomy">
+     4.1.1. Command Line Anatomy
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#bash">
+     4.1.2. BASH
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#echo-printing-something-to-the-sceen">
+       4.1.2.1. echo – printing something to the sceen
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#comments-ignoring-everthing-else">
+       4.1.2.2. comments – Ignoring everthing else
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#variables-a-way-to-store-and-recall-values-both-numbers-and-text">
+       4.1.2.3. Variables – a way to store and recall values (both numbers and text)
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#set-display-all-the-variables-that-exist">
+       4.1.2.4. set - display all the variables that exist
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#logic-return-values-test-statements-and-if-statements">
+       4.1.2.5. Logic – Return values, test statements, and if statements
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#loops">
+       4.1.2.6. Loops
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#functions-basic-reusable-shell-program-fragments">
+       4.1.2.7. functions – basic reusable shell program fragments
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ls-listing-the-contents-of-a-directory">
+     4.1.3. ls – listing the contents of a directory
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#this-is-a-new-section">
+   4.2. this is a new section
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="the-shell-progammable-user-interface-to-the-computer">
+<h1><span class="section-number">4. </span>The Shell – Progammable User Interface to the computer<a class="headerlink" href="#the-shell-progammable-user-interface-to-the-computer" title="Permalink to this headline">¶</a></h1>
+<p>Given its history and programmer bent UNIX’s primary interface – or way of interacting with it to get things done is a program called the “shell”.  In the following sections we will introduce various aspects of the shell, UNIX and fundamental ideas common to all modern operating systems.</p>
+<div class="section" id="getting-started-the-terminal-and-this-book">
+<h2><span class="section-number">4.1. </span>Getting started – The Terminal and this book<a class="headerlink" href="#getting-started-the-terminal-and-this-book" title="Permalink to this headline">¶</a></h2>
+<p>To work with a UNIX computer you must establish, one way or another, a plain text (ASCII) interactive session.
+We will learn what ASCII is later… for the moment is away of entering and displaying the basic english characters, numeric digits, and standard punctuation.</p>
+<p>To do this you must start a “Terminal” session.  A “Terminal” is an ASCII application that is designed to accept characters from your keyboard and send them to a program and similarly characters sent from the remote program will be displayed by the terminal program for you to read.</p>
+<p>On Windows you can start a terminal by using the PowerShell program and on OSX you can use the Terminal Application.</p>
+<p>The next step, after starting a terminal emulator, is to connect it to a computer running UNIX. Today we typically use a program called <code class="docutils literal notranslate"><span class="pre">ssh</span></code> to establish this connection. Both Windows and OSX come with <code class="docutils literal notranslate"><span class="pre">ssh</span></code> that you can invoke from within the terminal.   <code class="docutils literal notranslate"><span class="pre">ssh</span></code> takes a hostname of the computer as an arugment and then uses network protocols to establish a terminal connection to the specified computer.   In response to establishing the connection the UNIX computer will prompt you to identify yourself with your username and password.  This is called logging.</p>
+<p>Uppon succesfully logging in the remote UNIX computer will start a shell programming running for you and from that point on anything you do or see in that terminal window is going to or coming from that remote computer.   So that terminal connection is actually a window into another computer!  You can start more windows to create more concurrent connections to the same or other remote computers.  Doing so can be very useful to improve your productivity.</p>
+<p>However to make life a little easier in this book we use features of Jupyter to both create terminal sessions and establish connections to a UNIX computer from within the pages of the book themselves.  This allows you to directly and immediately explore the things we discuss.</p>
+<p>We do encourage you to poke around outside of this book using a terminal emulator and ssh to get a better feel for what is actually happening and so that you can have more control.  In the ‘real world’ (and in later classes) you will be expected to understand how to use your personal computers, tablets and even phones to establish terminal connections to other computers and know how to get work done on them.</p>
+<div class="section" id="command-line-anatomy">
+<h3><span class="section-number">4.1.1. </span>Command Line Anatomy<a class="headerlink" href="#command-line-anatomy" title="Permalink to this headline">¶</a></h3>
+<p>Our interactions with the shell are “line oriented”.
+That is to say that once we are connected to the shell it will be waiting for us to enter a command.
+To indicate this it will print a “prompt” at the beginning of a line.  Cannonically the prompt is often  (If you are intested you can lookup how to customize the prompt to something you prefer)</p>
+<p>Commands are a plain text “key” words that the shell will “execute” for us.
+To get the shell to do something we enter the command along with any arguments and modifies and then press
+enter or return key to terminate the line and submit it to the shell.  At this point the shell will analyize the line we entered and will execute the command it it can.</p>
+<p>If we like we can place multiple commands to execute one after the other on a line by seperating them with a semicolon.  <code class="docutils literal notranslate"><span class="pre">;</span></code></p>
+</div>
+<div class="section" id="bash">
+<h3><span class="section-number">4.1.2. </span>BASH<a class="headerlink" href="#bash" title="Permalink to this headline">¶</a></h3>
+<p>Now given the age of UNIX over the years many different versions of the shell have been developed. All of them have a few properties in common:</p>
+<ul class="simple">
+<li><p>The built in commands of the shell form a crude and yet quite powerfull programming language.</p></li>
+<li><p>If the command one issues is not recognized as a built in command of the shell the shell will look to see if a program of the same name as the command exists and if so will run it.</p></li>
+<li><p>The shell provides ways for combining programs together so that the output of one can be feed to another</p></li>
+</ul>
+<p>One shell that is commonly used today is called <span class="xref myst">‘BASH’</span> and it will be the one we use in this book.  Like the other shells the basic syntax of BASH is quite simple but it can get pretty weird and subtle as you start using more advanced features.  The strangeness of the shell is part of what gives UNIX its reputation for being cryptic and yet powerful.</p>
+<p>At this point is just to learn some basic syntax and a sense for what the shell can do.  Our main goal is to learn enough to be proficient and understand the core concepts of work in the UNIX environment.  Specifically, what the following are:</p>
+<ul class="simple">
+<li><p>files</p></li>
+<li><p>directories</p></li>
+<li><p>programs</p></li>
+<li><p>processes</p></li>
+</ul>
+<p>and how we can create and use them.</p>
+<div class="section" id="echo-printing-something-to-the-sceen">
+<h4><span class="section-number">4.1.2.1. </span>echo – printing something to the sceen<a class="headerlink" href="#echo-printing-something-to-the-sceen" title="Permalink to this headline">¶</a></h4>
+<p>Perhaps the most basic command that we can issue to the shell is the <code class="docutils literal notranslate"><span class="pre">echo</span></code> comand.  <code class="docutils literal notranslate"><span class="pre">echo</span></code> allows us to print a message.  For the moment this might seem like a silly command but later we will see that the shell is not just designed to be an interactive interface but also a powerful programming language that we can use to quickly automate things and construct our own commands out of the exiting ones.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">echo</span> <span class="s2">&quot;Hello World foo bar&quot;</span> foo
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hello World foo bar foo
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="comments-ignoring-everthing-else">
+<h4><span class="section-number">4.1.2.2. </span>comments – Ignoring everthing else<a class="headerlink" href="#comments-ignoring-everthing-else" title="Permalink to this headline">¶</a></h4>
+<p>Another very trival thing we can do is tell the shell to ignore every thing else on the line using the comment character.  In bash this character is the hash character <code class="docutils literal notranslate"><span class="pre">#</span></code>.  A line with the <code class="docutils literal notranslate"><span class="pre">#</span></code> at the beginning of it will be ignored complete and as such there will be no output from it and the shell will simply print out prompt on the next newline.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># this is a comment</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">echo</span> <span class="s2">&quot;Hello World&quot;</span>  <span class="c1"># we can use echo to print to the screen</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hello World
+</pre></div>
+</div>
+</div>
+</div>
+<p>The first example above the <code class="docutils literal notranslate"><span class="pre">#</span></code> at the beginning of the line causes the shell to ignore everything else on the line.  In second example we see that the shell ignores everthing after the # but continues to execute what preceeds it.</p>
+</div>
+<div class="section" id="variables-a-way-to-store-and-recall-values-both-numbers-and-text">
+<h4><span class="section-number">4.1.2.3. </span>Variables – a way to store and recall values (both numbers and text)<a class="headerlink" href="#variables-a-way-to-store-and-recall-values-both-numbers-and-text" title="Permalink to this headline">¶</a></h4>
+<p>Like many of the programming languages you are used to the shell supports the idea of variables.
+To create a variable and set its value one simply types the name you want to use for your variable and set value using the equal sign.  To get the value of a variable one prefixes the name of the variable with the ‘$’ symbol.  Eg.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">myVar</span><span class="o">=</span><span class="s2">&quot;Hello&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">echo</span> <span class="nv">$myVar</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hello
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">i</span><span class="o">=</span><span class="m">0</span><span class="p">;</span> <span class="nv">j</span><span class="o">=</span><span class="m">10</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">echo</span> <span class="s2">&quot;The value of i is </span><span class="nv">$i</span><span class="s2"> and the value of j is </span><span class="nv">$j</span><span class="s2"> and myVar is &#39;</span><span class="nv">$myVar</span><span class="s2">&#39;&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The value of i is 0 and the value of j is 10 and myVar is &#39;Hello&#39;
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="set-display-all-the-variables-that-exist">
+<h4><span class="section-number">4.1.2.4. </span>set - display all the variables that exist<a class="headerlink" href="#set-display-all-the-variables-that-exist" title="Permalink to this headline">¶</a></h4>
+<p>At any point there is a set of variables that exist some created by you and others created for you.   The entire collection of existing varibles is called the environment.   These is a special command set lets you see all of the existing variables</p>
+<p>set is actually a very powerfull command that do many things based on additional parameters … but without any it by default prints all the variables that exist. (to learn more about set try ‘help set’ or read the man page for bash)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">set</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>BASH=/opt/conda/bin/bash
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>BASHOPTS=checkwinsize:cmdhist:complete_fullquote:expand_aliases:extquote:force_fignore:globasciiranges:gnu_errfmt:histappend:hostcomplete:interactive_comments:progcomp:promptvars:sourcepath
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>BASH_ALIASES=()
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>BASH_ARGC=([0]=&quot;0&quot;)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>BASH_ARGV=()
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>BASH_CMDS=()
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>BASH_LINENO=()
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>BASH_SOURCE=()
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>BASH_VERSINFO=([0]=&quot;5&quot; [1]=&quot;0&quot; [2]=&quot;18&quot; [3]=&quot;1&quot; [4]=&quot;release&quot; [5]=&quot;x86_64-conda-linux-gnu&quot;)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>BASH_VERSION=&#39;5.0.18(1)-release&#39;
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>COLUMNS=80
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CONDA_DEFAULT_ENV=base
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CONDA_DIR=/opt/conda
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CONDA_EXE=/opt/conda/bin/conda
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CONDA_INTERNAL_OLDPATH=/opt/conda/bin:/opt/conda/condabin:/opt/conda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CONDA_PREFIX=/opt/conda
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CONDA_PROMPT_MODIFIER=&#39;(base) &#39;
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CONDA_PYTHON_EXE=/opt/conda/bin/python
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CONDA_SHLVL=1
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CONDA_VERSION=4.10.1
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DEBIAN_FRONTEND=noninteractive
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DIRSTACK=()
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>EUID=1000
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>GIT_PYTHON_REFRESH=quiet
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>GROUPS=()
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>HISTCONTROL=ignoreboth
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>HISTFILE=/home/jovyan/.bash_history
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>HISTFILESIZE=2000
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>HISTSIZE=1000
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>HOME=/home/jovyan
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>HOSTNAME=1eac8844b99e
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>HOSTTYPE=x86_64
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>IFS=$&#39; \t\n&#39;
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INSIDE_EMACS=26.3,comint
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>JPY_PARENT_PID=664
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>JUPYTER_ENABLE_LAB=yes
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>JUPYTER_SERVER_ROOT=/home/jovyan
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>JUPYTER_SERVER_URL=http://1eac8844b99e:8888/
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>LANG=en_US.UTF-8
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>LANGUAGE=en_US.UTF-8
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>LC_ALL=en_US.UTF-8
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>LINES=24
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>LS_COLORS=
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>MACHTYPE=x86_64-conda-linux-gnu
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>MAILCHECK=60
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>MAKEFLAGS=&#39; --no-print-directory&#39;
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>MAKELEVEL=2
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>MAKE_TERMERR=/dev/pts/2
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>MAKE_TERMOUT=/dev/pts/2
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>MFLAGS=--no-print-directory
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>MINIFORGE_VERSION=4.10.1-5
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>NB_GID=100
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>NB_UID=1000
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>NB_USER=jovyan
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OLDPWD=/home/jovyan/work/UndertheCovers/underthecovers
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPTERR=1
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPTIND=1
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OSTYPE=linux-gnu
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>PAGER=cat
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>PATH=/opt/conda/bin:/opt/conda/condabin:/opt/conda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>PIPESTATUS=([0]=&quot;0&quot;)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>PPID=736
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>PROMPT_COMMAND=
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>PS1=&#39;[PEXP\[\]ECT_PROMPT&gt;&#39;
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>PS2=&#39;[PEXP\[\]ECT_PROMPT+&#39;
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>PS4=&#39;+ &#39;
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>PWD=/home/jovyan/work/UndertheCovers/underthecovers/unix
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>PYXTERM_DIMENSIONS=80x25
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>SHELL=/bin/bash
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>SHELLOPTS=braceexpand:emacs:hashall:histexpand:history:interactive-comments:monitor
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>SHLVL=3
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>SYSP=/opt/conda
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>TERM=dumb
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>TERMCAP=
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>UID=1000
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>_=0
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>_CE_CONDA=
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>_CE_M=
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>i=0
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>j=10
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>myVar=Hello
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>rc=0
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>__add_sys_prefix_to_path () 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{ 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    if [ -n &quot;${_CE_CONDA}&quot; ] &amp;&amp; [ -n &quot;${WINDIR+x}&quot; ]; then
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>        SYSP=$(\dirname &quot;${CONDA_EXE}&quot;);
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    else
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>        SYSP=$(\dirname &quot;${CONDA_EXE}&quot;);
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>        SYSP=$(\dirname &quot;${SYSP}&quot;);
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    fi;
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    if [ -n &quot;${WINDIR+x}&quot; ]; then
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>        PATH=&quot;${SYSP}/bin:${PATH}&quot;;
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>        PATH=&quot;${SYSP}/Scripts:${PATH}&quot;;
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>        PATH=&quot;${SYSP}/Library/bin:${PATH}&quot;;
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>        PATH=&quot;${SYSP}/Library/usr/bin:${PATH}&quot;;
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>        PATH=&quot;${SYSP}/Library/mingw-w64/bin:${PATH}&quot;;
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>        PATH=&quot;${SYSP}:${PATH}&quot;;
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    else
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>        PATH=&quot;${SYSP}/bin:${PATH}&quot;;
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    fi;
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    \export PATH
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>}
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>__conda_activate () 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{ 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    if [ -n &quot;${CONDA_PS1_BACKUP:+x}&quot; ]; then
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>        PS1=&quot;$CONDA_PS1_BACKUP&quot;;
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>        \unset CONDA_PS1_BACKUP;
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    fi;
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    \local cmd=&quot;$1&quot;;
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    shift;
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    \local ask_conda;
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    CONDA_INTERNAL_OLDPATH=&quot;${PATH}&quot;;
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    __add_sys_prefix_to_path;
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    ask_conda=&quot;$(PS1=&quot;$PS1&quot; &quot;$CONDA_EXE&quot; $_CE_M $_CE_CONDA shell.posix &quot;$cmd&quot; &quot;$@&quot;)&quot; || \return $?;
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    rc=$?;
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    PATH=&quot;${CONDA_INTERNAL_OLDPATH}&quot;;
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    \eval &quot;$ask_conda&quot;;
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    if [ $rc != 0 ]; then
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>        \export PATH;
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    fi;
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    __conda_hashr
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>}
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>__conda_hashr () 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{ 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    if [ -n &quot;${ZSH_VERSION:+x}&quot; ]; then
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>        \rehash;
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    else
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>        if [ -n &quot;${POSH_VERSION:+x}&quot; ]; then
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>            :;
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>        else
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>            \hash -r;
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>        fi;
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    fi
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>}
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>__conda_reactivate () 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{ 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    \local ask_conda;
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    CONDA_INTERNAL_OLDPATH=&quot;${PATH}&quot;;
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    __add_sys_prefix_to_path;
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    ask_conda=&quot;$(PS1=&quot;$PS1&quot; &quot;$CONDA_EXE&quot; $_CE_M $_CE_CONDA shell.posix reactivate)&quot; || \return $?;
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    PATH=&quot;${CONDA_INTERNAL_OLDPATH}&quot;;
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    \eval &quot;$ask_conda&quot;;
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    __conda_hashr
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>}
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>conda () 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{ 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    if [ &quot;$#&quot; -lt 1 ]; then
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>        &quot;$CONDA_EXE&quot; $_CE_M $_CE_CONDA;
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    else
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>        \local cmd=&quot;$1&quot;;
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>        shift;
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>        case &quot;$cmd&quot; in 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>            activate | deactivate)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                __conda_activate &quot;$cmd&quot; &quot;$@&quot;
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>            ;;
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>            install | update | upgrade | remove | uninstall)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                CONDA_INTERNAL_OLDPATH=&quot;${PATH}&quot;;
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                __add_sys_prefix_to_path;
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                &quot;$CONDA_EXE&quot; $_CE_M $_CE_CONDA &quot;$cmd&quot; &quot;$@&quot;;
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                \local t1=$?;
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                PATH=&quot;${CONDA_INTERNAL_OLDPATH}&quot;;
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                if [ $t1 = 0 ]; then
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                    __conda_reactivate;
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                else
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                    return $t1;
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                fi
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>            ;;
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>            *)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                CONDA_INTERNAL_OLDPATH=&quot;${PATH}&quot;;
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                __add_sys_prefix_to_path;
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                &quot;$CONDA_EXE&quot; $_CE_M $_CE_CONDA &quot;$cmd&quot; &quot;$@&quot;;
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                \local t1=$?;
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                PATH=&quot;${CONDA_INTERNAL_OLDPATH}&quot;;
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                return $t1
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>            ;;
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>        esac;
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    fi
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>}
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>display () 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{ 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    TMPFILE=$(mktemp ${TMPDIR-/tmp}/bash_kernel.XXXXXXXXXX);
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    cat &gt; $TMPFILE;
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    echo &quot;bash_kernel: saved image data to: $TMPFILE&quot; 1&gt;&amp;2
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>}
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="logic-return-values-test-statements-and-if-statements">
+<h4><span class="section-number">4.1.2.5. </span>Logic – Return values, test statements, and if statements<a class="headerlink" href="#logic-return-values-test-statements-and-if-statements" title="Permalink to this headline">¶</a></h4>
+<p>In the shell every command produces a return value.  By convention a return value of 0 is treated as success (or true) and a non-zero value is considered to be failure (or false).  You can access the return value of the last command using a special variable ‘$?’. Eg.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">echo</span> <span class="s1">&#39;Hello&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hello
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">echo</span> <span class="nv">$?</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0
+</pre></div>
+</div>
+</div>
+</div>
+<p>The bash shell allows us to write two kinds of test statements that produce a return code based on some logical test.  The first test statement is for testing ascii string values – ‘[[ stmt ]]’  and the other is for numeric or integer tests – ‘(( stmt ))’.  Eg.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">[[</span> <span class="nv">$myVar</span> <span class="o">==</span> <span class="s2">&quot;Hello&quot;</span> <span class="o">]]</span><span class="p">;</span> <span class="nb">echo</span> <span class="nv">$?</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">[[</span> <span class="nv">$myVar</span> <span class="o">==</span> <span class="s2">&quot;Goodbye&quot;</span> <span class="o">]]</span><span class="p">;</span> <span class="nb">echo</span> <span class="nv">$?</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">((</span> <span class="nv">$i</span> <span class="o">==</span> <span class="m">100</span><span class="o">))</span><span class="p">;</span> <span class="nb">echo</span> <span class="nv">$?</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">j</span><span class="o">=</span><span class="m">10</span> 
+<span class="o">((</span> <span class="nv">$j</span> &lt;<span class="o">=</span> <span class="m">10</span> <span class="o">))</span>
+<span class="nb">echo</span> <span class="nv">$?</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0
+</pre></div>
+</div>
+</div>
+</div>
+<p>Both the test operators can do many interesting tests but at this point we just want to get the basic idea of how things work.  As one might expect Bash supports if statements that can use the test statements to conditionally execute as set of statements.  Eg.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">fruit</span><span class="o">=</span><span class="s2">&quot;pear&quot;</span>
+<span class="k">if</span> <span class="o">[[</span> <span class="nv">$fruit</span> <span class="o">==</span> <span class="s2">&quot;banana&quot;</span> <span class="o">]]</span>
+<span class="k">then</span>
+  <span class="nb">echo</span> <span class="s2">&quot;Monkeys love bananas&quot;</span>
+<span class="k">elif</span> <span class="o">[[</span> <span class="nv">$fruit</span> <span class="o">==</span> <span class="s2">&quot;apple&quot;</span> <span class="o">]]</span>
+<span class="k">then</span>
+   <span class="nb">echo</span> <span class="s2">&quot;Horses love apples&quot;</span>
+<span class="k">else</span>
+   <span class="nb">echo</span> <span class="s2">&quot;I don&#39;t know who likes </span><span class="si">${</span><span class="nv">fruit</span><span class="si">}</span><span class="s2">s&quot;</span>
+<span class="k">fi</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>I don&#39;t know who likes pears
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="loops">
+<h4><span class="section-number">4.1.2.6. </span>Loops<a class="headerlink" href="#loops" title="Permalink to this headline">¶</a></h4>
+<p>Like other programming languages the shell supports various kinds of loops.  We will quick look at an example of a while loop and a for loop.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">i</span><span class="o">=</span><span class="m">0</span>
+<span class="k">while</span> <span class="o">((</span>i&lt;<span class="m">5</span><span class="o">))</span>
+<span class="k">do</span>
+  <span class="nb">echo</span> <span class="nv">$i</span>
+  <span class="o">((</span><span class="nv">i</span><span class="o">=</span><span class="nv">$i</span>+1<span class="o">))</span>
+<span class="k">done</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="o">((</span><span class="nv">i</span><span class="o">=</span><span class="m">0</span><span class="p">;</span>i&lt;<span class="m">3</span><span class="p">;</span> i++<span class="o">))</span>
+<span class="k">do</span>
+   <span class="nb">echo</span> <span class="nv">$i</span>
+<span class="k">done</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="functions-basic-reusable-shell-program-fragments">
+<h4><span class="section-number">4.1.2.7. </span>functions – basic reusable shell program fragments<a class="headerlink" href="#functions-basic-reusable-shell-program-fragments" title="Permalink to this headline">¶</a></h4>
+<p>Like other programming languages you can write shell functions to create useful routines that you can resuse.</p>
+<p>The following are some examples so you can get a sense of the syntax.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="k">function</span> myInfo<span class="o">()</span> <span class="o">{</span>
+  <span class="nb">local</span> <span class="nv">type</span><span class="o">=</span><span class="nv">$1</span>
+  <span class="nb">echo</span> <span class="s2">&quot;Name: Bob Blah-Blah&quot;</span>
+  <span class="nb">echo</span> <span class="s2">&quot;Age: 64&quot;</span>
+  <span class="k">if</span> <span class="o">[[</span> <span class="nv">$type</span> <span class="o">==</span> <span class="s2">&quot;full&quot;</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
+   <span class="nb">echo</span> <span class="s2">&quot;Occupation: Space Explorer&quot;</span>
+   <span class="nb">echo</span> <span class="s2">&quot;Favorite Food: Bits and Bytes&quot;</span>
+   <span class="nb">echo</span> <span class="s2">&quot;OS of choice: UNIX&quot;</span>
+  <span class="k">fi</span>
+<span class="o">}</span>
+
+myInfo
+<span class="nb">echo</span> -e <span class="s2">&quot;\nLets try the full info\n&quot;</span>
+myInfo <span class="s2">&quot;full&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Name: Bob Blah-Blah
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Age: 64
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Lets try the full info
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Name: Bob Blah-Blah
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Age: 64
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Occupation: Space Explorer
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Favorite Food: Bits and Bytes
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OS of choice: UNIX
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="ls-listing-the-contents-of-a-directory">
+<h3><span class="section-number">4.1.3. </span>ls – listing the contents of a directory<a class="headerlink" href="#ls-listing-the-contents-of-a-directory" title="Permalink to this headline">¶</a></h3>
+<p>With no additional arguments the <code class="docutils literal notranslate"><span class="pre">ls</span></code> command will print out the contents of the current working directory.  That is to say it will print the names of the files and directories that are contained in the current directory.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ls
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>files.ipynb  L01.ipynb  L03.ipynb  L05.ipynb  shell.ipynb
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>intro.ipynb  L02.ipynb  L04.ipynb  L06.ipynb  terminal.ipynb
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ls -l
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>total 84
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-rw-r--r-- 1 jovyan users 13113 Jul  2 14:32 files.ipynb
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-rw-r--r-- 1 jovyan users  5651 Jul 17 11:07 intro.ipynb
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-rw-r--r-- 1 jovyan users   569 Jul 17 13:05 L01.ipynb
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-rw-r--r-- 1 jovyan users   597 Jul 17 13:05 L02.ipynb
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-rw-r--r-- 1 jovyan users   597 Jul 17 13:05 L03.ipynb
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-rw-r--r-- 1 jovyan users   597 Jul 17 13:06 L04.ipynb
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-rw-r--r-- 1 jovyan users   597 Jul 17 13:05 L05.ipynb
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-rw-r--r-- 1 jovyan users   597 Jul 17 13:06 L06.ipynb
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-rw-r--r-- 1 jovyan users 24017 Jul 17 10:58 shell.ipynb
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-rw-r--r-- 1 jovyan users  8486 Jul  2 15:46 terminal.ipynb
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ls -a
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>.            intro.ipynb         L02.ipynb  L05.ipynb    terminal.ipynb
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>..           .ipynb_checkpoints  L03.ipynb  L06.ipynb
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>files.ipynb  L01.ipynb           L04.ipynb  shell.ipynb
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ls .
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>files.ipynb  L01.ipynb  L03.ipynb  L05.ipynb  shell.ipynb
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>intro.ipynb  L02.ipynb  L04.ipynb  L06.ipynb  terminal.ipynb
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ls ..
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>assembly  intro_ln.md    ln_toc.yml      src            UNIXsidebar.ipynb
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>bin       intro_tb.md    ln_toc.yml~     tb_config.yml
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C         L00.ipynb      logo.jpg        tb_toc.yml
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>images    ln_config.yml  references.bib  unix
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ls /
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>bin   dev  home  lib32  libx32  mnt  proc  run   srv  tmp  var
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>boot  etc  lib   lib64  media   opt  root  sbin  sys  usr
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ls /home
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>jovyan
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ls /home/jappavoo
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ls: cannot access &#39;/home/jappavoo&#39;: No such file or directory
+</pre></div>
+</div>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">echo</span> <span class="s2">&quot;\$ date&quot;</span><span class="p">;</span> date
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>$ date
+Fri Mar 19 12:13:02 UTC 2021
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="this-is-a-new-section">
+<h2><span class="section-number">4.2. </span>this is a new section<a class="headerlink" href="#this-is-a-new-section" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "bash"
+        },
+        kernelOptions: {
+            kernelName: "bash",
+            path: "./unix"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'bash'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+    <a class='left-prev' id="prev-link" href="files.html" title="previous page"><span class="section-number">3. </span>Organizing and Managing Information as a Tree of Files and Directories</a>
+    <a class='right-next' id="next-link" href="../assembly/intro.html" title="next page"><span class="section-number">1. </span>Introduction: Assembly Programming</a>
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Jonathan Appavoo<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>
