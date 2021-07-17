@@ -1,0 +1,465 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>What is a Terminal and why do we still use them? &#8212; UndertheCovers</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      <img src="../_static/logo.jpg" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">UndertheCovers</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro_ln.html">
+   Under the Covers : The Secret life of Software
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  The Unix Development Environment
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="L01.html">
+   1. SLS Lecture 1 : Topics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="L02.html">
+   2. SLS Lecture 2 : Topics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="L03.html">
+   3. SLS Lecture 3 : Topics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="L04.html">
+   4. SLS Lecture 4 : Topics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="L05.html">
+   5. SLS Lecture 5 : Topics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="L06.html">
+   6. SLS Lecture 6 : Topics
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  The Belly of the Beast: The von Neumann Architecture and Assembly Programming
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../assembly/L07.html">
+   1. SLS Lecture 7 : Topics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../assembly/L08.html">
+   2. SLS Lecture 8 : Topics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../assembly/L09.html">
+   3. SLS Lecture 9 : Topics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../assembly/L10.html">
+   4. SLS Lecture 10 : Topics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../assembly/L11.html">
+   5. SLS Lecture 11 : Topics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../assembly/L12.html">
+   6. SLS Lecture 12 : Topics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../assembly/L13.html">
+   7. SLS Lecture 13 : Topics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../assembly/L14.html">
+   8. SLS Lecture 14 : Topics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../assembly/L15.html">
+   9. SLS Lecture 15 : Topics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../assembly/L16.html">
+   10. SLS Lecture 16 : Topics
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Into the Light: C Programming
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../C/L17.html">
+   1. SLS Lecuture 17 : Topics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../C/L18.html">
+   2. SLS Lecture 18 : Topics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../C/L19.html">
+   3. SLS Lecture 19 : Topics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../C/L20.html">
+   4. SLS Lecture 20 : Topics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../C/L21.html">
+   5. SLS Lecture 21 : Topics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../C/L22.html">
+   6. SLS Lecture 22 : Topics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../C/L23.html">
+   7. SLS Lecture 23 : Topics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../C/L24.html">
+   8. SLS Lecture 24 : Topics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../C/L25.html">
+   9. SLS Lecture 25 : Topics
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/unix/terminal.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/jappavoo/UndertheCovers"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/jappavoo/UndertheCovers/main?urlpath=lab/tree/underthecovers/unix/terminal.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        <a class="jupyterhub-button" href="https://jupyterhub-opf-jupyterhub.apps.zero.massopen.cloud/hub/spawn?jupyter-book:latest/hub/user-redirect/git-pull?repo=https://github.com/jappavoo/UndertheCovers&urlpath=lab/tree/UndertheCovers/underthecovers/unix/terminal.ipynb&branch=main"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch JupyterHub" data-toggle="tooltip"
+                data-placement="left"><img class="jupyterhub-button-logo"
+                    src="../_static/images/logo_jupyterhub.svg"
+                    alt="Interact on JupyterHub">JupyterHub</button></a>
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-origin-story">
+   The origin story
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ascii">
+     ASCII
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#today">
+   Today
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="what-is-a-terminal-and-why-do-we-still-use-them">
+<h1>What is a Terminal and why do we still use them?<a class="headerlink" href="#what-is-a-terminal-and-why-do-we-still-use-them" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="the-origin-story">
+<h2>The origin story<a class="headerlink" href="#the-origin-story" title="Permalink to this headline">¶</a></h2>
+<p><img alt="pdp11" src="../_images/pdp11-40.jpg" /></p>
+<p><a class="reference external" href="https://commons.wikimedia.org/wiki/File:Pdp-11-40.jpg">source</a></p>
+<p>Originally when we started building computers they were very large.  The main component, illustrated above, was a device which
+housed the “smart” bits, the CPU and MEMORY, that could run programs (we discuss these parts and how they work in the <a class="reference internal" href="../assembly/vonNeumannArchitecture.html"><span class="doc std std-doc">von Neumman Architecture</span></a> section).</p>
+<p><img alt="vt220" src="../_images/DEC_vt220.jpg" /></p>
+<p><a class="reference external" href="https://commons.wikimedia.org/wiki/File:DEC_vt220.jpg">source</a></p>
+<p>For a human to work with the computer we had to attach a device that could both display output from from the software running on the computer and accept input.   The basic design was a terminal device that contained a video screen, keyboard and just enough smarts to communicate with the computer.</p>
+<p><a id='ASCII_sec'></a></p>
+<div class="section" id="ascii">
+<h3>ASCII<a class="headerlink" href="#ascii" title="Permalink to this headline">¶</a></h3>
+<p><img alt="ascii" src="../_images/ascii.png" /></p>
+<p><a class="reference external" href="https://commons.wikimedia.org/wiki/File:ASCII-Table-wide.svg">source</a></p>
+<p>In particular, <a class="reference external" href="https://en.wikipedia.org/wiki/ASCII">ASCII</a> terminals, know how to translate ASCII encoded text data to display, “print”, the appropriate character on the screen.  Eg if the software running on the computer sent the number 65 to the terminal the terminal would display capital ‘A’ at the current <a class="reference external" href="https://en.wikipedia.org/wiki/Cursor_(user_interface)">“cursor”</a> position.  The terminal would also advance the cursor to the right so that the next encoded character sent would appear to the right of the last.</p>
+<p>ASCII includes various values the encode puctuation including the critical space character to seperate words.  The ASCII code also includes values that move the cursor so that the software can control where on the screen characters would appear.
+Perhaps the most important of these is the LineFeed (‘\n’) value as it causes the cursor to go down one row to begin a new line.</p>
+<p>In addition the the screen terminals had a keyboad.  These were built so that when a key was pressed on the keyboard the terminal would send the corresponding ASCII value to the computer.  Each key being labeled with the ASCII symbol of the value that pressing it would send.   This way software running on the computer could take text input from the user in addition to displaying it.   Furthmore it was easy to have the software  break the input into “words” and “lines” by having it scann the ASCII values sent for Spaces and LineFeeds. Which were sent when the spacebar and return (or enter) key where pressed.</p>
+<blockquote>
+<div><p>Terminals were the natural evolution of the classic a <a class="reference external" href="https://en.wikipedia.org/wiki/Typewriter">typewriter</a>. Where its sceen was like a virtual piece of paper in that could be software controlled.  As a matter of fact IBM was selling typewriters in 1924 well before it started exploring computers in 1940 <a class="reference external" href="https://en.wikipedia.org/wiki/History_of_IBM">IBM History</a>.</p>
+</div></blockquote>
+<p><img alt="terminalroom" src="../_images/terminalroom.jpg" /></p>
+<p><a class="reference external" href="http://www.columbia.edu/cu/computinghistory/carman.jpg">source</a></p>
+<p>An operating systems like UNIX was run on the computer and allowed many terminals to be connected to the computer.  A user with an account on the computer could use the terminal and login to the computer.
+Students who needed to use the computer would have to go to such a “terminal room” to physically use the computer.</p>
+<p><img alt="login" src="../_images/login.jpg" /></p>
+<p>Specifically they would login with a username and password.</p>
+<p><img alt="shell" src="../_images/shell.jpg" />
+The UNIX operating systems would check to see that the user was allowed to login and if so start a new terminal/shell session for the user.  In particular, it started an instance of an ASCII oriented program called the shell which would allow the user to start working in the UNIX development environment – running existing programs and writing new ones (see section Shell for more info)</p>
+</div>
+</div>
+<div class="section" id="today">
+<h2>Today<a class="headerlink" href="#today" title="Permalink to this headline">¶</a></h2>
+<p>While the computers and terminals that we discussed above are relics of the past.   UNIX and its development environment is still alive and thriving.  It turns out that the simplicilty of an ASCII terminal and the ASCII oriented programming tools of UNIX continue to power much of the digital world around us.  <a class="reference external" href="https://en.wikipedia.org/wiki/Linux">LINUX</a> and other versions of UNIX runs on every imaginable device today all the way from supercomputers to watches. And at some point or another a programmer used terminal sessions communicating with the UNIX running on those devices to develop and debug the layers of software that most people never see but rely on to make those devices useful.</p>
+<blockquote>
+<div><p>As we learn more about how software is constructed and how computers work we will learn that the power of UNIX comes from making it very natural and easy for programmers to construct programs that can themselves be used to process and translate code.</p>
+</div></blockquote>
+<p>Today we use “software” versions of terminals to allow us to create connections to an operating system either running on the physcial machine we are on or to other remote computers. Apple’s MacOSX, is a UNIX derived operating systems and includes a program called <a class="reference external" href="https://en.wikipedia.org/wiki/Terminal_(macOS)">Terminal</a>.    Microsoft’s Windows OS is not a UNIX operating systems but includes a similar program called <a class="reference external" href="https://docs.microsoft.com/en-us/windows/terminal/">Windows Terminal</a>.  Unlike the old days since there is really no physical terminal device a single user can start as many terminal sessions each within its own window as one likes.  As we will see later it is very useful to use multiple terminal sessions to organize your work.  Addionally both OSX and Windows provides a program called <a class="reference external" href="https://en.wikipedia.org/wiki/Secure_Shell_Protocol">SSH</a>.   SSH allows you to use a terminal app running on your computer to connect to remote computers.  Doing so is like connecting a terminal device to the remote computers you are connect to.  Here is s link to using ssh on windows <a class="reference external" href="https://docs.microsoft.com/en-us/windows/terminal/tutorials/ssh">Windows Terminal SSH</a> and link to using ssh on OS <a class="reference external" href="https://osxdaily.com/2017/04/28/howto-ssh-client-mac/">OSX Terminal SSH</a>.</p>
+<p>As a matter of fact if you are reading this book, in interactive mode, there is a LINUX computer that is running a program to serve the book’s content to your webbrowser.  This software, “JupyterLab”, not only allows you to read and interact with the books pages but it also allows you to create terminal sessions so that you can directly use the UNIX development tools of the computer via the traditional ASCII interface all within your webbrowser.  To do so use the File-&gt;New-&gt;Terminal menu item.  This will create a new Terminal session as a JuypterLab tab.  You can start as many as you like and you can drag them to organize them as you like as well.  Much of this book assumes that you will do this while you are reading the book so that you can explore and try things out.</p>
+<p><img alt="jupterm" src="../_images/juplabterminal.gif" /></p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "bash"
+        },
+        kernelOptions: {
+            kernelName: "bash",
+            path: "./unix"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'bash'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Jonathan Appavoo<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

@@ -1,0 +1,697 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Under the Covers : The Secret Life of Software &#8212; UndertheCovers</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet" />
+  <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+      <img src="_static/logo.jpg" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">UndertheCovers</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro_ln.html">
+   Under the Covers : The Secret life of Software
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  The Unix Development Environment
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="unix/L01.html">
+   1. SLS Lecture 1 : Topics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="unix/L02.html">
+   2. SLS Lecture 2 : Topics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="unix/L03.html">
+   3. SLS Lecture 3 : Topics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="unix/L04.html">
+   4. SLS Lecture 4 : Topics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="unix/L05.html">
+   5. SLS Lecture 5 : Topics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="unix/L06.html">
+   6. SLS Lecture 6 : Topics
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  The Belly of the Beast: The von Neumann Architecture and Assembly Programming
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="assembly/L07.html">
+   1. SLS Lecture 7 : Topics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="assembly/L08.html">
+   2. SLS Lecture 8 : Topics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="assembly/L09.html">
+   3. SLS Lecture 9 : Topics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="assembly/L10.html">
+   4. SLS Lecture 10 : Topics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="assembly/L11.html">
+   5. SLS Lecture 11 : Topics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="assembly/L12.html">
+   6. SLS Lecture 12 : Topics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="assembly/L13.html">
+   7. SLS Lecture 13 : Topics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="assembly/L14.html">
+   8. SLS Lecture 14 : Topics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="assembly/L15.html">
+   9. SLS Lecture 15 : Topics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="assembly/L16.html">
+   10. SLS Lecture 16 : Topics
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Into the Light: C Programming
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="C/L17.html">
+   1. SLS Lecuture 17 : Topics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="C/L18.html">
+   2. SLS Lecture 18 : Topics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="C/L19.html">
+   3. SLS Lecture 19 : Topics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="C/L20.html">
+   4. SLS Lecture 20 : Topics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="C/L21.html">
+   5. SLS Lecture 21 : Topics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="C/L22.html">
+   6. SLS Lecture 22 : Topics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="C/L23.html">
+   7. SLS Lecture 23 : Topics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="C/L24.html">
+   8. SLS Lecture 24 : Topics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="C/L25.html">
+   9. SLS Lecture 25 : Topics
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/intro_tb.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/jappavoo/UndertheCovers"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="under-the-covers-the-secret-life-of-software">
+<h1>Under the Covers : The Secret Life of Software<a class="headerlink" href="#under-the-covers-the-secret-life-of-software" title="Permalink to this headline">¶</a></h1>
+<p>In this book we will look under the covers to learn exactly what software is and how it works.</p>
+<p>This textbook was developed for Boston University’s College of Arts and Sciences Computer Science CS210 Computer Systems Class.</p>
+<p>The following documents the topics, concepts and skills covered.  This is mainly to communicate the intent of this material and as a working template as the material is developed.</p>
+<p><strong>PART I</strong>: The Unix Software development environment</p>
+<ul class="simple">
+<li><p>UNIX: An operating systems by programmers for programmers</p></li>
+<li><p>Shell Basics:</p>
+<ul>
+<li><p>The Terminal and Command line environment</p></li>
+<li><p>Files and Directories</p></li>
+<li><p>The Bourne Again Shell</p>
+<ul>
+<li><p>External vs Internal commands</p>
+<ul>
+<li><p>Internal</p>
+<ul>
+<li><p>comments</p></li>
+<li><p>echo</p></li>
+<li><p>variables</p></li>
+<li><p>conditions and if</p></li>
+<li><p>loops</p></li>
+</ul>
+</li>
+<li><p>External</p>
+<ul>
+<li><p>ls</p></li>
+<li><p>cat</p></li>
+<li><p>grep</p></li>
+<li><p>wc</p></li>
+<li><p>sort</p></li>
+<li><p>uniq</p></li>
+<li><p>bc</p></li>
+<li><p>man</p></li>
+<li><p>editors</p>
+<ul>
+<li><p>vi/vim</p></li>
+<li><p>emacs</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Shell Scripts</p></li>
+</ul>
+</li>
+<li><p>I/O and Process Control</p>
+<ul>
+<li><p>I/O redirection</p></li>
+<li><p>pipes</p></li>
+<li><p>background vs foreground</p></li>
+<li><p>ps and jobs</p></li>
+</ul>
+</li>
+<li><p>Users and Groups</p>
+<ul>
+<li><p>usernames, user ids, group names and group ids</p></li>
+<li><p>permissions: owner, group, others</p></li>
+<li><p>root</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Automation using Make</p>
+<ul>
+<li><p>targets vs rules</p></li>
+<li><p>variables</p></li>
+</ul>
+</li>
+<li><p>Version Contol</p>
+<ul>
+<li><p>files and directories as a “living” thing - Tracking and managing changes</p></li>
+<li><p>GIT - Distributed Version Control</p>
+<ul>
+<li><p>Repositories</p></li>
+<li><p>Clone</p></li>
+<li><p>Commits</p></li>
+<li><p>Branches</p></li>
+<li><p>Merging</p></li>
+<li><p>Rebasing</p></li>
+<li><p>Pushing</p></li>
+<li><p>Pulling</p></li>
+<li><p>Forking</p></li>
+<li><p>Pull Requests</p></li>
+</ul>
+</li>
+<li><p>Programming as a Social Activity and GIT Ettique</p></li>
+<li><p>GIT Based Services: GitHub and GitLab</p></li>
+</ul>
+</li>
+</ul>
+<p><strong>PART II</strong>: The Von Neumman Architecture through Assembly Programming</p>
+<ul class="simple">
+<li><p>Von Neumman Archecture</p>
+<ul>
+<li><p>The Byte</p></li>
+<li><p>Memory</p></li>
+<li><p>The CPU</p>
+<ul>
+<li><p>Registers</p></li>
+<li><p>Opcodes</p></li>
+<li><p>The Loop</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Assembly Language and Machine Level Debuggers</p>
+<ul>
+<li><p>Assembler - GAS</p></li>
+<li><p>Addresses vs Symbols</p>
+<ul>
+<li><p>Linker - GNU LD</p></li>
+</ul>
+</li>
+<li><p>Debugger – GDB</p>
+<ul>
+<li><p>tool for exploring memory, registers and controlling cpu</p></li>
+<li><p>source level debugger: mapping symbols and source code to memory</p></li>
+</ul>
+</li>
+<li><p>Integer Data Representation</p>
+<ul>
+<li><p>1, 2, 4, 8 byte unsigned</p></li>
+<li><p>1, 2, 4, 8 byte signed</p></li>
+<li><p>add, sub, mult, inc, dec,</p></li>
+</ul>
+</li>
+<li><p>Boolean Data and Flags</p>
+<ul>
+<li><p>Logic - cmp</p></li>
+<li><p>Bitwise - test</p></li>
+<li><p>and, or, xor,</p></li>
+</ul>
+</li>
+<li><p>Flow Control</p>
+<ul>
+<li><p>Conditional Execution</p></li>
+<li><p>Jumps</p></li>
+<li><p>IF Then Else</p></li>
+<li><p>Loops</p></li>
+<li><p>Switch</p></li>
+</ul>
+</li>
+<li><p>Functions and the Stack</p>
+<ul>
+<li><p>Calling Conventions</p></li>
+</ul>
+</li>
+<li><p>Working with Memory</p>
+<ul>
+<li><p>Addresses and Addressing Modes</p></li>
+<li><p>Variables and Data structures</p>
+<ul>
+<li><p>Intrinsics</p></li>
+<li><p>Arrays</p></li>
+<li><p>Hetrogenous Data</p></li>
+<li><p>Lists and Trees</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Code and Data</p>
+<ul>
+<li><p>code pointers</p></li>
+<li><p>jump tables</p></li>
+<li><p>self modifying code</p></li>
+</ul>
+</li>
+<li><p>Linking</p>
+<ul>
+<li><p>object files</p></li>
+<li><p>libraries</p></li>
+<li><p>address space layout and linker scripts</p></li>
+</ul>
+</li>
+<li><p>System Calls and UNIX ABI</p>
+<ul>
+<li><p>exit</p></li>
+<li><p>write</p></li>
+<li><p>read</p></li>
+<li><p>open</p></li>
+<li><p>close</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>PART III</strong> : C Programming briding the gap between Assembly and the rest of the software stack.</p>
+<ul class="simple">
+<li><p>C vs Assembly</p>
+<ul>
+<li><p>Tool Chain</p>
+<ul>
+<li><p>preprocessor</p></li>
+<li><p>compiler</p></li>
+<li><p>assembler</p></li>
+<li><p>linker</p></li>
+<li><p>loader</p></li>
+</ul>
+</li>
+<li><p>C vs LibC</p>
+<ul>
+<li><p>syntax that is translated into assembly</p></li>
+<li><p>library of standard functions</p>
+<ul>
+<li><p>effectivley becomes part of the language</p></li>
+<li><p>C interface to UNIX system calls</p></li>
+<li><p>Builds on UNIX system calls to provide richer IO primitives</p>
+<ul>
+<li><p>write vs printf</p></li>
+<li><p>read vs scanf</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>C Syntax</p>
+<ul>
+<li><p>functions</p>
+<ul>
+<li><p>main</p></li>
+</ul>
+</li>
+<li><p>variables</p>
+<ul>
+<li><p>global</p></li>
+<li><p>local - stack</p></li>
+<li><p>types</p>
+<ul>
+<li><p>integers</p></li>
+<li><p>floats</p>
+<ul>
+<li><p>IEEE</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>assignment</p></li>
+<li><p>constants</p></li>
+<li><p>addresses and pointers</p></li>
+</ul>
+</li>
+<li><p>basic syntax</p>
+<ul>
+<li><p>statements and logic</p>
+<ul>
+<li><p>!, &amp;&amp;, ||</p></li>
+</ul>
+</li>
+<li><p>working with bits:</p>
+<ul>
+<li><p>bitwise operators</p>
+<ul>
+<li><p>~, &amp;, |, ^, &gt;&gt;, &lt;&lt;</p></li>
+<li><p>common idioms</p>
+<ul>
+<li><p>masking</p></li>
+<li><p>testing and setting bits</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>ternary operator</p></li>
+<li><p>if, then else</p></li>
+<li><p>goto</p></li>
+<li><p>do while, while</p></li>
+<li><p>for</p></li>
+<li><p>switch</p></li>
+<li><p>C to assembly and assembly to C</p>
+<ul>
+<li><p>fancy things the compiler does</p></li>
+<li><p>writing optimization friendly code</p></li>
+</ul>
+</li>
+<li><p>debugger and C</p></li>
+</ul>
+</li>
+<li><p>working with memory</p>
+<ul>
+<li><p>structures</p></li>
+<li><p>unions</p></li>
+<li><p>pointers to structures and unions</p></li>
+<li><p>alignment</p></li>
+<li><p>endianess</p></li>
+<li><p>arrays</p></li>
+<li><p>address space revisited</p>
+<ul>
+<li><p>text, bss, data, heap, stack</p></li>
+<li><p>loader and the OS</p></li>
+<li><p>mmap</p></li>
+<li><p>malloc</p></li>
+</ul>
+</li>
+<li><p>link lists and other data structures</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>LibC</p>
+<ul>
+<li><p>standard IO – streams</p></li>
+<li><p>fork</p></li>
+<li><p>pthreads_create</p></li>
+</ul>
+</li>
+<li><p>Other Libraries</p>
+<ul>
+<li><p>your own</p></li>
+<li><p>libm</p></li>
+<li><p>gnump</p></li>
+<li><p>uthash</p></li>
+</ul>
+</li>
+<li><p>Caching and C</p></li>
+<li><p>C and hardware control</p></li>
+</ul>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Jonathan Appavoo<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>
