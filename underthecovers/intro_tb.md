@@ -29,6 +29,9 @@ The following documents the topics, concepts and skills covered.  This is mainly
           - uniq
           - bc
           - man
+          - editors
+              - vi/vim
+              - emacs
         - Shell Scripts
       - I/O and Process Control
           - I/O redirection

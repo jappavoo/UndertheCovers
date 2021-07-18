@@ -22,7 +22,7 @@ fixlinks: images
 build: fixlinks
 
 pub: build
-	ghp-import -o -n -p --prefix=${NAME} -f ${BK_DIR}/_build/html
+	ghp-import -n -p --prefix=${NAME} -f ${BK_DIR}/_build/html
 	@echo "Published to:"
 	@./ghp-url.sh ${NAME}
 

@@ -1,7 +1,7 @@
 format: jb-book
 root: intro_tb
 parts:
-- caption: The Unix Development Environment
+- caption: 'The Unix Development Environment'
   numbered: true
   chapters:
   - file: unix/intro
@@ -9,15 +9,18 @@ parts:
   - file: unix/files
   - file: unix/shell
   - file: unix/editors
-  - file: unix/shelladvanced
+  - file: unix/shellscripts
+  - file: unix/processes
+  - file: unix/ids
   - file: unix/make
   - file: unix/git
-- caption: 'The Belly of the Beast: Assembly Programming'
+- caption: 'The Belly of the Beast: The von Neumann Architecture and Assembly Programming'
   numbered: true
   chapters:
   - file: assembly/intro
   - file: assembly/vonNeumannArchitecture
   - file: assembly/theByte
+  - file: assembly/Memory
   - file: assembly/theLoop
   - file: assembly/assembly
 - caption: 'Into the Light : C Programming'

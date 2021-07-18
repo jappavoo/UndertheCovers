@@ -22,4 +22,12 @@ pub-bk: ## publish only the textbook to github pages
 clean-bk: ## cleanup/remove only textbook build files
 	make --no-print-directory -f textbook.mk clean
 
+build-ln: ## build only the lecture notes
+	make --no-print-directory -f lecturenotes.mk build
+
+pub-ln: ## publish only the lecture notes to github pages
+	make --no-print-directory -f lecturenotes.mk pub
+
+clean-ln: ## Cleanup/remove only lecture notes build files
+	make --no-print-directory -f lecturenotes.mk clean
 
