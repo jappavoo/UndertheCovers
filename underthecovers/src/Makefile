@@ -1,6 +1,6 @@
 .PHONEY: all
 
-all: popcnt simple exit main
+all: popcnt simple exit main hello
 
 popcnt: popcnt.S
 	gcc --static -g -nostartfiles -nolibc popcnt.S -o popcnt
@@ -14,6 +14,9 @@ exit: exit.S
 main: main.S
 	gcc --static -g main.S -o main
 
+hello: hello.c
+	gcc -O0 -g hello.c -o hello
+
 6502add.o: 6502add.s
 	ca65 6502add.s -l 6502add.lst
 
@@ -22,4 +25,4 @@ main: main.S
 	od -An -tx1 -w5  6502add
 
 clean:
-	rm popcnt main simple 6502add exit *.o *~ *.lst *.map
+	rm popcnt main simple hello 6502add exit *.o *~ *.lst *.map
