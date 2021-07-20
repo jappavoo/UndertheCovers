@@ -42,6 +42,8 @@
     <script src="../_static/copybutton.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
     <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe"
@@ -132,52 +134,52 @@
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="L07.html">
-   1. SLS Lecture 7 : Topics
+   7. SLS Lecture 7 : Topics
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="L08.html">
-   2. SLS Lecture 8 : Topics
+   8. SLS Lecture 8 : Topics
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="L09.html">
-   3. SLS Lecture 9 : Topics
+   9. SLS Lecture 9 : Topics
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="L10.html">
-   4. SLS Lecture 10 : Topics
+   10. SLS Lecture 10 : Topics
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="L11.html">
-   5. SLS Lecture 11 : Topics
+   11. SLS Lecture 11 : Topics
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="L12.html">
-   6. SLS Lecture 12 : Topics
+   12. SLS Lecture 12 : Topics
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="L13.html">
-   7. SLS Lecture 13 : Topics
+   13. SLS Lecture 13 : Topics
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="L14.html">
-   8. SLS Lecture 14 : Topics
+   14. SLS Lecture 14 : Topics
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="L15.html">
-   9. SLS Lecture 15 : Topics
+   15. SLS Lecture 15 : Topics
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="L16.html">
-   10. SLS Lecture 16 : Topics
+   16. SLS Lecture 16 : Topics
   </a>
  </li>
 </ul>
@@ -189,47 +191,47 @@
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../C/L17.html">
-   1. SLS Lecuture 17 : Topics
+   17. SLS Lecuture 17 : Topics
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../C/L18.html">
-   2. SLS Lecture 18 : Topics
+   18. SLS Lecture 18 : Topics
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../C/L19.html">
-   3. SLS Lecture 19 : Topics
+   19. SLS Lecture 19 : Topics
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../C/L20.html">
-   4. SLS Lecture 20 : Topics
+   20. SLS Lecture 20 : Topics
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../C/L21.html">
-   5. SLS Lecture 21 : Topics
+   21. SLS Lecture 21 : Topics
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../C/L22.html">
-   6. SLS Lecture 22 : Topics
+   22. SLS Lecture 22 : Topics
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../C/L23.html">
-   7. SLS Lecture 23 : Topics
+   23. SLS Lecture 23 : Topics
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../C/L24.html">
-   8. SLS Lecture 24 : Topics
+   24. SLS Lecture 24 : Topics
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../C/L25.html">
-   9. SLS Lecture 25 : Topics
+   25. SLS Lecture 25 : Topics
   </a>
  </li>
 </ul>
@@ -367,60 +369,44 @@
                 
   <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%html</span>
-<span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
-    <span class="c1">// AUTORUN ALL CELLS ON NOTEBOOK-LOAD!</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;hello&quot;</span><span class="p">)</span>
-    <span class="nx">require</span><span class="p">(</span>
-        <span class="p">[</span><span class="s1">&#39;base/js/namespace&#39;</span><span class="p">,</span> <span class="s1">&#39;jquery&#39;</span><span class="p">],</span> 
-        <span class="kd">function</span><span class="p">(</span><span class="nx">jupyter</span><span class="p">,</span> <span class="nx">$</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">$</span><span class="p">(</span><span class="nx">jupyter</span><span class="p">.</span><span class="nx">events</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s2">&quot;kernel_ready.Kernel&quot;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
-                <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Auto-running all cells-below...&quot;</span><span class="p">);</span>
-                <span class="nx">jupyter</span><span class="p">.</span><span class="nx">actions</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="s1">&#39;jupyter-notebook:run-all-cells-below&#39;</span><span class="p">);</span>
-            <span class="p">});</span>
-        <span class="p">}</span>
-    <span class="p">);</span>
-<span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
-Hello
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><script>
-    // AUTORUN ALL CELLS ON NOTEBOOK-LOAD!
-    console.log("hello")
-    require(
-        ['base/js/namespace', 'jquery'], 
-        function(jupyter, $) {
-            $(jupyter.events).on("kernel_ready.Kernel", function () {
-                console.log("Auto-running all cells-below...");
-                jupyter.actions.call('jupyter-notebook:run-all-cells-below');
-            });
-        }
-    );
-</script>
-Hello
-</div></div>
-</div>
-<div class="cell tag_hide_input docutils container">
-<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
 <span class="kn">from</span> <span class="nn">notebook.notebookapp</span> <span class="kn">import</span> <span class="n">list_running_servers</span>
 <span class="c1"># get server info so that we can make api calls </span>
 <span class="n">servers</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="n">list_running_servers</span><span class="p">())</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">servers</span><span class="p">)</span>
-<span class="kn">import</span> <span class="nn">os</span>
- 
-<span class="c1"># printing environment variables</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s1">&#39;JUPYTERHUB_SERVICE_PREFIX&#39;</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;http://www.google.com&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
-None
-http://www.google.com
+
+<span class="n">info</span><span class="o">=</span><span class="nb">next</span><span class="p">(</span><span class="n">list_running_servers</span><span class="p">())</span>
+<span class="n">base_url</span><span class="o">=</span><span class="n">info</span><span class="p">[</span><span class="s1">&#39;url&#39;</span><span class="p">]</span>
+<span class="n">api_url</span><span class="o">=</span><span class="n">base_url</span> <span class="o">+</span> <span class="s1">&#39;api/terminals&#39;</span>
+<span class="n">api_token</span><span class="o">=</span><span class="n">info</span><span class="p">[</span><span class="s1">&#39;token&#39;</span><span class="p">]</span>
+
+<span class="c1"># get list of current terminals so that we can reuse this if enough exist </span>
+<span class="c1"># otherwise we will create new ones as needed</span>
+<span class="n">r</span><span class="o">=</span><span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">api_url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Authorization&#39;</span><span class="p">:</span> <span class="s1">&#39;token &#39;</span> <span class="o">+</span> <span class="n">api_token</span><span class="p">})</span>
+<span class="n">TERMINALS</span><span class="o">=</span><span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">EDITORTERM</span><span class="o">=</span><span class="n">TERMINALS</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;name&#39;</span><span class="p">]</span>
+<span class="k">except</span> <span class="ne">IndexError</span><span class="p">:</span>
+    <span class="c1"># create a terminal for our editor</span>
+    <span class="n">r</span><span class="o">=</span><span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">api_url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Authorization&#39;</span><span class="p">:</span> <span class="s1">&#39;token &#39;</span> <span class="o">+</span> <span class="n">api_token</span><span class="p">})</span>
+    <span class="n">c</span><span class="o">=</span><span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+    <span class="n">EDITORTERM</span><span class="o">=</span><span class="n">c</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">BUILDTERM</span><span class="o">=</span><span class="n">TERMINALS</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="s1">&#39;name&#39;</span><span class="p">]</span>
+<span class="k">except</span> <span class="ne">IndexError</span><span class="p">:</span>   
+    <span class="c1"># create a terminal for running out builds</span>
+    <span class="n">r</span><span class="o">=</span><span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">api_url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Authorization&#39;</span><span class="p">:</span> <span class="s1">&#39;token &#39;</span> <span class="o">+</span> <span class="n">api_token</span><span class="p">})</span>
+    <span class="n">c</span><span class="o">=</span><span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+    <span class="n">BUILDTERM</span><span class="o">=</span><span class="n">c</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">DEBUGGERTERM</span><span class="o">=</span><span class="n">TERMINALS</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="s1">&#39;name&#39;</span><span class="p">]</span>
+<span class="k">except</span> <span class="ne">IndexError</span><span class="p">:</span>   
+    <span class="c1"># create a terminal for running gdb</span>
+    <span class="n">r</span><span class="o">=</span><span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">api_url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Authorization&#39;</span><span class="p">:</span> <span class="s1">&#39;token &#39;</span> <span class="o">+</span> <span class="n">api_token</span><span class="p">})</span>
+    <span class="n">c</span><span class="o">=</span><span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+    <span class="n">DEBUGGERTERM</span><span class="o">=</span><span class="n">c</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -429,105 +415,26 @@ http://www.google.com
 <h1>Lets write some assembly code<a class="headerlink" href="#lets-write-some-assembly-code" title="Permalink to this headline">¶</a></h1>
 <p>In this chapter we will get going and write some simple assembly code,  “build” it and run it within a “debugger” so that we can get a sense of how everything fits together.</p>
 <p>To do this we will use three terminal sessions one terminal to run an ascii editor, one to run the shell on its own so that we can compile our source code, and one to run our debugger.  We use three different terminals so that we can stay organized and avoid having to constantly stop and start the different programs.   In some sense we are using multiple terminals to form our own Integrated Development Environmnt (IDE) where we are using each terminal as if it were a subwindow of our IDE.  In actuality the editor that we will be using (emacs) has support for integrating all three tasks within itself but for the moment we will keep things seperate to make sure we know what is going on and not tie ourselves to this particular editor (there are many others including the popular VIM).</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
-<span class="kn">from</span> <span class="nn">notebook.notebookapp</span> <span class="kn">import</span> <span class="n">list_running_servers</span>
-<span class="c1"># get server info so that we can make api calls </span>
-<span class="n">servers</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="n">list_running_servers</span><span class="p">())</span>
-<span class="c1">#print(servers)</span>
-<span class="c1"># This is probably not the right approach to testing if we are on juypterlab vs notebook ... but </span>
-<span class="c1"># works on my current setup ... will likely need to test and fix </span>
-<span class="k">if</span> <span class="ow">not</span> <span class="n">servers</span><span class="p">:</span>
-    <span class="c1"># assume if we can&#39;t find servers we are running on JuypterLab -- terminal rest interface has changed </span>
-    <span class="kn">from</span> <span class="nn">IPython.core.display</span> <span class="kn">import</span> <span class="n">display</span><span class="p">,</span> <span class="n">HTML</span>
-    <span class="n">display</span><span class="p">(</span><span class="n">HTML</span><span class="p">(</span><span class="s1">&#39;&lt;p&gt;This button will open a seperate tab with the terminal that we will use to run our editor&#39;</span> <span class="o">+</span>
-             <span class="s1">&#39;&lt;form action=&quot;/terminals/EditorTerm&quot; target=&quot;EditorFrame&quot;&gt;&#39;</span> <span class="o">+</span> 
-             <span class="s1">&#39;&lt;input type=&quot;submit&quot; value=&quot;Open EDITOR Terminal&quot; /&gt; &lt;/form&gt;&#39;</span> <span class="o">+</span>
-             <span class="s1">&#39;&lt;p&gt;This link will open a seperate tab with the terminal that we will use to run our &#39;</span> <span class="o">+</span>
-             <span class="s1">&#39;commands to &quot;build&quot; our program&#39;</span> <span class="o">+</span> 
-             <span class="s1">&#39;&lt;form action=&quot;/terminals/BuildTerm&quot; target=&quot;BuildFrame&quot;&gt;&#39;</span> <span class="o">+</span> 
-             <span class="s1">&#39;&lt;input type=&quot;submit&quot; value=&quot;Open BUILD Terminal&quot; /&gt; &lt;/form&gt;&#39;</span> <span class="o">+</span>
-             <span class="s1">&#39;&lt;p&gt;This link will open a seperate tab with the terminal that we will use to run the debugger&#39;</span> <span class="o">+</span>
-             <span class="s1">&#39;&lt;form action=&quot;/terminals/DebuggerTerm&quot; target=&quot;DebuggerFrame&quot;&gt;&#39;</span> <span class="o">+</span> 
-             <span class="s1">&#39;&lt;input type=&quot;submit&quot; value=&quot;Open DEBUGGER Terminal&quot; /&gt; &lt;/form&gt;&#39;</span>
-            <span class="p">))</span>
-<span class="k">else</span><span class="p">:</span>
-    <span class="n">info</span><span class="o">=</span><span class="nb">next</span><span class="p">(</span><span class="n">list_running_servers</span><span class="p">())</span>
-    <span class="n">base_url</span><span class="o">=</span><span class="n">info</span><span class="p">[</span><span class="s1">&#39;url&#39;</span><span class="p">]</span>
-    <span class="n">api_url</span><span class="o">=</span><span class="n">base_url</span> <span class="o">+</span> <span class="s1">&#39;api/terminals&#39;</span>
-    <span class="n">api_token</span><span class="o">=</span><span class="n">info</span><span class="p">[</span><span class="s1">&#39;token&#39;</span><span class="p">]</span>
-
-    <span class="c1"># get list of current terminals so that we can reuse this if enough exist </span>
-    <span class="c1"># otherwise we will create new ones as needed</span>
-    <span class="n">r</span><span class="o">=</span><span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">api_url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Authorization&#39;</span><span class="p">:</span> <span class="s1">&#39;token &#39;</span> <span class="o">+</span> <span class="n">api_token</span><span class="p">})</span>
-    <span class="n">TERMINALS</span><span class="o">=</span><span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
-
-    <span class="k">try</span><span class="p">:</span>
-        <span class="n">EDITORTERM</span><span class="o">=</span><span class="n">TERMINALS</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;name&#39;</span><span class="p">]</span>
-    <span class="k">except</span> <span class="ne">IndexError</span><span class="p">:</span>
-        <span class="c1"># create a terminal for our editor</span>
-        <span class="n">r</span><span class="o">=</span><span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">api_url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Authorization&#39;</span><span class="p">:</span> <span class="s1">&#39;token &#39;</span> <span class="o">+</span> <span class="n">api_token</span><span class="p">})</span>
-        <span class="n">c</span><span class="o">=</span><span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
-        <span class="n">EDITORTERM</span><span class="o">=</span><span class="n">c</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span>
-
-    <span class="k">try</span><span class="p">:</span>
-        <span class="n">BUILDTERM</span><span class="o">=</span><span class="n">TERMINALS</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="s1">&#39;name&#39;</span><span class="p">]</span>
-    <span class="k">except</span> <span class="ne">IndexError</span><span class="p">:</span>   
-        <span class="c1"># create a terminal for running out builds</span>
-        <span class="n">r</span><span class="o">=</span><span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">api_url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Authorization&#39;</span><span class="p">:</span> <span class="s1">&#39;token &#39;</span> <span class="o">+</span> <span class="n">api_token</span><span class="p">})</span>
-        <span class="n">c</span><span class="o">=</span><span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
-        <span class="n">BUILDTERM</span><span class="o">=</span><span class="n">c</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span>
-
-    <span class="k">try</span><span class="p">:</span>
-        <span class="n">DEBUGGERTERM</span><span class="o">=</span><span class="n">TERMINALS</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="s1">&#39;name&#39;</span><span class="p">]</span>
-    <span class="k">except</span> <span class="ne">IndexError</span><span class="p">:</span>   
-        <span class="c1"># create a terminal for running gdb</span>
-        <span class="n">r</span><span class="o">=</span><span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">api_url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Authorization&#39;</span><span class="p">:</span> <span class="s1">&#39;token &#39;</span> <span class="o">+</span> <span class="n">api_token</span><span class="p">})</span>
-        <span class="n">c</span><span class="o">=</span><span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
-        <span class="n">DEBUGGERTERM</span><span class="o">=</span><span class="n">c</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span>
-    
-
-    <span class="kn">from</span> <span class="nn">IPython.core.display</span> <span class="kn">import</span> <span class="n">display</span><span class="p">,</span> <span class="n">HTML</span>
-    <span class="n">display</span><span class="p">(</span><span class="n">HTML</span><span class="p">(</span><span class="s1">&#39;&lt;p&gt;This button will open a seperate tab with the terminal that we will use to run our editor&#39;</span> <span class="o">+</span>
-             <span class="s1">&#39;&lt;form action=&quot;&#39;</span> <span class="o">+</span> <span class="n">base_url</span> <span class="o">+</span> <span class="s1">&#39;terminals/&#39;</span> <span class="o">+</span> <span class="n">EDITORTERM</span> <span class="o">+</span> <span class="s1">&#39;&quot; target=&quot;EditorFrame&quot;&gt;&#39;</span> <span class="o">+</span> 
-             <span class="s1">&#39;&lt;input type=&quot;submit&quot; value=&quot;Open EDITOR Terminal&quot; /&gt; &lt;/form&gt;&#39;</span> <span class="o">+</span>
-             <span class="s1">&#39;&lt;p&gt;This link will open a seperate tab with the terminal that we will use to run our &#39;</span> <span class="o">+</span>
-             <span class="s1">&#39;commands to &quot;build&quot; our program&#39;</span> <span class="o">+</span> 
-             <span class="s1">&#39;&lt;form action=&quot;&#39;</span> <span class="o">+</span> <span class="n">base_url</span> <span class="o">+</span> <span class="s1">&#39;terminals/&#39;</span> <span class="o">+</span> <span class="n">BUILDTERM</span> <span class="o">+</span> <span class="s1">&#39;&quot; target=&quot;BuildFrame&quot;&gt;&#39;</span> <span class="o">+</span> 
-             <span class="s1">&#39;&lt;input type=&quot;submit&quot; value=&quot;Open BUILD Terminal&quot; /&gt; &lt;/form&gt;&#39;</span> <span class="o">+</span>
-             <span class="s1">&#39;&lt;p&gt;This link will open a seperate tab with the terminal that we will use to run the debugger&#39;</span> <span class="o">+</span>
-             <span class="s1">&#39;&lt;form action=&quot;&#39;</span> <span class="o">+</span> <span class="n">base_url</span> <span class="o">+</span> <span class="s1">&#39;terminals/&#39;</span> <span class="o">+</span> <span class="n">DEBUGGERTERM</span> <span class="o">+</span> <span class="s1">&#39;&quot; target=&quot;DebuggerFrame&quot;&gt;&#39;</span> <span class="o">+</span> 
-             <span class="s1">&#39;&lt;input type=&quot;submit&quot; value=&quot;Open DEBUGGER Terminal&quot; /&gt; &lt;/form&gt;&#39;</span>
-            <span class="p">))</span>
-            
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><p>This button will open a seperate tab with the terminal that we will use to run our editor<form action="/terminals/EditorTerm" target="EditorFrame"><input type="submit" value="Open EDITOR Terminal" /> </form><p>This link will open a seperate tab with the terminal that we will use to run our commands to "build" our program<form action="/terminals/BuildTerm" target="BuildFrame"><input type="submit" value="Open BUILD Terminal" /> </form><p>This link will open a seperate tab with the terminal that we will use to run the debugger<form action="/terminals/DebuggerTerm" target="DebuggerFrame"><input type="submit" value="Open DEBUGGER Terminal" /> </form></div></div>
-</div>
 <div class="section" id="editor-terminal-to-run-our-editor">
 <h2>EDITOR : Terminal to run our editor<a class="headerlink" href="#editor-terminal-to-run-our-editor" title="Permalink to this headline">¶</a></h2>
 <p>An editor allows us to create and udpate plain text ascii files. An editor is the core tool of a programmer!  Programming is all about writing software in the form of ascii files that encode what we want the computer to do in some language or another (in our case assembly and C). So far you my have been taught to use various Integrated Development Environments (IDEs) that include an editor, build system and debugger within them.  In this class we will strip things down to there traditional bare essentials so you can get an idea of how things are really working and how IDE’s are themselves constructed.</p>
 <div class="cell tag_hide_input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">IFrame</span>
-<span class="n">display</span><span class="p">(</span><span class="n">IFrame</span><span class="p">(</span><span class="n">base_url</span> <span class="o">+</span> <span class="s1">&#39;terminals/&#39;</span> <span class="o">+</span> <span class="n">EDITORTERM</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span><span class="mi">600</span><span class="p">))</span>
+<span class="n">display</span><span class="p">(</span><span class="n">IFrame</span><span class="p">(</span><span class="s1">&#39;/terminals/&#39;</span> <span class="o">+</span> <span class="n">EDITORTERM</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span><span class="mi">600</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">7</span><span class="o">-</span><span class="n">e8c1e488176e</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">IFrame</span>
-<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">display</span><span class="p">(</span><span class="n">IFrame</span><span class="p">(</span><span class="n">base_url</span> <span class="o">+</span> <span class="s1">&#39;terminals/&#39;</span> <span class="o">+</span> <span class="n">EDITORTERM</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span><span class="mi">600</span><span class="p">))</span>
-
-<span class="ne">NameError</span>: name &#39;base_url&#39; is not defined
-</pre></div>
-</div>
-</div>
+<div class="output text_html">
+<iframe
+    width="1000"
+    height="600"
+    src="/terminals/1"
+    frameborder="0"
+    allowfullscreen
+></iframe>
+</div></div>
 </div>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">emacs</span> <span class="pre">popcnt.S</span></code></p></li>
@@ -552,25 +459,17 @@ To do this issue the above command.  Emacs is like many of our tools cryptic but
 <h2>Building: Terminal to run our build commands<a class="headerlink" href="#building-terminal-to-run-our-build-commands" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="s1">&#39;base_url&#39;</span> <span class="ow">in</span> <span class="nb">globals</span><span class="p">():</span>
-    <span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">IFrame</span>
-    <span class="n">display</span><span class="p">(</span><span class="n">IFrame</span><span class="p">(</span><span class="n">base_url</span> <span class="o">+</span> <span class="s1">&#39;terminals/&#39;</span> <span class="o">+</span> <span class="n">BUILDTERM</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span><span class="mi">600</span><span class="p">))</span>
-<span class="k">else</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;no&quot;</span><span class="p">)</span>
-    <span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">IFrame</span>
-    <span class="n">display</span><span class="p">(</span><span class="n">IFrame</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s1">&#39;JUPYTERHUB_SERVICE_PREFIX&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;terminals/BuildTerm&#39;</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="mi">600</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">IFrame</span>
+<span class="n">display</span><span class="p">(</span><span class="n">IFrame</span><span class="p">(</span><span class="s1">&#39;/terminals/&#39;</span> <span class="o">+</span> <span class="n">BUILDTERM</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span><span class="mi">600</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>no
-</pre></div>
-</div>
 <div class="output text_html">
 <iframe
     width="1000"
     height="600"
-    src="/user/jappavoo/terminals/BuildTerm"
+    src="/terminals/2"
     frameborder="0"
     allowfullscreen
 ></iframe>
@@ -590,12 +489,8 @@ To do this issue the above command.  Emacs is like many of our tools cryptic but
 <h2>Debugger: Terminal to run our debugger – actually it is much more than just a debugger<a class="headerlink" href="#debugger-terminal-to-run-our-debugger-actually-it-is-much-more-than-just-a-debugger" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="s1">&#39;base_url&#39;</span> <span class="ow">in</span> <span class="nb">globals</span><span class="p">():</span>
-    <span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">IFrame</span>
-    <span class="n">display</span><span class="p">(</span><span class="n">IFrame</span><span class="p">(</span><span class="n">base_url</span> <span class="o">+</span> <span class="s1">&#39;terminals/&#39;</span> <span class="o">+</span> <span class="n">DEBUGGERTERM</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span><span class="mi">600</span><span class="p">))</span>
-<span class="k">else</span><span class="p">:</span>
-    <span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">IFrame</span>
-    <span class="n">display</span><span class="p">(</span><span class="n">IFrame</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s1">&#39;JUPYTERHUB_SERVICE_PREFIX&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;/terminals/DebuggerTerm&#39;</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="mi">600</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">IFrame</span>
+<span class="n">display</span><span class="p">(</span><span class="n">IFrame</span><span class="p">(</span><span class="s1">&#39;/terminals/&#39;</span> <span class="o">+</span> <span class="n">DEBUGGERTERM</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span><span class="mi">600</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -604,7 +499,7 @@ To do this issue the above command.  Emacs is like many of our tools cryptic but
 <iframe
     width="1000"
     height="600"
-    src="/user/jappavoo//terminals/DebuggerTerm"
+    src="/terminals/3"
     frameborder="0"
     allowfullscreen
 ></iframe>

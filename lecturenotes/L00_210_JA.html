@@ -1,0 +1,702 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CS210 Computer Systems &#8212; UndertheCovers</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet" />
+  <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+      <img src="_static/logo.jpg" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">UndertheCovers</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro_ln.html">
+   Under the Covers : The Secret life of Software
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  The Unix Development Environment
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="unix/L01.html">
+   1. SLS Lecture 1 : Topics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="unix/L02.html">
+   2. SLS Lecture 2 : Topics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="unix/L03.html">
+   3. SLS Lecture 3 : Topics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="unix/L04.html">
+   4. SLS Lecture 4 : Topics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="unix/L05.html">
+   5. SLS Lecture 5 : Topics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="unix/L06.html">
+   6. SLS Lecture 6 : Topics
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  The Belly of the Beast: The von Neumann Architecture and Assembly Programming
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="assembly/L07.html">
+   7. SLS Lecture 7 : Topics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="assembly/L08.html">
+   8. SLS Lecture 8 : Topics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="assembly/L09.html">
+   9. SLS Lecture 9 : Topics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="assembly/L10.html">
+   10. SLS Lecture 10 : Topics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="assembly/L11.html">
+   11. SLS Lecture 11 : Topics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="assembly/L12.html">
+   12. SLS Lecture 12 : Topics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="assembly/L13.html">
+   13. SLS Lecture 13 : Topics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="assembly/L14.html">
+   14. SLS Lecture 14 : Topics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="assembly/L15.html">
+   15. SLS Lecture 15 : Topics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="assembly/L16.html">
+   16. SLS Lecture 16 : Topics
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Into the Light: C Programming
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="C/L17.html">
+   17. SLS Lecuture 17 : Topics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="C/L18.html">
+   18. SLS Lecture 18 : Topics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="C/L19.html">
+   19. SLS Lecture 19 : Topics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="C/L20.html">
+   20. SLS Lecture 20 : Topics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="C/L21.html">
+   21. SLS Lecture 21 : Topics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="C/L22.html">
+   22. SLS Lecture 22 : Topics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="C/L23.html">
+   23. SLS Lecture 23 : Topics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="C/L24.html">
+   24. SLS Lecture 24 : Topics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="C/L25.html">
+   25. SLS Lecture 25 : Topics
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/L00_210_JA.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/jappavoo/UndertheCovers"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/jappavoo/UndertheCovers/main?urlpath=lab/tree/underthecovers/L00_210_JA.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        <a class="jupyterhub-button" href="https://jupyterhub-opf-jupyterhub.apps.zero.massopen.cloud/hub/spawn?jupyter-book:latest/hub/user-redirect/git-pull?repo=https://github.com/jappavoo/UndertheCovers&urlpath=lab/tree/UndertheCovers/underthecovers/L00_210_JA.ipynb&branch=main"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch JupyterHub" data-toggle="tooltip"
+                data-placement="left"><img class="jupyterhub-button-logo"
+                    src="_static/images/logo_jupyterhub.svg"
+                    alt="Interact on JupyterHub">JupyterHub</button></a>
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   CS210 Computer Systems
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#intro-and-the-big-picture">
+     Intro and the Big Picture
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#welcome-to-cs210">
+   Welcome to CS210
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#course-goals">
+   Course Goals
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">run</span> -i python/ln_preamble.py
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><style>#notebook { padding-top:0px !important; } .container { width:100% !important; } .CodeMirror { width:100% !important;}.end_space { min-height:0px !important; } .prompt { display:none }.terminal-app #terminado-container { width:100%; }div.mywarn { background-color: #fcf2f2;border-color: #dFb5b4; border-left: 5px solid #dfb5b4; padding: 0.5em;}</style></div></div>
+</div>
+<div class="section" id="cs210-computer-systems">
+<h1>CS210 Computer Systems<a class="headerlink" href="#cs210-computer-systems" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="intro-and-the-big-picture">
+<h2>Intro and the Big Picture<a class="headerlink" href="#intro-and-the-big-picture" title="Permalink to this headline">¶</a></h2>
+<img src="./images/webster-computer.pdf"  width=840px style="margin-left:auto; margin-right:auto"> 
+<img src="./images/webster-system.pdf" width=840px style="margin-left:auto; margin-right:auto"> <p>Highlight – “Programmable” and “Device”</p>
+<img src="./images/tapestry.png" width=645px style="margin-left:auto; margin-right:auto"> 
+<h1><center>COMPUTER SYSTEM</center></h1>
+<h4>
+<center>
+    A rich and beautifully tapestry of <u><i>Interacting</i></u>
+<br><u><i>Hardware</i></u> + <u><i>Software</i></u> components that are the substrate to our modern digital world 
+    </center>
+    </h4><h1>This Class</h1>
+<p>Understand the “Anatomy” of Software and how it interacts with the hardware.</p>
+<ul class="simple">
+<li><p>Expose you to a deeper view of the digital world and around you</p></li>
+<li><p>Give you the skills and knowledge to understand and manipulate (program) more of the computing</p></li>
+<li><p>Generally make you better programmers and more informed decision makers</p></li>
+</ul>
+<img src="./images/anatomyatlas.png" width=546px style="margin-left:auto; margin-right:auto"> <h1>GENERAL ANATOMY OF COMPUTING</h1>
+<p>Computing is composed of many parts — roughly organized into layers</p>
+<ul class="simple">
+<li><p>HARDWARE: Foundation on which everything is built</p></li>
+<li><p>SOFTWARE: Complex layers of interacting software components</p></li>
+</ul>
+<br>
+<img src="./images/hands.png" width=546px style="margin-left:auto; margin-right:auto"> <h1>GENERAL ANATOMY OF COMPUTING</h1>
+<p>Computing is composed of many parts — roughly organized into layers</p>
+<ul class="simple">
+<li><p>HARDWARE: Foundation on which everything is built</p></li>
+<li><p>SOFTWARE: Complex layers of interacting software components</p></li>
+</ul>
+<p>Despite all the kinds of computers in our lives …</p>
+<br>
+<img src="./images/stackplain.png"  width=309px style="margin-left:auto; margin-right:auto"> <img src="./images/lotsofcomputers.png"  width=600px style="margin-left:auto; margin-right:auto"> <br>
+<img src="./images/stackplain.png"  width=309px style="margin-left:auto; margin-right:auto"> <img src="./images/stackwithbits.png"  width="80%" style="margin-left:auto; margin-right:auto"> <h1>Client Computers</h1>
+<img src="./images/stackwithclients.png"  width="75%" style="margin-left:auto; margin-right:auto"> <h1>Server Computers</h1>
+<img src="./images/stackwithservers.png"  width="75%" style="margin-left:auto; margin-right:auto"> <h1>A Programmers View</h1>
+<img src="./images/stackwithswlayers.png"  width="80%" style="margin-left:auto; margin-right:auto"> <img style="float: left; margin: 0px 15px 15px 0px;" src="./images/pillars.png" width="432">  
+<br>
+<h1>The two pillars of computer science</h1>
+<hr class="docutils" />
+<h1 style="color:#34A5DA">
+Theory and Systems
+</h1><img style="float: right; margin: 0px 15px 15px 0px;" src="./images/warpedclock.png" width="432">  
+<h1 style="color:#34A5DA">
+Lets turn back the clock
+</h1>
+<p>Before there was computer science and there was only imagination of what could be</p>
+<ol class="simple">
+<li><p>Turing and the Turing machine</p></li>
+<li><p>Von Neumman and the Von Neumman Architecture</p></li>
+<li><p>Read Admiral Grace Hopper and the compiler</p></li>
+</ol>
+<img  src="./images/turing_slide.pdf" width=100%><img  src="./images/turingmachine_slide.pdf" width=100%><img  src="./images/vonneumann_slide.pdf" width=100%><img  src="./images/vonneumannarch_slide.pdf" width=100%><img  src="./images/hopper_slide.pdf" width=100%><img  src="./images/histcomp_slide.pdf" width=100%><h1 style="color:#34A5DA" align="left">
+May you live in interesting times…
+</h1>    
+<br>
+<br>
+<br>
+<h1 style="color:#34A5DA" align="center">   
+Knowledge is power…
+</h1>    
+<br>
+<br>
+<br>
+<h1 style="color:#34A5DA" align="right">   
+It's up to YOU … as to what comes next
+</h1><h1 style="color:#34A5DA" align="center">
+    <br>
+    <br>
+    <br>
+    <br>
+    WHO ARE WE?
+    <br>
+    <br>
+    <br>
+    <br>
+</h1></div>
+</div>
+<div class="section" id="welcome-to-cs210">
+<h1>Welcome to CS210<a class="headerlink" href="#welcome-to-cs210" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p>Course Goals and Objectives</p></li>
+<li><p>“Under the Covers : The Secret life of Software”</p></li>
+<li><p>Rest of course infrastructure</p></li>
+<li><p>Staff</p></li>
+<li><p>Syllabus</p>
+<ul>
+<li><p>calendar</p></li>
+<li><p>grade break down</p>
+<ul>
+<li><p>assignments</p></li>
+<li><p>midterms</p></li>
+<li><p>exam</p></li>
+<li><p>attendance and participation</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Lectures, Discussions and Office hours</p></li>
+<li><p>General Advice</p></li>
+</ul>
+</div>
+<div class="section" id="course-goals">
+<h1>Course Goals<a class="headerlink" href="#course-goals" title="Permalink to this headline">¶</a></h1>
+<ol class="simple">
+<li><p>Understand the layers of computer systems</p></li>
+<li><p>Understand software / hardware interaction</p></li>
+<li><p>Learn foundational concepts, skills and tools for working with computers</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">MkCodeBox</span><span class="p">(</span><span class="s2">&quot;src/hello.c&quot;</span><span class="p">,</span> <span class="s2">&quot;C&quot;</span><span class="p">,</span> <span class="s2">&quot;&lt;b&gt;CODE: C - Hello World&quot;</span><span class="p">,</span> <span class="s2">&quot;460px&quot;</span><span class="p">,</span> <span class="s2">&quot;260px&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><b>CODE: C - Hello World</div><script type="application/vnd.jupyter.widget-view+json">
+{"version_major": 2, "version_minor": 0, "model_id": "e905aefa5215433791cf0208a029c7ea"}
+</script></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">showET</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><b>TERMINAL Window for Editor</b></div><div class="output text_html">
+<iframe
+    width="1400"
+    height="600"
+    src="/terminals/1"
+    frameborder="0"
+    allowfullscreen
+></iframe>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">showBT</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><b>TERMINAL Window for Build Commands</b></div><div class="output text_html">
+<iframe
+    width="1400"
+    height="200"
+    src="/terminals/2"
+    frameborder="0"
+    allowfullscreen
+></iframe>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">showDT</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><b>TERMINAL Window for Debugger</b></div><div class="output text_html">
+<iframe
+    width="1400"
+    height="800"
+    src="/terminals/3"
+    frameborder="0"
+    allowfullscreen
+></iframe>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">showET</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><b>TERMINAL Window for Editor</b></div><div class="output text_html">
+<iframe
+    width="1400"
+    height="600"
+    src="/terminals/1"
+    frameborder="0"
+    allowfullscreen
+></iframe>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">MkCodeBox</span><span class="p">(</span><span class="s2">&quot;src/popcnt.s&quot;</span><span class="p">,</span> <span class="s2">&quot;gas&quot;</span><span class="p">,</span> <span class="s2">&quot;&lt;b&gt;CODE: asm - Our First assembly program - Playing with popcnt&quot;</span><span class="p">,</span> <span class="s2">&quot;100%&quot;</span><span class="p">,</span> <span class="s2">&quot;640px&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><b>CODE: asm - Our First assembly program - Playing with popcnt</div><script type="application/vnd.jupyter.widget-view+json">
+{"version_major": 2, "version_minor": 0, "model_id": "0aa7f102cf1a49baaccc90a0df083355"}
+</script></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">showBT</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><b>TERMINAL Window for Build Commands</b></div><div class="output text_html">
+<iframe
+    width="1400"
+    height="200"
+    src="/terminals/2"
+    frameborder="0"
+    allowfullscreen
+></iframe>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">MkCodeBox</span><span class="p">(</span><span class="s2">&quot;assembly/popcnt_build.sh&quot;</span><span class="p">,</span> <span class="s2">&quot;shell&quot;</span><span class="p">,</span> <span class="s2">&quot;&lt;b&gt;NOTES: on building popcnt&quot;</span><span class="p">,</span> <span class="s2">&quot;100%&quot;</span><span class="p">,</span> <span class="s2">&quot;240px&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><b>NOTES: on building popcnt</div><script type="application/vnd.jupyter.widget-view+json">
+{"version_major": 2, "version_minor": 0, "model_id": "905f3dae9d0f423aa178adaa29b8f16b"}
+</script></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">showDT</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><b>TERMINAL Window for Debugger</b></div><div class="output text_html">
+<iframe
+    width="1400"
+    height="800"
+    src="/terminals/3"
+    frameborder="0"
+    allowfullscreen
+></iframe>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">MkCodeBox</span><span class="p">(</span><span class="s2">&quot;assembly/popcnt_gdb.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;shell&quot;</span><span class="p">,</span> <span class="s2">&quot;&lt;b&gt;NOTES: using gdb with popcnt&quot;</span><span class="p">,</span> <span class="s2">&quot;100%&quot;</span><span class="p">,</span> <span class="s2">&quot;640px&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><b>NOTES: using gdb with popcnt</div><script type="application/vnd.jupyter.widget-view+json">
+{"version_major": 2, "version_minor": 0, "model_id": "8d693e66a0664a769fc03d0e03bb0625"}
+</script></div>
+</div>
+</div>
+
+
+<script type="application/vnd.jupyter.widget-state+json">
+{"state": {"24affa40b4a94046a02b40c69e99579d": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "260px", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": "scroll", "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": "460px"}}, "e905aefa5215433791cf0208a029c7ea": {"model_name": "OutputModel", "model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_24affa40b4a94046a02b40c69e99579d", "msg_id": "", "outputs": [{"output_type": "display_data", "metadata": {}, "data": {"text/plain": "<IPython.core.display.Markdown object>", "text/markdown": "\n``` C\n// The Cannonical first C program\n// everyone must write\n#include <stdio.h>\n\nint main()\n{\n  printf(\"hello world\\n\");\n  return 0;\n}\n\n```\n"}}]}}, "df06a0768a4a410ab1de278a428e0856": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "640px", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": "scroll", "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": "100%"}}, "0aa7f102cf1a49baaccc90a0df083355": {"model_name": "OutputModel", "model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_df06a0768a4a410ab1de278a428e0856", "msg_id": "", "outputs": [{"output_type": "display_data", "metadata": {}, "data": {"text/plain": "<IPython.core.display.Markdown object>", "text/markdown": "\n``` gas\n/*  General antomy of a assembly program line\n[lablel]:   <directive or opcode> [operands]  // comment\n*/\n\t.intel_syntax noprefix   // assembler syntax to use <directive>\n\t                         // set assembly language format to intel  \n\n\t.text                    // linker section <directive>\n\t                         // let the linker know that what follows are cpu instructions to\n\t                         // to be executed -- uposed to values that represent data.\n\t                         // For historical reasons cpu instructions are called \"text\"\n\t                         \n\t.global _start           // linker symbol type <directive> \n\t                         // makes the symbol _start in this case visible to the linker\n\t                         // The linker looks for an _start symbol so that it knows address\n\t                         // of the first instruction of our program\n\t\n_start:                          // introduce a symbolic (human readable) label for \"this\" address\n\t                         // associates the address of this point in our program with the\n      \t                         // name following the ':' -- in our case _start\n\t                         // In our program or in the debugger we can use this name to\n\t                         // to refer to this location -- address.  And thus the values\n\t                         // that end up here.\n\t\n\tpopcnt rax, rbx          // ok the single intel opcode (instruction) that makes up\n\t                         // our program\n\n        // Details about the assembler directives and general syntax that we will be using\n        // https://sourceware.org/binutils/docs/as/\n\t// Intel instruction set reference -- documents the cpu memonics/instructions of\n\t//                                    the computer's processor that we are writing for\n\t// https://software.intel.com/content/www/us/en/develop/download/intel-64-and-ia-32-architectures-sdm-combined-volumes-2a-2b-2c-and-2d-instruction-set-reference-a-z.html\n\t\n\n```\n"}}]}}, "587f48c09c24434dbcf82b5a5c92344d": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "240px", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": "scroll", "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": "100%"}}, "905f3dae9d0f423aa178adaa29b8f16b": {"model_name": "OutputModel", "model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_587f48c09c24434dbcf82b5a5c92344d", "msg_id": "", "outputs": [{"output_type": "display_data", "metadata": {}, "data": {"text/plain": "<IPython.core.display.Markdown object>", "text/markdown": "\n``` shell\n#To assemble and link the code we will use the following command:\ngcc --static -g -nostartfiles -nolibc popcnt.S -o popcnt\n# We can automate this using a makefile so that all we would need to do is:\nmake popcnt\n\n```\n"}}]}}, "bc5c7e1d28b24d8abd3f64c93cba3ff1": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "640px", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": "scroll", "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": "100%"}}, "8d693e66a0664a769fc03d0e03bb0625": {"model_name": "OutputModel", "model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_bc5c7e1d28b24d8abd3f64c93cba3ff1", "msg_id": "", "outputs": [{"output_type": "display_data", "metadata": {}, "data": {"text/plain": "<IPython.core.display.Markdown object>", "text/markdown": "\n``` shell\n# To get the debugger going:\n  gdb -tui popcnt\n# Now we want use gdb command to poke around popcnt\n# To setup the assembly syntax to intel: \n set disassembly-flavor intel\n# Configure a layout that is more friendly to assembly code:\n tui new-layout 210 src 2 regs 5 status 1 cmd 1\n# Switch to the new layout: \n  layout 210\n# Set a breakpoint at the start symbol so exection will stop their: \n  break _start\n# Start the program running:\n  run\n\n```\n"}}]}}}, "version_major": 2, "version_minor": 0}
+</script>
+
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Jonathan Appavoo<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>
