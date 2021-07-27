@@ -17,9 +17,9 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-echo "Hello World foo bar" foo
+ls /home/jappavoo
 ------------------
 
 
-: 1
+: 2
 
