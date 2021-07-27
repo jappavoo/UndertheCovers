@@ -1,4 +1,7 @@
 main
 simple
 *.o
-
+popcnt
+hello
+exit
+6502add

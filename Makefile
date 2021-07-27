@@ -11,7 +11,7 @@ pub: ## publish all materials to github pages
 pub: pub-bk
 
 clean: ## cleanup/remove all build files
-clean: clean-bk
+clean: clean-bk clean-ln
 
 build-bk: ## build only the textbook
 	make --no-print-directory -f textbook.mk build
