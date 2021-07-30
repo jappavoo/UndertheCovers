@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>2. The von Neumman Architecture &#8212; UndertheCovers</title>
+    <title>6. The von Neumman Architecture &#8212; UndertheCovers</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet" />
   <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -23,7 +23,7 @@
 
     
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.e8e5499552300ddf5d7adccae7cc3b70.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -51,8 +51,8 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="3. Lets write some assembly code" href="assembly.html" />
-    <link rel="prev" title="1. Introduction: Assembly Programming" href="intro.html" />
+    <link rel="next" title="7. Lets write some assembly code" href="assembly.html" />
+    <link rel="prev" title="5. Introduction: Assembly Programming" href="intro.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -124,17 +124,17 @@
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="intro.html">
-   1. Introduction: Assembly Programming
+   5. Introduction: Assembly Programming
   </a>
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   2. The von Neumman Architecture
+   6. The von Neumman Architecture
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="assembly.html">
-   3. Lets write some assembly code
+   7. Lets write some assembly code
   </a>
  </li>
 </ul>
@@ -216,14 +216,8 @@
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
         
-        <a class="binder-button" href="https://mybinder.org/v2/gh/jappavoo/UndertheCovers/main?urlpath=lab/tree/underthecovers/assembly/vonNeumannArchitecture.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
-                data-placement="left"><img class="binder-button-logo"
-                    src="../_static/images/logo_binder.svg"
-                    alt="Interact on binder">Binder</button></a>
         
-        
-        <a class="jupyterhub-button" href="https://jupyterhub-opf-jupyterhub.apps.zero.massopen.cloud/hub/spawn?jupyter-book:latest/hub/user-redirect/git-pull?repo=https://github.com/jappavoo/UndertheCovers&urlpath=lab/tree/UndertheCovers/underthecovers/assembly/vonNeumannArchitecture.ipynb&branch=main"><button type="button"
+        <a class="jupyterhub-button" href="https://jupyterhub-opf-jupyterhub.apps.zero.massopen.cloud/hub/user-redirect/git-pull?repo=https://github.com/jappavoo/UndertheCovers&urlpath=tree/UndertheCovers/underthecovers/assembly/vonNeumannArchitecture.ipynb&branch=main"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch JupyterHub" data-toggle="tooltip"
                 data-placement="left"><img class="jupyterhub-button-logo"
                     src="../_static/images/logo_jupyterhub.svg"
@@ -246,12 +240,12 @@
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#the-parts">
-   2.1. The Parts
+   6.1. The Parts
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#the-loop-program-execution">
-   2.2. The Loop – Program Execution
+   6.2. The Loop – Program Execution
   </a>
  </li>
 </ul>
@@ -266,7 +260,7 @@
               <div>
                 
   <div class="section" id="the-von-neumman-architecture">
-<h1><span class="section-number">2. </span>The von Neumman Architecture<a class="headerlink" href="#the-von-neumman-architecture" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">6. </span>The von Neumman Architecture<a class="headerlink" href="#the-von-neumman-architecture" title="Permalink to this headline">¶</a></h1>
 <p>As we saw in the <a class="reference internal" href="intro.html"><span class="doc std std-doc">introduction</span></a> assembly code directly maps to the native machine code of a computer.  As such the assembly instructions directly allow a programmer to use and control the basic functions of the computer in order to get the computer to do what they want.   Whether that is to search or sort an array of numbers, play a music file or some other task.</p>
 <p>But to understand assembly programming we have to learn what the basic parts are of any computer are and how they work so we can understand what the assembly instructions allow us to do.    This is why understanding how computers and software work are one in the same as learning assembly programming.</p>
 <p>Despite the fact that there are many different manufactures of computers they all largely share a basic common structure.  We call the generic components, their organization and the way they interact the architecture of a machine.  In our case the common architecture to which most programmable computers are built around is that of the von Neumman Architecture named after <a class="reference external" href="https://en.wikipedia.org/wiki/John_von_Neumann">John von Neumann</a>.</p>
@@ -274,10 +268,10 @@
 <div><p><img align="left" width="60" src="../images/commentary.svg"> <p style="background-color:powderblue;"> In our journey to understand computers we will be exploring a fascinating story of human innovation and ingenuity.  This story is full of characters, such as John von Neumman, Alan Turning, Admiral Grace Hopper, Ada Love Lace, and many more, that dared to be and think differently.  Not only do we owe a great deal of gratitude to these courageous people, who often risked a lot in suggesting new ways of thinking and doing things, challenging the orthodoxy of their day, we can also draw inspiration in their diversity and bravery. Remember who you are and that your voice matters, tomorrows innovation rests on your actions!</p>
 </div></blockquote>
 <div class="section" id="the-parts">
-<h2><span class="section-number">2.1. </span>The Parts<a class="headerlink" href="#the-parts" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">6.1. </span>The Parts<a class="headerlink" href="#the-parts" title="Permalink to this headline">¶</a></h2>
 </div>
 <div class="section" id="the-loop-program-execution">
-<h2><span class="section-number">2.2. </span>The Loop – Program Execution<a class="headerlink" href="#the-loop-program-execution" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">6.2. </span>The Loop – Program Execution<a class="headerlink" href="#the-loop-program-execution" title="Permalink to this headline">¶</a></h2>
 </div>
 </div>
 
@@ -306,8 +300,8 @@
         
         <div class='prev-next-bottom'>
             
-    <a class='left-prev' id="prev-link" href="intro.html" title="previous page"><span class="section-number">1. </span>Introduction: Assembly Programming</a>
-    <a class='right-next' id="next-link" href="assembly.html" title="next page"><span class="section-number">3. </span>Lets write some assembly code</a>
+    <a class='left-prev' id="prev-link" href="intro.html" title="previous page"><span class="section-number">5. </span>Introduction: Assembly Programming</a>
+    <a class='right-next' id="next-link" href="assembly.html" title="next page"><span class="section-number">7. </span>Lets write some assembly code</a>
 
         </div>
         

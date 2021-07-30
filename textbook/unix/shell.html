@@ -23,7 +23,7 @@
 
     
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.e8e5499552300ddf5d7adccae7cc3b70.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -51,7 +51,7 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="1. Introduction: Assembly Programming" href="../assembly/intro.html" />
+    <link rel="next" title="5. Introduction: Assembly Programming" href="../assembly/intro.html" />
     <link rel="prev" title="3. Organizing and Managing Information as a Tree of Files and Directories" href="files.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -124,17 +124,17 @@
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../assembly/intro.html">
-   1. Introduction: Assembly Programming
+   5. Introduction: Assembly Programming
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../assembly/vonNeumannArchitecture.html">
-   2. The von Neumman Architecture
+   6. The von Neumman Architecture
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../assembly/assembly.html">
-   3. Lets write some assembly code
+   7. Lets write some assembly code
   </a>
  </li>
 </ul>
@@ -216,14 +216,8 @@
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
         
-        <a class="binder-button" href="https://mybinder.org/v2/gh/jappavoo/UndertheCovers/main?urlpath=lab/tree/underthecovers/unix/shell.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
-                data-placement="left"><img class="binder-button-logo"
-                    src="../_static/images/logo_binder.svg"
-                    alt="Interact on binder">Binder</button></a>
         
-        
-        <a class="jupyterhub-button" href="https://jupyterhub-opf-jupyterhub.apps.zero.massopen.cloud/hub/spawn?jupyter-book:latest/hub/user-redirect/git-pull?repo=https://github.com/jappavoo/UndertheCovers&urlpath=lab/tree/UndertheCovers/underthecovers/unix/shell.ipynb&branch=main"><button type="button"
+        <a class="jupyterhub-button" href="https://jupyterhub-opf-jupyterhub.apps.zero.massopen.cloud/hub/user-redirect/git-pull?repo=https://github.com/jappavoo/UndertheCovers&urlpath=tree/UndertheCovers/underthecovers/unix/shell.ipynb&branch=main"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch JupyterHub" data-toggle="tooltip"
                 data-placement="left"><img class="jupyterhub-button-logo"
                     src="../_static/images/logo_jupyterhub.svg"
@@ -369,7 +363,14 @@ enter or return key to terminate the line and submit it to the shell.  At this p
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hello World foo bar foo
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>?2004l
+Hello World foo bar foo
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>?2004h
+</pre></div>
+</div>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
 </div>
@@ -453,556 +454,79 @@ To create a variable and set its value one simply types the name you want to use
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>BASH=/opt/conda/bin/bash
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>BASHOPTS=checkwinsize:cmdhist:complete_fullquote:expand_aliases:extquote:force_fignore:globasciiranges:gnu_errfmt:histappend:hostcomplete:interactive_comments:progcomp:promptvars:sourcepath
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>BASH_ALIASES=()
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>BASH_ARGC=([0]=&quot;0&quot;)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>BASH_ARGV=()
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>BASH_CMDS=()
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>BASH_LINENO=()
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>BASH_SOURCE=()
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>BASH_VERSINFO=([0]=&quot;5&quot; [1]=&quot;0&quot; [2]=&quot;18&quot; [3]=&quot;1&quot; [4]=&quot;release&quot; [5]=&quot;x86_64-conda-linux-gnu&quot;)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>BASH_VERSION=&#39;5.0.18(1)-release&#39;
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>COLUMNS=80
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CONDA_DEFAULT_ENV=base
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CONDA_DIR=/opt/conda
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CONDA_EXE=/opt/conda/bin/conda
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CONDA_INTERNAL_OLDPATH=/opt/conda/bin:/opt/conda/condabin:/opt/conda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CONDA_PREFIX=/opt/conda
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CONDA_PROMPT_MODIFIER=&#39;(base) &#39;
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CONDA_PYTHON_EXE=/opt/conda/bin/python
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CONDA_SHLVL=1
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CONDA_VERSION=4.10.1
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DEBIAN_FRONTEND=noninteractive
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DIRSTACK=()
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>EUID=1000
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>GIT_PYTHON_REFRESH=quiet
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>GROUPS=()
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>HISTCONTROL=ignoreboth
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>HISTFILE=/home/jovyan/.bash_history
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>HISTFILESIZE=2000
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>HISTSIZE=1000
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>HOME=/home/jovyan
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>HOSTNAME=1eac8844b99e
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>HOSTTYPE=x86_64
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>IFS=$&#39; \t\n&#39;
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INSIDE_EMACS=26.3,comint
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>JPY_PARENT_PID=1232
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>JUPYTER_ENABLE_LAB=yes
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>JUPYTER_SERVER_ROOT=/home/jovyan
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>JUPYTER_SERVER_URL=http://1eac8844b99e:8888/
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>LANG=en_US.UTF-8
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>LANGUAGE=en_US.UTF-8
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>LC_ALL=en_US.UTF-8
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>LINES=24
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>LS_COLORS=
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>MACHTYPE=x86_64-conda-linux-gnu
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>MAILCHECK=60
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>MAKEFLAGS=&#39; --no-print-directory&#39;
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>MAKELEVEL=2
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>MAKE_TERMERR=/dev/pts/2
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>MAKE_TERMOUT=/dev/pts/2
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>MFLAGS=--no-print-directory
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>MINIFORGE_VERSION=4.10.1-5
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>NB_GID=100
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>NB_UID=1000
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>NB_USER=jovyan
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OLDPWD=/home/jovyan/work/UndertheCovers/underthecovers
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPTERR=1
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPTIND=1
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OSTYPE=linux-gnu
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>PAGER=cat
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>PATH=/opt/conda/bin:/opt/conda/condabin:/opt/conda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>PIPESTATUS=([0]=&quot;0&quot;)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>PPID=1304
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>PROMPT_COMMAND=
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>PS1=&#39;[PEXP\[\]ECT_PROMPT&gt;&#39;
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>PS2=&#39;[PEXP\[\]ECT_PROMPT+&#39;
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>PS4=&#39;+ &#39;
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>PWD=/home/jovyan/work/UndertheCovers/underthecovers/unix
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>PYXTERM_DIMENSIONS=80x25
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>SHELL=/bin/bash
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>SHELLOPTS=braceexpand:emacs:hashall:histexpand:history:interactive-comments:monitor
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>SHLVL=3
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>SYSP=/opt/conda
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>TERM=dumb
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>TERMCAP=
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>UID=1000
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>_=0
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>_CE_CONDA=
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>_CE_M=
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>i=0
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>j=10
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>myVar=Hello
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>rc=0
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>__add_sys_prefix_to_path () 
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{ 
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    if [ -n &quot;${_CE_CONDA}&quot; ] &amp;&amp; [ -n &quot;${WINDIR+x}&quot; ]; then
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>        SYSP=$(\dirname &quot;${CONDA_EXE}&quot;);
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    else
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>        SYSP=$(\dirname &quot;${CONDA_EXE}&quot;);
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>        SYSP=$(\dirname &quot;${SYSP}&quot;);
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    fi;
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    if [ -n &quot;${WINDIR+x}&quot; ]; then
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>        PATH=&quot;${SYSP}/bin:${PATH}&quot;;
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>        PATH=&quot;${SYSP}/Scripts:${PATH}&quot;;
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>        PATH=&quot;${SYSP}/Library/bin:${PATH}&quot;;
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>        PATH=&quot;${SYSP}/Library/usr/bin:${PATH}&quot;;
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>        PATH=&quot;${SYSP}/Library/mingw-w64/bin:${PATH}&quot;;
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>        PATH=&quot;${SYSP}:${PATH}&quot;;
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    else
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>        PATH=&quot;${SYSP}/bin:${PATH}&quot;;
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    fi;
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    \export PATH
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>}
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>__conda_activate () 
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{ 
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    if [ -n &quot;${CONDA_PS1_BACKUP:+x}&quot; ]; then
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>        PS1=&quot;$CONDA_PS1_BACKUP&quot;;
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>        \unset CONDA_PS1_BACKUP;
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    fi;
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    \local cmd=&quot;$1&quot;;
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    shift;
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    \local ask_conda;
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    CONDA_INTERNAL_OLDPATH=&quot;${PATH}&quot;;
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    __add_sys_prefix_to_path;
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    ask_conda=&quot;$(PS1=&quot;$PS1&quot; &quot;$CONDA_EXE&quot; $_CE_M $_CE_CONDA shell.posix &quot;$cmd&quot; &quot;$@&quot;)&quot; || \return $?;
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    rc=$?;
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    PATH=&quot;${CONDA_INTERNAL_OLDPATH}&quot;;
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    \eval &quot;$ask_conda&quot;;
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    if [ $rc != 0 ]; then
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>        \export PATH;
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    fi;
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    __conda_hashr
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>}
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>__conda_hashr () 
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{ 
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    if [ -n &quot;${ZSH_VERSION:+x}&quot; ]; then
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>        \rehash;
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    else
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>        if [ -n &quot;${POSH_VERSION:+x}&quot; ]; then
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>            :;
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>        else
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>            \hash -r;
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>        fi;
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    fi
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>}
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>__conda_reactivate () 
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{ 
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    \local ask_conda;
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    CONDA_INTERNAL_OLDPATH=&quot;${PATH}&quot;;
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    __add_sys_prefix_to_path;
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    ask_conda=&quot;$(PS1=&quot;$PS1&quot; &quot;$CONDA_EXE&quot; $_CE_M $_CE_CONDA shell.posix reactivate)&quot; || \return $?;
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    PATH=&quot;${CONDA_INTERNAL_OLDPATH}&quot;;
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    \eval &quot;$ask_conda&quot;;
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    __conda_hashr
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>}
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>conda () 
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{ 
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    if [ &quot;$#&quot; -lt 1 ]; then
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>        &quot;$CONDA_EXE&quot; $_CE_M $_CE_CONDA;
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    else
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>        \local cmd=&quot;$1&quot;;
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>        shift;
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>        case &quot;$cmd&quot; in 
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>            activate | deactivate)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                __conda_activate &quot;$cmd&quot; &quot;$@&quot;
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>            ;;
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>            install | update | upgrade | remove | uninstall)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                CONDA_INTERNAL_OLDPATH=&quot;${PATH}&quot;;
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                __add_sys_prefix_to_path;
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                &quot;$CONDA_EXE&quot; $_CE_M $_CE_CONDA &quot;$cmd&quot; &quot;$@&quot;;
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                \local t1=$?;
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                PATH=&quot;${CONDA_INTERNAL_OLDPATH}&quot;;
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                if [ $t1 = 0 ]; then
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                    __conda_reactivate;
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                else
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                    return $t1;
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                fi
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>            ;;
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>            *)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                CONDA_INTERNAL_OLDPATH=&quot;${PATH}&quot;;
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                __add_sys_prefix_to_path;
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                &quot;$CONDA_EXE&quot; $_CE_M $_CE_CONDA &quot;$cmd&quot; &quot;$@&quot;;
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                \local t1=$?;
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                PATH=&quot;${CONDA_INTERNAL_OLDPATH}&quot;;
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                return $t1
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>            ;;
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>        esac;
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    fi
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>}
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>display () 
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{ 
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    TMPFILE=$(mktemp ${TMPDIR-/tmp}/bash_kernel.XXXXXXXXXX);
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    cat &gt; $TMPFILE;
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    echo &quot;bash_kernel: saved image data to: $TMPFILE&quot; 1&gt;&amp;2
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>}
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>BASH=/usr/bin/bash
+BASHOPTS=checkwinsize:cmdhist:complete_fullquote:expand_aliases:extquote:force_fignore:globasciiranges:histappend:hostcomplete:interactive_comments:progcomp:promptvars:sourcepath
+BASH_ALIASES=()
+BASH_ARGC=([0]=&quot;0&quot;)
+BASH_ARGV=()
+BASH_CMDS=()
+BASH_LINENO=()
+BASH_SOURCE=()
+BASH_VERSINFO=([0]=&quot;5&quot; [1]=&quot;0&quot; [2]=&quot;17&quot; [3]=&quot;1&quot; [4]=&quot;release&quot; [5]=&quot;x86_64-pc-linux-gnu&quot;)
+BASH_VERSION=&#39;5.0.17(1)-release&#39;
+COLUMNS=80
+DIRSTACK=()
+EUID=1000
+GIT_PYTHON_REFRESH=quiet
+GROUPS=()
+HISTCONTROL=ignoreboth
+HISTFILE=/home/jappavoo/.bash_history
+HISTFILESIZE=2000
+HISTSIZE=1000
+HOME=/home/jappavoo
+HOSTNAME=ade02912b5cb
+HOSTTYPE=x86_64
+IFS=$&#39; \t\n&#39;
+JPY_API_TOKEN=d4da5eb3785f405b9101cb8c9c30075a
+JPY_PARENT_PID=432
+JUPYTERHUB_ACTIVITY_URL=http://127.0.0.1:8081/hub/api/users/jappavoo/activity
+JUPYTERHUB_API_TOKEN=d4da5eb3785f405b9101cb8c9c30075a
+JUPYTERHUB_API_URL=http://127.0.0.1:8081/hub/api
+JUPYTERHUB_BASE_URL=/
+JUPYTERHUB_CLIENT_ID=jupyterhub-user-jappavoo
+JUPYTERHUB_HOST=
+JUPYTERHUB_OAUTH_CALLBACK_URL=/user/jappavoo/oauth_callback
+JUPYTERHUB_SERVER_NAME=
+JUPYTERHUB_SERVICE_PREFIX=/user/jappavoo/
+JUPYTERHUB_SINGLEUSER_APP=jupyter_server.serverapp.ServerApp
+JUPYTERHUB_USER=jappavoo
+LANG=en_US.UTF-8
+LC_ALL=en_US.UTF-8
+LESSCLOSE=&#39;/usr/bin/lesspipe %s %s&#39;
+LESSOPEN=&#39;| /usr/bin/lesspipe %s&#39;
+LINES=24
+LS_COLORS=
+MACHTYPE=x86_64-pc-linux-gnu
+MAILCHECK=60
+OPTERR=1
+OPTIND=1
+OSTYPE=linux-gnu
+PAGER=cat
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+PIPESTATUS=([0]=&quot;0&quot;)
+PPID=465
+PROMPT_COMMAND=
+PS1=&#39;[PEXP\[\]ECT_PROMPT&gt;&#39;
+PS2=&#39;[PEXP\[\]ECT_PROMPT+&#39;
+PS4=&#39;+ &#39;
+PWD=/home/jappavoo/UndertheCovers/underthecovers/unix
+SHELL=/bin/bash
+SHELLOPTS=braceexpand:emacs:hashall:histexpand:history:interactive-comments:monitor
+SHLVL=1
+TERM=dumb
+UID=1000
+USER=jappavoo
+_=0
+fruit=pear
+i=3
+j=10
+myVar=Hello
+display () 
+{ 
+    TMPFILE=$(mktemp ${TMPDIR-/tmp}/bash_kernel.XXXXXXXXXX);
+    cat &gt; $TMPFILE;
+    echo &quot;bash_kernel: saved image data to: $TMPFILE&quot; 1&gt;&amp;2
+}
 </pre></div>
 </div>
 </div>
@@ -1125,18 +649,10 @@ To create a variable and set its value one simply types the name you want to use
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4
+1
+2
+3
+4
 </pre></div>
 </div>
 </div>
@@ -1152,12 +668,8 @@ To create a variable and set its value one simply types the name you want to use
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2
+1
+2
 </pre></div>
 </div>
 </div>
@@ -1188,33 +700,15 @@ myInfo <span class="s2">&quot;full&quot;</span>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Name: Bob Blah-Blah
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Age: 64
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Lets try the full info
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Name: Bob Blah-Blah
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Age: 64
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Occupation: Space Explorer
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Favorite Food: Bits and Bytes
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OS of choice: UNIX
+Age: 64
+
+Lets try the full info
+
+Name: Bob Blah-Blah
+Age: 64
+Occupation: Space Explorer
+Favorite Food: Bits and Bytes
+OS of choice: UNIX
 </pre></div>
 </div>
 </div>
@@ -1231,10 +725,7 @@ myInfo <span class="s2">&quot;full&quot;</span>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>files.ipynb  L01.ipynb  L03.ipynb  L05.ipynb  shell.ipynb
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>intro.ipynb  L02.ipynb  L04.ipynb  L06.ipynb  terminal.ipynb
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>intro.ipynb  shell.ipynb  terminal.ipynb
 </pre></div>
 </div>
 </div>
@@ -1246,37 +737,10 @@ myInfo <span class="s2">&quot;full&quot;</span>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>total 84
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-rw-r--r-- 1 jovyan users 13113 Jul  2 14:32 files.ipynb
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-rw-r--r-- 1 jovyan users  5651 Jul 17 11:07 intro.ipynb
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-rw-r--r-- 1 jovyan users   569 Jul 17 13:05 L01.ipynb
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-rw-r--r-- 1 jovyan users   597 Jul 17 13:05 L02.ipynb
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-rw-r--r-- 1 jovyan users   597 Jul 17 13:05 L03.ipynb
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-rw-r--r-- 1 jovyan users   597 Jul 17 13:06 L04.ipynb
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-rw-r--r-- 1 jovyan users   597 Jul 17 13:05 L05.ipynb
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-rw-r--r-- 1 jovyan users   597 Jul 17 13:06 L06.ipynb
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-rw-r--r-- 1 jovyan users 24017 Jul 17 10:58 shell.ipynb
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-rw-r--r-- 1 jovyan users  8486 Jul  2 15:46 terminal.ipynb
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>total 28
+-rw-rw-r-- 1 jappavoo jappavoo  5445 Jun  2 03:55 intro.ipynb
+-rw-rw-r-- 1 jappavoo jappavoo 13789 Jun  2 03:29 shell.ipynb
+-rw-rw-r-- 1 jappavoo jappavoo  2024 Jun  2 16:51 terminal.ipynb
 </pre></div>
 </div>
 </div>
@@ -1288,13 +752,10 @@ myInfo <span class="s2">&quot;full&quot;</span>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>.            intro.ipynb         L02.ipynb  L05.ipynb    terminal.ipynb
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>..           .ipynb_checkpoints  L03.ipynb  L06.ipynb
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>files.ipynb  L01.ipynb           L04.ipynb  shell.ipynb
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Bold -Color-Bold-Blue">.</span>                   _config.yml     intro.md         references.bib
+<span class=" -Color -Color-Bold -Color-Bold-Blue">..</span>                  _toc.yml        <span class=" -Color -Color-Bold -Color-Bold-Magenta">logo.jpg</span>         shell.ipynb
+<span class=" -Color -Color-Bold -Color-Bold-Blue">.ipynb_checkpoints</span>  assembly.ipynb  markdown.md      <span class=" -Color -Color-Bold -Color-Bold-Blue">src</span>
+<span class=" -Color -Color-Bold -Color-Bold-Blue">_build</span>              content.md      notebooks.ipynb
 </pre></div>
 </div>
 </div>
@@ -1306,10 +767,9 @@ myInfo <span class="s2">&quot;full&quot;</span>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>files.ipynb  L01.ipynb  L03.ipynb  L05.ipynb  shell.ipynb
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>intro.ipynb  L02.ipynb  L04.ipynb  L06.ipynb  terminal.ipynb
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Bold -Color-Bold-Blue">_build</span>       assembly.ipynb  <span class=" -Color -Color-Bold -Color-Bold-Magenta">logo.jpg</span>         references.bib
+_config.yml  content.md      markdown.md      shell.ipynb
+_toc.yml     intro.md        notebooks.ipynb  <span class=" -Color -Color-Bold -Color-Bold-Blue">src</span>
 </pre></div>
 </div>
 </div>
@@ -1321,16 +781,8 @@ myInfo <span class="s2">&quot;full&quot;</span>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>assembly  intro_ln.md    ln_toc.yml      src            UNIXsidebar.ipynb
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>bin       intro_tb.md    ln_toc.yml~     tb_config.yml
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C         L00.ipynb      logo.jpg        tb_toc.yml
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>images    ln_config.yml  references.bib  unix
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CONDUCT.md       <span class=" -Color -Color-Bold -Color-Bold-Green">LICENSE</span>    requirements.txt
+CONTRIBUTING.md  README.md  <span class=" -Color -Color-Bold -Color-Bold-Blue">underthecovers</span>
 </pre></div>
 </div>
 </div>
@@ -1342,10 +794,8 @@ myInfo <span class="s2">&quot;full&quot;</span>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>bin   dev  home  lib32  libx32  mnt  proc  run   srv  tmp  var
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>boot  etc  lib   lib64  media   opt  root  sbin  sys  usr
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Bold -Color-Bold-Cyan">bin</span>   <span class=" -Color -Color-Bold -Color-Bold-Blue">dev</span>  <span class=" -Color -Color-Bold -Color-Bold-Blue">home</span>  <span class=" -Color -Color-Bold -Color-Bold-Cyan">lib32</span>  <span class=" -Color -Color-Bold -Color-Bold-Cyan">libx32</span>      <span class=" -Color -Color-Bold -Color-Bold-Blue">media</span>  <span class=" -Color -Color-Bold -Color-Bold-Blue">opt</span>   <span class=" -Color -Color-Bold -Color-Bold-Blue">root</span>  <span class=" -Color -Color-Bold -Color-Bold-Cyan">sbin</span>  <span class=" -Color -Color-Bold -Color-Bold-Blue">srv</span>       <span class=" -Color -Color-Bold -Color-Bold-Blue">sys</span>  <span class=" -Color -Color-Bold -Color-Bold-Blue">usr</span>
+<span class=" -Color -Color-Bold -Color-Bold-Blue">boot</span>  <span class=" -Color -Color-Bold -Color-Bold-Blue">etc</span>  <span class=" -Color -Color-Bold -Color-Bold-Cyan">lib</span>   <span class=" -Color -Color-Bold -Color-Bold-Cyan">lib64</span>  <span class=" -Color -Color-Bold -Color-Bold-Blue">lost+found</span>  <span class=" -Color -Color-Bold -Color-Bold-Blue">mnt</span>    <span class=" -Color -Color-Bold -Color-Bold-Blue">proc</span>  <span class=" -Color -Color-Bold -Color-Bold-Blue">run</span>   <span class=" -Color -Color-Bold -Color-Bold-Blue">snap</span>  swap.img  <span class=" -Color -Color-Black -Color-Black-BGGreen">tmp</span>  <span class=" -Color -Color-Bold -Color-Bold-Blue">var</span>
 </pre></div>
 </div>
 </div>
@@ -1357,7 +807,7 @@ myInfo <span class="s2">&quot;full&quot;</span>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>jovyan
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Bold -Color-Bold-Blue">jappavoo</span>  <span class=" -Color -Color-Bold -Color-Bold-Blue">ubuntu</span>
 </pre></div>
 </div>
 </div>
@@ -1369,10 +819,13 @@ myInfo <span class="s2">&quot;full&quot;</span>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ls: cannot access &#39;/home/jappavoo&#39;: No such file or directory
-</pre></div>
-</div>
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;#raw.asm#&#39;      <span class=" -Color -Color-Bold -Color-Bold-Blue">UndertheCovers</span>                           installKvm
+ <span class=" -Color -Color-Bold -Color-Bold-Blue">06</span>              Untitled.ipynb                           <span class=" -Color -Color-Bold -Color-Bold-Blue">juypter</span>
+ <span class=" -Color -Color-Bold -Color-Bold-Blue">6502</span>            Untitled1.sh                             <span class=" -Color -Color-Bold -Color-Bold-Blue">masmtest</span>
+ <span class=" -Color -Color-Bold -Color-Bold-Blue">CS210TextBook</span>   <span class=" -Color -Color-Bold -Color-Bold-Blue">anaconda3</span>                                mkKvm
+ <span class=" -Color -Color-Bold -Color-Bold-Blue">Om</span>              <span class=" -Color -Color-Bold -Color-Bold-Blue">compress</span>                                 resetKvm
+ <span class=" -Color -Color-Bold -Color-Bold-Blue">Symbi-OS</span>        <span class=" -Color -Color-Bold -Color-Bold-Red">google-chrome-stable_current_amd64.deb</span>   <span class=" -Color -Color-Bold -Color-Bold-Blue">tmp</span>
+ <span class=" -Color -Color-Bold -Color-Bold-Blue">UASM</span>            <span class=" -Color -Color-Bold -Color-Bold-Blue">hostKernel</span>                               <span class=" -Color -Color-Bold -Color-Bold-Blue">yasmtest</span>
 </pre></div>
 </div>
 </div>
@@ -1423,7 +876,7 @@ Fri Mar 19 12:13:02 UTC 2021
         <div class='prev-next-bottom'>
             
     <a class='left-prev' id="prev-link" href="files.html" title="previous page"><span class="section-number">3. </span>Organizing and Managing Information as a Tree of Files and Directories</a>
-    <a class='right-next' id="next-link" href="../assembly/intro.html" title="next page"><span class="section-number">1. </span>Introduction: Assembly Programming</a>
+    <a class='right-next' id="next-link" href="../assembly/intro.html" title="next page"><span class="section-number">5. </span>Introduction: Assembly Programming</a>
 
         </div>
         
