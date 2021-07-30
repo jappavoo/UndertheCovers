@@ -5,54 +5,54 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>2. SLS Lecture 2 : Topics &#8212; UndertheCovers</title>
+    <title>CS400 Fall 2021 : Machine Level Programming &#8212; UndertheCovers</title>
     
-  <link href="../_static/css/theme.css" rel="stylesheet" />
-  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+  <link href="_static/css/theme.css" rel="stylesheet" />
+  <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
 
     
   <link rel="stylesheet"
-    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
   <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
   <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
     
       
 
     
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.e8e5499552300ddf5d7adccae7cc3b70.css" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/sphinx-book-theme.e8e5499552300ddf5d7adccae7cc3b70.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+  <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
 
-    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/togglebutton.js"></script>
-    <script src="../_static/clipboard.min.js"></script>
-    <script src="../_static/copybutton.js"></script>
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
     <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe"
         const thebe_selector_input = "pre"
         const thebe_selector_output = ".output"
     </script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="3. SLS Lecture 3 : Topics" href="L03.html" />
-    <link rel="prev" title="1. SLS Lecture 1 : Topics" href="L01.html" />
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="1. SLS Lecture 1 : Topics" href="unix/L01.html" />
+    <link rel="prev" title="CS210 Computer Systems" href="L00_210_JA.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -69,22 +69,22 @@
 <div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
     
         <div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="../index.html">
+    <a class="navbar-brand text-wrap" href="index.html">
       
-      <img src="../_static/logo.jpg" class="logo" alt="logo">
+      <img src="_static/logo.jpg" class="logo" alt="logo">
       
       
       <h1 class="site-logo" id="site-title">UndertheCovers</h1>
       
     </a>
-</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
   <i class="icon fas fa-search"></i>
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
     <div class="bd-toc-item active">
         <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../intro_ln.html">
+  <a class="reference internal" href="intro_ln.html">
    Under the Covers : The Secret Life of Software
   </a>
  </li>
@@ -94,14 +94,14 @@
   Course Specfic Introductions
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../L00_210_JA.html">
+  <a class="reference internal" href="L00_210_JA.html">
    CS210 Computer Systems
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../L00_400_F21_JA.html">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
    CS400 Fall 2021 : Machine Level Programming
   </a>
  </li>
@@ -111,34 +111,34 @@
   The Unix Development Environment
  </span>
 </p>
-<ul class="current nav bd-sidenav">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="L01.html">
+  <a class="reference internal" href="unix/L01.html">
    1. SLS Lecture 1 : Topics
   </a>
  </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1">
+  <a class="reference internal" href="unix/L02.html">
    2. SLS Lecture 2 : Topics
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="L03.html">
+  <a class="reference internal" href="unix/L03.html">
    3. SLS Lecture 3 : Topics
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="L04.html">
+  <a class="reference internal" href="unix/L04.html">
    4. SLS Lecture 4 : Topics
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="L05.html">
+  <a class="reference internal" href="unix/L05.html">
    5. SLS Lecture 5 : Topics
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="L06.html">
+  <a class="reference internal" href="unix/L06.html">
    6. SLS Lecture 6 : Topics
   </a>
  </li>
@@ -150,52 +150,52 @@
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../assembly/L07.html">
+  <a class="reference internal" href="assembly/L07.html">
    7. SLS Lecture 7 : Topics
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../assembly/L08.html">
+  <a class="reference internal" href="assembly/L08.html">
    8. SLS Lecture 8 : Topics
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../assembly/L09.html">
+  <a class="reference internal" href="assembly/L09.html">
    9. SLS Lecture 9 : Topics
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../assembly/L10.html">
+  <a class="reference internal" href="assembly/L10.html">
    10. SLS Lecture 10 : Topics
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../assembly/L11.html">
+  <a class="reference internal" href="assembly/L11.html">
    11. SLS Lecture 11 : Topics
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../assembly/L12.html">
+  <a class="reference internal" href="assembly/L12.html">
    12. SLS Lecture 12 : Topics
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../assembly/L13.html">
+  <a class="reference internal" href="assembly/L13.html">
    13. SLS Lecture 13 : Topics
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../assembly/L14.html">
+  <a class="reference internal" href="assembly/L14.html">
    14. SLS Lecture 14 : Topics
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../assembly/L15.html">
+  <a class="reference internal" href="assembly/L15.html">
    15. SLS Lecture 15 : Topics
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../assembly/L16.html">
+  <a class="reference internal" href="assembly/L16.html">
    16. SLS Lecture 16 : Topics
   </a>
  </li>
@@ -207,47 +207,47 @@
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../C/L17.html">
+  <a class="reference internal" href="C/L17.html">
    17. SLS Lecuture 17 : Topics
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../C/L18.html">
+  <a class="reference internal" href="C/L18.html">
    18. SLS Lecture 18 : Topics
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../C/L19.html">
+  <a class="reference internal" href="C/L19.html">
    19. SLS Lecture 19 : Topics
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../C/L20.html">
+  <a class="reference internal" href="C/L20.html">
    20. SLS Lecture 20 : Topics
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../C/L21.html">
+  <a class="reference internal" href="C/L21.html">
    21. SLS Lecture 21 : Topics
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../C/L22.html">
+  <a class="reference internal" href="C/L22.html">
    22. SLS Lecture 22 : Topics
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../C/L23.html">
+  <a class="reference internal" href="C/L23.html">
    23. SLS Lecture 23 : Topics
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../C/L24.html">
+  <a class="reference internal" href="C/L24.html">
    24. SLS Lecture 24 : Topics
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../C/L25.html">
+  <a class="reference internal" href="C/L25.html">
    25. SLS Lecture 25 : Topics
   </a>
  </li>
@@ -292,7 +292,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/unix/L02.ipynb"><button type="button"
+        <a class="dropdown-buttons" href="_sources/L00_400_F21_JA.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
@@ -331,10 +331,10 @@
     <div class="dropdown-buttons">
         
         
-        <a class="jupyterhub-button" href="https://jupyterhub-opf-jupyterhub.apps.zero.massopen.cloud/hub/user-redirect/git-pull?repo=https://github.com/jappavoo/UndertheCovers&urlpath=tree/UndertheCovers/underthecovers/unix/L02.ipynb&branch=main"><button type="button"
+        <a class="jupyterhub-button" href="https://jupyterhub-opf-jupyterhub.apps.zero.massopen.cloud/hub/user-redirect/git-pull?repo=https://github.com/jappavoo/UndertheCovers&urlpath=tree/UndertheCovers/underthecovers/L00_400_F21_JA.ipynb&branch=main"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch JupyterHub" data-toggle="tooltip"
                 data-placement="left"><img class="jupyterhub-button-logo"
-                    src="../_static/images/logo_jupyterhub.svg"
+                    src="_static/images/logo_jupyterhub.svg"
                     alt="Interact on JupyterHub">JupyterHub</button></a>
         
         
@@ -347,6 +347,29 @@
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show">
             
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#tools-of-the-trade-unix">
+   Tools of the Trade – UNIX
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#assembly-programming-the-von-neumman-architecture">
+   Assembly Programming – The Von Neumman Architecture
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#c-from-an-assembly-code-perspective">
+   C from an Assembly Code Perspective
+  </a>
+ </li>
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -355,8 +378,26 @@
         
               <div>
                 
-  <div class="section" id="sls-lecture-2-topics">
-<h1><span class="section-number">2. </span>SLS Lecture 2 : Topics<a class="headerlink" href="#sls-lecture-2-topics" title="Permalink to this headline">¶</a></h1>
+  <div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">run</span> -i python/ln_preamble.py
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><style>#notebook { padding-top:0px !important; } .container { width:100% !important; } .CodeMirror { width:100% !important;}.end_space { min-height:0px !important; } .prompt { display:none }.terminal-app #terminado-container { width:100%; }div.mywarn { background-color: #fcf2f2;border-color: #dFb5b4; border-left: 5px solid #dfb5b4; padding: 0.5em;}</style></div></div>
+</div>
+<div class="section" id="cs400-fall-2021-machine-level-programming">
+<h1>CS400 Fall 2021 : Machine Level Programming<a class="headerlink" href="#cs400-fall-2021-machine-level-programming" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="tools-of-the-trade-unix">
+<h2>Tools of the Trade – UNIX<a class="headerlink" href="#tools-of-the-trade-unix" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="assembly-programming-the-von-neumman-architecture">
+<h2>Assembly Programming – The Von Neumman Architecture<a class="headerlink" href="#assembly-programming-the-von-neumman-architecture" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="c-from-an-assembly-code-perspective">
+<h2>C from an Assembly Code Perspective<a class="headerlink" href="#c-from-an-assembly-code-perspective" title="Permalink to this headline">¶</a></h2>
+</div>
 </div>
 
     <script type="text/x-thebe-config">
@@ -372,7 +413,7 @@
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./unix"
+            path: "./."
         },
         predefinedOutput: true
     }
@@ -384,8 +425,8 @@
         
         <div class='prev-next-bottom'>
             
-    <a class='left-prev' id="prev-link" href="L01.html" title="previous page"><span class="section-number">1. </span>SLS Lecture 1 : Topics</a>
-    <a class='right-next' id="next-link" href="L03.html" title="next page"><span class="section-number">3. </span>SLS Lecture 3 : Topics</a>
+    <a class='left-prev' id="prev-link" href="L00_210_JA.html" title="previous page">CS210 Computer Systems</a>
+    <a class='right-next' id="next-link" href="unix/L01.html" title="next page"><span class="section-number">1. </span>SLS Lecture 1 : Topics</a>
 
         </div>
         
@@ -407,7 +448,7 @@
       </div>
     </div>
   
-  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+  <script src="_static/js/index.1c5a1a01449ed65a7b51.js"></script>
 
   
   </body>
