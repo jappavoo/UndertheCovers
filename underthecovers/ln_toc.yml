@@ -1,8 +1,9 @@
 format: jb-book
 root: intro_ln
 parts:
-- caption: 'Course Specific'
+- caption: 'Course Specfic Introductions'
   numbered: false
+  chapters:
   - file: L00_210_JA
   - file: L00_400_F21_JA
 - caption: 'The Unix Development Environment'
@@ -14,7 +15,7 @@ parts:
   - file: unix/L04
   - file: unix/L05
   - file: unix/L06
-- caption: 'The Belly of the Beast: The von Neumann Architecture and Assembly Programming'  
+- caption: 'The Belly of the Beast: The von Neumann Architecture and Assembly Programming'
   numbered: true
   chapters:
   - file: assembly/L07
@@ -27,7 +28,7 @@ parts:
   - file: assembly/L14
   - file: assembly/L15
   - file: assembly/L16
-- caption: 'Into the Light: C Programming'
+- caption: 'Into the Light : C Programming'
   numbered: true
   chapters:
   - file: C/L17
@@ -39,3 +40,4 @@ parts:
   - file: C/L23
   - file: C/L24
   - file: C/L25
+  

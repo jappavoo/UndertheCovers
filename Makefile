@@ -8,7 +8,7 @@ build: ## build all materials
 build: build-bk
 
 pub: ## publish all materials to github pages
-pub: pub-bk
+pub: pub-bk pub-ln
 
 clean: ## cleanup/remove all build files
 clean: clean-bk clean-ln
