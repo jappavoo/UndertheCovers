@@ -123,7 +123,8 @@ def MkCodeBox(file, lang, html_title, w, h):
 
 # show Terminal where TERMNAME is one of the terminals we created below
 def showTerm(TERMNAME, name, w, h):
-    display(HTML('<b>TERMINAL Window for ' + name + '</b>'))
+    if name:
+        display(HTML('<b>TERMINAL Window for ' + name + '</b>'))
     return IFrame(base_url + 'terminals/' + TERMNAME, w,h)
     
 def showET():
