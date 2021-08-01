@@ -262,8 +262,8 @@
   </a>
  </li>
  <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#computers-hw-vs-an-information-machine">
-   Computers HW vs an Information Machine
+  <a class="reference internal nav-link" href="#computers-a-collection-of-hardware-vs-an-information-system">
+   Computers a collection of Hardware vs an Information System
   </a>
  </li>
  <li class="toc-h1 nav-item toc-entry">
@@ -274,6 +274,31 @@
  <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#ok-lets-get-on-with-it-the-first-program-the-shell">
    Ok lets get on with it – The First Program – The Shell
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ascii-line-oriented-interfaces">
+   ASCII Line oriented Interfaces
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#shell-a-programmer-computer-interface-vs-human-computer-interface">
+   Shell a Programmer Computer Interface vs Human Computer Interface
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#shell-one-program-to-rule-run-them-all">
+   Shell: One program to “rule/run” them all
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#shell-externals">
+   Shell: Externals
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#shell-internals">
+   Shell: Internals
   </a>
  </li>
 </ul>
@@ -311,14 +336,126 @@
 <div class="section" id="hci-what-is-a-terminal-and-why-does-it-still-matter">
 <h1>HCI: What is a terminal and why does it still matter?<a class="headerlink" href="#hci-what-is-a-terminal-and-why-does-it-still-matter" title="Permalink to this headline">¶</a></h1>
 </div>
-<div class="section" id="computers-hw-vs-an-information-machine">
-<h1>Computers HW vs an Information Machine<a class="headerlink" href="#computers-hw-vs-an-information-machine" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="computers-a-collection-of-hardware-vs-an-information-system">
+<h1>Computers a collection of Hardware vs an Information System<a class="headerlink" href="#computers-a-collection-of-hardware-vs-an-information-system" title="Permalink to this headline">¶</a></h1>
 </div>
 <div class="section" id="what-are-files-and-directories-folders">
 <h1>What are files and directories (folders)?<a class="headerlink" href="#what-are-files-and-directories-folders" title="Permalink to this headline">¶</a></h1>
 </div>
 <div class="section" id="ok-lets-get-on-with-it-the-first-program-the-shell">
 <h1>Ok lets get on with it – The First Program – The Shell<a class="headerlink" href="#ok-lets-get-on-with-it-the-first-program-the-shell" title="Permalink to this headline">¶</a></h1>
+</div>
+<div class="section" id="ascii-line-oriented-interfaces">
+<h1>ASCII Line oriented Interfaces<a class="headerlink" href="#ascii-line-oriented-interfaces" title="Permalink to this headline">¶</a></h1>
+</div>
+<div class="section" id="shell-a-programmer-computer-interface-vs-human-computer-interface">
+<h1>Shell a Programmer Computer Interface vs Human Computer Interface<a class="headerlink" href="#shell-a-programmer-computer-interface-vs-human-computer-interface" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p>Power programmers are not “normal” humans</p>
+<ul>
+<li><p>What we care about is efficient ways for controlling the computer via programs</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="shell-one-program-to-rule-run-them-all">
+<h1>Shell: One program to “rule/run” them all<a class="headerlink" href="#shell-one-program-to-rule-run-them-all" title="Permalink to this headline">¶</a></h1>
+<ul>
+<li><p>Every story has to start somewhere</p>
+<ul>
+<li><p>every new terminal connection made to the UNIX system starts a shell and directs its input and output to the the terminal</p></li>
+<li><p>Shell is designed to have a text based conversation with a programmer –</p>
+<ul>
+<li><p>the conversation is exchanges between the programmer and the shell</p>
+<ul class="simple">
+<li><p>eg.</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>   SHLL -&gt; READY
+   PGMR -&gt; &lt;enter&gt; &#39;\n&#39;
+   SHLL -&gt; READY
+   SHLL -&gt; #&lt;enter&gt; 
+   SHLL -&gt; READY
+   PGMR -&gt; echo &quot;Hello&quot;
+   SHLL -&gt; Hello
+   SHLL -&gt; READY
+   PGMR -&gt; for ((i=0; i&lt;3; i++)); do echo $i; done
+   SHLL -&gt; 0 
+   SHLL -&gt; 1
+   SHLL -&gt; 2
+   SHLL -&gt; READY
+   PGMR -&gt; Bye 
+   UNIX: ENDS THE TERMINAL SESSION
+
+</pre></div>
+</div>
+</li>
+<li><p>the shell begins the conversation by send a prompt “string” to the terminal</p></li>
+<li><p>the programmer sends requests to the shell in a “line oriented” way</p>
+<ul class="simple">
+<li><p>A line is a set of ASCII characters terminated by a single “newline” character</p>
+<ul>
+<li><p>‘10’, ‘0x0a’, ‘\n’</p></li>
+<li><p>the terminal sends this character when the programmer presses the “return” or “enter” key</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Internal vs External command</p></li>
+</ul>
+</li>
+</ul>
+<img src="../images/SLS_WPIM.svg" width="100%" style="vertical-align:top; float:middle; border:0px; margin: 10px 0px; background-color: #191919;">
+<img src="../images/SLS_TheMachine.svg" width="100%" style="vertical-align:top; float:middle; border:0px; margin: 0px 0px;"><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">showTerm</span><span class="p">(</span><span class="n">EDITORTERM</span><span class="p">,</span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="s2">&quot;100%&quot;</span><span class="p">,</span><span class="s2">&quot;500&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+<iframe
+    width="100%"
+    height="500"
+    src="/terminals/1"
+    frameborder="0"
+    allowfullscreen
+></iframe>
+</div></div>
+</div>
+</div>
+<div class="section" id="shell-externals">
+<h1>Shell: Externals<a class="headerlink" href="#shell-externals" title="Permalink to this headline">¶</a></h1>
+</div>
+<div class="section" id="shell-internals">
+<h1>Shell: Internals<a class="headerlink" href="#shell-internals" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">jupyter_core</span><span class="p">;</span><span class="n">jupyter_core</span><span class="o">.</span><span class="n">paths</span><span class="o">.</span><span class="n">jupyter_config_dir</span><span class="p">()</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\\</span><span class="s1">custom&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;/home/jovyan/.jupyter\\custom&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">profile_dir</span> <span class="o">=</span> <span class="o">!</span>ipython locate profile 
+<span class="n">profile_dir</span> <span class="o">=</span> <span class="n">profile_dir</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">profile_dir</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;/home/jovyan/.ipython/profile_default&#39;
+</pre></div>
+</div>
+</div>
+</div>
 </div>
 
     <script type="text/x-thebe-config">
