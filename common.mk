@@ -14,7 +14,7 @@ jb:
 
 images: jb
 	-mkdir -p ${BK_DIR}/_build/html/images
-	cp underthecovers/images/* ${BK_DIR}/_build/html/images
+	cp -r underthecovers/images/* ${BK_DIR}/_build/html/images
 
 fixlinks: images
 	./fixlinks.sh ${BK_DIR}/_build/html
