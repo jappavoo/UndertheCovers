@@ -6,10 +6,12 @@
 
 # imports to make python code easier and constent
 from IPython.core.display import display, HTML, Markdown, TextDisplayObject, Javascript
-from IPython.display import IFrame
+from IPython.display import IFrame, Image
 import ipywidgets as widgets
+from ipywidgets import interact, fixed
 import os, requests
 from notebook.notebookapp import list_running_servers
+
 
 ### BOOTSTRAPPING CODE
 # get server info so that we can make api calls when runing direclty on a
@@ -120,6 +122,19 @@ def MkCodeBox(file, lang, html_title, w, h):
         display(Markdown(md_text))
     display(HTML(html_title))
     return wout
+
+# Make a box that display the specified image files from the specified
+# directory if no files a specified then all file in the directory are
+# displayed.  A slider is used to select between the images
+# Note if you want control the order you must specifiy the files
+# explicitly
+def mkImgsBox(dir,files=[]):
+    if len(files)==0:
+        files=os.listdir(dir);
+    interact(lambda i,d=fixed(dir),
+             f=fixed(files): 
+             display(Image(dir + '/' + files[i])),
+             i=widgets.IntSlider(min=0, max=(len(files)-1), step=1, value=0));
 
 # show Terminal where TERMNAME is one of the terminals we created below
 def showTerm(TERMNAME, name, w, h):
