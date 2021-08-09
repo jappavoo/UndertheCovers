@@ -8,10 +8,14 @@
 from IPython.core.display import display, HTML, Markdown, TextDisplayObject, Javascript
 from IPython.display import IFrame, Image
 import ipywidgets as widgets
-from ipywidgets import interact, fixed
+from ipywidgets import interact, fixed, Layout
 import os, requests
 from notebook.notebookapp import list_running_servers
-
+import matplotlib
+import matplotlib.pyplot as plt
+from matplotlib import animation
+import numpy as np
+matplotlib.rcParams['animation.html'] = 'jshtml'
 
 ### BOOTSTRAPPING CODE
 # get server info so that we can make api calls when runing direclty on a
@@ -117,9 +121,15 @@ def MkCodeBox(file, lang, html_title, w, h):
 ```
 '''
     # build output widget 
-    wout = widgets.Output(layout={'overflow': 'scroll', 'width': w, 'height': h})
+    wout = widgets.Output(layout=Layout(overflow='scroll',
+                                        width=w,
+                                        min_width=w,
+                                        max_width=w,
+                                        min_height=h,
+                                        height=h,
+                                        max_height=h))
     with wout:
-        display(Markdown(md_text))
+        display(Markdown(md_text),)
     display(HTML(html_title))
     return wout
 
@@ -128,6 +138,7 @@ def MkCodeBox(file, lang, html_title, w, h):
 # displayed.  A slider is used to select between the images
 # Note if you want control the order you must specifiy the files
 # explicitly
+#  This function requires backend kernel see 
 def mkImgsBox(dir,files=[]):
     if len(files)==0:
         files=os.listdir(dir);
@@ -135,6 +146,56 @@ def mkImgsBox(dir,files=[]):
              f=fixed(files): 
              display(Image(dir + '/' + files[i])),
              i=widgets.IntSlider(min=0, max=(len(files)-1), step=1, value=0));
+
+def files_to_imgArray(dir, files):
+    n=len(files);
+    imgs = [];
+    for f in files:
+        imgs.append(plt.imread(dir + "/" + f))
+    return imgs;
+
+# this embeddes a javascript animation box with specified
+# images
+def mkImgsAnimateBox(dir, files ,dpi=100.0,xpixels=0,ypixels=0):
+    imgs=files_to_imgArray(dir, files)
+    if (xpixels==0):
+        xpixels = imgs[0].shape[0]
+    if (ypixels==0):
+        ypixels = imgs[0].shape[1]
+    fig = plt.figure(figsize=(ypixels/dpi, xpixels/dpi), dpi=dpi)
+    fig.patch.set_alpha(.0)
+    im = plt.figimage(imgs[0])
+    def animate(i):
+        im.set_array(imgs[i])
+        return(im,);
+    return animation.FuncAnimation(fig, animate, frames=np.arange(0,(len(imgs)-1),1), fargs=None, interval=100, repeat=False)
+
+# for future reference incase we want to move to a plotly express version
+# import plotly.express as px
+# import matplotlib.pyplot as plt
+# import numpy as np
+# from skimage import io
+# imgs = files_to_imgArray("../images/UnixL01_SHCHT1", [
+#     '05SHLLChat.png',
+#     '06SHLLChat.png',
+#     '07SHLLChat.png',
+#     '08SHLLChat.png',
+#     '09SHLLChat.png',
+#     '10SHLLChat.png',
+#     '11SHLLChat.png',
+#     '12SHLLChat.png',
+#     '13SHLLChat.png',
+#     '14SHLLChat.png',
+#     '15SHLLChat.png',
+#     '16SHLLChat.png',
+#     '17SHLLChat.png',
+#     '20SHLLChat.png']);
+
+#plt.imshow(imgs[0])
+#px.imshow(imgs[0])
+#fig = px.imshow(np.array(imgs), animation_frame=0, labels=dict(), height=(), width=())
+#fig.update_xaxes(showticklabels=False) \
+#    .update_yaxes(showticklabels=False)
 
 # show Terminal where TERMNAME is one of the terminals we created below
 def showTerm(TERMNAME, name, w, h):
