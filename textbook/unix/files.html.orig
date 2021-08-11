@@ -55,7 +55,7 @@
     <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="4. The Shell – Progammable User Interface to the computer" href="shell.html" />
+    <link rel="next" title="4. The Shell - Part I: Having an ASCII conversation with the OS" href="shellintro.html" />
     <link rel="prev" title="2. What is a Terminal and why do we still use them?" href="terminal.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -115,8 +115,13 @@
   </a>
  </li>
  <li class="toctree-l1">
+  <a class="reference internal" href="shellintro.html">
+   4. The Shell - Part I: Having an ASCII conversation with the OS
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="shell.html">
-   4. The Shell – Progammable User Interface to the computer
+   5. The Shell – Progammable User Interface to the computer
   </a>
  </li>
 </ul>
@@ -128,17 +133,17 @@
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../assembly/intro.html">
-   5. Introduction: Assembly Programming
+   6. Introduction: Assembly Programming
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../assembly/vonNeumannArchitecture.html">
-   6. The von Neumann Architecture
+   7. The von Neumann Architecture
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../assembly/assembly.html">
-   7. Lets write some assembly code
+   8. Lets write some assembly code
   </a>
  </li>
 </ul>
@@ -498,7 +503,7 @@ Using computers and managing information has become synonymous.   You probably t
         <div class='prev-next-bottom'>
             
     <a class='left-prev' id="prev-link" href="terminal.html" title="previous page"><span class="section-number">2. </span>What is a Terminal and why do we still use them?</a>
-    <a class='right-next' id="next-link" href="shell.html" title="next page"><span class="section-number">4. </span>The Shell – Progammable User Interface to the computer</a>
+    <a class='right-next' id="next-link" href="shellintro.html" title="next page"><span class="section-number">4. </span>The Shell - Part I: Having an ASCII conversation with the OS</a>
 
         </div>
         

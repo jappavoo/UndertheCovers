@@ -113,8 +113,13 @@
   </a>
  </li>
  <li class="toctree-l1">
+  <a class="reference internal" href="shellintro.html">
+   4. The Shell - Part I: Having an ASCII conversation with the OS
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="shell.html">
-   4. The Shell – Progammable User Interface to the computer
+   5. The Shell – Progammable User Interface to the computer
   </a>
  </li>
 </ul>
@@ -126,17 +131,17 @@
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../assembly/intro.html">
-   5. Introduction: Assembly Programming
+   6. Introduction: Assembly Programming
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../assembly/vonNeumannArchitecture.html">
-   6. The von Neumann Architecture
+   7. The von Neumann Architecture
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../assembly/assembly.html">
-   7. Lets write some assembly code
+   8. Lets write some assembly code
   </a>
  </li>
 </ul>
@@ -263,8 +268,8 @@
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#why-unix-an-operating-system-built-by-programmers-for-programmers">
-     1.3.1. Why Unix? An operating System Built by Programmers for Programmers
+    <a class="reference internal nav-link" href="#an-operating-system-built-by-programmers-for-programmers">
+     1.3.1. An operating System Built by Programmers for Programmers
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
@@ -280,6 +285,11 @@
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#visualizing-a-unix-system">
      1.3.4. Visualizing a Unix system
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#benefits-to-studying-unix">
+     1.3.5. Benefits to studying Unix
     </a>
    </li>
   </ul>
@@ -349,8 +359,8 @@
 <h2><span class="section-number">1.3. </span>UNIX<a class="headerlink" href="#unix" title="Permalink to this headline">¶</a></h2>
 <img style="float: left; margin: 15px 15px 15px 0px;" src="../images/Unix.gif" width="200"> 
 UNIX on the other hand assumes that its users are primarily programmers.  Its design and collection of tools are not meant to be particularly user friendly rather it is designed to allow programmers to be very productive and also to support a broad range of programming tools.  Many of the concepts and mechanisms of UNIX underly other operating systems but have been hidden or obscured to make things easier for non-programmer users.  
-<div class="section" id="why-unix-an-operating-system-built-by-programmers-for-programmers">
-<h3><span class="section-number">1.3.1. </span>Why Unix? An operating System Built by Programmers for Programmers<a class="headerlink" href="#why-unix-an-operating-system-built-by-programmers-for-programmers" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="an-operating-system-built-by-programmers-for-programmers">
+<h3><span class="section-number">1.3.1. </span>An operating System Built by Programmers for Programmers<a class="headerlink" href="#an-operating-system-built-by-programmers-for-programmers" title="Permalink to this headline">¶</a></h3>
 <p>The <a class="reference external" href="https://www.opengroup.org/membership/forums/platform/unix">UNIX</a> operating system was built by master programmers who valued programmability and productivity.  In some sense learning to work on the UNIX systems is a right of passage that not only teaches you how to be productive on a computer running the UNIX operating system but teaching you to think and act like a programmer.</p>
 <p>Given its programming focus UNIX is organized around two categories of software – kernel and user.  The kernel is a component of the UNIX that users of UNIX do not directly interact with.  It is the core software that is used to manage the various devices of the computer and construct an environment that allows programmers to create new users programs.  The idea is that very little is really built into UNIX rather its users are encouraged to write lots of small programs that build on the functionality of the kernel to do useful things.  The kernel main job is to provide the ability to run new program, provide those programs with access to the hardware, and provide common ways for programs to interconnect.</p>
 <p>I know this all sounds a bit recursive – welcome to computer science.  As we start interacting with UNIX it will make more sense.</p>
@@ -362,6 +372,7 @@ The people and its history are a fascinating journey into how we have gotten to 
 UNIX and it’s children literally make our digital world go around and will likely continue to do so for the quite some time.</p>
 </div></blockquote>
 </p>
+<p><a id='UnixKernel_sec'></a></p>
 </div>
 <div class="section" id="the-kernel">
 <h3><span class="section-number">1.3.2. </span>The Kernel<a class="headerlink" href="#the-kernel" title="Permalink to this headline">¶</a></h3>
@@ -375,31 +386,42 @@ UNIX and it’s children literally make our digital world go around and will lik
 <ul class="simple">
 <li><p>it provides core “software” “abstractions” packaged in the form of a library of kernel functions</p>
 <ul>
-<li><p>these functions make it easier for programs to user the hardware</p></li>
+<li><p>these functions make it easier for programs to use the hardware</p></li>
 <li><p>the kernel ensures that these functions,  behaves consistently across different hardware</p></li>
 </ul>
 </li>
-<li><p>these functions hides the details and complexity of vary hardware devices from the programs and thus the programmers who wrote them.  For example a Unix kernel provides programs with the genearic abstraction of a <a class="reference internal" href="files.html"><span class="doc std std-doc">“file”</span></a> that allows programs to create, store and recall data on storage devices without ever needing to know any details of the devices themselves.</p></li>
+<li><p>these functions hides the details and complexity of the hardware devices from the programs and thus the programmers who wrote them.  For example a Unix kernel provides programs with the generic abstraction of a <a class="reference internal" href="files.html"><span class="doc std std-doc">“file”</span></a> that allows programs to create, store and recall data on storage devices without ever needing to know any details of the devices themselves.</p></li>
 </ul>
 </li>
 </ol>
 <p><img style="margin: 10px 0px 0px 0px;" align="left" width="60" src="../images/warning.svg"> A critical point of the Unix design: <strong>Humans do not and cannot directly interact with the kernel, only user Programs can interact with the kernel by invoking kernel functions</strong>.  This design promotes and encourages that the rest of the operating systems and for that matter all other software be viewed as separated from the kernel.  As such it encourages a building block approach where several alternatives for any given OS feature, like human interface programs, can be added, supported and explored while the kernel remains without change.  The goal is to empower programmers to grow and extend the system in a natural and seamless way.</p>
 <p>It is worth noting most modern operating systems have adopted this basic organization where there is a base kernel component and a large collection of pre-packaged user programs.</p>
+<p><a id='UnixUser_sec'></a></p>
 </div>
 <div class="section" id="user-programs">
 <h3><span class="section-number">1.3.3. </span>User Programs<a class="headerlink" href="#user-programs" title="Permalink to this headline">¶</a></h3>
 <p>Largely what most people think of when they think of an OS is the large body of pre-packaged user programs that can be installed with the kernel of the OS.   Typically there are at least three categories of user programs, including:</p>
 <ol class="simple">
-<li><p>Display Servers:  These are collections of programs designed to operate specific devices for human interaction such as graphical screens, keyboards, mice, touch pads, touch screens, etc.  The first layer of this software (after the kernel) is typically some form of <a class="reference external" href="https://en.wikipedia.org/wiki/Windowing_system#Display_server">Windowing System</a>.  Examples include Microsoft’s <a class="reference external" href="https://en.wikipedia.org/wiki/Desktop_Window_Manager">Desktop Window Manager</a>, Apple’s <a class="reference external" href="https://en.wikipedia.org/wiki/Quartz_Compositor">Quartz Compositor</a> and the <a class="reference external" href="https://en.wikipedia.org/wiki/X_Window_System">X Window System</a> traditionally used by Unix operating systems. Today we are also seeing the rise of using web-browsers to present a graphical interface system this includes <a class="reference external" href="https://en.wikipedia.org/wiki/Project_Jupyter#JupyterLab">Jupyter Lab</a> which we make use of.   However, as in the case of Unix older systems they typically retain support for their rich older <a class="reference internal" href="terminal.html"><span class="doc std std-doc">ASCII terminal devices</span></a> in the form of command line shell programs (<span class="xref myst">Shell</span>).</p></li>
+<li><p>Display Servers:  These are collections of programs designed to operate specific devices for human interaction such as graphical screens, keyboards, mice, touch pads, touch screens, etc.  The first layer of this software (after the kernel) is typically some form of <a class="reference external" href="https://en.wikipedia.org/wiki/Windowing_system#Display_server">Windowing System</a>.  Examples include Microsoft’s <a class="reference external" href="https://en.wikipedia.org/wiki/Desktop_Window_Manager">Desktop Window Manager</a>, Apple’s <a class="reference external" href="https://en.wikipedia.org/wiki/Quartz_Compositor">Quartz Compositor</a> and the <a class="reference external" href="https://en.wikipedia.org/wiki/X_Window_System">X Window System</a> traditionally used by Unix operating systems. Today we are also seeing the rise of using web-browsers to present a graphical interface system this includes <a class="reference external" href="https://en.wikipedia.org/wiki/Project_Jupyter#JupyterLab">Jupyter Lab</a> which we make use of.   However, as in the case of Unix older systems they typically retain support for their rich older <a class="reference internal" href="terminal.html"><span class="doc std std-doc">ASCII terminal devices</span></a> in the form of command line shell programs (<a class="reference internal" href="shellintro.html"><span class="doc std std-doc">Shell</span></a>).</p></li>
 <li><p><a class="reference external" href="https://en.wikipedia.org/wiki/File_manager">File Managers</a>:  Programs that work with a Display Server and provide a human to explore and find information about the other programs and data installed.  Examples include Apple’s <a class="reference external" href="https://en.wikipedia.org/wiki/Finder_(software)">Finder</a> and Microsoft’s <a class="reference external" href="https://en.wikipedia.org/wiki/File_Manager_(Windows)">File Manager</a>.</p></li>
 <li><p>Other: There is a highly variable collection of software that form the rest of the user programs.  This body largely depending on the OS and its intended target audience.   In the case of OS’s that are geared to personal computers this set of software includes:  media programs, web-browsers, productivity applications and more.  While not always standard, the tools for developing new programs also fall in this category.   These include program editors, programming languages and debuggers.  A hallmark of Unix is the rich body of programming tools associated with it (including the tools to rebuild the kernel itself).</p></li>
 </ol>
 <p>One of the distinguishing feature of Unix is its standard user command line programs that are geared to programmers (<a class="reference external" href="https://en.wikipedia.org/wiki/List_of_Unix_commands">https://en.wikipedia.org/wiki/List_of_Unix_commands</a>).  While they lack graphical interfaces and are <a class="reference external" href="../unix/terminal.ipynb#ASCII_sec">ASCII</a>/command line oriented they form a very rich and powerful set of building blocks that allow a knowledgeable programmer to rapidly create turnkey solutions including the; text searching and transformation, data wrangling, automation, as well as the development and debugging of large applications.</p>
+<p><a id='UnixViz_sec'></a></p>
 </div>
 <div class="section" id="visualizing-a-unix-system">
 <h3><span class="section-number">1.3.4. </span>Visualizing a Unix system<a class="headerlink" href="#visualizing-a-unix-system" title="Permalink to this headline">¶</a></h3>
 <img style="float: right; margin: 0px 50px 0px 0px;" width="50%" src="../images/UnixRunning.png">
 <p>We visualized a running Unix system with the Hardware of the computer at the bottom shaded blue and the running software shaded in green above it.  The Unix Kernel is a persistent program that forms the foundation for launching and running instances of user programs and is illustrated as the green oval labeled “UNIX Kernel”.  The smaller green circles represent the currently running programs that have been started. Each time a program is started we visualize a new circle representing a new running instances of the program.   In the diagram each is labeled with the program that was used to start it. Each instance is independent and has its own “life-time”.   If a specific running instance of a program ends, crashes or is terminated (killed) by the user we would remove its circle.  So while in reality we can’t physically see the programs running we none the less think of the running software as forming world of its own inside the machine with the kernel enabling its construction and management.</p>
+</div>
+<div class="section" id="benefits-to-studying-unix">
+<h3><span class="section-number">1.3.5. </span>Benefits to studying Unix<a class="headerlink" href="#benefits-to-studying-unix" title="Permalink to this headline">¶</a></h3>
+<p>Unix’s terminal interface and program development environment became the gold standard for university Computer Science education.  The following are some of the reasons it became so and why it continues to be critical both academically, scientifically and industrially.</p>
+<p>The most basic interface it presents, the <a class="reference internal" href="shellintro.html"><span class="doc std std-doc">Shell</span></a>, is a programmer oriented model for interacting with the computer.  Furthermore Unix comes with a large collection of composable and extensible tools for processing ASCII documents that naturally integrate and extend the power of the Shell.  These tools make it easy to write new programs including programs that translate ASCII documents, source code in one language, into source code of another language.</p>
+<p>While it takes some effort to learn its strange command line interface, doing so teaches you to think like a programmer.  Where you are encouraged to writing little re-usable programs that you incrementally evolve as needed and compose with others to avoid any particular program from getting too complicated.</p>
+<p>Unix also does is not prescriptive on how you should do things.  Rather it provides a large collection of simple building blocks that you can learn to creatively use to meet your needs.  The investment in learning it building blocks and models for composing them minimizes time and effort in going from an idea to a prototype.  Its program oriented nature leads to an environment in which almost anything about the OS and user experience can be customized and programmed.  Unix makes automation the name of the game – largely everything you can do manually can be turned into a program that automates the task.</p>
+<p>Unix has instilled in generations of computer scientists a basic aesthetic for how to design and structure complicated collections of software.  In particular one learns that designers of Unix tried to structure the system around a few small core set of ideas, “abstractions” that once understood allows a programmer to understand the rest of the system and how to get things done.   In Unix this set include: Files, Processes, I/O redirection, Users and Groups, all of which we will cover later.</p>
+<p>The above has lead to the development of a very large and rich body of existing software for Unix.    Where contributions come from researchers, industry, students and hobbyists  alike.  This body of software has come to be a large scale shared human repository that we rely on heavily.  The computer servers that form the core of the Internet and the Cloud largely run a Unix variant called Linux.  Many of the computers embedded in the devices that surround us from wifi routers, medical devices, automobiles, and everything else often run a version of Linux.  But perhaps most critically Unix, in the form of Linux, is the foundation on which the Open Source software is built on.</p>
 </div>
 </div>
 <div class="section" id="bottomline">

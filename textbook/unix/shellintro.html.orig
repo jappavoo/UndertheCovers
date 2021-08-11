@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SLS Lecture 10 : Topics &#8212; UndertheCovers</title>
+    <title>4. The Shell - Part I: Having an ASCII conversation with the OS &#8212; UndertheCovers</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet" />
   <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -53,6 +53,8 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="5. The Shell – Progammable User Interface to the computer" href="shell.html" />
+    <link rel="prev" title="3. Organizing and Managing Information as a Tree of Files and Directories" href="files.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -94,29 +96,29 @@
   The Unix Development Environment
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../unix/intro.html">
+  <a class="reference internal" href="intro.html">
    1. Operating Systems and UNIX
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../unix/terminal.html">
+  <a class="reference internal" href="terminal.html">
    2. What is a Terminal and why do we still use them?
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../unix/files.html">
+  <a class="reference internal" href="files.html">
    3. Organizing and Managing Information as a Tree of Files and Directories
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../unix/shellintro.html">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
    4. The Shell - Part I: Having an ASCII conversation with the OS
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../unix/shell.html">
+  <a class="reference internal" href="shell.html">
    5. The Shell – Progammable User Interface to the computer
   </a>
  </li>
@@ -128,17 +130,17 @@
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="intro.html">
+  <a class="reference internal" href="../assembly/intro.html">
    6. Introduction: Assembly Programming
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="vonNeumannArchitecture.html">
+  <a class="reference internal" href="../assembly/vonNeumannArchitecture.html">
    7. The von Neumann Architecture
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="assembly.html">
+  <a class="reference internal" href="../assembly/assembly.html">
    8. Lets write some assembly code
   </a>
  </li>
@@ -183,7 +185,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/assembly/L10.ipynb"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/unix/shellintro.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
@@ -222,7 +224,7 @@
     <div class="dropdown-buttons">
         
         
-        <a class="jupyterhub-button" href="https://jupyterhub-opf-jupyterhub.apps.zero.massopen.cloud/hub/user-redirect/git-pull?repo=https://github.com/jappavoo/UndertheCovers&urlpath=tree/UndertheCovers/underthecovers/assembly/L10.ipynb&branch=main"><button type="button"
+        <a class="jupyterhub-button" href="https://jupyterhub-opf-jupyterhub.apps.zero.massopen.cloud/hub/user-redirect/git-pull?repo=https://github.com/jappavoo/UndertheCovers&urlpath=tree/UndertheCovers/underthecovers/unix/shellintro.ipynb&branch=main"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch JupyterHub" data-toggle="tooltip"
                 data-placement="left"><img class="jupyterhub-button-logo"
                     src="../_static/images/logo_jupyterhub.svg"
@@ -246,8 +248,12 @@
         
               <div>
                 
-  <div class="section" id="sls-lecture-10-topics">
-<h1>SLS Lecture 10 : Topics<a class="headerlink" href="#sls-lecture-10-topics" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="the-shell-part-i-having-an-ascii-conversation-with-the-os">
+<h1><span class="section-number">4. </span>The Shell - Part I: Having an ASCII conversation with the OS<a class="headerlink" href="#the-shell-part-i-having-an-ascii-conversation-with-the-os" title="Permalink to this headline">¶</a></h1>
+<p>As we read in the Unix <a class="reference internal" href="intro.html"><span class="doc std std-doc">introduction</span></a> a key feature of Unix is its command line oriented interface that was developed for <a class="reference internal" href="terminal.html"><span class="doc std std-doc">ASCII terminals</span></a> devices. Our goal in this chapter is to understand the general model of the shell and how to start working in the terminal environment.  If you have not done so be sure to have read the sections of the Unix <a class="reference external" href="../unix/intro.ipynb#UnixKernel_sec">Kernel</a>, <a class="reference external" href="../unix/intro.html#UnixUser_sec">User Programs</a>, how we <a class="reference external" href="../unix/intro.html#UnixViz_sec">visualize a running Unix system</a>, the introduction to <a class="reference external" href="../unix/terminal.html#TerminalEmulators_sec">Terminal Emulators</a> and the chapter introducing <a class="reference internal" href="files.html"><span class="doc std std-doc">Files and Directories</span></a>.</p>
+<blockquote>
+<div><p><img style="margin: 10px 0px 0px 0px;" align="left" width="40" src="../images/fyi.svg"> <p style="background-color:powderblue;"> It is a good idea to read this chapter with a terminal connection open so that you can explore the material as you read it.  Instructions and guidance on how to do this can be found in <a class="reference external" href="../unix/terminal.html#TerminalEmulators_sec">Terminal Emulators</a>.</p>
+</div></blockquote>
 </div>
 
     <script type="text/x-thebe-config">
@@ -263,7 +269,7 @@
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./assembly"
+            path: "./unix"
         },
         predefinedOutput: true
     }
@@ -275,6 +281,8 @@
         
         <div class='prev-next-bottom'>
             
+    <a class='left-prev' id="prev-link" href="files.html" title="previous page"><span class="section-number">3. </span>Organizing and Managing Information as a Tree of Files and Directories</a>
+    <a class='right-next' id="next-link" href="shell.html" title="next page"><span class="section-number">5. </span>The Shell – Progammable User Interface to the computer</a>
 
         </div>
         
