@@ -7,12 +7,14 @@ parts:
   - file: unix/intro
   - file: unix/terminal
   - file: unix/files
+  - file: unix/shellintro
   - file: unix/shell
   - file: unix/editors
   - file: unix/shellscripts
   - file: unix/processes
   - file: unix/ids
   - file: unix/make
+  - file: unix/gitintro
   - file: unix/git
 - caption: 'The Belly of the Beast: The von Neumann Architecture and Assembly Programming'
   numbered: true
