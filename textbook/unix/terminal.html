@@ -322,21 +322,10 @@ The UNIX operating systems would check to see that the user was allowed to login
 <p>Using the Rocket Icon (in the top right) you can
 can launch interactive versions of any chapter in this book and then create terminals to explore the material.  Clicking on the “JupyterHub” drop down of the Rocket Icon will start a private Linux server (more accurately a Intel <a class="reference external" href="https://en.wikipedia.org/wiki/LXC">Linux Container</a>) for your personal use.  This server will automatically start the Jupyter environment which will serve the book’s content to your web-browser.  This software, allows you to read and interact with the source material for chapters of the book and also allows you to create terminal sessions so that you can directly use the UNIX development tools installed on the computer via the xterm.js terminal emulators.  This allows you the freedom to explore all the topics and material from within your web-browser.  But please note there is nothing special about these terminals or the Linux system.  Anything you learn can be directly applied to any Unix like system that you can establish a terminal connection too.</p>
 <blockquote>
-<div><p><img style="margin: 10px 0px 0px 0px;" align="left" width="60" src="../images/donot.svg"> <p style="background-color:red;">  Please note if you use the interactive features of this book the files you create within your Linux server are not permanent!  In other words you cannot rely on the files to be there the next time you access the server.  If you want to save your work you will need to use an external service like <span class="xref myst">GIT</span>.</p>
+<div><p><img style="margin: 10px 0px 0px 0px;" align="left" width="60" src="../images/donot.svg"> <p style="background-color:red;">  Please note if you use the interactive features of this book, <b>the files you create within your Linux server are NOT PERMANENT!</b>  In other words you cannot rely on the files to be there the next time you access the server.  If you want to save your work you will need to use an external service like <span class="xref myst">GIT</span>.</p>
 </div></blockquote>
 <p>The following video demonstrates how you can use a page of the book to launch a Linux server and how to create terminal connections to this server from within your web-browser.  You are encouraged to always have a terminal open when you read this book so you can trying things out.</p>
-<div class="cell tag_hide-input docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">HTML</span>
-
-<span class="n">HTML</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
-<span class="s2">    &lt;video alt=&quot;test&quot; width=&quot;100%&quot; controls&gt;</span>
-<span class="s2">        &lt;source src=&quot;../images/jupyterterminaldemo.m4v&quot; type=&quot;video/mp4&quot;&gt;</span>
-<span class="s2">    &lt;/video&gt;</span>
-<span class="s2">&quot;&quot;&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
+<div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <div class="output text_html">
 <video alt="test" width="100%" controls>
