@@ -324,8 +324,26 @@ can launch interactive versions of any chapter in this book and then create term
 <blockquote>
 <div><p><img style="margin: 10px 0px 0px 0px;" align="left" width="60" src="../images/donot.svg"> <p style="background-color:red;">  Please note if you use the interactive features of this book the files you create within your Linux server are not permanent!  In other words you cannot rely on the files to be there the next time you access the server.  If you want to save your work you will need to use an external service like <span class="xref myst">GIT</span>.</p>
 </div></blockquote>
-<p>The following video demonstrates how you can use a page of the book to launch a Linux server and how to create terminal connections to this server from within you web-browser.  You are encouraged to always have a terminal open when you read this book to be exploring the material.</p>
-<p><img alt="jupterm" src="../_images/juplabterminal.gif" /></p>
+<p>The following video demonstrates how you can use a page of the book to launch a Linux server and how to create terminal connections to this server from within your web-browser.  You are encouraged to always have a terminal open when you read this book so you can trying things out.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">HTML</span>
+
+<span class="n">HTML</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">    &lt;video alt=&quot;test&quot; width=&quot;100%&quot; controls&gt;</span>
+<span class="s2">        &lt;source src=&quot;../images/jupyterterminaldemo.m4v&quot; type=&quot;video/mp4&quot;&gt;</span>
+<span class="s2">    &lt;/video&gt;</span>
+<span class="s2">&quot;&quot;&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+<video alt="test" width="100%" controls>
+    <source src="../images/jupyterterminaldemo.m4v" type="video/mp4">
+</video>
+</div></div>
+</div>
 <div style="background-color:powderblue;"> 
 <img style="margin: 10px 0px 0px 0px;" align="left" width="60" src="../images/history.svg">
 <img style="margin: 10px 0px 0px 0px;" align="left" width="60" src="../images/commentary.svg"> 
@@ -353,16 +371,16 @@ It might not seem obvious but the invention of the terminal was a very big deal 
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "bash"
+            mode: "python"
         },
         kernelOptions: {
-            kernelName: "bash",
+            kernelName: "python3",
             path: "./unix"
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'bash'</script>
+    <script>kernelName = 'python3'</script>
 
               </div>
               
