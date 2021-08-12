@@ -15,6 +15,8 @@ import matplotlib
 import matplotlib.pyplot as plt
 from matplotlib import animation
 import numpy as np
+import pandas as pd
+
 matplotlib.rcParams['animation.html'] = 'jshtml'
 
 ### BOOTSTRAPPING CODE
