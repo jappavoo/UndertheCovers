@@ -212,5 +212,10 @@ def showBT():
 def showDT():
     return showTerm(DEBUGGERTERM, "Debugger", 1400,800)
 
-
+# binary and integer utilities
+def bin2Hex(x, sep=' $\\rightarrow$ '):
+    x = np.uint8(x)
+    md_text="0b" + format(x,'08b') + sep + "0x" + format(x,'02x')
+    display(Markdown(md_text))
+    
 #print("Preamble executed")
