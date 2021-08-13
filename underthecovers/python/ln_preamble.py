@@ -219,5 +219,70 @@ def bin2Hex(x, sep=' $\\rightarrow$ '):
     x = np.uint8(x)
     md_text="0b" + format(x,'08b') + sep + "0x" + format(x,'02x')
     display(Markdown(md_text))
-    
+
+
+# this displays a table of bytes as binary you can pass a label array if you want row labels
+# for the values.  You can also override the column labels if you want.  Not sure if what
+# I did for controlling centering is the best but it works ;-)
+# probably want to make more of the styling like font size as parameters
+def displayBytes(bytes=[[0x00]],
+                     labels=[],
+                     columns=["[$b_7$","$b_6$", "$b_5$", "$b_4$", "$b_3$", "$b_2$", "$b_1$","$b_0$]"],
+                center=True):
+    if not labels:
+        labels = ["" for i in range(len(bytes))]
+
+    x=np.unpackbits(np.array(bytes,dtype=np.uint8),axis=1)
+    if not columns:
+        df=pd.DataFrame(x,index=labels)
+    else:
+        df=pd.DataFrame(x,index=labels,columns=columns)
+    th_props = [
+        ('font-size', '1.5vw'),
+        ('text-align', 'center'),
+        ('font-weight', 'bold'),
+        ('color', 'white'),
+      ('background-color', 'black')
+    ]
+    td_props = [
+            ('border','4px solid white'),
+            ('font-size','3vw'),
+            ('color', 'white'),
+            ('text-align', 'center'),
+            ('background-color', 'black'),
+            ('overflow-x', 'hidden')
+    ]
+    td_hover_props = [
+        ('background-color', 'red')
+    ]
+    # not sure why this is not working
+    tr_hover_props = [
+        ('background-color', 'red')
+    ]
+
+    body=df.style.set_table_styles([
+            {'selector' : 'td', 'props' : td_props },
+            {'selector' : 'th', 'props': th_props },
+            {'selector' : 'td:hover', 'props': td_hover_props },
+            {'selector' : 'tr:hover', 'props': tr_hover_props }
+        ])
+    if not labels[0]:
+        body = body.hide_index()
+    body.set_sticky(axis=1)
+    if not columns:
+        body.hide_columns()
+    if center:
+        margins=[
+            ('margin-left', 'auto'),
+            ('margin-right', 'auto')
+            ]
+        body.set_table_styles([{'selector': '', 'props' : margins }], overwrite=False);
+#        table_attributes='style="margin-left: auto; margin-right: auto"'
+#    else: 
+#        table_attributes=""
+        
+ #   body=body.to_html(table_attributes=table_attributes)
+    body=body.to_html()
+    display(HTML(body))   
+
 #print("Preamble executed")
