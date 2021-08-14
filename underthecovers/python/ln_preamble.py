@@ -82,7 +82,7 @@ except IndexError:
 # to use as their url
 
 #from IPython.display import Javascript
-#js_code = """
+
 #var ipkernel = IPython.notebook.kernel;
 #var stringHostName = window.location.hostname
 #var ipcommand = "NB_HOST = " + "'"+stringHostName+"'";
@@ -101,6 +101,7 @@ display(HTML(
         '.prompt { display:none }'
         '.terminal-app #terminado-container { width:100%; }'
         'div.mywarn { background-color: #fcf2f2;border-color: #dFb5b4; border-left: 5px solid #dfb5b4; padding: 0.5em;}'
+        'button { background-color: #cccccc00; }'
     '</style>'
 ))
 
@@ -170,7 +171,10 @@ def mkImgsAnimateBox(dir, files ,dpi=100.0,xpixels=0,ypixels=0):
     def animate(i):
         im.set_array(imgs[i])
         return(im,);
-    return animation.FuncAnimation(fig, animate, frames=np.arange(0,(len(imgs)-1),1), fargs=None, interval=100, repeat=False)
+    ani=animation.FuncAnimation(fig, animate, frames=np.arange(0,(len(imgs)-1),1), fargs=None, interval=100, repeat=False)
+    # next line is used to remove side affect of plot object
+    plt.close()
+    return ani
 
 # for future reference incase we want to move to a plotly express version
 # import plotly.express as px
