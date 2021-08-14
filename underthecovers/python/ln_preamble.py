@@ -1,23 +1,10 @@
+# Assumes common.py
 # NOTES:  My standard preamble ipython for lecture note rise slides
 #    1) Note in terminals setting TERM=linux is friendly with emacs
 #    2) we customize css to improve layout of cells in the browser window
 #    3) standarize how to display code blocks from a source file
-# Convert this to ues %load <file.ipy>
+# 
 
-# imports to make python code easier and constent
-from IPython.core.display import display, HTML, Markdown, TextDisplayObject, Javascript
-from IPython.display import IFrame, Image
-import ipywidgets as widgets
-from ipywidgets import interact, fixed, Layout
-import os, requests
-from notebook.notebookapp import list_running_servers
-import matplotlib
-import matplotlib.pyplot as plt
-from matplotlib import animation
-import numpy as np
-import pandas as pd
-
-matplotlib.rcParams['animation.html'] = 'jshtml'
 
 ### BOOTSTRAPPING CODE
 # get server info so that we can make api calls when runing direclty on a
@@ -105,188 +92,19 @@ display(HTML(
     '</style>'
 ))
 
-# Custom functions and classes to help with standard slide elements that I use
-# NOTE:  I don't know python so this probably all should be rewritten by someone
-#        who knows what they are doing.  
-
-# This probably should be a class
-def MkCodeBox(file, lang, html_title, w, h):
-    #open text file in read mode
-    text_file = open(file, "r")
-    #read whole file to a string
-    data = text_file.read()
-    #close file
-    text_file.close()
-    # build contents from file and language
-    md_text = '''
-``` ''' + lang + '''
-''' + data + '''
-```
-'''
-    # build output widget 
-    wout = widgets.Output(layout=Layout(overflow='scroll',
-                                        width=w,
-                                        min_width=w,
-                                        max_width=w,
-                                        min_height=h,
-                                        height=h,
-                                        max_height=h))
-    with wout:
-        display(Markdown(md_text),)
-    display(HTML(html_title))
-    return wout
-
-# Make a box that display the specified image files from the specified
-# directory if no files a specified then all file in the directory are
-# displayed.  A slider is used to select between the images
-# Note if you want control the order you must specifiy the files
-# explicitly
-#  This function requires backend kernel see 
-def mkImgsBox(dir,files=[]):
-    if len(files)==0:
-        files=os.listdir(dir);
-    interact(lambda i,d=fixed(dir),
-             f=fixed(files): 
-             display(Image(dir + '/' + files[i])),
-             i=widgets.IntSlider(min=0, max=(len(files)-1), step=1, value=0));
-
-def files_to_imgArray(dir, files):
-    n=len(files);
-    imgs = [];
-    for f in files:
-        imgs.append(plt.imread(dir + "/" + f))
-    return imgs;
-
-# this embeddes a javascript animation box with specified
-# images
-def mkImgsAnimateBox(dir, files ,dpi=100.0,xpixels=0,ypixels=0):
-    imgs=files_to_imgArray(dir, files)
-    if (xpixels==0):
-        xpixels = imgs[0].shape[0]
-    if (ypixels==0):
-        ypixels = imgs[0].shape[1]
-    fig = plt.figure(figsize=(ypixels/dpi, xpixels/dpi), dpi=dpi)
-    fig.patch.set_alpha(.0)
-    im = plt.figimage(imgs[0])
-    def animate(i):
-        im.set_array(imgs[i])
-        return(im,);
-    ani=animation.FuncAnimation(fig, animate, frames=np.arange(0,(len(imgs)-1),1), fargs=None, interval=100, repeat=False)
-    # next line is used to remove side affect of plot object
-    plt.close()
-    return ani
-
-# for future reference incase we want to move to a plotly express version
-# import plotly.express as px
-# import matplotlib.pyplot as plt
-# import numpy as np
-# from skimage import io
-# imgs = files_to_imgArray("../images/UnixL01_SHCHT1", [
-#     '05SHLLChat.png',
-#     '06SHLLChat.png',
-#     '07SHLLChat.png',
-#     '08SHLLChat.png',
-#     '09SHLLChat.png',
-#     '10SHLLChat.png',
-#     '11SHLLChat.png',
-#     '12SHLLChat.png',
-#     '13SHLLChat.png',
-#     '14SHLLChat.png',
-#     '15SHLLChat.png',
-#     '16SHLLChat.png',
-#     '17SHLLChat.png',
-#     '20SHLLChat.png']);
-
-#plt.imshow(imgs[0])
-#px.imshow(imgs[0])
-#fig = px.imshow(np.array(imgs), animation_frame=0, labels=dict(), height=(), width=())
-#fig.update_xaxes(showticklabels=False) \
-#    .update_yaxes(showticklabels=False)
-
 # show Terminal where TERMNAME is one of the terminals we created below
-def showTerm(TERMNAME, name, w, h):
-    if name:
-        display(HTML('<b>TERMINAL Window for ' + name + '</b>'))
+def showTerm(TERMNAME, title, w, h):
+    if title:
+        display(HTML('<b>' + title + '</b>'))
     return IFrame(base_url + 'terminals/' + TERMNAME, w,h)
     
-def showET():
-    return showTerm(EDITORTERM, "Editor", 1400,600)
+def showET(title="TERMINAL Window for Editor"):
+    return showTerm(EDITORTERM, title, "100%", 600)
 
-def showBT():
-    return showTerm(BUILDTERM, "Build Commands", 1400,200)
+def showBT(title="TERMINAL Window for Build Commands"):
+    return showTerm(BUILDTERM, title, "100%", 200)
 
-def showDT():
-    return showTerm(DEBUGGERTERM, "Debugger", 1400,800)
+def showDT(title="TERMINAL Window for Debugger"):
+    return showTerm(DEBUGGERTERM, title, "100%", 800)
 
-# binary and integer utilities
-def bin2Hex(x, sep=' $\\rightarrow$ '):
-    x = np.uint8(x)
-    md_text="0b" + format(x,'08b') + sep + "0x" + format(x,'02x')
-    display(Markdown(md_text))
-
-
-# this displays a table of bytes as binary you can pass a label array if you want row labels
-# for the values.  You can also override the column labels if you want.  Not sure if what
-# I did for controlling centering is the best but it works ;-)
-# probably want to make more of the styling like font size as parameters
-def displayBytes(bytes=[[0x00]],
-                     labels=[],
-                     columns=["[$b_7$","$b_6$", "$b_5$", "$b_4$", "$b_3$", "$b_2$", "$b_1$","$b_0$]"],
-                center=True):
-    if not labels:
-        labels = ["" for i in range(len(bytes))]
-
-    x=np.unpackbits(np.array(bytes,dtype=np.uint8),axis=1)
-    if not columns:
-        df=pd.DataFrame(x,index=labels)
-    else:
-        df=pd.DataFrame(x,index=labels,columns=columns)
-    th_props = [
-        ('font-size', '1.5vw'),
-        ('text-align', 'center'),
-        ('font-weight', 'bold'),
-        ('color', 'white'),
-      ('background-color', 'black')
-    ]
-    td_props = [
-            ('border','4px solid white'),
-            ('font-size','3vw'),
-            ('color', 'white'),
-            ('text-align', 'center'),
-            ('background-color', 'black'),
-            ('overflow-x', 'hidden')
-    ]
-    td_hover_props = [
-        ('background-color', 'red')
-    ]
-    # not sure why this is not working
-    tr_hover_props = [
-        ('background-color', 'red')
-    ]
-
-    body=df.style.set_table_styles([
-            {'selector' : 'td', 'props' : td_props },
-            {'selector' : 'th', 'props': th_props },
-            {'selector' : 'td:hover', 'props': td_hover_props },
-            {'selector' : 'tr:hover', 'props': tr_hover_props }
-        ])
-    if not labels[0]:
-        body = body.hide_index()
-    body.set_sticky(axis=1)
-    if not columns:
-        body.hide_columns()
-    if center:
-        margins=[
-            ('margin-left', 'auto'),
-            ('margin-right', 'auto')
-            ]
-        body.set_table_styles([{'selector': '', 'props' : margins }], overwrite=False);
-#        table_attributes='style="margin-left: auto; margin-right: auto"'
-#    else: 
-#        table_attributes=""
-        
- #   body=body.to_html(table_attributes=table_attributes)
-    body=body.to_html()
-    display(HTML(body))   
-
-#print("Preamble executed")
+print("Preamble executed")
