@@ -155,15 +155,23 @@ def bin2Hex(x, sep=' $\\rightarrow$ '):
 #    displayBytes(bytes=[[i] for i in range(128)], labels=["0x"+format(i,"02x")+ " (" + format(i,"03d") +") ASCII: " + repr(chr(i)) for i in range(128)])
 #    Table of all 256 byte values
 #    displayBytes(bytes=[[i] for i in range(256)], labels=["0x"+format(i,"02x")+ " (" + format(i,"03d") +")" for i in range(256)], center=True)
-def toBits(v,dtype=np.uint8):
+def toBits(v,dtype,count,numbits):
     try:
-        return np.unpackbits(dtype(v))
+        x=np.unpackbits(dtype(v),count=count)
+        if (numbits<8):
+            return x[numbits:]
+        else:
+            return x
     except:
 #        print("oops v: ", v, type(v), len(v));
-        return [" "," "," "," "," "," "," "," "]
+        return [" " for i in range(numbits)]
         
 def displayBytes(bytes=[[0x00]],
                  labels=[],
+                 prefixvalues=[],
+                 prefixcolumns=[],
+                 numbits=8,
+                 dtype=np.uint8,
                  columns=["[$b_7$","$b_6$", "$b_5$", "$b_4$", "$b_3$", "$b_2$", "$b_1$","$b_0$]"],
                  center=True,
                  th_font_size="1.5vw",
@@ -175,21 +183,49 @@ def displayBytes(bytes=[[0x00]],
                  td_hover_bgcolor="#880000",
                  td_hover_color="white"
                  ):
-    
-    if not labels:
-        labels = ["" for i in range(len(bytes))]
 
-    try:    
-        x = np.unpackbits(np.array(bytes,dtype=np.uint8),axis=1)
-    except:
-        x = np.array([ toBits(i) for i in bytes ])
- #   print(x, type(x), len(x))
+    # if no labels specified then send in blanks to supress
+    # there is probably a better way to do this
+    #if not labels:
+    #    labels = ["" for i in range(len(bytes))]
+
+    sizeinbits = (dtype(0).nbytes)*8
+
+    # have attempted to support specifiy the number of bits
+    # but not sure it really works will need to be tested
+    if numbits<sizeinbits:
+        count=sizeinbits;
+    else:
+        count=numbits
         
+    # convert each byte value into an array of bits        
+    try:    
+        x = np.unpackbits(np.array(bytes,dtype=dtype),count,axis=1)
+        if (numbits<sizeinbits):
+            x = [ i[numbits:] for i in x ]
+    except:
+        x = np.array([ toBits(i,dtype=dtype,count=count,numbits=numbits) for i in bytes ])
+        
+    # Add any prefix data columns to the bits 
+    if prefixvalues:
+        x = np.concatenate((prefixvalues,x),axis=1)
             
     if not columns:
-        df=pd.DataFrame(x,index=labels)
+        if not labels:
+            df=pd.DataFrame(x)
+        else:
+            df=pd.DataFrame(x,index=labels)
     else:
-        df=pd.DataFrame(x,index=labels,columns=columns)
+        # if extra prefix column labels specified then add them
+        # to the front of the other column labels
+        if prefixcolumns:
+            columns=np.concatenate((prefixcolumns,columns))
+        if not labels:
+            df=pd.DataFrame(x,columns=columns)
+        else:
+            df=pd.DataFrame(x,index=labels,columns=columns)
+            
+    # style the table
     th_props = [
         ('font-size', th_font_size),
         ('text-align', 'center'),
@@ -224,11 +260,18 @@ def displayBytes(bytes=[[0x00]],
             {'selector' : 'td:hover', 'props': td_hover_props },
             {'selector' : 'tr:hover', 'props': tr_hover_props }
         ])
-    if not labels[0]:
-        body = body.hide_index()
-    body.set_sticky(axis=1)
-    if not columns:
+    
+    # if no row labels hide them
+    if (len(labels)==0):
+        body.hide_index()
+    # if no column labels hide them 
+    if (len(columns)==0):
         body.hide_columns()
+        
+    # make body sticky header if present stay in place    
+    body.set_sticky(axis=1)
+
+    # center in frame
     if center:
         margins=[
             ('margin-left', 'auto'),
@@ -237,5 +280,11 @@ def displayBytes(bytes=[[0x00]],
         body.set_table_styles([{'selector': '', 'props' : margins }], overwrite=False);
     body=body.to_html()
     display(HTML(body))   
+
+def mkHexTbl():
+    displayBytes(bytes=[i for i in range(16)], numbits=4, 
+                 prefixvalues=[[format(i,"0d"),format(i,"1x")] for i in range(16)],
+                 prefixcolumns=["Dec", "Hex"],
+             columns=["[$b_3$", "$b_2$", "$b_1$", "$b_0$]"])
 
 print("Common executed")
