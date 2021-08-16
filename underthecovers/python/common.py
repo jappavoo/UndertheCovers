@@ -168,6 +168,7 @@ def toBits(v,dtype,count,numbits):
         
 def displayBytes(bytes=[[0x00]],
                  labels=[],
+                 labelstitle="",
                  prefixvalues=[],
                  prefixcolumns=[],
                  numbits=8,
@@ -226,6 +227,9 @@ def displayBytes(bytes=[[0x00]],
             df=pd.DataFrame(x,index=labels,columns=columns)
             
     # style the table
+    if labelstitle:
+        df = df.rename_axis(labelstitle, axis="columns")
+        
     th_props = [
         ('font-size', th_font_size),
         ('text-align', 'center'),
@@ -286,5 +290,17 @@ def mkHexTbl():
                  prefixvalues=[[format(i,"0d"),format(i,"1x")] for i in range(16)],
                  prefixcolumns=["Dec", "Hex"],
              columns=["[$b_3$", "$b_2$", "$b_1$", "$b_0$]"])
+
+def displayStr(str, size="", align=""):
+    md='<div'
+    if size:
+        md = md + ' style="font-size: ' + size + ';"'
+    if align:
+        md = md + ' align="' + align + '"'
+    md = md + ">\n"
+    md = md + str
+    md = md + "\n</div>"
+#    print(md)
+    return display(Markdown(md))
 
 print("Common executed")
