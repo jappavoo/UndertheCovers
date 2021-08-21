@@ -71,18 +71,21 @@ class SLS6502:
             
             # execute
             
-    class Memory:
+    class MemoryObject:
         """ Memory """
+        def read(self):
+            
+    class MemmoryController:
+        """ Memory Controller """
+        def attach(self, addrTuple, memObject):
+            
+        def read(addr):
         
-    class DataBus:
-        """ The Data Bus"""
-        
-    class AddressBus:
-        """ The Address Bus"""
-        
+        def write(addr,v):
+            
     # constructor
     def __init__(self):
         self.cpu        = self.CPU()
-        self.databus    = self.DataBus()
-        self.addressbus = self.AddressBus()
+        self.memCtlr    = self.MemoryController()
         
+
