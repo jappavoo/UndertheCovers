@@ -518,7 +518,7 @@ UNIX and it’s children literally make our digital world go around and will lik
 </div>
 <div class="section" id="visualizing-a-unix-system">
 <h3>Visualizing a Unix system<a class="headerlink" href="#visualizing-a-unix-system" title="Permalink to this headline">¶</a></h3>
-<img style="float: right; margin: 0px 50px 0px 0px;" width="50%" src="../images/UnixL0_SHLLCHT.png">
+<img style="float: right; margin: 0px 50px 0px 0px;" width="50%" src="../images/UnixRunning.png">
 <p>We visualized a running Unix system with the Hardware of the computer at the bottom shaded blue and the running software shaded in green above it.  The Unix Kernel is a persistent program that forms the foundation for launching and running instances of user programs and is illustrated as the green oval labeled “UNIX Kernel”.  The smaller green circles represent the currently running programs that have been started. Each time a program is started we visualize a new circle representing a new running instances of the program.   In the diagram each is labeled with the program that was used to start it. Each instance is independent and has its own “life-time”.   If a specific running instance of a program ends, crashes or is terminated (killed) by the user we would remove its circle.  So while in reality we can’t physically see the programs running we none the less think of the running software as forming world of its own inside the machine with the kernel enabling its construction and management.</p>
 </div>
 <div class="section" id="benefits-to-studying-unix">
