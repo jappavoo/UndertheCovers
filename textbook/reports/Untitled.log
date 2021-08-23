@@ -22,17 +22,17 @@ theMachine = SLS_6502()
 
 [0;31m---------------------------------------------------------------------------[0m
 [0;31mAttributeError[0m                            Traceback (most recent call last)
-[0;32m/tmp/ipykernel_2170/2046537104.py[0m in [0;36m<module>[0;34m[0m
+[0;32m/tmp/ipykernel_4187/2046537104.py[0m in [0;36m<module>[0;34m[0m
 [0;32m----> 1[0;31m [0mtheMachine[0m [0;34m=[0m [0mSLS_6502[0m[0;34m([0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
 [0m
-[0;32m/tmp/ipykernel_2170/377377113.py[0m in [0;36m__init__[0;34m(self)[0m
+[0;32m/tmp/ipykernel_4187/377377113.py[0m in [0;36m__init__[0;34m(self)[0m
 [1;32m     83[0m     [0;31m# constructor[0m[0;34m[0m[0;34m[0m[0;34m[0m[0m
 [1;32m     84[0m     [0;32mdef[0m [0m__init__[0m[0;34m([0m[0mself[0m[0;34m)[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
 [0;32m---> 85[0;31m         [0mself[0m[0;34m.[0m[0mcpu[0m        [0;34m=[0m [0mself[0m[0;34m.[0m[0mCPU[0m[0;34m([0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
 [0m[1;32m     86[0m         [0mself[0m[0;34m.[0m[0mdatabus[0m    [0;34m=[0m [0mself[0m[0;34m.[0m[0mDataBus[0m[0;34m([0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
 [1;32m     87[0m         [0mself[0m[0;34m.[0m[0maddressbus[0m [0;34m=[0m [0mself[0m[0;34m.[0m[0mAddressBus[0m[0;34m([0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
 
-[0;32m/tmp/ipykernel_2170/377377113.py[0m in [0;36m__init__[0;34m(self)[0m
+[0;32m/tmp/ipykernel_4187/377377113.py[0m in [0;36m__init__[0;34m(self)[0m
 [1;32m     40[0m             [0mself[0m[0;34m.[0m[0m_Y[0m  [0;34m=[0m [0mself[0m[0;34m.[0m[0mRegister8Bit[0m[0;34m([0m[0;34m)[0m  [0;31m# Index Register Y[0m[0;34m[0m[0;34m[0m[0m
 [1;32m     41[0m             [0mself[0m[0;34m.[0m[0m_PC[0m [0;34m=[0m [0mself[0m[0;34m.[0m[0mRegister16Bit[0m[0;34m([0m[0;34m)[0m [0;31m# Program Counter PC[0m[0;34m[0m[0;34m[0m[0m
 [0;32m---> 42[0;31m             [0mself[0m[0;34m.[0m[0m_S[0m  [0;34m=[0m [0mself[0m[0;34m.[0m[0mRegister8bit[0m[0;34m([0m[0;34m)[0m  [0;31m# Stack Pointer S[0m[0;34m[0m[0;34m[0m[0m
