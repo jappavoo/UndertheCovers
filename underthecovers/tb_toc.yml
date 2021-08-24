@@ -26,6 +26,7 @@ parts:
   - file: assembly/theLoop
   - file: assembly/assembly
 - caption: 'Into the Light : C Programming'
+  - file: C/intro
   numbered: true
   chapters:
   - file: C/intro
