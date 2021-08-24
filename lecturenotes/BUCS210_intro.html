@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Under the Covers : The Secret Life of Software &#8212; UndertheCovers</title>
+    <title>&lt;no title&gt; &#8212; UndertheCovers</title>
     
   <link href="_static/css/theme.css" rel="stylesheet" />
   <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -292,7 +292,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="_sources/intro_tb.md"><button type="button"
+        <a class="dropdown-buttons" href="_sources/BUCS210_intro.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
@@ -334,12 +334,7 @@
                 <i class="fas fa-list"></i> Contents
             </div>
             <nav id="bd-toc-nav">
-                <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#about">
-   About
-  </a>
- </li>
+                <ul class="simple visible nav section-nav flex-column">
 </ul>
 
             </nav>
@@ -351,35 +346,325 @@
         
               <div>
                 
-  <!-- #region -->
-<div class="section" id="under-the-covers-the-secret-life-of-software">
-<h1>Under the Covers : The Secret Life of Software<a class="headerlink" href="#under-the-covers-the-secret-life-of-software" title="Permalink to this headline">¶</a></h1>
-<p>In this book we will look under the covers to learn exactly what software is and how it works. Our goal is to allow a reader to learn both concepts and practical skills that will help you understand and participate in the digital world.  While the material is primarily targeting people who are or intend to be programmers it is not a programming book.  The goal is to dissect how software and computers work so that you can learn the underlying concepts and mechanisms of computing.</p>
-<p>We will learn about how both hardware and software are broken down and organized. Learning the generic models that apply to most modern computers.   We will see how physical devices are turned into a blank canvas on which humans paint information as collections of binary bits.  Learning how different types of data are represented and how programs themselves are represented.  We will build our way to understanding how layers of software are fitted together to allow more complex information and ideas, not natively supported by the hardware, to be expressed and worked with.
-Understanding this process will reveal to us how the layers make it simpler and simpler for humans to program computers and the limits and overheads that comes along with the layering.</p>
-<p>While this is not explicitly a programming course as part of our journey we will be learning practical skills.</p>
+  <p>The following documents the topics, concepts and skills covered.  This is mainly to communicate the intended topics the material is developed in the form of the “Under the Covers: The Secret Life of Software” textbook and associated lecture notes and lab manual.</p>
+<p><strong>PART I</strong>: The Unix Software development environment</p>
 <ul class="simple">
-<li><p>Learning the tools and ideas that make up the UNIX program development environment, as this is the defacto environment for industrial and academic computing and historically makes it easier to look under the covers.</p></li>
-<li><p>Learning how to read, write and understand software as assembly code as we learn how computers operate and how data and programs are represented at the binary level.</p></li>
-<li><p>Learning how to read, write and understand ‘C’ code from an assembly language perspective.  Experiencing how higher level data-structures and programming ideas, expressed in a human friendly way, are translated into assembly code while maintaining direct control of the hardware.</p></li>
+<li><p>UNIX: An operating systems by programmers for programmers</p></li>
+<li><p>Shell Basics:</p>
+<ul>
+<li><p>The Terminal and Command line environment</p></li>
+<li><p>Files and Directories</p></li>
+<li><p>The Bourne Again Shell</p>
+<ul>
+<li><p>External vs Internal commands</p>
+<ul>
+<li><p>Internal</p>
+<ul>
+<li><p>comments</p></li>
+<li><p>echo</p></li>
+<li><p>variables</p></li>
+<li><p>conditions and if</p></li>
+<li><p>loops</p></li>
 </ul>
-<p>A core goal of this material is to help a reader learn to use the tools that enable developing and controlling all fundamental aspects of a computer.    This includes being productive in the UNIX command line environment understanding the core concepts of files, terminal interaction, processes and UNIX credentials.  This coverage will include the use of editors, the make utility and GIT as a repository control system.  Using knowledge of  these tools we will then explore how to use assemblers and compilers to convert human readable code into machine executable software. Through out this process we will learn how to use a machine level debugger, such as gdb, both to explore and control how the software and hardware work from a memory oriented perspective and how to map the human symbolic version of code onto the memory.</p>
-<p>In the material is broken down in to three parts:</p>
-<ol class="simple">
-<li><p>The Unix Software development environment</p></li>
-<li><p>The Belly of the Beast: The von Neumann Architecture and assembly programming</p></li>
-<li><p>Into the Light: C Programming</p></li>
-</ol>
-<p>This textbook was developed for Boston University’s College of Arts and Sciences Computer Science CS210 Computer Systems Class.  For a more detailed list of topic that the books covers can be found in <a class="reference internal" href="BUCS210_intro.html"><span class="doc std std-doc">CS210 Learning outcomes</span></a>.</p>
-<div class="section" id="about">
-<h2>About<a class="headerlink" href="#about" title="Permalink to this headline">¶</a></h2>
-<p>This <a class="reference external" href="https://jappavoo.github.io/UndertheCovers/textbook/intro_tb.html">“book”</a> has associated with it <a class="reference external" href="https://jappavoo.github.io/UndertheCovers/lecturenotes/intro_ln.html">Lecture Notes</a> and a <a class="reference external" href="https://jappavoo.github.io/UndertheCovers/labmanual">Lab Manual</a>.   The book, lecture notes and lab manual websites have been generated using <a class="reference external" href="https://jupyterbook.org/intro.html">Jupyter-book</a>.  The source material is maintained in the following git repository: <a class="reference external" href="https://github.com/jappavoo/UndertheCovers">https://github.com/jappavoo/UndertheCovers</a>.</p>
-<p>Jupyter-book is a tool for converting  and exploiting <a class="reference external" href="https://jupyter-notebook-beginner-guide.readthedocs.io/en/latest/what_is_jupyter.html">Jupyter Notebooks</a> as the main document type for authoring content.  Jupyter Notebooks are an ipython document type who’s file names end in <code class="docutils literal notranslate"><span class="pre">.html</span></code>. Jupyter Notebooks allow an author to design and include both static text and interactive content in a document that can be viewed and worked using a <a class="reference external" href="https://jupyter.org">Jupyter user interface app</a> such as Juypter Lab or the older Jupyter Notebook Classic Interface.</p>
-<p>Jupyter-books converts each of the Jupyter Notebooks that make up either the textbook, lecture notes, or lab manual into a website composed of web-pages (html) that can be viewed like any other website.    The websites are static version of the content that the jupyter-book tool created from the underlying source notebooks.    The notebooks however are interactive documents and may include code and content that is best used directly in the form of the notebook.    This is particularly true for the lecture notes and lab manual content.  The lecture notes are designed to used within the classic juypter user interface with the  RISE Presentation extension (<a class="reference external" href="https://rise.readthedocs.io/en/stable/">https://rise.readthedocs.io/en/stable/</a>).</p>
-<p>To get access to the source notebooks so that you can use them interactively or for you to help author new content you need to get a copy of the <a class="reference external" href="https://github.com/jappavoo/UndertheCovers">repository</a>.    This can be done by manually setting up your own environment and cloning the repository or by using short cuts built into the static websites.  For the interactive pages you will see a rocket icon which if you hover over will reveal a JupyterHub button.  Clicking on this button will redirect you to a JupyterHub service that will start a private Jupyter server for you that will contain a clone of the source material.  See the attached video for more information.   If at any point we want to quickly see the source material you can use the git icon at the top of the web pages – hovering over it will reveal a repository button that will take you the the git repository.</p>
-<!-- #endregion -->
-</div>
-</div>
+</li>
+<li><p>External</p>
+<ul>
+<li><p>ls</p></li>
+<li><p>cat</p></li>
+<li><p>grep</p></li>
+<li><p>wc</p></li>
+<li><p>sort</p></li>
+<li><p>uniq</p></li>
+<li><p>bc</p></li>
+<li><p>man</p></li>
+<li><p>editors</p>
+<ul>
+<li><p>vi/vim</p></li>
+<li><p>emacs</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Shell Scripts</p></li>
+</ul>
+</li>
+<li><p>I/O and Process Control</p>
+<ul>
+<li><p>I/O redirection</p></li>
+<li><p>pipes</p></li>
+<li><p>background vs foreground</p></li>
+<li><p>ps and jobs</p></li>
+</ul>
+</li>
+<li><p>Users and Groups</p>
+<ul>
+<li><p>usernames, user ids, group names and group ids</p></li>
+<li><p>permissions: owner, group, others</p></li>
+<li><p>root</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Automation using Make</p>
+<ul>
+<li><p>targets vs rules</p></li>
+<li><p>variables</p></li>
+</ul>
+</li>
+<li><p>Version Contol</p>
+<ul>
+<li><p>files and directories as a “living” thing - Tracking and managing changes</p></li>
+<li><p>GIT - Distributed Version Control</p>
+<ul>
+<li><p>Repositories</p></li>
+<li><p>Clone</p></li>
+<li><p>Commits</p></li>
+<li><p>Branches</p></li>
+<li><p>Merging</p></li>
+<li><p>Rebasing</p></li>
+<li><p>Pushing</p></li>
+<li><p>Pulling</p></li>
+<li><p>Forking</p></li>
+<li><p>Pull Requests</p></li>
+</ul>
+</li>
+<li><p>Programming as a Social Activity and GIT Ettique</p></li>
+<li><p>GIT Based Services: GitHub and GitLab</p></li>
+</ul>
+</li>
+</ul>
+<p><strong>PART II</strong>: The Von Neumman Architecture through Assembly Programming</p>
+<ul class="simple">
+<li><p>Von Neumman Archecture</p>
+<ul>
+<li><p>The Byte</p></li>
+<li><p>Memory</p></li>
+<li><p>The CPU</p>
+<ul>
+<li><p>Registers</p></li>
+<li><p>Opcodes</p></li>
+<li><p>The Loop</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Assembly Language and Machine Level Debuggers</p>
+<ul>
+<li><p>Assembler - GAS</p></li>
+<li><p>Addresses vs Symbols</p>
+<ul>
+<li><p>Linker - GNU LD</p></li>
+</ul>
+</li>
+<li><p>Debugger – GDB</p>
+<ul>
+<li><p>tool for exploring memory, registers and controlling cpu</p></li>
+<li><p>source level debugger: mapping symbols and source code to memory</p></li>
+</ul>
+</li>
+<li><p>Integer Data Representation</p>
+<ul>
+<li><p>1, 2, 4, 8 byte unsigned</p></li>
+<li><p>1, 2, 4, 8 byte signed</p></li>
+<li><p>add, sub, mult, inc, dec,</p></li>
+</ul>
+</li>
+<li><p>Boolean Data and Flags</p>
+<ul>
+<li><p>Logic - cmp</p></li>
+<li><p>Bitwise - test</p></li>
+<li><p>and, or, xor,</p></li>
+</ul>
+</li>
+<li><p>Flow Control</p>
+<ul>
+<li><p>Conditional Execution</p></li>
+<li><p>Jumps</p></li>
+<li><p>IF Then Else</p></li>
+<li><p>Loops</p></li>
+<li><p>Switch</p></li>
+</ul>
+</li>
+<li><p>Functions and the Stack</p>
+<ul>
+<li><p>Calling Conventions</p></li>
+</ul>
+</li>
+<li><p>Working with Memory</p>
+<ul>
+<li><p>Addresses and Addressing Modes</p></li>
+<li><p>Variables and Data structures</p>
+<ul>
+<li><p>Intrinsics</p></li>
+<li><p>Arrays</p></li>
+<li><p>Hetrogenous Data</p></li>
+<li><p>Lists and Trees</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Code and Data</p>
+<ul>
+<li><p>code pointers</p></li>
+<li><p>jump tables</p></li>
+<li><p>self modifying code</p></li>
+</ul>
+</li>
+<li><p>Linking</p>
+<ul>
+<li><p>object files</p></li>
+<li><p>libraries</p></li>
+<li><p>address space layout and linker scripts</p></li>
+</ul>
+</li>
+<li><p>System Calls and UNIX ABI</p>
+<ul>
+<li><p>exit</p></li>
+<li><p>write</p></li>
+<li><p>read</p></li>
+<li><p>open</p></li>
+<li><p>close</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>PART III</strong> : C Programming briding the gap between Assembly and the rest of the software stack.</p>
+<ul class="simple">
+<li><p>C vs Assembly</p>
+<ul>
+<li><p>Tool Chain</p>
+<ul>
+<li><p>preprocessor</p></li>
+<li><p>compiler</p></li>
+<li><p>assembler</p></li>
+<li><p>linker</p></li>
+<li><p>loader</p></li>
+</ul>
+</li>
+<li><p>C vs LibC</p>
+<ul>
+<li><p>syntax that is translated into assembly</p></li>
+<li><p>library of standard functions</p>
+<ul>
+<li><p>effectivley becomes part of the language</p></li>
+<li><p>C interface to UNIX system calls</p></li>
+<li><p>Builds on UNIX system calls to provide richer IO primitives</p>
+<ul>
+<li><p>write vs printf</p></li>
+<li><p>read vs scanf</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>C Syntax</p>
+<ul>
+<li><p>functions</p>
+<ul>
+<li><p>main</p></li>
+</ul>
+</li>
+<li><p>variables</p>
+<ul>
+<li><p>global</p></li>
+<li><p>local - stack</p></li>
+<li><p>types</p>
+<ul>
+<li><p>integers</p></li>
+<li><p>floats</p>
+<ul>
+<li><p>IEEE</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>assignment</p></li>
+<li><p>constants</p></li>
+<li><p>addresses and pointers</p></li>
+</ul>
+</li>
+<li><p>basic syntax</p>
+<ul>
+<li><p>statements and logic</p>
+<ul>
+<li><p>!, &amp;&amp;, ||</p></li>
+</ul>
+</li>
+<li><p>working with bits:</p>
+<ul>
+<li><p>bitwise operators</p>
+<ul>
+<li><p>~, &amp;, |, ^, &gt;&gt;, &lt;&lt;</p></li>
+<li><p>common idioms</p>
+<ul>
+<li><p>masking</p></li>
+<li><p>testing and setting bits</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>ternary operator</p></li>
+<li><p>if, then else</p></li>
+<li><p>goto</p></li>
+<li><p>do while, while</p></li>
+<li><p>for</p></li>
+<li><p>switch</p></li>
+<li><p>C to assembly and assembly to C</p>
+<ul>
+<li><p>fancy things the compiler does</p></li>
+<li><p>writing optimization friendly code</p></li>
+</ul>
+</li>
+<li><p>debugger and C</p></li>
+</ul>
+</li>
+<li><p>working with memory</p>
+<ul>
+<li><p>structures</p></li>
+<li><p>unions</p></li>
+<li><p>pointers to structures and unions</p></li>
+<li><p>alignment</p></li>
+<li><p>endianess</p></li>
+<li><p>arrays</p></li>
+<li><p>address space revisited</p>
+<ul>
+<li><p>text, bss, data, heap, stack</p></li>
+<li><p>loader and the OS</p></li>
+<li><p>mmap</p></li>
+<li><p>malloc</p></li>
+</ul>
+</li>
+<li><p>link lists and other data structures</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>LibC</p>
+<ul>
+<li><p>standard IO – streams</p></li>
+<li><p>fork</p></li>
+<li><p>pthreads_create</p></li>
+</ul>
+</li>
+<li><p>Other Libraries</p>
+<ul>
+<li><p>your own</p></li>
+<li><p>libm</p></li>
+<li><p>gnump</p></li>
+<li><p>uthash</p></li>
+</ul>
+</li>
+<li><p>Caching and C</p></li>
+<li><p>C and hardware control</p></li>
+</ul>
 
     <script type="text/x-thebe-config">
     {
