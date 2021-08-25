@@ -4,7 +4,7 @@ Under the Covers : The Secret Life of Software
 
 In this book we will look under the covers to learn exactly what software is and how it works. Our goal is to allow a reader to learn both concepts and practical skills that will help you understand and participate in the digital world.  While the material is primarily targeting people who are or intend to be programmers it is not a programming book.  The goal is to dissect how software and computers work so that you can learn the underlying concepts and mechanisms of computing. 
 
-We will learn about how both hardware and software are broken down and organized. Learning the generic models that apply to most modern computers.   We will see how physical devices are turned into a blank canvas on which humans paint information as collections of binary bits.  Learning how different types of data are represented and how programs themselves are represented.  We will build our way to understanding how layers of software are fitted together to allow more complex information and ideas, not natively supported by the hardware, to be expressed and worked with. 
+We will learn about how hardware and software are broken down and organized. Learning the generic models that apply to most modern computers.   We will see how physical devices are turned into a blank canvas on which humans paint information as collections of binary bits.  Learning how different types of data are represented and how programs themselves are represented.  We will build our way to understanding how layers of software are fitted together to allow more complex information and ideas, not natively supported by the hardware, to be represented and worked with. 
 Understanding this process will reveal to us how the layers make it simpler and simpler for humans to program computers and the limits and overheads that comes along with the layering.    
 
 While this is not explicitly a programming course as part of our journey we will be learning practical skills.
@@ -41,3 +41,7 @@ To get access to the source notebooks so that you can use them interactively or 
 
 
 <!-- #endregion -->
+
+```python
+
+```
