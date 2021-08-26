@@ -181,8 +181,8 @@ def displayBytes(bytes=[[0x00]],
                  border_color="#cccccc",
                  tr_hover_bgcolor="#11cccccc",
                  tr_hover_border_color="red",
-                 td_hover_bgcolor="#880000",
-                 td_hover_color="white"
+                 td_hover_bgcolor="white",
+                 td_hover_color="black"
                  ):
 
     # if no labels specified then send in blanks to supress
@@ -237,8 +237,8 @@ def displayBytes(bytes=[[0x00]],
         # in this version of jupyter and pandas this seems
         # to be required but I think it is bug that is
         # address in a later version
-        ('color', 'white'),
-        ('background-color', 'black')
+        ('color', 'black'),
+        ('background-color', 'white')
     ]
     td_props = [
             ('border','4px solid ' + border_color),
