@@ -234,8 +234,11 @@ def displayBytes(bytes=[[0x00]],
         ('font-size', th_font_size),
         ('text-align', 'center'),
         ('font-weight', 'bold'),
+        # in this version of jupyter and pandas this seems
+        # to be required but I think it is bug that is
+        # address in a later version
         ('color', 'white'),
-      ('background-color', 'black')
+        ('background-color', 'black')
     ]
     td_props = [
             ('border','4px solid ' + border_color),
