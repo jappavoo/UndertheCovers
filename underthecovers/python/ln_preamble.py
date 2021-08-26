@@ -78,19 +78,22 @@ except IndexError:
 #
 #display(Javascript(js_code))
 
+# CSS customization for RISE has been moved
+# to <notebook_name>.css which RISE attempts to load
+# see rise examples in the rise repo
 # cusomization of ccs to make slides look better 
-display(HTML(
-    '<style>'
-        '#notebook { padding-top:0px !important; } ' 
-        '.container { width:100% !important; } '
-        '.CodeMirror { width:100% !important;}'
-        '.end_space { min-height:0px !important; } '
-        '.prompt { display:none }'
-        '.terminal-app #terminado-container { width:100%; }'
-        'div.mywarn { background-color: #fcf2f2;border-color: #dFb5b4; border-left: 5px solid #dfb5b4; padding: 0.5em;}'
-        'button { background-color: #cccccc00; }'
-    '</style>'
-))
+#display(HTML(
+#     '<style>'
+#         '#notebook { padding-top:0px !important; } ' 
+#         '.container { width:100% !important; } '
+#         '.CodeMirror { width:100% !important;}'
+#         '.end_space { min-height:0px !important; } '
+#         '.prompt { display:none }'
+#         '.terminal-app #terminado-container { width:100%; }'
+#         'div.mywarn { background-color: #fcf2f2;border-color: #dFb5b4; border-left: 5px solid #dfb5b4; padding: 0.5em;}'
+#         'button { background-color: #cccccc00; }'
+#     '</style>'
+# ))
 
 # show Terminal where TERMNAME is one of the terminals we created below
 def showTerm(TERMNAME, title, w, h):
