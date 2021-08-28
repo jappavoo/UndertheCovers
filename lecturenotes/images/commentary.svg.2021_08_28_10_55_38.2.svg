@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <svg
-   width="100"
-   height="120"
+   width="174"
+   height="210"
    version="1.1"
-   id="svg868"
+   id="svg3138"
    sodipodi:docname="commentary.svg"
-   inkscape:version="1.1 (c4e8f9e, 2021-05-24)"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -13,15 +12,15 @@
    xmlns:svg="http://www.w3.org/2000/svg"
    xmlns:lucid="lucid">
   <defs
-     id="defs872">
+     id="defs3142">
     <pattern
        inkscape:collect="always"
        xlink:href="#a"
-       id="pattern2017"
-       patternTransform="matrix(0.79765583,0,0,0.80874317,97.419027,44.000159)" />
+       id="pattern3299"
+       patternTransform="translate(-23.52,-19.152)" />
   </defs>
   <sodipodi:namedview
-     id="namedview870"
+     id="namedview3140"
      pagecolor="#ffffff"
      bordercolor="#666666"
      borderopacity="1.0"
@@ -29,24 +28,24 @@
      inkscape:pageopacity="0.0"
      inkscape:pagecheckerboard="0"
      showgrid="false"
-     inkscape:zoom="2.9571429"
-     inkscape:cx="80.31401"
+     inkscape:zoom="2.9761905"
+     inkscape:cx="86.856"
      inkscape:cy="105"
-     inkscape:window-width="1312"
+     inkscape:window-width="1296"
      inkscape:window-height="847"
-     inkscape:window-x="0"
-     inkscape:window-y="25"
+     inkscape:window-x="27"
+     inkscape:window-y="26"
      inkscape:window-maximized="0"
-     inkscape:current-layer="g866" />
+     inkscape:current-layer="g3136" />
   <g
-     transform="translate(-542.2566,-304.36715)"
+     transform="translate(-536.50781,-302)"
      lucid:page-tab-id="7qNOe.eR2Gyt"
-     id="g866">
+     id="g3136">
     <path
-       d="m 544.10628,304.41546 h 97.31401 v 98.66667 h -97.31401 z"
+       d="m 536.48,302.848 h 122 v 122 h -122 z"
        fill="url(#a)"
-       id="path824"
-       style="fill:url(#pattern2017);stroke-width:0.803181" />
+       id="path3094"
+       style="fill:url(#pattern3299)" />
     <path
        d="m 563,446 c 0,-3.3 2.7,-6 6,-6 h 104 c 3.3,0 6,2.7 6,6 v 40 c 0,3.3 -2.7,6 -6,6 H 569 c -3.3,0 -6,-2.7 -6,-6 z"
        stroke="#000000"
@@ -54,17 +53,17 @@
        stroke-width="3"
        fill="#ffffff"
        fill-opacity="0"
-       id="path826" />
+       id="path3096" />
     <use
        xlink:href="#b"
-       transform="matrix(0.76402508,0,0,0.82482523,541.4442,419.10604)"
-       id="use828"
+       transform="translate(536.45269,451.9668)"
+       id="use3098"
        x="0"
        y="0"
        width="100%"
        height="100%" />
     <defs
-       id="defs864">
+       id="defs3134">
       <image
          width="1"
          height="1"
@@ -81,7 +80,7 @@
         <use
            xlink:href="#c"
            transform="translate(0, 0) scale(122,122)"
-           id="use831" />
+           id="use3101" />
       </pattern>
       <path
          fill="#333333"
@@ -124,7 +123,7 @@
         <use
            transform="scale(0.0141059)"
            xlink:href="#d"
-           id="use843"
+           id="use3113"
            x="0"
            y="0"
            width="100%"
@@ -132,7 +131,7 @@
         <use
            transform="matrix(0.0141059,0,0,0.0141059,14.303385,0)"
            xlink:href="#e"
-           id="use845"
+           id="use3115"
            x="0"
            y="0"
            width="100%"
@@ -140,7 +139,7 @@
         <use
            transform="matrix(0.0141059,0,0,0.0141059,25.997179,0)"
            xlink:href="#f"
-           id="use847"
+           id="use3117"
            x="0"
            y="0"
            width="100%"
@@ -148,7 +147,7 @@
         <use
            transform="matrix(0.0141059,0,0,0.0141059,42.557509,0)"
            xlink:href="#f"
-           id="use849"
+           id="use3119"
            x="0"
            y="0"
            width="100%"
@@ -156,7 +155,7 @@
         <use
            transform="matrix(0.0141059,0,0,0.0141059,59.117839,0)"
            xlink:href="#g"
-           id="use851"
+           id="use3121"
            x="0"
            y="0"
            width="100%"
@@ -164,7 +163,7 @@
         <use
            transform="matrix(0.0141059,0,0,0.0141059,71.587457,0)"
            xlink:href="#h"
-           id="use853"
+           id="use3123"
            x="0"
            y="0"
            width="100%"
@@ -172,7 +171,7 @@
         <use
            transform="matrix(0.0141059,0,0,0.0141059,83.196615,0)"
            xlink:href="#i"
-           id="use855"
+           id="use3125"
            x="0"
            y="0"
            width="100%"
@@ -180,7 +179,7 @@
         <use
            transform="matrix(0.0141059,0,0,0.0141059,92.915582,0)"
            xlink:href="#j"
-           id="use857"
+           id="use3127"
            x="0"
            y="0"
            width="100%"
@@ -188,7 +187,7 @@
         <use
            transform="matrix(0.0141059,0,0,0.0141059,105.68142,0)"
            xlink:href="#k"
-           id="use859"
+           id="use3129"
            x="0"
            y="0"
            width="100%"
@@ -196,7 +195,7 @@
         <use
            transform="matrix(0.0141059,0,0,0.0141059,116.65582,0)"
            xlink:href="#l"
-           id="use861"
+           id="use3131"
            x="0"
            y="0"
            width="100%"
