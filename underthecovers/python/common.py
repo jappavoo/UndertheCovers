@@ -306,4 +306,153 @@ def displayStr(str, size="", align=""):
 #    print(md)
     return display(Markdown(md))
 
+
+def htmlFigTD(img):
+    src=img.get('src');
+    caption=img.get('caption')
+    extratxt=img.get('extratxt')
+    border=img.get('border')
+
+    width=img.get('width')
+    if not width: width='100%'
+    colspan=img.get('colspan')
+    if not colspan: colspan='1'
+    bgcolor=img.get('bgcolor')
+    if not bgcolor: bgcolor='inherit'
+    capcolor=img.get('capcolor')
+    if not capcolor: capcolor='inherit'
+    capbgcolor=img.get('capbgcolor')
+    if not capbgcolor: capbgcolor="inherit"
+    extrafont=img.get('extrafont')
+    if not extrafont: extrafont="2vmin"
+    extracolor=img.get('extracolor')
+    if not extracolor: extracolor="#978282"
+
+    html_text = '''        <td colspan="''' + colspan + '''" style="padding: 0; margin: 0; background-color:''' + bgcolor + ''';">
+            <div style="margin-right: auto; margin-left: auto; padding: 0; margin: 0;">
+              <figure style="width:'''+ width +'''; padding: 0; margin-right: auto; margin-left: auto;'''
+
+    if border:
+        html_text += '''border: ''' + border + ''';'''
+        
+    html_text += '''">
+    <img src="''' + src + '''" width="100%" style="padding: 0; margin: 0;">
+'''
+    if  extratxt:
+       html_text +=  '''
+                   <div align="right" style="color:''' + extracolor + '''; line-height: 0; font-size: ''' + extrafont + '''">
+                    <em>
+''' + extratxt + '''                    
+                    </em>
+                  </div> 
+'''
+    if caption:
+        html_text = html_text + '''
+                  <figcaption>
+                    <div style="background-color: ''' + capbgcolor + '''; margin-right:auto; margin-left:auto; text-align: center;">
+                       <i style="color:''' + capcolor  + '''"> ''' + caption + '''</i>
+                    </div>
+                  </figcaption>
+'''
+    html_text = html_text +  '''
+                </figure>
+            </div>
+        </td>
+'''
+
+    return html_text
+
+def toImg(i):
+    # if a string the convert to img
+    if (type(i) == type("")):
+        i={"src":i}
+
+    if ((not type(i) == type({})) or (not 'src' in i)):
+        raise ValueError('img must at have a src specified')
+        
+    return i
+
+# a list of imgs
+def toImgs(i):
+    # already a list so don't do anyting
+    if type(i) == type([]):
+        return i
+    
+    i=[toImg(i)]
+    
+    return i
+
+def htmlFigTableStart(id, align, width, margin):
+    html_text = '''
+<table '''
+    if id:
+        html_text +='''id="''' + id + '''" '''
+
+    html_text +='''align="''' + align + '''" width="''' + width + '''" cellpadding="0" cellspacing="0" border="0" style="border-collapse: collapse; margin: ''' + margin + '''">
+'''
+    return html_text
+
+def htmlFigTRStart():
+    html_text = '''
+    <tr style="padding: 0; margin: 0;"> 
+'''
+    return html_text
+
+def htmlFigTREnd():
+    html_text = '''
+    </tr>
+'''
+    return html_text
+
+def htmlFigTableEnd():
+    html_text = '''
+</table>
+'''
+    return html_text
+
+def htmlFigCaption(caption, align):
+    html_text = '''
+    <caption align="bottom" style="text-align: ''' + align + '''"; padding: 0; margin: 0;" >
+          <i>''' + caption + '''</i> 
+    </caption>
+'''
+    return html_text
+
+def htmlFig(imgs, id="", align="center", width="100%",
+            margin="auto auto auto auto",
+            caption="", captionalign="left"):
+    imgs=toImgs(imgs)
+    rows = len(imgs)
+    maxcols = 1
+
+    html_text = htmlFigTableStart(id, align, width, margin)
+
+#    print(html_text)
+    
+    # calculate the maximum number of columns
+    # and build new list
+    rows = []
+    for r in imgs:
+        r = toImgs(r)
+        rows.append(r)
+        if (len(r)>maxcols):
+            maxcols = len(r);
+    
+    for r in rows:
+        cols=len(r)
+        html_text += htmlFigTRStart()
+        
+        for i in r:
+            img=toImg(i)
+            html_text += htmlFigTD(img)
+
+        html_text += htmlFigTREnd()
+        
+    if caption:
+        html_text += htmlFigCaption(caption, captionalign)
+        
+    html_text += htmlFigTableEnd()
+    return html_text
+
 print("Common executed")
+
