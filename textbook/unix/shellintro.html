@@ -318,7 +318,7 @@
 </div></blockquote>
 <div class="section" id="our-interface-to-the-kernel">
 <h2><span class="section-number">4.1. </span>Our interface to the Kernel<a class="headerlink" href="#our-interface-to-the-kernel" title="Permalink to this headline">¶</a></h2>
-<a class="reference internal image-reference" href="../_images/04SHLLChat.png"><img alt="../_images/04SHLLChat.png" src="../_images/04SHLLChat.png" style="width: 40%;" /></a>
+<a class="reference internal image-reference" href="../_images/04SHLLChat.png"><img alt="../_images/04SHLLChat.png" src="../_images/04SHLLChat.png" style="width: 50%;" /></a>
 <p>As discussed the core functionality of the Unix operating system is implemented by the Kernel.  But the kernel is really only responsible for making it easier to run and write application/user programs. The Kernel does not have any support for humans to directly interact with it.  That is where the shell comes in. The shell acts as our primary point of contact/interface not only to the kernel but also all the other programs installed.</p>
 </div>
 <div class="section" id="bash">
@@ -332,14 +332,41 @@
 <div class="section" id="terminal-windows-and-the-shell">
 <h3><span class="section-number">4.3.1. </span>Terminal Windows and the Shell<a class="headerlink" href="#terminal-windows-and-the-shell" title="Permalink to this headline">¶</a></h3>
 <p>Today of course, we rarely use physical terminals any more.  Rather, on our physical client computers (eg. laptops, desktops, tablets, etc) we can start many terminal emulator windows to establish a shell session for each (see below). Each session will stay active until we exit or close the session and kill the associated shell.  Since each window is connected to its own shell they represent independent “conversations” in which we can do different things concurrently.</p>
-<div class="row" >
-  <div class="column" style=" float: left; width: 47.5%; padding: 0px;">
-    <img src="../images/UnixL01_SHCHT/041SHLLChat.png" style="width:100%">
-  </div>
-  <div class="column" style=" float: left; width: 52%; padding: 0px;">
-    <img src="../images/terminalwins.png" style="width:100%">
-  </div>
-</div><blockquote>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output text_html"><!-- produced by: 
+htmlFig("[[{'src': '../images/UnixL01_SHCHT/041SHLLChat.png', 'width': '47.5%'}, {'src': '../images/terminalwins.png', 'width': '52%'}]]", 
+        id="", 
+        align="center", 
+        width="100%",
+        margin="auto auto auto auto",
+        caption="Figure: Today terminal emulators running on our desktop act act as ASCII terminals. Every new window is a new terminal connection.", 
+        captionalign="left")
+-->
+<table align="center" width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse: collapse; margin: auto auto auto auto">
+    <tr style="padding: 0; margin: 0;"> 
+        <td colspan="1" width="47.5%" style="padding: 0; margin: 0; background-color:inherit;">
+            <div style="margin-right: auto; margin-left: auto; padding: 0; margin: 0;">
+              <figure style="padding: 0; margin-right: auto; margin-left: auto;">
+                   <img src="../images/UnixL01_SHCHT/041SHLLChat.png" width="100%" style="padding: 0; margin: 0;">
+                </figure>
+            </div>
+        </td>
+        <td colspan="1" width="52%" style="padding: 0; margin: 0; background-color:inherit;">
+            <div style="margin-right: auto; margin-left: auto; padding: 0; margin: 0;">
+              <figure style="padding: 0; margin-right: auto; margin-left: auto;">
+                   <img src="../images/terminalwins.png" width="100%" style="padding: 0; margin: 0;">
+                </figure>
+            </div>
+        </td>
+    </tr>
+    <caption align="bottom" style="text-align: left; padding: 0; margin: 0;" >
+          <i>Figure: Today terminal emulators running on our desktop act act as ASCII terminals. Every new window is a new terminal connection.</i> 
+    </caption>
+</table>
+</div></div>
+</div>
+<blockquote>
 <div><p><a class="reference internal" href="../_images/do.svg"><img alt="../_images/do.svg" class="align-left" src="../_images/do.svg" width="40" /></a> <p style="background-color:lightgreen;">  While you are learning how to work with bash it can be really useful to keep a terminal open in which you keep the bash manual page open while you use another terminal shell session to do your exploring.</p>
 </div></blockquote>
 </div>
@@ -371,22 +398,66 @@ If you are interested in the details use the following <code class="docutils lit
 Perhaps the simplest thing we can do is send it an empty line by pressing <em>enter</em> on its own.
 What we should find is that the terminal will move to the next line and display the prompt again.
 But we want to be a little more careful to think about what happened behind the scenes so that we can build a more complete model in our mind about how the shell and terminal interactions work.</p>
-<div class="row">
-  <div class="column" style=" float: left; width: 33.33%; padding: 2px;">
-    <img src="../images/UnixL01_SHCHT/06SHLLChat.png" style="width:100%">
-  </div>
-  <div class="column" style=" float: left; width: 33.33%; padding: 2px;">
-    <img src="../images/UnixL01_SHCHT/07SHLLChat.png" style="width:100%">
-  </div>
-  <div class="column" style=" float: left; width: 33.33%; padding: 2px;">
-    <img src="../images/UnixL01_SHCHT/08SHLLChat.png" alt="Mountains" style="width:100%">
-  </div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output text_html"><!-- produced by: 
+htmlFig("[[{'src': '../images/UnixL01_SHCHT/06SHLLChat.png', 'caption': 'A: Press Enter', 'border': '1px solid black', 'padding': '1px'}, {'src': '../images/UnixL01_SHCHT/07SHLLChat.png', 'caption': 'B: Shell "blank line" input processing', 'border': '1px solid black', 'padding': '1px'}, {'src': '../images/UnixL01_SHCHT/08SHLLChat.png', 'caption': 'C: Shell sends Prompt back', 'border': '1px solid black', 'padding': '1px'}]]", 
+        id="fig:shell-blankline", 
+        align="center", 
+        width="100%",
+        margin="auto auto auto auto",
+        caption="<center> Figure: Shell blank line behavior </center>", 
+        captionalign="left")
+-->
+<table id="fig:shell-blankline" align="center" width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse: collapse; margin: auto auto auto auto">
+    <tr style="padding: 0; margin: 0;"> 
+        <td colspan="1" width="100%" style="padding: 0; margin: 0; background-color:inherit;">
+            <div style="margin-right: auto; margin-left: auto; padding: 1px; margin: 0;">
+              <figure style="padding: 0; margin-right: auto; margin-left: auto;border: 1px solid black;">
+                   <img src="../images/UnixL01_SHCHT/06SHLLChat.png" width="100%" style="padding: 0; margin: 0;">
+                  <figcaption>
+                    <div style="background-color: inherit; margin-right:auto; margin-left:auto; text-align: center;">
+                       <i style="color:inherit"> A: Press Enter</i>
+                    </div>
+                  </figcaption>
+                </figure>
+            </div>
+        </td>
+        <td colspan="1" width="100%" style="padding: 0; margin: 0; background-color:inherit;">
+            <div style="margin-right: auto; margin-left: auto; padding: 1px; margin: 0;">
+              <figure style="padding: 0; margin-right: auto; margin-left: auto;border: 1px solid black;">
+                   <img src="../images/UnixL01_SHCHT/07SHLLChat.png" width="100%" style="padding: 0; margin: 0;">
+                  <figcaption>
+                    <div style="background-color: inherit; margin-right:auto; margin-left:auto; text-align: center;">
+                       <i style="color:inherit"> B: Shell "blank line" input processing</i>
+                    </div>
+                  </figcaption>
+                </figure>
+            </div>
+        </td>
+        <td colspan="1" width="100%" style="padding: 0; margin: 0; background-color:inherit;">
+            <div style="margin-right: auto; margin-left: auto; padding: 1px; margin: 0;">
+              <figure style="padding: 0; margin-right: auto; margin-left: auto;border: 1px solid black;">
+                   <img src="../images/UnixL01_SHCHT/08SHLLChat.png" width="100%" style="padding: 0; margin: 0;">
+                  <figcaption>
+                    <div style="background-color: inherit; margin-right:auto; margin-left:auto; text-align: center;">
+                       <i style="color:inherit"> C: Shell sends Prompt back</i>
+                    </div>
+                  </figcaption>
+                </figure>
+            </div>
+        </td>
+    </tr>
+    <caption align="bottom" style="text-align: left; padding: 0; margin: 0;" >
+          <i><center> Figure: Shell blank line behavior </center></i> 
+    </caption>
+</table>
+</div></div>
 </div>
-<p>What happened was that after we pressed and release the <em>enter</em> key the terminal sent through the Unix kernel a byte to the instance of the shell program that our terminal is virtually connected too.  Precisely it would have sent the binary pattern of <code class="docutils literal notranslate"><span class="pre">0b10000010</span></code> or in hex <code class="docutils literal notranslate"><span class="pre">0xa</span></code> as the left most image of the below diagram illustrates.  Our  diagrams below show both the <code class="docutils literal notranslate"><span class="pre">\n</span></code> human readable ASCII symbol and the underlying byte value.  In other diagrams we might stop showing the byte values and only show the ASCII human readable symbols but it is important to remember that under the covers the terminal and shell are really just exchanging raw binary values that use the ASCII standard to encode the data.</p>
-<p>The middle figure, above, cartoons the logic that the shell did in response the receiving the blank line.  It is programmed to do nothing and then simply send back to the terminal the prompt so that the user knows it is ready for another command line to be sent.  If you are interested in why the terminal displayed a <code class="docutils literal notranslate"><span class="pre">\n</span></code> causing the prompt sent by the shell to be on the next line of the terminal read the fyi ECHO box below.</p>
+<p>What happened was that after we pressed and release the <em>enter</em> key the terminal sent through the Unix kernel a byte to the instance of the shell program that our terminal is virtually connected too.  Precisely it would have sent the binary pattern of <code class="docutils literal notranslate"><span class="pre">0b10000010</span></code> or in hex <code class="docutils literal notranslate"><span class="pre">0xa</span></code> as the left most figure (A), above, illustrates.  The figure show both the <code class="docutils literal notranslate"><span class="pre">\n</span></code> human readable ASCII symbol and the underlying byte value.  In other diagrams we might stop showing the byte values and only show the ASCII human readable symbols but it is important to remember that under the covers the terminal and shell are really just exchanging raw binary values that use the ASCII standard to encode the data.</p>
+<p>The middle figure (B), above, cartoons the logic that the shell did in response to receiving the blank line.  It is programmed to do nothing and then simply send back to the terminal the prompt so that the user knows it is ready for another command line to be sent.  If you are interested in why the terminal displayed a <code class="docutils literal notranslate"><span class="pre">\n</span></code> causing the prompt sent by the shell to be on the next line of the terminal read the fyi ECHO box below.</p>
 <blockquote>
-<div><p><a class="reference internal" href="../_images/fyi.svg"><img alt="../_images/fyi.svg" class="align-left" src="../_images/fyi.svg" width="60" /></a> <p style
-                                                                                              ="background-color:powderblue;"> <strong>ECHO:</strong>.  You might be wondering why is it that you see the characters you type at the keyboard of terminal appear on the screen of the terminal.  If pressing a key really sends the data to the Unix kernel and then to the program running such as the shell there is not reason we would see it.  Does the Shell send a copy back of what it received?  No it does not.  Rather typically the UNIX kernel is configured, by default, to send back a copy of what it receives on a specific terminal connection back to the terminal itself.  This is setting is called terminal ECHO mode.  So by default even before the Kernel sends data up to the destination program  it sends a copy back to the terminal so that the user can see what they typed.  This includes the <code class="docutils literal notranslate"><span class="pre">\n</span></code> that the user pressed to indicate the end of the command line.  Hence in this default mode any data send back from the shells behavior will appear on a new-line.  Programs can ask the kernel to disable this setting to have more control of what the users sees.  As a matter of fact like many things in Unix there is a command you can issue to have the kernel adjust the setting for you terminal connect including turning off the echo behavior (<code class="docutils literal notranslate"><span class="pre">stty</span> <span class="pre">-echo</span></code> to turn off and <code class="docutils literal notranslate"><span class="pre">stty</span> <span class="pre">echo</span></code> to turn back on).  Doing so lets you observe what is really being sent back in response to your command and not what the kernel automatically generated as echo data.  Note things might get confusing quickly if you turn echo off.   But Unix is all about understanding how things work and have the power to control them.  If you want to know more try <code class="docutils literal notranslate"><span class="pre">man</span> <span class="pre">stty</span></code> but be warned you will find that communications on a terminal is actually quite a bit more complex than it might seem – there is a lot of history and skeletons buried here and the kernel is <em>cooking</em> the communications quite a bit ;-)</p>
+<div><p><a class="reference internal" href="../_images/fyi.svg"><img alt="../_images/fyi.svg" class="align-left" src="../_images/fyi.svg" width="50" /></a> <p style="background-color:powderblue;"> <strong>ECHO:</strong>.  You might be wondering why is it that you see the characters you type at the keyboard of terminal appear on the screen of the terminal.  If pressing a key really sends the data to the Unix kernel and then to the program running such as the shell there is not reason we would see it.  Does the Shell send a copy back of what it received?  No it does not.  Rather typically the UNIX kernel is configured, by default, to send back a copy of what it receives on a specific terminal connection back to the terminal itself.  This is setting is called terminal ECHO mode.  So by default even before the Kernel sends data up to the destination program  it sends a copy back to the terminal so that the user can see what they typed.  This includes the <code class="docutils literal notranslate"><span class="pre">\n</span></code> that the user pressed to indicate the end of the command line.  Hence in this default mode any data send back from the shells behavior will appear on a new-line.  Programs can ask the kernel to disable this setting to have more control of what the users sees.  As a matter of fact like many things in Unix there is a command you can issue to have the kernel adjust the setting for you terminal connect including turning off the echo behavior (<code class="docutils literal notranslate"><span class="pre">stty</span> <span class="pre">-echo</span></code> to turn off and <code class="docutils literal notranslate"><span class="pre">stty</span> <span class="pre">echo</span></code> to turn back on).  Doing so lets you observe what is really being sent back in response to your command and not what the kernel automatically generated as echo data.  Note things might get confusing quickly if you turn echo off.   But Unix is all about understanding how things work and have the power to control them.  If you want to know more try <code class="docutils literal notranslate"><span class="pre">man</span> <span class="pre">stty</span></code> but be warned you will find that communications on a terminal is actually quite a bit more complex than it might seem – there is a lot of history and skeletons buried here and the kernel is <em>cooking</em> the communications quite a bit ;-)</p>
 </div></blockquote>
 <blockquote>
 <div><p>What to have some fun.  Believe it or not we used to develop and play games on ASCII Terminals.  If you want to get an idea what cost some people their degrees try <code class="docutils literal notranslate"><span class="pre">umoria</span></code></p>
