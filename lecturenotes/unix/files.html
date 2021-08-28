@@ -23,7 +23,7 @@
 
     
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.e8e5499552300ddf5d7adccae7cc3b70.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.e8f53015daec13862f6db5e763c41738.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -44,15 +44,13 @@
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
-    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe"
         const thebe_selector_input = "pre"
         const thebe_selector_output = ".output"
     </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -82,7 +80,7 @@
 </div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
   <i class="icon fas fa-search"></i>
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
         <ul class="nav bd-sidenav">
  <li class="toctree-l1">
@@ -352,7 +350,7 @@
             <div class="tocsection onthispage pt-5 pb-3">
                 <i class="fas fa-list"></i> Contents
             </div>
-            <nav id="bd-toc-nav">
+            <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#information-management">
@@ -529,9 +527,9 @@ Using computers and managing information has become synonymous.   You probably t
 <p>In UNIX the very top of the tree is the one directory that always exists and is not a sub-directory of any other directory.  This directory is called the <strong>ROOT</strong> directory. In UNIX the <strong>ROOT</strong> directory’s name <code class="docutils literal notranslate"><span class="pre">/</span></code>.  This might seem odd at first but as we will see in a minute it is consistent with the UNIX way of name a full pathway in the tree.</p>
 <p>With this in mind the names of the three Problem1 files at the bottom of the diagram are composed by joining the name of the directories leading to them along with their name at the end.</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">/</span></code> <span class="math notranslate nohighlight">\(+\)</span> <code class="docutils literal notranslate"><span class="pre">home</span></code> <span class="math notranslate nohighlight">\(+\)</span> <code class="docutils literal notranslate"><span class="pre">jonathan</span></code> <span class="math notranslate nohighlight">\(+\)</span> <code class="docutils literal notranslate"><span class="pre">Classes</span></code> <span class="math notranslate nohighlight">\(+\)</span> <code class="docutils literal notranslate"><span class="pre">CS</span></code> <span class="math notranslate nohighlight">\(+\)</span> <code class="docutils literal notranslate"><span class="pre">210</span></code> <span class="math notranslate nohighlight">\(+\)</span> <code class="docutils literal notranslate"><span class="pre">Assignment1</span></code> <span class="math notranslate nohighlight">\(+\)</span> <code class="docutils literal notranslate"><span class="pre">Problem1</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">/</span></code> <span class="math notranslate nohighlight">\(+\)</span> <code class="docutils literal notranslate"><span class="pre">home</span></code> <span class="math notranslate nohighlight">\(+\)</span> <code class="docutils literal notranslate"><span class="pre">jonathan</span></code> <span class="math notranslate nohighlight">\(+\)</span> <code class="docutils literal notranslate"><span class="pre">Classes</span></code> <span class="math notranslate nohighlight">\(+\)</span> <code class="docutils literal notranslate"><span class="pre">CS</span></code> <span class="math notranslate nohighlight">\(+\)</span> <code class="docutils literal notranslate"><span class="pre">210</span></code> <span class="math notranslate nohighlight">\(+\)</span> <code class="docutils literal notranslate"><span class="pre">Assignment2</span></code> <span class="math notranslate nohighlight">\(+\)</span> <code class="docutils literal notranslate"><span class="pre">Problem1</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">/</span></code> <span class="math notranslate nohighlight">\(+\)</span> <code class="docutils literal notranslate"><span class="pre">home</span></code> <span class="math notranslate nohighlight">\(+\)</span> <code class="docutils literal notranslate"><span class="pre">jonathan</span></code> <span class="math notranslate nohighlight">\(+\)</span> <code class="docutils literal notranslate"><span class="pre">Classes</span></code> <span class="math notranslate nohighlight">\(+\)</span> <code class="docutils literal notranslate"><span class="pre">CS</span></code> <span class="math notranslate nohighlight">\(+\)</span> <code class="docutils literal notranslate"><span class="pre">210</span></code> <span class="math notranslate nohighlight">\(+\)</span> <code class="docutils literal notranslate"><span class="pre">Assignment3</span></code> <span class="math notranslate nohighlight">\(+\)</span> <code class="docutils literal notranslate"><span class="pre">Problem1</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">/</span></code> $+$ <code class="docutils literal notranslate"><span class="pre">home</span></code> $+$ <code class="docutils literal notranslate"><span class="pre">jonathan</span></code> $+$ <code class="docutils literal notranslate"><span class="pre">Classes</span></code> $+$ <code class="docutils literal notranslate"><span class="pre">CS</span></code> $+$ <code class="docutils literal notranslate"><span class="pre">210</span></code> $+$ <code class="docutils literal notranslate"><span class="pre">Assignment1</span></code> $+$ <code class="docutils literal notranslate"><span class="pre">Problem1</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">/</span></code> $+$ <code class="docutils literal notranslate"><span class="pre">home</span></code> $+$ <code class="docutils literal notranslate"><span class="pre">jonathan</span></code> $+$ <code class="docutils literal notranslate"><span class="pre">Classes</span></code> $+$ <code class="docutils literal notranslate"><span class="pre">CS</span></code> $+$ <code class="docutils literal notranslate"><span class="pre">210</span></code> $+$ <code class="docutils literal notranslate"><span class="pre">Assignment2</span></code> $+$ <code class="docutils literal notranslate"><span class="pre">Problem1</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">/</span></code> $+$ <code class="docutils literal notranslate"><span class="pre">home</span></code> $+$ <code class="docutils literal notranslate"><span class="pre">jonathan</span></code> $+$ <code class="docutils literal notranslate"><span class="pre">Classes</span></code> $+$ <code class="docutils literal notranslate"><span class="pre">CS</span></code> $+$ <code class="docutils literal notranslate"><span class="pre">210</span></code> $+$ <code class="docutils literal notranslate"><span class="pre">Assignment3</span></code> $+$ <code class="docutils literal notranslate"><span class="pre">Problem1</span></code></p></li>
 </ul>
 <p>In UNIX the notation for a full path name of a file or directory is joining the indepdenent components with the “/” character.  So the above three files as proper unix path names would be:</p>
 <ul class="simple">
@@ -607,10 +605,14 @@ Using computers and managing information has become synonymous.   You probably t
               </div>
               
         
-        <div class='prev-next-bottom'>
             
 
-        </div>
+
+
+<div class='prev-next-bottom'>
+    
+
+</div>
         
         </div>
     </div>

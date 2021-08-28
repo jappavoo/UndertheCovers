@@ -23,7 +23,7 @@
 
     
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.e8e5499552300ddf5d7adccae7cc3b70.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.e8f53015daec13862f6db5e763c41738.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -44,7 +44,7 @@
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
-    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe"
         const thebe_selector_input = "pre"
@@ -80,7 +80,7 @@
 </div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
   <i class="icon fas fa-search"></i>
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
         <ul class="nav bd-sidenav">
  <li class="toctree-l1">
@@ -350,7 +350,7 @@
             <div class="tocsection onthispage pt-5 pb-3">
                 <i class="fas fa-list"></i> Contents
             </div>
-            <nav id="bd-toc-nav">
+            <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="simple visible nav section-nav flex-column">
 </ul>
 
@@ -363,194 +363,14 @@
         
               <div>
                 
-  <div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-
-<span class="k">class</span> <span class="nc">SLS_6502</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;The Secrect Life of Software 6502 Simulated Computer&quot;&quot;&quot;</span>
-    <span class="k">class</span> <span class="nc">CPU</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot; The CPU &quot;&quot;&quot;</span>
-        <span class="k">class</span> <span class="nc">Pin</span><span class="p">:</span>
-            <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">v</span><span class="p">):</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">_value</span> <span class="o">=</span> <span class="n">v</span>
-                
-            <span class="k">def</span> <span class="nf">set</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">v</span><span class="p">):</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">_value</span> <span class="o">=</span> <span class="n">v</span>
-            
-            <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-                <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_value</span>
-            
-        <span class="k">class</span> <span class="nc">Register</span><span class="p">:</span> 
-            <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-                    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_value</span>
-            <span class="k">def</span> <span class="nf">set</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">v</span><span class="p">):</span>
-                    <span class="bp">self</span><span class="o">.</span><span class="n">_value</span> <span class="o">=</span> <span class="n">v</span>
-                    
-        <span class="k">class</span> <span class="nc">Register8Bit</span> <span class="p">(</span><span class="n">Register</span><span class="p">):</span>
-            <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-                <span class="n">_value</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-        
-        <span class="k">class</span> <span class="nc">Register16Bit</span> <span class="p">(</span><span class="n">Register</span><span class="p">):</span>
-            <span class="k">def</span> <span class="nf">__init_</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-                <span class="n">_value</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">uint16</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-        
-        <span class="k">class</span> <span class="nc">RegisterProcessorStatus</span><span class="p">(</span><span class="n">Register8Bit</span><span class="p">):</span>
-            <span class="c1"># b_0 : C  </span>
-            <span class="k">def</span> <span class="nf">setZero</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">z</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span> 
-                <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
-          
-        <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-            <span class="c1"># ISA Registers</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_A</span>  <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">Register8Bit</span><span class="p">()</span>  <span class="c1"># Accumulator A</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_X</span>  <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">Register8Bit</span><span class="p">()</span>  <span class="c1"># Index Register X </span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_Y</span>  <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">Register8Bit</span><span class="p">()</span>  <span class="c1"># Index Register Y</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_PC</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">Register16Bit</span><span class="p">()</span> <span class="c1"># Program Counter PC</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_S</span>  <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">Register8bit</span><span class="p">()</span>  <span class="c1"># Stack Pointer S</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_P</span>  <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">RegisterProcessorStatus</span><span class="p">()</span> <span class="c1"># Processor Status Register P</span>
-            
-            <span class="c1"># internal Registers used to connect</span>
-            <span class="c1"># to address bus and DataBus</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_DBR</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">Register8Bit</span><span class="p">()</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_ABB</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">Register16Bit</span><span class="p">()</span>
-            
-            <span class="c1"># Pins -- we do not simulate a clock</span>
-            <span class="c1">#         so the only pins we care about</span>
-            <span class="c1">#         are those for inputs other than data</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">RESB</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">Pin</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>    <span class="c1"># Reset  Bar </span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">IRQB</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">Pin</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>     <span class="c1"># Interrupt Request Bar</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">NMIB</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">Pin</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>     <span class="c1"># Non-maskable Interrupt Bar</span>
-
-            
- 
-        <span class="k">def</span> <span class="nf">reset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;reset&quot;</span><span class="p">)</span>
-            
-        
-        <span class="k">def</span> <span class="nf">loop</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">count</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
-            <span class="c1"># process input pins</span>
-            
-            <span class="c1"># fetch</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">fetch</span><span class="p">()</span>
-            
-            <span class="c1"># decode</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span>
-            
-            <span class="c1"># execute</span>
-            
-    <span class="k">class</span> <span class="nc">Memory</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot; Memory &quot;&quot;&quot;</span>
-        
-    <span class="k">class</span> <span class="nc">DataBus</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot; The Data Bus&quot;&quot;&quot;</span>
-        
-    <span class="k">class</span> <span class="nc">AddressBus</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot; The Address Bus&quot;&quot;&quot;</span>
-        
-    <span class="c1"># constructor</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">cpu</span>        <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">CPU</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">databus</span>    <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">DataBus</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">addressbus</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">AddressBus</span><span class="p">()</span>
-        
-    
-        
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">theMachine</span> <span class="o">=</span> <span class="n">SLS_6502</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">AttributeError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_2585</span><span class="o">/</span><span class="mf">2046537104.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">theMachine</span> <span class="o">=</span> <span class="n">SLS_6502</span><span class="p">()</span>
-
-<span class="nn">/tmp/ipykernel_2585/377377113.py</span> in <span class="ni">__init__</span><span class="nt">(self)</span>
-<span class="g g-Whitespace">     </span><span class="mi">83</span>     <span class="c1"># constructor</span>
-<span class="g g-Whitespace">     </span><span class="mi">84</span>     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="ne">---&gt; </span><span class="mi">85</span>         <span class="bp">self</span><span class="o">.</span><span class="n">cpu</span>        <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">CPU</span><span class="p">()</span>
-<span class="g g-Whitespace">     </span><span class="mi">86</span>         <span class="bp">self</span><span class="o">.</span><span class="n">databus</span>    <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">DataBus</span><span class="p">()</span>
-<span class="g g-Whitespace">     </span><span class="mi">87</span>         <span class="bp">self</span><span class="o">.</span><span class="n">addressbus</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">AddressBus</span><span class="p">()</span>
-
-<span class="nn">/tmp/ipykernel_2585/377377113.py</span> in <span class="ni">__init__</span><span class="nt">(self)</span>
-<span class="g g-Whitespace">     </span><span class="mi">40</span>             <span class="bp">self</span><span class="o">.</span><span class="n">_Y</span>  <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">Register8Bit</span><span class="p">()</span>  <span class="c1"># Index Register Y</span>
-<span class="g g-Whitespace">     </span><span class="mi">41</span>             <span class="bp">self</span><span class="o">.</span><span class="n">_PC</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">Register16Bit</span><span class="p">()</span> <span class="c1"># Program Counter PC</span>
-<span class="ne">---&gt; </span><span class="mi">42</span>             <span class="bp">self</span><span class="o">.</span><span class="n">_S</span>  <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">Register8bit</span><span class="p">()</span>  <span class="c1"># Stack Pointer S</span>
-<span class="g g-Whitespace">     </span><span class="mi">43</span>             <span class="bp">self</span><span class="o">.</span><span class="n">_P</span>  <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">RegisterProcessorStatus</span><span class="p">()</span> <span class="c1"># Processor Status Register P</span>
-<span class="g g-Whitespace">     </span><span class="mi">44</span> 
-
-<span class="ne">AttributeError</span>: &#39;CPU&#39; object has no attribute &#39;Register8bit&#39;
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">theMachine</span><span class="o">.</span><span class="n">cpu</span><span class="o">.</span><span class="n">resetPin</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>reset
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pwd
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/jovyan/work/UndertheCovers/underthecovers/unix
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">.</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">  File</span><span class="nn"> &quot;/tmp/ipykernel_16135/2675000297.py&quot;</span><span class="gt">, line </span><span class="mi">1</span>
-    <span class="kn">import</span> <span class="nn">.</span>
-           <span class="o">^</span>
-<span class="ne">SyntaxError</span>: invalid syntax
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
-<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;../python&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">SLS6502</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c</span><span class="o">=</span><span class="n">SLS6502</span><span class="o">.</span><span class="n">SLS6502</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div>
+  <p>A fundamental aspect of computing is to get, the specified work done as efficiently as possible.  Where this work to be done is expressed by software that is ideally as simple as possible to write while not limiting what can be done.   With respect of efficiency this is in terms of both the time and amount of resources required to run the software.  Resources can be measure in the occupancy of physical devices required and the attendant energy consumption.  Typically the physical devices are break down in to three categories:</p>
+<ol class="simple">
+<li><p>active computational devices such as ALU’s that are clocked and consume Power as a function of <span class="xref myst">$P = P_{dyn} + P_{sc} + P_{leak}$</span> (and lets also look at this https://arxiv.org/abs/1401.4655 as it sounds fascinating)</p></li>
+<li><p>storage devices in various forms of on board memory and off board devices</p></li>
+<li><p>communication buses again both in the form of on and off board interconnects</p></li>
+</ol>
+<p>A fascinating property is the dynamic and static nature of computer operation.  That is to say we write software in the form of programs written to a clock work machine model such that the behavior of the program can interact at runtime with the environment.  However, we also can observe that the deterministic nature of the system and software result in very precise ways such that a static circuit or table could capture the behaviour.</p>
+<p>Is it possible to imbue as system with the ability to inherently exploit emergent redudancy it its operation to minimize the time and resources required to optimize its behaviour while perhaps even simplifying the burden of programming.</p>
 
     <script type="text/x-thebe-config">
     {
@@ -575,10 +395,14 @@
               </div>
               
         
-        <div class='prev-next-bottom'>
             
 
-        </div>
+
+
+<div class='prev-next-bottom'>
+    
+
+</div>
         
         </div>
     </div>

@@ -23,7 +23,7 @@
 
     
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/sphinx-book-theme.e8e5499552300ddf5d7adccae7cc3b70.css" type="text/css" />
+    <link rel="stylesheet" href="_static/sphinx-book-theme.e8f53015daec13862f6db5e763c41738.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
@@ -44,7 +44,7 @@
     <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
-    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe"
         const thebe_selector_input = "pre"
@@ -82,7 +82,7 @@
 </div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
   <i class="icon fas fa-search"></i>
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
         <ul class="nav bd-sidenav">
  <li class="toctree-l1">
@@ -352,7 +352,7 @@
             <div class="tocsection onthispage pt-5 pb-3">
                 <i class="fas fa-list"></i> Contents
             </div>
-            <nav id="bd-toc-nav">
+            <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#">
@@ -395,10 +395,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Common executed
-</pre></div>
-</div>
-<div class="output text_html"><style>#notebook { padding-top:0px !important; } .container { width:100% !important; } .CodeMirror { width:100% !important;}.end_space { min-height:0px !important; } .prompt { display:none }.terminal-app #terminado-container { width:100%; }div.mywarn { background-color: #fcf2f2;border-color: #dFb5b4; border-left: 5px solid #dfb5b4; padding: 0.5em;}button { background-color: #cccccc00; }</style></div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Preamble executed
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Preamble executed
 </pre></div>
 </div>
 </div>
@@ -407,9 +404,13 @@
 <h1>CS210 Computer Systems<a class="headerlink" href="#cs210-computer-systems" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="intro-and-the-big-picture">
 <h2>Intro and the Big Picture<a class="headerlink" href="#intro-and-the-big-picture" title="Permalink to this headline">¶</a></h2>
-<img src="./images/webster-computer.pdf"  width=840px style="margin-left:auto; margin-right:auto"> 
-<img src="./images/webster-system.pdf" width=840px style="margin-left:auto; margin-right:auto"> <p>Highlight – “Programmable” and “Device”</p>
-<img src="./images/tapestry.png" width=645px style="margin-left:auto; margin-right:auto"> 
+<center>
+<img src="./images/webster-computer.pdf"  width=840px> 
+<img src="./images/webster-system.pdf" width=840px> 
+<center><p>Highlight – “Programmable” and “Device”</p>
+<center>
+<img src="./images/tapestry.png" width=645px> 
+</center>
 <h1><center>COMPUTER SYSTEM</center></h1>
 <h4>
 <center>
@@ -423,14 +424,18 @@
 <li><p>Give you the skills and knowledge to understand and manipulate (program) more of the computing</p></li>
 <li><p>Generally make you better programmers and more informed decision makers</p></li>
 </ul>
-<img src="./images/anatomyatlas.png" width=546px style="margin-left:auto; margin-right:auto"> <h1>GENERAL ANATOMY OF COMPUTING</h1>
+<center>
+<img src="./images/anatomyatlas.png" width=546px> 
+</center><h1>GENERAL ANATOMY OF COMPUTING</h1>
 <p>Computing is composed of many parts — roughly organized into layers</p>
 <ul class="simple">
 <li><p>HARDWARE: Foundation on which everything is built</p></li>
 <li><p>SOFTWARE: Complex layers of interacting software components</p></li>
 </ul>
 <br>
-<img src="./images/hands.png" width=546px style="margin-left:auto; margin-right:auto"> <h1>GENERAL ANATOMY OF COMPUTING</h1>
+<center>
+<img src="./images/hands.png" width=546px> 
+</center><h1>GENERAL ANATOMY OF COMPUTING</h1>
 <p>Computing is composed of many parts — roughly organized into layers</p>
 <ul class="simple">
 <li><p>HARDWARE: Foundation on which everything is built</p></li>
@@ -438,17 +443,31 @@
 </ul>
 <p>Despite all the kinds of computers in our lives …</p>
 <br>
-<img src="./images/stackplain.png"  width=309px style="margin-left:auto; margin-right:auto"> <img src="./images/lotsofcomputers.png"  width=600px style="margin-left:auto; margin-right:auto"> <br>
-<img src="./images/stackplain.png"  width=309px style="margin-left:auto; margin-right:auto"> <img src="./images/stackwithbits.png"  width="80%" style="margin-left:auto; margin-right:auto"> <h1>Client Computers</h1>
-<img src="./images/stackwithclients.png"  width="75%" style="margin-left:auto; margin-right:auto"> <h1>Server Computers</h1>
-<img src="./images/stackwithservers.png"  width="75%" style="margin-left:auto; margin-right:auto"> <h1>A Programmers View</h1>
-<img src="./images/stackwithswlayers.png"  width="80%" style="margin-left:auto; margin-right:auto"> <img style="float: left; margin: 0px 15px 15px 0px;" src="./images/pillars.png" width="432">  
+<center>
+<img src="./images/stackplain.png"  width=309px>
+</center><center>
+<img src="./images/lotsofcomputers.png"  width=600px> 
+</center><br>
+<center>
+<img src="./images/stackplain.png"  width=309px>
+</center><center>
+<img src="./images/stackwithbits.png"  width="80%"> 
+</center><h1>Client Computers</h1>
+<center>
+<img src="./images/stackwithclients.png"  width="75%">
+</center><h1>Server Computers</h1>
+<center>
+<img src="./images/stackwithservers.png"  width="75%">
+</center><h1>A Programmers View</h1>
+<center>
+<img src="./images/stackwithswlayers.png"  width="80%">
+<center><img align="left" src="./images/pillars.png" width="432">  
 <br>
 <h1>The two pillars of computer science</h1>
 <hr class="docutils" />
 <h1 style="color:#34A5DA">
 Theory and Systems
-</h1><img style="float: right; margin: 0px 15px 15px 0px;" src="./images/warpedclock.png" width="432">  
+</h1><img align="right" src="./images/warpedclock.png" width="432">  
 <h1 style="color:#34A5DA">
 Lets turn back the clock
 </h1>
@@ -458,7 +477,19 @@ Lets turn back the clock
 <li><p>Von Neumman and the Von Neumman Architecture</p></li>
 <li><p>Rear Admiral Grace Hopper and the compiler</p></li>
 </ol>
-<img  src="./images/turing_slide.pdf" width=100%><img  src="./images/turingmachine_slide.pdf" width=100%><img  src="./images/vonneumann_slide.pdf" width=100%><img style="margin-left: auto; margin-right: auto ;" src="./images/vonneumannarch_slide.pdf" width=100%><img  src="./images/hopper_slide.pdf" width=100%><img  src="./images/histcomp_slide.pdf" width=100%><h1 style="color:#34A5DA" align="left">
+<center>
+<img  src="./images/turing_slide.pdf" width=100%>
+</center><center>
+<img  src="./images/turingmachine_slide.pdf" width=100%>
+</center><center>
+<img  src="./images/vonneumann_slide.pdf" width=100%>
+</center><center>
+<img src="./images/vonneumannarch_slide.pdf" width=100%>
+<center><center>
+<img  src="./images/hopper_slide.pdf" width=100%>
+<center><center>
+<img  src="./images/histcomp_slide.pdf" width=100%>
+</center><h1 style="color:#34A5DA" align="left">
 May you live in interesting times…
 </h1>    
 <br>
@@ -523,7 +554,7 @@ It's up to YOU … as to what comes next
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html"><b>CODE: C - Hello World</div><script type="application/vnd.jupyter.widget-view+json">
-{"version_major": 2, "version_minor": 0, "model_id": "034891058362422dba69d993546c15e6"}
+{"version_major": 2, "version_minor": 0, "model_id": "e9c7b61cf0254499bdddc1707a90e33c"}
 </script></div>
 </div>
 <div class="cell docutils container">
@@ -602,7 +633,7 @@ It's up to YOU … as to what comes next
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html"><b>CODE: asm - Our First assembly program - Playing with popcnt</div><script type="application/vnd.jupyter.widget-view+json">
-{"version_major": 2, "version_minor": 0, "model_id": "78c2017d03b049ae85ff2a129af2f612"}
+{"version_major": 2, "version_minor": 0, "model_id": "81faa011680c46508b4593bf41152ba6"}
 </script></div>
 </div>
 <div class="cell docutils container">
@@ -630,7 +661,7 @@ It's up to YOU … as to what comes next
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html"><b>NOTES: on building popcnt</div><script type="application/vnd.jupyter.widget-view+json">
-{"version_major": 2, "version_minor": 0, "model_id": "5faec7c2c2d04837861b3308d87eccec"}
+{"version_major": 2, "version_minor": 0, "model_id": "d841d541721442598f6cf26430f1047c"}
 </script></div>
 </div>
 <div class="cell docutils container">
@@ -658,14 +689,14 @@ It's up to YOU … as to what comes next
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html"><b>NOTES: using gdb with popcnt</div><script type="application/vnd.jupyter.widget-view+json">
-{"version_major": 2, "version_minor": 0, "model_id": "db68c1d96d674640b782820220a3c7c0"}
+{"version_major": 2, "version_minor": 0, "model_id": "54a3a6a5196a4575a8ccf969f1103d62"}
 </script></div>
 </div>
 </div>
 
 
 <script type="application/vnd.jupyter.widget-state+json">
-{"state": {"24ca2ed5ecae4c01836b5191c9e52c01": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "260px", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": "260px", "max_width": "700px", "min_height": "260px", "min_width": "700px", "object_fit": null, "object_position": null, "order": null, "overflow": "scroll", "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": "700px"}}, "034891058362422dba69d993546c15e6": {"model_name": "OutputModel", "model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_24ca2ed5ecae4c01836b5191c9e52c01", "msg_id": "", "outputs": [{"output_type": "display_data", "metadata": {}, "data": {"text/plain": "<IPython.core.display.Markdown object>", "text/markdown": "\n``` C\n#include <stdio.h>\n  \nint main()        \n{                          \n  printf(\"hello world\\n\"); \n  return 0;                \n}\n\n```\n"}}]}}, "03172a352d7f4dd1be518526a98f292a": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "640px", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": "640px", "max_width": "200%", "min_height": "640px", "min_width": "200%", "object_fit": null, "object_position": null, "order": null, "overflow": "scroll", "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": "200%"}}, "78c2017d03b049ae85ff2a129af2f612": {"model_name": "OutputModel", "model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_03172a352d7f4dd1be518526a98f292a", "msg_id": "", "outputs": [{"output_type": "display_data", "metadata": {}, "data": {"text/plain": "<IPython.core.display.Markdown object>", "text/markdown": "\n``` gas\n\t.intel_syntax noprefix\n\t\n\t.text\n        \n\t.global _start \t\n_start:                          \n\tpopcnt rax, rbx  \n\n```\n"}}]}}, "8b329720be3a436b9dcd76138467e68a": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "240px", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": "240px", "max_width": "100%", "min_height": "240px", "min_width": "100%", "object_fit": null, "object_position": null, "order": null, "overflow": "scroll", "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": "100%"}}, "5faec7c2c2d04837861b3308d87eccec": {"model_name": "OutputModel", "model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_8b329720be3a436b9dcd76138467e68a", "msg_id": "", "outputs": [{"output_type": "display_data", "metadata": {}, "data": {"text/plain": "<IPython.core.display.Markdown object>", "text/markdown": "\n``` shell\n#To assemble and link the code we will use the following command:\ngcc --static -g -nostartfiles -nolibc popcnt.S -o popcnt\n# We can automate this using a makefile so that all we would need to do is:\nmake popcnt\n\n```\n"}}]}}, "e9cbaaf09e9f48a4b0390f5714839cd7": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "640px", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": "640px", "max_width": "100%", "min_height": "640px", "min_width": "100%", "object_fit": null, "object_position": null, "order": null, "overflow": "scroll", "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": "100%"}}, "db68c1d96d674640b782820220a3c7c0": {"model_name": "OutputModel", "model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_e9cbaaf09e9f48a4b0390f5714839cd7", "msg_id": "", "outputs": [{"output_type": "display_data", "metadata": {}, "data": {"text/plain": "<IPython.core.display.Markdown object>", "text/markdown": "\n``` shell\n# To get the debugger going:\n  gdb -tui popcnt\n# Now we want use gdb command to poke around popcnt\n# To setup the assembly syntax to intel: \n set disassembly-flavor intel\n# Configure a layout that is more friendly to assembly code:\n tui new-layout 210 src 2 regs 5 status 1 cmd 1\n# Switch to the new layout: \n  layout 210\n# Set a breakpoint at the start symbol so exection will stop their: \n  break _start\n# Start the program running:\n  run\n\n```\n"}}]}}}, "version_major": 2, "version_minor": 0}
+{"state": {"cdd3b80dc3614fd1929654ef8251a420": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "260px", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": "260px", "max_width": "700px", "min_height": "260px", "min_width": "700px", "object_fit": null, "object_position": null, "order": null, "overflow": "scroll", "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": "700px"}}, "e9c7b61cf0254499bdddc1707a90e33c": {"model_name": "OutputModel", "model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_cdd3b80dc3614fd1929654ef8251a420", "msg_id": "", "outputs": [{"output_type": "display_data", "metadata": {}, "data": {"text/plain": "<IPython.core.display.Markdown object>", "text/markdown": "\n``` C\n#include <stdio.h>\n  \nint main()        \n{                          \n  printf(\"hello world\\n\"); \n  return 0;                \n}\n\n```\n"}}]}}, "d9f92920d88246fe9a4620ab7c8b68f4": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "640px", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": "640px", "max_width": "200%", "min_height": "640px", "min_width": "200%", "object_fit": null, "object_position": null, "order": null, "overflow": "scroll", "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": "200%"}}, "81faa011680c46508b4593bf41152ba6": {"model_name": "OutputModel", "model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_d9f92920d88246fe9a4620ab7c8b68f4", "msg_id": "", "outputs": [{"output_type": "display_data", "metadata": {}, "data": {"text/plain": "<IPython.core.display.Markdown object>", "text/markdown": "\n``` gas\n\t.intel_syntax noprefix\n\t\n\t.text\n        \n\t.global _start \t\n_start:                          \n\tpopcnt rax, rbx  \n\n```\n"}}]}}, "f2c149b45d5d43d09380d114fbe481b6": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "240px", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": "240px", "max_width": "100%", "min_height": "240px", "min_width": "100%", "object_fit": null, "object_position": null, "order": null, "overflow": "scroll", "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": "100%"}}, "d841d541721442598f6cf26430f1047c": {"model_name": "OutputModel", "model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_f2c149b45d5d43d09380d114fbe481b6", "msg_id": "", "outputs": [{"output_type": "display_data", "metadata": {}, "data": {"text/plain": "<IPython.core.display.Markdown object>", "text/markdown": "\n``` shell\n#To assemble and link the code we will use the following command:\ngcc --static -g -nostartfiles -nolibc popcnt.S -o popcnt\n# We can automate this using a makefile so that all we would need to do is:\nmake popcnt\n\n```\n"}}]}}, "3dfae056ce254078a0a119046e41b1a6": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "640px", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": "640px", "max_width": "100%", "min_height": "640px", "min_width": "100%", "object_fit": null, "object_position": null, "order": null, "overflow": "scroll", "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": "100%"}}, "54a3a6a5196a4575a8ccf969f1103d62": {"model_name": "OutputModel", "model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_3dfae056ce254078a0a119046e41b1a6", "msg_id": "", "outputs": [{"output_type": "display_data", "metadata": {}, "data": {"text/plain": "<IPython.core.display.Markdown object>", "text/markdown": "\n``` shell\n# To get the debugger going:\n  gdb -tui popcnt\n# Now we want use gdb command to poke around popcnt\n# To setup the assembly syntax to intel: \n set disassembly-flavor intel\n# Configure a layout that is more friendly to assembly code:\n tui new-layout 210 src 2 regs 5 status 1 cmd 1\n# Switch to the new layout: \n  layout 210\n# Set a breakpoint at the start symbol so exection will stop their: \n  break _start\n# Start the program running:\n  run\n\n```\n"}}]}}}, "version_major": 2, "version_minor": 0}
 </script>
 
 
@@ -692,12 +723,32 @@ It's up to YOU … as to what comes next
               </div>
               
         
-        <div class='prev-next-bottom'>
             
-    <a class='left-prev' id="prev-link" href="intro_ln.html" title="previous page">Under the Covers : The Secret Life of Software</a>
-    <a class='right-next' id="next-link" href="L00_400_F21_JA.html" title="next page">CS400 Fall 2021 : Machine Level Programming</a>
 
-        </div>
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="intro_ln.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">Under the Covers : The Secret Life of Software</p>
+            </div>
+        </a>
+    </div>
+     <div id="next">
+        <a class="right-next" href="L00_400_F21_JA.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title">CS400 Fall 2021 : Machine Level Programming</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
+
+</div>
         
         </div>
     </div>

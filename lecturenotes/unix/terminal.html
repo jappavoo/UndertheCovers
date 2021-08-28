@@ -23,7 +23,7 @@
 
     
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.e8e5499552300ddf5d7adccae7cc3b70.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.e8f53015daec13862f6db5e763c41738.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -44,7 +44,7 @@
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
-    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe"
         const thebe_selector_input = "pre"
@@ -80,7 +80,7 @@
 </div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
   <i class="icon fas fa-search"></i>
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
         <ul class="nav bd-sidenav">
  <li class="toctree-l1">
@@ -350,7 +350,7 @@
             <div class="tocsection onthispage pt-5 pb-3">
                 <i class="fas fa-list"></i> Contents
             </div>
-            <nav id="bd-toc-nav">
+            <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#the-origin-story">
@@ -392,7 +392,7 @@ housed the “smart” bits, the CPU and MEMORY, that could run programs (we dis
 <p><a class="reference external" href="https://commons.wikimedia.org/wiki/File:DEC_vt220.jpg">source</a></p>
 <p>For a human to work with the computer we had to attach a device that could both display output from from the software running on the computer and accept input.   The basic design was a terminal device that contained a video screen, keyboard and just enough smarts to communicate with the computer.</p>
 <blockquote>
-<div><p><img style="margin: 10px 0px -20px 0px;" align="left" width="60" src="../images/fyi.svg"> <p style="background-color:powderblue;"> As we see computers originally did not have integrated hardware for humans to use – Eg. they did not have integrated screens, keyboards, mice, track pads, VR goggles, etc.  Integrating, such human computer interface devices, only arose with  advent of small personal computers (PC’s) designed and built largely for direct human use.  That being said there are still many computers today that do not have or need integrated human interface devices, these include the computers that power the Cloud or are integrated into other devices such as your wifi router.</p>
+<div><p><a class="reference internal" href="../_images/fyi.svg"><img alt="../_images/fyi.svg" class="align-left" src="../_images/fyi.svg" width="60" /></a> <p style="background-color:powderblue;"> As we see computers originally did not have integrated hardware for humans to use – Eg. they did not have integrated screens, keyboards, mice, track pads, VR goggles, etc.  Integrating, such human computer interface devices, only arose with  advent of small personal computers (PC’s) designed and built largely for direct human use.  That being said there are still many computers today that do not have or need integrated human interface devices, these include the computers that power the Cloud or are integrated into other devices such as your wifi router.</p>
 </div></blockquote>
 </p>
 <p><a id='ASCII_sec'></a></p>
@@ -405,7 +405,7 @@ housed the “smart” bits, the CPU and MEMORY, that could run programs (we dis
 Perhaps the most important of these is the LineFeed (‘\n’) value as it causes the cursor to go down one row to begin a new line.</p>
 <p>In addition the the screen terminals had a keyboard.  These were built so that when a key was pressed on the keyboard the terminal would send the corresponding ASCII value to the computer.  Each key being labeled with the ASCII symbol of the value that pressing it would send.   This way software running on the computer could take text input from the user in addition to displaying it.   Furthermore it was easy to have the software  break the input into “words” and “lines” by having it scan for the ASCII values sent for Spaces and Line-Feeds. Which were sent when the Spacebar and Return (or Enter) key where pressed.</p>
 <blockquote>
-<div><p><img style="margin: 10px 0px 0px 0px;" align="left" width="60" src="../images/history.svg"> <p style="background-color:powderblue;">Terminals were the “natural” evolution of the classic <a class="reference external" href="https://en.wikipedia.org/wiki/Typewriter">typewriter</a>. Where its screen was like a virtual piece of paper in that could be software controlled.  As a matter of fact IBM was selling typewriters in 1924 well before it started exploring computers in 1940 <a class="reference external" href="https://en.wikipedia.org/wiki/History_of_IBM">IBM History</a>.</p></p>
+<div><p><a class="reference internal" href="../_images/history.svg"><img alt="../_images/history.svg" class="align-left" src="../_images/history.svg" width="60" /></a> <p style="background-color:powderblue;">Terminals were the “natural” evolution of the classic <a class="reference external" href="https://en.wikipedia.org/wiki/Typewriter">typewriter</a>. Where its screen was like a virtual piece of paper in that could be software controlled.  As a matter of fact IBM was selling typewriters in 1924 well before it started exploring computers in 1940 <a class="reference external" href="https://en.wikipedia.org/wiki/History_of_IBM">IBM History</a>.</p></p>
 </div></blockquote>
 <p><img alt="terminalroom" src="../_images/terminalroom.jpg" /></p>
 <p><a class="reference external" href="http://www.columbia.edu/cu/computinghistory/carman.jpg">source</a></p>
@@ -422,14 +422,14 @@ The UNIX operating systems would check to see that the user was allowed to login
 <h2>Terminal Emulators<a class="headerlink" href="#terminal-emulators" title="Permalink to this headline">¶</a></h2>
 <p>While the computers and terminals that we discussed above are relics of the past.   UNIX and its development environment is still alive and thriving.  It turns out that the simplicity of an ASCII terminal and the ASCII oriented programming tools of UNIX continue to power much of the digital world around us.  <a class="reference external" href="https://en.wikipedia.org/wiki/Linux">LINUX</a> and other versions of UNIX runs on every imaginable device today all the way from supercomputers to watches. And at some point or another a programmer used terminal sessions communicating with the UNIX running on those devices to develop and debug the layers of software that most people never see but rely on to make those devices useful.</p>
 <blockquote>
-<div><p><img style="margin: 10px 0px 0px 0px;" align="left" width="60" src="../images/concept.svg"> <p style="background-color:powderblue;">As we learn more about how software is constructed and how computers work we will learn that the power of UNIX comes from making it very natural and easy for programmers to construct programs that can themselves be used to process and translate code.</p></p>
+<div><p><a class="reference internal" href="../_images/concept.svg"><img alt="../_images/concept.svg" class="align-left" src="../_images/concept.svg" width="60" /></a> <p style="background-color:powderblue;">As we learn more about how software is constructed and how computers work we will learn that the power of UNIX comes from making it very natural and easy for programmers to construct programs that can themselves be used to process and translate code.</p></p>
 </div></blockquote>
 <p>Today we use “software” versions of terminals, called terminal emulators, to allow us to create connections to an operating system either running on the physical machine we are on or to other remote computers. Apple’s MacOSX, is a UNIX derived operating systems and includes a program called <a class="reference external" href="https://en.wikipedia.org/wiki/Terminal_(macOS)">Terminal</a>.    Microsoft’s Windows OS is not a UNIX operating systems but includes a similar program called <a class="reference external" href="https://docs.microsoft.com/en-us/windows/terminal/">Windows Terminal</a>.  Unlike the old days since there is really no physical terminal device a single user can start as many terminal sessions each within its own window as one likes.  As we will see later it is very useful to use multiple terminal sessions to organize your work.  Additionally, both OSX and Windows provides a program called <a class="reference external" href="https://en.wikipedia.org/wiki/Secure_Shell_Protocol">SSH</a>.   SSH allows you to use a terminal emulator running on your computer to connect to remote computers.  Doing so is like connecting a terminal device to the remote computers you are connect to.  The following discusses using ssh on windows <a class="reference external" href="https://docs.microsoft.com/en-us/windows/terminal/tutorials/ssh">Windows Terminal SSH</a> and the one to using ssh on OS <a class="reference external" href="https://osxdaily.com/2017/04/28/howto-ssh-client-mac/">OSX Terminal SSH</a>.</p>
 <p>Recently, terminal emulators such as <a class="reference external" href="https://xtermjs.org">xterm.js</a> have been developed that can be run within a web-browser. This allows us to develop web accessible development environments in which a user can create and use terminals all within a web-browser running on their local computer.  This book has been written using <a class="reference external" href="https://jupyterbook.org/">Books with Jupyter</a> which exploits <a class="reference external" href="https://jupyter.org">Project Jupyter</a> to allow pages of this book to provide the reader with access to a Unix computer via their web-browser.</p>
 <p>Using the Rocket Icon (in the top right) you can
 can launch interactive versions of any chapter in this book and then create terminals to explore the material.  Clicking on the “JupyterHub” drop down of the Rocket Icon will start a private Linux server (more accurately a Intel <a class="reference external" href="https://en.wikipedia.org/wiki/LXC">Linux Container</a>) for your personal use.  This server will automatically start the Jupyter environment which will serve the book’s content to your web-browser.  This software, allows you to read and interact with the source material for chapters of the book and also allows you to create terminal sessions so that you can directly use the UNIX development tools installed on the computer via the xterm.js terminal emulators.  This allows you the freedom to explore all the topics and material from within your web-browser.  But please note there is nothing special about these terminals or the Linux system.  Anything you learn can be directly applied to any Unix like system that you can establish a terminal connection too.</p>
 <blockquote>
-<div><p><img style="margin: 10px 0px 0px 0px;" align="left" width="60" src="../images/donot.svg"> <p style="background-color:tomato;">  Please note if you use the interactive features of this book, <b>the files you create within your Linux server are NOT PERMANENT!</b>  In other words you cannot rely on the files to be there the next time you access the server.  If you want to save your work you will need to use an external service like <span class="xref myst">GIT</span>.</p>
+<div><p><a class="reference internal" href="../_images/donot.svg"><img alt="../_images/donot.svg" class="align-left" src="../_images/donot.svg" width="60" /></a> <p style="background-color:tomato;">  Please note if you use the interactive features of this book, <b>the files you create within your Linux server are NOT PERMANENT!</b>  In other words you cannot rely on the files to be there the next time you access the server.  If you want to save your work you will need to use an external service like <span class="xref myst">GIT</span>.</p>
 </div></blockquote>
 <p>The following video demonstrates how you can use a page of the book to launch a Linux server and how to create terminal connections to this server from within your web-browser.  You are encouraged to always have a terminal open when you read this book so you can trying things out.</p>
 <div class="cell tag_remove-input docutils container">
@@ -447,10 +447,10 @@ can launch interactive versions of any chapter in this book and then create term
     <br>
 It might not seem obvious but the invention of the terminal was a very big deal in democratizing computer use and programming.  If you are interested you can find more information about pre-terminal times here:
 <ul class="simple">
-<li><p>Computer programming in the punched card era, <a class="reference external" href="https://en.wikipedia.org/w/index.php?title=Computer_programming_in_the_punched_card_era&amp;oldid=1031619768">https://en.wikipedia.org/w/index.php?title=Computer_programming_in_the_punched_card_era&amp;oldid=1031619768</a> (last visited Aug. 5, 2021).</p></li>
-<li><p>Keypunch, <a class="reference external" href="https://en.wikipedia.org/w/index.php?title=Keypunch&amp;oldid=1035986902">https://en.wikipedia.org/w/index.php?title=Keypunch&amp;oldid=1035986902</a> (last visited Aug. 5, 2021).</p></li>
-<li><p>Punched card input/output, <a class="reference external" href="https://en.wikipedia.org/w/index.php?title=Punched_card_input/output&amp;oldid=1029169887">https://en.wikipedia.org/w/index.php?title=Punched_card_input/output&amp;oldid=1029169887</a> (last visited Aug. 5, 2021).</p></li>
-<li><p>IBM 1403, <a class="reference external" href="https://en.wikipedia.org/w/index.php?title=IBM_1403&amp;oldid=1028926171">https://en.wikipedia.org/w/index.php?title=IBM_1403&amp;oldid=1028926171</a> (last visited Aug. 5, 2021).</p></li>
+<li><p>Computer programming in the punched card era, https://en.wikipedia.org/w/index.php?title=Computer_programming_in_the_punched_card_era&amp;oldid=1031619768 (last visited Aug. 5, 2021).</p></li>
+<li><p>Keypunch, https://en.wikipedia.org/w/index.php?title=Keypunch&amp;oldid=1035986902 (last visited Aug. 5, 2021).</p></li>
+<li><p>Punched card input/output, https://en.wikipedia.org/w/index.php?title=Punched_card_input/output&amp;oldid=1029169887 (last visited Aug. 5, 2021).</p></li>
+<li><p>IBM 1403, https://en.wikipedia.org/w/index.php?title=IBM_1403&amp;oldid=1028926171 (last visited Aug. 5, 2021).</p></li>
 </ul>
 <p>Prior to the terminal working with computers was more like offering prayers, written on stacks of special paper cards, to a priest who took them on your behalf to computer operators who the feed them to the computer.  If all went well you would be able to pick up the output of the computer program, you requested to have run, in the form of a large paper print out.  Not only where their many physical devices and steps in the process it took a very very long time between steps.  In some sense using a computer required humans to adapt the the machine’s needs.  Furthermore only a few trusted people were allows to have access to the actual computer.  Writing new programs was an even more arcane skill that required incredible patience and discipline to work primarily on paper.</p>
 <p>Terminals changed all of this.  All of a sudden many users could gain “direct” access to programs running on a computer in a “fast” interactive way.  Using a computer became more like having a conversation with the programs including the programs for writing new programs.  This meant users could explore, experiment and learn how to write new programs themselves!  One should never over look the power of having a good human interface.
@@ -481,10 +481,14 @@ It might not seem obvious but the invention of the terminal was a very big deal 
               </div>
               
         
-        <div class='prev-next-bottom'>
             
 
-        </div>
+
+
+<div class='prev-next-bottom'>
+    
+
+</div>
         
         </div>
     </div>

@@ -23,7 +23,7 @@
 
     
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.e8e5499552300ddf5d7adccae7cc3b70.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.e8f53015daec13862f6db5e763c41738.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -44,7 +44,7 @@
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
-    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe"
         const thebe_selector_input = "pre"
@@ -80,7 +80,7 @@
 </div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
   <i class="icon fas fa-search"></i>
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
         <ul class="nav bd-sidenav">
  <li class="toctree-l1">
@@ -350,7 +350,7 @@
             <div class="tocsection onthispage pt-5 pb-3">
                 <i class="fas fa-list"></i> Contents
             </div>
-            <nav id="bd-toc-nav">
+            <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#the-parts">
@@ -377,9 +377,9 @@
 <h1>The von Neumann Architecture<a class="headerlink" href="#the-von-neumann-architecture" title="Permalink to this headline">¶</a></h1>
 <p>As we saw in the <a class="reference internal" href="intro.html"><span class="doc std std-doc">introduction</span></a> assembly code directly maps to the native machine code of a computer.  As such the assembly instructions directly allow a programmer to use and control the basic functions of the computer in order to get the computer to do what they want.   Whether that is to search or sort an array of numbers, play a music file or some other task.</p>
 <p>But to understand assembly programming we have to learn what the basic parts are of any computer are and how they work so we can understand what the assembly instructions allow us to do.    This is why understanding how computers and software work are one in the same as learning assembly programming.</p>
-<p><img style="float: left; margin: 0px 20px 0px 0px;" width="60%" src="../images/src/SLS_TheMachine.svg"> Despite the fact that there are many different manufactures of computers they all largely share a basic common structure.  We call the generic components, their organization and the way they interact the architecture of a machine.  In our case the common architecture to which most programmable computers are built around is that of the von Neumann Architecture named after <a class="reference external" href="https://en.wikipedia.org/wiki/John_von_Neumann">John von Neumann</a>.</p>
+<p><a class="reference internal" href="../_images/SLS_TheMachine.svg"><img alt="../_images/SLS_TheMachine.svg" src="../_images/SLS_TheMachine.svg" width="60%" /></a> Despite the fact that there are many different manufactures of computers they all largely share a basic common structure.  We call the generic components, their organization and the way they interact the architecture of a machine.  In our case the common architecture to which most programmable computers are built around is that of the von Neumann Architecture named after <a class="reference external" href="https://en.wikipedia.org/wiki/John_von_Neumann">John von Neumann</a>.</p>
 <blockquote>
-<div><p><img style="margin: 10px 0px -20px 0px;" align="left" width="60" src="../images/commentary.svg"> <p style="background-color:powderblue;"> In our journey to understand computers we will be exploring a fascinating story of human innovation and ingenuity.  This story is full of characters, such as John von Neumann, Alan Turning, Admiral Grace Hopper, Ada Love Lace, and many more, that dared to be and think differently.  Not only do we owe a great deal of gratitude to these courageous people, who often risked a lot in suggesting new ways of thinking and doing things, challenging the orthodoxy of their day, we can also draw inspiration in their diversity and bravery. Remember who you are and that your voice matters, tomorrows innovation rests on your actions!</p>
+<div><p><a class="reference internal" href="../_images/commentary.svg"><img alt="../_images/commentary.svg" class="align-left" src="../_images/commentary.svg" width="60" /></a> <p style="background-color:powderblue;"> In our journey to understand computers we will be exploring a fascinating story of human innovation and ingenuity.  This story is full of characters, such as John von Neumann, Alan Turning, Admiral Grace Hopper, Ada Love Lace, and many more, that dared to be and think differently.  Not only do we owe a great deal of gratitude to these courageous people, who often risked a lot in suggesting new ways of thinking and doing things, challenging the orthodoxy of their day, we can also draw inspiration in their diversity and bravery. Remember who you are and that your voice matters, tomorrows innovation rests on your actions!</p>
 </div></blockquote>
 <div class="section" id="the-parts">
 <h2>The Parts<a class="headerlink" href="#the-parts" title="Permalink to this headline">¶</a></h2>
@@ -412,10 +412,14 @@
               </div>
               
         
-        <div class='prev-next-bottom'>
             
 
-        </div>
+
+
+<div class='prev-next-bottom'>
+    
+
+</div>
         
         </div>
     </div>

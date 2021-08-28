@@ -23,7 +23,7 @@
 
     
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.e8e5499552300ddf5d7adccae7cc3b70.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.e8f53015daec13862f6db5e763c41738.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -44,15 +44,13 @@
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
-    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe"
         const thebe_selector_input = "pre"
         const thebe_selector_output = ".output"
     </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -82,7 +80,7 @@
 </div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
   <i class="icon fas fa-search"></i>
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
         <ul class="nav bd-sidenav">
  <li class="toctree-l1">
@@ -352,7 +350,7 @@
             <div class="tocsection onthispage pt-5 pb-3">
                 <i class="fas fa-list"></i> Contents
             </div>
-            <nav id="bd-toc-nav">
+            <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#machine-code">
@@ -381,8 +379,8 @@
 Most programmers are completely unaware of how the computer really works as the languages that they program in are not natively supported by the hardware.  Rather, most languages, such as JavaScript, Java, Python, Ruby, Rust, C#, C++, and even C must be translated into the native code that the computer does understand – machine code.</p>
 <div class="section" id="machine-code">
 <h2>Machine Code<a class="headerlink" href="#machine-code" title="Permalink to this headline">¶</a></h2>
-<p>The hardware of the computer is built out of electrical components that can store and interpret patterns of  bits, binary digits.  A single bit can be though of as a switch that can be in two positions “ON” – 1  and “OFF” – 0.  A group of eight bits forms a byte.  We will say  a lot more about bytes  a little later.  The main thing to observe is that a byte is easily expressed as an 8 digit binary, (base 2), number.  Given that there are 8 bits a byte can take on <span class="math notranslate nohighlight">\(2^8=256\)</span>
-unique values ranging from <span class="math notranslate nohighlight">\(00000000\)</span> to <span class="math notranslate nohighlight">\(11111111\)</span>.</p>
+<p>The hardware of the computer is built out of electrical components that can store and interpret patterns of  bits, binary digits.  A single bit can be though of as a switch that can be in two positions “ON” – 1  and “OFF” – 0.  A group of eight bits forms a byte.  We will say  a lot more about bytes  a little later.  The main thing to observe is that a byte is easily expressed as an 8 digit binary, (base 2), number.  Given that there are 8 bits a byte can take on $2^8=256$
+unique values ranging from $00000000$ to $11111111$.</p>
 <p>Machine code is a binary code – meaning that binary values are used to encoded the operations and values that make up a program.   The following table list twenty of the machine codes of a <a class="reference external" href="https://en.wikipedia.org/wiki/MOS_Technology_6502">MOS 6502 Centeral Processing Unit (CPU)</a> which has a very simple machine code.</p>
 <table class="colwidths-auto table">
 <thead>
@@ -391,72 +389,72 @@ unique values ranging from <span class="math notranslate nohighlight">\(00000000
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(00000000\)</span></p></td>
+<tr class="row-even"><td><p>$00000000$</p></td>
 <td><p>interrupt - impl: Implied i</p></td>
 </tr>
-<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(00000001\)</span></p></td>
+<tr class="row-odd"><td><p>$00000001$</p></td>
 <td><p>or with accumulator - X,ind: Zero Page Indexed Indirect (zp,x)</p></td>
 </tr>
-<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(00000101\)</span></p></td>
+<tr class="row-even"><td><p>$00000101$</p></td>
 <td><p>or with accumulator - zpg: Zero Page zp</p></td>
 </tr>
-<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(00000110\)</span></p></td>
+<tr class="row-odd"><td><p>$00000110$</p></td>
 <td><p>arithmetic shift left - zpg: Zero Page zp</p></td>
 </tr>
-<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(00001000\)</span></p></td>
+<tr class="row-even"><td><p>$00001000$</p></td>
 <td><p>push processor status (SR) - impl: Implied i</p></td>
 </tr>
-<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(00001001\)</span></p></td>
+<tr class="row-odd"><td><p>$00001001$</p></td>
 <td><p>or with accumulator - #: Immediate #</p></td>
 </tr>
-<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(00001010\)</span></p></td>
+<tr class="row-even"><td><p>$00001010$</p></td>
 <td><p>arithmetic shift left - A: Accumulator A</p></td>
 </tr>
-<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(00001101\)</span></p></td>
+<tr class="row-odd"><td><p>$00001101$</p></td>
 <td><p>or with accumulator - abs: Absolute a</p></td>
 </tr>
-<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(00001110\)</span></p></td>
+<tr class="row-even"><td><p>$00001110$</p></td>
 <td><p>arithmetic shift left - abs: Absolute a</p></td>
 </tr>
-<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(00010000\)</span></p></td>
+<tr class="row-odd"><td><p>$00010000$</p></td>
 <td><p>branch on plus (negative clear) - rel: Program Counter Relative r</p></td>
 </tr>
-<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(00010001\)</span></p></td>
+<tr class="row-even"><td><p>$00010001$</p></td>
 <td><p>or with accumulator - ind,Y: Zero Page Indirect Indexed with Y (zp),y</p></td>
 </tr>
-<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(00010101\)</span></p></td>
+<tr class="row-odd"><td><p>$00010101$</p></td>
 <td><p>or with accumulator - zpg,X: Zero Page Index with X</p></td>
 </tr>
-<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(00010110\)</span></p></td>
+<tr class="row-even"><td><p>$00010110$</p></td>
 <td><p>arithmetic shift left - zpg,X: Zero Page Index with X</p></td>
 </tr>
-<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(00011000\)</span></p></td>
+<tr class="row-odd"><td><p>$00011000$</p></td>
 <td><p>clear carry - impl: Implied i</p></td>
 </tr>
-<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(00011001\)</span></p></td>
+<tr class="row-even"><td><p>$00011001$</p></td>
 <td><p>or with accumulator - abs,Y: Absolute Indexed with Y a,y</p></td>
 </tr>
-<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(00011101\)</span></p></td>
+<tr class="row-odd"><td><p>$00011101$</p></td>
 <td><p>or with accumulator - abs,X: Absolute Indexed with X a,x</p></td>
 </tr>
-<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(00011110\)</span></p></td>
+<tr class="row-even"><td><p>$00011110$</p></td>
 <td><p>arithmetic shift left - abs,X: Absolute Indexed with X a,x</p></td>
 </tr>
-<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(00100000\)</span></p></td>
+<tr class="row-odd"><td><p>$00100000$</p></td>
 <td><p>jump subroutine - abs: Absolute a</p></td>
 </tr>
-<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(00100001\)</span></p></td>
+<tr class="row-even"><td><p>$00100001$</p></td>
 <td><p>and (with accumulator) - X,ind: Zero Page Indexed Indirect (zp,x)</p></td>
 </tr>
-<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(00100100\)</span></p></td>
+<tr class="row-odd"><td><p>$00100100$</p></td>
 <td><p>bit test - zpg: Zero Page zp</p></td>
 </tr>
 </tbody>
 </table>
 <blockquote>
-<div><p><img style="margin: 10px 0px -20px 0px;" align="left" width="60" src="../images/fyi.svg"><p style="background-color:powderblue;">The 6502 was designed and first built in 1975 but continues to be used today. It has 151 simple operations versus the thousands of complex operations supported by an modern <a class="reference external" href="https://en.wikipedia.org/wiki/X86-64">Intel X86-64 processor</a> which is widely used in computers ranging from laptops to supercomputers.  The following article discusses how to calculate the number of operations an Intel x86-64 processor supports and why it is hard to do so;  <span class="xref myst">“Enumerating x86-64 – It’s Not as Easy as Counting”</span>.   Given the simplicity of the 6502 we will often use it to first get our heads around an idea or mechanism, before looking at the same thing on an Intel X86-64 based computer.</p>
+<div><p><a class="reference internal" href="../_images/fyi.svg"><img alt="../_images/fyi.svg" class="align-left" src="../_images/fyi.svg" width="60" /></a><p style="background-color:powderblue;">The 6502 was designed and first built in 1975 but continues to be used today. It has 151 simple operations versus the thousands of complex operations supported by an modern <a class="reference external" href="https://en.wikipedia.org/wiki/X86-64">Intel X86-64 processor</a> which is widely used in computers ranging from laptops to supercomputers.  The following article discusses how to calculate the number of operations an Intel x86-64 processor supports and why it is hard to do so;  <span class="xref myst">“Enumerating x86-64 – It’s Not as Easy as Counting”</span>.   Given the simplicity of the 6502 we will often use it to first get our heads around an idea or mechanism, before looking at the same thing on an Intel X86-64 based computer.</p>
 </div></blockquote>
-<p>A program written directly in machine code is a sequence of binary values.  The following is a small 6502 machine code program that calculates <span class="math notranslate nohighlight">\(1+1\)</span>:</p>
+<p>A program written directly in machine code is a sequence of binary values.  The following is a small 6502 machine code program that calculates $1+1$:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">00011000</span><span class="p">,</span> <span class="mi">10101001</span><span class="p">,</span> <span class="mi">00000001</span><span class="p">,</span> <span class="mi">01101001</span><span class="p">,</span> <span class="mi">00000001</span>
 </pre></div>
 </div>
@@ -473,40 +471,40 @@ unique values ranging from <span class="math notranslate nohighlight">\(00000000
 </thead>
 <tbody>
 <tr class="row-even"><td><p>ADC</p></td>
-<td><p><span class="math notranslate nohighlight">\(01100001\)</span></p></td>
+<td><p>$01100001$</p></td>
 <td><p>add with carry - X,ind: Zero Page Indexed Indirect (zp,x)</p></td>
 </tr>
 <tr class="row-odd"><td><p>ADC</p></td>
-<td><p><span class="math notranslate nohighlight">\(01100101\)</span></p></td>
+<td><p>$01100101$</p></td>
 <td><p>add with carry - zpg: Zero Page zp</p></td>
 </tr>
 <tr class="row-even"><td><p>ADC</p></td>
-<td><p><span class="math notranslate nohighlight">\(01101001\)</span></p></td>
+<td><p>$01101001$</p></td>
 <td><p>add with carry - #: Immediate #</p></td>
 </tr>
 <tr class="row-odd"><td><p>ADC</p></td>
-<td><p><span class="math notranslate nohighlight">\(01101101\)</span></p></td>
+<td><p>$01101101$</p></td>
 <td><p>add with carry - abs: Absolute a</p></td>
 </tr>
 <tr class="row-even"><td><p>ADC</p></td>
-<td><p><span class="math notranslate nohighlight">\(01110001\)</span></p></td>
+<td><p>$01110001$</p></td>
 <td><p>add with carry - ind,Y: Zero Page Indirect Indexed with Y (zp),y</p></td>
 </tr>
 <tr class="row-odd"><td><p>ADC</p></td>
-<td><p><span class="math notranslate nohighlight">\(01110101\)</span></p></td>
+<td><p>$01110101$</p></td>
 <td><p>add with carry - zpg,X: Zero Page Index with X</p></td>
 </tr>
 <tr class="row-even"><td><p>ADC</p></td>
-<td><p><span class="math notranslate nohighlight">\(01111001\)</span></p></td>
+<td><p>$01111001$</p></td>
 <td><p>add with carry - abs,Y: Absolute Indexed with Y a,y</p></td>
 </tr>
 <tr class="row-odd"><td><p>ADC</p></td>
-<td><p><span class="math notranslate nohighlight">\(01111101\)</span></p></td>
+<td><p>$01111101$</p></td>
 <td><p>add with carry - abs,X: Absolute Indexed with X a,x</p></td>
 </tr>
 </tbody>
 </table>
-<p>The memonic for all of them is <code class="docutils literal notranslate"><span class="pre">ADC</span></code>.  The thing that distinguishes the different forms of related operations, such as adding two numbers, is where the values to add will come from and where the results will go. These parameters are often called the <strong>operands</strong> of an instructions.  In assembly code we write the program as a sequence of instructions along with syntax that specifies the operands.  A tool called the assembler is then used to translated our assembly program into the corresponding machine code.   The following is the same 6502 program to add <span class="math notranslate nohighlight">\(1+1\)</span> written in assembly code:</p>
+<p>The memonic for all of them is <code class="docutils literal notranslate"><span class="pre">ADC</span></code>.  The thing that distinguishes the different forms of related operations, such as adding two numbers, is where the values to add will come from and where the results will go. These parameters are often called the <strong>operands</strong> of an instructions.  In assembly code we write the program as a sequence of instructions along with syntax that specifies the operands.  A tool called the assembler is then used to translated our assembly program into the corresponding machine code.   The following is the same 6502 program to add $1+1$ written in assembly code:</p>
 <div class="highlight-assembly notranslate"><div class="highlight"><pre><span></span>    CLC         ; Clear the Carry Flag
     LDA #1      ; Load the accumulator with the value 1
     ADC #1      ; Add the value 1 to the accumulator 
@@ -522,7 +520,7 @@ unique values ranging from <span class="math notranslate nohighlight">\(00000000
 <p>Unlike our previous machine code version the assembly language version is written using the memonics and also has comments thus making it at least “readable” by a human.  However, unlike other programming languages that you might be familiar with you likely still cannot REALLY read it.  Eg. you probably cannot tell that it a simple program to add two numbers or how and why it works.</p>
 <p>To understand assembly language we need to understand what the operations of the CPU are and what they do.  And to achieve this we must understand the basic functioning of the CPU and the rest of the hardware that makes up the computer.</p>
 <blockquote>
-<div><p><img style="margin: 10px 0px 0px 0px;" align="left" width="60" src="../images/concept.svg"> <p style="background-color:powderblue;">The jump from machine code to assembly code illustrates an important pattern that we will see applied over and over again – Program Translation. Rather than needing to understand and remember of all the details of machine code a programmer can simply learn the assembly language and then rely on the assembler to translate it correctly into machine code.  The assembler is a program who’s job is to do this translation – in some sense it acts like a machine code programmer that we give an assembly code version of our program to.   In a similar manner we can design another programming language and write assembly programs that translate that language into assembly language and then use the assembler to translate the result into machine code.   A programmer that learns our new language need never now about assembly or machine language.</p>
+<div><p><a class="reference internal" href="../_images/concept.svg"><img alt="../_images/concept.svg" class="align-left" src="../_images/concept.svg" width="60" /></a> <p style="background-color:powderblue;">The jump from machine code to assembly code illustrates an important pattern that we will see applied over and over again – Program Translation. Rather than needing to understand and remember of all the details of machine code a programmer can simply learn the assembly language and then rely on the assembler to translate it correctly into machine code.  The assembler is a program who’s job is to do this translation – in some sense it acts like a machine code programmer that we give an assembly code version of our program to.   In a similar manner we can design another programming language and write assembly programs that translate that language into assembly language and then use the assembler to translate the result into machine code.   A programmer that learns our new language need never now about assembly or machine language.</p>
 </div></blockquote>
 </div>
 </div>
@@ -550,10 +548,14 @@ unique values ranging from <span class="math notranslate nohighlight">\(00000000
               </div>
               
         
-        <div class='prev-next-bottom'>
             
 
-        </div>
+
+
+<div class='prev-next-bottom'>
+    
+
+</div>
         
         </div>
     </div>

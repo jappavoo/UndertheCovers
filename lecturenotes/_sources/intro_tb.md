@@ -1,14 +1,14 @@
 <!-- #region -->
 Under the Covers : The Secret Life of Software
-==============================================
+=====================================
 
-In this book we will look under the covers to learn exactly what software is and how it works. Our goal is to allow a reader to learn concepts and practical skills that will help them understand and participate in the digital world.   We will dissect how software and computers work so that the reader can understand the underlying ideas and mechanisms of computing, revealing both beauty and ugliness. 
+In this book we will look under the covers to learn exactly what software is and how it works. Our goal is to allow a reader to learn concepts and practical skills that will help them understand and participate in the digital world.   We will dissect how software and computers work so that the reader can understand the underlying ideas and mechanisms of computing technologies, revealing both beauty and ugliness. 
 
 We will learn how hardware and software are broken down and organized. Learning the generic models that apply to most modern computers.   We will see how physical devices are turned into a blank canvas on which humans paint information as collections of binary bits.  Learning how different types of data are represented and how programs themselves are represented.  We will build our way to understanding how layers of software are fitted together to allow more complex information and ideas, not natively supported by the hardware, to be represented and worked with. 
 Understanding this process will reveal to us how the layers make it simpler and simpler for humans to program computers and the limits and overheads that comes along with the layering.    
 
 While this is not explicitly a programming course as part of our journey we will be learning practical skills.
-- Learning the tools and ideas that make up the UNIX program development environment, as this is the defacto environment for industrial and academic computing and historically makes it easier to look under the covers.
+- Learning the tools and ideas that make up the UNIX program development environment, as this is the defacto environment for industrial and academic computing and for look under the covers.
 - Learning how to read, write and understand software as assembly code as we learn how computers operate and how data and programs are represented at the binary level.  
 - Learning how to read, write and understand 'C' code from an assembly language perspective.  Experiencing how higher level data-structures and programming ideas, expressed in a human friendly way, are translated into assembly code while maintaining direct control of the hardware. 
 
