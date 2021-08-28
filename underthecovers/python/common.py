@@ -327,10 +327,14 @@ def htmlFigTD(img):
     if not extrafont: extrafont="2vmin"
     extracolor=img.get('extracolor')
     if not extracolor: extracolor="#978282"
-
-    html_text = '''        <td colspan="''' + colspan + '''" style="padding: 0; margin: 0; background-color:''' + bgcolor + ''';">
-            <div style="margin-right: auto; margin-left: auto; padding: 0; margin: 0;">
-              <figure style="width:'''+ width +'''; padding: 0; margin-right: auto; margin-left: auto;'''
+    padding=img.get('padding')
+    if not padding: padding='0'
+    margin=img.get('margin')
+    if not margin: margin='0'
+    
+    html_text = '''        <td colspan="''' + colspan + '''" width="''' + width + '''" style="padding: 0; margin: 0; background-color:''' + bgcolor + ''';">
+            <div style="margin-right: auto; margin-left: auto; padding: '''+ padding + '''; margin: ''' + margin + ''';">
+              <figure style="padding: 0; margin-right: auto; margin-left: auto;'''
 
     if border:
         html_text += '''border: ''' + border + ''';'''
