@@ -23,7 +23,7 @@
 
     
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.e8e5499552300ddf5d7adccae7cc3b70.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.e8f53015daec13862f6db5e763c41738.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -44,7 +44,7 @@
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
-    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe"
         const thebe_selector_input = "pre"
@@ -80,7 +80,7 @@
 </div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
   <i class="icon fas fa-search"></i>
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
         <ul class="nav bd-sidenav">
  <li class="toctree-l1">
@@ -250,6 +250,19 @@
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show">
             
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#paths-and-the-root">
+   PATHS and the ROOT
+  </a>
+ </li>
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -260,6 +273,50 @@
                 
   <div class="section" id="sls-lecture-2-core-utilities-editors-and-shell-scripting">
 <h1>SLS Lecture 2 : Core Utilities, Editors and Shell Scripting<a class="headerlink" href="#sls-lecture-2-core-utilities-editors-and-shell-scripting" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;hello&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>hello
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="paths-and-the-root">
+<h2>PATHS and the ROOT<a class="headerlink" href="#paths-and-the-root" title="Permalink to this headline">¶</a></h2>
+<a class="reference internal image-reference" href="../_images/dirtree.png"><img alt="../_images/dirtree.png" class="align-left" src="../_images/dirtree.png" style="width: 40%;" /></a>
+<p><code class="docutils literal notranslate"><span class="pre">/</span></code> $+$ <code class="docutils literal notranslate"><span class="pre">home</span></code> $+$ <code class="docutils literal notranslate"><span class="pre">jonathan</span></code> $+$ <code class="docutils literal notranslate"><span class="pre">Classes</span></code> $+$ <code class="docutils literal notranslate"><span class="pre">CS</span></code> $+$ <code class="docutils literal notranslate"><span class="pre">210</span></code> $+$ <code class="docutils literal notranslate"><span class="pre">Assignment</span> <span class="pre">1</span></code> $+$ <code class="docutils literal notranslate"><span class="pre">Problem</span> <span class="pre">1</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">/</span></code> $+$ <code class="docutils literal notranslate"><span class="pre">home</span></code> $+$ <code class="docutils literal notranslate"><span class="pre">jonathan</span></code> $+$ <code class="docutils literal notranslate"><span class="pre">Classes</span></code> $+$ <code class="docutils literal notranslate"><span class="pre">CS</span></code> $+$ <code class="docutils literal notranslate"><span class="pre">210</span></code> $+$ <code class="docutils literal notranslate"><span class="pre">Assignment</span> <span class="pre">2</span></code> $+$ <code class="docutils literal notranslate"><span class="pre">Problem</span> <span class="pre">1</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">/</span></code> $+$ <code class="docutils literal notranslate"><span class="pre">home</span></code> $+$ <code class="docutils literal notranslate"><span class="pre">jonathan</span></code> $+$ <code class="docutils literal notranslate"><span class="pre">Classes</span></code> $+$ <code class="docutils literal notranslate"><span class="pre">CS</span></code> $+$ <code class="docutils literal notranslate"><span class="pre">210</span></code> $+$ <code class="docutils literal notranslate"><span class="pre">Assignment</span> <span class="pre">3</span></code> $+$ <code class="docutils literal notranslate"><span class="pre">Problem</span> <span class="pre">1</span></code></p>
+<p>“Full” path name: join independent components with the “/” character.  So the above three files as proper unix path names would be:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>tput
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Usage: tput [options] [command]
+
+Options:
+  -S &lt;&lt;       read commands from standard input
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+
+Commands:
+  clear       clear the screen
+  init        initialize the terminal
+  reset       reinitialize the terminal
+  capname     unlike clear/init/reset, print value for capability &quot;capname&quot;
+</pre></div>
+</div>
+</div>
+</div>
+</div>
 </div>
 
     <script type="text/x-thebe-config">
@@ -285,10 +342,14 @@
               </div>
               
         
-        <div class='prev-next-bottom'>
             
 
-        </div>
+
+
+<div class='prev-next-bottom'>
+    
+
+</div>
         
         </div>
     </div>

@@ -23,7 +23,7 @@
 
     
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.e8e5499552300ddf5d7adccae7cc3b70.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.e8f53015daec13862f6db5e763c41738.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -44,7 +44,7 @@
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
-    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe"
         const thebe_selector_input = "pre"
@@ -82,7 +82,7 @@
 </div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
   <i class="icon fas fa-search"></i>
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
         <ul class="nav bd-sidenav">
  <li class="toctree-l1">
@@ -255,7 +255,7 @@
             <div class="tocsection onthispage pt-5 pb-3">
                 <i class="fas fa-list"></i> Contents
             </div>
-            <nav id="bd-toc-nav">
+            <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#computer">
@@ -327,12 +327,37 @@
 <p>We call the collection of software that we use to make a “computer”  “useful” an operating system.  But what exactly does this mean?</p>
 <div class="section" id="computer">
 <h2><span class="section-number">1.1. </span>Computer<a class="headerlink" href="#computer" title="Permalink to this headline">¶</a></h2>
-<p>Today a computer can take many forms from desktop Personal Computers (PCs), laptops, mobile phones, tablets, building scale super-computers, etc.  In some sense the defining property we care about is that the device supports a classic model for programming it – we call this model the von Neumman architecture.  We will discuss this model in much more detail when we start considering exactly how software and hardware work with respect to <a class="reference internal" href="../assembly/intro.html"><span class="doc std std-doc">assembly language</span></a>.  Below illustrates how we will represent a generic view of a von Neumman based computer and summarized what we need to know for now.</p>
-<img style="float: left; margin: 2% 5% 0px 0px;" width="50%" src="../images/src/SLS_TheMachine.svg">
-<p><strong>Central Processing Unit (CPU)</strong>:</p>
+<p>Today a computer can take many forms from desktop Personal Computers (PCs), laptops, mobile phones, tablets, building scale super-computers, etc.  In some sense the defining property we care about is that the device supports a classic model for programming it – we call this model the von Neumman architecture.  We will discuss this model in much more detail when we start considering exactly how software and hardware work with respect to <a class="reference internal" href="../assembly/intro.html"><span class="doc std std-doc">assembly language</span></a>.   Below illustrates how we will visually represent a generic von Neumman based computer and summarizes what we need to know for now.</p>
+<div class="cell tag_remove-input docutils container">
+</div>
+<!-- produced by: 
+htmlFig("[{'src': '../images/src/SLS_TheMachine.svg'}]", 
+        id="fig:vnm", 
+        align="left", 
+        width="50%",
+        margin="auto 3em 0 auto",
+        caption="Figure: Our illustration of a von Neumann computer", 
+        captionalign="left")
+-->
+<table id="fig:vnm" align="left" width="50%" cellpadding="0" cellspacing="0" border="0" style="border-collapse: collapse; margin: auto 3em 0 auto">
+    <tr style="padding: 0; margin: 0;"> 
+        <td colspan="1" style="padding: 0; margin: 0; background-color:inherit;">
+            <div style="margin-right: auto; margin-left: auto; padding: 0; margin: 0;">
+              <figure style="width:100%; padding: 0; margin-right: auto; margin-left: auto;">
+                   <img src="../images/src/SLS_TheMachine.svg" width="100%" style="padding: 0; margin: 0;">
+                </figure>
+            </div>
+        </td>
+    </tr>
+    <caption align="bottom" style="text-align: left; padding: 0; margin: 0;" >
+          <i>Figure: Our illustration of a von Neumann computer</i> 
+    </caption>
+</table>
+<p><strong>Central Processing Unit (CPU):</strong></p>
 <ul class="simple">
 <li><p>the smart bits that “execute” the instructions of software, also called the processor.</p></li>
 </ul>
+<br>
 <p><strong>Memory</strong></p>
 <ul class="simple">
 <li><p>the devices that hold the instructions and data that make up the running software</p></li>
@@ -369,7 +394,7 @@
 </div>
 <div class="section" id="unix">
 <h2><span class="section-number">1.3. </span>UNIX<a class="headerlink" href="#unix" title="Permalink to this headline">¶</a></h2>
-<img style="float: left; margin: 15px 15px 15px 0px;" src="../images/Unix.gif" width="200"> 
+<img align="right" src="../images/Unix.gif" width="25%" style="margin: auto auto auto auto"> 
 UNIX on the other hand assumes that its users are primarily programmers.  Its design and collection of tools are not meant to be particularly user friendly rather it is designed to allow programmers to be very productive and also to support a broad range of programming tools.  Many of the concepts and mechanisms of UNIX underly other operating systems but have been hidden or obscured to make things easier for non-programmer users.  
 <div class="section" id="an-operating-system-built-by-programmers-for-programmers">
 <h3><span class="section-number">1.3.1. </span>An operating System Built by Programmers for Programmers<a class="headerlink" href="#an-operating-system-built-by-programmers-for-programmers" title="Permalink to this headline">¶</a></h3>
@@ -377,10 +402,10 @@ UNIX on the other hand assumes that its users are primarily programmers.  Its de
 <p>Given its programming focus UNIX is organized around two categories of software – kernel and user.  The kernel is a component of the UNIX that users of UNIX do not directly interact with.  It is the core software that is used to manage the various devices of the computer and construct an environment that allows programmers to create new users programs.  The idea is that very little is really built into UNIX rather its users are encouraged to write lots of small programs that build on the functionality of the kernel to do useful things.  The kernel main job is to provide the ability to run new program, provide those programs with access to the hardware, and provide common ways for programs to interconnect.</p>
 <p>I know this all sounds a bit recursive – welcome to computer science.  As we start interacting with UNIX it will make more sense.</p>
 <blockquote>
-<div><p><img style="margin: 10px 0px 0px 0px;" align="left" width="60" src="../images/history.svg"> <p style="background-color:powderblue;"> Unix recently celebrated its 50th year Anniversary. <br>
-<a class="reference external" href="https://www.bell-labs.com/about/history/innovation-stories/50-years-unix/#gref">https://www.bell-labs.com/about/history/innovation-stories/50-years-unix/#gref</a> <br>
+<div><p><a class="reference internal" href="../_images/history.svg"><img alt="../_images/history.svg" class="align-left" src="../_images/history.svg" width="60" /></a> <p style="background-color:powderblue;"> Unix recently celebrated its 50th year Anniversary. <br>
+https://www.bell-labs.com/about/history/innovation-stories/50-years-unix/#gref <br>
 The people and its history are a fascinating journey into how we have gotten to where we are today. <br>
-<a class="reference external" href="https://spectrum.ieee.org/the-strange-birth-and-long-life-of-unix#toggle-gdpr">https://spectrum.ieee.org/the-strange-birth-and-long-life-of-unix#toggle-gdpr</a> <br>
+https://spectrum.ieee.org/the-strange-birth-and-long-life-of-unix#toggle-gdpr <br>
 UNIX and it’s children literally make our digital world go around and will likely continue to do so for the quite some time.</p>
 </div></blockquote>
 </p>
@@ -406,7 +431,7 @@ UNIX and it’s children literally make our digital world go around and will lik
 </ul>
 </li>
 </ol>
-<p><img style="margin: 10px 0px 0px 0px;" align="left" width="60" src="../images/warning.svg"> A critical point of the Unix design: <strong>Humans do not and cannot directly interact with the kernel, only user Programs can interact with the kernel by invoking kernel functions</strong>.  This design promotes and encourages that the rest of the operating systems and for that matter all other software be viewed as separated from the kernel.  As such it encourages a building block approach where several alternatives for any given OS feature, like human interface programs, can be added, supported and explored while the kernel remains without change.  The goal is to empower programmers to grow and extend the system in a natural and seamless way.</p>
+<p><a class="reference internal" href="../_images/warning.svg"><img alt="../_images/warning.svg" class="align-left" src="../_images/warning.svg" width="60" /></a> A critical point of the Unix design: <strong>Humans do not and cannot directly interact with the kernel, only user Programs can interact with the kernel by invoking kernel functions</strong>.  This design promotes and encourages that the rest of the operating systems and for that matter all other software be viewed as separated from the kernel.  As such it encourages a building block approach where several alternatives for any given OS feature, like human interface programs, can be added, supported and explored while the kernel remains without change.  The goal is to empower programmers to grow and extend the system in a natural and seamless way.</p>
 <p>It is worth noting most modern operating systems have adopted this basic organization where there is a base kernel component and a large collection of pre-packaged user programs.</p>
 <p><a id='UnixUser_sec'></a></p>
 </div>
@@ -418,12 +443,34 @@ UNIX and it’s children literally make our digital world go around and will lik
 <li><p><a class="reference external" href="https://en.wikipedia.org/wiki/File_manager">File Managers</a>:  Programs that work with a Display Server and provide a human to explore and find information about the other programs and data installed.  Examples include Apple’s <a class="reference external" href="https://en.wikipedia.org/wiki/Finder_(software)">Finder</a> and Microsoft’s <a class="reference external" href="https://en.wikipedia.org/wiki/File_Manager_(Windows)">File Manager</a>.</p></li>
 <li><p>Other: There is a highly variable collection of software that form the rest of the user programs.  This body largely depending on the OS and its intended target audience.   In the case of OS’s that are geared to personal computers this set of software includes:  media programs, web-browsers, productivity applications and more.  While not always standard, the tools for developing new programs also fall in this category.   These include program editors, programming languages and debuggers.  A hallmark of Unix is the rich body of programming tools associated with it (including the tools to rebuild the kernel itself).</p></li>
 </ol>
-<p>One of the distinguishing feature of Unix is its standard user command line programs that are geared to programmers (<a class="reference external" href="https://en.wikipedia.org/wiki/List_of_Unix_commands">https://en.wikipedia.org/wiki/List_of_Unix_commands</a>).  While they lack graphical interfaces and are <a class="reference external" href="../unix/terminal.html#ASCII_sec">ASCII</a>/command line oriented they form a very rich and powerful set of building blocks that allow a knowledgeable programmer to rapidly create turnkey solutions including the; text searching and transformation, data wrangling, automation, as well as the development and debugging of large applications.</p>
+<p>One of the distinguishing feature of Unix is its standard user command line programs that are geared to programmers (https://en.wikipedia.org/wiki/List_of_Unix_commands).  While they lack graphical interfaces and are <a class="reference external" href="../unix/terminal.html#ASCII_sec">ASCII</a>/command line oriented they form a very rich and powerful set of building blocks that allow a knowledgeable programmer to rapidly create turnkey solutions including the; text searching and transformation, data wrangling, automation, as well as the development and debugging of large applications.</p>
 <p><a id='UnixViz_sec'></a></p>
 </div>
 <div class="section" id="visualizing-a-unix-system">
 <h3><span class="section-number">1.3.4. </span>Visualizing a Unix system<a class="headerlink" href="#visualizing-a-unix-system" title="Permalink to this headline">¶</a></h3>
-<img style="float: right; margin: 0px 50px 0px 0px;" width="50%" src="../images/UnixRunning.png">
+<!-- produced by: 
+htmlFig("[{'src': '../images/UnixRunning.png'}]", 
+        id="", 
+        align="right", 
+        width="50%",
+        margin="auto auto auto 1em",
+        caption="Figure: Running Unix system.", 
+        captionalign="left")
+-->
+<table align="right" width="50%" cellpadding="0" cellspacing="0" border="0" style="border-collapse: collapse; margin: auto auto auto 1em">
+    <tr style="padding: 0; margin: 0;"> 
+        <td colspan="1" style="padding: 0; margin: 0; background-color:inherit;">
+            <div style="margin-right: auto; margin-left: auto; padding: 0; margin: 0;">
+              <figure style="width:100%; padding: 0; margin-right: auto; margin-left: auto;">
+                   <img src="../images/UnixRunning.png" width="100%" style="padding: 0; margin: 0;">
+                </figure>
+            </div>
+        </td>
+    </tr>
+    <caption align="bottom" style="text-align: left; padding: 0; margin: 0;" >
+          <i>Figure: Running Unix system.</i> 
+    </caption>
+</table>
 <p>We visualized a running Unix system with the Hardware of the computer at the bottom shaded blue and the running software shaded in green above it.  The Unix Kernel is a persistent program that forms the foundation for launching and running instances of user programs and is illustrated as the green oval labeled “UNIX Kernel”.  The smaller green circles represent the currently running programs that have been started. Each time a program is started we visualize a new circle representing a new running instances of the program.   In the diagram each is labeled with the program that was used to start it. Each instance is independent and has its own “life-time”.   If a specific running instance of a program ends, crashes or is terminated (killed) by the user we would remove its circle.  So while in reality we can’t physically see the programs running we none the less think of the running software as forming world of its own inside the machine with the kernel enabling its construction and management.</p>
 </div>
 <div class="section" id="benefits-to-studying-unix">
@@ -440,9 +487,9 @@ UNIX and it’s children literally make our digital world go around and will lik
 <h2><span class="section-number">1.4. </span>Bottomline<a class="headerlink" href="#bottomline" title="Permalink to this headline">¶</a></h2>
 <p>UNIX comes with the kernel and a large collection of existing programs that permit a programmer to write more programs, that they and others can use.   In this class we will focus on what a program really is, how they are constructed and along the way the core tools, skills and ideas that underly all of computing.  Given UNIX’s programmer focus and transparency it is a good choice for us. Furthermore, learning how to be productive in the UNIX environment will teach us a lot about being productive programmers period.</p>
 <blockquote>
-<div><p><img style="margin: 10px 0px 0px 0px;" align="left" width="60" src="../images/fyi.svg"> <p style="background-color:powderblue;">
+<div><p><a class="reference internal" href="../_images/fyi.svg"><img alt="../_images/fyi.svg" class="align-left" src="../_images/fyi.svg" width="60" /></a> <p style="background-color:powderblue;">
 <em>What is LINUX?</em>: Linux or more formally GNU/Linux is an open source variant of the UNIX operating system that is in heavy use today. Every imaginable type of computer runs Linux.  In some sense it has become the computing equivalent of both “The Force” and “Duct Tape”.    It is worth noting that Linux began its life because a University student got interested in Operating Systems and was frustrated with the current “Closed” state of the art.
-<img align="right" width="60" src="../images/tux.png"></p>
+<a class="reference internal" href="../_images/tux.png"><img alt="../_images/tux.png" class="align-right" src="../_images/tux.png" style="width: 60px;" /></a></p>
 </div></blockquote>
 </p></div>
 </div>
@@ -456,26 +503,46 @@ UNIX and it’s children literally make our digital world go around and will lik
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "bash"
+            mode: "python"
         },
         kernelOptions: {
-            kernelName: "bash",
+            kernelName: "python3",
             path: "./unix"
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'bash'</script>
+    <script>kernelName = 'python3'</script>
 
               </div>
               
         
-        <div class='prev-next-bottom'>
             
-    <a class='left-prev' id="prev-link" href="../intro_tb.html" title="previous page">Under the Covers : The Secret Life of Software</a>
-    <a class='right-next' id="next-link" href="terminal.html" title="next page"><span class="section-number">2. </span>What is a Terminal and why do we still use them?</a>
 
-        </div>
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="../intro_tb.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">Under the Covers : The Secret Life of Software</p>
+            </div>
+        </a>
+    </div>
+     <div id="next">
+        <a class="right-next" href="terminal.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title"><span class="section-number">2. </span>What is a Terminal and why do we still use them?</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
+
+</div>
         
         </div>
     </div>
