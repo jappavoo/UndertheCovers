@@ -42,8 +42,6 @@
     <script src="_static/copybutton.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe"
@@ -274,7 +272,7 @@ Understanding this process will reveal to us how the layers make it simpler and 
 <li><p>The Belly of the Beast: The von Neumann Architecture and assembly programming</p></li>
 <li><p>Into the Light: C Programming</p></li>
 </ol>
-<p>This textbook was developed for Boston University’s College of Arts and Sciences Computer Science CS210 Computer Systems Class.  For a more detailed list of topic that the books covers can be found in <a class="reference internal" href="BUCS210_intro.html"><span class="doc std std-doc">CS210 Learning outcomes</span></a>.</p>
+<p>This textbook was developed for Boston University’s College of Arts and Sciences Computer Science CS210 Computer Systems Class.  For a more detailed list of topic that the books covers can be found in <span class="xref myst">CS210 Learning outcomes</span>.</p>
 <div class="section" id="about">
 <h2>About<a class="headerlink" href="#about" title="Permalink to this headline">¶</a></h2>
 <p>This <a class="reference external" href="https://jappavoo.github.io/UndertheCovers/textbook/intro_tb.html">“book”</a> has associated with it <a class="reference external" href="https://jappavoo.github.io/UndertheCovers/lecturenotes/intro_ln.html">Lecture Notes</a> and a <a class="reference external" href="https://jappavoo.github.io/UndertheCovers/labmanual">Lab Manual</a>.   The book, lecture notes and lab manual websites have been generated using <a class="reference external" href="https://jupyterbook.org/intro.html">Jupyter-book</a>.  The source material is maintained in the following git repository: https://github.com/jappavoo/UndertheCovers.</p>
