@@ -336,26 +336,23 @@ def htmlFigTD(img):
         html_text += '''border: ''' + border + ''';'''
         
     html_text += '''">
-    <img src="''' + src + '''" width="100%" style="padding: 0; margin: 0;">
+                   <img src="''' + src + '''" width="100%" style="padding: 0; margin: 0;">
 '''
     if  extratxt:
-       html_text +=  '''
-                   <div align="right" style="color:''' + extracolor + '''; line-height: 0; font-size: ''' + extrafont + '''">
+       html_text +=  '''                   <div align="right" style="color:''' + extracolor + '''; line-height: 0; font-size: ''' + extrafont + '''">
                     <em>
 ''' + extratxt + '''                    
                     </em>
                   </div> 
 '''
     if caption:
-        html_text = html_text + '''
-                  <figcaption>
+        html_text += '''                  <figcaption>
                     <div style="background-color: ''' + capbgcolor + '''; margin-right:auto; margin-left:auto; text-align: center;">
                        <i style="color:''' + capcolor  + '''"> ''' + caption + '''</i>
                     </div>
                   </figcaption>
 '''
-    html_text = html_text +  '''
-                </figure>
+    html_text +=  '''                </figure>
             </div>
         </td>
 '''
@@ -383,8 +380,7 @@ def toImgs(i):
     return i
 
 def htmlFigTableStart(id, align, width, margin):
-    html_text = '''
-<table '''
+    html_text = '''<table '''
     if id:
         html_text +='''id="''' + id + '''" '''
 
@@ -393,26 +389,22 @@ def htmlFigTableStart(id, align, width, margin):
     return html_text
 
 def htmlFigTRStart():
-    html_text = '''
-    <tr style="padding: 0; margin: 0;"> 
+    html_text = '''    <tr style="padding: 0; margin: 0;"> 
 '''
     return html_text
 
 def htmlFigTREnd():
-    html_text = '''
-    </tr>
+    html_text = '''    </tr>
 '''
     return html_text
 
 def htmlFigTableEnd():
-    html_text = '''
-</table>
+    html_text = '''</table>
 '''
     return html_text
 
 def htmlFigCaption(caption, align):
-    html_text = '''
-    <caption align="bottom" style="text-align: ''' + align + '''"; padding: 0; margin: 0;" >
+    html_text = '''    <caption align="bottom" style="text-align: ''' + align + '''; padding: 0; margin: 0;" >
           <i>''' + caption + '''</i> 
     </caption>
 '''
@@ -425,7 +417,17 @@ def htmlFig(imgs, id="", align="center", width="100%",
     rows = len(imgs)
     maxcols = 1
 
-    html_text = htmlFigTableStart(id, align, width, margin)
+    html_text ='''<!-- produced by: 
+htmlFig("'''+ str(imgs) + '''", 
+        id="'''+ id + '''", 
+        align="''' + align + '''", 
+        width="''' + width + '''",
+        margin="'''+ margin + '''",
+        caption="'''+ caption + '''", 
+        captionalign="''' + captionalign + '''")
+-->
+'''
+    html_text += htmlFigTableStart(id, align, width, margin)
 
 #    print(html_text)
     
@@ -454,5 +456,5 @@ def htmlFig(imgs, id="", align="center", width="100%",
     html_text += htmlFigTableEnd()
     return html_text
 
-print("Common executed")
+# print("Common executed")
 
