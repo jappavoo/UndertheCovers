@@ -313,8 +313,10 @@ def htmlFigTD(img):
     extratxt=img.get('extratxt')
     border=img.get('border')
 
-    width=img.get('width')
-    if not width: width='100%'
+    figwidth=img.get('figwidth')
+    if not figwidth: figwidth='100%'
+    cellwidth=img.get('cellwidth')
+    if not cellwidth: cellwidth='100%'
     colspan=img.get('colspan')
     if not colspan: colspan='1'
     bgcolor=img.get('bgcolor')
@@ -332,9 +334,9 @@ def htmlFigTD(img):
     margin=img.get('margin')
     if not margin: margin='0'
     
-    html_text = '''        <td colspan="''' + colspan + '''" width="''' + width + '''" style="padding: 0; margin: 0; background-color:''' + bgcolor + ''';">
+    html_text = '''        <td colspan="''' + colspan + '''" width="''' + cellwidth + '''" style="padding: 0; margin: 0; background-color:''' + bgcolor + ''';">
             <div style="margin-right: auto; margin-left: auto; padding: '''+ padding + '''; margin: ''' + margin + ''';">
-              <figure style="padding: 0; margin-right: auto; margin-left: auto;'''
+              <figure style="padding: 0; margin-right: auto; margin-left: auto; width:''' + figwidth + ''';'''
 
     if border:
         html_text += '''border: ''' + border + ''';'''
