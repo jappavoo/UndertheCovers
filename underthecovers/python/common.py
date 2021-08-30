@@ -176,6 +176,8 @@ def displayBytes(bytes=[[0x00]],
                  columns=["[$b_7$","$b_6$", "$b_5$", "$b_4$", "$b_3$", "$b_2$", "$b_1$","$b_0$]"],
                  center=True,
                  th_font_size="1.5vw",
+                 th_border_color="#cccccc",
+                 th_hover_border_color="red",
                  td_font_size="3vw",
                  td_height="",
                  border_color="#cccccc",
@@ -237,6 +239,7 @@ def displayBytes(bytes=[[0x00]],
         # in this version of jupyter and pandas this seems
         # to be required but I think it is bug that is
         # address in a later version
+        ('border','solid ' + th_border_color),
         ('color', 'black'),
         ('background-color', 'white')
     ]
@@ -260,12 +263,17 @@ def displayBytes(bytes=[[0x00]],
         ('background-color', tr_hover_bgcolor),
         ('border', '4px solid ' + tr_hover_border_color)
     ]
-
+    
+    th_hover_props = [
+        ('border', 'solid ' + th_hover_border_color)
+    ]
+    
     body=df.style.set_table_styles([
             {'selector' : 'td', 'props' : td_props },
             {'selector' : 'th', 'props': th_props },
             {'selector' : 'td:hover', 'props': td_hover_props },
-            {'selector' : 'tr:hover', 'props': tr_hover_props }
+            {'selector' : 'tr:hover', 'props': tr_hover_props },
+            {'selector' : 'th:hover', 'props': th_hover_props }
         ])
     
     # if no row labels hide them
