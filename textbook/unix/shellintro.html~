@@ -324,7 +324,7 @@
                 
   <div class="section" id="the-shell-part-i-having-an-ascii-conversation-with-the-os">
 <h1><span class="section-number">4. </span>The Shell - Part I: Having an ASCII conversation with the OS<a class="headerlink" href="#the-shell-part-i-having-an-ascii-conversation-with-the-os" title="Permalink to this headline">¶</a></h1>
-<p>As we read in the Unix <a class="reference internal" href="intro.html"><span class="doc std std-doc">introduction</span></a> a key feature of Unix is its command line interface that was developed for <a class="reference internal" href="terminal.html"><span class="doc std std-doc">ASCII terminals</span></a> devices. Our goal in this chapter is to understand the general model of the shell and how to start working in the terminal environment.  If you have not done so be sure to have read the sections on the Unix <a class="reference external" href="../unix/intro.ipynb#UnixKernel_sec">Kernel</a>, <a class="reference external" href="../unix/intro.html#UnixUser_sec">User Programs</a>, how we <a class="reference external" href="../unix/intro.html#UnixViz_sec">visualize a running Unix system</a>, the introduction to <a class="reference external" href="../unix/terminal.html#TerminalEmulators_sec">Terminal Emulators</a> and the chapter introducing <a class="reference internal" href="files.html"><span class="doc std std-doc">Files and Directories</span></a>.</p>
+<p>As we read in the Unix <a class="reference internal" href="intro.html"><span class="doc std std-doc">introduction</span></a> a key feature of Unix is its command line interface that was developed for <a class="reference internal" href="terminal.html"><span class="doc std std-doc">ASCII terminals</span></a> devices. Our goal in this chapter is to understand the general model of the shell and how to start working in the terminal environment.  If you have not done so be sure to have read the sections on the Unix <a class="reference external" href="../unix/intro.html#UnixKernel_sec">Kernel</a>, <a class="reference external" href="../unix/intro.html#UnixUser_sec">User Programs</a>, how we <a class="reference external" href="../unix/intro.html#UnixViz_sec">visualize a running Unix system</a>, the introduction to <a class="reference external" href="../unix/terminal.html#TerminalEmulators_sec">Terminal Emulators</a> and the chapter introducing <a class="reference internal" href="files.html"><span class="doc std std-doc">Files and Directories</span></a>.</p>
 <blockquote>
 <div><p><a class="reference internal" href="../_images/fyi.svg"><img alt="../_images/fyi.svg" class="align-left" src="../_images/fyi.svg" width="40" /></a> <p style="background-color:powderblue;"> It is a good idea to read this chapter with a terminal connection open so that you can explore the material as you read it.  Instructions and guidance on how to do this can be found in <a class="reference external" href="../unix/terminal.html#TerminalEmulators_sec">Terminal Emulators</a>.</p>
 </div></blockquote>
@@ -413,7 +413,7 @@ But we want to be a little more careful to think about what happened behind the 
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <div class="output text_html"><!-- produced by: 
-htmlFig("[[{'src': '../images/UnixL01_SHCHT/06SHLLChat.png', 'caption': 'A: Press Enter', 'border': '1px solid black', 'padding': '1px', 'cellwidth': '33.33%'}, {'src': '../images/UnixL01_SHCHT/07SHLLChat.png', 'caption': 'B: Shell "blank line" input processing', 'border': '1px solid black', 'padding': '1px', 'cellwidth': '33.33%'}, {'src': '../images/UnixL01_SHCHT/08SHLLChat.png', 'caption': 'C: Shell sends Prompt back', 'border': '1px solid black', 'padding': '1px', 'cellwidth': '33.33%'}]]", 
+htmlFig("[[{'src': '../images/UnixL01_SHCHT/06SHLLChat.png', 'caption': 'A: Press Enter', 'border': '1px solid black', 'padding': '1px'}, {'src': '../images/UnixL01_SHCHT/07SHLLChat.png', 'caption': 'B: Shell "blank line" input processing', 'border': '1px solid black', 'padding': '1px'}, {'src': '../images/UnixL01_SHCHT/08SHLLChat.png', 'caption': 'C: Shell sends Prompt back', 'border': '1px solid black', 'padding': '1px'}]]", 
         id="fig:shell-blankline", 
         align="center", 
         width="100%",
@@ -423,7 +423,7 @@ htmlFig("[[{'src': '../images/UnixL01_SHCHT/06SHLLChat.png', 'caption': 'A: Pres
 -->
 <table id="fig:shell-blankline" align="center" width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse: collapse; margin: auto auto auto auto">
     <tr style="padding: 0; margin: 0;"> 
-        <td colspan="1" width="33.33%" style="padding: 0; margin: 0; background-color:inherit;">
+        <td colspan="1" width="100%" style="padding: 0; margin: 0; background-color:inherit;">
             <div style="margin-right: auto; margin-left: auto; padding: 1px; margin: 0;">
               <figure style="padding: 0; margin-right: auto; margin-left: auto; width:100%;border: 1px solid black;">
                    <img src="../images/UnixL01_SHCHT/06SHLLChat.png" width="100%" style="padding: 0; margin: 0;">
@@ -435,7 +435,7 @@ htmlFig("[[{'src': '../images/UnixL01_SHCHT/06SHLLChat.png', 'caption': 'A: Pres
                 </figure>
             </div>
         </td>
-        <td colspan="1" width="33.33%" style="padding: 0; margin: 0; background-color:inherit;">
+        <td colspan="1" width="100%" style="padding: 0; margin: 0; background-color:inherit;">
             <div style="margin-right: auto; margin-left: auto; padding: 1px; margin: 0;">
               <figure style="padding: 0; margin-right: auto; margin-left: auto; width:100%;border: 1px solid black;">
                    <img src="../images/UnixL01_SHCHT/07SHLLChat.png" width="100%" style="padding: 0; margin: 0;">
@@ -447,7 +447,7 @@ htmlFig("[[{'src': '../images/UnixL01_SHCHT/06SHLLChat.png', 'caption': 'A: Pres
                 </figure>
             </div>
         </td>
-        <td colspan="1" width="33.33%" style="padding: 0; margin: 0; background-color:inherit;">
+        <td colspan="1" width="100%" style="padding: 0; margin: 0; background-color:inherit;">
             <div style="margin-right: auto; margin-left: auto; padding: 1px; margin: 0;">
               <figure style="padding: 0; margin-right: auto; margin-left: auto; width:100%;border: 1px solid black;">
                    <img src="../images/UnixL01_SHCHT/08SHLLChat.png" width="100%" style="padding: 0; margin: 0;">
