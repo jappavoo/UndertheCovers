@@ -413,7 +413,7 @@ But we want to be a little more careful to think about what happened behind the 
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <div class="output text_html"><!-- produced by: 
-htmlFig("[[{'src': '../images/UnixL01_SHCHT/06SHLLChat.png', 'caption': 'A: Press Enter', 'border': '1px solid black', 'padding': '1px'}, {'src': '../images/UnixL01_SHCHT/07SHLLChat.png', 'caption': 'B: Shell "blank line" input processing', 'border': '1px solid black', 'padding': '1px'}, {'src': '../images/UnixL01_SHCHT/08SHLLChat.png', 'caption': 'C: Shell sends Prompt back', 'border': '1px solid black', 'padding': '1px'}]]", 
+htmlFig("[[{'src': '../images/UnixL01_SHCHT/06SHLLChat.png', 'caption': 'A: Press Enter', 'border': '1px solid black', 'padding': '1px', 'cellwidth': '33.33%'}, {'src': '../images/UnixL01_SHCHT/07SHLLChat.png', 'caption': 'B: Shell "blank line" input processing', 'border': '1px solid black', 'padding': '1px', 'cellwidth': '33.33%'}, {'src': '../images/UnixL01_SHCHT/08SHLLChat.png', 'caption': 'C: Shell sends Prompt back', 'border': '1px solid black', 'padding': '1px', 'cellwidth': '33.33%'}]]", 
         id="fig:shell-blankline", 
         align="center", 
         width="100%",
@@ -423,7 +423,7 @@ htmlFig("[[{'src': '../images/UnixL01_SHCHT/06SHLLChat.png', 'caption': 'A: Pres
 -->
 <table id="fig:shell-blankline" align="center" width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse: collapse; margin: auto auto auto auto">
     <tr style="padding: 0; margin: 0;"> 
-        <td colspan="1" width="100%" style="padding: 0; margin: 0; background-color:inherit;">
+        <td colspan="1" width="33.33%" style="padding: 0; margin: 0; background-color:inherit;">
             <div style="margin-right: auto; margin-left: auto; padding: 1px; margin: 0;">
               <figure style="padding: 0; margin-right: auto; margin-left: auto; width:100%;border: 1px solid black;">
                    <img src="../images/UnixL01_SHCHT/06SHLLChat.png" width="100%" style="padding: 0; margin: 0;">
@@ -435,7 +435,7 @@ htmlFig("[[{'src': '../images/UnixL01_SHCHT/06SHLLChat.png', 'caption': 'A: Pres
                 </figure>
             </div>
         </td>
-        <td colspan="1" width="100%" style="padding: 0; margin: 0; background-color:inherit;">
+        <td colspan="1" width="33.33%" style="padding: 0; margin: 0; background-color:inherit;">
             <div style="margin-right: auto; margin-left: auto; padding: 1px; margin: 0;">
               <figure style="padding: 0; margin-right: auto; margin-left: auto; width:100%;border: 1px solid black;">
                    <img src="../images/UnixL01_SHCHT/07SHLLChat.png" width="100%" style="padding: 0; margin: 0;">
@@ -447,7 +447,7 @@ htmlFig("[[{'src': '../images/UnixL01_SHCHT/06SHLLChat.png', 'caption': 'A: Pres
                 </figure>
             </div>
         </td>
-        <td colspan="1" width="100%" style="padding: 0; margin: 0; background-color:inherit;">
+        <td colspan="1" width="33.33%" style="padding: 0; margin: 0; background-color:inherit;">
             <div style="margin-right: auto; margin-left: auto; padding: 1px; margin: 0;">
               <figure style="padding: 0; margin-right: auto; margin-left: auto; width:100%;border: 1px solid black;">
                    <img src="../images/UnixL01_SHCHT/08SHLLChat.png" width="100%" style="padding: 0; margin: 0;">
