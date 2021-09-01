@@ -335,7 +335,7 @@
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <div class="output text_html"><!-- produced by: 
-htmlFig("[[{'src': '../images/UnixL01_SHCHT/041SHLLChat.png', 'width': '47.5%'}, {'src': '../images/terminalwins.png', 'width': '52%'}]]", 
+htmlFig("[[{'src': '../images/UnixL01_SHCHT/041SHLLChat.png', 'cellwidth': '47.5%'}, {'src': '../images/terminalwins.png', 'cellwidth': '52%'}]]", 
         id="", 
         align="center", 
         width="100%",
@@ -347,14 +347,14 @@ htmlFig("[[{'src': '../images/UnixL01_SHCHT/041SHLLChat.png', 'width': '47.5%'},
     <tr style="padding: 0; margin: 0;"> 
         <td colspan="1" width="47.5%" style="padding: 0; margin: 0; background-color:inherit;">
             <div style="margin-right: auto; margin-left: auto; padding: 0; margin: 0;">
-              <figure style="padding: 0; margin-right: auto; margin-left: auto;">
+              <figure style="padding: 0; margin-right: auto; margin-left: auto; width:100%;">
                    <img src="../images/UnixL01_SHCHT/041SHLLChat.png" width="100%" style="padding: 0; margin: 0;">
                 </figure>
             </div>
         </td>
         <td colspan="1" width="52%" style="padding: 0; margin: 0; background-color:inherit;">
             <div style="margin-right: auto; margin-left: auto; padding: 0; margin: 0;">
-              <figure style="padding: 0; margin-right: auto; margin-left: auto;">
+              <figure style="padding: 0; margin-right: auto; margin-left: auto; width:100%;">
                    <img src="../images/terminalwins.png" width="100%" style="padding: 0; margin: 0;">
                 </figure>
             </div>
@@ -413,7 +413,7 @@ htmlFig("[[{'src': '../images/UnixL01_SHCHT/06SHLLChat.png', 'caption': 'A: Pres
     <tr style="padding: 0; margin: 0;"> 
         <td colspan="1" width="100%" style="padding: 0; margin: 0; background-color:inherit;">
             <div style="margin-right: auto; margin-left: auto; padding: 1px; margin: 0;">
-              <figure style="padding: 0; margin-right: auto; margin-left: auto;border: 1px solid black;">
+              <figure style="padding: 0; margin-right: auto; margin-left: auto; width:100%;border: 1px solid black;">
                    <img src="../images/UnixL01_SHCHT/06SHLLChat.png" width="100%" style="padding: 0; margin: 0;">
                   <figcaption>
                     <div style="background-color: inherit; margin-right:auto; margin-left:auto; text-align: center;">
@@ -425,7 +425,7 @@ htmlFig("[[{'src': '../images/UnixL01_SHCHT/06SHLLChat.png', 'caption': 'A: Pres
         </td>
         <td colspan="1" width="100%" style="padding: 0; margin: 0; background-color:inherit;">
             <div style="margin-right: auto; margin-left: auto; padding: 1px; margin: 0;">
-              <figure style="padding: 0; margin-right: auto; margin-left: auto;border: 1px solid black;">
+              <figure style="padding: 0; margin-right: auto; margin-left: auto; width:100%;border: 1px solid black;">
                    <img src="../images/UnixL01_SHCHT/07SHLLChat.png" width="100%" style="padding: 0; margin: 0;">
                   <figcaption>
                     <div style="background-color: inherit; margin-right:auto; margin-left:auto; text-align: center;">
@@ -437,7 +437,7 @@ htmlFig("[[{'src': '../images/UnixL01_SHCHT/06SHLLChat.png', 'caption': 'A: Pres
         </td>
         <td colspan="1" width="100%" style="padding: 0; margin: 0; background-color:inherit;">
             <div style="margin-right: auto; margin-left: auto; padding: 1px; margin: 0;">
-              <figure style="padding: 0; margin-right: auto; margin-left: auto;border: 1px solid black;">
+              <figure style="padding: 0; margin-right: auto; margin-left: auto; width:100%;border: 1px solid black;">
                    <img src="../images/UnixL01_SHCHT/08SHLLChat.png" width="100%" style="padding: 0; margin: 0;">
                   <figcaption>
                     <div style="background-color: inherit; margin-right:auto; margin-left:auto; text-align: center;">
