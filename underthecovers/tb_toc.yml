@@ -29,4 +29,7 @@ parts:
   numbered: true
   chapters:
   - file: C/intro
-  
+- caption: 'Course Specific Material'
+  numbered: false
+  chapters:
+  - file: BUCS210_intro
