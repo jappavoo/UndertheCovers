@@ -154,6 +154,18 @@
   </a>
  </li>
 </ul>
+<p class="caption">
+ <span class="caption-text">
+  Course Specific Material
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="BUCS210_intro.html">
+   BU CS210 Overview
+  </a>
+ </li>
+</ul>
 
     </div>
 </nav> <!-- To handle the deprecated key -->
@@ -272,7 +284,7 @@ Understanding this process will reveal to us how the layers make it simpler and 
 <li><p>The Belly of the Beast: The von Neumann Architecture and assembly programming</p></li>
 <li><p>Into the Light: C Programming</p></li>
 </ol>
-<p>This textbook was developed for Boston University’s College of Arts and Sciences Computer Science CS210 Computer Systems Class.  For a more detailed list of topic that the books covers can be found in <span class="xref myst">CS210 Learning outcomes</span>.</p>
+<p>This textbook was developed for Boston University’s College of Arts and Sciences Computer Science CS210 Computer Systems Class.  For a more detailed list of topic that the books covers can be found in <a class="reference internal" href="BUCS210_intro.html"><span class="doc std std-doc">CS210 Learning outcomes</span></a>.</p>
 <div class="section" id="about">
 <h2>About<a class="headerlink" href="#about" title="Permalink to this headline">¶</a></h2>
 <p>This <a class="reference external" href="https://jappavoo.github.io/UndertheCovers/textbook/intro_tb.html">“book”</a> has associated with it <a class="reference external" href="https://jappavoo.github.io/UndertheCovers/lecturenotes/intro_ln.html">Lecture Notes</a> and a <a class="reference external" href="https://jappavoo.github.io/UndertheCovers/labmanual">Lab Manual</a>.   The book, lecture notes and lab manual websites have been generated using <a class="reference external" href="https://jupyterbook.org/intro.html">Jupyter-book</a>.  The source material is maintained in the following git repository: https://github.com/jappavoo/UndertheCovers.</p>
@@ -280,6 +292,8 @@ Understanding this process will reveal to us how the layers make it simpler and 
 <p>Jupyter-books converts each of the Jupyter Notebooks that make up either the textbook, lecture notes, or lab manual into a website composed of web-pages (html) that can be viewed like any other website.    The websites are static version of the content that the jupyter-book tool created from the underlying source notebooks.    The notebooks however are interactive documents and may include code and content that is best used directly in the form of the notebook.    This is particularly true for the lecture notes and lab manual content.  The lecture notes are designed to used within the classic juypter user interface with the  RISE Presentation extension (https://rise.readthedocs.io/en/stable/).</p>
 <p>To get access to the source notebooks so that you can use them interactively or for you to help author new content you need to get a copy of the <a class="reference external" href="https://github.com/jappavoo/UndertheCovers">repository</a>.    This can be done by manually setting up your own environment and cloning the repository or by using short cuts built into the static websites.  For the interactive pages you will see a rocket icon which if you hover over will reveal a JupyterHub button.  Clicking on this button will redirect you to a JupyterHub service that will start a private Jupyter server for you that will contain a clone of the source material.  See the attached video for more information.   If at any point we want to quickly see the source material you can use the git icon at the top of the web pages – hovering over it will reveal a repository button that will take you the the git repository.</p>
 <!-- #endregion -->
+</div>
+<div class="toctree-wrapper compound">
 </div>
 <div class="toctree-wrapper compound">
 </div>
