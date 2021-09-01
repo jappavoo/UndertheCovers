@@ -339,12 +339,16 @@ def htmlFigTD(img):
     if not extracolor: extracolor="#978282"
     padding=img.get('padding')
     if not padding: padding='0'
-    margin=img.get('margin')
-    if not margin: margin='0'
+    divmargin=img.get('divmargin')
+    if not divmargin: divmargin='0 0 0 0'
+    figmargin=img.get('figmargin')
+    if not figmargin: figmargin='0 0 0 0'
+    cellmargin=img.get('cellmargin')
+    if not cellmargin: cellmargin='0 0 0 0'
     
-    html_text = '''        <td colspan="''' + colspan + '''" width="''' + cellwidth + '''" style="padding: 0; margin: 0; background-color:''' + bgcolor + ''';">
-            <div style="margin-right: auto; margin-left: auto; padding: '''+ padding + '''; margin: ''' + margin + ''';">
-              <figure style="padding: 0; margin-right: auto; margin-left: auto; width:''' + figwidth + ''';'''
+    html_text = '''        <td colspan="''' + colspan + '''" width="''' + cellwidth + '''" style="padding: 0; margin: ''' + cellmargin + '''; background-color:''' + bgcolor + ''';">
+            <div style="padding: '''+ padding + '''; margin: ''' + divmargin + ''';">
+              <figure style="padding: 0; margin: ''' + figmargin + '''; width:''' + figwidth + ''';'''
 
     if border:
         html_text += '''border: ''' + border + ''';'''
