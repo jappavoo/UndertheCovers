@@ -3,7 +3,7 @@ from IPython.core.display import display, HTML, Markdown, TextDisplayObject, Jav
 from IPython.display import IFrame, Image
 import ipywidgets as widgets
 from ipywidgets import interact, fixed, Layout
-import os, requests
+import os, requests, pty, re
 from notebook.notebookapp import list_running_servers
 import matplotlib
 import matplotlib.pyplot as plt
@@ -67,7 +67,7 @@ def mkImgsBox(dir,files=[]):
     interact(lambda i,d=fixed(dir),
              f=fixed(files): 
              display(Image(dir + '/' + files[i])),
-             i=widgets.IntSlider(min=0, max=(len(files)-1), step=1, value=0));
+             i=widgets.IntSlider(min=0, max=(len(files)), step=1, value=0));
 
 def files_to_imgArray(dir, files):
     n=len(files);
@@ -90,7 +90,7 @@ def mkImgsAnimateBox(dir, files ,dpi=100.0,xpixels=0,ypixels=0):
     def animate(i):
         im.set_array(imgs[i])
         return(im,);
-    ani=animation.FuncAnimation(fig, animate, frames=np.arange(0,(len(imgs)-1),1), fargs=None, interval=100, repeat=False)
+    ani=animation.FuncAnimation(fig, animate, frames=np.arange(0,len(imgs),1), fargs=None, interval=100, repeat=False)
     # next line is used to remove side affect of plot object
     plt.close()
     return ani
@@ -475,4 +475,74 @@ htmlFig("'''+ str(imgs) + '''",
     return html_text
 
 # print("Common executed")
+
+# htmlTerm : format text to look like terminal input/output
+def htmlTerm(text,
+             border='solid #cccccc 2px',
+             bgcolor="black",
+             color="white",
+             fontfamily="monospace, monospace",
+             fontsize="inherit"
+             ):
+    html_text =  '''<pre style="border: ''' + border
+    html_text += '''; background-color: ''' + bgcolor
+    html_text += '''; font-family: ''' + fontfamily
+    html_text += '''; font-size: ''' + fontsize
+    html_text += '''; color: ''' + color
+    html_text += '''">'''
+    
+    html_text += text
+    
+    html_text +='''</pre>'''
+
+    return html_text
+
+# from: https://stackoverflow.com/questions/14693701/how-can-i-remove-the-ansi-escape-sequences-from-a-string-in-python
+# 7-bit and 8-bit C1 ANSI sequences
+ansi_escape_8bit = re.compile(br'''
+    (?: # either 7-bit C1, two bytes, ESC Fe (omitting CSI)
+        \x1B
+        [@-Z\\-_]
+    |   # or a single 8-bit byte Fe (omitting CSI)
+        [\x80-\x9A\x9C-\x9F]
+    |   # or CSI + control codes
+        (?: # 7-bit CSI, ESC [ 
+            \x1B\[
+        |   # 8-bit CSI, 9B
+            \x9B
+        )
+        [0-?]*  # Parameter bytes
+        [ -/]*  # Intermediate bytes
+        [@-~]   # Final byte
+    )
+''', re.VERBOSE)
+
+def cleanTermBytes(bytes):    
+    return  ansi_escape_8bit.sub(b'', bytes)
+
+def runTermCmd(cmd, bufsize=4096, wait=True):
+    master, slave = pty.openpty()
+    import subprocess
+    p=subprocess.Popen(['bash', '-l', '-i', '-c', cmd], stdin=slave, stdout=slave, stderr=slave, start_new_session=True)
+
+    if wait:
+        p.wait()
+        
+    output = os.read(master, bufsize)
+    
+    subprocess.Popen.kill(p)
+    os.close(master)
+    return output
+
+def TermShellCmd(cmd, prompt='$ ', markdown=True, bufsize=4096, wait=True):
+    output = runTermCmd(cmd, bufsize, wait)
+    
+    if markdown:
+        display(Markdown(htmlTerm('''
+''' + prompt + cmd + '''
+''' + cleanTermBytes(output).decode('utf-8') + prompt )))
+    else:
+        print(prompt + cmd + '''
+''' + output.decode('utf-8') + prompt ) 
+        
 

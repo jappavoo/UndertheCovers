@@ -3,7 +3,7 @@
 #    1) Note in terminals setting TERM=linux is friendly with emacs
 #    2) we customize css to improve layout of cells in the browser window
 #    3) standarize how to display code blocks from a source file
-# 
+#
 
 
 ### BOOTSTRAPPING CODE
@@ -27,7 +27,7 @@ if not api_token:
 
 if not api_token:
     api_token = os.environ.get('JUPYTERHUB_API_TOKEN')
-    
+
 if not api_token:
     print("ERROR: unable to deterimine API token");
 
@@ -68,21 +68,21 @@ except IndexError:
 # hostname for embedded browser windows
 # to use as their url
 
-#from IPython.display import Javascript
+# from IPython.display import Javascript
 
-#var ipkernel = IPython.notebook.kernel;
-#var stringHostName = window.location.hostname
-#var ipcommand = "NB_HOST = " + "'"+stringHostName+"'";
-#ipkernel.execute(ipcommand);
-#"""
+# var ipkernel = IPython.notebook.kernel;
+# var stringHostName = window.location.hostname
+# var ipcommand = "NB_HOST = " + "'"+stringHostName+"'";
+# ipkernel.execute(ipcommand);
+# """
 #
-#display(Javascript(js_code))
+# display(Javascript(js_code))
 
 # CSS customization for RISE has been moved
 # to <notebook_name>.css which RISE attempts to load
 # see rise examples in the rise repo
 # cusomization of ccs to make slides look better 
-#display(HTML(
+# display(HTML(
 #     '<style>'
 #         '#notebook { padding-top:0px !important; } ' 
 #         '.container { width:100% !important; } '
@@ -100,7 +100,7 @@ def showTerm(TERMNAME, title, w, h):
     if title:
         display(HTML('<b>' + title + '</b>'))
     return IFrame(base_url + 'terminals/' + TERMNAME, w,h)
-    
+
 def showET(title="TERMINAL Window for Editor"):
     return showTerm(EDITORTERM, title, "100%", 600)
 
