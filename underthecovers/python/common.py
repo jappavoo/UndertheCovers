@@ -28,8 +28,22 @@ matplotlib.rcParams['animation.html'] = 'jshtml'
 # NOTE:  I don't know python so this probably all should be rewritten by someone
 #        who knows what they are doing.  
 
+# generic display markdown contents in a box
+def MkMarkDownBox(contents, title, w, h):
+#    wout = widgets.Output(layout=Layout(overflow='scroll',
+#                                        width=w,
+#                                        min_width=w,
+#                                        max_width=w,
+#                                        min_height=h,
+#                                        height=h,
+#                                        max_height=h))
+#    with wout:
+#        display(Markdown(contents))
+    display(Markdown(title))
+    return Markdown(contents)
+
 # This probably should be a class
-def MkCodeBox(file, lang, html_title, w, h):
+def FileCodeBox(file, lang, title, w, h):
     #open text file in read mode
     text_file = open(file, "r")
     #read whole file to a string
@@ -42,18 +56,19 @@ def MkCodeBox(file, lang, html_title, w, h):
 ''' + data + '''
 ```
 '''
+    # build output widget
+    return MkMarkDownBox(md_text, title, w, h)
+    
+def FileMarkDownBox(file, title, w, h):
+    #open text file in read mode
+    text_file = open(file, "r")
+    #read whole file to a string
+    data = text_file.read()
+    #close file
+    text_file.close()
+    # build contents from file and language
     # build output widget 
-    wout = widgets.Output(layout=Layout(overflow='scroll',
-                                        width=w,
-                                        min_width=w,
-                                        max_width=w,
-                                        min_height=h,
-                                        height=h,
-                                        max_height=h))
-    with wout:
-        display(Markdown(md_text),)
-    display(HTML(html_title))
-    return wout
+    return MkMarkDownBox(data, title, w, h)
 
 # Make a box that display the specified image files from the specified
 # directory if no files a specified then all file in the directory are
