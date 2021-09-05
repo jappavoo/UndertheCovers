@@ -28,22 +28,29 @@ matplotlib.rcParams['animation.html'] = 'jshtml'
 # NOTE:  I don't know python so this probably all should be rewritten by someone
 #        who knows what they are doing.  
 
-# generic display markdown contents in a box
-def MkMarkDownBox(contents, title, w, h):
-#    wout = widgets.Output(layout=Layout(overflow='scroll',
-#                                        width=w,
-#                                        min_width=w,
-#                                        max_width=w,
-#                                        min_height=h,
-#                                        height=h,
-#                                        max_height=h))
-#    with wout:
-#        display(Markdown(contents))
-    display(Markdown(title))
-    return Markdown(contents)
+def MDBox(contents, title="", w="100%", h="100%",
+          fontsize="inherit",
+          color="inherit",
+          bgcolor="inherit",
+          overflow="auto"):
+    md_text = title 
+    md_text += '''
+<div style="width:''' + w
+    md_text += '''; height:''' + h
+    md_text += '''; font-size:''' + fontsize
+    md_text += '''; overflow: ''' + overflow
+    md_text += ''';" >
+
+'''
+    md_text += contents
+    md_text += '''
+
+</div>
+'''
+    return md_text
 
 # This probably should be a class
-def FileCodeBox(file, lang, title, w, h):
+def FileCodeBox(file, lang, **kwargs):
     #open text file in read mode
     text_file = open(file, "r")
     #read whole file to a string
@@ -57,9 +64,9 @@ def FileCodeBox(file, lang, title, w, h):
 ```
 '''
     # build output widget
-    return MkMarkDownBox(md_text, title, w, h)
+    return MDBox(md_text, **kwargs)
     
-def FileMarkDownBox(file, title, w, h):
+def FileMDBox(file, **kwargs):
     #open text file in read mode
     text_file = open(file, "r")
     #read whole file to a string
@@ -68,7 +75,7 @@ def FileMarkDownBox(file, title, w, h):
     text_file.close()
     # build contents from file and language
     # build output widget 
-    return MkMarkDownBox(data, title, w, h)
+    return MDBox(data, **kwargs)
 
 # Make a box that display the specified image files from the specified
 # directory if no files a specified then all file in the directory are

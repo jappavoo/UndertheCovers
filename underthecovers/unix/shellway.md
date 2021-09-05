@@ -1,6 +1,4 @@
-# The Shell Way
-
-## lots of little programs that naturally feel like built-ins
+#### lots of little programs that naturally feel like built-ins
 - `echo $PATH`
    - `ls /bin`
       - see `ls` there?
@@ -8,20 +6,20 @@
    - how can we figure out where `ls` is coming from
       - bash has handy built in called `type`
         - `help type`
-	- `type -a ls`
+        - `type -a ls`
    - by tradition all preinstalled programs should have a manual page
         - `man ls`
-	- `man bash`
+        - `man bash`
         - `man <something in /bin>`
-	
+
 ## extendent the shell is easy
 - set `PATH="$HOME/bin:$PATH`
   - putting a program or script called `foobar` in `$HOME/bin`
-    - now `$ foobar` will feel like a built-in 
+    - now `$ foobar` will feel like a built-in
 
 ## overide what's there
-- putting `ls` in `$HOME/bin` will now overide the others    
-- Even override a built in 
+- putting `ls` in `$HOME/bin` will now overide the others
+- Even override a built in
   - `function echo() { builtin echo -n "myecho: "; builtin echo $@ }`
   - will talk about this one later
 
@@ -35,7 +33,7 @@ Two important ones:
 
 - put shell commands in a file : eg put this in `foobar`
 ``` bash
-#!/bin/bash 
+#!/bin/bash
 echo "My first shell script"
 echo "foobar"
 ```
@@ -53,6 +51,4 @@ echo "foobar"
   - `echo $PATH`
   - `echo ${PATH//:/ }`
   - `ls -1 ${PATH//:/ } | wc -l`
-     - what do you think this did?
- 
-
+     - what do you think this did?  
