@@ -22,16 +22,16 @@
      bordercolor="#666666"
      borderopacity="1.0"
      inkscape:pageshadow="2"
-     inkscape:pageopacity="0.0"
-     inkscape:pagecheckerboard="0"
+     inkscape:pageopacity="1"
+     inkscape:pagecheckerboard="false"
      showgrid="false"
      inkscape:zoom="0.22175019"
-     inkscape:cx="989.85257"
+     inkscape:cx="647.12459"
      inkscape:cy="1409.2434"
      inkscape:window-width="1296"
      inkscape:window-height="847"
-     inkscape:window-x="2387"
-     inkscape:window-y="269"
+     inkscape:window-x="144"
+     inkscape:window-y="25"
      inkscape:window-maximized="0"
      inkscape:current-layer="g19791-6-6" />
   <defs
@@ -112,7 +112,7 @@
          transform="translate(7.8353863,27.867449)"><tspan
            x="144.60703"
            y="133.65972"
-           id="tspan2998">/</tspan></text>
+           id="tspan1576">/</tspan></text>
       <ellipse
          style="font-variation-settings:'wght' 900;fill:none;stroke:#000000;stroke-width:1.743;stroke-miterlimit:10;stroke-dasharray:none"
          id="path54704-9"
@@ -133,7 +133,7 @@
          transform="translate(18.330027,17.495772)"><tspan
            x="123.68217"
            y="144.24307"
-           id="tspan3000">home</tspan></text>
+           id="tspan1578">home</tspan></text>
       <ellipse
          style="font-variation-settings:'wght' 900;fill:none;stroke:#000000;stroke-width:1.743;stroke-miterlimit:10;stroke-dasharray:none"
          id="path54704-9-7"
@@ -154,7 +154,7 @@
          transform="translate(11.664641,16.615239)"><tspan
            x="123.68217"
            y="144.24307"
-           id="tspan3002">jonathan</tspan></text>
+           id="tspan1580">jonathan</tspan></text>
       <ellipse
          style="font-variation-settings:'wght' 900;fill:none;stroke:#000000;stroke-width:1.743;stroke-miterlimit:10;stroke-dasharray:none"
          id="path54704-9-7-7"
@@ -175,7 +175,7 @@
          transform="translate(11.664641,16.615239)"><tspan
            x="123.68217"
            y="144.24307"
-           id="tspan3004">Classes</tspan></text>
+           id="tspan1582">Classes</tspan></text>
       <ellipse
          style="font-variation-settings:'wght' 900;fill:none;stroke:#000000;stroke-width:1.743;stroke-miterlimit:10;stroke-dasharray:none"
          id="path54704-9-7-7-3"
@@ -196,7 +196,7 @@
          transform="translate(14.709136,16.539039)"><tspan
            x="123.68217"
            y="144.24307"
-           id="tspan3006">Poetry</tspan></text>
+           id="tspan1584">Poetry</tspan></text>
       <ellipse
          style="font-variation-settings:'wght' 900;fill:none;stroke:#000000;stroke-width:1.743;stroke-miterlimit:10;stroke-dasharray:none"
          id="path54704-9-7-7-3-6"
@@ -217,7 +217,7 @@
          transform="translate(14.709136,16.539039)"><tspan
            x="123.68217"
            y="144.24307"
-           id="tspan3008">Vogon</tspan></text>
+           id="tspan1586">Vogon</tspan></text>
       <ellipse
          style="font-variation-settings:'wght' 900;fill:none;stroke:#000000;stroke-width:1.743;stroke-miterlimit:10;stroke-dasharray:none"
          id="path54704-9-7-7-3-6-8"
@@ -238,7 +238,7 @@
          transform="translate(3.0759933,27.867449)"><tspan
            x="144.60703"
            y="133.65972"
-           id="tspan3010">CS</tspan></text>
+           id="tspan1588">CS</tspan></text>
       <ellipse
          style="font-variation-settings:'wght' 900;fill:none;stroke:#000000;stroke-width:1.743;stroke-miterlimit:10;stroke-dasharray:none"
          id="path54704-9-7-7-3-8"
@@ -259,7 +259,7 @@
          transform="translate(11.664641,16.615239)"><tspan
            x="123.68217"
            y="144.24307"
-           id="tspan3012">Physics</tspan></text>
+           id="tspan1590">Physics</tspan></text>
       <ellipse
          style="font-variation-settings:'wght' 900;fill:none;stroke:#000000;stroke-width:1.743;stroke-miterlimit:10;stroke-dasharray:none"
          id="path54704-9-7-7-3-8-6"
@@ -280,7 +280,7 @@
          transform="translate(3.3733894,16.530572)"><tspan
            x="123.68217"
            y="144.24307"
-           id="tspan3014">Psychology</tspan></text>
+           id="tspan1592">Psychology</tspan></text>
       <ellipse
          style="font-variation-settings:'wght' 900;fill:none;stroke:#000000;stroke-width:1.743;stroke-miterlimit:10;stroke-dasharray:none"
          id="path54704-9-7-7-3-8-6-6"
@@ -301,7 +301,7 @@
          transform="translate(5.1080602,27.867449)"><tspan
            x="144.60703"
            y="133.65972"
-           id="tspan3016">111</tspan></text>
+           id="tspan1594">111</tspan></text>
       <ellipse
          style="font-variation-settings:'wght' 900;fill:none;stroke:#000000;stroke-width:1.743;stroke-miterlimit:10;stroke-dasharray:none"
          id="path54704-9-7-7-3-8-2"
@@ -322,7 +322,7 @@
          transform="translate(3.5247929,27.867449)"><tspan
            x="144.60703"
            y="133.65972"
-           id="tspan3018">112</tspan></text>
+           id="tspan1596">112</tspan></text>
       <ellipse
          style="font-variation-settings:'wght' 900;fill:none;stroke:#000000;stroke-width:1.743;stroke-miterlimit:10;stroke-dasharray:none"
          id="path54704-9-7-7-3-8-6-9"
@@ -343,7 +343,7 @@
          transform="translate(1.427374,27.86745)"><tspan
            x="97.800392"
            y="496.47418"
-           id="tspan3020">210</tspan></text>
+           id="tspan1598">210</tspan></text>
       <ellipse
          style="font-variation-settings:'wght' 900;fill:none;stroke:#000000;stroke-width:1.743;stroke-miterlimit:10;stroke-dasharray:none"
          id="path54704-9-7-7-3-8-6-6-9"
@@ -364,7 +364,7 @@
          transform="translate(-0.17063916,16.526339)"><tspan
            x="123.68217"
            y="144.24307"
-           id="tspan3022">Assignment 1</tspan></text>
+           id="tspan1600">Assignment 1</tspan></text>
       <ellipse
          style="font-variation-settings:'wght' 900;fill:none;stroke:#000000;stroke-width:1.743;stroke-miterlimit:10;stroke-dasharray:none"
          id="path54704-9-7-7-3-8-5"
@@ -385,7 +385,7 @@
          transform="translate(-0.17063916,16.526339)"><tspan
            x="124.25238"
            y="144.2665"
-           id="tspan3024">Assignment 2</tspan></text>
+           id="tspan1602">Assignment 2</tspan></text>
       <ellipse
          style="font-variation-settings:'wght' 900;fill:none;stroke:#000000;stroke-width:1.79216;stroke-miterlimit:10;stroke-dasharray:none"
          id="path54704-9-7-7-3-8-5-8"
@@ -406,7 +406,7 @@
          transform="translate(-0.17063916,16.526339)"><tspan
            x="124.25238"
            y="144.2665"
-           id="tspan3026">Assignment 3</tspan></text>
+           id="tspan1604">Assignment 3</tspan></text>
       <ellipse
          style="font-variation-settings:'wght' 900;fill:none;stroke:#000000;stroke-width:1.792;stroke-miterlimit:10;stroke-dasharray:none"
          id="path54704-9-7-7-3-8-5-8-3"
@@ -434,9 +434,9 @@
          transform="translate(-0.29309683,15.910009)"><tspan
            x="-8.012116"
            y="694.73038"
-           id="tspan3030"><tspan
+           id="tspan1608"><tspan
              style="text-align:center;text-anchor:middle"
-             id="tspan3028">Problem 1</tspan></tspan></text>
+             id="tspan1606">Problem 1</tspan></tspan></text>
     </g>
     <g
        id="g19791-6"
@@ -457,7 +457,7 @@
          transform="translate(4.7070425,15.908528)"><tspan
            x="-12.724609"
            y="683.59562"
-           id="tspan3032">Ohfreddled</tspan></text>
+           id="tspan1610">Ohfreddled</tspan></text>
     </g>
     <g
        id="g19791-6-6"
@@ -478,7 +478,7 @@
          transform="translate(4.7070425,15.908528)"><tspan
            x="-26.230469"
            y="692.50773"
-           id="tspan3034">ToBitOrToByte</tspan></text>
+           id="tspan1612">ToBitOrToByte</tspan></text>
     </g>
     <g
        id="g19791-6-6-7"
@@ -499,7 +499,7 @@
          transform="translate(4.7070425,15.908528)"><tspan
            x="-26.160156"
            y="692.57999"
-           id="tspan3036">OdeToASemicolon</tspan></text>
+           id="tspan1614">OdeToASemicolon</tspan></text>
     </g>
     <g
        id="g19791-9"
@@ -520,9 +520,9 @@
          transform="translate(-0.29309683,15.910009)"><tspan
            x="-8.012116"
            y="694.73038"
-           id="tspan3040"><tspan
+           id="tspan1618"><tspan
              style="text-align:center;text-anchor:middle"
-             id="tspan3038">Problem 1</tspan></tspan></text>
+             id="tspan1616">Problem 1</tspan></tspan></text>
     </g>
     <g
        id="g19791-3"
@@ -543,9 +543,9 @@
          transform="translate(-0.29309683,15.910009)"><tspan
            x="-8.012116"
            y="694.73038"
-           id="tspan3044"><tspan
+           id="tspan1622"><tspan
              style="text-align:center;text-anchor:middle"
-             id="tspan3042">Problem 1</tspan></tspan></text>
+             id="tspan1620">Problem 1</tspan></tspan></text>
     </g>
     <path
        style="fill:none;stroke:#000000;stroke-width:1.78821;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#TriangleOutL)"

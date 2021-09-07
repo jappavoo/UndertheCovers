@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>6. Introduction: Assembly Programming &#8212; UndertheCovers</title>
+    <title>7. Introduction: Assembly Programming &#8212; UndertheCovers</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet" />
   <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -51,8 +51,8 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="7. The von Neumann Architecture" href="vonNeumannArchitecture.html" />
-    <link rel="prev" title="5. The Shell – Progammable User Interface to the computer" href="../unix/shell.html" />
+    <link rel="next" title="8. The von Neumann Architecture" href="vonNeumannArchitecture.html" />
+    <link rel="prev" title="6. The Shell – Progammable User Interface to the computer" href="../unix/shell.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -117,7 +117,7 @@
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../unix/shell.html">
-   5. The Shell – Progammable User Interface to the computer
+   6. The Shell – Progammable User Interface to the computer
   </a>
  </li>
 </ul>
@@ -129,17 +129,17 @@
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   6. Introduction: Assembly Programming
+   7. Introduction: Assembly Programming
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="vonNeumannArchitecture.html">
-   7. The von Neumann Architecture
+   8. The von Neumann Architecture
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="assembly.html">
-   8. Lets write some assembly code
+   9. Lets write some assembly code
   </a>
  </li>
 </ul>
@@ -151,7 +151,7 @@
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../C/intro.html">
-   9. Introduction
+   10. Introduction
   </a>
  </li>
 </ul>
@@ -269,12 +269,12 @@
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#machine-code">
-   6.1. Machine Code
+   7.1. Machine Code
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#assembly-code">
-   6.2. Assembly Code
+   7.2. Assembly Code
   </a>
  </li>
 </ul>
@@ -289,11 +289,11 @@
               <div>
                 
   <div class="section" id="introduction-assembly-programming">
-<h1><span class="section-number">6. </span>Introduction: Assembly Programming<a class="headerlink" href="#introduction-assembly-programming" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">7. </span>Introduction: Assembly Programming<a class="headerlink" href="#introduction-assembly-programming" title="Permalink to this headline">¶</a></h1>
 <p>Assembly Programming, directing the computer in what it should do, means writing code in the language that the hardware of the computer understands – or at least very close to it.
 Most programmers are completely unaware of how the computer really works as the languages that they program in are not natively supported by the hardware.  Rather, most languages, such as JavaScript, Java, Python, Ruby, Rust, C#, C++, and even C must be translated into the native code that the computer does understand – machine code.</p>
 <div class="section" id="machine-code">
-<h2><span class="section-number">6.1. </span>Machine Code<a class="headerlink" href="#machine-code" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">7.1. </span>Machine Code<a class="headerlink" href="#machine-code" title="Permalink to this headline">¶</a></h2>
 <p>The hardware of the computer is built out of electrical components that can store and interpret patterns of  bits, binary digits.  A single bit can be though of as a switch that can be in two positions “ON” – 1  and “OFF” – 0.  A group of eight bits forms a byte.  We will say  a lot more about bytes  a little later.  The main thing to observe is that a byte is easily expressed as an 8 digit binary, (base 2), number.  Given that there are 8 bits a byte can take on $2^8=256$
 unique values ranging from $00000000$ to $11111111$.</p>
 <p>Machine code is a binary code – meaning that binary values are used to encoded the operations and values that make up a program.   The following table list twenty of the machine codes of a <a class="reference external" href="https://en.wikipedia.org/wiki/MOS_Technology_6502">MOS 6502 Centeral Processing Unit (CPU)</a> which has a very simple machine code.</p>
@@ -375,7 +375,7 @@ unique values ranging from $00000000$ to $11111111$.</p>
 </div>
 </div>
 <div class="section" id="assembly-code">
-<h2><span class="section-number">6.2. </span>Assembly Code<a class="headerlink" href="#assembly-code" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">7.2. </span>Assembly Code<a class="headerlink" href="#assembly-code" title="Permalink to this headline">¶</a></h2>
 <p>Assembly code is a slightly more generic human friendly code that we can use to program a computer.  Machine code must be expressed purely in numbers but assembly code uses structured text that can be easily translated by a set of tools into the equivalent machine code.   Each group of machine operations of the CPU that does the same function is assigned a human text <strong>memonic</strong>, often referred to as an <strong>instruction</strong>.  For example the following are the 8 different 6502 machine code operations that add two numbers:</p>
 <table class="colwidths-auto table">
 <thead>
@@ -474,7 +474,7 @@ unique values ranging from $00000000$ to $11111111$.</p>
             <i class="prevnext-label fas fa-angle-left"></i>
             <div class="prevnext-info">
                 <p class="prevnext-label">previous</p>
-                <p class="prevnext-title"><span class="section-number">5. </span>The Shell – Progammable User Interface to the computer</p>
+                <p class="prevnext-title"><span class="section-number">6. </span>The Shell – Progammable User Interface to the computer</p>
             </div>
         </a>
     </div>
@@ -482,7 +482,7 @@ unique values ranging from $00000000$ to $11111111$.</p>
         <a class="right-next" href="vonNeumannArchitecture.html" title="next page">
             <div class="prevnext-info">
                 <p class="prevnext-label">next</p>
-                <p class="prevnext-title"><span class="section-number">7. </span>The von Neumann Architecture</p>
+                <p class="prevnext-title"><span class="section-number">8. </span>The von Neumann Architecture</p>
             </div>
             <i class="prevnext-label fas fa-angle-right"></i>
         </a>
