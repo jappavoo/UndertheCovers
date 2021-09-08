@@ -42,6 +42,8 @@
     <script src="_static/copybutton.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe"
@@ -352,214 +354,209 @@
             </div>
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   CS400 Fall 2021 : Machine Level Programming
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#a-hodge-podge-of-this-that-and-the-other-things-that-go-into-computer-systems">
+   - A Hodge-Podge of this that and the other things that go into computer systems
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#a-hodge-podge-of-this-that-and-the-other-things-that-go-into-computer-systems">
-     - A Hodge-Podge of this that and the other things that go into computer systems
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#jonathan-appavoo-phd">
+     Jonathan Appavoo, PhD.
     </a>
     <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#jonathan-appavoo-phd">
-       Jonathan Appavoo, PhD.
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#pronouns-he-him-his">
+       Pronouns: He, Him, His
       </a>
-      <ul class="nav section-nav flex-column">
-       <li class="toc-h4 nav-item toc-entry">
-        <a class="reference internal nav-link" href="#pronouns-he-him-his">
-         Pronouns: He, Him, His
-        </a>
-       </li>
-      </ul>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#to-get-us-into-the-spirit-of-things-let-s-build-a-computer">
-     To get us into the Spirit of things – Let’s  build a computer!
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#the-appavoo-ii">
-       The Appavoo II
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#a-cpu">
-       A CPU
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#tic-tock-the-system-clock-driving-the-loop">
-       TIC-TOCK The System Clock  – Driving the Loop
-      </a>
-      <ul class="nav section-nav flex-column">
-       <li class="toc-h4 nav-item toc-entry">
-        <a class="reference internal nav-link" href="#the-clock-pin-phi-0-input-only">
-         The Clock Pin ${\phi}_0$ :  INPUT ONLY
-        </a>
-       </li>
-      </ul>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#the-address-pins-the-address-bus">
-       The Address Pins - The Address Bus
-      </a>
-      <ul class="nav section-nav flex-column">
-       <li class="toc-h4 nav-item toc-entry">
-        <a class="reference internal nav-link" href="#pins-a0-a15-output-only">
-         Pins A0 - A15 : OUTPUT ONLY
-        </a>
-       </li>
-      </ul>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#the-data-pins-and-r-w-pin-data-bus-and-direction">
-       The Data Pins and R/W pin - Data Bus and direction
-      </a>
-      <ul class="nav section-nav flex-column">
-       <li class="toc-h4 nav-item toc-entry">
-        <a class="reference internal nav-link" href="#pins-d0-d7-input-and-output">
-         Pins D0 - D7 : INPUT AND OUTPUT
-        </a>
-       </li>
-       <li class="toc-h4 nav-item toc-entry">
-        <a class="reference internal nav-link" href="#and-r-w-output-only">
-         and R/W : OUTPUT ONLY
-        </a>
-       </li>
-      </ul>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#reset-getting-the-loop-going">
-       Reset – Getting the loop going
-      </a>
-      <ul class="nav section-nav flex-column">
-       <li class="toc-h4 nav-item toc-entry">
-        <a class="reference internal nav-link" href="#the-reset-pin-res-input-only">
-         The Reset Pin (RES) : INPUT ONLY
-        </a>
-       </li>
-      </ul>
      </li>
     </ul>
    </li>
   </ul>
  </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#our-computer">
-   Our computer
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#to-get-us-into-the-spirit-of-things-let-s-build-a-computer">
+   To get us into the Spirit of things – Let’s  build a computer!
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-appavoo-ii">
+     The Appavoo II
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#a-cpu">
+     A CPU
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#tic-tock-the-system-clock-driving-the-loop">
+     TIC-TOCK The System Clock  – Driving the Loop
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#the-clock-pin-phi-0-input-only">
+       The Clock Pin
+       <span class="math notranslate nohighlight">
+        \({\phi}_0\)
+       </span>
+       :  INPUT ONLY
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-address-pins-the-address-bus">
+     The Address Pins - The Address Bus
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#pins-a0-a15-output-only">
+       Pins A0 - A15 : OUTPUT ONLY
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-data-pins-and-r-w-pin-data-bus-and-direction">
+     The Data Pins and R/W pin - Data Bus and direction
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#pins-d0-d7-input-and-output">
+       Pins D0 - D7 : INPUT AND OUTPUT
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#and-r-w-output-only">
+       and R/W : OUTPUT ONLY
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#reset-getting-the-loop-going">
+     Reset – Getting the loop going
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#the-reset-pin-res-input-only">
+       The Reset Pin (RES) : INPUT ONLY
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#our-computer">
+     Our computer
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-instruction-set">
+     The instruction set
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#context-for-this-course">
+   Context for this Course
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#the-instruction-set">
-   The instruction set
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#syllabus">
+   Syllabus
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#context-for-this-course">
-     Context for this Course
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#lectures">
+     Lectures:
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#syllabus">
-     Syllabus
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#instructor">
+     Instructor:
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pre-requisites">
+     Pre-requisites
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#important-semester-dates">
+     Important Semester Dates:
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#infrastructure">
+     Infrastructure:
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#grade-breakdown">
+     Grade breakdown
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-lectures">
+     The Lectures
     </a>
     <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#lectures">
-       Lectures:
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#problems-sets">
+       Problems Sets
       </a>
      </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#instructor">
-       Instructor:
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#participation">
+       Participation
       </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#pre-requisites">
-       Pre-requisites
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#important-semester-dates">
-       Important Semester Dates:
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#infrastructure">
-       Infrastructure:
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#grade-breakdown">
-       Grade breakdown
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#the-lectures">
-       The Lectures
-      </a>
-      <ul class="nav section-nav flex-column">
-       <li class="toc-h4 nav-item toc-entry">
-        <a class="reference internal nav-link" href="#problems-sets">
-         Problems Sets
-        </a>
-       </li>
-       <li class="toc-h4 nav-item toc-entry">
-        <a class="reference internal nav-link" href="#participation">
-         Participation
-        </a>
-       </li>
-      </ul>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#late-policy">
-       Late Policy
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#academic-conduct">
-       Academic Conduct
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#project">
-       Project
-      </a>
-      <ul class="nav section-nav flex-column">
-       <li class="toc-h4 nav-item toc-entry">
-        <a class="reference internal nav-link" href="#requirements">
-         Requirements:
-        </a>
-       </li>
-       <li class="toc-h4 nav-item toc-entry">
-        <a class="reference internal nav-link" href="#time-line">
-         Time line
-        </a>
-       </li>
-       <li class="toc-h4 nav-item toc-entry">
-        <a class="reference internal nav-link" href="#project-ideas">
-         Project Ideas
-        </a>
-       </li>
-      </ul>
      </li>
     </ul>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#next-class-intro-to-the-concepts-behind-unix-shell-interaction">
-     NEXT Class intro to the concepts behind UNIX Shell Interaction
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#late-policy">
+     Late Policy
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#academic-conduct">
+     Academic Conduct
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#project">
+     Project
     </a>
     <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#reads-from-uc-sls">
-       Reads from UC:SLS
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#requirements">
+       Requirements:
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#time-line">
+       Time line
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#project-ideas">
+       Project Ideas
       </a>
      </li>
     </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#next-class-intro-to-the-concepts-behind-unix-shell-interaction">
+   NEXT Class intro to the concepts behind UNIX Shell Interaction
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#reads-from-uc-sls">
+     Reads from UC:SLS
+    </a>
    </li>
   </ul>
  </li>
@@ -589,7 +586,7 @@
 <div class="section" id="to-get-us-into-the-spirit-of-things-let-s-build-a-computer">
 <h2>To get us into the Spirit of things – Let’s  build a computer!<a class="headerlink" href="#to-get-us-into-the-spirit-of-things-let-s-build-a-computer" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p>Inspired by Ben Eater’s : Build a 6502 Computer project (https://eater.net/6502)</p></li>
+<li><p>Inspired by Ben Eater’s : Build a 6502 Computer project (<a class="reference external" href="https://eater.net/6502">https://eater.net/6502</a>)</p></li>
 </ul>
 <center>
 <img  width="50%" src="https://cdn.shopify.com/s/files/1/0089/0647/3536/products/6502_550x825.png?v=1568331711">
@@ -728,7 +725,7 @@ htmlFig("[{'src': 'images/6502Pinout.png'}]",
 </div>
 </div>
 <div class="section" id="the-clock-pin-phi-0-input-only">
-<h4>The Clock Pin ${\phi}_0$ :  INPUT ONLY<a class="headerlink" href="#the-clock-pin-phi-0-input-only" title="Permalink to this headline">¶</a></h4>
+<h4>The Clock Pin <span class="math notranslate nohighlight">\({\phi}_0\)</span> :  INPUT ONLY<a class="headerlink" href="#the-clock-pin-phi-0-input-only" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li><p>Attach it to an oscillator</p>
 <ul>
@@ -931,10 +928,8 @@ htmlFig("[{'src': 'images/6502Reset.png'}]",
 </ol>
 </div>
 </div>
-</div>
-</div>
 <div class="section" id="our-computer">
-<h1>Our computer<a class="headerlink" href="#our-computer" title="Permalink to this headline">¶</a></h1>
+<h3>Our computer<a class="headerlink" href="#our-computer" title="Permalink to this headline">¶</a></h3>
 <ol class="simple">
 <li><p>CPU</p></li>
 <li><p>push button clock</p></li>
@@ -953,8 +948,8 @@ htmlFig("[{'src': 'images/6502Reset.png'}]",
 <p>Do Demo and switch back for instruction</p>
 </div>
 <div class="section" id="the-instruction-set">
-<h1>The instruction set<a class="headerlink" href="#the-instruction-set" title="Permalink to this headline">¶</a></h1>
-<p>https://www.masswerk.at/6502/6502_instruction_set.html</p>
+<h3>The instruction set<a class="headerlink" href="#the-instruction-set" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="https://www.masswerk.at/6502/6502_instruction_set.html">https://www.masswerk.at/6502/6502_instruction_set.html</a></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="n">htmlFig</span><span class="p">(</span><span class="s2">&quot;images/6502opctbl.png&quot;</span><span class="p">)))</span>
@@ -984,7 +979,7 @@ htmlFig("[{'src': 'images/6502opctbl.png'}]",
 </table>
 </div>
 </div>
-<p>https://www.masswerk.at/6502/6502_instruction_set.html#NOP</p>
+<p><a class="reference external" href="https://www.masswerk.at/6502/6502_instruction_set.html#NOP">https://www.masswerk.at/6502/6502_instruction_set.html#NOP</a></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">NOP</span>
 <span class="n">No</span> <span class="n">Operation</span>
 
@@ -994,6 +989,8 @@ htmlFig("[{'src': 'images/6502opctbl.png'}]",
 <span class="n">addressing</span>	<span class="n">assembler</span>	<span class="n">opc</span>	<span class="nb">bytes</span>	<span class="n">cycles</span>
 <span class="n">implied</span>	<span class="n">NOP</span>	<span class="n">EA</span>	<span class="mi">1</span>	<span class="mi">2</span>  
 </pre></div>
+</div>
+</div>
 </div>
 <div class="section" id="context-for-this-course">
 <h2>Context for this Course<a class="headerlink" href="#context-for-this-course" title="Permalink to this headline">¶</a></h2>
@@ -1055,10 +1052,10 @@ htmlFig("[{'src': 'images/6502opctbl.png'}]",
 <ul class="simple">
 <li><p>UC-SLS:</p>
 <ul>
-<li><p>https://github.com/jappavoo/UndertheCovers</p></li>
+<li><p><a class="reference external" href="https://github.com/jappavoo/UndertheCovers">https://github.com/jappavoo/UndertheCovers</a></p></li>
 <li><p>Lecture “Notes”</p></li>
 <li><p>Portions of the book that I can get done</p></li>
-<li><p>Container Environment : https://github.com/jappavoo/bu-cs-book-dev</p>
+<li><p>Container Environment : <a class="reference external" href="https://github.com/jappavoo/bu-cs-book-dev">https://github.com/jappavoo/bu-cs-book-dev</a></p>
 <ul>
 <li><p>self hosted</p></li>
 <li><p>online service maybe</p></li>
@@ -1066,9 +1063,9 @@ htmlFig("[{'src': 'images/6502opctbl.png'}]",
 </li>
 </ul>
 </li>
-<li><p>Piazza: https://piazza.com/bu/fall2021/cs400/resources</p></li>
-<li><p>Gradescope:https://www.gradescope.com/courses/303761</p></li>
-<li><p>GitLab:https://cs400-gitlab.bu.edu</p></li>
+<li><p>Piazza: <a class="reference external" href="https://piazza.com/bu/fall2021/cs400/resources">https://piazza.com/bu/fall2021/cs400/resources</a></p></li>
+<li><p>Gradescope:<a class="reference external" href="https://www.gradescope.com/courses/303761">https://www.gradescope.com/courses/303761</a></p></li>
+<li><p>GitLab:<a class="reference external" href="https://cs400-gitlab.bu.edu">https://cs400-gitlab.bu.edu</a></p></li>
 </ul>
 </div>
 <div class="section" id="grade-breakdown">
@@ -1145,7 +1142,7 @@ htmlFig("[{'src': 'images/6502opctbl.png'}]",
 <p>Academic standards and the code of academic conduct are taken very
 seriously at our university.  Please take the time to review the CAS
 Academic Conduct Code if you are unfamiliar with the contents.
-See the http://www.bu.edu/academics/resources/academic-conduct-code/ for the
+See the <a class="reference external" href="http://www.bu.edu/academics/resources/academic-conduct-code/">http://www.bu.edu/academics/resources/academic-conduct-code/</a> for the
 CAS Academic Conduct Code, in particular regarding plagiarism and
 cheating on exams. Copies of the CAS Academic Conduct Code are also
 available in room CAS 105. A student suspected to violate this code
@@ -1163,7 +1160,7 @@ culpable, the student will receive a grade of “F” for the course.</p>
 <li><p>Code</p></li>
 <li><p>Documentation</p></li>
 <li><p>Reports</p></li>
-<li><p>Log.md of meetings, weekly status and etc</p></li>
+<li><p><a class="reference external" href="http://Log.md">Log.md</a> of meetings, weekly status and etc</p></li>
 <li><p>Lecture presentation material</p></li>
 </ul>
 </li>
@@ -1176,7 +1173,7 @@ culpable, the student will receive a grade of “F” for the course.</p>
 </li>
 <li><p>Weekly status updates</p>
 <ul>
-<li><p>documented in Log.md of repo</p></li>
+<li><p>documented in <a class="reference external" href="http://Log.md">Log.md</a> of repo</p></li>
 <li><p>and office hour meetings</p></li>
 </ul>
 </li>
