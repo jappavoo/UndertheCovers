@@ -331,8 +331,8 @@
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#a-unix-file-is-a-physical-object-that-exists-on-the-computer-s-harddrive-true-or-false">
-     3.4.1. A UNIX file is a physical object that exists on the computer’s harddrive:  True or False?
+    <a class="reference internal nav-link" href="#a-unix-file-is-a-physical-object-that-exists-on-the-computer-s-hard-drive-true-or-false">
+     3.4.1. A UNIX file is a physical object that exists on the computer’s hard-drive:  True or False?
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
@@ -411,19 +411,19 @@ Using computers and managing information has become synonymous.   You probably t
 <div class="section" id="an-abstract-object">
 <h3><span class="section-number">3.2.3. </span>An Abstract Object<a class="headerlink" href="#an-abstract-object" title="Permalink to this headline">¶</a></h3>
 <p>Why do say that a file is an “abstract” object?  Well when it comes to computers most of the things we think of as “real” are just constructions of software.  An operating system like UNIX is responsible for providing us with things like files but in reality there is rarely a single physical object that corresponds to any given file.  Rather it is the job of the operating system to use the resources of the computer to create an abstract file object if we ask it to do so and ensure that it behaves as expected.</p>
-<p>While this might sound confusing it is really quite intutive and you have likely been using such a directory hiearchy for most of your digital life.</p>
 </div>
 </div>
 <div class="section" id="directory-tree">
 <h2><span class="section-number">3.3. </span>Directory Tree<a class="headerlink" href="#directory-tree" title="Permalink to this headline">¶</a></h2>
 <img align="right" width="200" src="../images/359px-ENC_SYSTEME_FIGURE.jpeg"> 
 <!-- ![enctree](../images/359px-ENC_SYSTEME_FIGURE.jpeg) -->
-<p>While files serve as a great building block for managing information they are not enough.  People, like librarians, who have managed and currated large bodies of information know that you need a consistent and yet flexibly way to group, organize and index information.  This <a class="reference external" href="https://commons.wikimedia.org/wiki/File:ENC_SYSTEME_FIGURE.jpeg">image</a> illustrates how an 18th century encylopidia used a hiearchical tree diagram to order its subjects.</p>
+<p>While files serve as a great building block for managing information they are not enough.  People, like librarians, who have managed and curated large bodies of information, know that you need a consistent and yet flexibly way to group, organize and index information.  This <a class="reference external" href="https://commons.wikimedia.org/wiki/File:ENC_SYSTEME_FIGURE.jpeg">image</a> illustrates how an 18th century encyclopedia used a hierarchical tree diagram to order its subjects.</p>
 <p>Early operating systems developers adopted a <a class="reference external" href="https://en.wikipedia.org/wiki/Tree_structure">tree structure</a> of nested “directories to allow users to organize their files.</p>
 <div class="section" id="directories">
 <h3><span class="section-number">3.3.1. </span>Directories<a class="headerlink" href="#directories" title="Permalink to this headline">¶</a></h3>
 <p>A “directory” contains a list of names each name identifies either a single file or another directory.</p>
-<p>These entries are said to be within the directory.  A directory that is within a directory is said to be a sub-directory.  Like a file a directory also has the same kind of meta-data associated with it (owner, permisions, etc).  The contents of a directory is, however, the list of its entries.  This structure results in the directories and files forming a tree. As such the name of any file or directory is actually a path along the tree.</p>
+<p>These entries are said to be within the directory.  A directory that is within a directory is said to be a sub-directory.  Like a file a directory also has the same kind of meta-data associated with it (owner, permissions, etc).  The contents of a directory is, however, the list of its entries.  This structure results in the directories and files forming a tree. As such the name of any file or directory is actually a path along the tree.</p>
+<p>While this might sound confusing it is really quite intuitive and you have likely been using such a directory hierarchy for most of your digital life.</p>
 <p>Perhaps the most important thing to realize is that a UNIX user is allowed to create directories and files and name them as they see fit.  This ability allows a user to flexibility organize their information in an way they like and makes sense to them. To get a better handle on this let’s walk through a simple abstract example.  Later we will repeat this example but using UNIX commands to get a more exact understanding.</p>
 <p><a id='dir_example'></a></p>
 <div class="section" id="directory-tree-example">
@@ -434,67 +434,95 @@ Using computers and managing information has become synonymous.   You probably t
 </div>
 <div class="section" id="home-directory">
 <h4><span class="section-number">3.3.1.2. </span>HOME Directory<a class="headerlink" href="#home-directory" title="Permalink to this headline">¶</a></h4>
-<p>The above diagram assumes that we are the user “jonathan” who has a directory that they own.  By creating files and sub-directories within the “jonathan” directory we can organize our information. This personal user directory in UNIX this is called the users <strong>HOME</strong> directory and its name matches the users UNIX user name.   We will say more about this when we revisit this example.</p>
-<p>Here the user, jonathan, has created two sub-directories - Poetry and Classes. Inside the Poetry directory the user has created one sub-directory (Vogon – to store their favorite Vogon poetry and two files (ToBitOrToByte and OdeToASemicolon, two poems they have written).</p>
-<p>Similarly we see that the user has create a more complex directory structure to organize their class work.  One thing to note is that to keep things sensible names of entries in a single directory must be unique.  However, in different directories entries can have the same name – as we can see with the three “Problem1” files at the bottom of the figure.  Each of these are in different directories.</p>
+<p>The above diagram assumes that we are the user “jonathan” who has a directory that they own.  By creating files and sub-directories within the “jonathan” directory we can organize our information. This personal user directory in UNIX is called the users <strong>HOME</strong> directory and its name matches the users UNIX user name.   We will say more about this when we revisit this example.</p>
+<p>Here the user, “jonathan”, has created two sub-directories - Poetry and Classes. Inside the Poetry directory the user has created one sub-directory (“Vogon” – to store their favorite Vogon poetry and two files (“ToBitOrToByte” and “OdeToASemicolon”, two poems they have written).</p>
+<p>Similarly we see that the user has created a more complex directory structure to organize their class work.  One thing to note, to keep things sensible, names of entries in a single directory must be unique.  However, in different directories entries can have the same name – as we can see with the three “Problem1” files at the bottom of the figure.  Each of these are in different directories.</p>
 </div>
 <div class="section" id="paths-and-the-root">
 <h4><span class="section-number">3.3.1.3. </span>PATHS and the ROOT<a class="headerlink" href="#paths-and-the-root" title="Permalink to this headline">¶</a></h4>
 <p>As a matter of fact from the above diagram we can see that the unique name of a file or directory is really a composition of the directories that traces a <strong>path</strong> though the tree.</p>
-<p>In UNIX the very top of the tree is the one directory that always exists and is not a sub-directory of any other directory.  This directory is called the <strong>ROOT</strong> directory. In UNIX the <strong>ROOT</strong> directory’s name <code class="docutils literal notranslate"><span class="pre">/</span></code>.  This might seem odd at first but as we will see in a minute it is consistent with the UNIX way of name a full pathway in the tree.</p>
-<p>With this in mind the names of the three Problem1 files at the bottom of the diagram are composed by joining the name of the directories leading to them along with their name at the end.</p>
+<p>In UNIX the very top of the tree is the one directory that always exists and is not a sub-directory of any other directory.  This directory is called the <strong>ROOT</strong> directory. In UNIX the <strong>ROOT</strong> directory’s name <code class="docutils literal notranslate"><span class="pre">/</span></code>.  This might seem odd at first but as we will see in a minute it is consistent with the UNIX way of naming a full pathway in the tree.</p>
+<p>With this in mind the names of the three <code class="docutils literal notranslate"><span class="pre">Problem1</span></code> files at the bottom of the diagram are composed by joining the name of the directories leading to them along with their name at the end.</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">/</span></code> <span class="math notranslate nohighlight">\(+\)</span> <code class="docutils literal notranslate"><span class="pre">home</span></code> <span class="math notranslate nohighlight">\(+\)</span> <code class="docutils literal notranslate"><span class="pre">jonathan</span></code> <span class="math notranslate nohighlight">\(+\)</span> <code class="docutils literal notranslate"><span class="pre">Classes</span></code> <span class="math notranslate nohighlight">\(+\)</span> <code class="docutils literal notranslate"><span class="pre">CS</span></code> <span class="math notranslate nohighlight">\(+\)</span> <code class="docutils literal notranslate"><span class="pre">210</span></code> <span class="math notranslate nohighlight">\(+\)</span> <code class="docutils literal notranslate"><span class="pre">Assignment1</span></code> <span class="math notranslate nohighlight">\(+\)</span> <code class="docutils literal notranslate"><span class="pre">Problem1</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">/</span></code> <span class="math notranslate nohighlight">\(+\)</span> <code class="docutils literal notranslate"><span class="pre">home</span></code> <span class="math notranslate nohighlight">\(+\)</span> <code class="docutils literal notranslate"><span class="pre">jonathan</span></code> <span class="math notranslate nohighlight">\(+\)</span> <code class="docutils literal notranslate"><span class="pre">Classes</span></code> <span class="math notranslate nohighlight">\(+\)</span> <code class="docutils literal notranslate"><span class="pre">CS</span></code> <span class="math notranslate nohighlight">\(+\)</span> <code class="docutils literal notranslate"><span class="pre">210</span></code> <span class="math notranslate nohighlight">\(+\)</span> <code class="docutils literal notranslate"><span class="pre">Assignment2</span></code> <span class="math notranslate nohighlight">\(+\)</span> <code class="docutils literal notranslate"><span class="pre">Problem1</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">/</span></code> <span class="math notranslate nohighlight">\(+\)</span> <code class="docutils literal notranslate"><span class="pre">home</span></code> <span class="math notranslate nohighlight">\(+\)</span> <code class="docutils literal notranslate"><span class="pre">jonathan</span></code> <span class="math notranslate nohighlight">\(+\)</span> <code class="docutils literal notranslate"><span class="pre">Classes</span></code> <span class="math notranslate nohighlight">\(+\)</span> <code class="docutils literal notranslate"><span class="pre">CS</span></code> <span class="math notranslate nohighlight">\(+\)</span> <code class="docutils literal notranslate"><span class="pre">210</span></code> <span class="math notranslate nohighlight">\(+\)</span> <code class="docutils literal notranslate"><span class="pre">Assignment3</span></code> <span class="math notranslate nohighlight">\(+\)</span> <code class="docutils literal notranslate"><span class="pre">Problem1</span></code></p></li>
 </ul>
-<p>In UNIX the notation for a full path name of a file or directory is joining the indepdenent components with the “/” character.  So the above three files as proper unix path names would be:</p>
+<p>In UNIX the notation for a full path name of a file or directory is joining the indepdenent components with the “/” character.  So the above three files as proper UNIX path names would be:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">/home/jonathan/Classes/CS/210/Assignment1/Problem1</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">/home/jonathan/Classes/CS/210/Assignment2/Problem1</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">/home/jonathan/Classes/CS/210/Assignment3/Problem1</span></code></p></li>
 </ul>
-<p>Remember <code class="docutils literal notranslate"><span class="pre">/</span></code> by itself is the name of the root directory and the full name of any other directory or file begins with <code class="docutils literal notranslate"><span class="pre">/</span></code> and then is composed of all the parent directories sperated by an additional <code class="docutils literal notranslate"><span class="pre">/</span></code> and ends with the final name of the file or directory being identified.</p>
+<p>Remember <code class="docutils literal notranslate"><span class="pre">/</span></code> by itself is the name of the root directory and the full name of any other directory or file begins with <code class="docutils literal notranslate"><span class="pre">/</span></code> and then is composed of all the parent directories separated by an additional <code class="docutils literal notranslate"><span class="pre">/</span></code> and ends with the final name of the file or directory being identified.</p>
 </div>
 </div>
 </div>
 <div class="section" id="exercises">
 <h2><span class="section-number">3.4. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="a-unix-file-is-a-physical-object-that-exists-on-the-computer-s-harddrive-true-or-false">
-<h3><span class="section-number">3.4.1. </span>A UNIX file is a physical object that exists on the computer’s harddrive:  True or False?<a class="headerlink" href="#a-unix-file-is-a-physical-object-that-exists-on-the-computer-s-harddrive-true-or-false" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="a-unix-file-is-a-physical-object-that-exists-on-the-computer-s-hard-drive-true-or-false">
+<h3><span class="section-number">3.4.1. </span>A UNIX file is a physical object that exists on the computer’s hard-drive:  True or False?<a class="headerlink" href="#a-unix-file-is-a-physical-object-that-exists-on-the-computer-s-hard-drive-true-or-false" title="Permalink to this headline">¶</a></h3>
+<div class="cell tag_remove-input tag_hide-output docutils container">
+<div class="cell_output docutils container">
 <blockquote>
 <div><p>False: A file is an abstract object that the operating system provides.  While it is true that for many files the  data and meta-data are stored in fragments on one or drives this need not be true for all files.</p>
 </div></blockquote>
 </div>
+</div>
+</div>
 <div class="section" id="what-is-meta-data-versus-data-with-respect-to-files">
 <h3><span class="section-number">3.4.2. </span>What is meta-data versus data with respect to files?<a class="headerlink" href="#what-is-meta-data-versus-data-with-respect-to-files" title="Permalink to this headline">¶</a></h3>
+<div class="cell tag_remove-input tag_hide-output docutils container">
+<div class="cell_output docutils container">
 <blockquote>
-<div><p>Data is the actual contents of the file eg. for a spreedsheet file the data would be the information that describes the values, formulas, formating, etc.  Where as the meta-data is facts that describe the file generically eg. the user that owns the file, who is allowed to read the file, etc.</p>
+<div><p>Data is the actual contents of the file eg. for a spreed-sheet file the data
+would be the information that describes the values, formulas, formating,
+etc.  Where as the meta-data is facts that describe the file generically eg.
+the user that owns the file, who is allowed to read the file, etc.</p>
 </div></blockquote>
+</div>
+</div>
 </div>
 <div class="section" id="the-directory-structure-and-name-of-the-directories-is-fixed-true-or-false">
 <h3><span class="section-number">3.4.3. </span>The directory structure and name of the directories is fixed: True or False?<a class="headerlink" href="#the-directory-structure-and-name-of-the-directories-is-fixed-true-or-false" title="Permalink to this headline">¶</a></h3>
+<div class="cell tag_remove-input tag_hide-output docutils container">
+<div class="cell_output docutils container">
 <blockquote>
-<div><p>False:  The directory structure and the names of both directories and files is created by the user and can be changed.</p>
+<div><p>False:  The directory structure and the names of both directories and files is
+created by the user and can be changed.</p>
 </div></blockquote>
+</div>
+</div>
 </div>
 <div class="section" id="in-the-directory-tree-example-what-is-the-full-path-name-of-jonathan-s-vogon-poetry-directory">
 <h3><span class="section-number">3.4.4. </span>In the directory tree <a class="reference external" href="#dir_example">example</a> what is the full  path name of jonathan’s vogon poetry directory?<a class="headerlink" href="#in-the-directory-tree-example-what-is-the-full-path-name-of-jonathan-s-vogon-poetry-directory" title="Permalink to this headline">¶</a></h3>
+<div class="cell tag_remove-input tag_hide-output docutils container">
+<div class="cell_output docutils container">
 <blockquote>
 <div><p><code class="docutils literal notranslate"><span class="pre">/home/jonathan/Poetry/Vogon</span></code></p>
 </div></blockquote>
 </div>
+</div>
+</div>
 <div class="section" id="in-the-directry-tree-example-what-is-the-full-path-name-of-jonathan-s-poem-celebrating-semicolons">
 <h3><span class="section-number">3.4.5. </span>In the directry tree <a class="reference external" href="#dir_example">example</a> what is the full path name of jonathan’s poem celebrating semicolons?<a class="headerlink" href="#in-the-directry-tree-example-what-is-the-full-path-name-of-jonathan-s-poem-celebrating-semicolons" title="Permalink to this headline">¶</a></h3>
+<div class="cell tag_remove-input tag_hide-output docutils container">
+<div class="cell_output docutils container">
 <blockquote>
 <div><p><code class="docutils literal notranslate"><span class="pre">/home/jonathan/Poetry/OdeToASemicolon</span></code></p>
 </div></blockquote>
 </div>
+</div>
+</div>
 <div class="section" id="a-directory-can-contain-both-files-and-directories-true-or-false">
 <h3><span class="section-number">3.4.6. </span>A directory can contain both files and directories: True or False?<a class="headerlink" href="#a-directory-can-contain-both-files-and-directories-true-or-false" title="Permalink to this headline">¶</a></h3>
+<div class="cell tag_remove-input tag_hide-output docutils container">
+<div class="cell_output docutils container">
 <blockquote>
 <div><p>True: Any directory can contain both files and sub-directories.</p>
 </div></blockquote>
+</div>
+</div>
 </div>
 </div>
 </div>
