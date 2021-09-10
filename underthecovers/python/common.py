@@ -568,3 +568,10 @@ def TermShellCmd(cmd, prompt='$ ', markdown=True, bufsize=4096, wait=True):
 ''' + output.decode('utf-8') + prompt ) 
         
 
+# Standard way to present answer for question and answer
+#  put question in a cell as normal markdown
+#  use the Answer function in the next cell as code, passing in markdown answer text
+#  added remove-input and hide-output tags to the cell
+def Answer(md):
+    display(Markdown(md))
+    
