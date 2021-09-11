@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>2. SLS Lecture 2 : Core Utilities, Editors and Shell Scripting &#8212; UndertheCovers</title>
+    <title>2. SLS Lecture 2 : Part II &#8212; UndertheCovers</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet" />
   <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -121,7 +121,7 @@
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   2. SLS Lecture 2 : Core Utilities, Editors and Shell Scripting
+   2. SLS Lecture 2 : Part II
   </a>
  </li>
  <li class="toctree-l1">
@@ -370,8 +370,40 @@
         
               <div>
                 
-  <div class="section" id="sls-lecture-2-core-utilities-editors-and-shell-scripting">
-<h1><span class="section-number">2. </span>SLS Lecture 2 : Core Utilities, Editors and Shell Scripting<a class="headerlink" href="#sls-lecture-2-core-utilities-editors-and-shell-scripting" title="Permalink to this headline">¶</a></h1>
+  <div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">run</span> -i ../python/common.py
+<span class="o">%</span><span class="k">run</span> -i ../python/ln_preamble.py
+<span class="c1"># Make three extra terminals to serve as example of 3 terminal emulators</span>
+<span class="c1"># We do this to avoid having to change the dimensions of our standard</span>
+<span class="c1"># Editor, Build and debugger terminals</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">EXTERM1</span><span class="o">=</span><span class="n">TERMINALS</span><span class="p">[</span><span class="mi">3</span><span class="p">][</span><span class="s1">&#39;name&#39;</span><span class="p">]</span>
+<span class="k">except</span> <span class="ne">IndexError</span><span class="p">:</span>
+    <span class="n">EXTERM1</span><span class="o">=</span><span class="n">mkTerm</span><span class="p">()</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">EXTERM2</span><span class="o">=</span><span class="n">TERMINALS</span><span class="p">[</span><span class="mi">4</span><span class="p">][</span><span class="s1">&#39;name&#39;</span><span class="p">]</span>
+<span class="k">except</span> <span class="ne">IndexError</span><span class="p">:</span>
+    <span class="n">EXTERM2</span><span class="o">=</span><span class="n">mkTerm</span><span class="p">()</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">EXTERM3</span><span class="o">=</span><span class="n">TERMINALS</span><span class="p">[</span><span class="mi">5</span><span class="p">][</span><span class="s1">&#39;name&#39;</span><span class="p">]</span>
+<span class="k">except</span> <span class="ne">IndexError</span><span class="p">:</span>
+    <span class="n">EXTERM3</span><span class="o">=</span><span class="n">mkTerm</span><span class="p">()</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">HHTERM</span><span class="o">=</span><span class="n">TERMINALS</span><span class="p">[</span><span class="mi">6</span><span class="p">][</span><span class="s1">&#39;name&#39;</span><span class="p">]</span>
+<span class="k">except</span> <span class="ne">IndexError</span><span class="p">:</span>
+    <span class="n">HHTERM</span><span class="o">=</span><span class="n">mkTerm</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Preamble executed
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="sls-lecture-2-part-ii">
+<h1><span class="section-number">2. </span>SLS Lecture 2 : Part II<a class="headerlink" href="#sls-lecture-2-part-ii" title="Permalink to this headline">¶</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;hello&quot;</span><span class="p">)</span>
@@ -391,6 +423,48 @@
 <p><code class="docutils literal notranslate"><span class="pre">/</span></code> <span class="math notranslate nohighlight">\(+\)</span> <code class="docutils literal notranslate"><span class="pre">home</span></code> <span class="math notranslate nohighlight">\(+\)</span> <code class="docutils literal notranslate"><span class="pre">jonathan</span></code> <span class="math notranslate nohighlight">\(+\)</span> <code class="docutils literal notranslate"><span class="pre">Classes</span></code> <span class="math notranslate nohighlight">\(+\)</span> <code class="docutils literal notranslate"><span class="pre">CS</span></code> <span class="math notranslate nohighlight">\(+\)</span> <code class="docutils literal notranslate"><span class="pre">210</span></code> <span class="math notranslate nohighlight">\(+\)</span> <code class="docutils literal notranslate"><span class="pre">Assignment</span> <span class="pre">2</span></code> <span class="math notranslate nohighlight">\(+\)</span> <code class="docutils literal notranslate"><span class="pre">Problem</span> <span class="pre">1</span></code></p>
 <p><code class="docutils literal notranslate"><span class="pre">/</span></code> <span class="math notranslate nohighlight">\(+\)</span> <code class="docutils literal notranslate"><span class="pre">home</span></code> <span class="math notranslate nohighlight">\(+\)</span> <code class="docutils literal notranslate"><span class="pre">jonathan</span></code> <span class="math notranslate nohighlight">\(+\)</span> <code class="docutils literal notranslate"><span class="pre">Classes</span></code> <span class="math notranslate nohighlight">\(+\)</span> <code class="docutils literal notranslate"><span class="pre">CS</span></code> <span class="math notranslate nohighlight">\(+\)</span> <code class="docutils literal notranslate"><span class="pre">210</span></code> <span class="math notranslate nohighlight">\(+\)</span> <code class="docutils literal notranslate"><span class="pre">Assignment</span> <span class="pre">3</span></code> <span class="math notranslate nohighlight">\(+\)</span> <code class="docutils literal notranslate"><span class="pre">Problem</span> <span class="pre">1</span></code></p>
 <p>“Full” path name: join independent components with the “/” character.  So the above three files as proper unix path names would be:</p>
+<p>See. <a class="reference external" href="https://www.gnu.org/software/bash/manual/bash.html#Shell-Commands">https://www.gnu.org/software/bash/manual/bash.html#Shell-Commands</a>
+2. Breakdown complex commands into simple commands</p>
+<ul class="simple">
+<li><p>complex commands are a composition of simple commands:</p>
+<ul>
+<li><p>pipelines</p>
+<ul>
+<li><p>connecting inputs and outputs of commands together using <code class="docutils literal notranslate"><span class="pre">|</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ls</span> <span class="pre">-1</span> <span class="pre">/bin</span> <span class="pre">|</span> <span class="pre">wc</span> <span class="pre">-l</span></code></p></li>
+</ul>
+</li>
+<li><p>lists</p>
+<ul>
+<li><p>one or more pipelines separated by one of: <code class="docutils literal notranslate"><span class="pre">;</span></code>, <code class="docutils literal notranslate"><span class="pre">&amp;&amp;</span></code>, <code class="docutils literal notranslate"><span class="pre">||</span></code> or <code class="docutils literal notranslate"><span class="pre">&amp;</span></code> and terminated by <code class="docutils literal notranslate"><span class="pre">;</span></code> or <code class="docutils literal notranslate"><span class="pre">;</span></code> or <code class="docutils literal notranslate"><span class="pre">&amp;</span></code> or a newline.</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">echo</span> <span class="pre">&quot;about</span> <span class="pre">to</span> <span class="pre">run</span> <span class="pre">ls&quot;;</span> <span class="pre">ls;</span> <span class="pre">echo</span> <span class="pre">&quot;done</span> <span class="pre">running</span> <span class="pre">ls&quot;</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cmd1</span> <span class="pre">&amp;&amp;</span> <span class="pre">cmd2</span></code> : run <code class="docutils literal notranslate"><span class="pre">cmd2</span></code> if <code class="docutils literal notranslate"><span class="pre">cmd1</span></code> returns “success”</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cmd1</span> <span class="pre">||</span> <span class="pre">cmd2</span></code> : run <code class="docutils literal notranslate"><span class="pre">cmd2</span></code> if <code class="docutils literal notranslate"><span class="pre">cmd1</span></code> returns “not success” aka “failure”</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cmd1</span> <span class="pre">&amp;</span> <span class="pre">cmd2</span> </code> :  run <code class="docutils literal notranslate"><span class="pre">cmd1</span></code> asynchronously in the background and run <code class="docutils literal notranslate"><span class="pre">cmd2</span></code> “normally”</p>
+<ul>
+<li><p>lots more to say about asynchronous commands</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>compound commands: Shell programming constructs (these can span lines)</p>
+<ul>
+<li><p>loops: <code class="docutils literal notranslate"><span class="pre">until</span></code>, <code class="docutils literal notranslate"><span class="pre">while</span></code>, <code class="docutils literal notranslate"><span class="pre">for</span></code>, <code class="docutils literal notranslate"><span class="pre">do</span></code>, <code class="docutils literal notranslate"><span class="pre">done</span></code>, <code class="docutils literal notranslate"><span class="pre">break</span></code>, <code class="docutils literal notranslate"><span class="pre">continue</span></code></p>
+<ul>
+<li><p>there are two type of <code class="docutils literal notranslate"><span class="pre">for</span></code> loops</p></li>
+</ul>
+</li>
+<li><p>conditionals: <code class="docutils literal notranslate"><span class="pre">if</span></code>, <code class="docutils literal notranslate"><span class="pre">then</span></code>, <code class="docutils literal notranslate"><span class="pre">elif</span></code>, <code class="docutils literal notranslate"><span class="pre">else</span></code>, <code class="docutils literal notranslate"><span class="pre">fi</span></code>, <code class="docutils literal notranslate"><span class="pre">case</span></code>, <code class="docutils literal notranslate"><span class="pre">select</span></code>, <code class="docutils literal notranslate"><span class="pre">(())</span></code>, <code class="docutils literal notranslate"><span class="pre">[[]]</span></code></p></li>
+<li><p>grouping: <code class="docutils literal notranslate"><span class="pre">()</span></code>, <code class="docutils literal notranslate"><span class="pre">{}</span></code></p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>functions</p></li>
+</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>tput
@@ -414,6 +488,37 @@ Commands:
 </pre></div>
 </div>
 </div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="n">FileCodeBox</span><span class="p">(</span>
+    <span class="n">file</span><span class="o">=</span><span class="s2">&quot;../src/shlldirfile.sh&quot;</span><span class="p">,</span> 
+    <span class="n">lang</span><span class="o">=</span><span class="s2">&quot;bash&quot;</span><span class="p">,</span> 
+    <span class="n">title</span><span class="o">=</span><span class="s1">&#39;# File and Directories - Part I&#39;</span><span class="p">,</span>
+    <span class="n">w</span><span class="o">=</span><span class="s2">&quot;100%&quot;</span><span class="p">,</span>
+    <span class="n">h</span><span class="o">=</span><span class="s2">&quot;500px&quot;</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">showET</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+<iframe
+    width="100%"
+    height="600"
+    src="/terminals/7"
+    frameborder="0"
+    allowfullscreen
+></iframe>
+</div></div>
 </div>
 </div>
 </div>
