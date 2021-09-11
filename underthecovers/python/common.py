@@ -3,7 +3,7 @@ from IPython.core.display import display, HTML, Markdown, TextDisplayObject, Jav
 from IPython.display import IFrame, Image
 import ipywidgets as widgets
 from ipywidgets import interact, fixed, Layout
-import os, requests, pty, re
+import os, requests, pty, re, subprocess, struct, sys, fcntl, termios
 from notebook.notebookapp import list_running_servers
 import matplotlib
 import matplotlib.pyplot as plt
@@ -13,15 +13,15 @@ import pandas as pd
 
 matplotlib.rcParams['animation.html'] = 'jshtml'
 
-#from IPython.display import Javascript
+# from IPython.display import Javascript
 
-#var ipkernel = IPython.notebook.kernel;
-#var stringHostName = window.location.hostname
-#var ipcommand = "NB_HOST = " + "'"+stringHostName+"'";
-#ipkernel.execute(ipcommand);
-#"""
+# var ipkernel = IPython.notebook.kernel;
+# var stringHostName = window.location.hostname
+# var ipcommand = "NB_HOST = " + "'"+stringHostName+"'";
+# ipkernel.execute(ipcommand);
+# """
 #
-#display(Javascript(js_code))
+# display(Javascript(js_code))
 
 # common functions 
 # Custom functions and classes to help with standard slide elements that I use
@@ -65,7 +65,7 @@ def FileCodeBox(file, lang, **kwargs):
 '''
     # build output widget
     return MDBox(md_text, **kwargs)
-    
+
 def FileMDBox(file, **kwargs):
     #open text file in read mode
     text_file = open(file, "r")
@@ -138,10 +138,10 @@ def mkImgsAnimateBox(dir, files ,dpi=100.0,xpixels=0,ypixels=0):
 #     '17SHLLChat.png',
 #     '20SHLLChat.png']);
 
-#plt.imshow(imgs[0])
-#px.imshow(imgs[0])
-#fig = px.imshow(np.array(imgs), animation_frame=0, labels=dict(), height=(), width=())
-#fig.update_xaxes(showticklabels=False) \
+# plt.imshow(imgs[0])
+# px.imshow(imgs[0])
+# fig = px.imshow(np.array(imgs), animation_frame=0, labels=dict(), height=(), width=())
+# fig.update_xaxes(showticklabels=False) \
 #    .update_yaxes(showticklabels=False)
 
 # binary and integer utilities
@@ -187,7 +187,7 @@ def toBits(v,dtype,count,numbits):
     except:
 #        print("oops v: ", v, type(v), len(v));
         return [" " for i in range(numbits)]
-        
+
 def displayBytes(bytes=[[0x00]],
                  labels=[],
                  labelstitle="",
@@ -470,7 +470,7 @@ htmlFig("'''+ str(imgs) + '''",
     html_text += htmlFigTableStart(id, align, width, margin)
 
 #    print(html_text)
-    
+
     # calculate the maximum number of columns
     # and build new list
     rows = []
@@ -542,9 +542,14 @@ ansi_escape_8bit = re.compile(br'''
 def cleanTermBytes(bytes):    
     return  ansi_escape_8bit.sub(b'', bytes)
 
-def runTermCmd(cmd, bufsize=4096, wait=True):
+def runTermCmd(cmd, bufsize=4096, wait=True, rows=20, cols=80):
     master, slave = pty.openpty()
-    import subprocess
+
+    # terminal size stuff from 
+    # https://github.com/terminal-labs/cli-passthrough/blob/master/cli_passthrough/_passthrough.py  
+    size = struct.pack("HHHH", rows, cols, 0, 0)
+    fcntl.ioctl(master, termios.TIOCSWINSZ, size)
+    
     p=subprocess.Popen(['bash', '-l', '-i', '-c', cmd], stdin=slave, stdout=slave, stderr=slave, start_new_session=True)
 
     if wait:
@@ -556,17 +561,20 @@ def runTermCmd(cmd, bufsize=4096, wait=True):
     os.close(master)
     return output
 
-def TermShellCmd(cmd, prompt='$ ', markdown=True, bufsize=4096, wait=True):
-    output = runTermCmd(cmd, bufsize, wait)
+def TermShellCmd(cmd, prompt='$ ', markdown=True, pretext='', posttext='', **kwargs):
+    output = runTermCmd(cmd, **kwargs)
     
+    if prompt:
+        pretext += prompt + cmd + "\n"
+        posttext += prompt
+        
     if markdown:
         display(Markdown(htmlTerm('''
-''' + prompt + cmd + '''
-''' + cleanTermBytes(output).decode('utf-8') + prompt )))
+''' + pretext + cleanTermBytes(output).decode('utf-8') + posttext )))
     else:
-        print(prompt + cmd + '''
-''' + output.decode('utf-8') + prompt ) 
-        
+        print(pretext + '''
+''' + output.decode('utf-8') + posttext ) 
+
 
 # Standard way to present answer for question and answer
 #  put question in a cell as normal markdown
@@ -574,4 +582,4 @@ def TermShellCmd(cmd, prompt='$ ', markdown=True, bufsize=4096, wait=True):
 #  added remove-input and hide-output tags to the cell
 def Answer(md):
     display(Markdown(md))
-    
+
