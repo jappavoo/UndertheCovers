@@ -86,21 +86,41 @@ def FileMDBox(file, **kwargs):
 def mkImgsBox(dir,files=[]):
     if len(files)==0:
         files=os.listdir(dir);
+        
     interact(lambda i,d=fixed(dir),
              f=fixed(files): 
              display(Image(dir + '/' + files[i])),
              i=widgets.IntSlider(min=0, max=(len(files)), step=1, value=0));
 
-def files_to_imgArray(dir, files):
-    n=len(files);
+def files_to_imgArray(dir, files=[]):
+    if len(files)==0:
+        files=os.listdir(dir);
+#        print(files)
+        
     imgs = [];
     for f in files:
         imgs.append(plt.imread(dir + "/" + f))
     return imgs;
 
+def html_file(file):
+    text_file = open(file, "r")
+    #read whole file to a string
+    data = text_file.read()
+    #close file
+    text_file.close()
+    return HTML(data)
+
 # this embeddes a javascript animation box with specified
-# images
-def mkImgsAnimateBox(dir, files ,dpi=100.0,xpixels=0,ypixels=0):
+# images.  Added caching to a saveto file so that we can generally skip
+# regenerating animation
+def mkImgsAnimateBox(dir, files=[], dpi=100.0, xpixels=0, ypixels=0, force=False, saveto="save.html"):
+    if not force and os.path.exists(dir + "/" + saveto):
+#        print("from: " + saveto)
+        return html_file(dir + "/" + saveto)
+
+    if os.path.exists(dir + "/" + saveto):
+        os.remove(dir + "/" + saveto);
+        
     imgs=files_to_imgArray(dir, files)
     if (xpixels==0):
         xpixels = imgs[0].shape[0]
@@ -115,6 +135,9 @@ def mkImgsAnimateBox(dir, files ,dpi=100.0,xpixels=0,ypixels=0):
     ani=animation.FuncAnimation(fig, animate, frames=np.arange(0,len(imgs),1), fargs=None, interval=100, repeat=False)
     # next line is used to remove side affect of plot object
     plt.close()
+    if saveto:
+        with open(dir + "/" + saveto, "w") as f:
+            print(ani.to_jshtml(), file=f)
     return ani
 
 # for future reference incase we want to move to a plotly express version
