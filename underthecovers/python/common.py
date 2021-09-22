@@ -578,8 +578,13 @@ def runTermCmd(cmd, bufsize=4096, wait=True, rows=20, cols=80):
     if wait:
         p.wait()
         
-    output = os.read(master, bufsize)
-    
+    import select
+
+    if select.select([master,],[],[],0.0)[0]:
+        output = os.read(master, bufsize)
+    else:
+        output = b''
+        
     subprocess.Popen.kill(p)
     os.close(master)
     return output
