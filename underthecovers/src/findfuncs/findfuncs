@@ -4,8 +4,8 @@
 
 #set -n  # -n dry run  good for syntax checking (without running any commands)
 #set -x  # tracing of simple commands on 
-#set -e  # exit script on any fail retrun code
-#set -u  # error if expanding unset variable ... go for catching typeos
+#set -e  # exit script on any fail return code
+#set -u  # error if expanding unset variable ... goood for catching typeos
 
 DIR=$1
 [[ -z $DIR ]] && echo "USAGE: $0 <directory>" && exit -1
