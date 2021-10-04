@@ -1,0 +1,50 @@
+#######################################################################################
+# A default configuration that will be loaded for all jupyter books
+# See the documentation for help and more options: 
+# https://jupyterbook.org/customize/config.html
+
+#######################################################################################
+# Book settings
+title                       : UndertheCovers  # The title of the book. Will be placed in the left navbar.
+author                      : Jonathan Appavoo  # The author of the book
+copyright                   : "2021"  # Copyright year to be placed in the footer
+logo                        : logo.jpg  # A path to the book logo
+only_build_toc_files        : true
+
+repository:
+  url: https://github.com/jappavoo/UndertheCovers
+  path_to_book: underthecovers
+  branch: main
+
+html:
+  use_repository_button: true
+#  use_edit_page_button: true
+#  use_issues_button: true
+#  comments:
+#    utterances:
+#      repo: "jappavoo/UndertheCovers"
+
+launch_buttons:
+  notebook_interface: "classic"
+  binderhub_url: "" # trying to remove binder
+#  jupyterhub_url: " http://127.0.0.1:8888"
+  jupyterhub_url: "https://jupyterhub-opf-jupyterhub.apps.zero.massopen.cloud"  
+#  jupyterhub_url: "https://jupyterhub-opf-jupyterhub.apps.zero.massopen.cloud/hub/spawn?jupyter-book:latest"
+
+parse:
+  # see https://jupyterbook.org/customize/config.html
+  # don't forget to list any other extensions you want enabled,
+  # including those that are enabled by default!
+  myst_enable_extensions:
+    - html_image
+    - amsmath
+    - colon_fence
+    - dollarmath
+    - linkify
+    - substitution
+    - html_admonition
+
+execute:
+  execute_notebooks: "cache"
+  allow_error: true
+
