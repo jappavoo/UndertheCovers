@@ -474,9 +474,9 @@ Types of Paths
 <li><p>We should know how to use our OS to “manage” files</p>
 <ul>
 <li><p>explore what files exist and navigate the directory tree</p></li>
-<li><p>know how to use full and relative paths</p></li>
+<li><p>know how to use, full and relative, paths</p></li>
 <li><p>create and remove directories</p></li>
-<li><p>create files and direct commands to put data into file and read data from files</p></li>
+<li><p>create files, redirect a commands output into a file, and read data from files</p></li>
 <li><p>remove files</p></li>
 <li><p>search ASCII files</p></li>
 </ul>
@@ -491,9 +491,9 @@ Types of Paths
 <li><p><code class="docutils literal notranslate"><span class="pre">grep</span></code>, <code class="docutils literal notranslate"><span class="pre">rgrep</span></code>, <code class="docutils literal notranslate"><span class="pre">find</span></code></p></li>
 <li><p>bigger example :</p></li>
 </ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># navigate to home</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># How can I navigate to home dir?</span>
 <span class="nb">cd</span> ~
-<span class="c1"># get a copy of the program source code from the internet (github)</span>
+<span class="c1"># lets get a copy of the program source code from the internet (github)</span>
 git clone https://github.com/kornia/kornia.git
 <span class="c1"># use find to print all files</span>
 find ~/kornia 
@@ -565,7 +565,7 @@ findfuncs
 <h3><span class="section-number">4.3.2. </span>BUT…<a class="headerlink" href="#but" title="Permalink to this headline">¶</a></h3>
 <p>It really pays to know how to be functional in VIM and EMACS at least a little</p>
 <ul class="simple">
-<li><p>it means that you can be highly function even when with just tty access.</p>
+<li><p>it means that you can be highly productive even when with just tty access.</p>
 <ul>
 <li><p>eg. you have <code class="docutils literal notranslate"><span class="pre">ssh</span></code> terminal access to a remote computer</p></li>
 </ul>
@@ -656,16 +656,20 @@ find ~/kornia -name <span class="s2">&quot;*.py&quot;</span> <span class="p">|</
 <ul class="simple">
 <li><p>EMACS 1976 David A. Moon and Guy L. Steele Jr</p></li>
 <li><p>GNU EMACS ~1985 Richard Stallman</p></li>
-<li><p>It has graphical versions but we are going to stick with the terminal mode (<code class="docutils literal notranslate"><span class="pre">F10</span></code> to access menu bar)</p></li>
-<li><p>It is a little more recognizable as an editor as it does have menus but it is still pretty cryptic</p></li>
+<li><p>It has graphical versions but we are going to stick with the terminal mode</p></li>
+<li><p>It is a little more recognizable as an editor as it does have menus (<code class="docutils literal notranslate"><span class="pre">F10</span></code> to access menu bar)</p>
+<ul>
+<li><p>but it is still pretty cryptic</p></li>
+</ul>
+</li>
 <li><p>Its defining feature is its extensibility</p>
 <ul>
-<li><p>no surprise it is built around a programing language called elisp (a lisp derived language)</p></li>
+<li><p>no surprise it is built around a programing language. Elisp (a lisp derived language)</p></li>
 <li><p>thousands and thousands of packages</p></li>
 <li><p>extremely configurable</p></li>
 <li><p>lot and lots of programmer tools and support – often used as an IDE unto itself</p>
 <ul>
-<li><p>generally I am going shy away from using it this wa in class</p></li>
+<li><p>generally I am going shy away from using it this way in class</p></li>
 </ul>
 </li>
 </ul>
@@ -744,9 +748,12 @@ find ~/kornia -name <span class="s2">&quot;*.py&quot;</span> <span class="p">|</
 </li>
 <li><p>the most common use is in the “building” of programs</p>
 <ul>
-<li><p>where various commands need to be run on the source files to create the actually</p></li>
-<li><p>final program</p></li>
-<li><p>most IDE either use make internal or have some equivalent</p></li>
+<li><p>where various commands need to be run on the source files</p>
+<ul>
+<li><p>to create the “final” program</p></li>
+</ul>
+</li>
+<li><p>most IDE either use <code class="docutils literal notranslate"><span class="pre">make</span></code> internal or have some equivalent</p></li>
 </ul>
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">make</span></code>, however,  is a generic tool for automation</p></li>
@@ -780,7 +787,7 @@ find ~/kornia -name <span class="s2">&quot;*.py&quot;</span> <span class="p">|</
 <h3><span class="section-number">4.4.1. </span>Make preliminaries<a class="headerlink" href="#make-preliminaries" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>Lets revisit the file meta data so we can understand how make detects that something has changed</p></li>
-<li><p>Every time a file modified UNIX updates a field in the meta data of the file called <code class="docutils literal notranslate"><span class="pre">mtime</span></code></p>
+<li><p>Every time a file is modified UNIX updates a field in the meta data of the file called <code class="docutils literal notranslate"><span class="pre">mtime</span></code></p>
 <ul>
 <li><p>every time the file is written <code class="docutils literal notranslate"><span class="pre">mtime</span></code> changes</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">touch</span></code> can update the <code class="docutils literal notranslate"><span class="pre">mtime</span></code> to the current time without changing the contents</p></li>
@@ -884,8 +891,8 @@ find ~/kornia -name <span class="s2">&quot;*.py&quot;</span> <span class="p">|</
 
 <span class="c1">#set -n  # -n dry run  good for syntax checking (without running any commands)</span>
 <span class="c1">#set -x  # tracing of simple commands on </span>
-<span class="c1">#set -e  # exit script on any fail retrun code</span>
-<span class="c1">#set -u  # error if expanding unset variable ... go for catching typeos</span>
+<span class="c1">#set -e  # exit script on any fail return code</span>
+<span class="c1">#set -u  # error if expanding unset variable ... goood for catching typeos</span>
 
 <span class="nv">DIR</span><span class="o">=</span><span class="nv">$1</span>
 <span class="o">[[</span> -z <span class="nv">$DIR</span> <span class="o">]]</span> <span class="o">&amp;&amp;</span> <span class="nb">echo</span> <span class="s2">&quot;USAGE: </span><span class="nv">$0</span><span class="s2"> &lt;directory&gt;&quot;</span> <span class="o">&amp;&amp;</span> <span class="nb">exit</span> -1
