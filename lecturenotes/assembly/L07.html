@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>7. SLS Lecture 7 : Topics &#8212; UndertheCovers</title>
+    <title>7. SLS Lecture 7 : Assembly Programming Introduction &#8212; UndertheCovers</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet" />
   <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -51,7 +51,7 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="8. SLS Lecture 8 : Topics" href="L08.html" />
+    <link rel="next" title="8. SLS Lecture 8 : Writing some simple assembly programs" href="L08.html" />
     <link rel="prev" title="6. SLS Lecture 6 : Versions Control and GIT : Beyond the Basics" href="../unix/L06.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -151,12 +151,12 @@
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   7. SLS Lecture 7 : Topics
+   7. SLS Lecture 7 : Assembly Programming Introduction
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="L08.html">
-   8. SLS Lecture 8 : Topics
+   8. SLS Lecture 8 :  Writing some simple assembly programs
   </a>
  </li>
  <li class="toctree-l1">
@@ -347,6 +347,82 @@
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show">
             
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#revisit-processes">
+   7.1. Revisit Processes
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#a-process-is-a-running-executable-but-what-really-is-an-executable">
+     7.1.1. A Process is a Running executable but what really is an executable???
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#lets-use-xdd-to-look-at-the-first-80-bytes-of-the-bin-ls">
+       7.1.1.1. Lets use xdd to look at the first 80 bytes of the /bin/ls
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#executables-as-process-images">
+   7.2. Executables as “Process Images”
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#processes-as-cpu-and-memory-context">
+     7.2.1. Processes As CPU and Memory context
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#process-as-a-context-for-using-the-cpu-and-memory">
+     7.2.2. Process as a Context for using the CPU and Memory
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-tools-and-how-to-use-them">
+   7.3. The Tools and how to use them
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#assembler-and-linker">
+     7.3.1. Assembler and Linker
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#debugger">
+     7.3.2. Debugger
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#gdb-manual">
+     7.3.3. GDB Manual
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#intel-manuals">
+   7.4. Intel Manuals
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#extra-info-about-intel">
+   7.5. Extra info about Intel
+  </a>
+ </li>
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -355,8 +431,619 @@
         
               <div>
                 
-  <div class="section" id="sls-lecture-7-topics">
-<h1><span class="section-number">7. </span>SLS Lecture 7 : Topics<a class="headerlink" href="#sls-lecture-7-topics" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="sls-lecture-7-assembly-programming-introduction">
+<h1><span class="section-number">7. </span>SLS Lecture 7 : Assembly Programming Introduction<a class="headerlink" href="#sls-lecture-7-assembly-programming-introduction" title="Permalink to this headline">¶</a></h1>
+<p>Processes and Binaries</p>
+<div class="section" id="revisit-processes">
+<h2><span class="section-number">7.1. </span>Revisit Processes<a class="headerlink" href="#revisit-processes" title="Permalink to this headline">¶</a></h2>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output text_html"><!-- produced by: 
+htmlFig("[[{'src': '../images/Processes/Processes.004.png'}, {'src': '../images/Processes/Processes.005.png'}]]", 
+        id="", 
+        align="center", 
+        width="100%",
+        margin="auto auto auto auto",
+        caption="", 
+        captionalign="left")
+-->
+<table align="center" width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse: collapse; margin: auto auto auto auto">
+    <tr style="padding: 0; margin: 0;"> 
+        <td colspan="1" width="100%" style="padding: 0; margin: 0 0 0 0; background-color:inherit;">
+            <div style="padding: 0; margin: 0 0 0 0;">
+              <figure style="padding: 0; margin: 0 0 0 0; width:100%;">
+                   <img src="../images/Processes/Processes.004.png" width="100%" style="padding: 0; margin: 0;">
+                </figure>
+            </div>
+        </td>
+        <td colspan="1" width="100%" style="padding: 0; margin: 0 0 0 0; background-color:inherit;">
+            <div style="padding: 0; margin: 0 0 0 0;">
+              <figure style="padding: 0; margin: 0 0 0 0; width:100%;">
+                   <img src="../images/Processes/Processes.005.png" width="100%" style="padding: 0; margin: 0;">
+                </figure>
+            </div>
+        </td>
+    </tr>
+</table>
+</div></div>
+</div>
+<div class="section" id="a-process-is-a-running-executable-but-what-really-is-an-executable">
+<h3><span class="section-number">7.1.1. </span>A Process is a Running executable but what really is an executable???<a class="headerlink" href="#a-process-is-a-running-executable-but-what-really-is-an-executable" title="Permalink to this headline">¶</a></h3>
+<p>Lets see what we can figure out poking at the file a little</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>$ ls -l /bin/ls
+-rwxr-xr-x 1 root root 142144 Sep  5  2019 <span class=" -Color -Color-Bold -Color-Bold-Green">/bin/ls</span>
+$ 
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>So it is marked as a executable “x” in the permissions bits</p></li>
+<li><p>How big is it?</p></li>
+<li><p>Lets see if we can look at its contents</p></li>
+</ul>
+<p>Why did <code class="docutils literal notranslate"><span class="pre">cat</span> <span class="pre">/bin/ls</span></code> not help?</p>
+<ul class="simple">
+<li><p>Because whatever is in it its is not ASCII encode.</p></li>
+</ul>
+<p>How about looking trying to dump its contents by look at the values of its bytes</p>
+<ul class="simple">
+<li><p>there are several utilities that we can use to “dump” a file’s contents</p>
+<ul>
+<li><p>These programs read the file and convert the bytes into ascii representations of the value for each byte</p>
+<ul>
+<li><p>you can use <code class="docutils literal notranslate"><span class="pre">man</span> <span class="pre">-k</span> <span class="pre">dump</span></code> to see commands that have the word dump in their names</p>
+<ul>
+<li><p>the one we will focus on are <code class="docutils literal notranslate"><span class="pre">xxd</span></code> but two others that are really useful are <code class="docutils literal notranslate"><span class="pre">od</span></code> (octal dump) and <code class="docutils literal notranslate"><span class="pre">hd</span></code> (hexdump)</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>$ man xxd | head -20
+XXD(1)                      General Commands Manual                     XXD(1)
+
+NAME
+       xxd - make a hexdump or do the reverse.
+
+SYNOPSIS
+       xxd -h[elp]
+       xxd [options] [infile [outfile]]
+       xxd -r[evert] [options] [infile [outfile]]
+
+DESCRIPTION
+       xxd  creates a hex dump of a given file or standard input.  It can also
+       convert a hex dump back to its original binary form.  Like  uuencode(1)
+       and  uudecode(1)  it allows the transmission of binary data in a `mail-
+       safe&#39; ASCII representation, but has the advantage of decoding to  stan‐
+       dard output.  Moreover, it can be used to perform binary file patching.
+
+OPTIONS
+       If  no infile is given, standard input is read.  If infile is specified
+       as a `-&#39; character, then input is taken from  standard  input.   If  no
+$ 
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="lets-use-xdd-to-look-at-the-first-80-bytes-of-the-bin-ls">
+<h4><span class="section-number">7.1.1.1. </span>Lets use xdd to look at the first 80 bytes of the /bin/ls<a class="headerlink" href="#lets-use-xdd-to-look-at-the-first-80-bytes-of-the-bin-ls" title="Permalink to this headline">¶</a></h4>
+<p>First in hexadecimal notation and then in binary (base 2)</p>
+<p>xdd command to display first 80 bytes (-l 80) of the file in units/groups of 1 byte (-g 1) values with 8 units per line (-c 8):</p>
+<p><code class="docutils literal notranslate"><span class="pre">xxd</span> <span class="pre">-l</span> <span class="pre">80</span> <span class="pre">-g</span> <span class="pre">1</span> <span class="pre">-c</span> <span class="pre">8</span> <span class="pre">/bin/ls</span></code></p>
+<p>and</p>
+<p>same as above but using binary (base 2) notation (-b) for each value:</p>
+<p><code class="docutils literal notranslate"><span class="pre">xxd</span> <span class="pre">-l</span> <span class="pre">80</span> <span class="pre">-g</span> <span class="pre">1</span> <span class="pre">-c</span> <span class="pre">8</span> <span class="pre">-b</span> <span class="pre">/bin/ls</span></code></p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>$ xxd -l 80 -g 1 -c 8 /bin/ls;xxd -l 80 -g 1 -c 8 -b /bin/ls
+00000000: 7f 45 4c 46 02 01 01 00  .ELF....
+00000008: 00 00 00 00 00 00 00 00  ........
+00000010: 03 00 3e 00 01 00 00 00  ..&gt;.....
+00000018: d0 67 00 00 00 00 00 00  .g......
+00000020: 40 00 00 00 00 00 00 00  @.......
+00000028: c0 23 02 00 00 00 00 00  .#......
+00000030: 00 00 00 00 40 00 38 00  ....@.8.
+00000038: 0d 00 40 00 1e 00 1d 00  ..@.....
+00000040: 06 00 00 00 04 00 00 00  ........
+00000048: 40 00 00 00 00 00 00 00  @.......
+00000000: 01111111 01000101 01001100 01000110 00000010 00000001 00000001 00000000  .ELF....
+00000008: 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000  ........
+00000010: 00000011 00000000 00111110 00000000 00000001 00000000 00000000 00000000  ..&gt;.....
+00000018: 11010000 01100111 00000000 00000000 00000000 00000000 00000000 00000000  .g......
+00000020: 01000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000  @.......
+00000028: 11000000 00100011 00000010 00000000 00000000 00000000 00000000 00000000  .#......
+00000030: 00000000 00000000 00000000 00000000 01000000 00000000 00111000 00000000  ....@.8.
+00000038: 00001101 00000000 01000000 00000000 00011110 00000000 00011101 00000000  ..@.....
+00000040: 00000110 00000000 00000000 00000000 00000100 00000000 00000000 00000000  ........
+00000048: 01000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000  @.......
+$ 
+</pre></div>
+</div>
+</div>
+</div>
+<p>Ok so while that’s a cool party trick … so what do they mean?
+What else can we do?</p>
+<ul class="simple">
+<li><p>Lets see what the <code class="docutils literal notranslate"><span class="pre">file</span></code> command can tell us.</p></li>
+</ul>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>$ man file | head -20
+FILE(1)                   BSD General Commands Manual                  FILE(1)
+
+NAME
+     file — determine file type
+
+SYNOPSIS
+     file [-bcdEhiklLNnprsSvzZ0] [--apple] [--extension] [--mime-encoding]
+          [--mime-type] [-e testname] [-F separator] [-f namefile]
+          [-m magicfiles] [-P name=value] file ...
+     file -C [-m magicfiles]
+     file [--help]
+
+DESCRIPTION
+     This manual page documents version 5.38 of the file command.
+
+     file tests each argument in an attempt to classify it.  There are three
+     sets of tests, performed in this order: filesystem tests, magic tests,
+     and language tests.  The first test that succeeds causes the file type to
+     be printed.
+
+$ 
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>$ file /bin/ls
+/bin/ls: ELF 64-bit LSB shared object, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, BuildID[sha1]=2f15ad836be3339dec0e2e6a3c637e08e48aacbd, for GNU/Linux 3.2.0, stripped
+$ 
+</pre></div>
+</div>
+</div>
+</div>
+<p>Ok it is an ELF file lets see what if the manual has anything on what an elf is.</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>$ man elf | head -20
+ELF(5)                     Linux Programmer&#39;s Manual                    ELF(5)
+
+NAME
+       elf - format of Executable and Linking Format (ELF) files
+
+SYNOPSIS
+       #include &lt;elf.h&gt;
+
+DESCRIPTION
+       The  header  file  &lt;elf.h&gt;  defines the format of ELF executable binary
+       files.  Amongst these files are normal  executable  files,  relocatable
+       object files, core files, and shared objects.
+
+       An executable file using the ELF file format consists of an ELF header,
+       followed by a program header table or a section header table, or  both.
+       The  ELF  header  is  always  at  offset zero of the file.  The program
+       header table and the section header table&#39;s offset in the file are  de‐
+       fined  in the ELF header.  The two tables describe the rest of the par‐
+       ticularities of the file.
+
+$ 
+</pre></div>
+</div>
+</div>
+</div>
+<p>We could keep going down this road to poke at its contents using command designed to decode the elf file and dump information about it</p>
+<p><code class="docutils literal notranslate"><span class="pre">readelf</span> <span class="pre">--all</span> <span class="pre">/bin/ls</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">objdump</span> <span class="pre">--all</span> <span class="pre">/bin/ls</span></code></p>
+<p>But let’s try another approach before we stand back and put the pieces together.</p>
+<p>Let’s lookup what the OS kernel function for “executing” a binary file has to say</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>$ man 3 exec | head -30
+EXEC(3)                    Linux Programmer&#39;s Manual                   EXEC(3)
+
+NAME
+       execl, execlp, execle, execv, execvp, execvpe - execute a file
+
+SYNOPSIS
+       #include &lt;unistd.h&gt;
+
+       extern char **environ;
+
+       int execl(const char *pathname, const char *arg, ...
+                       /* (char  *) NULL */);
+       int execlp(const char *file, const char *arg, ...
+                       /* (char  *) NULL */);
+       int execle(const char *pathname, const char *arg, ...
+                       /*, (char *) NULL, char *const envp[] */);
+       int execv(const char *pathname, char *const argv[]);
+       int execvp(const char *file, char *const argv[]);
+       int execvpe(const char *file, char *const argv[],
+                       char *const envp[]);
+
+   Feature Test Macro Requirements for glibc (see feature_test_macros(7)):
+
+       execvpe(): _GNU_SOURCE
+
+DESCRIPTION
+       The  exec() family of functions replaces the current process image with
+       a new process image.  The functions described in this manual  page  are
+       front-ends  for execve(2).  (See the manual page for execve(2) for fur‐
+       ther details about the replacement of the current process image.)
+$ 
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>$ man 2 execve | head -21
+EXECVE(2)                  Linux Programmer&#39;s Manual                 EXECVE(2)
+
+NAME
+       execve - execute program
+
+SYNOPSIS
+       #include &lt;unistd.h&gt;
+
+       int execve(const char *pathname, char *const argv[],
+                  char *const envp[]);
+
+DESCRIPTION
+       execve() executes the program referred to by pathname.  This causes the
+       program that is currently being run by the calling process  to  be  re‐
+       placed  with  a  new  program,  with newly initialized stack, heap, and
+       (initialized and uninitialized) data segments.
+
+       pathname must be either a binary executable, or a script starting  with
+       a line of the form:
+
+           #!interpreter [optional-arg]
+$ 
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="executables-as-process-images">
+<h2><span class="section-number">7.2. </span>Executables as “Process Images”<a class="headerlink" href="#executables-as-process-images" title="Permalink to this headline">¶</a></h2>
+<p>Remember what the Hardware looks like.</p>
+<img alt="../_images/HW.png" src="../_images/HW.png" />
+<p>Remember that the OS Kernel is designed to make it easier to use the hardware to run programs.</p>
+<p>Now we need to dig into this idea more carefully.</p>
+<div class="section" id="processes-as-cpu-and-memory-context">
+<h3><span class="section-number">7.2.1. </span>Processes As CPU and Memory context<a class="headerlink" href="#processes-as-cpu-and-memory-context" title="Permalink to this headline">¶</a></h3>
+<p>A process is the way that the Operating System let our programs use the CPU and Memory in a controlled way.</p>
+<p>Each Process is independent “Context” to execute program.  Where a context provides a program with its own view of Memory and the CPU</p>
+<img alt="../_images/ProcessContexts.png" src="../_images/ProcessContexts.png" />
+</div>
+<div class="section" id="process-as-a-context-for-using-the-cpu-and-memory">
+<h3><span class="section-number">7.2.2. </span>Process as a Context for using the CPU and Memory<a class="headerlink" href="#process-as-a-context-for-using-the-cpu-and-memory" title="Permalink to this headline">¶</a></h3>
+<p>A process is a way for us to use the CPU and memory through the programs we write</p>
+<ul class="simple">
+<li><p>But not the I/O devices – Only the OS can directly access the I/O devices</p>
+<ul>
+<li><p>as we will see later the only way for our programs to do I/O will be to OS calls</p></li>
+</ul>
+</li>
+</ul>
+<p>To understand what we are doing when we write assembly code to create a program</p>
+<ul class="simple">
+<li><p>we need to understand how the CPU works and Memory together as programmable system</p></li>
+</ul>
+<img alt="../_images/ASSEMBLY-VNA-THECPU.003.png" src="../_images/ASSEMBLY-VNA-THECPU.003.png" />
+<p>Let’s start with a quick overview of the basic Von Neumman computer model and how the CPU and memory work together.</p>
+<img alt="../_images/ASSEMBLY-VNA-THECPU.005.png" src="../_images/ASSEMBLY-VNA-THECPU.005.png" />
+<img alt="../_images/ASSEMBLY-VNA-THECPU.007.png" src="../_images/ASSEMBLY-VNA-THECPU.007.png" />
+<img alt="../_images/ASSEMBLY-VNA-THECPU.008.png" src="../_images/ASSEMBLY-VNA-THECPU.008.png" />
+<img alt="../_images/ASSEMBLY-VNA-THECPU.009.png" src="../_images/ASSEMBLY-VNA-THECPU.009.png" />
+<img alt="../_images/ASSEMBLY-VNA-THECPU.010.png" src="../_images/ASSEMBLY-VNA-THECPU.010.png" />
+<img alt="../_images/ASSEMBLY-VNA-THECPU.011.png" src="../_images/ASSEMBLY-VNA-THECPU.011.png" />
+<img alt="../_images/ASSEMBLY-VNA-THECPU.012.png" src="../_images/ASSEMBLY-VNA-THECPU.012.png" />
+<img alt="../_images/ASSEMBLY-VNA-THECPU.013.png" src="../_images/ASSEMBLY-VNA-THECPU.013.png" />
+<img alt="../_images/ASSEMBLY-VNA-THECPU.014.png" src="../_images/ASSEMBLY-VNA-THECPU.014.png" />
+<img alt="../_images/ASSEMBLY-VNA-THECPU.015.png" src="../_images/ASSEMBLY-VNA-THECPU.015.png" />
+<img alt="../_images/ASSEMBLY-VNA-THECPU.016.png" src="../_images/ASSEMBLY-VNA-THECPU.016.png" />
+<img alt="../_images/ASSEMBLY-VNA-THECPU.017.png" src="../_images/ASSEMBLY-VNA-THECPU.017.png" />
+<img alt="../_images/ASSEMBLY-VNA-THECPU.018.png" src="../_images/ASSEMBLY-VNA-THECPU.018.png" />
+<img alt="../_images/ASSEMBLY-VNA-THECPU.019.png" src="../_images/ASSEMBLY-VNA-THECPU.019.png" />
+<img alt="../_images/ASSEMBLY-VNA-THECPU.020.png" src="../_images/ASSEMBLY-VNA-THECPU.020.png" />
+<img alt="../_images/ASSEMBLY-VNA-THECPU.021.png" src="../_images/ASSEMBLY-VNA-THECPU.021.png" />
+<img alt="../_images/ASSEMBLY-VNA-THECPU.022.png" src="../_images/ASSEMBLY-VNA-THECPU.022.png" />
+<img alt="../_images/ASSEMBLY-VNA-THECPU.023.png" src="../_images/ASSEMBLY-VNA-THECPU.023.png" />
+<img alt="../_images/ASSEMBLY-VNA-THECPU.024.png" src="../_images/ASSEMBLY-VNA-THECPU.024.png" />
+<img alt="../_images/ASSEMBLY-VNA-THECPU.025.png" src="../_images/ASSEMBLY-VNA-THECPU.025.png" />
+<img alt="../_images/ASSEMBLY-VNA-THECPU.026.png" src="../_images/ASSEMBLY-VNA-THECPU.026.png" />
+<img alt="../_images/ASSEMBLY-VNA-THECPU.027.png" src="../_images/ASSEMBLY-VNA-THECPU.027.png" />
+<img alt="../_images/ASSEMBLY-VNA-THECPU.028.png" src="../_images/ASSEMBLY-VNA-THECPU.028.png" />
+<img alt="../_images/ASSEMBLY-VNA-THECPU.029.png" src="../_images/ASSEMBLY-VNA-THECPU.029.png" />
+<img alt="../_images/ASSEMBLY-VNA-THECPU.030.png" src="../_images/ASSEMBLY-VNA-THECPU.030.png" />
+<img alt="../_images/ASSEMBLY-VNA-THECPU.031.png" src="../_images/ASSEMBLY-VNA-THECPU.031.png" />
+<img alt="../_images/ASSEMBLY-VNA-THECPU.032.png" src="../_images/ASSEMBLY-VNA-THECPU.032.png" />
+<img alt="../_images/ASSEMBLY-VNA-THECPU.033.png" src="../_images/ASSEMBLY-VNA-THECPU.033.png" />
+<p>So a Process is :</p>
+<ul class="simple">
+<li><p>an OS provided context that lets us</p>
+<ul>
+<li><p>direct the CPU via a binary program file</p>
+<ul>
+<li><p>that is loaded into the RAM memory array when we “run” it! (exec)</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>A binary “contains” the initial contents of memory that the OS loads into our process’s memory.</p>
+<ul>
+<li><p>“memory image” – the exact byte values and where they go into memory</p></li>
+</ul>
+</li>
+<li><p>A process’s memory is called the process’s address space.</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="the-tools-and-how-to-use-them">
+<h2><span class="section-number">7.3. </span>The Tools and how to use them<a class="headerlink" href="#the-tools-and-how-to-use-them" title="Permalink to this headline">¶</a></h2>
+<ol class="simple">
+<li><p>Preparing / creating binaries</p></li>
+<li><p>Assembler: Tool that translates a programmer’s description of what to put into memory into fragments of an executable file</p></li>
+<li><p>Linker: Tool that combines the fragments into an complete executable that the OS can load</p></li>
+<li><p>Process inspection and manipulation</p></li>
+<li><p>A Debugger that allows us to look at and control a Process</p></li>
+</ol>
+<div class="section" id="assembler-and-linker">
+<h3><span class="section-number">7.3.1. </span>Assembler and Linker<a class="headerlink" href="#assembler-and-linker" title="Permalink to this headline">¶</a></h3>
+<center>
+<img src="../images/ASSEMBLY-VNA-SOFTWARE/ASSEMBLY-VNA-SOFTWARE.026.png" width="80%">
+</center><center>
+<img src="../images/ASSEMBLY-VNA-SOFTWARE/ASSEMBLY-VNA-SOFTWARE.027.png" width="80%">
+</center><center>
+<img src="../images/ASSEMBLY-VNA-SOFTWARE/ASSEMBLY-VNA-SOFTWARE.028.png" width="80%">
+</center><center>
+<img src="../images/ASSEMBLY-VNA-SOFTWARE/ASSEMBLY-VNA-SOFTWARE.029.png" width="80%">
+</center><center>
+<img src="../images/ASSEMBLY-VNA-SOFTWARE/ASSEMBLY-VNA-SOFTWARE.030.png" width="80%">
+</center>    </div>
+<div class="section" id="debugger">
+<h3><span class="section-number">7.3.2. </span>Debugger<a class="headerlink" href="#debugger" title="Permalink to this headline">¶</a></h3>
+<p>Provides us a way of looking inside a process, freezing its execution, examining and modify the cpu registers and memory.</p>
+<img alt="../_images/gdbsurgery.001.png" src="../_images/gdbsurgery.001.png" />
+<img alt="../_images/gdbsurgery.002.png" src="../_images/gdbsurgery.002.png" />
+<img alt="../_images/gdbProcess.png" src="../_images/gdbProcess.png" />
+</div>
+<div class="section" id="gdb-manual">
+<h3><span class="section-number">7.3.3. </span>GDB Manual<a class="headerlink" href="#gdb-manual" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="https://www.gnu.org/software/gdb/documentation/">https://www.gnu.org/software/gdb/documentation/</a></p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<p><b>CODE: asm - The 'Empty' assembly program</p>
+<div style="width:107em; height:100%; font-size:inherit; overflow: auto;" >
+<div class="highlight-gas notranslate"><div class="highlight"><pre><span></span><span class="cm">/*  General antomy of a assembly program line</span>
+<span class="cm">[lablel]:   &lt;directive or opcode&gt; [operands]  // comment</span>
+<span class="cm">*/</span>
+	<span class="na">.intel_syntax</span> <span class="no">noprefix</span>        <span class="c1">// assembler syntax to use &lt;directive&gt;</span>
+	                              <span class="c1">// set assembly language format to intel  </span>
+
+	<span class="na">.text</span>                         <span class="c1">// linker section &lt;directive&gt;</span>
+	                              <span class="c1">// let the linker know that what follows are cpu instructions to</span>
+	                              <span class="c1">// to be executed -- uposed to values that represent data.</span>
+	                              <span class="c1">// For historical reasons cpu instructions are called &quot;text&quot;</span>
+	                         
+	<span class="na">.global</span> <span class="no">_start</span>                <span class="c1">// linker symbol type &lt;directive&gt; </span>
+	                              <span class="c1">// makes the symbol _start in this case visible to the linker</span>
+	                              <span class="c1">// The linker looks for an _start symbol so that it knows address</span>
+	                              <span class="c1">// of the first instruction of our program</span>
+
+<span class="nl">_start:</span>                               <span class="c1">// introduce a symbolic (human readable) label for &quot;this&quot; address</span>
+	                              <span class="c1">// associates the address of this point in our program with the</span>
+      	                              <span class="c1">// name following the &#39;:&#39; -- in our case _start</span>
+	                              <span class="c1">// In our program or in the debugger we can use this name to</span>
+	                              <span class="c1">// to refer to this location -- address.  And thus the values</span>
+	                              <span class="c1">// that end up here.</span>
+	<span class="na">.byte</span> <span class="mi">0x00</span><span class="p">,</span> <span class="mi">0x00</span><span class="p">,</span> <span class="mi">0x00</span><span class="p">,</span> <span class="mi">0x00</span>  <span class="c1">// .byte directive place value at successive locations in memory</span>
+	                              <span class="c1">// (https://sourceware.org/binutils/docs/as/Byte.html#Byte)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<p><b>NOTES: on building empty</p>
+<div style="width:70em; height:15em; font-size:inherit; overflow: auto;" >
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># To assemble and link the code we will use the following command:</span>
+gcc --static -g -nostartfiles -nolibc -Wl,--build-id<span class="o">=</span>none -Wa,-alh -Xlinker -Map<span class="o">=</span>empty.map empty.S -o empty &gt; empty.lst
+
+<span class="c1"># ok lets see what happened</span>
+ls
+
+<span class="c1"># lets see what&#39;s in empty.lst</span>
+cat empty.lst
+
+
+<span class="c1"># lets examine this elf file</span>
+file empty
+ls -l empty
+
+<span class="c1"># still pretty big given that we only asked to load 4 bytes of zeros into memory</span>
+<span class="c1"># all the other stuff necessary to describe to the OS and other tools the program image</span>
+
+<span class="c1"># use objdump tool to print out ascii data from the executable file</span>
+<span class="c1"># -s</span>
+<span class="c1"># --full-contents</span>
+<span class="c1"># Display the full contents of any sections requested. By default all non-empty</span>
+<span class="c1"># sections are displayed.</span>
+objdump -s empty
+
+<span class="c1"># Display the symbol table the locations that each &quot;symbol&quot; got assigned to by the linker</span>
+<span class="c1">#  This is the kind of extra information that make the elf file larger than just the contents</span>
+<span class="c1">#  note where _start got assigned to</span>
+objdump -t empty
+
+<span class="c1"># ok lets got to the debugger</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<p>The OS lets us have access to parts of the CPU and Memory via a Process.  For everything else we will need to make calls to the OS Kernel functions to do.</p>
+<p>Let’s use the standard tools to build a “empty” binary, create a process from it and use gdb to explore the parts of the machine that a Process lets us control.  Eg  use the debugger to read, write memory, explore the internals of the cpu and control it!</p>
+<p>setup</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span>
+<span class="n">mkdir</span> <span class="n">empty</span>
+<span class="n">cd</span> <span class="n">empty</span>
+<span class="n">git</span> <span class="n">init</span>
+<span class="n">git</span> <span class="n">remote</span> <span class="n">add</span> <span class="n">cs400</span> <span class="n">git</span><span class="nd">@cs400</span><span class="o">-</span><span class="n">gitlab</span><span class="o">.</span><span class="n">bu</span><span class="o">.</span><span class="n">edu</span><span class="p">:</span><span class="n">jappavoo</span><span class="o">/</span><span class="n">empty</span><span class="o">.</span><span class="n">git</span>
+<span class="n">echo</span> <span class="s2">&quot;hello&quot;</span> <span class="o">&gt;</span> <span class="n">empty</span><span class="o">.</span><span class="n">S</span>
+<span class="n">git</span> <span class="n">add</span> <span class="n">empty</span><span class="o">.</span><span class="n">S</span>
+<span class="n">git</span> <span class="n">commit</span> <span class="o">-</span><span class="n">a</span> <span class="o">-</span><span class="n">m</span> <span class="s2">&quot;init: seeding repo&quot;</span>
+<span class="n">git</span> <span class="n">push</span> <span class="n">cs400</span> <span class="n">master</span>
+</pre></div>
+</div>
+<p>lets write some code!!!!</p>
+<p><code class="docutils literal notranslate"><span class="pre">.fill</span></code> can be used to fill memory ;-) <code class="docutils literal notranslate"><span class="pre">repeat,</span> <span class="pre">size,</span> <span class="pre">value</span></code></p>
+<div class="highlight-gas notranslate"><div class="highlight"><pre><span></span>      <span class="na">.fill</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0x00</span>             <span class="c1">// .fill directive fills memory with n copies of values</span>
+                                    <span class="c1">// (https://sourceware.org/binutils/docs/as/Fill.html#Fill)</span>
+</pre></div>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div style="width:100%; height:4em; font-size:inherit; overflow: auto;" >
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Let use gdb command to poke around empty</span>
+<span class="c1"># To get the debugger going:</span>
+gdb -tui empty
+
+<span class="c1"># To setup the assembly syntax to intel: </span>
+<span class="nb">set</span> disassembly-flavor intel
+
+ 
+<span class="c1"># at this point no process has been created yet</span>
+<span class="c1"># we are just exploring the binary file</span>
+p _start
+x /4xb _start
+
+<span class="c1"># to get things running we use the run command</span>
+<span class="c1"># but we don&#39;t want to execute any instructions so</span>
+<span class="c1"># we first place a breakpoint at the location of _start</span>
+b _start
+
+<span class="c1"># now run</span>
+run
+
+<span class="c1"># lets see if a process was created</span>
+!ps auxgww <span class="p">|</span> grep empty
+info proc
+
+<span class="c1"># ok lets poke around the process</span>
+<span class="c1"># lets examine the cpu</span>
+info registers
+
+<span class="c1"># or we can use the tui layout we made</span>
+layout mylayout
+
+<span class="c1"># we can print out the value of an individual register with</span>
+<span class="c1"># variables in gdb $&lt;name&gt; there are convience variables for each</span>
+<span class="c1"># of the registers </span>
+p /x <span class="nv">$rax</span>
+p /t <span class="nv">$rax</span>
+p /d <span class="nv">$rax</span>
+p /x <span class="nv">$rip</span> 
+
+<span class="c1"># lets examine the memory : peek</span>
+
+x/8xb 0x401000
+x/2i
+
+
+<span class="c1"># lets write some bytes into memory</span>
+<span class="c1"># lets write and instruction at _start</span>
+<span class="c1">#  we will try and use the popcnt instruction</span>
+<span class="c1"># popcnt rbx, rax -- rbx = population count of rax</span>
+<span class="c1"># see intel sdm volume 2B popcnt</span>
+<span class="c1"># tells use how to encode the instruction via</span>
+<span class="c1"># opcode encoding.</span>
+<span class="c1"># as we load the memory we will ask gdb to try and interpret</span>
+<span class="c1"># the opcode for us and see how the values change what</span>
+<span class="c1"># the cpu will do when we have it fetch the instruction</span>
+<span class="c1"># rex.w = 0x48 -- 64 bit operand</span>
+<span class="c1"># D8 -- encodes which registers are the operands</span>
+
+<span class="nb">set</span> <span class="o">((</span>char *<span class="o">)</span>_start<span class="o">)[</span><span class="m">0</span><span class="o">]</span> <span class="o">=</span> 0xF3
+x/5xb _start
+disas _start
+<span class="nb">set</span> <span class="o">((</span>char *<span class="o">)</span>_start<span class="o">)[</span><span class="m">1</span><span class="o">]</span> <span class="o">=</span> 0x48
+<span class="nb">set</span> <span class="o">((</span>char *<span class="o">)</span>_start<span class="o">)[</span><span class="m">2</span><span class="o">]</span> <span class="o">=</span> 0x0F
+<span class="nb">set</span> <span class="o">((</span>char *<span class="o">)</span>_start<span class="o">)[</span><span class="m">3</span><span class="o">]</span> <span class="o">=</span> 0xB8
+<span class="nb">set</span> <span class="o">((</span>char *<span class="o">)</span>_start<span class="o">)[</span><span class="m">4</span><span class="o">]</span> <span class="o">=</span> 0xD8
+x/5xb _start
+x/5tb _start
+x/5db _start
+x/5ub _start
+x/1i _start
+
+<span class="c1"># lets execute the instruction and play</span>
+<span class="c1"># around with the register values</span>
+<span class="c1"># to make life easier we will use the gdb text uit support</span>
+<span class="c1"># Configure a layout that is more friendly to assembly code:</span>
+tui new-layout mylayout asm <span class="m">2</span> regs <span class="m">5</span> status <span class="m">1</span> cmd <span class="m">1</span>
+
+<span class="c1"># Switch to the new layout: </span>
+layout mylayout
+
+<span class="c1"># run one interation of the processor loop:</span>
+stepi
+
+<span class="c1"># look what happened to the registers</span>
+<span class="nb">set</span> <span class="nv">$rax</span> <span class="o">=</span> 0b1011
+p /t <span class="nv">$rax</span>
+
+<span class="c1"># how do we reexecute the instruction?</span>
+
+<span class="nb">set</span> <span class="nv">$pc</span> <span class="o">=</span> _start
+stepi
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<center>
+<img src="../images/popcnt.png" width="60%">
+</center><img alt="../_images/ASSEMBLY-VNA-THECPU.041.png" src="../_images/ASSEMBLY-VNA-THECPU.041.png" />
+<img alt="../_images/ASSEMBLY-VNA-THECPU.042.png" src="../_images/ASSEMBLY-VNA-THECPU.042.png" />
+<img alt="../_images/ASSEMBLY-VNA-THECPU.043.png" src="../_images/ASSEMBLY-VNA-THECPU.043.png" />
+</div>
+</div>
+<div class="section" id="intel-manuals">
+<h2><span class="section-number">7.4. </span>Intel Manuals<a class="headerlink" href="#intel-manuals" title="Permalink to this headline">¶</a></h2>
+<p>Freely available online:
+<a class="reference external" href="https://software.intel.com/content/www/us/en/develop/articles/intel-sdm.html">https://software.intel.com/content/www/us/en/develop/articles/intel-sdm.html</a></p>
+<ol class="simple">
+<li><p>Volume 1: Topics regarding general purpose programming</p></li>
+</ol>
+<ul class="simple">
+<li><p>largely what we will focus on</p></li>
+</ul>
+<ol class="simple">
+<li><p>Volume 2: Is a reference of all the instructions which we can consult as needed</p></li>
+</ol>
+<p>I usually grab the very large manual that combines volumes 1,2,3,4
+<a class="reference external" href="https://software.intel.com/content/www/us/en/develop/articles/intel-sdm.html#combined">https://software.intel.com/content/www/us/en/develop/articles/intel-sdm.html#combined</a></p>
+<p>Which include Volumes 3 and 4.  These focus on the systems programming features necessary to write operating systems kernels.  But these are not necessary for normal user application programming.</p>
+</div>
+<div class="section" id="extra-info-about-intel">
+<h2><span class="section-number">7.5. </span>Extra info about Intel<a class="headerlink" href="#extra-info-about-intel" title="Permalink to this headline">¶</a></h2>
+<img alt="../_images/ASSEMBLY-VNA-THECPU.045.png" src="../_images/ASSEMBLY-VNA-THECPU.045.png" />
+<img alt="../_images/ASSEMBLY-VNA-THECPU.046.png" src="../_images/ASSEMBLY-VNA-THECPU.046.png" />
+<img alt="../_images/ASSEMBLY-VNA-THECPU.047.png" src="../_images/ASSEMBLY-VNA-THECPU.047.png" />
+</div>
 </div>
 
     <script type="text/x-thebe-config">
@@ -401,7 +1088,7 @@
         <a class="right-next" href="L08.html" title="next page">
             <div class="prevnext-info">
                 <p class="prevnext-label">next</p>
-                <p class="prevnext-title"><span class="section-number">8. </span>SLS Lecture 8 : Topics</p>
+                <p class="prevnext-title"><span class="section-number">8. </span>SLS Lecture 8 :  Writing some simple assembly programs</p>
             </div>
             <i class="prevnext-label fas fa-angle-right"></i>
         </a>

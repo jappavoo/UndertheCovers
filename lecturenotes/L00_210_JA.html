@@ -151,12 +151,12 @@
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="assembly/L07.html">
-   7. SLS Lecture 7 : Topics
+   7. SLS Lecture 7 : Assembly Programming Introduction
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="assembly/L08.html">
-   8. SLS Lecture 8 : Topics
+   8. SLS Lecture 8 :  Writing some simple assembly programs
   </a>
  </li>
  <li class="toctree-l1">
@@ -546,14 +546,28 @@ It's up to YOU … as to what comes next
 </ol>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">MkCodeBox</span><span class="p">(</span><span class="s2">&quot;src/hello_bb.c&quot;</span><span class="p">,</span> <span class="s2">&quot;C&quot;</span><span class="p">,</span> <span class="s2">&quot;&lt;b&gt;CODE: C - Hello World&quot;</span><span class="p">,</span> <span class="s2">&quot;700px&quot;</span><span class="p">,</span> <span class="s2">&quot;260px&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#FileCodeBox(&quot;src/hello_bb.c&quot;, &quot;C&quot;, &quot;&lt;b&gt;CODE: C - Hello World&quot;)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="n">FileCodeBox</span><span class="p">(</span>
+    <span class="n">file</span><span class="o">=</span><span class="s2">&quot;src/hello_bb.c&quot;</span><span class="p">,</span> 
+    <span class="n">lang</span><span class="o">=</span><span class="s2">&quot;C&quot;</span><span class="p">,</span> 
+    <span class="n">title</span><span class="o">=</span><span class="s1">&#39;&lt;b&gt;CODE: C - Hello World&#39;</span><span class="p">)))</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html"><b>CODE: C - Hello World</div><script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "a9f0a8ef7e8a47e08b7c9ae714c93669", "version_major": 2, "version_minor": 0}
-</script></div>
+<p><b>CODE: C - Hello World</p>
+<div style="width:100%; height:100%; font-size:inherit; overflow: auto;" >
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+  
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>        
+<span class="p">{</span>                          
+  <span class="n">printf</span><span class="p">(</span><span class="s">&quot;hello world</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span> 
+  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>                
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -599,7 +613,7 @@ It's up to YOU … as to what comes next
 <div class="output text_html"><b>TERMINAL Window for Debugger</b></div><div class="output text_html">
 <iframe
     width="100%"
-    height="800"
+    height="700"
     src="/terminals/3"
     frameborder="0"
     allowfullscreen
@@ -625,14 +639,32 @@ It's up to YOU … as to what comes next
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">MkCodeBox</span><span class="p">(</span><span class="s2">&quot;src/popcnt_bb.S&quot;</span><span class="p">,</span> <span class="s2">&quot;gas&quot;</span><span class="p">,</span> <span class="s2">&quot;&lt;b&gt;CODE: asm - Our First assembly program - Playing with popcnt&quot;</span><span class="p">,</span> <span class="s2">&quot;200%&quot;</span><span class="p">,</span> <span class="s2">&quot;640px&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#MkCodeBox(&quot;src/popcnt_bb.S&quot;, &quot;gas&quot;, &quot;&lt;b&gt;CODE: asm - Our First assembly program - Playing with popcnt&quot;, &quot;200%&quot;, &quot;640px&quot;)</span>
+<span class="c1">#FileCodeBox(&quot;src/hello_bb.c&quot;, &quot;C&quot;, &quot;&lt;b&gt;CODE: C - Hello World&quot;)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="n">FileCodeBox</span><span class="p">(</span>
+    <span class="n">file</span><span class="o">=</span><span class="s2">&quot;src/popcnt_bb.S&quot;</span><span class="p">,</span> 
+    <span class="n">lang</span><span class="o">=</span><span class="s2">&quot;gas&quot;</span><span class="p">,</span> 
+    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;&lt;b&gt;CODE: asm - Our First assembly program - Playing with popcnt&quot;</span><span class="p">,</span>
+    <span class="n">h</span><span class="o">=</span><span class="s2">&quot;600px&quot;</span><span class="p">,</span> 
+    <span class="n">w</span><span class="o">=</span><span class="s2">&quot;640px&quot;</span>
+<span class="p">)))</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html"><b>CODE: asm - Our First assembly program - Playing with popcnt</div><script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "d506c07f2b8d4a26b16d3f4053393c52", "version_major": 2, "version_minor": 0}
-</script></div>
+<p><b>CODE: asm - Our First assembly program - Playing with popcnt</p>
+<div style="width:640px; height:600px; font-size:inherit; overflow: auto;" >
+<div class="highlight-gas notranslate"><div class="highlight"><pre><span></span>	<span class="na">.intel_syntax</span> <span class="no">noprefix</span>
+	
+	<span class="na">.text</span>
+        
+	<span class="na">.global</span> <span class="no">_start</span> 	
+<span class="no">_start</span><span class="p">:</span>
+	<span class="nf">popcnt</span> <span class="no">rax</span><span class="p">,</span> <span class="no">rbx</span>   <span class="c1">// same as  .byte 0xF3, 0x48, 0x0F, 0xB8, 0xD8  </span>
+</pre></div>
+</div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -653,14 +685,26 @@ It's up to YOU … as to what comes next
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">MkCodeBox</span><span class="p">(</span><span class="s2">&quot;assembly/popcnt_build.sh&quot;</span><span class="p">,</span> <span class="s2">&quot;shell&quot;</span><span class="p">,</span> <span class="s2">&quot;&lt;b&gt;NOTES: on building popcnt&quot;</span><span class="p">,</span> <span class="s2">&quot;100%&quot;</span><span class="p">,</span> <span class="s2">&quot;240px&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="n">FileCodeBox</span><span class="p">(</span>
+    <span class="n">file</span><span class="o">=</span><span class="s2">&quot;assembly/popcnt_build.sh&quot;</span><span class="p">,</span> 
+    <span class="n">lang</span><span class="o">=</span><span class="s2">&quot;shell&quot;</span><span class="p">,</span> 
+    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;&lt;b&gt;NOTES: on building popcnt&quot;</span><span class="p">,</span> 
+    <span class="n">h</span><span class="o">=</span><span class="s2">&quot;15em&quot;</span><span class="p">,</span> 
+    <span class="n">w</span><span class="o">=</span><span class="s2">&quot;100%&quot;</span><span class="p">)))</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html"><b>NOTES: on building popcnt</div><script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "3e6a817244af4bec9c12a904ab6cb187", "version_major": 2, "version_minor": 0}
-</script></div>
+<p><b>NOTES: on building popcnt</p>
+<div style="width:100%; height:15em; font-size:inherit; overflow: auto;" >
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1">#To assemble and link the code we will use the following command:</span>
+gcc --static -g -nostartfiles -nolibc -Wl,--build-id<span class="o">=</span>none -Wa,-alh -Xlinker -Map<span class="o">=</span>popcnt.map popcnt.S -o popcnt &gt; popcnt.lst
+<span class="c1"># We can automate this using a makefile so that all we would need to do is:</span>
+make popcnt
+</pre></div>
+</div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -672,7 +716,7 @@ It's up to YOU … as to what comes next
 <div class="output text_html"><b>TERMINAL Window for Debugger</b></div><div class="output text_html">
 <iframe
     width="100%"
-    height="800"
+    height="700"
     src="/terminals/3"
     frameborder="0"
     allowfullscreen
@@ -681,14 +725,39 @@ It's up to YOU … as to what comes next
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">MkCodeBox</span><span class="p">(</span><span class="s2">&quot;assembly/popcnt_gdb.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;shell&quot;</span><span class="p">,</span> <span class="s2">&quot;&lt;b&gt;NOTES: using gdb with popcnt&quot;</span><span class="p">,</span> <span class="s2">&quot;100%&quot;</span><span class="p">,</span> <span class="s2">&quot;640px&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="n">FileCodeBox</span><span class="p">(</span>
+    <span class="n">file</span><span class="o">=</span><span class="s2">&quot;assembly/popcnt_gdb.txt&quot;</span><span class="p">,</span> 
+    <span class="n">lang</span><span class="o">=</span><span class="s2">&quot;shell&quot;</span><span class="p">,</span> 
+    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;&lt;b&gt;NOTES: using gdb with popcnt&quot;</span><span class="p">,</span> 
+    <span class="n">h</span><span class="o">=</span><span class="s2">&quot;100%&quot;</span><span class="p">,</span> 
+    <span class="n">w</span><span class="o">=</span><span class="s2">&quot;640px&quot;</span><span class="p">)))</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html"><b>NOTES: using gdb with popcnt</div><script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "edd8c9c094cc4c6d9b3b7526045e757f", "version_major": 2, "version_minor": 0}
-</script></div>
+<p><b>NOTES: using gdb with popcnt</p>
+<div style="width:640px; height:100%; font-size:inherit; overflow: auto;" >
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># To get the debugger going:</span>
+  gdb -tui popcnt
+<span class="c1"># Now we want use gdb command to poke around popcnt</span>
+<span class="c1"># To setup the assembly syntax to intel: </span>
+  <span class="nb">set</span> disassembly-flavor intel
+<span class="c1"># Configure a layout that is more friendly to assembly code:</span>
+  tui new-layout mylayout src <span class="m">2</span> regs <span class="m">5</span> status <span class="m">1</span> cmd <span class="m">1</span>
+<span class="c1"># Switch to the new layout: </span>
+  layout mylayout
+<span class="c1"># Set a breakpoint at the start symbol so exection will stop their: </span>
+  <span class="nb">break</span> _start
+<span class="c1"># Start the program running:</span>
+  run
+<span class="c1"># play around with popcnt</span>
+
+<span class="nb">set</span> <span class="nv">rbx</span> <span class="o">=</span> 0b11
+<span class="nb">set</span> <span class="nv">rbx</span> <span class="o">=</span> 0xFFFE
+</pre></div>
+</div>
+</div>
+</div>
 </div>
 </div>
 
