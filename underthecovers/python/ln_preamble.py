@@ -108,6 +108,6 @@ def showBT(title="TERMINAL Window for Build Commands"):
     return showTerm(BUILDTERM, title, "100%", 200)
 
 def showDT(title="TERMINAL Window for Debugger"):
-    return showTerm(DEBUGGERTERM, title, "100%", 800)
+    return showTerm(DEBUGGERTERM, title, "100%", 700)
 
 print("Preamble executed")

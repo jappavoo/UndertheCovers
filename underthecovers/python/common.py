@@ -593,7 +593,7 @@ def TermShellCmd(cmd, prompt='$ ', markdown=True, pretext='', posttext='', **kwa
     output = runTermCmd(cmd, **kwargs)
     
     if prompt:
-        pretext += prompt + cmd + "\n"
+        pretext += prompt + cmd #+ "\n"
         posttext += prompt
         
     if markdown:

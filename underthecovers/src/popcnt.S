@@ -20,7 +20,7 @@ _start:                          // introduce a symbolic (human readable) label 
 	                         // In our program or in the debugger we can use this name to
 	                         // to refer to this location -- address.  And thus the values
 	                         // that end up here.
-	
+//	.byte 0xF3, 0x48, 0x0F, 0xB8, 0xD8  // popcnt rax,rbx	
 	popcnt rax, rbx          // ok the single intel opcode (instruction) that makes up
 	                         // our program
 

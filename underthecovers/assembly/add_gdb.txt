@@ -1,0 +1,6 @@
+gdb -tui add
+set disassembly-flavor intel
+tui new-layout mylayout src 2 regs 5 status 1 cmd 1
+layout mylayout
+break _start
+run
