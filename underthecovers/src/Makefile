@@ -40,4 +40,4 @@ hello: hello.c
 	od -An -tx1 -w5  6502add
 
 clean:
-	rm popcnt main simple hello 6502add exit *.o *~ *.lst *.map empty add exit_bb addwithvars
+	rm -f $(wildcard popcnt main simple hello 6502add exit *.o *~ *.lst *.map empty add exit_bb exit_bb_bb addwithvars)
