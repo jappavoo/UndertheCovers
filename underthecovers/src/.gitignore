@@ -5,3 +5,14 @@ popcnt
 hello
 exit
 6502add
+int3
+add
+addwithvars
+main
+*.lst
+*.map
+brk
+cbrk
+empty
+exit_bb
+exit_bb_bb

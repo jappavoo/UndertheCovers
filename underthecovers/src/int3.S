@@ -3,4 +3,5 @@
 	.text 	
 	.global _start
 _start:
-	add rax, rbx
+	int3
+	

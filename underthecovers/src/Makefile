@@ -1,4 +1,4 @@
-ASMTARGETS=popcnt simple empty add hello exit exit_bb exit_bb_bb brk main cbrk
+ASMTARGETS=popcnt simple empty add addwithvars hello exit exit_bb exit_bb_bb brk int3 main cbrk
 CTARGETS=hello cbrk
 ASM6502TARGETS=6502add
 
