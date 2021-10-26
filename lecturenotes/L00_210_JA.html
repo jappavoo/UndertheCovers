@@ -22,8 +22,8 @@
       
 
     
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/sphinx-book-theme.e8f53015daec13862f6db5e763c41738.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
@@ -33,17 +33,17 @@
     
   <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
 
-    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/togglebutton.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script >
+    <script>
         const thebe_selector = ".thebe"
         const thebe_selector_input = "pre"
         const thebe_selector_output = ".output"
@@ -71,6 +71,10 @@
         <div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="index.html">
       
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
       <img src="_static/logo.jpg" class="logo" alt="logo">
       
       
@@ -89,7 +93,7 @@
   </a>
  </li>
 </ul>
-<p class="caption">
+<p class="caption" role="heading">
  <span class="caption-text">
   Course Specfic Introductions
  </span>
@@ -106,7 +110,7 @@
   </a>
  </li>
 </ul>
-<p class="caption">
+<p class="caption" role="heading">
  <span class="caption-text">
   The Unix Development Environment
  </span>
@@ -143,7 +147,7 @@
   </a>
  </li>
 </ul>
-<p class="caption">
+<p class="caption" role="heading">
  <span class="caption-text">
   The Belly of the Beast: The von Neumann Architecture and Assembly Programming
  </span>
@@ -200,7 +204,7 @@
   </a>
  </li>
 </ul>
-<p class="caption">
+<p class="caption" role="heading">
  <span class="caption-text">
   Into the Light : C Programming
  </span>
@@ -331,7 +335,7 @@
     <div class="dropdown-buttons">
         
         
-        <a class="jupyterhub-button" href="https://jupyterhub-opf-jupyterhub.apps.zero.massopen.cloud/hub/user-redirect/git-pull?repo=https://github.com/jappavoo/UndertheCovers&urlpath=tree/UndertheCovers/underthecovers/L00_210_JA.ipynb&branch=main"><button type="button"
+        <a class="jupyterhub-button" href="https://jupyterhub-opf-jupyterhub.apps.smaug.na.operate-first.cloud//hub/user-redirect/git-pull?repo=https://github.com/jappavoo/UndertheCovers&urlpath=tree/UndertheCovers/underthecovers/L00_210_JA.ipynb&branch=main"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch JupyterHub" data-toggle="tooltip"
                 data-placement="left"><img class="jupyterhub-button-logo"
                     src="_static/images/logo_jupyterhub.svg"
@@ -398,7 +402,7 @@
 </div>
 </div>
 </div>
-<div class="section" id="cs210-computer-systems">
+<div class="tex2jax_ignore mathjax_ignore section" id="cs210-computer-systems">
 <h1>CS210 Computer Systems<a class="headerlink" href="#cs210-computer-systems" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="intro-and-the-big-picture">
 <h2>Intro and the Big Picture<a class="headerlink" href="#intro-and-the-big-picture" title="Permalink to this headline">¶</a></h2>
@@ -513,7 +517,7 @@ It's up to YOU … as to what comes next
     <br>
 </h1></div>
 </div>
-<div class="section" id="welcome-to-cs210">
+<div class="tex2jax_ignore mathjax_ignore section" id="welcome-to-cs210">
 <h1>Welcome to CS210<a class="headerlink" href="#welcome-to-cs210" title="Permalink to this headline">¶</a></h1>
 <ul class="simple">
 <li><p>Course Goals and Objectives</p></li>
@@ -537,7 +541,7 @@ It's up to YOU … as to what comes next
 <li><p>General Advice</p></li>
 </ul>
 </div>
-<div class="section" id="course-goals">
+<div class="tex2jax_ignore mathjax_ignore section" id="course-goals">
 <h1>Course Goals<a class="headerlink" href="#course-goals" title="Permalink to this headline">¶</a></h1>
 <ol class="simple">
 <li><p>Understand the layers of computer systems</p></li>
@@ -698,7 +702,7 @@ It's up to YOU … as to what comes next
 <p><b>NOTES: on building popcnt</p>
 <div style="width:100%; height:15em; font-size:inherit; overflow: auto;" >
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1">#To assemble and link the code we will use the following command:</span>
-gcc --static -g -nostartfiles -nolibc -Wl,--build-id<span class="o">=</span>none -Wa,-alh -Xlinker -Map<span class="o">=</span>popcnt.map popcnt.S -o popcnt &gt; popcnt.lst
+gcc --static -g -nostartfiles -nostdlib -Wl,--build-id<span class="o">=</span>none -Wa,-alh -Xlinker -Map<span class="o">=</span>popcnt.map popcnt.S -o popcnt &gt; popcnt.lst
 <span class="c1"># We can automate this using a makefile so that all we would need to do is:</span>
 make popcnt
 </pre></div>
@@ -743,9 +747,14 @@ make popcnt
 <span class="c1"># To setup the assembly syntax to intel: </span>
   <span class="nb">set</span> disassembly-flavor intel
 <span class="c1"># Configure a layout that is more friendly to assembly code:</span>
-  tui new-layout mylayout src <span class="m">2</span> regs <span class="m">5</span> status <span class="m">1</span> cmd <span class="m">1</span>
-<span class="c1"># Switch to the new layout: </span>
+  tui new-layout mylayout regs <span class="m">3</span> <span class="o">{</span>src <span class="m">1</span> asm <span class="m">1</span><span class="o">}</span> <span class="m">2</span> cmd <span class="m">1</span> status <span class="m">0</span>
+<span class="c1"># Switch to the new layout:   </span>
   layout mylayout
+<span class="c1"># force small command window to be sure lots of room for regs</span>
+  winh cmd <span class="m">4</span>
+<span class="c1"># make command window in focus so that arrows work as history  </span>
+  focus cmd
+  
 <span class="c1"># Set a breakpoint at the start symbol so exection will stop their: </span>
   <span class="nb">break</span> _start
 <span class="c1"># Start the program running:</span>
@@ -813,7 +822,7 @@ make popcnt
         
         </div>
     </div>
-    <footer class="footer mt-5 mt-md-0">
+    <footer class="footer">
     <div class="container">
       <p>
         

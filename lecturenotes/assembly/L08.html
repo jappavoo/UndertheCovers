@@ -22,8 +22,8 @@
       
 
     
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.e8f53015daec13862f6db5e763c41738.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -33,17 +33,17 @@
     
   <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
 
-    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script >
+    <script>
         const thebe_selector = ".thebe"
         const thebe_selector_input = "pre"
         const thebe_selector_output = ".output"
@@ -71,6 +71,10 @@
         <div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../index.html">
       
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
       <img src="../_static/logo.jpg" class="logo" alt="logo">
       
       
@@ -89,7 +93,7 @@
   </a>
  </li>
 </ul>
-<p class="caption">
+<p class="caption" role="heading">
  <span class="caption-text">
   Course Specfic Introductions
  </span>
@@ -106,7 +110,7 @@
   </a>
  </li>
 </ul>
-<p class="caption">
+<p class="caption" role="heading">
  <span class="caption-text">
   The Unix Development Environment
  </span>
@@ -143,7 +147,7 @@
   </a>
  </li>
 </ul>
-<p class="caption">
+<p class="caption" role="heading">
  <span class="caption-text">
   The Belly of the Beast: The von Neumann Architecture and Assembly Programming
  </span>
@@ -200,7 +204,7 @@
   </a>
  </li>
 </ul>
-<p class="caption">
+<p class="caption" role="heading">
  <span class="caption-text">
   Into the Light : C Programming
  </span>
@@ -331,7 +335,7 @@
     <div class="dropdown-buttons">
         
         
-        <a class="jupyterhub-button" href="https://jupyterhub-opf-jupyterhub.apps.zero.massopen.cloud/hub/user-redirect/git-pull?repo=https://github.com/jappavoo/UndertheCovers&urlpath=tree/UndertheCovers/underthecovers/assembly/L08.ipynb&branch=main"><button type="button"
+        <a class="jupyterhub-button" href="https://jupyterhub-opf-jupyterhub.apps.smaug.na.operate-first.cloud//hub/user-redirect/git-pull?repo=https://github.com/jappavoo/UndertheCovers&urlpath=tree/UndertheCovers/underthecovers/assembly/L08.ipynb&branch=main"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch JupyterHub" data-toggle="tooltip"
                 data-placement="left"><img class="jupyterhub-button-logo"
                     src="../_static/images/logo_jupyterhub.svg"
@@ -384,6 +388,34 @@
      8.3.1. How can we avoid this
     </a>
    </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#interrupt-3-int3-trap-to-debugger">
+     8.3.2. Interrupt 3
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       int3
+      </span>
+     </code>
+     – trap to debugger
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exit-an-os-service-to-terminate-a-process">
+     8.3.3. Exit – An OS service to terminate a process
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-os-system-calls">
+     8.3.4. The OS System Calls
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#here-is-a-fully-documented-fancy-version">
+       8.3.4.1. Here is a fully documented fancy version
+      </a>
+     </li>
+    </ul>
+   </li>
   </ul>
  </li>
 </ul>
@@ -397,7 +429,7 @@
         
               <div>
                 
-  <div class="section" id="sls-lecture-8-writing-some-simple-assembly-programs">
+  <div class="tex2jax_ignore mathjax_ignore section" id="sls-lecture-8-writing-some-simple-assembly-programs">
 <h1><span class="section-number">8. </span>SLS Lecture 8 :  Writing some simple assembly programs<a class="headerlink" href="#sls-lecture-8-writing-some-simple-assembly-programs" title="Permalink to this headline">¶</a></h1>
 <p>Spend some time writing some very simple assembly programs and learn to use the debugger so that we have enough skills to explore how things work.    We will be repeat various things in more detail in future lectures.</p>
 <ul class="simple">
@@ -517,20 +549,18 @@
 </div>
 <p>We can use the <code class="docutils literal notranslate"><span class="pre">.byte</span></code> directive to set the values in memory to anything we like
 eg.</p>
-<div class="highlight-gas notranslate"><div class="highlight"><pre><span></span>     <span class="na">.byte</span> <span class="mi">0xF3</span><span class="p">,</span> <span class="mi">0x48</span><span class="p">,</span> <span class="mi">0x0F</span><span class="p">,</span> <span class="mi">0xB8</span><span class="p">,</span> <span class="mi">0xD8</span>  <span class="c1">// popcnt rax,rbx</span>
+<div class="highlight-gas notranslate"><div class="highlight"><pre><span></span>     <span class="na">.byte</span> <span class="mi">0xF3</span><span class="p">,</span> <span class="mi">0x48</span><span class="p">,</span> <span class="mi">0x0F</span><span class="p">,</span> <span class="mi">0xB8</span><span class="p">,</span> <span class="mi">0xD8</span>  
 </pre></div>
 </div>
-<p>But of course the real value s that we could have also simply written</p>
-<div class="highlight-gas notranslate"><div class="highlight"><pre><span></span>       <span class="nf">popcnt</span> <span class="no">rax</span><span class="p">,</span> <span class="no">rbx</span>          <span class="c1">// ok the single intel opcode (instruction) that makes up</span>
-                                <span class="c1">// our program</span>
+<p>But of course the real value is that we could have also simply written</p>
+<div class="highlight-gas notranslate"><div class="highlight"><pre><span></span>       <span class="nf">popcnt</span> <span class="no">rax</span><span class="p">,</span> <span class="no">rbx</span>          
 </pre></div>
 </div>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<p><b>NOTES: on building popcnt</p>
-<div style="width:40em; height:15em; font-size:inherit; overflow: auto;" >
+<div style="width:100%; height:100%; font-size:inherit; overflow: auto;" >
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1">#To assemble and link the code we will use the following command:</span>
-gcc --static -g -nostartfiles -nolibc -Wl,--build-id<span class="o">=</span>none -Wa,-alh -Xlinker -Map<span class="o">=</span>popcnt.map popcnt.S -o popcnt &gt; popcnt.lst
+gcc --static -g -nostartfiles -nostdlib -Wl,--build-id<span class="o">=</span>none -Wa,-alh -Xlinker -Map<span class="o">=</span>popcnt.map popcnt.S -o popcnt &gt; popcnt.lst
 <span class="c1"># We can automate this using a makefile so that all we would need to do is:</span>
 make popcnt
 </pre></div>
@@ -540,16 +570,21 @@ make popcnt
 </div>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<div style="width:100%; height:4em; font-size:inherit; overflow: auto;" >
+<div style="width:100%; height:100%; font-size:inherit; overflow: auto;" >
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># To get the debugger going:</span>
   gdb -tui popcnt
 <span class="c1"># Now we want use gdb command to poke around popcnt</span>
 <span class="c1"># To setup the assembly syntax to intel: </span>
   <span class="nb">set</span> disassembly-flavor intel
 <span class="c1"># Configure a layout that is more friendly to assembly code:</span>
-  tui new-layout mylayout src <span class="m">2</span> regs <span class="m">5</span> status <span class="m">1</span> cmd <span class="m">1</span>
-<span class="c1"># Switch to the new layout: </span>
+  tui new-layout mylayout regs <span class="m">3</span> <span class="o">{</span>src <span class="m">1</span> asm <span class="m">1</span><span class="o">}</span> <span class="m">2</span> cmd <span class="m">1</span> status <span class="m">0</span>
+<span class="c1"># Switch to the new layout:   </span>
   layout mylayout
+<span class="c1"># force small command window to be sure lots of room for regs</span>
+  winh cmd <span class="m">4</span>
+<span class="c1"># make command window in focus so that arrows work as history  </span>
+  focus cmd
+  
 <span class="c1"># Set a breakpoint at the start symbol so exection will stop their: </span>
   <span class="nb">break</span> _start
 <span class="c1"># Start the program running:</span>
@@ -577,29 +612,6 @@ make popcnt
 </ul>
 </li>
 </ul>
-<div class="cell tag_remove-input docutils container">
-<div class="cell_output docutils container">
-<div style="width:107em; height:100%; font-size:inherit; overflow: auto;" >
-<div class="highlight-gas notranslate"><div class="highlight"><pre><span></span>	<span class="na">.intel_syntax</span> <span class="no">noprefix</span>
-	<span class="na">.data</span>
-<span class="nl">x:</span>	 <span class="na">.quad</span> <span class="mi">142</span>
-<span class="nl">y:</span>	 <span class="na">.quad</span> <span class="mi">4200</span>
-
-	<span class="na">.comm</span> <span class="no">sum</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">8</span>
-
-	<span class="na">.text</span> 	
-	<span class="no">.global</span> <span class="no">_start</span>
-<span class="nl">_start:</span>
-	<span class="nf">mov</span> <span class="no">rax</span><span class="p">,</span> <span class="no">QWORD</span> <span class="no">PTR</span> <span class="no">x</span>
-	<span class="nf">add</span> <span class="no">rax</span><span class="p">,</span> <span class="no">QWORD</span> <span class="no">PTR</span> <span class="no">y</span>
-	<span class="nf">mov</span> <span class="no">QWORD</span> <span class="no">PTR</span> <span class="no">sum</span><span class="p">,</span> <span class="no">rax</span>
-	<span class="nf">int3</span>
-	
-</pre></div>
-</div>
-</div>
-</div>
-</div>
 <ul class="simple">
 <li><p>Lets work with the <code class="docutils literal notranslate"><span class="pre">add</span></code> instruction in a similar way that we did with <code class="docutils literal notranslate"><span class="pre">popcnt</span></code></p></li>
 <li><p>explore the results of adding with binary, hex, unsigned and signed values</p></li>
@@ -643,9 +655,22 @@ make popcnt
 </ul>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<p><b>NOTES: on building add</p>
-<div style="width:40em; height:15em; font-size:inherit; overflow: auto;" >
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>gcc --static -g -nostartfiles -nolibc -Wl,--build-id<span class="o">=</span>none -Wa,-alh -Xlinker -Map<span class="o">=</span>add.map add.S -o add &gt; add.lst
+<div style="width:100%; height:100%; font-size:inherit; overflow: auto;" >
+<div class="highlight-gas notranslate"><div class="highlight"><pre><span></span>	<span class="na">.intel_syntax</span> <span class="no">noprefix</span>
+
+	<span class="na">.text</span> 	
+	<span class="no">.global</span> <span class="no">_start</span>
+<span class="nl">_start:</span>
+	<span class="nf">add</span> <span class="no">rax</span><span class="p">,</span> <span class="no">rbx</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div style="width:100%; height:100%; font-size:inherit; overflow: auto;" >
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>gcc --static -g -nostartfiles -nostdlib -Wl,--build-id<span class="o">=</span>none -Wa,-alh -Xlinker -Map<span class="o">=</span>add.map add.S -o add &gt; add.lst
 <span class="c1"># create makefile that automates</span>
 make add
 </pre></div>
@@ -655,11 +680,13 @@ make add
 </div>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<div style="width:100%; height:4em; font-size:inherit; overflow: auto;" >
+<div style="width:100%; height:100%; font-size:inherit; overflow: auto;" >
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>gdb -tui add
 <span class="nb">set</span> disassembly-flavor intel
-tui new-layout mylayout src <span class="m">2</span> regs <span class="m">5</span> status <span class="m">1</span> cmd <span class="m">1</span>
+tui new-layout mylayout regs <span class="m">3</span> <span class="o">{</span>src <span class="m">1</span> asm <span class="m">1</span><span class="o">}</span> <span class="m">2</span> cmd <span class="m">1</span> status <span class="m">0</span>
 layout mylayout
+winh cmd <span class="m">4</span>
+focus cmd
 <span class="nb">break</span> _start
 run
 </pre></div>
@@ -704,9 +731,80 @@ run
 </ul>
 </li>
 </ol>
+</div>
+<div class="section" id="interrupt-3-int3-trap-to-debugger">
+<h3><span class="section-number">8.3.2. </span>Interrupt 3 <code class="docutils literal notranslate"><span class="pre">int3</span></code> – trap to debugger<a class="headerlink" href="#interrupt-3-int3-trap-to-debugger" title="Permalink to this headline">¶</a></h3>
+<img alt="files/work/UndertheCovers/underthecovers/images/int3mp.png" src="files/work/UndertheCovers/underthecovers/images/int3mp.png" />
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="n">FileCodeBox</span><span class="p">(</span>
+    <span class="n">file</span><span class="o">=</span><span class="s2">&quot;../src/int3.S&quot;</span><span class="p">,</span> 
+    <span class="n">lang</span><span class="o">=</span><span class="s2">&quot;gas&quot;</span><span class="p">,</span> 
+    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+    <span class="n">h</span><span class="o">=</span><span class="s2">&quot;100%&quot;</span><span class="p">,</span> 
+    <span class="n">w</span><span class="o">=</span><span class="s2">&quot;100%&quot;</span>
+<span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div style="width:100%; height:100%; font-size:inherit; overflow: auto;" >
+<div class="highlight-gas notranslate"><div class="highlight"><pre><span></span>	<span class="na">.intel_syntax</span> <span class="no">noprefix</span>
+
+	<span class="na">.text</span> 	
+	<span class="no">.global</span> <span class="no">_start</span>
+<span class="nl">_start:</span>
+	<span class="nf">int3</span>
+	
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="exit-an-os-service-to-terminate-a-process">
+<h3><span class="section-number">8.3.3. </span>Exit – An OS service to terminate a process<a class="headerlink" href="#exit-an-os-service-to-terminate-a-process" title="Permalink to this headline">¶</a></h3>
+<p>To exit your process and return an exit value</p>
+<ul class="simple">
+<li><p>requires a call to the OS!</p></li>
+</ul>
+<p>On Intel the instruction is <code class="docutils literal notranslate"><span class="pre">syscall</span></code></p>
+<img alt="files/work/UndertheCovers/underthecovers/images/syscallmp.png" src="files/work/UndertheCovers/underthecovers/images/syscallmp.png" />
+</div>
+<div class="section" id="the-os-system-calls">
+<h3><span class="section-number">8.3.4. </span>The OS System Calls<a class="headerlink" href="#the-os-system-calls" title="Permalink to this headline">¶</a></h3>
+<p>Each OS Kernel provides a set of calls that an a process can invoke using the <code class="docutils literal notranslate"><span class="pre">syscall</span></code> instruction on an Intel based computer</p>
+<p>The Linux Kernel supports a very large number of system calls each is identified by a unique number that must be placed in <code class="docutils literal notranslate"><span class="pre">RAX</span></code> prior to executing the <code class="docutils literal notranslate"><span class="pre">syscall</span></code> instruction.  Additional arguments are passed in by setting other registers.</p>
+<p>With each version of the Kernel the table of calls changes.  Here is one site that provides a list</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">IFrame</span><span class="p">(</span><span class="s2">&quot;https://filippo.io/linux-syscall-table/&quot;</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">600</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="s2">&quot;100%&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+<iframe
+    width="100%"
+    height="600"
+    src="https://filippo.io/linux-syscall-table/"
+    frameborder="0"
+    allowfullscreen
+></iframe>
+</div></div>
+</div>
+<ul class="simple">
+<li><p>From the above we can see that the <code class="docutils literal notranslate"><span class="pre">exit</span></code> system call number is <code class="docutils literal notranslate"><span class="pre">60</span></code></p></li>
+<li><p>reading some man pages <code class="docutils literal notranslate"><span class="pre">man</span> <span class="pre">syscall</span></code> and <code class="docutils literal notranslate"><span class="pre">man</span> <span class="pre">syscalls</span></code> we find that</p>
+<ul>
+<li><p>we must place <code class="docutils literal notranslate"><span class="pre">60</span></code> in <code class="docutils literal notranslate"><span class="pre">rax</span></code></p></li>
+<li><p>and that the value we want to return in <code class="docutils literal notranslate"><span class="pre">rdi</span></code></p></li>
+</ul>
+</li>
+</ul>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<div style="width:107em; height:100%; font-size:inherit; overflow: auto;" >
+<div style="width:100%; height:100%; font-size:inherit; overflow: auto;" >
 <div class="highlight-gas notranslate"><div class="highlight"><pre><span></span>	<span class="na">.intel_syntax</span> <span class="no">noprefix</span>
 	
 	<span class="na">.text</span>
@@ -721,10 +819,19 @@ run
 </div>
 </div>
 </div>
+<p>Operating system code usually provides files that you can include in your code so that you don’t have to hardcode magic numbers like <code class="docutils literal notranslate"><span class="pre">60</span></code> for exit.  In Linux you can add the following file <code class="docutils literal notranslate"><span class="pre">#include</span> <span class="pre">&lt;asm/unistd_64.h&gt;</span></code> to get all the system call numbers.  You can then use <code class="docutils literal notranslate"><span class="pre">__NR_exit</span></code> to mean the number for the exit system call.</p>
+<p>eg.</p>
+<div class="highlight-gas notranslate"><div class="highlight"><pre><span></span>    <span class="nf">mov</span> <span class="no">rax</span><span class="p">,</span><span class="no">__NR_exit</span> <span class="c1"># exit system call number</span>
+    <span class="nf">mov</span> <span class="no">rdi</span><span class="p">,</span><span class="mi">0</span>         <span class="c1"># UNIX success value is 0</span>
+    <span class="nf">syscall</span>           <span class="c1"># call OS. This will not return</span>
+</pre></div>
+</div>
+<div class="section" id="here-is-a-fully-documented-fancy-version">
+<h4><span class="section-number">8.3.4.1. </span>Here is a fully documented fancy version<a class="headerlink" href="#here-is-a-fully-documented-fancy-version" title="Permalink to this headline">¶</a></h4>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <p>A commented version that avoids &quot;magic&quot; numbers.</p>
-<div style="width:107em; height:100%; font-size:inherit; overflow: auto;" >
+<div style="width:200%; height:100%; font-size:inherit; overflow: auto;" >
 <div class="highlight-gas notranslate"><div class="highlight"><pre><span></span><span class="c1">#include &lt;asm/unistd_64.h&gt;       // Pull in a file that contains all the OS system call numbers</span>
 				 <span class="c1">// See discussion bellow to understand what is in this file</span>
 	
@@ -800,6 +907,7 @@ run
 </div>
 </div>
 </div>
+</div>
 
     <script type="text/x-thebe-config">
     {
@@ -853,7 +961,7 @@ run
         
         </div>
     </div>
-    <footer class="footer mt-5 mt-md-0">
+    <footer class="footer">
     <div class="container">
       <p>
         

@@ -22,8 +22,8 @@
       
 
     
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.e8f53015daec13862f6db5e763c41738.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -33,17 +33,17 @@
     
   <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
 
-    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script >
+    <script>
         const thebe_selector = ".thebe"
         const thebe_selector_input = "pre"
         const thebe_selector_output = ".output"
@@ -71,6 +71,10 @@
         <div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../index.html">
       
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
       <img src="../_static/logo.jpg" class="logo" alt="logo">
       
       
@@ -89,7 +93,7 @@
   </a>
  </li>
 </ul>
-<p class="caption">
+<p class="caption" role="heading">
  <span class="caption-text">
   Course Specfic Introductions
  </span>
@@ -106,7 +110,7 @@
   </a>
  </li>
 </ul>
-<p class="caption">
+<p class="caption" role="heading">
  <span class="caption-text">
   The Unix Development Environment
  </span>
@@ -143,7 +147,7 @@
   </a>
  </li>
 </ul>
-<p class="caption">
+<p class="caption" role="heading">
  <span class="caption-text">
   The Belly of the Beast: The von Neumann Architecture and Assembly Programming
  </span>
@@ -200,7 +204,7 @@
   </a>
  </li>
 </ul>
-<p class="caption">
+<p class="caption" role="heading">
  <span class="caption-text">
   Into the Light : C Programming
  </span>
@@ -331,7 +335,7 @@
     <div class="dropdown-buttons">
         
         
-        <a class="jupyterhub-button" href="https://jupyterhub-opf-jupyterhub.apps.zero.massopen.cloud/hub/user-redirect/git-pull?repo=https://github.com/jappavoo/UndertheCovers&urlpath=tree/UndertheCovers/underthecovers/assembly/L07.ipynb&branch=main"><button type="button"
+        <a class="jupyterhub-button" href="https://jupyterhub-opf-jupyterhub.apps.smaug.na.operate-first.cloud//hub/user-redirect/git-pull?repo=https://github.com/jappavoo/UndertheCovers&urlpath=tree/UndertheCovers/underthecovers/assembly/L07.ipynb&branch=main"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch JupyterHub" data-toggle="tooltip"
                 data-placement="left"><img class="jupyterhub-button-logo"
                     src="../_static/images/logo_jupyterhub.svg"
@@ -431,7 +435,7 @@
         
               <div>
                 
-  <div class="section" id="sls-lecture-7-assembly-programming-introduction">
+  <div class="tex2jax_ignore mathjax_ignore section" id="sls-lecture-7-assembly-programming-introduction">
 <h1><span class="section-number">7. </span>SLS Lecture 7 : Assembly Programming Introduction<a class="headerlink" href="#sls-lecture-7-assembly-programming-introduction" title="Permalink to this headline">¶</a></h1>
 <p>Processes and Binaries</p>
 <div class="section" id="revisit-processes">
@@ -439,7 +443,7 @@
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <div class="output text_html"><!-- produced by: 
-htmlFig("[[{'src': '../images/Processes/Processes.004.png'}, {'src': '../images/Processes/Processes.005.png'}]]", 
+htmlFig("[[{'src': '/files/work/UndertheCovers/underthecovers/images/Processes/Processes.004.png'}, {'src': '/files/work/UndertheCovers/underthecovers/images/Processes/Processes.005.png'}]]", 
         id="", 
         align="center", 
         width="100%",
@@ -452,14 +456,14 @@ htmlFig("[[{'src': '../images/Processes/Processes.004.png'}, {'src': '../images/
         <td colspan="1" width="100%" style="padding: 0; margin: 0 0 0 0; background-color:inherit;">
             <div style="padding: 0; margin: 0 0 0 0;">
               <figure style="padding: 0; margin: 0 0 0 0; width:100%;">
-                   <img src="../images/Processes/Processes.004.png" width="100%" style="padding: 0; margin: 0;">
+                   <img src="/files/work/UndertheCovers/underthecovers/images/Processes/Processes.004.png" width="100%" style="padding: 0; margin: 0;">
                 </figure>
             </div>
         </td>
         <td colspan="1" width="100%" style="padding: 0; margin: 0 0 0 0; background-color:inherit;">
             <div style="padding: 0; margin: 0 0 0 0;">
               <figure style="padding: 0; margin: 0 0 0 0; width:100%;">
-                   <img src="../images/Processes/Processes.005.png" width="100%" style="padding: 0; margin: 0;">
+                   <img src="/files/work/UndertheCovers/underthecovers/images/Processes/Processes.005.png" width="100%" style="padding: 0; margin: 0;">
                 </figure>
             </div>
         </td>
@@ -469,7 +473,7 @@ htmlFig("[[{'src': '../images/Processes/Processes.004.png'}, {'src': '../images/
 </div>
 <div class="section" id="a-process-is-a-running-executable-but-what-really-is-an-executable">
 <h3><span class="section-number">7.1.1. </span>A Process is a Running executable but what really is an executable???<a class="headerlink" href="#a-process-is-a-running-executable-but-what-really-is-an-executable" title="Permalink to this headline">¶</a></h3>
-<p>Lets see what we can figure out poking at the file a little</p>
+<p>Let’s see what we can figure out poking at the file a little</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>$ ls -l /bin/ls
@@ -610,7 +614,7 @@ $
 </div>
 </div>
 </div>
-<p>Ok it is an ELF file lets see what if the manual has anything on what an elf is.</p>
+<p>Ok it is an ELF file let’s see what, if anything, the manual has to say about <code class="docutils literal notranslate"><span class="pre">elf</span></code>.</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>$ man elf | head -20
@@ -717,14 +721,14 @@ $
 <div class="section" id="executables-as-process-images">
 <h2><span class="section-number">7.2. </span>Executables as “Process Images”<a class="headerlink" href="#executables-as-process-images" title="Permalink to this headline">¶</a></h2>
 <p>Remember what the Hardware looks like.</p>
-<img alt="../_images/HW.png" src="../_images/HW.png" />
+<img alt="files/work/UndertheCovers/underthecovers/images/HW.png" src="files/work/UndertheCovers/underthecovers/images/HW.png" />
 <p>Remember that the OS Kernel is designed to make it easier to use the hardware to run programs.</p>
 <p>Now we need to dig into this idea more carefully.</p>
 <div class="section" id="processes-as-cpu-and-memory-context">
 <h3><span class="section-number">7.2.1. </span>Processes As CPU and Memory context<a class="headerlink" href="#processes-as-cpu-and-memory-context" title="Permalink to this headline">¶</a></h3>
 <p>A process is the way that the Operating System let our programs use the CPU and Memory in a controlled way.</p>
 <p>Each Process is independent “Context” to execute program.  Where a context provides a program with its own view of Memory and the CPU</p>
-<img alt="../_images/ProcessContexts.png" src="../_images/ProcessContexts.png" />
+<img alt="files/work/UndertheCovers/underthecovers/images/ProcessContexts.png" src="files/work/UndertheCovers/underthecovers/images/ProcessContexts.png" />
 </div>
 <div class="section" id="process-as-a-context-for-using-the-cpu-and-memory">
 <h3><span class="section-number">7.2.2. </span>Process as a Context for using the CPU and Memory<a class="headerlink" href="#process-as-a-context-for-using-the-cpu-and-memory" title="Permalink to this headline">¶</a></h3>
@@ -740,36 +744,36 @@ $
 <ul class="simple">
 <li><p>we need to understand how the CPU works and Memory together as programmable system</p></li>
 </ul>
-<img alt="../_images/ASSEMBLY-VNA-THECPU.003.png" src="../_images/ASSEMBLY-VNA-THECPU.003.png" />
+<img alt="files/work/UndertheCovers/underthecovers/images/ASSEMBLY-VNA-THECPU/ASSEMBLY-VNA-THECPU.003.png" src="files/work/UndertheCovers/underthecovers/images/ASSEMBLY-VNA-THECPU/ASSEMBLY-VNA-THECPU.003.png" />
 <p>Let’s start with a quick overview of the basic Von Neumman computer model and how the CPU and memory work together.</p>
-<img alt="../_images/ASSEMBLY-VNA-THECPU.005.png" src="../_images/ASSEMBLY-VNA-THECPU.005.png" />
-<img alt="../_images/ASSEMBLY-VNA-THECPU.007.png" src="../_images/ASSEMBLY-VNA-THECPU.007.png" />
-<img alt="../_images/ASSEMBLY-VNA-THECPU.008.png" src="../_images/ASSEMBLY-VNA-THECPU.008.png" />
-<img alt="../_images/ASSEMBLY-VNA-THECPU.009.png" src="../_images/ASSEMBLY-VNA-THECPU.009.png" />
-<img alt="../_images/ASSEMBLY-VNA-THECPU.010.png" src="../_images/ASSEMBLY-VNA-THECPU.010.png" />
-<img alt="../_images/ASSEMBLY-VNA-THECPU.011.png" src="../_images/ASSEMBLY-VNA-THECPU.011.png" />
-<img alt="../_images/ASSEMBLY-VNA-THECPU.012.png" src="../_images/ASSEMBLY-VNA-THECPU.012.png" />
-<img alt="../_images/ASSEMBLY-VNA-THECPU.013.png" src="../_images/ASSEMBLY-VNA-THECPU.013.png" />
-<img alt="../_images/ASSEMBLY-VNA-THECPU.014.png" src="../_images/ASSEMBLY-VNA-THECPU.014.png" />
-<img alt="../_images/ASSEMBLY-VNA-THECPU.015.png" src="../_images/ASSEMBLY-VNA-THECPU.015.png" />
-<img alt="../_images/ASSEMBLY-VNA-THECPU.016.png" src="../_images/ASSEMBLY-VNA-THECPU.016.png" />
-<img alt="../_images/ASSEMBLY-VNA-THECPU.017.png" src="../_images/ASSEMBLY-VNA-THECPU.017.png" />
-<img alt="../_images/ASSEMBLY-VNA-THECPU.018.png" src="../_images/ASSEMBLY-VNA-THECPU.018.png" />
-<img alt="../_images/ASSEMBLY-VNA-THECPU.019.png" src="../_images/ASSEMBLY-VNA-THECPU.019.png" />
-<img alt="../_images/ASSEMBLY-VNA-THECPU.020.png" src="../_images/ASSEMBLY-VNA-THECPU.020.png" />
-<img alt="../_images/ASSEMBLY-VNA-THECPU.021.png" src="../_images/ASSEMBLY-VNA-THECPU.021.png" />
-<img alt="../_images/ASSEMBLY-VNA-THECPU.022.png" src="../_images/ASSEMBLY-VNA-THECPU.022.png" />
-<img alt="../_images/ASSEMBLY-VNA-THECPU.023.png" src="../_images/ASSEMBLY-VNA-THECPU.023.png" />
-<img alt="../_images/ASSEMBLY-VNA-THECPU.024.png" src="../_images/ASSEMBLY-VNA-THECPU.024.png" />
-<img alt="../_images/ASSEMBLY-VNA-THECPU.025.png" src="../_images/ASSEMBLY-VNA-THECPU.025.png" />
-<img alt="../_images/ASSEMBLY-VNA-THECPU.026.png" src="../_images/ASSEMBLY-VNA-THECPU.026.png" />
-<img alt="../_images/ASSEMBLY-VNA-THECPU.027.png" src="../_images/ASSEMBLY-VNA-THECPU.027.png" />
-<img alt="../_images/ASSEMBLY-VNA-THECPU.028.png" src="../_images/ASSEMBLY-VNA-THECPU.028.png" />
-<img alt="../_images/ASSEMBLY-VNA-THECPU.029.png" src="../_images/ASSEMBLY-VNA-THECPU.029.png" />
-<img alt="../_images/ASSEMBLY-VNA-THECPU.030.png" src="../_images/ASSEMBLY-VNA-THECPU.030.png" />
-<img alt="../_images/ASSEMBLY-VNA-THECPU.031.png" src="../_images/ASSEMBLY-VNA-THECPU.031.png" />
-<img alt="../_images/ASSEMBLY-VNA-THECPU.032.png" src="../_images/ASSEMBLY-VNA-THECPU.032.png" />
-<img alt="../_images/ASSEMBLY-VNA-THECPU.033.png" src="../_images/ASSEMBLY-VNA-THECPU.033.png" />
+<img alt="files/work/UndertheCovers/underthecovers/images/ASSEMBLY-VNA-THECPU/ASSEMBLY-VNA-THECPU.005.png" src="files/work/UndertheCovers/underthecovers/images/ASSEMBLY-VNA-THECPU/ASSEMBLY-VNA-THECPU.005.png" />
+<img alt="files/work/UndertheCovers/underthecovers/images/ASSEMBLY-VNA-THECPU/ASSEMBLY-VNA-THECPU.007.png" src="files/work/UndertheCovers/underthecovers/images/ASSEMBLY-VNA-THECPU/ASSEMBLY-VNA-THECPU.007.png" />
+<img alt="files/work/UndertheCovers/underthecovers/images/ASSEMBLY-VNA-THECPU/ASSEMBLY-VNA-THECPU.008.png" src="files/work/UndertheCovers/underthecovers/images/ASSEMBLY-VNA-THECPU/ASSEMBLY-VNA-THECPU.008.png" />
+<img alt="files/work/UndertheCovers/underthecovers/images/ASSEMBLY-VNA-THECPU/ASSEMBLY-VNA-THECPU.009.png" src="files/work/UndertheCovers/underthecovers/images/ASSEMBLY-VNA-THECPU/ASSEMBLY-VNA-THECPU.009.png" />
+<img alt="files/work/UndertheCovers/underthecovers/images/ASSEMBLY-VNA-THECPU/ASSEMBLY-VNA-THECPU.010.png" src="files/work/UndertheCovers/underthecovers/images/ASSEMBLY-VNA-THECPU/ASSEMBLY-VNA-THECPU.010.png" />
+<img alt="files/work/UndertheCovers/underthecovers/images/ASSEMBLY-VNA-THECPU/ASSEMBLY-VNA-THECPU.011.png" src="files/work/UndertheCovers/underthecovers/images/ASSEMBLY-VNA-THECPU/ASSEMBLY-VNA-THECPU.011.png" />
+<img alt="files/work/UndertheCovers/underthecovers/images/ASSEMBLY-VNA-THECPU/ASSEMBLY-VNA-THECPU.012.png" src="files/work/UndertheCovers/underthecovers/images/ASSEMBLY-VNA-THECPU/ASSEMBLY-VNA-THECPU.012.png" />
+<img alt="files/work/UndertheCovers/underthecovers/images/ASSEMBLY-VNA-THECPU/ASSEMBLY-VNA-THECPU.013.png" src="files/work/UndertheCovers/underthecovers/images/ASSEMBLY-VNA-THECPU/ASSEMBLY-VNA-THECPU.013.png" />
+<img alt="files/work/UndertheCovers/underthecovers/images/ASSEMBLY-VNA-THECPU/ASSEMBLY-VNA-THECPU.014.png" src="files/work/UndertheCovers/underthecovers/images/ASSEMBLY-VNA-THECPU/ASSEMBLY-VNA-THECPU.014.png" />
+<img alt="files/work/UndertheCovers/underthecovers/images/ASSEMBLY-VNA-THECPU/ASSEMBLY-VNA-THECPU.015.png" src="files/work/UndertheCovers/underthecovers/images/ASSEMBLY-VNA-THECPU/ASSEMBLY-VNA-THECPU.015.png" />
+<img alt="files/work/UndertheCovers/underthecovers/images/ASSEMBLY-VNA-THECPU/ASSEMBLY-VNA-THECPU.016.png" src="files/work/UndertheCovers/underthecovers/images/ASSEMBLY-VNA-THECPU/ASSEMBLY-VNA-THECPU.016.png" />
+<img alt="files/work/UndertheCovers/underthecovers/images/ASSEMBLY-VNA-THECPU/ASSEMBLY-VNA-THECPU.017.png" src="files/work/UndertheCovers/underthecovers/images/ASSEMBLY-VNA-THECPU/ASSEMBLY-VNA-THECPU.017.png" />
+<img alt="files/work/UndertheCovers/underthecovers/images/ASSEMBLY-VNA-THECPU/ASSEMBLY-VNA-THECPU.018.png" src="files/work/UndertheCovers/underthecovers/images/ASSEMBLY-VNA-THECPU/ASSEMBLY-VNA-THECPU.018.png" />
+<img alt="files/work/UndertheCovers/underthecovers/images/ASSEMBLY-VNA-THECPU/ASSEMBLY-VNA-THECPU.019.png" src="files/work/UndertheCovers/underthecovers/images/ASSEMBLY-VNA-THECPU/ASSEMBLY-VNA-THECPU.019.png" />
+<img alt="files/work/UndertheCovers/underthecovers/images/ASSEMBLY-VNA-THECPU/ASSEMBLY-VNA-THECPU.020.png" src="files/work/UndertheCovers/underthecovers/images/ASSEMBLY-VNA-THECPU/ASSEMBLY-VNA-THECPU.020.png" />
+<img alt="files/work/UndertheCovers/underthecovers/images/ASSEMBLY-VNA-THECPU/ASSEMBLY-VNA-THECPU.021.png" src="files/work/UndertheCovers/underthecovers/images/ASSEMBLY-VNA-THECPU/ASSEMBLY-VNA-THECPU.021.png" />
+<img alt="files/work/UndertheCovers/underthecovers/images/ASSEMBLY-VNA-THECPU/ASSEMBLY-VNA-THECPU.022.png" src="files/work/UndertheCovers/underthecovers/images/ASSEMBLY-VNA-THECPU/ASSEMBLY-VNA-THECPU.022.png" />
+<img alt="files/work/UndertheCovers/underthecovers/images/ASSEMBLY-VNA-THECPU/ASSEMBLY-VNA-THECPU.023.png" src="files/work/UndertheCovers/underthecovers/images/ASSEMBLY-VNA-THECPU/ASSEMBLY-VNA-THECPU.023.png" />
+<img alt="files/work/UndertheCovers/underthecovers/images/ASSEMBLY-VNA-THECPU/ASSEMBLY-VNA-THECPU.024.png" src="files/work/UndertheCovers/underthecovers/images/ASSEMBLY-VNA-THECPU/ASSEMBLY-VNA-THECPU.024.png" />
+<img alt="files/work/UndertheCovers/underthecovers/images/ASSEMBLY-VNA-THECPU/ASSEMBLY-VNA-THECPU.025.png" src="files/work/UndertheCovers/underthecovers/images/ASSEMBLY-VNA-THECPU/ASSEMBLY-VNA-THECPU.025.png" />
+<img alt="files/work/UndertheCovers/underthecovers/images/ASSEMBLY-VNA-THECPU/ASSEMBLY-VNA-THECPU.026.png" src="files/work/UndertheCovers/underthecovers/images/ASSEMBLY-VNA-THECPU/ASSEMBLY-VNA-THECPU.026.png" />
+<img alt="files/work/UndertheCovers/underthecovers/images/ASSEMBLY-VNA-THECPU/ASSEMBLY-VNA-THECPU.027.png" src="files/work/UndertheCovers/underthecovers/images/ASSEMBLY-VNA-THECPU/ASSEMBLY-VNA-THECPU.027.png" />
+<img alt="files/work/UndertheCovers/underthecovers/images/ASSEMBLY-VNA-THECPU/ASSEMBLY-VNA-THECPU.028.png" src="files/work/UndertheCovers/underthecovers/images/ASSEMBLY-VNA-THECPU/ASSEMBLY-VNA-THECPU.028.png" />
+<img alt="files/work/UndertheCovers/underthecovers/images/ASSEMBLY-VNA-THECPU/ASSEMBLY-VNA-THECPU.029.png" src="files/work/UndertheCovers/underthecovers/images/ASSEMBLY-VNA-THECPU/ASSEMBLY-VNA-THECPU.029.png" />
+<img alt="files/work/UndertheCovers/underthecovers/images/ASSEMBLY-VNA-THECPU/ASSEMBLY-VNA-THECPU.030.png" src="files/work/UndertheCovers/underthecovers/images/ASSEMBLY-VNA-THECPU/ASSEMBLY-VNA-THECPU.030.png" />
+<img alt="files/work/UndertheCovers/underthecovers/images/ASSEMBLY-VNA-THECPU/ASSEMBLY-VNA-THECPU.031.png" src="files/work/UndertheCovers/underthecovers/images/ASSEMBLY-VNA-THECPU/ASSEMBLY-VNA-THECPU.031.png" />
+<img alt="files/work/UndertheCovers/underthecovers/images/ASSEMBLY-VNA-THECPU/ASSEMBLY-VNA-THECPU.032.png" src="files/work/UndertheCovers/underthecovers/images/ASSEMBLY-VNA-THECPU/ASSEMBLY-VNA-THECPU.032.png" />
+<img alt="files/work/UndertheCovers/underthecovers/images/ASSEMBLY-VNA-THECPU/ASSEMBLY-VNA-THECPU.033.png" src="files/work/UndertheCovers/underthecovers/images/ASSEMBLY-VNA-THECPU/ASSEMBLY-VNA-THECPU.033.png" />
 <p>So a Process is :</p>
 <ul class="simple">
 <li><p>an OS provided context that lets us</p>
@@ -802,22 +806,22 @@ $
 <div class="section" id="assembler-and-linker">
 <h3><span class="section-number">7.3.1. </span>Assembler and Linker<a class="headerlink" href="#assembler-and-linker" title="Permalink to this headline">¶</a></h3>
 <center>
-<img src="../images/ASSEMBLY-VNA-SOFTWARE/ASSEMBLY-VNA-SOFTWARE.026.png" width="80%">
+<img src="/files/work/UndertheCovers/underthecovers/images/ASSEMBLY-VNA-SOFTWARE/ASSEMBLY-VNA-SOFTWARE.026.png" width="100%">
 </center><center>
-<img src="../images/ASSEMBLY-VNA-SOFTWARE/ASSEMBLY-VNA-SOFTWARE.027.png" width="80%">
+<img src="/files/work/UndertheCovers/underthecovers/images/ASSEMBLY-VNA-SOFTWARE/ASSEMBLY-VNA-SOFTWARE.027.png" width="100%">
 </center><center>
-<img src="../images/ASSEMBLY-VNA-SOFTWARE/ASSEMBLY-VNA-SOFTWARE.028.png" width="80%">
+<img src="/files/work/UndertheCovers/underthecovers/images/ASSEMBLY-VNA-SOFTWARE/ASSEMBLY-VNA-SOFTWARE.028.png" width="100%">
 </center><center>
-<img src="../images/ASSEMBLY-VNA-SOFTWARE/ASSEMBLY-VNA-SOFTWARE.029.png" width="80%">
+<img src="/files/work/UndertheCovers/underthecovers/images/ASSEMBLY-VNA-SOFTWARE/ASSEMBLY-VNA-SOFTWARE.029.png" width="100%">
 </center><center>
-<img src="../images/ASSEMBLY-VNA-SOFTWARE/ASSEMBLY-VNA-SOFTWARE.030.png" width="80%">
+<img src="/files/work/UndertheCovers/underthecovers/images/ASSEMBLY-VNA-SOFTWARE/ASSEMBLY-VNA-SOFTWARE.030.png" width="100%">
 </center>    </div>
 <div class="section" id="debugger">
 <h3><span class="section-number">7.3.2. </span>Debugger<a class="headerlink" href="#debugger" title="Permalink to this headline">¶</a></h3>
 <p>Provides us a way of looking inside a process, freezing its execution, examining and modify the cpu registers and memory.</p>
-<img alt="../_images/gdbsurgery.001.png" src="../_images/gdbsurgery.001.png" />
-<img alt="../_images/gdbsurgery.002.png" src="../_images/gdbsurgery.002.png" />
-<img alt="../_images/gdbProcess.png" src="../_images/gdbProcess.png" />
+<img alt="files/work/UndertheCovers/underthecovers/images/gdbsurgery/gdbsurgery.001.png" src="files/work/UndertheCovers/underthecovers/images/gdbsurgery/gdbsurgery.001.png" />
+<img alt="files/work/UndertheCovers/underthecovers/images/gdbsurgery/gdbsurgery.002.png" src="files/work/UndertheCovers/underthecovers/images/gdbsurgery/gdbsurgery.002.png" />
+<img alt="files/work/UndertheCovers/underthecovers/images/gdbProcess.png" src="files/work/UndertheCovers/underthecovers/images/gdbProcess.png" />
 </div>
 <div class="section" id="gdb-manual">
 <h3><span class="section-number">7.3.3. </span>GDB Manual<a class="headerlink" href="#gdb-manual" title="Permalink to this headline">¶</a></h3>
@@ -858,9 +862,9 @@ $
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <p><b>NOTES: on building empty</p>
-<div style="width:70em; height:15em; font-size:inherit; overflow: auto;" >
+<div style="width:100%; height:15em; font-size:inherit; overflow: auto;" >
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># To assemble and link the code we will use the following command:</span>
-gcc --static -g -nostartfiles -nolibc -Wl,--build-id<span class="o">=</span>none -Wa,-alh -Xlinker -Map<span class="o">=</span>empty.map empty.S -o empty &gt; empty.lst
+gcc --static -g -nostartfiles -nostdlib -Wl,--build-id<span class="o">=</span>none -Wa,-alh -Xlinker -Map<span class="o">=</span>empty.map empty.S -o empty &gt; empty.lst
 
 <span class="c1"># ok lets see what happened</span>
 ls
@@ -916,7 +920,7 @@ objdump -t empty
 </div>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<div style="width:100%; height:4em; font-size:inherit; overflow: auto;" >
+<div style="width:100%; height:100%; font-size:inherit; overflow: auto;" >
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Let use gdb command to poke around empty</span>
 <span class="c1"># To get the debugger going:</span>
 gdb -tui empty
@@ -993,10 +997,11 @@ x/1i _start
 <span class="c1"># around with the register values</span>
 <span class="c1"># to make life easier we will use the gdb text uit support</span>
 <span class="c1"># Configure a layout that is more friendly to assembly code:</span>
-tui new-layout mylayout asm <span class="m">2</span> regs <span class="m">5</span> status <span class="m">1</span> cmd <span class="m">1</span>
-
+tui new-layout mylayout regs <span class="m">3</span> <span class="o">{</span>src <span class="m">1</span> asm <span class="m">1</span><span class="o">}</span> <span class="m">2</span> cmd <span class="m">1</span> status <span class="m">0</span>
 <span class="c1"># Switch to the new layout: </span>
 layout mylayout
+winh cmd <span class="m">4</span>
+focus cmd
 
 <span class="c1"># run one interation of the processor loop:</span>
 stepi
@@ -1015,10 +1020,10 @@ stepi
 </div>
 </div>
 <center>
-<img src="../images/popcnt.png" width="60%">
-</center><img alt="../_images/ASSEMBLY-VNA-THECPU.041.png" src="../_images/ASSEMBLY-VNA-THECPU.041.png" />
-<img alt="../_images/ASSEMBLY-VNA-THECPU.042.png" src="../_images/ASSEMBLY-VNA-THECPU.042.png" />
-<img alt="../_images/ASSEMBLY-VNA-THECPU.043.png" src="../_images/ASSEMBLY-VNA-THECPU.043.png" />
+<img src="/files/work/UndertheCovers/underthecovers/images/popcnt.png" width="60%">
+</center><img alt="files/work/UndertheCovers/underthecovers/images/ASSEMBLY-VNA-THECPU/ASSEMBLY-VNA-THECPU.041.png" src="files/work/UndertheCovers/underthecovers/images/ASSEMBLY-VNA-THECPU/ASSEMBLY-VNA-THECPU.041.png" />
+<img alt="files/work/UndertheCovers/underthecovers/images/ASSEMBLY-VNA-THECPU/ASSEMBLY-VNA-THECPU.042.png" src="files/work/UndertheCovers/underthecovers/images/ASSEMBLY-VNA-THECPU/ASSEMBLY-VNA-THECPU.042.png" />
+<img alt="files/work/UndertheCovers/underthecovers/images/ASSEMBLY-VNA-THECPU/ASSEMBLY-VNA-THECPU.043.png" src="files/work/UndertheCovers/underthecovers/images/ASSEMBLY-VNA-THECPU/ASSEMBLY-VNA-THECPU.043.png" />
 </div>
 </div>
 <div class="section" id="intel-manuals">
@@ -1040,9 +1045,9 @@ stepi
 </div>
 <div class="section" id="extra-info-about-intel">
 <h2><span class="section-number">7.5. </span>Extra info about Intel<a class="headerlink" href="#extra-info-about-intel" title="Permalink to this headline">¶</a></h2>
-<img alt="../_images/ASSEMBLY-VNA-THECPU.045.png" src="../_images/ASSEMBLY-VNA-THECPU.045.png" />
-<img alt="../_images/ASSEMBLY-VNA-THECPU.046.png" src="../_images/ASSEMBLY-VNA-THECPU.046.png" />
-<img alt="../_images/ASSEMBLY-VNA-THECPU.047.png" src="../_images/ASSEMBLY-VNA-THECPU.047.png" />
+<img alt="files/work/UndertheCovers/underthecovers/images/ASSEMBLY-VNA-THECPU/ASSEMBLY-VNA-THECPU.045.png" src="files/work/UndertheCovers/underthecovers/images/ASSEMBLY-VNA-THECPU/ASSEMBLY-VNA-THECPU.045.png" />
+<img alt="files/work/UndertheCovers/underthecovers/images/ASSEMBLY-VNA-THECPU/ASSEMBLY-VNA-THECPU.046.png" src="files/work/UndertheCovers/underthecovers/images/ASSEMBLY-VNA-THECPU/ASSEMBLY-VNA-THECPU.046.png" />
+<img alt="files/work/UndertheCovers/underthecovers/images/ASSEMBLY-VNA-THECPU/ASSEMBLY-VNA-THECPU.047.png" src="files/work/UndertheCovers/underthecovers/images/ASSEMBLY-VNA-THECPU/ASSEMBLY-VNA-THECPU.047.png" />
 </div>
 </div>
 
@@ -1098,7 +1103,7 @@ stepi
         
         </div>
     </div>
-    <footer class="footer mt-5 mt-md-0">
+    <footer class="footer">
     <div class="container">
       <p>
         
