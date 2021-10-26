@@ -74,10 +74,11 @@ x/1i _start
 # around with the register values
 # to make life easier we will use the gdb text uit support
 # Configure a layout that is more friendly to assembly code:
-tui new-layout mylayout asm 2 regs 5 status 1 cmd 1
-
+tui new-layout mylayout regs 3 {src 1 asm 1} 2 cmd 1 status 0
 # Switch to the new layout: 
 layout mylayout
+winh cmd 4
+focus cmd
 
 # run one interation of the processor loop:
 stepi

@@ -1,0 +1,38 @@
+/* ---------- code blocks inside markdown
+   i.e. within ``` lines, or 4-space indented
+ */
+div.inner_cell>div.text_cell_render.rendered_html>pre {
+    margin: 0px;
+}
+
+
+#notebook { padding-top:0px !important; }  
+
+.container { width:100% !important; } 
+
+.CodeMirror { width:100% !important;}
+
+.end_space { min-height:0px !important; } 
+
+.prompt { display:none }
+
+.terminal-app #terminado-container { width:100%; }
+
+div.mywarn { background-color: #fcf2f2;border-color: #dFb5b4; border-left: 5px solid #dfb5b4; padding: 0.5em;}
+
+/* JA Hacks to get annimation buttons looking better with RISE.  
+   This is very crude and overkill */
+/* button { background-color: #cccccc00; font-size: 30% } */
+/* .animation { background-color: white } */
+.anim-controls { color: blue; background-color: white; font-size: 40% } 
+
+/* not very useful, but an OBVIOUS setting that you cannot miss */
+div.cell.code_cell.rendered {
+    border-radius: 0px 0px 0px 0px;
+}
+
+div.input_area {
+    border-radius: 0px 0px 0px 0px;
+}
+
+

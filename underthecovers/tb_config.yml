@@ -27,7 +27,7 @@ html:
 launch_buttons:
   notebook_interface: "classic"
   binderhub_url: "" # trying to remove binder
-  jupyterhub_url: "https://jupyterhub-opf-jupyterhub.apps.zero.massopen.cloud" 
+  jupyterhub_url: "https://jupyterhub-opf-jupyterhub.apps.smaug.na.operate-first.cloud/"
 
 parse:
   # see https://jupyterbook.org/customize/config.html

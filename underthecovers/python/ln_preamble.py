@@ -5,7 +5,7 @@
 #    3) standarize how to display code blocks from a source file
 #
 servers=list(list_running_servers())
-if os.environ.get('JUPYTER_ENABLE_LAB') == 'yes' or len(servers) == 0:
+if os.environ.get('JUPYTER_ENABLE_LAB') == 'yes' or len(servers) == 0 or 'UC_SKIPTERMS' in globals():
     # skip using embedded terminals in jupyterlab
     def mkTerm():
         pass
@@ -124,100 +124,102 @@ else:
 
     print("Preamble executed")
 
-# Added this back in ... jupyter lab classic notebook does note seem to pick up RISE css 
-display(HTML(
-    '''
-<style>
-body.rise-enabled div.inner_cell>div.text_cell_rende
-r.rendered_html {
-    font-size: 50%;
-}
+# Added this back in ... jupyter lab classic notebook does note seem to pick up RISE css
+# removed again now that I know we can start in classic but still access lab
+
+# display(HTML(
+#     '''
+# <style>
+# body.rise-enabled div.inner_cell>div.text_cell_rende
+# r.rendered_html {
+#     font-size: 50%;
+# }
 
 
-body.rise-enabled div.inner_cell>div.input_area {
-    font-size: inherit;
-}
+# body.rise-enabled div.inner_cell>div.input_area {
+#     font-size: inherit;
+# }
 
-/* output cells that generate markddown... not sure 
-why but 80% seems to match 
-  the rest of the areas but it seems to work */
-body.rise-enabled div.output_subarea.output_markdown
-.rendered_html {
-    font-size: 80%;
-}
+# /* output cells that generate markddown... not sure 
+# why but 80% seems to match 
+#   the rest of the areas but it seems to work */
+# body.rise-enabled div.output_subarea.output_markdown
+# .rendered_html {
+#     font-size: 80%;
+# }
 
 
-/* Ingnoring these 
-body.rise-enabled div.output_subarea.output_text.out
-put_result {
-    font-size: 10%;
-}
-body.rise-enabled div.output_subarea.output_text.out
-put_stream.output_stdout {
-    font-size: 10%;
-}
+# /* Ingnoring these 
+# body.rise-enabled div.output_subarea.output_text.out
+# put_result {
+#     font-size: 10%;
+# }
+# body.rise-enabled div.output_subarea.output_text.out
+# put_stream.output_stdout {
+#     font-size: 10%;
+# }
 
-body.rise-enabled div.output_subarea.output_html.ren
-dered_html.output_result {
-    font-size: 10%;
-}
+# body.rise-enabled div.output_subarea.output_html.ren
+# dered_html.output_result {
+#     font-size: 10%;
+# }
 
-body.rise-enabled td {
-    font-size: 10%;
-}
+# body.rise-enabled td {
+#     font-size: 10%;
+# }
 
-body.rise-enabled th {
-    font-size: 10%;
-}
-*/
+# body.rise-enabled th {
+#     font-size: 10%;
+# }
+# */
 
-/* ---------- code blocks inside markdown
-   i.e. within ``` lines, or 4-space indented
- */
-div.inner_cell>div.text_cell_render.rendered_html>pr
-e {
-    margin: 0px;
-}
+# /* ---------- code blocks inside markdown
+#    i.e. within ``` lines, or 4-space indented
+#  */
+# div.inner_cell>div.text_cell_render.rendered_html>pr
+# e {
+#     margin: 0px;
+# }
 
-div.inner_cell>div.text_cell_render.rendered_html>pr
-e>code {
-    font-size: 100%;
-}
+# div.inner_cell>div.text_cell_render.rendered_html>pr
+# e>code {
+#     font-size: 100%;
+# }
 
-#notebook { padding-top:0px !important; }  
+# #notebook { padding-top:0px !important; }  
 
-.container { width:100% !important; } 
+# .container { width:100% !important; } 
 
-.CodeMirror { width:100% !important;}
+# .CodeMirror { width:100% !important;}
 
-.end_space { min-height:0px !important; } 
+# .end_space { min-height:0px !important; } 
 
-.prompt { display:none }
+# .prompt { display:none }
 
-.terminal-app #terminado-container { width:100%; }
+# .terminal-app #terminado-container { width:100%; }
 
-div.mywarn { background-color: #fcf2f2;border-color:
- #dFb5b4; border-left: 5px solid #dfb5b4; padding: 0
-.5em;}
+# div.mywarn { background-color: #fcf2f2;border-color:
+#  #dFb5b4; border-left: 5px solid #dfb5b4; padding: 0
+# .5em;}
 
-/* JA Hacks to get annimation buttons looking better
- with RISE.  
-   This is very crude and overkill */
-/* button { background-color: #cccccc00; font-size: 
-30% } */
-/* .animation { background-color: white } */
-.anim-controls { color: blue; background-color: whit
-e; font-size: 40% } 
+# /* JA Hacks to get annimation buttons looking better
+#  with RISE.  
+#    This is very crude and overkill */
+# /* button { background-color: #cccccc00; font-size: 
+# 30% } */
+# /* .animation { background-color: white } */
+# .anim-controls { color: blue; background-color: whit
+# e; font-size: 40% } 
 
-/* not very useful, but an OBVIOUS setting that you 
-cannot miss */
-div.cell.code_cell.rendered {
-    border-radius: 0px 0px 0px 0px;
-}
+# /* not very useful, but an OBVIOUS setting that you 
+# cannot miss */
+# div.cell.code_cell.rendered {
+#     border-radius: 0px 0px 0px 0px;
+# }
 
-div.input_area {
-    border-radius: 0px 0px 0px 0px;
-}
-</style>
-'''
-    ))
+# div.input_area {
+#     border-radius: 0px 0px 0px 0px;
+# }
+# </style>
+# '''
+#     ))

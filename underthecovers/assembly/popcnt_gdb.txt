@@ -4,9 +4,14 @@
 # To setup the assembly syntax to intel: 
   set disassembly-flavor intel
 # Configure a layout that is more friendly to assembly code:
-  tui new-layout mylayout src 2 regs 5 status 1 cmd 1
-# Switch to the new layout: 
+  tui new-layout mylayout regs 3 {src 1 asm 1} 2 cmd 1 status 0
+# Switch to the new layout:   
   layout mylayout
+# force small command window to be sure lots of room for regs
+  winh cmd 4
+# make command window in focus so that arrows work as history  
+  focus cmd
+  
 # Set a breakpoint at the start symbol so exection will stop their: 
   break _start
 # Start the program running:

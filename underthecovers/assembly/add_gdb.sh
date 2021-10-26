@@ -3,7 +3,8 @@ gdb -tui add
 # To setup the assembly syntax to intel: 
 set disassembly-flavor intel
 # Configure a layout that is more friendly to assembly code:
-tui new-layout mylayout src 2 regs 5 status 1 cmd 1
+tui new-layout mylayout regs 3 {src 1 asm 1} 2 cmd 0 status 0
+winh regs 4
 # Switch to the new layout: 
 layout mylayout
 # Set a breakpoint at the start symbol so exection will stop their: 

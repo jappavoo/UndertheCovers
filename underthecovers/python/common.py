@@ -589,7 +589,7 @@ def runTermCmd(cmd, bufsize=4096, wait=True, rows=20, cols=80):
     os.close(master)
     return output
 
-def TermShellCmd(cmd, prompt='$ ', markdown=True, pretext='', posttext='', **kwargs):
+def TermShellCmd(cmd, prompt='$ ', markdown=False, pretext='', posttext='', **kwargs):
     output = runTermCmd(cmd, **kwargs)
     
     if prompt:
