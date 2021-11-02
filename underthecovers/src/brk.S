@@ -20,13 +20,13 @@ _start:
 	syscall
 
 	mov     rdi, rax
-	mov     QWORD ptr brk_ptr, rdi      // update brk_ptr
-	mov     QWORD ptr head, rdi         // set head to brk_ptr
+	mov     QWORD ptr brk_ptr, rdi      # update brk_ptr
+	mov     QWORD ptr head, rdi         # set head to brk_ptr
 	
-	add     rdi, 32                     // ask for 32 bytes
+	add     rdi, 32                     # ask for 32 bytes
 	mov     rax, LINUX_SYSCALL_SBRK
 	syscall
-	mov     QWORD ptr brk_ptr, rdi      // update brk_ptr
+	mov     QWORD ptr brk_ptr, rdi      # update brk_ptr
 
 	
 	mov     rax, LINUX_SYSCALL_EXIT 	

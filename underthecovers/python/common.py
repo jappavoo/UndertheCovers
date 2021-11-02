@@ -565,7 +565,7 @@ ansi_escape_8bit = re.compile(br'''
 def cleanTermBytes(bytes):    
     return  ansi_escape_8bit.sub(b'', bytes)
 
-def runTermCmd(cmd, bufsize=4096, wait=True, rows=20, cols=80):
+def runTermCmd(cmd, cwd=os.getcwd(), bufsize=4096, wait=True, rows=20, cols=80):
     master, slave = pty.openpty()
 
     # terminal size stuff from 
@@ -573,7 +573,7 @@ def runTermCmd(cmd, bufsize=4096, wait=True, rows=20, cols=80):
     size = struct.pack("HHHH", rows, cols, 0, 0)
     fcntl.ioctl(master, termios.TIOCSWINSZ, size)
     
-    p=subprocess.Popen(['bash', '-l', '-i', '-c', cmd], stdin=slave, stdout=slave, stderr=slave, start_new_session=True)
+    p=subprocess.Popen(['bash', '-l', '-i', '-c', cmd], cwd=cwd, stdin=slave, stdout=slave, stderr=slave, start_new_session=True)
 
     if wait:
         p.wait()
