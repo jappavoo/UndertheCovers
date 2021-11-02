@@ -49,6 +49,12 @@ exit.o: exit.I
 exit_bb.o: exit_bb.I
 brk.o: brk.I
 
+10num.bin: 10num.txt
+	ascii2binary -t sq 10num.tx < $< > $@
+
+
+100randomnum.bin:
+	dd if=/dev/random of=$@ bs=1 count=800
 
 # main.S is now a libc compatiable assembly file so we need stanadard crt and libs
 main: main.S
