@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>10. SLS Lecture 10 : Topics &#8212; UndertheCovers</title>
+    <title>10. SLS Lecture 10 : Assembly : Program Anatomy I &#8212; UndertheCovers</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet" />
   <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -42,6 +42,8 @@
     <script src="../_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script>
         const thebe_selector = ".thebe"
@@ -52,7 +54,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="11. SLS Lecture 11 : Topics" href="L11.html" />
-    <link rel="prev" title="9. SLS Lecture 9 : Topics" href="L09.html" />
+    <link rel="prev" title="9. UC-SLS Lecture 9 : Assembly : Operations and Data Types" href="L09.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -165,12 +167,12 @@
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="L09.html">
-   9. SLS Lecture 9 : Topics
+   9. UC-SLS Lecture 9 : Assembly : Operations and Data Types
   </a>
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   10. SLS Lecture 10 : Topics
+   10. SLS Lecture 10 : Assembly : Program Anatomy I
   </a>
  </li>
  <li class="toctree-l1">
@@ -351,6 +353,189 @@
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show">
             
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#assembly-instruction-statement-syntax">
+   10.1. Assembly Instruction statement syntax
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#sources-and-destinations-3-7-operand-addressing">
+     10.1.1. Sources and destinations (3.7 OPERAND ADDRESSING)
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#addressing-modes">
+   10.2. Addressing Modes
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#mov">
+     10.2.1.
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       mov
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#destinations-and-sources">
+     10.2.2. destinations and sources
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#sizes">
+       10.2.2.1. Sizes
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#specifying-memory-locations-is-subtle-effective-address">
+       10.2.2.2. Specifying memory locations is subtle – Effective Address
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#specifying-and-offset-address-to-be-used-to-locate-the-operand-value">
+       10.2.2.3. Specifying and offset/address to be used to locate the operand value
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#intel-syntax-examples">
+     10.2.3. Intel Syntax examples
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sumit-s-and-usesumit-s">
+   10.3.
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     sumit.S
+    </span>
+   </code>
+   and
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     usesumit.S
+    </span>
+   </code>
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#setup">
+     10.3.1. Setup
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#lets-try-and-write-a-reusable-routine">
+     10.3.2. Lets try and write a reusable routine
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#to-assemble-sumit-s-into-sumit-o">
+       10.3.2.1. To assemble
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         sumit.S
+        </span>
+       </code>
+       into
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         sumit.o
+        </span>
+       </code>
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#so-how-might-we-use-our-fragment">
+     10.3.3. So how might we use our “fragment”
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#to-assemble-usesum-s-into-usesum-o">
+       10.3.3.1. To assemble
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         usesum.S
+        </span>
+       </code>
+       into
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         usesum.o
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#to-link-usesum-o-and-sumit-o-into-an-executable-usesum">
+       10.3.3.2. To link
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         usesum.o
+        </span>
+       </code>
+       and
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         sumit.o
+        </span>
+       </code>
+       into an executable
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         usesum
+        </span>
+       </code>
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#lets-make-some-data">
+     10.3.4. Lets make some data!
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#let-s-make-some-real-data">
+       10.3.4.1. Let’s  make some “real” data
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#how-to-run-usesum-and-load-data-with-gdb">
+     10.3.5. How to run
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       usesum
+      </span>
+     </code>
+     and  load data with gdb
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#this-code-has-a-problem-that-we-will-address-in-the-next-lecture">
+   10.4. This code has a problem that we will address in the next lecture
+  </a>
+ </li>
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -359,8 +544,541 @@
         
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="sls-lecture-10-topics">
-<h1><span class="section-number">10. </span>SLS Lecture 10 : Topics<a class="headerlink" href="#sls-lecture-10-topics" title="Permalink to this headline">¶</a></h1>
+  <div class="tex2jax_ignore mathjax_ignore section" id="sls-lecture-10-assembly-program-anatomy-i">
+<h1><span class="section-number">10. </span>SLS Lecture 10 : Assembly : Program Anatomy I<a class="headerlink" href="#sls-lecture-10-assembly-program-anatomy-i" title="Permalink to this headline">¶</a></h1>
+<center>
+<img src="../images/ASSEMBLY-PGMII/ASSEMBLY-PGMII.002.png">
+</center><center>
+<img src="../images/ASSEMBLY-PGMII/ASSEMBLY-PGMII.003.png">
+</center><center>
+<img src="../images/ASSEMBLY-PGMII/ASSEMBLY-PGMII.004.png">
+</center><center>
+<img src="../images/ASSEMBLY-PGMII/ASSEMBLY-PGMII.005.png">
+</center><center>
+<img src="../images/ASSEMBLY-PGMII/ASSEMBLY-PGMII.006.png">
+</center><center>
+<img src="../images/ASSEMBLY-PGMII/ASSEMBLY-PGMII.007.png">
+</center><center>
+<img src="../images/ASSEMBLY-PGMII/ASSEMBLY-PGMII.008.png">
+</center><center>
+<img src="../images/ASSEMBLY-PGMII/ASSEMBLY-PGMII.009.png">
+</center><center>
+<img src="../images/ASSEMBLY-PGMII/ASSEMBLY-PGMII.010.png">
+</center><center>
+<img src="../images/ASSEMBLY-PGMII/ASSEMBLY-PGMII.011.png">
+</center><center>
+<img src="../images/ASSEMBLY-PGMII/ASSEMBLY-PGMII.012.png">
+</center><center>
+<img src="../images/ASSEMBLY-PGMII/ASSEMBLY-PGMII.013.png">
+</center><center>
+<img src="../images/ASSEMBLY-PGMII/ASSEMBLY-PGMII.014.png">
+</center><center>
+<img src="../images/ASSEMBLY-PGMII/ASSEMBLY-PGMII.015.png">
+</center><center>
+<img src="../images/ASSEMBLY-PGMII/ASSEMBLY-PGMII.016.png">
+</center><center>
+<img src="../images/ASSEMBLY-PGMII/ASSEMBLY-PGMII.017.png">
+</center><center>
+<img src="../images/ASSEMBLY-PGMII/ASSEMBLY-PGMII.018.png">
+</center><center>
+<img src="../images/ASSEMBLY-PGMII/ASSEMBLY-PGMII.019.png">
+</center><center>
+<img src="../images/ASSEMBLY-PGMII/ASSEMBLY-PGMII.020.png">
+</center><center>
+<img src="../images/ASSEMBLY-PGMII/ASSEMBLY-PGMII.021.png">
+</center><center>
+<img src="../images/ASSEMBLY-PGMII/ASSEMBLY-PGMII.022.png">
+</center><center>
+<img src="../images/ASSEMBLY-PGMII/ASSEMBLY-PGMII.023.png">
+</center><center>
+<img src="../images/ASSEMBLY-PGMII/ASSEMBLY-PGMII.024.png">
+</center><center>
+<img src="../images/ASSEMBLY-PGMII/ASSEMBLY-PGMII.025.png">
+</center><center>
+<img src="../images/ASSEMBLY-PGMII/ASSEMBLY-PGMII.026.png">
+</center><center>
+<img src="../images/ASSEMBLY-PGMII/ASSEMBLY-PGMII.027.png">
+</center><center>
+<img src="../images/ASSEMBLY-PGMII/ASSEMBLY-PGMII.028.png">
+</center><center>
+<img src="../images/ASSEMBLY-PGMII/ASSEMBLY-PGMII.029.png">
+</center><center>
+<img src="../images/ASSEMBLY-PGMII/ASSEMBLY-PGMII.030.png">
+</center><center>
+<img src="../images/ASSEMBLY-PGMII/ASSEMBLY-PGMII.031.png">
+</center><center>
+<img src="../images/ASSEMBLY-PGMII/ASSEMBLY-PGMII.032.png">
+</center><center>
+<img src="../images/ASSEMBLY-PGMII/ASSEMBLY-PGMII.033.png">
+</center><center>
+<img src="../images/ASSEMBLY-PGMII/ASSEMBLY-PGMII.034.png">
+</center><center>
+<img src="../images/ASSEMBLY-PGMII/ASSEMBLY-PGMII.035.png">
+</center><center>
+<img src="../images/ASSEMBLY-PGMII/ASSEMBLY-PGMII.036.png">
+</center><center>
+<img src="../images/ASSEMBLY-PGMII/ASSEMBLY-PGMII.037.png">
+</center><center>
+<img src="../images/ASSEMBLY-PGMII/ASSEMBLY-PGMII.038.png">
+</center><center>
+<img src="../images/ASSEMBLY-PGMII/ASSEMBLY-PGMII.039.png">
+</center><center>
+<img src="../images/ASSEMBLY-PGMII/ASSEMBLY-PGMII.040.png">
+</center><center>
+<img src="../images/ASSEMBLY-PGMII/ASSEMBLY-PGMII.041.png">
+</center><center>
+<img src="../images/ASSEMBLY-PGMII/ASSEMBLY-PGMII.042.png">
+</center><center>
+<img src="../images/ASSEMBLY-PGMII/ASSEMBLY-PGMII.043.png">
+</center><center>
+<img src="../images/ASSEMBLY-PGMII/ASSEMBLY-PGMII.044.png">
+</center><center>
+<img src="../images/ASSEMBLY-PGMII/ASSEMBLY-PGMII.045.png">
+</center><center>
+<img src="../images/ASSEMBLY-PGMII/ASSEMBLY-PGMII.046.png">
+</center><div class="section" id="assembly-instruction-statement-syntax">
+<h2><span class="section-number">10.1. </span>Assembly Instruction statement syntax<a class="headerlink" href="#assembly-instruction-statement-syntax" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-gas notranslate"><div class="highlight"><pre><span></span>[label:] mnemonic [operands][ ; comment ]
+</pre></div>
+</div>
+<p>Anything in square brackets is optional depending on the mnemonic.</p>
+<p>The following are the four types of Intel instructions</p>
+<ol class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">mnemonic</span></code> - alone no explicitly defined operands</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">mnemonic</span> <span class="pre">&lt;destination&gt;</span></code> - a single operand</p>
+<ul class="simple">
+<li><p>which is the destination … where the result will be stored</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">mnemonic</span> <span class="pre">&lt;destination&gt;,</span> <span class="pre">&lt;source&gt;</span></code> - two operands</p></li>
+</ol>
+<ul class="simple">
+<li><p>one that names a source location for input</p></li>
+<li><p>and one that is the destination</p></li>
+</ul>
+<ol class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">mnemonic</span> <span class="pre">&lt;destination&gt;,</span> <span class="pre">&lt;source</span> <span class="pre">A&gt;,</span> <span class="pre">&lt;source</span> <span class="pre">B&gt;</span></code> - three operands</p>
+<ul class="simple">
+<li><p>two that name input sources</p></li>
+<li><p>and one that names the destination</p></li>
+</ul>
+</li>
+</ol>
+<div class="section" id="sources-and-destinations-3-7-operand-addressing">
+<h3><span class="section-number">10.1.1. </span>Sources and destinations (3.7 OPERAND ADDRESSING)<a class="headerlink" href="#sources-and-destinations-3-7-operand-addressing" title="Permalink to this headline">¶</a></h3>
+<p>Sources and destinations name both a location of a value and its length.</p>
+<p>-Eg. <code class="docutils literal notranslate"><span class="pre">2</span></code> bytes at Address <code class="docutils literal notranslate"><span class="pre">0x10000</span></code> is the operand for the instruction</p>
+</div>
+</div>
+<div class="section" id="addressing-modes">
+<h2><span class="section-number">10.2. </span>Addressing Modes<a class="headerlink" href="#addressing-modes" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>lets look more closely now at the address mode by carefully studying the <code class="docutils literal notranslate"><span class="pre">mov</span></code> instruction</p>
+<ul>
+<li><p>add all the ways that we can specify its <code class="docutils literal notranslate"><span class="pre">operands</span></code></p></li>
+</ul>
+</li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>      <span class="n">mov</span> <span class="o">&lt;</span><span class="n">destination</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">source</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">&lt;destination&gt;</span></code> and <code class="docutils literal notranslate"><span class="pre">&lt;source&gt;</span></code> are the operands and the <code class="docutils literal notranslate"><span class="pre">mov</span></code> is the mnemonic of instruction we want to encode.</p>
+<div class="section" id="mov">
+<h3><span class="section-number">10.2.1. </span><code class="docutils literal notranslate"><span class="pre">mov</span></code><a class="headerlink" href="#mov" title="Permalink to this headline">¶</a></h3>
+<p>Overwrite the <code class="docutils literal notranslate"><span class="pre">&lt;destination&gt;</span></code> with a copy of what is in the <code class="docutils literal notranslate"><span class="pre">&lt;source&gt;</span></code></p>
+<ul class="simple">
+<li><p>note the value that was in <code class="docutils literal notranslate"><span class="pre">&lt;destination&gt;</span></code> is <strong>over-written</strong></p>
+<ul>
+<li><p>its “gone”</p></li>
+</ul>
+</li>
+<li><p>the <code class="docutils literal notranslate"><span class="pre">&lt;source&gt;</span></code> still has its version</p></li>
+</ul>
+<p>This is actually more like copy than move!</p>
+<p>From a high level programming perspective it is like an assignment statement</p>
+<p><code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">y;</span></code></p>
+</div>
+<div class="section" id="destinations-and-sources">
+<h3><span class="section-number">10.2.2. </span>destinations and sources<a class="headerlink" href="#destinations-and-sources" title="Permalink to this headline">¶</a></h3>
+<p>Here are the various times of locations that can be a source or destination</p>
+<ol class="simple">
+<li><p>Register  (reg) – one of the processor’s registers</p></li>
+<li><p>Memory    (mem) – an address of an arbitrary memory location</p></li>
+<li><p>Immediate (imm) – a special type of Memory location where the value is in the bytes following the opcode</p>
+<ul class="simple">
+<li><p>You can only use Immediates as a source</p></li>
+</ul>
+</li>
+</ol>
+<p>Here is the valid combinations that you can have</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">mov</span> <span class="pre">&lt;reg&gt;,</span> <span class="pre">&lt;reg&gt;</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">mov</span> <span class="pre">&lt;reg&gt;,</span> <span class="pre">&lt;mem&gt;</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">mov</span> <span class="pre">&lt;mem&gt;,</span> <span class="pre">&lt;reg&gt;</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">mov</span> <span class="pre">&lt;reg&gt;,</span> <span class="pre">&lt;imm&gt;</span></code></p></li>
+</ul>
+<p>What is missing?</p>
+<div class="section" id="sizes">
+<h4><span class="section-number">10.2.2.1. </span>Sizes<a class="headerlink" href="#sizes" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>Register names specify size of location</p>
+<ul>
+<li><p>The rules for mixing is a little subtle (eg moving from a smaller to larger register)</p></li>
+</ul>
+</li>
+<li><p>Immediate generally are 1,2,4 bytes in size</p></li>
+<li><p>We will see memory syntax next</p></li>
+</ul>
+</div>
+<div class="section" id="specifying-memory-locations-is-subtle-effective-address">
+<h4><span class="section-number">10.2.2.2. </span>Specifying memory locations is subtle – Effective Address<a class="headerlink" href="#specifying-memory-locations-is-subtle-effective-address" title="Permalink to this headline">¶</a></h4>
+<p>See the slide on line slide for details from the Intel Manual – “Specifying an Offset”</p>
+<ul class="simple">
+<li><p>Most general form
+$<span class="math notranslate nohighlight">\( EA={Base}_{reg} + ({Index}_{reg} * {Scale}) + {Displacement} \)</span>$
+where</p></li>
+<li><p><span class="math notranslate nohighlight">\(Scale = \{1,2,5,8\}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\({Displacement}\)</span> is 8-bit, 16-bit, or 32-bit value</p></li>
+<li><p><span class="math notranslate nohighlight">\({Base}_{reg}\)</span> and <span class="math notranslate nohighlight">\({Index}_{reg}\)</span> are the value in a 64-bit general-purpose register.</p></li>
+</ul>
+<p>The components can be mixed and matched to make it easier to work with arrays and data structures of various kinds located in memory.</p>
+<p>There are several version of syntax for these combinations</p>
+</div>
+<div class="section" id="specifying-and-offset-address-to-be-used-to-locate-the-operand-value">
+<h4><span class="section-number">10.2.2.3. </span>Specifying and offset/address to be used to locate the operand value<a class="headerlink" href="#specifying-and-offset-address-to-be-used-to-locate-the-operand-value" title="Permalink to this headline">¶</a></h4>
+<ul>
+<li><p>A lot of the subtly and confusion come from how we work with memory locations</p>
+<ul>
+<li><p>Effective address</p>
+<ol class="simple">
+<li><p>static location:</p></li>
+</ol>
+<ul class="simple">
+<li><p>” Displacement: A displacement alone represents a direct (uncomputed) offset to the operand. Because the displacement is encoded in the instruction, this form of an address is sometimes called an absolute or static address. It is commonly used to access a statically allocated scalar operand.</p></li>
+</ul>
+<ol class="simple">
+<li><p>dynamic location:</p></li>
+</ol>
+<ul class="simple">
+<li><p>“Base: A base alone represents an indirect offset to the operand. Since the value in the base register can change, it can be used for dynamic storage of variables and data structures.”</p></li>
+</ul>
+<ol class="simple">
+<li><p>dynamic + static
+“Base + Displacement: A base register and a displacement can be used together for two distinct purposes:</p>
+<ul class="simple">
+<li><p>As an index into an array when the element size is not 2, 4, or 8 bytes</p>
+<ul>
+<li><p>The displacement component encodes the static offset to the beginning of the array.</p></li>
+<li><p>The base register holds the results of a calculation to determine the offset to a specific element within the array.</p></li>
+</ul>
+</li>
+<li><p>To access a field of a record:</p>
+<ul>
+<li><p>the base register holds the address of the beginning of the record,</p></li>
+<li><p>while the displacement is a static offset to the field.”</p></li>
+<li><p>this form is really useful for stack frame records (rbp base) – more later on this</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>“(Index * Scale) + Displacement : This address mode offers an efficient way to index into a static array when the element size is 2, 4, or 8 bytes. The displacement locates the beginning of the array, the index register holds the subscript of the desired array element, and the processor automatically converts the subscript into an index by applying the scaling factor.”</p></li>
+<li><p>“Base + Index + Displacement : Using two registers together supports either</p></li>
+</ol>
+<ul class="simple">
+<li><p>a two-dimensional array (the displacement holds the address of the beginning of the array) or</p></li>
+<li><p>one of several instances of an array of records (the displacement is an offset to a field within the record).”</p></li>
+</ul>
+<ol class="simple">
+<li><p>“Base + (Index * Scale) + Displacement : Using all the addressing components together allows efficient indexing of a two-dimensional array when the elements of the array are 2, 4, or 8 bytes in size.”</p></li>
+<li><p>PC Relative: “RIP + Displacement : In 64-bit mode, RIP-relative addressing uses a signed 32-bit displacement to calculate the effective address of the next instruction by sign-extend the 32-bit value and add to the 64-bit value in RIP.”</p></li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="intel-syntax-examples">
+<h3><span class="section-number">10.2.3. </span>Intel Syntax examples<a class="headerlink" href="#intel-syntax-examples" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">PTR</span> <span class="pre">&lt;BYTE|WORD|DWORD|QWORD&gt;</span> <span class="pre">[displacement]</span></code> where <code class="docutils literal notranslate"><span class="pre">displacement</span></code> is either a number of symbol</p>
+<ul>
+<li><p>the assembler will often let you skip the <code class="docutils literal notranslate"><span class="pre">PTR</span> <span class="pre">&lt;TYPE&gt;</span></code> if it can figure it out</p>
+<ul>
+<li><p>but I think it is safer to be verbose</p></li>
+</ul>
+</li>
+<li><p>the assembler will let you skip the <code class="docutils literal notranslate"><span class="pre">[]</span></code> if you are using a label</p>
+<ul>
+<li><p>but again I think it is more clear that you mean that value at the label</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OFFSET</span> <span class="pre">[symbol]</span></code> can be used as a source if you want to use the address of the symbol itself as a number</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">PTR</span> <span class="pre">&lt;BYTE|WORD|DWORD|QWORD&gt;</span> <span class="pre">[RegBase</span> <span class="pre">+</span> <span class="pre">displacement]</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">PTR</span> <span class="pre">&lt;BYTE|WORD|DWORD|QWORD&gt;</span> <span class="pre">[RegIdx</span> <span class="pre">*</span> <span class="pre">scale</span> <span class="pre">+</span> <span class="pre">displacement]</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">PTR</span> <span class="pre">&lt;BYTE|WORD|DWORD|QWORD&gt;</span> <span class="pre">[RegBase</span> <span class="pre">+</span> <span class="pre">RegIdx</span> <span class="pre">*</span> <span class="pre">scale</span> <span class="pre">+</span> <span class="pre">displacement]</span></code></p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="sumit-s-and-usesumit-s">
+<h2><span class="section-number">10.3. </span><code class="docutils literal notranslate"><span class="pre">sumit.S</span></code> and <code class="docutils literal notranslate"><span class="pre">usesumit.S</span></code><a class="headerlink" href="#sumit-s-and-usesumit-s" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="setup">
+<h3><span class="section-number">10.3.1. </span>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">¶</a></h3>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<ul class="simple">
+<li><p>create a directory <code class="docutils literal notranslate"><span class="pre">mkdir</span> <span class="pre">sum;</span> <span class="pre">cd</span> <span class="pre">sum</span></code></p></li>
+<li><p>create and write  <code class="docutils literal notranslate"><span class="pre">sumit.S</span></code> and <code class="docutils literal notranslate"><span class="pre">usesumit.S</span></code> see below</p></li>
+<li><p>add a <code class="docutils literal notranslate"><span class="pre">Makefile</span></code> to automate assembling and linking</p>
+<ul>
+<li><p>we are going run the commands by hand this time to highlight the details</p></li>
+</ul>
+</li>
+<li><p>add our <code class="docutils literal notranslate"><span class="pre">setup.gdb</span></code> to make working in gdb easier</p></li>
+<li><p>normally you would want to track everything in git</p></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="section" id="lets-try-and-write-a-reusable-routine">
+<h3><span class="section-number">10.3.2. </span>Lets try and write a reusable routine<a class="headerlink" href="#lets-try-and-write-a-reusable-routine" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>lets assume that we have a symbol <code class="docutils literal notranslate"><span class="pre">XARRAY</span></code> that is the address of the data</p></li>
+<li><p>lets assume to use our routine you need to pass the length of the array</p>
+<ul>
+<li><p>len in <code class="docutils literal notranslate"><span class="pre">rbx</span></code></p></li>
+</ul>
+</li>
+<li><p>let put the result in <code class="docutils literal notranslate"><span class="pre">rax</span></code></p></li>
+</ul>
+<p>Think about our objective in these terms</p>
+<div class="math notranslate nohighlight">
+\[ rax = \sum_{i=0}^{rbx} XARRAY[rdi]  \]</div>
+<p>right?</p>
+<p>Ok remember the tricky part is realizing that it is up to us to implement
+the idea of an array.</p>
+<ul class="simple">
+<li><p>it is a data structure that we need to keep straight our head</p></li>
+</ul>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<p><b>CODE: asm - sumit.S</p>
+<div style="width:107em; height:100%; font-size:inherit; overflow: auto;" >
+<div class="highlight-gas notranslate"><div class="highlight"><pre><span></span>	.intel_syntax noprefix
+	
+	.global sumIt	      	      #	 directive to let the linker
+
+	# code to sum data at XARRAY
+	# we assume rbx has length  rbx -&gt; len
+	# and that we will leave final sum in rax
+sumIt:	                              # location of this code is
+	# sumIt .eg sumIt is 0x1022
+	xor  rax, rax            # rax -&gt; sum : sum = 0
+	xor  rdi, rdi            # rax -&gt; i : i = 0
+
+	# code to sum data at XARRAY
+	# we assume rbx has length  rbx -&gt; len
+	# and that we will leave final sum in rax
+loop_start:
+	cmp  rbx, rdi
+	jz   loop_done
+	add  rax, QWORD PTR [XARRAY + rdi * 8] # add the i&#39;th value to the sum
+	inc  rdi                   # i=i+1
+	jmp   loop_start
+loop_done:
+	int3
+
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="to-assemble-sumit-s-into-sumit-o">
+<h4><span class="section-number">10.3.2.1. </span>To assemble <code class="docutils literal notranslate"><span class="pre">sumit.S</span></code> into <code class="docutils literal notranslate"><span class="pre">sumit.o</span></code><a class="headerlink" href="#to-assemble-sumit-s-into-sumit-o" title="Permalink to this headline">¶</a></h4>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>as -g -a=sumit.o.lst sumit.S -o sumit.o
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="so-how-might-we-use-our-fragment">
+<h3><span class="section-number">10.3.3. </span>So how might we use our “fragment”<a class="headerlink" href="#so-how-might-we-use-our-fragment" title="Permalink to this headline">¶</a></h3>
+<p>Lets create a program that defines a <code class="docutils literal notranslate"><span class="pre">_start</span></code> routine and creates the memory locations that we can control.</p>
+<p>Lets create <code class="docutils literal notranslate"><span class="pre">usesum.S</span></code></p>
+<p>Lets assume that</p>
+<ul class="simple">
+<li><p>will set aside enough memory for an maximum of 1000 values in where we set the <code class="docutils literal notranslate"><span class="pre">XARRAY</span></code> symbol</p></li>
+<li><p>we will allow the length actual length of data in <code class="docutils literal notranslate"><span class="pre">XARRAY</span></code> to be specified at a location marked by  <code class="docutils literal notranslate"><span class="pre">XARRAY_LEN</span></code>.</p></li>
+<li><p>we will store the result in a location marked by the symbol <code class="docutils literal notranslate"><span class="pre">sum</span></code></p></li>
+</ul>
+<p>We will use our code by loading our data at XARRAY, updating XARRAY_LEN, executing the code and examining the result</p>
+<ol class="simple">
+<li><p>The code should setup the memory we need</p></li>
+<li><p>setup the registers as needed for <code class="docutils literal notranslate"><span class="pre">sumIt</span></code></p></li>
+<li><p>run <code class="docutils literal notranslate"><span class="pre">sumIt</span></code></p></li>
+<li><p>store the results at the location of <code class="docutils literal notranslate"><span class="pre">sum</span></code></p></li>
+</ol>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<p><b>CODE: asm - usesum.S</p>
+<div style="width:107em; height:100%; font-size:inherit; overflow: auto;" >
+<div class="highlight-gas notranslate"><div class="highlight"><pre><span></span>	<span class="na">.intel_syntax</span> <span class="no">noprefix</span>
+	
+	<span class="na">.data</span>
+	<span class="c1">#  a place for us to store how much data is in the XARRAY</span>
+	<span class="c1">#  initalized it to 0</span>
+<span class="nl">XARRAY_LEN:</span>
+	<span class="na">.quad</span> <span class="mi">0x0</span>
+	<span class="na">.size</span> <span class="no">XARRAY_LEN</span><span class="p">,</span> <span class="mi">8</span>
+	
+	<span class="c1"># reserve enough space for 1024 8 byte values</span>
+	<span class="c1">#  third argument is alignment.... turns out cpu</span>
+	<span class="c1">#  cpu is more efficient if things are located at address</span>
+	<span class="c1">#  of a particular &#39;alignment (see intel manual)</span>
+	<span class="na">.comm</span> <span class="no">XARRAY</span><span class="p">,</span> <span class="mi">8</span><span class="p">*</span><span class="mi">1024</span><span class="p">,</span> <span class="mi">8</span>
+	
+	<span class="na">.comm</span> <span class="no">sum</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">8</span> 	<span class="c1"># space to store final sum</span>
+
+	<span class="na">.text</span>
+	<span class="na">.global</span> <span class="no">_start</span> 
+<span class="no">_start</span><span class="p">:</span>
+	<span class="nf">mov</span> <span class="no">rbx</span><span class="p">,</span> <span class="no">QWORD</span> <span class="no">PTR</span> <span class="p">[</span><span class="no">XARRAY_LEN</span><span class="p">]</span>
+
+	<span class="nf">jmp</span> <span class="no">sumIt</span>
+	<span class="nf">mov</span> <span class="no">QWORD</span> <span class="no">PTR</span> <span class="p">[</span><span class="no">sum</span><span class="p">],</span> <span class="no">rax</span>
+
+	<span class="nf">int3</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="to-assemble-usesum-s-into-usesum-o">
+<h4><span class="section-number">10.3.3.1. </span>To assemble <code class="docutils literal notranslate"><span class="pre">usesum.S</span></code> into <code class="docutils literal notranslate"><span class="pre">usesum.o</span></code><a class="headerlink" href="#to-assemble-usesum-s-into-usesum-o" title="Permalink to this headline">¶</a></h4>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>as -g -a=usesum.o.lst usesum.S -o usesum.o
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="to-link-usesum-o-and-sumit-o-into-an-executable-usesum">
+<h4><span class="section-number">10.3.3.2. </span>To link <code class="docutils literal notranslate"><span class="pre">usesum.o</span></code> and <code class="docutils literal notranslate"><span class="pre">sumit.o</span></code> into an executable <code class="docutils literal notranslate"><span class="pre">usesum</span></code><a class="headerlink" href="#to-link-usesum-o-and-sumit-o-into-an-executable-usesum" title="Permalink to this headline">¶</a></h4>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ld -g -Map=usesum.map usesum.o sumit.o -o usesum
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="lets-make-some-data">
+<h3><span class="section-number">10.3.4. </span>Lets make some data!<a class="headerlink" href="#lets-make-some-data" title="Permalink to this headline">¶</a></h3>
+<p>Lets create an ascii file with 10 numbers and then use a tool called <code class="docutils literal notranslate"><span class="pre">ascii2binary</span></code> to convert it into 8 byte signed integers</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ascii2binary -t sq 10num.tx &lt; 10num.txt &gt; 10num.bin
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>$ cat 10num.txt
+1 1 1 1 1 1 1 1 8 -17 
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>$ hexdump -C 10num.bin
+00000000  01 00 00 00 00 00 00 00  01 00 00 00 00 00 00 00  |................|
+00000010  01 00 00 00 00 00 00 00  01 00 00 00 00 00 00 00  |................|
+00000020  01 00 00 00 00 00 00 00  01 00 00 00 00 00 00 00  |................|
+00000030  01 00 00 00 00 00 00 00  01 00 00 00 00 00 00 00  |................|
+00000040  08 00 00 00 00 00 00 00  ef ff ff ff ff ff ff ff  |................|
+00000050
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="let-s-make-some-real-data">
+<h4><span class="section-number">10.3.4.1. </span>Let’s  make some “real” data<a class="headerlink" href="#let-s-make-some-real-data" title="Permalink to this headline">¶</a></h4>
+<p>Some Unix tricks of the trade</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dd if=/dev/random of=100randomnum.bin bs=1 count=800
+800+0 records in
+800+0 records out
+800 bytes copied, 0.003305 s, 242 kB/s
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>$ hexdump -C 100randomnum.bin | head -10
+00000000  7d 3d 63 56 49 2c 39 e5  fc 1a 96 83 ac e5 f9 13  |}=cVI,9.........|
+00000010  56 62 f4 f3 9f 6d 48 30  13 c2 74 25 45 40 07 ed  |Vb...mH0..t%E@..|
+00000020  5b ef d1 07 5d 30 c7 45  06 98 22 be 77 2f 2e 38  |[...]0.E..&quot;.w/.8|
+00000030  53 2b f5 98 10 63 7d 81  c6 8f b1 78 be 7e c1 15  |S+...c}....x.~..|
+00000040  a8 83 d8 f9 2d 8e 5f a4  14 19 2b d2 14 41 3c 32  |....-._...+..A&lt;2|
+00000050  a2 dc 62 8d 2e 08 33 85  de 96 0c af 78 ba 58 90  |..b...3.....x.X.|
+00000060  a0 1e 4e 12 7c 37 95 c9  06 42 45 1e 55 ad f2 c7  |..N.|7...BE.U...|
+00000070  06 13 a1 75 e9 1c be 69  3b da 48 e9 f1 90 58 9e  |...u...i;.H...X.|
+00000080  c5 36 0d 33 a9 93 18 84  b2 f1 15 ad a5 d2 18 b5  |.6.3............|
+00000090  36 70 1e 8f e2 d8 89 70  4f 00 fd 58 b0 dd d5 a4  |6p.....pO..X....|
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>$ od -t d8 100randomnum.bin | head -10
+0000000 -1929462271857967747  1439434085026372348
+0000020  3479151245903815254 -1367053296158326253
+0000040  5028040685103738715  4048225306390206470
+0000060 -9116021147791185069  1567673501835431878
+0000100 -6602402200585469016  3619839758180227348
+0000120 -8848719846819308382 -8045475706801711394
+0000140 -3921166894533566816 -4038975334706232826
+0000160  7619559408583906054 -7036715049091016133
+0000200 -8928223906346748219 -5397332544388206158
+0000220  8109251071632633910 -6569100731973042097
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="how-to-run-usesum-and-load-data-with-gdb">
+<h3><span class="section-number">10.3.5. </span>How to run <code class="docutils literal notranslate"><span class="pre">usesum</span></code> and  load data with gdb<a class="headerlink" href="#how-to-run-usesum-and-load-data-with-gdb" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>gdb -tui usesum
+b _start
+run
+# restore lets us load memory from a file
+restore 100randomnum.bin binary &amp;XARRAY
+# set the number of elements
+set *((long long *)&amp;XARRAY_LEN) = 100
+# following the follow in xarray that is being added to our sum 
+display /1 ((long long *)(&amp;XARRAY))[$rdi]
+# now we can single step our way through our continue till we hit and int3
+</pre></div>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<p><b>Debug</b></p>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="this-code-has-a-problem-that-we-will-address-in-the-next-lecture">
+<h2><span class="section-number">10.4. </span>This code has a problem that we will address in the next lecture<a class="headerlink" href="#this-code-has-a-problem-that-we-will-address-in-the-next-lecture" title="Permalink to this headline">¶</a></h2>
+</div>
 </div>
 
     <script type="text/x-thebe-config">
@@ -397,7 +1115,7 @@
             <i class="prevnext-label fas fa-angle-left"></i>
             <div class="prevnext-info">
                 <p class="prevnext-label">previous</p>
-                <p class="prevnext-title"><span class="section-number">9. </span>SLS Lecture 9 : Topics</p>
+                <p class="prevnext-title"><span class="section-number">9. </span>UC-SLS Lecture 9 : Assembly : Operations and Data Types</p>
             </div>
         </a>
     </div>

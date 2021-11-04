@@ -51,7 +51,7 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="9. SLS Lecture 9 : Topics" href="L09.html" />
+    <link rel="next" title="9. UC-SLS Lecture 9 : Assembly : Operations and Data Types" href="L09.html" />
     <link rel="prev" title="7. SLS Lecture 7 : Assembly Programming Introduction" href="L07.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -165,12 +165,12 @@
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="L09.html">
-   9. SLS Lecture 9 : Topics
+   9. UC-SLS Lecture 9 : Assembly : Operations and Data Types
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="L10.html">
-   10. SLS Lecture 10 : Topics
+   10. SLS Lecture 10 : Assembly : Program Anatomy I
   </a>
  </li>
  <li class="toctree-l1">
@@ -513,35 +513,35 @@
 <div class="highlight-gas notranslate"><div class="highlight"><pre><span></span><span class="cm">/*  General antomy of a assembly program line</span>
 <span class="cm">[lablel]:   &lt;directive or opcode&gt; [operands]  // comment</span>
 <span class="cm">*/</span>
-	<span class="na">.intel_syntax</span> <span class="no">noprefix</span>   <span class="c1">// assembler syntax to use &lt;directive&gt;</span>
-	                         <span class="c1">// set assembly language format to intel  </span>
+	<span class="na">.intel_syntax</span> <span class="no">noprefix</span>   <span class="c1"># assembler syntax to use &lt;directive&gt;</span>
+	                         <span class="c1"># set assembly language format to intel  </span>
 
-	<span class="na">.text</span>                    <span class="c1">// linker section &lt;directive&gt;</span>
-	                         <span class="c1">// let the linker know that what follows are cpu instructions to</span>
-	                         <span class="c1">// to be executed -- uposed to values that represent data.</span>
-	                         <span class="c1">// For historical reasons cpu instructions are called &quot;text&quot;</span>
+	<span class="na">.text</span>                    <span class="c1"># linker section &lt;directive&gt;</span>
+	                         <span class="c1"># let the linker know that what follows are cpu instructions to</span>
+	                         <span class="c1"># to be executed -- uposed to values that represent data.</span>
+	                         <span class="c1"># For historical reasons cpu instructions are called &quot;text&quot;</span>
 	                         
-	<span class="na">.global</span> <span class="no">_start</span>           <span class="c1">// linker symbol type &lt;directive&gt; </span>
-	                         <span class="c1">// makes the symbol _start in this case visible to the linker</span>
-	                         <span class="c1">// The linker looks for an _start symbol so that it knows address</span>
-	                         <span class="c1">// of the first instruction of our program</span>
+	<span class="na">.global</span> <span class="no">_start</span>           <span class="c1"># linker symbol type &lt;directive&gt; </span>
+	                         <span class="c1"># makes the symbol _start in this case visible to the linker</span>
+	                         <span class="c1"># The linker looks for an _start symbol so that it knows address</span>
+	                         <span class="c1"># of the first instruction of our program</span>
 	
-<span class="nl">_start:</span>                          <span class="c1">// introduce a symbolic (human readable) label for &quot;this&quot; address</span>
-	                         <span class="c1">// associates the address of this point in our program with the</span>
-      	                         <span class="c1">// name following the &#39;:&#39; -- in our case _start</span>
-	                         <span class="c1">// In our program or in the debugger we can use this name to</span>
-	                         <span class="c1">// to refer to this location -- address.  And thus the values</span>
-	                         <span class="c1">// that end up here.</span>
-<span class="c1">//	.byte 0xF3, 0x48, 0x0F, 0xB8, 0xD8  // popcnt rax,rbx	</span>
-	<span class="nf">popcnt</span> <span class="no">rax</span><span class="p">,</span> <span class="no">rbx</span>          <span class="c1">// ok the single intel opcode (instruction) that makes up</span>
-	                         <span class="c1">// our program</span>
-
-        <span class="c1">// Details about the assembler directives and general syntax that we will be using</span>
-        <span class="c1">// https://sourceware.org/binutils/docs/as/</span>
-	<span class="c1">// Intel instruction set reference -- documents the cpu memonics/instructions of</span>
-	<span class="c1">//                                    the computer&#39;s processor that we are writing for</span>
-	<span class="c1">// https://software.intel.com/content/www/us/en/develop/download/intel-64-and-ia-32-architectures-sdm-combined-volumes-2a-2b-2c-and-2d-instruction-set-reference-a-z.html</span>
-	
+<span class="nl">_start:</span>                          <span class="c1"># introduce a symbolic (human readable) label for &quot;this&quot; address</span>
+	                         <span class="c1"># associates the address of this point in our program with the</span>
+      	                         <span class="c1"># name following the &#39;:&#39; -- in our case _start</span>
+	                         <span class="c1"># In our program or in the debugger we can use this name to</span>
+	                         <span class="c1"># to refer to this location -- address.  And thus the values</span>
+	                         <span class="c1"># that end up here.</span>
+<span class="c1">#	.byte 0xF3, 0x48, 0x0F, 0xB8, 0xD8  # popcnt rax,rbx	</span>
+	<span class="nf">popcnt</span> <span class="no">rax</span><span class="p">,</span> <span class="no">rbx</span>          <span class="c1"># ok the single intel opcode (instruction) that makes up</span>
+	                         <span class="c1"># our program</span>
+<span class="cm">/*</span>
+<span class="cm">     Details about the assembler directives and general syntax that we will be using</span>
+<span class="cm">     https://sourceware.org/binutils/docs/as/</span>
+<span class="cm">     Intel instruction set reference -- documents the cpu memonics/instructions of</span>
+<span class="cm">                                    the computer&#39;s processor that we are writing for</span>
+<span class="cm">	 https://software.intel.com/content/www/us/en/develop/download/intel-64-and-ia-32-architectures-sdm-combined-volumes-2a-2b-2c-and-2d-instruction-set-reference-a-z.html</span>
+<span class="cm">*/</span>
 </pre></div>
 </div>
 </div>
@@ -832,72 +832,78 @@ run
 <div class="cell_output docutils container">
 <p>A commented version that avoids &quot;magic&quot; numbers.</p>
 <div style="width:200%; height:100%; font-size:inherit; overflow: auto;" >
-<div class="highlight-gas notranslate"><div class="highlight"><pre><span></span><span class="c1">#include &lt;asm/unistd_64.h&gt;       // Pull in a file that contains all the OS system call numbers</span>
-				 <span class="c1">// See discussion bellow to understand what is in this file</span>
+<div class="highlight-gas notranslate"><div class="highlight"><pre><span></span>	<span class="c1"># Pull in a file that contains all the OS system call numbers</span>
+	<span class="c1"># for this to work we must preprocess this file via gcc -E before</span>
+	<span class="c1"># we can assemble it with as so that the contents of the header file</span>
+	<span class="c1"># will be included </span>
 	
-	<span class="na">.intel_syntax</span> <span class="no">noprefix</span>   <span class="c1">// set assembly language format to intel</span>
+<span class="c1">#include &lt;asm/unistd_64.h&gt;</span>
 
-	<span class="c1">// Define some constants so that we don&#39;t have magic numbers</span>
-	<span class="c1">// in our code.  We use the .equ (equal) assembly directive</span>
-	<span class="c1">// &quot;This directive sets the value of symbol to expression.&quot;</span>
-	<span class="c1">// (https://sourceware.org/binutils/docs/as/Equ.html#Equ)</span>
-	<span class="c1">// FORMAT:	</span>
-	<span class="c1">// .equ &lt;SYMBOL&gt;, &lt;EXPRESSION&gt;</span>
+	<span class="c1"># See discussion bellow to understand what is in this file</span>
+	
+	<span class="na">.intel_syntax</span> <span class="no">noprefix</span>   <span class="c1"># set assembly language format to intel</span>
+
+	<span class="c1"># Define some constants so that we don&#39;t have magic numbers</span>
+	<span class="c1"># in our code.  We use the .equ (equal) assembly directive</span>
+	<span class="c1"># &quot;This directive sets the value of symbol to expression.&quot;</span>
+	<span class="c1"># (https:#sourceware.org/binutils/docs/as/Equ.html#Equ)</span>
+	<span class="c1"># FORMAT:	</span>
+	<span class="c1"># .equ &lt;SYMBOL&gt;, &lt;EXPRESSION&gt;</span>
 	
 	<span class="na">.equ</span> <span class="no">UNIX_SUCCESS_VALUE</span><span class="p">,</span> <span class="mi">0</span>      
 	<span class="no">.equ</span> <span class="no">LINUX_SYSCALL_EXIT</span><span class="p">,</span> <span class="no">__NR_exit</span>
 
-	<span class="na">.text</span>                    <span class="c1">// Place the following in the area that</span>
-	                         <span class="c1">// instruction should be encoded and stored</span>
-	                         <span class="c1">// for historical reasons it is called text</span>
+	<span class="na">.text</span>                    <span class="c1"># Place the following in the area that</span>
+	                         <span class="c1"># instruction should be encoded and stored</span>
+	                         <span class="c1"># for historical reasons it is called text</span>
 	<span class="na">.global</span> <span class="no">_start</span>
-<span class="nl">_start:</span>                          <span class="c1">// The linker knows to mark the _start address</span>
-                              	 <span class="c1">// as location where execution should begin.</span>
-	                         <span class="c1">// The OS will be sure to setup the CPU so that the</span>
-	                         <span class="c1">// program counter is initialized with this address</span>
+<span class="nl">_start:</span>                          <span class="c1"># The linker knows to mark the _start address</span>
+                              	 <span class="c1"># as location where execution should begin.</span>
+	                         <span class="c1"># The OS will be sure to setup the CPU so that the</span>
+	                         <span class="c1"># program counter is initialized with this address</span>
 
-	<span class="c1">// To voluntarily hand control of the cpu back to the Operating system so it can</span>
-	<span class="c1">// do somthing for us we use a special instruction</span>
-	<span class="c1">//  -- on x86_64 this instruction is syscall (man syscall - table 1)</span>
-	<span class="c1">//</span>
-	<span class="c1">// Operating systems provide many functions that a program can call to</span>
-	<span class="c1">// get things done.  eg.  open a stream, read or write bytes to or from a stream</span>
-	<span class="c1">// or simply terminate and exit our program.</span>
-	<span class="c1">//</span>
-	<span class="c1">// Each call is identifed by a number we call a system call number.</span>
-	<span class="c1">// On LINUX it expects us to load rax register with the system call number</span>
-	<span class="c1">// prior to executing the syscall.  Once control is handed over to the OS</span>
-	<span class="c1">// It will then look the number up and invoke the approriate function inside itself.</span>
-	<span class="c1">// Other registers can be used to pass parmeters to the particular OS system call function</span>
-	<span class="c1">// that we want to invoke.  The following is the conventions on X86_64 Linux</span>
-	<span class="c1">// </span>
-	<span class="c1">//       Arch/ABI      arg1  arg2  arg3  arg4  arg5  arg6  arg7 </span>
-        <span class="c1">// ────────────────────────────────────────────────────────────</span>
-        <span class="c1">//       x86-64        rdi   rsi   rdx   r10   r8    r9    -</span>
-	<span class="c1">// (see man syscall -- table 2)</span>
-	<span class="c1">// The list of all Linux system call numbers can be found in a file so that programers</span>
-	<span class="c1">// can know what number to use to invoke a particular call</span>
-	<span class="c1">// On our installation of linux you can find it here</span>
-	<span class="c1">//  /usr/include/x86_64-linux-gnu/asm/unistd_64.h</span>
-	<span class="c1">// For an explanation of all the systems calls see man syscalls (note the s)</span>
-	<span class="c1">// -- When we switch to understanding C we it will be easier to understand</span>
-	<span class="c1">//    the above manual pages</span>
-	<span class="c1">//</span>
-	<span class="c1">// On LINUX </span>
-	<span class="c1">//   One of these calls is the EXIT system call that tells OS our program is done </span>
-	<span class="c1">//   (see man 2 exit)</span>
+	<span class="c1"># To voluntarily hand control of the cpu back to the Operating system so it can</span>
+	<span class="c1"># do somthing for us we use a special instruction</span>
+	<span class="c1">#  -- on x86_64 this instruction is syscall (man syscall - table 1)</span>
+	<span class="c1">#</span>
+	<span class="c1"># Operating systems provide many functions that a program can call to</span>
+	<span class="c1"># get things done.  eg.  open a stream, read or write bytes to or from a stream</span>
+	<span class="c1"># or simply terminate and exit our program.</span>
+	<span class="c1">#</span>
+	<span class="c1"># Each call is identifed by a number we call a system call number.</span>
+	<span class="c1"># On LINUX it expects us to load rax register with the system call number</span>
+	<span class="c1"># prior to executing the syscall.  Once control is handed over to the OS</span>
+	<span class="c1"># It will then look the number up and invoke the approriate function inside itself.</span>
+	<span class="c1"># Other registers can be used to pass parmeters to the particular OS system call function</span>
+	<span class="c1"># that we want to invoke.  The following is the conventions on X86_64 Linux</span>
+	<span class="c1"># </span>
+	<span class="c1">#       Arch/ABI      arg1  arg2  arg3  arg4  arg5  arg6  arg7 </span>
+        <span class="c1"># ────────────────────────────────────────────────────────────</span>
+        <span class="c1">#       x86-64        rdi   rsi   rdx   r10   r8    r9    -</span>
+	<span class="c1"># (see man syscall -- table 2)</span>
+	<span class="c1"># The list of all Linux system call numbers can be found in a file so that programers</span>
+	<span class="c1"># can know what number to use to invoke a particular call</span>
+	<span class="c1"># On our installation of linux you can find it here</span>
+	<span class="c1">#  /usr/include/x86_64-linux-gnu/asm/unistd_64.h</span>
+	<span class="c1"># For an explanation of all the systems calls see man syscalls (note the s)</span>
+	<span class="c1"># -- When we switch to understanding C we it will be easier to understand</span>
+	<span class="c1">#    the above manual pages</span>
+	<span class="c1">#</span>
+	<span class="c1"># On LINUX </span>
+	<span class="c1">#   One of these calls is the EXIT system call that tells OS our program is done </span>
+	<span class="c1">#   (see man 2 exit)</span>
 	
-	<span class="nf">mov</span>     <span class="no">rax</span><span class="p">,</span> <span class="no">LINUX_SYSCALL_EXIT</span>        <span class="c1">// load rax with the Linux system call number for</span>
-	                                       <span class="c1">// exit</span>
+	<span class="nf">mov</span>     <span class="no">rax</span><span class="p">,</span> <span class="no">LINUX_SYSCALL_EXIT</span>        <span class="c1"># load rax with the Linux system call number for</span>
+	                                       <span class="c1"># exit</span>
 	
-	<span class="nf">mov</span>     <span class="no">rdi</span><span class="p">,</span> <span class="no">UNIX_SUCCESS_VALUE</span>        <span class="c1">// load rdi with the exit status value we want</span>
-	                                       <span class="c1">// to pass back to the program that launched us</span>
-	                                       <span class="c1">// eg. the shell in which we ran our program from</span>
+	<span class="nf">mov</span>     <span class="no">rdi</span><span class="p">,</span> <span class="no">UNIX_SUCCESS_VALUE</span>        <span class="c1"># load rdi with the exit status value we want</span>
+	                                       <span class="c1"># to pass back to the program that launched us</span>
+	                                       <span class="c1"># eg. the shell in which we ran our program from</span>
 	
-	<span class="nf">syscall</span>                                <span class="c1">// use the syscall instruction to hand control over</span>
-	                                       <span class="c1">// to the OS.  Note since we will be terminated</span>
-	                                       <span class="c1">// this instruction will be our last and nothing else</span>
-	                                       <span class="c1">// need follow it</span>
+	<span class="nf">syscall</span>                                <span class="c1"># use the syscall instruction to hand control over</span>
+	                                       <span class="c1"># to the OS.  Note since we will be terminated</span>
+	                                       <span class="c1"># this instruction will be our last and nothing else</span>
+	                                       <span class="c1"># need follow it</span>
 	
 </pre></div>
 </div>
@@ -951,7 +957,7 @@ run
         <a class="right-next" href="L09.html" title="next page">
             <div class="prevnext-info">
                 <p class="prevnext-label">next</p>
-                <p class="prevnext-title"><span class="section-number">9. </span>SLS Lecture 9 : Topics</p>
+                <p class="prevnext-title"><span class="section-number">9. </span>UC-SLS Lecture 9 : Assembly : Operations and Data Types</p>
             </div>
             <i class="prevnext-label fas fa-angle-right"></i>
         </a>
