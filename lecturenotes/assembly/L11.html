@@ -445,38 +445,9 @@
         
               <div>
                 
-  <div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">run</span> -i ../python/common.py
-<span class="n">UC_SKIPTERMS</span><span class="o">=</span><span class="kc">True</span>
-<span class="o">%</span><span class="k">run</span> -i ../python/ln_preamble.py
-</pre></div>
-</div>
-</div>
-</div>
-<div class="tex2jax_ignore mathjax_ignore section" id="sls-lecture-11-program-anatomy-ii-functions">
+  <div class="tex2jax_ignore mathjax_ignore section" id="sls-lecture-11-program-anatomy-ii-functions">
 <h1><span class="section-number">11. </span>SLS Lecture 11 :  Program Anatomy II : Functions<a class="headerlink" href="#sls-lecture-11-program-anatomy-ii-functions" title="Permalink to this headline">¶</a></h1>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># setup for sumit examples</span>
-<span class="n">appdir</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s1">&#39;HOME&#39;</span><span class="p">)</span>
-<span class="n">appdir</span><span class="o">=</span><span class="n">appdir</span> <span class="o">+</span> <span class="s2">&quot;/sum&quot;</span>
-<span class="c1">#print(movdir)</span>
-<span class="n">output</span><span class="o">=</span><span class="n">runTermCmd</span><span class="p">(</span><span class="s2">&quot;[[ -d &quot;</span> <span class="o">+</span> <span class="n">appdir</span> <span class="o">+</span> <span class="s2">&quot; ]] &amp;&amp;  rm -rf &quot;</span><span class="o">+</span> <span class="n">appdir</span> <span class="o">+</span> 
-             <span class="s2">&quot;;mkdir &quot;</span> <span class="o">+</span> <span class="n">appdir</span> <span class="o">+</span> 
-             <span class="s2">&quot;;cp ../src/Makefile ../src/*.bin ../src/setup.gdb ../src/usesumABC.gdb ../src/usesum*.S ../src/sumit*.S &quot;</span> <span class="o">+</span> <span class="n">appdir</span><span class="p">)</span>
-<span class="c1">#TermShellCmd(&quot;ls&quot;, cwd=appdir)</span>
-<span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
-<span class="s1">- create a directory `mkdir sum; cd sum`</span>
-<span class="s1">- copy sumit and usesumit code examples</span>
-<span class="s1">- add a `Makefile` to automate assembling and linking</span>
-<span class="s1">    - we are going run the commands by hand this time to highlight the details</span>
-<span class="s1">- add our `setup.gdb` and `usesumABC.gdb` to make working in gdb easier</span>
-<span class="s1">- normally you would want to track everything in git</span>
-<span class="s1">&#39;&#39;&#39;</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
+<div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <ul class="simple">
 <li><p>create a directory <code class="docutils literal notranslate"><span class="pre">mkdir</span> <span class="pre">sum;</span> <span class="pre">cd</span> <span class="pre">sum</span></code></p></li>
@@ -638,26 +609,7 @@
 <div class="section" id="sumit-as-per-last-lecture">
 <h3><span class="section-number">11.1.1. </span><code class="docutils literal notranslate"><span class="pre">sumit</span></code> as per last lecture<a class="headerlink" href="#sumit-as-per-last-lecture" title="Permalink to this headline">¶</a></h3>
 <p>Hardcode <code class="docutils literal notranslate"><span class="pre">int3</span></code> stops us from saving our sum as we would like</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="n">FileCodeBox</span><span class="p">(</span>
-    <span class="n">file</span><span class="o">=</span><span class="s2">&quot;../src/sumit.S&quot;</span><span class="p">,</span> 
-    <span class="n">lang</span><span class="o">=</span><span class="s2">&quot;gas&quot;</span><span class="p">,</span> 
-    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;&lt;b&gt;CODE: asm - sumit.S : Version 1&quot;</span><span class="p">,</span>
-    <span class="n">h</span><span class="o">=</span><span class="s2">&quot;100%&quot;</span><span class="p">,</span> 
-    <span class="n">w</span><span class="o">=</span><span class="s2">&quot;107em&quot;</span>
-<span class="p">)))</span>
-<span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="s2">&quot;**Corresponding: usesum**&quot;</span><span class="p">))</span>
-<span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="n">FileCodeBox</span><span class="p">(</span>
-    <span class="n">file</span><span class="o">=</span><span class="s2">&quot;../src/usesum.S&quot;</span><span class="p">,</span> 
-    <span class="n">lang</span><span class="o">=</span><span class="s2">&quot;gas&quot;</span><span class="p">,</span> 
-    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;&lt;b&gt;CODE: asm - sumit.S : Version 1&quot;</span><span class="p">,</span>
-    <span class="n">h</span><span class="o">=</span><span class="s2">&quot;100%&quot;</span><span class="p">,</span> 
-    <span class="n">w</span><span class="o">=</span><span class="s2">&quot;107em&quot;</span>
-<span class="p">)))</span>
-</pre></div>
-</div>
-</div>
+<div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <p><b>CODE: asm - sumit.S : Version 1</p>
 <div style="width:107em; height:100%; font-size:inherit; overflow: auto;" >
@@ -718,12 +670,7 @@ loop_done:
 </div>
 </div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">TermShellCmd</span><span class="p">(</span><span class="s2">&quot;make usesum&quot;</span><span class="p">,</span> <span class="n">cwd</span><span class="o">=</span><span class="n">appdir</span><span class="p">,</span> <span class="n">prompt</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
+<div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>as -g -a=usesum.o.lst usesum.S -o usesum.o
 as -g -a=sumit.o.lst sumit.S -o sumit.o
@@ -747,26 +694,7 @@ jump.</p></li>
 <ul class="simple">
 <li><p>how do we <code class="docutils literal notranslate"><span class="pre">jump</span></code> back to the right spot?</p></li>
 </ul>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="n">FileCodeBox</span><span class="p">(</span>
-    <span class="n">file</span><span class="o">=</span><span class="s2">&quot;../src/sumit2.S&quot;</span><span class="p">,</span> 
-    <span class="n">lang</span><span class="o">=</span><span class="s2">&quot;gas&quot;</span><span class="p">,</span> 
-    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;&lt;b&gt;CODE: asm - sumit2.S : Version 2&quot;</span><span class="p">,</span>
-    <span class="n">h</span><span class="o">=</span><span class="s2">&quot;100%&quot;</span><span class="p">,</span> 
-    <span class="n">w</span><span class="o">=</span><span class="s2">&quot;107em&quot;</span>
-<span class="p">)))</span>
-<span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="s2">&quot;**Corresponding: usesum**&quot;</span><span class="p">))</span>
-<span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="n">FileCodeBox</span><span class="p">(</span>
-    <span class="n">file</span><span class="o">=</span><span class="s2">&quot;../src/usesum2.S&quot;</span><span class="p">,</span> 
-    <span class="n">lang</span><span class="o">=</span><span class="s2">&quot;gas&quot;</span><span class="p">,</span> 
-    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;&lt;b&gt;CODE: asm - sumit2.S : Version 2&quot;</span><span class="p">,</span>
-    <span class="n">h</span><span class="o">=</span><span class="s2">&quot;100%&quot;</span><span class="p">,</span> 
-    <span class="n">w</span><span class="o">=</span><span class="s2">&quot;107em&quot;</span>
-<span class="p">)))</span>
-</pre></div>
-</div>
-</div>
+<div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <p><b>CODE: asm - sumit2.S : Version 2</p>
 <div style="width:107em; height:100%; font-size:inherit; overflow: auto;" >
@@ -844,12 +772,7 @@ loop_done:
 </div>
 </div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">TermShellCmd</span><span class="p">(</span><span class="s2">&quot;make usesum2&quot;</span><span class="p">,</span> <span class="n">cwd</span><span class="o">=</span><span class="n">appdir</span><span class="p">,</span> <span class="n">prompt</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
+<div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>as -g -a=usesum2.o.lst usesum2.S -o usesum2.o
 as -g -a=sumit2.o.lst sumit2.S -o sumit2.o
@@ -858,18 +781,7 @@ ld -g -Map=usesum2.map usesum2.o sumit2.o -o usesum2
 </div>
 </div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="n">FileCodeBox</span><span class="p">(</span>
-    <span class="n">file</span><span class="o">=</span><span class="s2">&quot;../src/usesumABC.gdb&quot;</span><span class="p">,</span> 
-    <span class="n">lang</span><span class="o">=</span><span class="s2">&quot;gdb&quot;</span><span class="p">,</span> 
-    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;&lt;b&gt;GDB commands to use&quot;</span><span class="p">,</span>
-    <span class="n">h</span><span class="o">=</span><span class="s2">&quot;100%&quot;</span><span class="p">,</span> 
-    <span class="n">w</span><span class="o">=</span><span class="s2">&quot;107em&quot;</span>
-<span class="p">)))</span>
-</pre></div>
-</div>
-</div>
+<div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <p><b>GDB commands to use</p>
 <div style="width:107em; height:100%; font-size:inherit; overflow: auto;" >
@@ -895,26 +807,7 @@ display /d { (long long)A_SUM, (long long)B_SUM, (long long)C_SUM }
 <div class="section" id="version-3-fix-our-problem-by-passing-in-the-return-address-in-a-register-in-our-case-we-use-rdx-and-jump-back-via-this-register">
 <h3><span class="section-number">11.1.3. </span>Version 3:  Fix our problem by passing in the return address in a register.  In our case we use ‘rdx’ and jump back via this register.<a class="headerlink" href="#version-3-fix-our-problem-by-passing-in-the-return-address-in-a-register-in-our-case-we-use-rdx-and-jump-back-via-this-register" title="Permalink to this headline">¶</a></h3>
 <p>Note this approach requires one register for each call to hold the return address.  This has problems if we were to nest calls.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="n">FileCodeBox</span><span class="p">(</span>
-    <span class="n">file</span><span class="o">=</span><span class="s2">&quot;../src/sumit3.S&quot;</span><span class="p">,</span> 
-    <span class="n">lang</span><span class="o">=</span><span class="s2">&quot;gas&quot;</span><span class="p">,</span> 
-    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;&lt;b&gt;CODE: asm - sumit3.S : Version 3&quot;</span><span class="p">,</span>
-    <span class="n">h</span><span class="o">=</span><span class="s2">&quot;100%&quot;</span><span class="p">,</span> 
-    <span class="n">w</span><span class="o">=</span><span class="s2">&quot;107em&quot;</span>
-<span class="p">)))</span>
-<span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="s2">&quot;**Corresponding: usesum**&quot;</span><span class="p">))</span>
-<span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="n">FileCodeBox</span><span class="p">(</span>
-    <span class="n">file</span><span class="o">=</span><span class="s2">&quot;../src/usesum3.S&quot;</span><span class="p">,</span> 
-    <span class="n">lang</span><span class="o">=</span><span class="s2">&quot;gas&quot;</span><span class="p">,</span> 
-    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;&lt;b&gt;CODE: asm - usesum3.S : Version 3&quot;</span><span class="p">,</span>
-    <span class="n">h</span><span class="o">=</span><span class="s2">&quot;100%&quot;</span><span class="p">,</span> 
-    <span class="n">w</span><span class="o">=</span><span class="s2">&quot;107em&quot;</span>
-<span class="p">)))</span>
-</pre></div>
-</div>
-</div>
+<div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <p><b>CODE: asm - sumit3.S : Version 3</p>
 <div style="width:107em; height:100%; font-size:inherit; overflow: auto;" >
@@ -996,12 +889,7 @@ loop_done:
 </div>
 </div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">TermShellCmd</span><span class="p">(</span><span class="s2">&quot;make usesum3&quot;</span><span class="p">,</span> <span class="n">cwd</span><span class="o">=</span><span class="n">appdir</span><span class="p">,</span> <span class="n">prompt</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
+<div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>as -g -a=usesum3.o.lst usesum3.S -o usesum3.o
 as -g -a=sumit3.o.lst sumit3.S -o sumit3.o
@@ -1014,26 +902,7 @@ ld -g -Map=usesum3.map usesum3.o sumit3.o -o usesum3
 <div class="section" id="version-4-use-stack-to-spill-rdx-before-making-any-call">
 <h3><span class="section-number">11.1.4. </span>Version 4:  Use stack to spill <code class="docutils literal notranslate"><span class="pre">rdx</span></code> before making any call.<a class="headerlink" href="#version-4-use-stack-to-spill-rdx-before-making-any-call" title="Permalink to this headline">¶</a></h3>
 <p>Although we don’t use it this would allow us to make nested calls assuming we always used the same register to pass the return address in.  In our case <code class="docutils literal notranslate"><span class="pre">rdx</span></code>.  This approach effectively uses the stack to spill <code class="docutils literal notranslate"><span class="pre">rdx</span></code> before we use it to make a call.  In this way the caller is using the stack to hang on to where it needs to return before making a new call.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="n">FileCodeBox</span><span class="p">(</span>
-    <span class="n">file</span><span class="o">=</span><span class="s2">&quot;../src/sumit3.S&quot;</span><span class="p">,</span> 
-    <span class="n">lang</span><span class="o">=</span><span class="s2">&quot;gas&quot;</span><span class="p">,</span> 
-    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;&lt;b&gt;CODE: asm - sumit3.S : Version 4 no change use version 3&quot;</span><span class="p">,</span>
-    <span class="n">h</span><span class="o">=</span><span class="s2">&quot;100%&quot;</span><span class="p">,</span> 
-    <span class="n">w</span><span class="o">=</span><span class="s2">&quot;107em&quot;</span>
-<span class="p">)))</span>
-<span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="s2">&quot;**Corresponding: usesum**&quot;</span><span class="p">))</span>
-<span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="n">FileCodeBox</span><span class="p">(</span>
-    <span class="n">file</span><span class="o">=</span><span class="s2">&quot;../src/usesum4.S&quot;</span><span class="p">,</span> 
-    <span class="n">lang</span><span class="o">=</span><span class="s2">&quot;gas&quot;</span><span class="p">,</span> 
-    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;&lt;b&gt;CODE: asm - usesum4.S : Version 4&quot;</span><span class="p">,</span>
-    <span class="n">h</span><span class="o">=</span><span class="s2">&quot;100%&quot;</span><span class="p">,</span> 
-    <span class="n">w</span><span class="o">=</span><span class="s2">&quot;107em&quot;</span>
-<span class="p">)))</span>
-</pre></div>
-</div>
-</div>
+<div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <p><b>CODE: asm - sumit3.S : Version 4 no change use version 3</p>
 <div style="width:107em; height:100%; font-size:inherit; overflow: auto;" >
@@ -1121,12 +990,7 @@ loop_done:
 </div>
 </div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">TermShellCmd</span><span class="p">(</span><span class="s2">&quot;make usesum4&quot;</span><span class="p">,</span> <span class="n">cwd</span><span class="o">=</span><span class="n">appdir</span><span class="p">,</span> <span class="n">prompt</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
+<div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>as -g -a=usesum4.o.lst usesum4.S -o usesum4.o
 ld -g -Map=usesum4.map usesum4.o sumit3.o -o usesum4
@@ -1137,26 +1001,7 @@ ld -g -Map=usesum4.map usesum4.o sumit3.o -o usesum4
 </div>
 <div class="section" id="version-5-use-call-and-ret-instructions-to-turn-our-code-into-an-real-x86-function">
 <h3><span class="section-number">11.1.5. </span>Version 5: Use <code class="docutils literal notranslate"><span class="pre">call</span></code> and <code class="docutils literal notranslate"><span class="pre">ret</span></code> instructions to turn our code into an “real” X86 function<a class="headerlink" href="#version-5-use-call-and-ret-instructions-to-turn-our-code-into-an-real-x86-function" title="Permalink to this headline">¶</a></h3>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="n">FileCodeBox</span><span class="p">(</span>
-    <span class="n">file</span><span class="o">=</span><span class="s2">&quot;../src/sumit5.S&quot;</span><span class="p">,</span> 
-    <span class="n">lang</span><span class="o">=</span><span class="s2">&quot;gas&quot;</span><span class="p">,</span> 
-    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;&lt;b&gt;CODE: asm - sumit5.S : Version 5&quot;</span><span class="p">,</span>
-    <span class="n">h</span><span class="o">=</span><span class="s2">&quot;100%&quot;</span><span class="p">,</span> 
-    <span class="n">w</span><span class="o">=</span><span class="s2">&quot;107em&quot;</span>
-<span class="p">)))</span>
-<span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="s2">&quot;**Corresponding: usesum**&quot;</span><span class="p">))</span>
-<span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="n">FileCodeBox</span><span class="p">(</span>
-    <span class="n">file</span><span class="o">=</span><span class="s2">&quot;../src/usesum5.S&quot;</span><span class="p">,</span> 
-    <span class="n">lang</span><span class="o">=</span><span class="s2">&quot;gas&quot;</span><span class="p">,</span> 
-    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;&lt;b&gt;CODE: asm - usesum5.S : Version 5&quot;</span><span class="p">,</span>
-    <span class="n">h</span><span class="o">=</span><span class="s2">&quot;100%&quot;</span><span class="p">,</span> 
-    <span class="n">w</span><span class="o">=</span><span class="s2">&quot;107em&quot;</span>
-<span class="p">)))</span>
-</pre></div>
-</div>
-</div>
+<div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <p><b>CODE: asm - sumit5.S : Version 5</p>
 <div style="width:107em; height:100%; font-size:inherit; overflow: auto;" >
@@ -1232,12 +1077,7 @@ loop_done:
 </div>
 </div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">TermShellCmd</span><span class="p">(</span><span class="s2">&quot;make usesum5&quot;</span><span class="p">,</span> <span class="n">cwd</span><span class="o">=</span><span class="n">appdir</span><span class="p">,</span> <span class="n">prompt</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
+<div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>as -g -a=usesum5.o.lst usesum5.S -o usesum5.o
 as -g -a=sumit5.o.lst sumit5.S -o sumit5.o
@@ -1249,26 +1089,7 @@ ld -g -Map=usesum5.map usesum5.o sumit5.o -o usesum5
 </div>
 <div class="section" id="version-6-improving-code-by-spilling-rdi-in-sumit">
 <h3><span class="section-number">11.1.6. </span>Version 6 improving code by “spilling” <code class="docutils literal notranslate"><span class="pre">rdi</span></code> in <code class="docutils literal notranslate"><span class="pre">sumIt</span></code><a class="headerlink" href="#version-6-improving-code-by-spilling-rdi-in-sumit" title="Permalink to this headline">¶</a></h3>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="n">FileCodeBox</span><span class="p">(</span>
-    <span class="n">file</span><span class="o">=</span><span class="s2">&quot;../src/sumit6.S&quot;</span><span class="p">,</span> 
-    <span class="n">lang</span><span class="o">=</span><span class="s2">&quot;gas&quot;</span><span class="p">,</span> 
-    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;&lt;b&gt;CODE: asm - sumit6.S : Version 6&quot;</span><span class="p">,</span>
-    <span class="n">h</span><span class="o">=</span><span class="s2">&quot;100%&quot;</span><span class="p">,</span> 
-    <span class="n">w</span><span class="o">=</span><span class="s2">&quot;107em&quot;</span>
-<span class="p">)))</span>
-<span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="s2">&quot;**Corresponding: usesum**&quot;</span><span class="p">))</span>
-<span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="n">FileCodeBox</span><span class="p">(</span>
-    <span class="n">file</span><span class="o">=</span><span class="s2">&quot;../src/usesum5.S&quot;</span><span class="p">,</span> 
-    <span class="n">lang</span><span class="o">=</span><span class="s2">&quot;gas&quot;</span><span class="p">,</span> 
-    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;&lt;b&gt;CODE: asm - usesum5.S : Version 6 no change to usesum use Version 5&quot;</span><span class="p">,</span>
-    <span class="n">h</span><span class="o">=</span><span class="s2">&quot;100%&quot;</span><span class="p">,</span> 
-    <span class="n">w</span><span class="o">=</span><span class="s2">&quot;107em&quot;</span>
-<span class="p">)))</span>
-</pre></div>
-</div>
-</div>
+<div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <p><b>CODE: asm - sumit6.S : Version 6</p>
 <div style="width:107em; height:100%; font-size:inherit; overflow: auto;" >
@@ -1346,12 +1167,7 @@ loop_done:
 </div>
 </div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">TermShellCmd</span><span class="p">(</span><span class="s2">&quot;make usesum6&quot;</span><span class="p">,</span> <span class="n">cwd</span><span class="o">=</span><span class="n">appdir</span><span class="p">,</span> <span class="n">prompt</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
+<div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>as -g -a=sumit6.o.lst sumit6.S -o sumit6.o
 ld -g -Map=usesum6.map usesum5.o sumit6.o -o usesum6
