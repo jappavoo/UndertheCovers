@@ -1,4 +1,4 @@
-ASMTARGETS=popcnt simple empty add addwithvars hello exit exit_bb exit_bb_bb brk int3 main cbrk mov usesum
+ASMTARGETS=popcnt simple empty add addwithvars hello exit exit_bb exit_bb_bb brk int3 main cbrk mov usesum usesum2 usesum3 usesum4 usesum5
 CTARGETS=hello cbrk
 ASM6502TARGETS=6502add
 
@@ -33,6 +33,9 @@ DEBUG:=-g
 %: %.c
 	gcc -O0 -g $< -o $@
 
+%.bin: %.nums
+	ascii2binary -t sq < $< > $@
+
 %.6502_o: %.6502_s
 	ca65 $< -o $@ -l $@.lst
 
@@ -43,6 +46,14 @@ DEBUG:=-g
 all: ${ASMTARGETS} ${CTARGETS} ${ASM6502TARGETS}
 
 usesum: usesum.o sumit.o
+
+usesum2: usesum2.o sumit2.o
+
+usesum3: usesum3.o sumit3.o
+
+usesum4: usesum4.o sumit3.o
+
+usesum5: usesum5.o sumit5.o
 
 # overides so that we use cpp to proces includes
 exit.o: exit.I
