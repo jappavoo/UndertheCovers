@@ -1,10 +1,11 @@
 	.intel_syntax noprefix
 	.section .text
-	
+
 	.global _start
 _start:
 	mov rdi, OFFSET PLAYER_ARRAY
-	mov rsi, OFFSET NUM_PLAYERS
+	mov rsi, (PLAYER_ARRAY_END - PLAYER_ARRAY)/93   #ugly magic number
+	
 	call find_player
 
 	mov rdi, rax
@@ -24,5 +25,5 @@ PLAYER_ARRAY:
 	.zero   80 - 11      # fill rest of name array with 0
 	.int    -4           # score 
 	.byte   9            # age
+PLAYER_ARRAY_END:	
 
-	.equ NUM_PLAYERS, (. - PLAYER_ARRAY) / 93

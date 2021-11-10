@@ -17,6 +17,7 @@
 	.equ PLAYER_NAME_OFFSET,8     # offset 80 byte ascii name
 	.equ PLAYER_SCORE_OFFSET, 88  # offset 4 byte score
 	.equ PLAYER_AGE_OFFSET, 92    # offset 1 Byte unsigned age
+
 	
 	#  Routine to search an array of player structures
 	#  to find first player who's name contains a 'B'
