@@ -23,3 +23,10 @@ usesum3
 usesum4
 usesum5
 usesum6
+selfmodify
+codeptrs
+tree
+tree_bb
+brk.I
+exit.I
+exit_bb.I
