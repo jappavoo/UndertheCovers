@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>12. SLS Lecture 12 : Topics &#8212; UndertheCovers</title>
+    <title>12. SLS Lecture 12 : Program Anatomy III : Code as Data &#8212; UndertheCovers</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet" />
   <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -51,7 +51,7 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="13. SLS Lecture 13 : Topics" href="L13.html" />
+    <link rel="next" title="13. SLS Lecture 13 : Program Anatomy V: The Tree of Bytes and Data Structures" href="L13.html" />
     <link rel="prev" title="11. SLS Lecture 11 : Program Anatomy II : Functions" href="L11.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -180,17 +180,17 @@
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   12. SLS Lecture 12 : Topics
+   12. SLS Lecture 12 : Program Anatomy III : Code as Data
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="L13.html">
-   13. SLS Lecture 13 : Topics
+   13. SLS Lecture 13 : Program Anatomy V: The Tree of Bytes and Data Structures
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="L14.html">
-   14. SLS Lecture 14 : Topics
+   14. SLS Lecture 14 : Assembly using the OS
   </a>
  </li>
  <li class="toctree-l1">
@@ -359,9 +359,71 @@
         
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="sls-lecture-12-topics">
-<h1><span class="section-number">12. </span>SLS Lecture 12 : Topics<a class="headerlink" href="#sls-lecture-12-topics" title="Permalink to this headline">¶</a></h1>
+  <div class="tex2jax_ignore mathjax_ignore section" id="sls-lecture-12-program-anatomy-iii-code-as-data">
+<h1><span class="section-number">12. </span>SLS Lecture 12 : Program Anatomy III : Code as Data<a class="headerlink" href="#sls-lecture-12-program-anatomy-iii-code-as-data" title="Permalink to this headline">¶</a></h1>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>$ ls
+codeptrs.gdb  codeptrs.S  Makefile  selfmodify.gdb  selfmodify.S
+$ 
+</pre></div>
 </div>
+<ul class="simple">
+<li><p>create a directory <code class="docutils literal notranslate"><span class="pre">mkdir</span> <span class="pre">codedata;</span> <span class="pre">cd</span> <span class="pre">codedata</span></code></p></li>
+<li><p>copy examples</p></li>
+<li><p>add a <code class="docutils literal notranslate"><span class="pre">Makefile</span></code> to automate assembling and linking</p>
+<ul>
+<li><p>we are going run the commands by hand this time to highlight the details</p></li>
+</ul>
+</li>
+<li><p>add our <code class="docutils literal notranslate"><span class="pre">setup.gdb</span></code> and <code class="docutils literal notranslate"><span class="pre">codeptrs.gdb</span></code> and <code class="docutils literal notranslate"><span class="pre">selfmodify.gdb</span></code> to make working in gdb easier</p></li>
+<li><p>normally you would want to track everything in git</p></li>
+</ul>
+</div>
+</div>
+<center>
+<img src=../images/ASSEMBLY-PGMIV/ASSEMBLY-PGMIV.001.png>
+</center> <center>
+<img src=../images/ASSEMBLY-PGMIV/ASSEMBLY-PGMIV.002.png>
+</center> <center>
+<img src=../images/ASSEMBLY-PGMIV/ASSEMBLY-PGMIV.003.png>
+</center> <center>
+<img src=../images/ASSEMBLY-PGMIV/ASSEMBLY-PGMIV.004.png>
+</center> <center>
+<img src=../images/ASSEMBLY-PGMIV/ASSEMBLY-PGMIV.005.png>
+</center> <center>
+<img src=../images/ASSEMBLY-PGMIV/ASSEMBLY-PGMIV.006.png>
+</center> <center>
+<img src=../images/ASSEMBLY-PGMIV/ASSEMBLY-PGMIV.007.png>
+</center> <center>
+<img src=../images/ASSEMBLY-PGMIV/ASSEMBLY-PGMIV.008.png>
+</center> <center>
+<img src=../images/ASSEMBLY-PGMIV/ASSEMBLY-PGMIV.009.png>
+</center> <center>
+<img src=../images/ASSEMBLY-PGMIV/ASSEMBLY-PGMIV.010.png>
+</center> <center>
+<img src=../images/ASSEMBLY-PGMIV/ASSEMBLY-PGMIV.011.png>
+</center> <center>
+<img src=../images/ASSEMBLY-PGMIV/ASSEMBLY-PGMIV.012.png>
+</center> <center>
+<img src=../images/ASSEMBLY-PGMIV/ASSEMBLY-PGMIV.013.png>
+</center> <center>
+<img src=../images/ASSEMBLY-PGMIV/ASSEMBLY-PGMIV.014.png>
+</center> <center>
+<img src=../images/ASSEMBLY-PGMIV/ASSEMBLY-PGMIV.015.png>
+</center> <center>
+<img src=../images/ASSEMBLY-PGMIV/ASSEMBLY-PGMIV.016.png>
+</center> <center>
+<img src=../images/ASSEMBLY-PGMIV/ASSEMBLY-PGMIV.017.png>
+</center> <center>
+<img src=../images/ASSEMBLY-PGMIV/ASSEMBLY-PGMIV.018.png>
+</center> <center>
+<img src=../images/ASSEMBLY-PGMIV/ASSEMBLY-PGMIV.019.png>
+</center> <center>
+<img src=../images/ASSEMBLY-PGMIV/ASSEMBLY-PGMIV.020.png>
+</center> <center>
+<img src=../images/ASSEMBLY-PGMIV/ASSEMBLY-PGMIV.021.png>
+</center> </div>
 
     <script type="text/x-thebe-config">
     {
@@ -405,7 +467,7 @@
         <a class="right-next" href="L13.html" title="next page">
             <div class="prevnext-info">
                 <p class="prevnext-label">next</p>
-                <p class="prevnext-title"><span class="section-number">13. </span>SLS Lecture 13 : Topics</p>
+                <p class="prevnext-title"><span class="section-number">13. </span>SLS Lecture 13 : Program Anatomy V: The Tree of Bytes and Data Structures</p>
             </div>
             <i class="prevnext-label fas fa-angle-right"></i>
         </a>

@@ -182,17 +182,17 @@
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="L12.html">
-   12. SLS Lecture 12 : Topics
+   12. SLS Lecture 12 : Program Anatomy III : Code as Data
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="L13.html">
-   13. SLS Lecture 13 : Topics
+   13. SLS Lecture 13 : Program Anatomy V: The Tree of Bytes and Data Structures
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="L14.html">
-   14. SLS Lecture 14 : Topics
+   14. SLS Lecture 14 : Assembly using the OS
   </a>
  </li>
  <li class="toctree-l1">
@@ -874,7 +874,6 @@ the idea of an array.</p>
 	# we assume rbx has length  rbx -&gt; len
 	# and that we will leave final sum in rax
 sumIt:	                              # location of this code is
-	# sumIt .eg sumIt is 0x1022
 	xor  rax, rax            # rax -&gt; sum : sum = 0
 	xor  rdi, rdi            # rax -&gt; i : i = 0
 
@@ -934,15 +933,12 @@ loop_done:
 	<span class="c1">#  initalized it to 0</span>
 <span class="nl">XARRAY_LEN:</span>
 	<span class="na">.quad</span> <span class="mi">0x0</span>
-	<span class="na">.size</span> <span class="no">XARRAY_LEN</span><span class="p">,</span> <span class="mi">8</span>
-	
 	<span class="c1"># reserve enough space for 1024 8 byte values</span>
 	<span class="c1">#  third argument is alignment.... turns out cpu</span>
 	<span class="c1">#  cpu is more efficient if things are located at address</span>
 	<span class="c1">#  of a particular &#39;alignment (see intel manual)</span>
-	<span class="na">.comm</span> <span class="no">XARRAY</span><span class="p">,</span> <span class="mi">8</span><span class="p">*</span><span class="mi">1024</span><span class="p">,</span> <span class="mi">8</span>
-	
-	<span class="na">.comm</span> <span class="no">sum</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">8</span> 	<span class="c1"># space to store final sum</span>
+	<span class="na">.comm</span> <span class="no">XARRAY</span><span class="p">,</span> <span class="mi">8</span><span class="p">*</span><span class="mi">1024</span><span class="p">,</span> <span class="mi">8</span>	
+	<span class="no">.comm</span> <span class="no">sum</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">8</span> 	<span class="c1"># space to store final sum</span>
 
 	<span class="na">.text</span>
 	<span class="na">.global</span> <span class="no">_start</span> 
@@ -1018,7 +1014,7 @@ loop_done:
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dd if=/dev/random of=100randomnum.bin bs=1 count=800
 800+0 records in
 800+0 records out
-800 bytes copied, 0.003305 s, 242 kB/s
+800 bytes copied, 0.0042034 s, 190 kB/s
 </pre></div>
 </div>
 </div>
@@ -1026,29 +1022,29 @@ loop_done:
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>$ hexdump -C 100randomnum.bin | head -10
-00000000  7d 3d 63 56 49 2c 39 e5  fc 1a 96 83 ac e5 f9 13  |}=cVI,9.........|
-00000010  56 62 f4 f3 9f 6d 48 30  13 c2 74 25 45 40 07 ed  |Vb...mH0..t%E@..|
-00000020  5b ef d1 07 5d 30 c7 45  06 98 22 be 77 2f 2e 38  |[...]0.E..&quot;.w/.8|
-00000030  53 2b f5 98 10 63 7d 81  c6 8f b1 78 be 7e c1 15  |S+...c}....x.~..|
-00000040  a8 83 d8 f9 2d 8e 5f a4  14 19 2b d2 14 41 3c 32  |....-._...+..A&lt;2|
-00000050  a2 dc 62 8d 2e 08 33 85  de 96 0c af 78 ba 58 90  |..b...3.....x.X.|
-00000060  a0 1e 4e 12 7c 37 95 c9  06 42 45 1e 55 ad f2 c7  |..N.|7...BE.U...|
-00000070  06 13 a1 75 e9 1c be 69  3b da 48 e9 f1 90 58 9e  |...u...i;.H...X.|
-00000080  c5 36 0d 33 a9 93 18 84  b2 f1 15 ad a5 d2 18 b5  |.6.3............|
-00000090  36 70 1e 8f e2 d8 89 70  4f 00 fd 58 b0 dd d5 a4  |6p.....pO..X....|
+00000000  1d de 8f 3d a4 15 02 c6  f7 f0 1b b2 43 ba 93 18  |...=........C...|
+00000010  90 95 5a f1 bf fa 8f 31  d4 a2 61 d8 da 84 59 dd  |..Z....1..a...Y.|
+00000020  74 c6 d9 6d 8e ea 82 f7  ea 06 df df e8 23 b7 ce  |t..m.........#..|
+00000030  a9 48 e4 f3 cd 7e 38 45  4e f6 76 31 61 fc 1c 07  |.H...~8EN.v1a...|
+00000040  9b 1a 26 9a a2 b1 08 e7  ee d7 42 63 3b 7d b0 da  |..&amp;.......Bc;}..|
+00000050  58 64 50 db 9b 7c 51 ff  c4 53 8d 21 bd f9 fe ed  |XdP..|Q..S.!....|
+00000060  a6 10 01 4f b6 4b 2d bf  12 0f f6 f2 fd ea b9 bd  |...O.K-.........|
+00000070  c4 38 c8 c5 22 7e dc 34  68 10 ab e5 0e 46 a3 9b  |.8..&quot;~.4h....F..|
+00000080  6c db 4d 3e 45 fc 74 0b  6b 00 ab 59 e4 03 44 84  |l.M&gt;E.t.k..Y..D.|
+00000090  cb b6 e9 71 1b a6 82 78  f4 80 99 7d 83 13 de 19  |...q...x...}....|
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>$ od -t d8 100randomnum.bin | head -10
-0000000 -1929462271857967747  1439434085026372348
-0000020  3479151245903815254 -1367053296158326253
-0000040  5028040685103738715  4048225306390206470
-0000060 -9116021147791185069  1567673501835431878
-0000100 -6602402200585469016  3619839758180227348
-0000120 -8848719846819308382 -8045475706801711394
-0000140 -3921166894533566816 -4038975334706232826
-0000160  7619559408583906054 -7036715049091016133
-0000200 -8928223906346748219 -5397332544388206158
-0000220  8109251071632633910 -6569100731973042097
+0000000 -4178753709094740451  1770963878400487671
+0000020  3571348731823035792 -2496818442932215084
+0000040  -611668701919721868 -3551330298063026454
+0000060  4987876010338044073   512561951985301070
+0000100 -1798992739205506405 -2688511283518318610
+0000120   -49121112083110824 -1297325051929078844
+0000140 -4670993992131735386 -4775527553425862894
+0000160  3809058072660818116 -7231859546830204824
+0000200   825562006043876204 -8915997082994933653
+0000220  8683685668329207499  1863948751246819572
 </pre></div>
 </div>
 </div>

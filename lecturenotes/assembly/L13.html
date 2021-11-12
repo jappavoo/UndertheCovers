@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>13. SLS Lecture 13 : Topics &#8212; UndertheCovers</title>
+    <title>13. SLS Lecture 13 : Program Anatomy V: The Tree of Bytes and Data Structures &#8212; UndertheCovers</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet" />
   <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -51,8 +51,8 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="14. SLS Lecture 14 : Topics" href="L14.html" />
-    <link rel="prev" title="12. SLS Lecture 12 : Topics" href="L12.html" />
+    <link rel="next" title="14. SLS Lecture 14 : Assembly using the OS" href="L14.html" />
+    <link rel="prev" title="12. SLS Lecture 12 : Program Anatomy III : Code as Data" href="L12.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -180,17 +180,17 @@
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="L12.html">
-   12. SLS Lecture 12 : Topics
+   12. SLS Lecture 12 : Program Anatomy III : Code as Data
   </a>
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   13. SLS Lecture 13 : Topics
+   13. SLS Lecture 13 : Program Anatomy V: The Tree of Bytes and Data Structures
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="L14.html">
-   14. SLS Lecture 14 : Topics
+   14. SLS Lecture 14 : Assembly using the OS
   </a>
  </li>
  <li class="toctree-l1">
@@ -351,6 +351,19 @@
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show">
             
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#overview">
+   13.1. Overview
+  </a>
+ </li>
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -359,8 +372,119 @@
         
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="sls-lecture-13-topics">
-<h1><span class="section-number">13. </span>SLS Lecture 13 : Topics<a class="headerlink" href="#sls-lecture-13-topics" title="Permalink to this headline">¶</a></h1>
+  <div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">run</span> -i ../python/common.py
+<span class="n">UC_SKIPTERMS</span><span class="o">=</span><span class="kc">True</span>
+<span class="o">%</span><span class="k">run</span> -i ../python/ln_preamble.py
+</pre></div>
+</div>
+</div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="sls-lecture-13-program-anatomy-v-the-tree-of-bytes-and-data-structures">
+<h1><span class="section-number">13. </span>SLS Lecture 13 : Program Anatomy V: The Tree of Bytes and Data Structures<a class="headerlink" href="#sls-lecture-13-program-anatomy-v-the-tree-of-bytes-and-data-structures" title="Permalink to this headline">¶</a></h1>
+<center>
+<img src="../images/ASSEMBLY-PGMV/ASSEMBLY-PGMV.001.png" >
+</center><center>
+<img src="../images/ASSEMBLY-PGMV/ASSEMBLY-PGMV.002.png" >
+</center><center>
+<img src="../images/ASSEMBLY-PGMV/ASSEMBLY-PGMV.003.png" >
+</center><center>
+<img src="../images/ASSEMBLY-PGMV/ASSEMBLY-PGMV.004.png" >
+</center><center>
+<img src="../images/ASSEMBLY-PGMV/ASSEMBLY-PGMV.005.png" >
+</center><center>
+<img src="../images/ASSEMBLY-PGMV/ASSEMBLY-PGMV.006.png" >
+</center><center>
+<img src="../images/ASSEMBLY-PGMV/ASSEMBLY-PGMV.007.png" >
+</center><center>
+<img src="../images/ASSEMBLY-PGMV/ASSEMBLY-PGMV.008.png" >
+</center><center>
+<img src="../images/ASSEMBLY-PGMV/ASSEMBLY-PGMV.009.png" >
+</center><center>
+<img src="../images/ASSEMBLY-PGMV/ASSEMBLY-PGMV.010.png" >
+</center><center>
+<img src="../images/ASSEMBLY-PGMV/ASSEMBLY-PGMV.011.png" >
+</center><div class="section" id="overview">
+<h2><span class="section-number">13.1. </span>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<p>REMEMBER A DATA STRUCTURE ENDS UP AS …</p>
+<ul class="simple">
+<li><p>Bytes in memory</p>
+<ul>
+<li><p>At particular locations – Memory Address</p></li>
+<li><p>taking up some number of <strong>contiguous</strong>  bytes</p></li>
+</ul>
+</li>
+<li><p>Intrinsic types : groups of bytes that the processor has built in “interpretations” for</p>
+<ul>
+<li><p>bit vectors of various lengths (1,2,4,8,16,…)</p></li>
+<li><p>signed and unsigned integers (1,2,4,8,16,…)</p></li>
+<li><p>floating point number (IEEE 754)</p></li>
+</ul>
+</li>
+<li><p>Complex data structures often are broken into pieces</p>
+<ul>
+<li><p>each piece connected to others</p></li>
+<li><p>connections formed via Addresses</p></li>
+<li><p>pieces record the address of the pieces it connects to</p></li>
+</ul>
+</li>
+</ul>
+<center>
+<img src="../images/ASSEMBLY-PGMV/ASSEMBLY-PGMV.012.png" >
+</center><center>
+<img src="../images/ASSEMBLY-PGMV/ASSEMBLY-PGMV.013.png" >
+</center><center>
+<img src="../images/ASSEMBLY-PGMV/ASSEMBLY-PGMV.014.png" >
+</center><center>
+<img src="../images/ASSEMBLY-PGMV/ASSEMBLY-PGMV.015.png" >
+</center><center>
+<img src="../images/ASSEMBLY-PGMV/ASSEMBLY-PGMV.016.png" >
+</center><center>
+<img src="../images/ASSEMBLY-PGMV/ASSEMBLY-PGMV.017.png" >
+</center><center>
+<img src="../images/ASSEMBLY-PGMV/ASSEMBLY-PGMV.018.png" >
+</center><center>
+<img src="../images/ASSEMBLY-PGMV/ASSEMBLY-PGMV.019.png" >
+</center><center>
+<img src="../images/ASSEMBLY-PGMV/ASSEMBLY-PGMV.020.png" >
+</center><center>
+<img src="../images/ASSEMBLY-PGMV/ASSEMBLY-PGMV.021.png" >
+</center><center>
+<img src="../images/ASSEMBLY-PGMV/ASSEMBLY-PGMV.022.png" >
+</center><center>
+<img src="../images/ASSEMBLY-PGMV/ASSEMBLY-PGMV.023.png" >
+</center><center>
+<img src="../images/ASSEMBLY-PGMV/ASSEMBLY-PGMV.024.png" >
+</center><center>
+<img src="../images/ASSEMBLY-PGMV/ASSEMBLY-PGMV.025.png" >
+</center><center>
+<img src="../images/ASSEMBLY-PGMV/ASSEMBLY-PGMV.026.png" >
+</center><center>
+<img src="../images/ASSEMBLY-PGMV/ASSEMBLY-PGMV.027.png" >
+</center><center>
+<img src="../images/ASSEMBLY-PGMV/ASSEMBLY-PGMV.028.png" >
+</center><center>
+<img src="../images/ASSEMBLY-PGMV/ASSEMBLY-PGMV.029.png" >
+</center><center>
+<img src="../images/ASSEMBLY-PGMV/ASSEMBLY-PGMV.030.png" >
+</center><center>
+<img src="../images/ASSEMBLY-PGMV/ASSEMBLY-PGMV.031.png" >
+</center><center>
+<img src="../images/ASSEMBLY-PGMV/ASSEMBLY-PGMV.032.png" >
+</center><center>
+<img src="../images/ASSEMBLY-PGMV/ASSEMBLY-PGMV.033.png" >
+</center><center>
+<img src="../images/ASSEMBLY-PGMV/ASSEMBLY-PGMV.034.png" >
+</center><center>
+<img src="../images/ASSEMBLY-PGMV/ASSEMBLY-PGMV.035.png" >
+</center><center>
+<img src="../images/ASSEMBLY-PGMV/ASSEMBLY-PGMV.036.png" >
+</center><center>
+<img src="../images/ASSEMBLY-PGMV/ASSEMBLY-PGMV.037.png" >
+</center><center>
+<img src="../images/ASSEMBLY-PGMV/ASSEMBLY-PGMV.038.png" >
+</center></div>
 </div>
 
     <script type="text/x-thebe-config">
@@ -397,7 +521,7 @@
             <i class="prevnext-label fas fa-angle-left"></i>
             <div class="prevnext-info">
                 <p class="prevnext-label">previous</p>
-                <p class="prevnext-title"><span class="section-number">12. </span>SLS Lecture 12 : Topics</p>
+                <p class="prevnext-title"><span class="section-number">12. </span>SLS Lecture 12 : Program Anatomy III : Code as Data</p>
             </div>
         </a>
     </div>
@@ -405,7 +529,7 @@
         <a class="right-next" href="L14.html" title="next page">
             <div class="prevnext-info">
                 <p class="prevnext-label">next</p>
-                <p class="prevnext-title"><span class="section-number">14. </span>SLS Lecture 14 : Topics</p>
+                <p class="prevnext-title"><span class="section-number">14. </span>SLS Lecture 14 : Assembly using the OS</p>
             </div>
             <i class="prevnext-label fas fa-angle-right"></i>
         </a>
