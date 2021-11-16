@@ -25,7 +25,7 @@ html:
 #      repo: "jappavoo/UndertheCovers"
       
 launch_buttons:
-  notebook_interface: "juypterlab"
+  notebook_interface: "jupyterlab"
   binderhub_url: "" # trying to remove binder
   jupyterhub_url: "https://jupyterhub-opf-jupyterhub.apps.smaug.na.operate-first.cloud"
 
