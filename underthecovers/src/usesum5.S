@@ -30,7 +30,3 @@ _start:
 	call sumIt
 	mov QWORD PTR [C_SUM], rax
 	int3
-
-	.global RETURN_1
-	.global RETURN_2
-	.global RETURN_3

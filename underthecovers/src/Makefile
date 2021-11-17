@@ -1,4 +1,4 @@
-ASMTARGETS=popcnt simple empty add addwithvars hello exit exit_bb exit_bb_bb brk int3 main cbrk mov usesum usesum2 usesum3 usesum4 usesum5 usesum6 codeptrs selfmodify tree tree_bb playertest
+ASMTARGETS=popcnt simple empty add addwithvars hello exit exit_bb exit_bb_bb brk int3 main cbrk mov usesum usesum2 usesum3 usesum4 usesum5 usesum6 codeptrs selfmodify tree tree_bb playertest usesumheap
 CTARGETS=hello cbrk
 ASM6502TARGETS=6502add
 
@@ -62,6 +62,9 @@ selfmodify: selfmodify.o
 	ld --omagic ${DEBUG} -Map=$@.map $^ -o $@
 
 playertest: playertest.o findplayer.o
+
+usesumheap: usesumheap.o sumit6.o
+	ld ${DEBUG} -Map=$@.map $^ -o $@
 
 # overides so that we use cpp to proces includes
 exit.o: exit.I
