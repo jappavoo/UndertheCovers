@@ -1,4 +1,4 @@
-ASMTARGETS=popcnt simple empty add addwithvars hello exit exit_bb exit_bb_bb brk int3 main cbrk mov usesum usesum2 usesum3 usesum4 usesum5 usesum6 codeptrs selfmodify tree tree_bb playertest usesumheap
+ASMTARGETS=popcnt simple empty add addwithvars hello exit exit_bb exit_bb_bb brk int3 main cbrk mov usesum usesum2 usesum3 usesum4 usesum5 usesum6 codeptrs selfmodify tree tree_bb playertest usesumheap usesumIO
 CTARGETS=hello cbrk
 ASM6502TARGETS=6502add
 
@@ -64,6 +64,9 @@ selfmodify: selfmodify.o
 playertest: playertest.o findplayer.o
 
 usesumheap: usesumheap.o sumit6.o
+	ld ${DEBUG} -Map=$@.map $^ -o $@
+
+usesumIO: usesumIO.o sumit6.o
 	ld ${DEBUG} -Map=$@.map $^ -o $@
 
 # overides so that we use cpp to proces includes

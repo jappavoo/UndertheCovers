@@ -31,3 +31,6 @@ brk.I
 exit.I
 exit_bb.I
 playertest
+usesumheap
+usesumIO
+100.bin

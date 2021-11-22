@@ -589,12 +589,13 @@ def runTermCmd(cmd, cwd=os.getcwd(), bufsize=4096, wait=True, rows=20, cols=80):
     os.close(master)
     return output
 
-def TermShellCmd(cmd, prompt='$ ', markdown=False, pretext='', posttext='', **kwargs):
+def TermShellCmd(cmd, prompt='$ ', markdown=False, pretext='', posttext='', noposttext=False, **kwargs):
     output = runTermCmd(cmd, **kwargs)
     
     if prompt:
         pretext += prompt + cmd #+ "\n"
-        posttext += prompt
+        if not noposttext:
+           posttext += prompt
         
     if markdown:
         display(Markdown(htmlTerm('''
