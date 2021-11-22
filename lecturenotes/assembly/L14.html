@@ -357,18 +357,118 @@
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#remember">
-   14.1. Remember
+  <a class="reference internal nav-link" href="#review-of-processes">
+   14.1. Review of Processes
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#processes-review">
-     14.1.1. Processes Review
+    <a class="reference internal nav-link" href="#processes-and-the-kernel">
+     14.1.1. Processes and the Kernel
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#review-of-system-calls-from-lecture-08">
+   14.2. Review of System Calls - From Lecture 08
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#intel-syscall">
+     14.2.1. Intel
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       syscall
+      </span>
+     </code>
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#address-space-layout-of-a-process">
-     14.1.2. Address Space Layout of a Process
+    <a class="reference internal nav-link" href="#the-os-system-calls">
+     14.2.2. The OS System Calls
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#linux-system-calls">
+     14.2.3. LINUX SYSTEM CALLS
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#process-address-spaces">
+   14.3. Process Address Spaces
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#address-space-organizes-memory-of-a-process">
+     14.3.1. Address Space organizes Memory of a Process
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#assembly-programming-as-process-address-space-image-creation">
+     14.3.2. Assembly Programming as Process Address Space Image creation
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-details">
+     14.3.3. The Details
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#process-address-space">
+     14.3.4. Process Address Space
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exploring-the-address-space">
+     14.3.5. Exploring the Address Space
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#add-another-section-to-control-how-region-is-mapped">
+       14.3.5.1. Add another section to control how region is mapped
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ok-lets-get-some-more-memory-and-and-grow-our-heap">
+   14.4. Ok lets get some more memory – And and Grow our Heap
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#i-o">
+   14.5. I/O
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#review-from-lecture-3">
+     14.5.1. Review from Lecture 3
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#finally-hello-world-in-assembly">
+     14.5.2. Finally “Hello World in Assembly”
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#at-long-last-we-have-a-program-that-we-don-t-need-the-debugger-for">
+       14.5.2.1. At long last we have a program that we don’t need the debugger for!
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#there-are-many-more-calls-for-doing-i-o">
+     14.5.3. There are many more calls for doing I/O
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercises">
+     14.5.4. Exercises
     </a>
    </li>
   </ul>
@@ -387,23 +487,821 @@
   <div class="tex2jax_ignore mathjax_ignore section" id="sls-lecture-14-assembly-using-the-os">
 <h1><span class="section-number">14. </span>SLS Lecture 14 : Assembly using the OS<a class="headerlink" href="#sls-lecture-14-assembly-using-the-os" title="Permalink to this headline">¶</a></h1>
 <ul class="simple">
-<li><p>Dynamic Heap Memory : Getting more Memory</p></li>
+<li><p>Review of Processes</p></li>
+<li><p>Review of Systems Calls</p></li>
+<li><p>Process Address Spaces</p>
+<ul>
+<li><p>Dynamic Memory : Adding and Growing our heap</p></li>
+</ul>
+</li>
 <li><p>I/O - Assembly “Hello World”</p></li>
 </ul>
-<div class="section" id="remember">
-<h2><span class="section-number">14.1. </span>Remember<a class="headerlink" href="#remember" title="Permalink to this headline">¶</a></h2>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<ul class="simple">
+<li><p>create a directory <code class="docutils literal notranslate"><span class="pre">mkdir</span> <span class="pre">syscalls;</span> <span class="pre">cd</span> <span class="pre">syscalls</span></code></p></li>
+<li><p>copy examples</p></li>
+<li><p>add a <code class="docutils literal notranslate"><span class="pre">Makefile</span></code> to automate assembling and linking</p>
+<ul>
+<li><p>we are going run the commands by hand this time to highlight the details</p></li>
+</ul>
+</li>
+<li><p>add our <code class="docutils literal notranslate"><span class="pre">setup.gdb</span></code> to make working in gdb easier</p></li>
+<li><p>normally you would want to track everything in git</p></li>
+</ul>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>$ ls /home/jovyan/syscalls
+100.nums  hello.S   setup.gdb  usesum5.S
+brk.S     Makefile  sumit6.S   usesumheap.S
+$ 
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="review-of-processes">
+<h2><span class="section-number">14.1. </span>Review of Processes<a class="headerlink" href="#review-of-processes" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="processes-and-the-kernel">
+<h3><span class="section-number">14.1.1. </span>Processes and the Kernel<a class="headerlink" href="#processes-and-the-kernel" title="Permalink to this headline">¶</a></h3>
+<center>
+<img src="../images/UnixRunning.png">
+    </center><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">HTML</span><span class="p">(</span><span class="n">htmlFig</span><span class="p">(</span>
+    <span class="p">[</span>
+        <span class="p">[</span>
+<span class="c1">#            {&#39;src&#39;:&quot;/files/work/UndertheCovers/underthecovers/images/Processes/Processes.003.png&quot;,</span>
+<span class="c1">#             &#39;caption&#39;:&#39;A: Press Enter&#39;, </span>
+<span class="c1">#             &#39;border&#39;: &#39;1px solid black&#39;,</span>
+<span class="c1">#             &#39;padding&#39;:&#39;1px&#39;,</span>
+<span class="c1">#             &#39;cellwidth&#39;:&#39;33.33%&#39;</span>
+<span class="c1">#            },</span>
+            <span class="p">{</span><span class="s1">&#39;src&#39;</span><span class="p">:</span><span class="s2">&quot;../images/Processes/Processes.004.png&quot;</span><span class="p">,</span>
+<span class="c1">#             &#39;caption&#39;:&#39;B: Shell &quot;blank line&quot; input processing&#39; , </span>
+<span class="c1">#             &#39;border&#39;: &#39;1px solid black&#39;,</span>
+<span class="c1">#             &#39;padding&#39;:&#39;1px&#39;,</span>
+<span class="c1">#             &#39;cellwidth&#39;:&#39;33.33%&#39;</span>
+            <span class="p">},</span>
+            <span class="p">{</span><span class="s1">&#39;src&#39;</span><span class="p">:</span><span class="s2">&quot;../images/Processes/Processes.005.png&quot;</span><span class="p">,</span>
+<span class="c1">#             &#39;caption&#39;:&#39;C: Shell sends Prompt back&#39;, </span>
+<span class="c1">#             &#39;border&#39;: &#39;1px solid black&#39;,</span>
+<span class="c1">#             &#39;padding&#39;:&#39;1px&#39;,</span>
+<span class="c1">#             &#39;cellwidth&#39;:&#39;33.33%&#39;</span>
+            <span class="p">},</span>
+        <span class="p">]</span>
+    <span class="p">],</span>
+<span class="c1">#    id=&quot;fig:shell-blankline&quot;,</span>
+<span class="c1">#    caption=&quot;&lt;center&gt; Figure: Shell blank line behavior &lt;/center&gt;&quot;</span>
+<span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><!-- produced by: 
+htmlFig("[[{'src': '../images/Processes/Processes.004.png'}, {'src': '../images/Processes/Processes.005.png'}]]", 
+        id="", 
+        align="center", 
+        width="100%",
+        margin="auto auto auto auto",
+        caption="", 
+        captionalign="left")
+-->
+<table align="center" width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse: collapse; margin: auto auto auto auto">
+    <tr style="padding: 0; margin: 0;"> 
+        <td colspan="1" width="100%" style="padding: 0; margin: 0 0 0 0; background-color:inherit;">
+            <div style="padding: 0; margin: 0 0 0 0;">
+              <figure style="padding: 0; margin: 0 0 0 0; width:100%;">
+                   <img src="../images/Processes/Processes.004.png" width="100%" style="padding: 0; margin: 0;">
+                </figure>
+            </div>
+        </td>
+        <td colspan="1" width="100%" style="padding: 0; margin: 0 0 0 0; background-color:inherit;">
+            <div style="padding: 0; margin: 0 0 0 0;">
+              <figure style="padding: 0; margin: 0 0 0 0; width:100%;">
+                   <img src="../images/Processes/Processes.005.png" width="100%" style="padding: 0; margin: 0;">
+                </figure>
+            </div>
+        </td>
+    </tr>
+</table>
+</div></div>
+</div>
+</div>
+</div>
+<div class="section" id="review-of-system-calls-from-lecture-08">
+<h2><span class="section-number">14.2. </span>Review of System Calls - From Lecture 08<a class="headerlink" href="#review-of-system-calls-from-lecture-08" title="Permalink to this headline">¶</a></h2>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<!-- produced by: 
+htmlFig("[{'src': '../images/kerneldef.png'}]", 
+        id="", 
+        align="center", 
+        width="100%",
+        margin="auto auto auto auto",
+        caption="", 
+        captionalign="left")
+-->
+<table align="center" width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse: collapse; margin: auto auto auto auto">
+    <tr style="padding: 0; margin: 0;"> 
+        <td colspan="1" width="100%" style="padding: 0; margin: 0 0 0 0; background-color:inherit;">
+            <div style="padding: 0; margin: 0 0 0 0;">
+              <figure style="padding: 0; margin: 0 0 0 0; width:100%;">
+                   <img src="../images/kerneldef.png" width="100%" style="padding: 0; margin: 0;">
+                </figure>
+            </div>
+        </td>
+    </tr>
+</table>
+</div>
+</div>
+<p>Remember this…</p>
+<p><strong>The “Kernel” – Unique to Every OS</strong></p>
+<ol class="simple">
+<li><p>Bootstraps the HW and has direct access to all of it</p></li>
+<li><p>Bottom layer that enables other programs to run</p></li>
+<li><p><font style="color:red;"> <strong>A unique collection of functions that programs can invoke</strong> </font></p></li>
+</ol>
+<p>Not useful on its own only useful and accessed by running other programs.</p>
+<center>
+<img src="../images/Processes/Processes.051.png">
+</center><div class="section" id="intel-syscall">
+<h3><span class="section-number">14.2.1. </span>Intel <code class="docutils literal notranslate"><span class="pre">syscall</span></code><a class="headerlink" href="#intel-syscall" title="Permalink to this headline">¶</a></h3>
+<p>On Intel the instruction is <code class="docutils literal notranslate"><span class="pre">syscall</span></code></p>
+<img alt="../_images/syscallmp.png" src="../_images/syscallmp.png" />
+</div>
+<div class="section" id="the-os-system-calls">
+<h3><span class="section-number">14.2.2. </span>The OS System Calls<a class="headerlink" href="#the-os-system-calls" title="Permalink to this headline">¶</a></h3>
+<p>Each OS Kernel provides a set of calls that a process can invoke using the <code class="docutils literal notranslate"><span class="pre">syscall</span></code> instruction on an Intel based computer</p>
+<p>The Linux Kernel supports a very large number of system calls each is identified by a unique number that must be placed in <code class="docutils literal notranslate"><span class="pre">RAX</span></code> prior to executing the <code class="docutils literal notranslate"><span class="pre">syscall</span></code> instruction.  Additional arguments are passed in by setting other registers.</p>
+<p>With each version of the Kernel the table of calls changes.  Here is one site that provides a list</p>
+</div>
+<div class="section" id="linux-system-calls">
+<h3><span class="section-number">14.2.3. </span>LINUX SYSTEM CALLS<a class="headerlink" href="#linux-system-calls" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>reading some man pages <code class="docutils literal notranslate"><span class="pre">man</span> <span class="pre">syscalls</span></code> and <code class="docutils literal notranslate"><span class="pre">man</span> <span class="pre">syscall</span></code> we find that</p>
+<ul>
+<li><p>we must place <code class="docutils literal notranslate"><span class="pre">60</span></code> in <code class="docutils literal notranslate"><span class="pre">rax</span></code></p></li>
+<li><p>and that the value we want to return in <code class="docutils literal notranslate"><span class="pre">rdi</span></code></p></li>
+</ul>
+</li>
+</ul>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>$ man syscalls | head -20
+SYSCALLS(2)                Linux Programmer&#39;s Manual               SYSCALLS(2)
+
+NAME
+       syscalls - Linux system calls
+
+SYNOPSIS
+       Linux system calls.
+
+DESCRIPTION
+       The system call is the fundamental interface between an application and
+       the Linux kernel.
+
+   System calls and library wrapper functions
+       System calls are generally not invoked directly, but rather via wrapper
+       functions in glibc (or perhaps some other library).  For details of di‐
+       rect invocation of a system call, see intro(2).  Often, but not always,
+       the  name of the wrapper function is the same as the name of the system
+       call that it invokes.  For example, glibc contains a  function  chdir()
+       which invokes the underlying &quot;chdir&quot; system call.
+
+$ 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>$ man syscall | head -20
+SYSCALL(2)                 Linux Programmer&#39;s Manual                SYSCALL(2)
+
+NAME
+       syscall - indirect system call
+
+SYNOPSIS
+       #include &lt;unistd.h&gt;
+       #include &lt;sys/syscall.h&gt;   /* For SYS_xxx definitions */
+
+       long syscall(long number, ...);
+
+   Feature Test Macro Requirements for glibc (see feature_test_macros(7)):
+       syscall():
+           Since glibc 2.19:
+               _DEFAULT_SOURCE
+           Before glibc 2.19:
+               _BSD_SOURCE || _SVID_SOURCE
+
+DESCRIPTION
+       syscall()  is  a  small  library  function that invokes the system call
+$ 
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output text_html">
+<iframe
+    width="100%"
+    height="600"
+    src="https://filippo.io/linux-syscall-table/"
+    frameborder="0"
+    allowfullscreen
+></iframe>
+</div></div>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div style="width:100%; height:100%; font-size:inherit; overflow: auto;" >
+<div class="highlight-gas notranslate"><div class="highlight"><pre><span></span>	<span class="na">.intel_syntax</span> <span class="no">noprefix</span>
+	
+	<span class="na">.text</span>
+	<span class="na">.global</span> <span class="no">_start</span>
+<span class="nl">_start:</span>      	
+	<span class="nf">mov</span>     <span class="no">rax</span><span class="p">,</span> <span class="mi">60</span>    <span class="c1"># Linux exit system call number is 60       </span>
+	<span class="nf">mov</span>     <span class="no">rdi</span><span class="p">,</span> <span class="mi">0</span>     <span class="c1"># rdi is return value 0 success</span>
+
+	<span class="nf">syscall</span>                         	
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="process-address-spaces">
+<h2><span class="section-number">14.3. </span>Process Address Spaces<a class="headerlink" href="#process-address-spaces" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="address-space-organizes-memory-of-a-process">
+<h3><span class="section-number">14.3.1. </span>Address Space organizes Memory of a Process<a class="headerlink" href="#address-space-organizes-memory-of-a-process" title="Permalink to this headline">¶</a></h3>
+<center>
+    <img src="../images/ProcessContexts.png">
+</center><p><strong>Remember</strong></p>
 <ol class="simple">
 <li><p>The binaries we create using the assembler and linker are Executables</p></li>
 <li><p>When we “run” our executables via the shell it creates a new process context and our binary is loaded as the initial memory “image”.</p></li>
-<li><p>Once the memory and register values of the process are unique to each process and change as the instructions of our binary “execute”</p></li>
+<li><p>The memory and register values of the process are unique to each process and change as the instructions of our binary “execute”</p></li>
 </ol>
-<div class="section" id="processes-review">
-<h3><span class="section-number">14.1.1. </span>Processes Review<a class="headerlink" href="#processes-review" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="assembly-programming-as-process-address-space-image-creation">
+<h3><span class="section-number">14.3.2. </span>Assembly Programming as Process Address Space Image creation<a class="headerlink" href="#assembly-programming-as-process-address-space-image-creation" title="Permalink to this headline">¶</a></h3>
 <center>
-    <img src="../images/ProcessContexts.png">
+    <img src="../images/ASSEMBLY-AddressSpaceandIO/ASSEMBLY-AddressSpaceandIO.003.png">
+</center><center>
+    <img src="../images/ASSEMBLY-AddressSpaceandIO/ASSEMBLY-AddressSpaceandIO.004.png">
+</center><center>
+    <img src="../images/ASSEMBLY-AddressSpaceandIO/ASSEMBLY-AddressSpaceandIO.005.png">
 </center></div>
-<div class="section" id="address-space-layout-of-a-process">
-<h3><span class="section-number">14.1.2. </span>Address Space Layout of a Process<a class="headerlink" href="#address-space-layout-of-a-process" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="the-details">
+<h3><span class="section-number">14.3.3. </span>The Details<a class="headerlink" href="#the-details" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="process-address-space">
+<h3><span class="section-number">14.3.4. </span>Process Address Space<a class="headerlink" href="#process-address-space" title="Permalink to this headline">¶</a></h3>
+<p>The Memory of a Process is organized as an (Virtual) Address Space</p>
+<ol class="simple">
+<li><p>Each possible location of a byte is identified by a unique address (number)</p></li>
+<li><p>To associate a Region (range of continues addresses) with actual memory requires a “mapping”</p>
+<ul class="simple">
+<li><p>mappings associate a Region with Memory and a possible source of values</p></li>
+<li><p>mappings can restrict what kind of access can be made to region</p>
+<ol class="simple">
+<li><p>fetch for execute (x)</p></li>
+<li><p>read (r)</p></li>
+<li><p>write (w)</p></li>
+</ol>
+</li>
+</ul>
+</li>
+</ol>
+<center>
+    <img src="../images/ExecAddrSpace/ExecAddrSpace-001.png">
+</center><center>
+    <img src="../images/ExecAddrSpace/ExecAddrSpace-002.png">
+</center><center>
+    <img src="../images/ExecAddrSpace/ExecAddrSpace-003.png">
+</center><center>
+    <img src="../images/ExecAddrSpace/ExecAddrSpace-004.png">
+</center><center>
+    <img src="../images/ExecAddrSpace/ExecAddrSpace-005.png">
+</center><center>
+    <img src="../images/ExecAddrSpace/ExecAddrSpace-006.png">
+</center><center>
+    <img src="../images/ExecAddrSpace/ExecAddrSpace-007.png">
+</center><center>
+    <img src="../images/ExecAddrSpace/ExecAddrSpace-008.png">
+</center><center>
+    <img src="../images/ExecAddrSpace/ExecAddrSpace-009.png">
+</center><center>
+    <img src="../images/ExecAddrSpace/ExecAddrSpace-010.png">
+</center><center>
+    <img src="../images/ExecAddrSpace/ExecAddrSpace-011.png">
+</center></div>
+<div class="section" id="exploring-the-address-space">
+<h3><span class="section-number">14.3.5. </span>Exploring the Address Space<a class="headerlink" href="#exploring-the-address-space" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Let’s explore the address space of a running program</p></li>
+</ul>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<p><b>CODE: asm - usesum5.S</p>
+<div style="width:107em; height:100%; font-size:inherit; overflow: auto;" >
+<div class="highlight-gas notranslate"><div class="highlight"><pre><span></span>	<span class="na">.intel_syntax</span> <span class="no">noprefix</span>
+	<span class="na">.data</span>	
+	<span class="no">.comm</span> <span class="no">A_SUM</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">8</span>
+	<span class="na">.comm</span> <span class="no">A_LEN</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">8</span>
+	<span class="na">.comm</span> <span class="no">A</span><span class="p">,</span> <span class="mi">8</span><span class="p">*</span><span class="mi">1024</span><span class="p">,</span> <span class="mi">8</span>	
+
+	<span class="no">.comm</span> <span class="no">B_SUM</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">8</span>
+	<span class="na">.comm</span> <span class="no">B_LEN</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">8</span>
+	<span class="na">.comm</span> <span class="no">B</span><span class="p">,</span> <span class="mi">8</span><span class="p">*</span><span class="mi">1024</span><span class="p">,</span> <span class="mi">8</span>	
+
+	<span class="no">.comm</span> <span class="no">C_SUM</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">8</span>
+	<span class="na">.comm</span> <span class="no">C_LEN</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">8</span>
+	<span class="na">.comm</span> <span class="no">C</span><span class="p">,</span> <span class="mi">8</span><span class="p">*</span><span class="mi">1024</span><span class="p">,</span> <span class="mi">8</span>	
+
+	<span class="no">.text</span>
+	<span class="na">.global</span> <span class="no">_start</span> 
+<span class="no">_start</span><span class="p">:</span>
+	<span class="nf">mov</span> <span class="no">rbx</span><span class="p">,</span> <span class="no">QWORD</span> <span class="no">PTR</span> <span class="p">[</span><span class="no">A_LEN</span><span class="p">]</span>
+	<span class="nf">mov</span> <span class="no">rcx</span><span class="p">,</span> <span class="no">OFFSET</span> <span class="no">A</span>
+	<span class="nf">call</span> <span class="no">sumIt</span>
+	<span class="nf">mov</span> <span class="no">QWORD</span> <span class="no">PTR</span> <span class="p">[</span><span class="no">A_SUM</span><span class="p">],</span> <span class="no">rax</span>
+
+	<span class="nf">mov</span> <span class="no">rbx</span><span class="p">,</span> <span class="no">QWORD</span> <span class="no">PTR</span> <span class="p">[</span><span class="no">B_LEN</span><span class="p">]</span>
+	<span class="nf">mov</span> <span class="no">rcx</span><span class="p">,</span> <span class="no">OFFSET</span> <span class="no">B</span>
+	<span class="nf">call</span> <span class="no">sumIt</span>
+	<span class="nf">mov</span> <span class="no">QWORD</span> <span class="no">PTR</span> <span class="p">[</span><span class="no">B_SUM</span><span class="p">],</span> <span class="no">rax</span>
+
+	<span class="nf">mov</span> <span class="no">rbx</span><span class="p">,</span> <span class="no">QWORD</span> <span class="no">PTR</span> <span class="p">[</span><span class="no">C_LEN</span><span class="p">]</span>
+	<span class="nf">mov</span> <span class="no">rcx</span><span class="p">,</span> <span class="no">OFFSET</span> <span class="no">C</span>
+	<span class="nf">call</span> <span class="no">sumIt</span>
+	<span class="nf">mov</span> <span class="no">QWORD</span> <span class="no">PTR</span> <span class="p">[</span><span class="no">C_SUM</span><span class="p">],</span> <span class="no">rax</span>
+	<span class="nf">int3</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<p><b>CODE: asm - sumit6.S</p>
+<div style="width:107em; height:100%; font-size:inherit; overflow: auto;" >
+<div class="highlight-gas notranslate"><div class="highlight"><pre><span></span>	.intel_syntax noprefix
+	
+	.global sumIt	      	      #	 directive to let the linker
+
+	# code to sum data in array who&#39;s address is in rcx
+	# we assume we were started with call so return address on stack
+	# we assume rbx has length  rbx -&gt; len
+	# and that we will leave final sum in rax
+sumIt:	                              # location of this code is
+	xor  rax, rax            # rax -&gt; sum : sum = 0
+	push rdi                 # spill current value of rdi before we use
+	xor  rdi, rdi            # rax -&gt; i : i = 0
+
+	# code to sum data at value in rcx
+	# we assume rbx has length  rbx -&gt; len
+	# and that we will leave final sum in rax
+loop_start:
+	cmp  rbx, rdi
+	jz   loop_done
+	add  rax, QWORD PTR [rcx + rdi * 8] # add the i&#39;th value to the sum
+	inc  rdi                   # i=i+1
+	jmp   loop_start
+loop_done:
+	pop  rdi                 # restore rdi back to its original value
+	ret
+
+
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>as -g -a=usesum5.o.lst usesum5.S -o usesum5.o
+as -g -a=sumit6.o.lst sumit6.S -o sumit6.o
+ld -g -Map=usesum6.map usesum5.o sumit6.o -o usesum6
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<p><b>Debug</b></p>
+</div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">b</span> <span class="n">_start</span>
+<span class="n">run</span> 
+<span class="n">info</span> <span class="n">proc</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span> <span class="n">cat</span> <span class="o">/</span><span class="n">proc</span><span class="o">/&lt;</span><span class="n">pid</span><span class="o">&gt;/</span><span class="n">maps</span>
+</pre></div>
+</div>
+<p>Use gdb to explore what’s there and compare with binary binary file</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>$ man proc | head -30
+PROC(5)                    Linux Programmer&#39;s Manual                   PROC(5)
+
+NAME
+       proc - process information pseudo-filesystem
+
+DESCRIPTION
+       The  proc filesystem is a pseudo-filesystem which provides an interface
+       to kernel data structures.  It is commonly  mounted  at  /proc.   Typi‐
+       cally,  it  is  mounted automatically by the system, but it can also be
+       mounted manually using a command such as:
+
+           mount -t proc proc /proc
+
+       Most of the files in the proc filesystem are read-only, but some  files
+       are writable, allowing kernel variables to be changed.
+
+   Mount options
+       The proc filesystem supports the following mount options:
+
+       hidepid=n (since Linux 3.3)
+              This   option   controls  who  can  access  the  information  in
+              /proc/[pid] directories.  The argument, n, is one of the follow‐
+              ing values:
+
+              0   Everybody  may  access all /proc/[pid] directories.  This is
+                  the traditional behavior, and the default if this mount  op‐
+                  tion is not specified.
+
+              1   Users  may  not  access  files and subdirectories inside any
+                  /proc/[pid] directories but their own (the  /proc/[pid]  di‐
+$ 
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>$ man proc | grep -A40 /maps | head -41
+       /proc/[pid]/maps
+              A  file containing the currently mapped memory regions and their
+              access permissions.  See mmap(2) for  some  further  information
+              about memory mappings.
+
+              Permission  to  access  this file is governed by a ptrace access
+              mode PTRACE_MODE_READ_FSCREDS check; see ptrace(2).
+
+              The format of the file is:
+
+    address           perms offset  dev   inode       pathname
+    00400000-00452000 r-xp 00000000 08:02 173521      /usr/bin/dbus-daemon
+    00651000-00652000 r--p 00051000 08:02 173521      /usr/bin/dbus-daemon
+    00652000-00655000 rw-p 00052000 08:02 173521      /usr/bin/dbus-daemon
+    00e03000-00e24000 rw-p 00000000 00:00 0           [heap]
+    00e24000-011f7000 rw-p 00000000 00:00 0           [heap]
+    ...
+    35b1800000-35b1820000 r-xp 00000000 08:02 135522  /usr/lib64/ld-2.15.so
+    35b1a1f000-35b1a20000 r--p 0001f000 08:02 135522  /usr/lib64/ld-2.15.so
+    35b1a20000-35b1a21000 rw-p 00020000 08:02 135522  /usr/lib64/ld-2.15.so
+    35b1a21000-35b1a22000 rw-p 00000000 00:00 0
+    35b1c00000-35b1dac000 r-xp 00000000 08:02 135870  /usr/lib64/libc-2.15.so
+    35b1dac000-35b1fac000 ---p 001ac000 08:02 135870  /usr/lib64/libc-2.15.so
+    35b1fac000-35b1fb0000 r--p 001ac000 08:02 135870  /usr/lib64/libc-2.15.so
+    35b1fb0000-35b1fb2000 rw-p 001b0000 08:02 135870  /usr/lib64/libc-2.15.so
+    ...
+    f2c6ff8c000-7f2c7078c000 rw-p 00000000 00:00 0    [stack:986]
+    ...
+    7fffb2c0d000-7fffb2c2e000 rw-p 00000000 00:00 0   [stack]
+    7fffb2d48000-7fffb2d49000 r-xp 00000000 00:00 0   [vdso]
+
+              The address field is the address space in the process  that  the
+              mapping occupies.  The perms field is a set of permissions:
+
+                  r = read
+                  w = write
+                  x = execute
+                  s = shared
+                  p = private (copy on write)
+
+              The  offset  field  is the offset into the file/whatever; dev is
+$ 
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="add-another-section-to-control-how-region-is-mapped">
+<h4><span class="section-number">14.3.5.1. </span>Add another section to control how region is mapped<a class="headerlink" href="#add-another-section-to-control-how-region-is-mapped" title="Permalink to this headline">¶</a></h4>
+<p>Readonly data section <code class="docutils literal notranslate"><span class="pre">.rodata</span></code></p>
+<div class="highlight-gas notranslate"><div class="highlight"><pre><span></span>         <span class="na">.section</span> <span class="no">.rodata</span>
+
+ <span class="nl">str1:</span>
+         <span class="na">.string</span> <span class="s">&quot;Hello World\n&quot;</span>
+</pre></div>
+</div>
+<p>What would happen if we put all out data in the <code class="docutils literal notranslate"><span class="pre">.rodata</span></code> section… try it and find out</p>
+</div>
+</div>
+</div>
+<div class="section" id="ok-lets-get-some-more-memory-and-and-grow-our-heap">
+<h2><span class="section-number">14.4. </span>Ok lets get some more memory – And and Grow our Heap<a class="headerlink" href="#ok-lets-get-some-more-memory-and-and-grow-our-heap" title="Permalink to this headline">¶</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">brk</span></code> system call</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>$ man brk | head -37
+BRK(2)                     Linux Programmer&#39;s Manual                    BRK(2)
+
+NAME
+       brk, sbrk - change data segment size
+
+SYNOPSIS
+       #include &lt;unistd.h&gt;
+
+       int brk(void *addr);
+
+       void *sbrk(intptr_t increment);
+
+   Feature Test Macro Requirements for glibc (see feature_test_macros(7)):
+
+       brk(), sbrk():
+           Since glibc 2.19:
+               _DEFAULT_SOURCE ||
+                   (_XOPEN_SOURCE &gt;= 500) &amp;&amp;
+                   ! (_POSIX_C_SOURCE &gt;= 200112L)
+           From glibc 2.12 to 2.19:
+               _BSD_SOURCE || _SVID_SOURCE ||
+                   (_XOPEN_SOURCE &gt;= 500) &amp;&amp;
+                   ! (_POSIX_C_SOURCE &gt;= 200112L)
+           Before glibc 2.12:
+               _BSD_SOURCE || _SVID_SOURCE || _XOPEN_SOURCE &gt;= 500
+
+DESCRIPTION
+       brk()  and  sbrk()  change the location of the program break, which de‐
+       fines the end of the process&#39;s data segment (i.e., the program break is
+       the  first  location  after the end of the uninitialized data segment).
+       Increasing the program break has the effect of allocating memory to the
+       process; decreasing the break deallocates memory.
+
+       brk()  sets the end of the data segment to the value specified by addr,
+       when that value is reasonable, the system has enough  memory,  and  the
+       process does not exceed its maximum data size (see setrlimit(2)).
+
+$ 
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output text_html">
+<iframe
+    width="100%"
+    height="600"
+    src="https://filippo.io/linux-syscall-table/"
+    frameborder="0"
+    allowfullscreen
+></iframe>
+</div></div>
+</div>
+<p><strong>Lets add this code</strong></p>
+<p>What does it do?</p>
+<div class="highlight-gas notranslate"><div class="highlight"><pre><span></span>    <span class="na">.data</span>
+<span class="nl">NEW_MEM_PTR:</span>
+    <span class="na">.quad</span> <span class="mi">0</span>
+
+    <span class="na">.text</span>
+    
+    <span class="nf">mov</span> <span class="no">rdi</span><span class="p">,</span> <span class="mi">0</span>
+    <span class="nf">mov</span> <span class="no">rax</span><span class="p">,</span> <span class="mi">12</span>
+    <span class="nf">syscall</span> 
+    <span class="no">mov</span> <span class="no">QWORD</span> <span class="no">PTR</span> <span class="p">[</span><span class="no">NEW_MEM_PTR</span><span class="p">],</span> <span class="no">rdi</span>
+    
+    <span class="nf">mov</span> <span class="no">rdi</span><span class="p">,</span> <span class="no">rax</span>
+    <span class="nf">add</span> <span class="no">rdi</span><span class="p">,</span> <span class="mi">1024</span> <span class="p">*</span> <span class="mi">8</span>
+    <span class="nf">mov</span> <span class="no">rax</span><span class="p">,</span> <span class="mi">12</span>
+    <span class="nf">syscall</span>
+</pre></div>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<p><b>CODE: asm - usesumheap.S</p>
+<div style="width:107em; height:100%; font-size:inherit; overflow: auto;" >
+<div class="highlight-gas notranslate"><div class="highlight"><pre><span></span>	<span class="na">.intel_syntax</span> <span class="no">noprefix</span>
+	<span class="na">.section</span> <span class="no">.data</span>	
+	<span class="no">.comm</span> <span class="no">A_SUM</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">8</span>
+	<span class="na">.comm</span> <span class="no">A_LEN</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">8</span>
+	<span class="na">.comm</span> <span class="no">A</span><span class="p">,</span> <span class="mi">8</span><span class="p">*</span><span class="mi">1024</span><span class="p">,</span> <span class="mi">8</span>	
+
+	<span class="no">.comm</span> <span class="no">B_SUM</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">8</span>
+	<span class="na">.comm</span> <span class="no">B_LEN</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">8</span>
+	<span class="na">.comm</span> <span class="no">B</span><span class="p">,</span> <span class="mi">8</span><span class="p">*</span><span class="mi">1024</span><span class="p">,</span> <span class="mi">8</span>	
+
+	<span class="no">.comm</span> <span class="no">C_SUM</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">8</span>
+	<span class="na">.comm</span> <span class="no">C_LEN</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">8</span>
+	<span class="na">.comm</span> <span class="no">C</span><span class="p">,</span> <span class="mi">8</span><span class="p">*</span><span class="mi">1024</span><span class="p">,</span> <span class="mi">8</span>	
+
+	<span class="c1"># Added space heap memory array</span>
+	<span class="na">.comm</span> <span class="no">D_SUM</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">8</span>
+	<span class="na">.comm</span> <span class="no">D_LEN</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">8</span>
+	<span class="na">.comm</span> <span class="no">D_PTR</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">8</span>
+
+	<span class="na">.section</span> <span class="no">.rodata</span>
+<span class="nl">mystr:</span>	
+	<span class="na">.string</span> <span class="s">&quot;Hello World!!!\n&quot;</span>
+	
+	<span class="na">.section</span> <span class="no">.text</span>
+	<span class="na">.global</span> <span class="no">_start</span> 
+<span class="no">_start</span><span class="p">:</span>
+	<span class="c1"># get current break pointer</span>
+	<span class="nf">mov</span> <span class="no">rdi</span><span class="p">,</span> <span class="mi">0</span>                 <span class="c1"># pass 0 to brk (invalid request)</span>
+	<span class="nf">mov</span> <span class="no">rax</span><span class="p">,</span> <span class="mi">12</span>                <span class="c1"># brk syscall number 12</span>
+	<span class="nf">syscall</span>                    <span class="c1"># call brk with 0</span>
+	<span class="nf">mov</span> <span class="no">QWORD</span> <span class="no">PTR</span> <span class="p">[</span><span class="no">D_PTR</span><span class="p">],</span> <span class="no">rax</span> <span class="c1"># set D_PTR to start of end of break memory</span>
+	<span class="nf">mov</span> <span class="no">rdi</span><span class="p">,</span> <span class="no">rax</span>               <span class="c1"># mov current end of break into rax</span>
+	
+	<span class="nf">add</span> <span class="no">rdi</span><span class="p">,</span> <span class="mi">1024</span> <span class="p">*</span> <span class="mi">8</span>          <span class="c1"># add request num bytes to end break</span>
+	<span class="nf">mov</span> <span class="no">rax</span><span class="p">,</span> <span class="mi">12</span>                <span class="c1"># brk syscall number 12</span>
+	<span class="nf">syscall</span>                    <span class="c1"># call brk with break end + request</span>
+
+	<span class="nf">mov</span> <span class="no">rbx</span><span class="p">,</span> <span class="no">QWORD</span> <span class="no">PTR</span> <span class="p">[</span><span class="no">D_LEN</span><span class="p">]</span> 
+	<span class="no">mov</span> <span class="no">rcx</span><span class="p">,</span> <span class="no">QWORD</span> <span class="no">PTR</span> <span class="p">[</span><span class="no">D_PTR</span><span class="p">]</span>
+	<span class="nf">call</span> <span class="no">sumIt</span>
+	<span class="nf">mov</span> <span class="no">QWORD</span> <span class="no">PTR</span> <span class="p">[</span><span class="no">D_SUM</span><span class="p">],</span> <span class="no">rax</span>
+
+	<span class="nf">mov</span> <span class="no">rbx</span><span class="p">,</span> <span class="no">QWORD</span> <span class="no">PTR</span> <span class="p">[</span><span class="no">A_LEN</span><span class="p">]</span>
+	<span class="nf">mov</span> <span class="no">rcx</span><span class="p">,</span> <span class="no">OFFSET</span> <span class="no">A</span>
+	<span class="nf">call</span> <span class="no">sumIt</span>
+	<span class="nf">mov</span> <span class="no">QWORD</span> <span class="no">PTR</span> <span class="p">[</span><span class="no">A_SUM</span><span class="p">],</span> <span class="no">rax</span>
+
+	<span class="nf">mov</span> <span class="no">rbx</span><span class="p">,</span> <span class="no">QWORD</span> <span class="no">PTR</span> <span class="p">[</span><span class="no">B_LEN</span><span class="p">]</span>
+	<span class="nf">mov</span> <span class="no">rcx</span><span class="p">,</span> <span class="no">OFFSET</span> <span class="no">B</span>
+	<span class="nf">call</span> <span class="no">sumIt</span>
+	<span class="nf">mov</span> <span class="no">QWORD</span> <span class="no">PTR</span> <span class="p">[</span><span class="no">B_SUM</span><span class="p">],</span> <span class="no">rax</span>
+
+	<span class="nf">mov</span> <span class="no">rbx</span><span class="p">,</span> <span class="no">QWORD</span> <span class="no">PTR</span> <span class="p">[</span><span class="no">C_LEN</span><span class="p">]</span>
+	<span class="nf">mov</span> <span class="no">rcx</span><span class="p">,</span> <span class="no">OFFSET</span> <span class="no">C</span>
+	<span class="nf">call</span> <span class="no">sumIt</span>
+	<span class="nf">mov</span> <span class="no">QWORD</span> <span class="no">PTR</span> <span class="p">[</span><span class="no">C_SUM</span><span class="p">],</span> <span class="no">rax</span>
+
+	<span class="nf">mov</span> <span class="no">rdi</span><span class="p">,</span> <span class="no">rax</span>
+	<span class="nf">mov</span> <span class="no">rax</span><span class="p">,</span> <span class="mi">60</span>
+	<span class="nf">syscall</span>
+	
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<p><strong>What does the regions maps look like now?</strong></p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<p><b>usesumheap gdb</p>
+<div style="width:107em; height:100%; font-size:inherit; overflow: auto;" >
+<div class="highlight-gas notranslate"><div class="highlight"><pre><span></span>b _start
+run
+display /1gx &amp;D_PTR
+x/10gd (void *)D_PTR
+si
+si
+si
+si
+x/10gd (void *)D_PTR
+si
+si
+si
+si
+x/10gd (void *)D_PTR
+restore 100.bin binary &lt;addr&gt;
+x/10gd (void *)D_PTR
+set *((long long *)&amp;D_LEN)=100
+disass
+break *addr
+c
+si
+display /1gd D_SUM
+
+
+
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<center>
+    <img src="../images/ASSEMBLY-AddressSpaceandIO/ASSEMBLY-AddressSpaceandIO.012.png">
+</center><center>
+    <img src="../images/ASSEMBLY-AddressSpaceandIO/ASSEMBLY-AddressSpaceandIO.016.png">
+</center></div>
+<div class="section" id="i-o">
+<h2><span class="section-number">14.5. </span>I/O<a class="headerlink" href="#i-o" title="Permalink to this headline">¶</a></h2>
+<center>
+    <img src="../images/ASSEMBLY-AddressSpaceandIO/ASSEMBLY-AddressSpaceandIO.017.png">
+</center><center>
+    <img src="../images/ASSEMBLY-AddressSpaceandIO/ASSEMBLY-AddressSpaceandIO.018.png">
+</center><div class="section" id="review-from-lecture-3">
+<h3><span class="section-number">14.5.1. </span>Review from Lecture 3<a class="headerlink" href="#review-from-lecture-3" title="Permalink to this headline">¶</a></h3>
+<center>
+    <img src="../images/Processes/Processes.006.png">
+</center><center>
+    <img src="../images/Processes/Processes.007.png">
+</center><center>
+    <img src="../images/Processes/Processes.008.png">
+</center><center>
+    <img src="../images/Processes/Processes.009.png">
+</center><center>
+    <img src="../images/Processes/Processes.010.png">
+</center><center>
+    <img src="../images/Processes/Processes.011.png">
+</center><center>
+    <img src="../images/Processes/Processes.012.png">
+</center><center>
+    <img src="../images/Processes/Processes.013.png">
+</center><center>
+    <img src="../images/Processes/Processes.015.png">
+</center></div>
+<div class="section" id="finally-hello-world-in-assembly">
+<h3><span class="section-number">14.5.2. </span>Finally “Hello World in Assembly”<a class="headerlink" href="#finally-hello-world-in-assembly" title="Permalink to this headline">¶</a></h3>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<p><b>CODE: asm - hello.S</p>
+<div style="width:107em; height:100%; font-size:inherit; overflow: auto;" >
+<div class="highlight-gas notranslate"><div class="highlight"><pre><span></span>	<span class="na">.intel_syntax</span> <span class="no">noprefix</span>
+	<span class="na">.section</span> <span class="no">.rodata</span>
+<span class="nl">str:</span>
+	<span class="na">.string</span> <span class="s">&quot;Hello World\n&quot;</span>
+
+	<span class="na">.section</span> <span class="no">.text</span>
+	<span class="na">.global</span> <span class="no">_start</span>
+<span class="nl">_start:</span>
+	<span class="nf">mov</span> <span class="no">rax</span><span class="p">,</span> <span class="mi">1</span>
+	<span class="nf">mov</span> <span class="no">rdi</span><span class="p">,</span> <span class="mi">1</span>
+	<span class="nf">mov</span> <span class="no">rsi</span><span class="p">,</span> <span class="no">OFFSET</span> <span class="no">str</span>
+	<span class="nf">mov</span> <span class="no">rdx</span><span class="p">,</span> <span class="mi">12</span>
+	<span class="nf">syscall</span>
+
+	<span class="nf">mov</span> <span class="no">rax</span><span class="p">,</span> <span class="mi">60</span>
+	<span class="nf">mov</span> <span class="no">rdi</span><span class="p">,</span> <span class="mi">3</span>
+	<span class="nf">syscall</span>
+	
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>as -g -a=hello.o.lst hello.S -o hello.o
+ld -g -Map=hello.map hello.o -o hello
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="at-long-last-we-have-a-program-that-we-don-t-need-the-debugger-for">
+<h4><span class="section-number">14.5.2.1. </span>At long last we have a program that we don’t need the debugger for!<a class="headerlink" href="#at-long-last-we-have-a-program-that-we-don-t-need-the-debugger-for" title="Permalink to this headline">¶</a></h4>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>$ ./hello; echo $?
+Hello World
+3
+$ 
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="there-are-many-more-calls-for-doing-i-o">
+<h3><span class="section-number">14.5.3. </span>There are many more calls for doing I/O<a class="headerlink" href="#there-are-many-more-calls-for-doing-i-o" title="Permalink to this headline">¶</a></h3>
+<p>But we can now</p>
+<ol class="simple">
+<li><p>transfer bytes from our address space to a “file” - write system call</p></li>
+<li><p>transfer bytes from a “file” to our address space  - read system call</p></li>
+<li><p>connect (and possibly create) files to our address space for reading and writing - open system call</p></li>
+<li><p>disconnect a file from our address space - close system call</p></li>
+</ol>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output text_html">
+<iframe
+    width="100%"
+    height="600"
+    src="https://filippo.io/linux-syscall-table/"
+    frameborder="0"
+    allowfullscreen
+></iframe>
+</div></div>
+</div>
+</div>
+<div class="section" id="exercises">
+<h3><span class="section-number">14.5.4. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h3>
+<p>Change the <code class="docutils literal notranslate"><span class="pre">usesum</span></code> program to:</p>
+<ul class="simple">
+<li><p>exit properly</p></li>
+<li><p>allocate memory for the data</p></li>
+<li><p>read the data in from standard in</p></li>
+<li><p>write the binary result to standard out</p>
+<ul>
+<li><p>use a shell command like <code class="docutils literal notranslate"><span class="pre">od</span> <span class="pre">-l</span> <span class="pre">-A10</span></code> to convert the output to ascii</p></li>
+</ul>
+</li>
+<li><p>open the binary file of numbers and read them in</p></li>
+<li><p>can you figure out how to get the command line arguments?</p></li>
+<li><p>Write a new program that uses the random instruction to create a data file</p></li>
+</ul>
 </div>
 </div>
 </div>
