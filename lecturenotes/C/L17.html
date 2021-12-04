@@ -5,10 +5,10 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>17. SLS Lecuture 17 : Topics &#8212; UndertheCovers</title>
+    <title>17. UC-SLS Lecuture 17 : In to the Light - C Intro &#8212; UndertheCovers</title>
     
-  <link href="../_static/css/theme.css" rel="stylesheet" />
-  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -31,7 +31,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
@@ -42,6 +42,8 @@
     <script src="../_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script>
         const thebe_selector = ".thebe"
@@ -51,10 +53,13 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="18. SLS Lecture 18 : Topics" href="L18.html" />
+    <link rel="next" title="18. UC-SLS Lecture 18 : Using C to write and organize opcode bytes - Functions" href="L18.html" />
     <link rel="prev" title="16. SLS Lecture 16 : Topics" href="../assembly/L16.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
     
   </head>
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
@@ -93,7 +98,7 @@
   </a>
  </li>
 </ul>
-<p class="caption" role="heading">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Course Specfic Introductions
  </span>
@@ -110,7 +115,7 @@
   </a>
  </li>
 </ul>
-<p class="caption" role="heading">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   The Unix Development Environment
  </span>
@@ -147,7 +152,7 @@
   </a>
  </li>
 </ul>
-<p class="caption" role="heading">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   The Belly of the Beast: The von Neumann Architecture and Assembly Programming
  </span>
@@ -204,7 +209,7 @@
   </a>
  </li>
 </ul>
-<p class="caption" role="heading">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Into the Light : C Programming
  </span>
@@ -212,27 +217,27 @@
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   17. SLS Lecuture 17 : Topics
+   17. UC-SLS Lecuture 17 : In to the Light - C Intro
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="L18.html">
-   18. SLS Lecture 18 : Topics
+   18. UC-SLS Lecture 18 : Using C to write and organize opcode bytes - Functions
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="L19.html">
-   19. SLS Lecture 19 : Topics
+   19. UC-SLS Lecture 19 : Using C to map and organize our data bytes - Data Types
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="L20.html">
-   20. SLS Lecture 20 : Topics
+   20. UC-SLS Lecture 20 : Using LibC to access the OS and escape the confines our our process
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="L21.html">
-   21. SLS Lecture 21 : Topics
+   21. UC-SLS Lecture 21 : The rest of LibC and other libraries
   </a>
  </li>
  <li class="toctree-l1">
@@ -351,6 +356,157 @@
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show">
             
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#what-are-some-the-downsides-of-assembly-programming">
+   17.1. What are some the downsides of Assembly Programming?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#high-level-languages">
+   17.2. High level languages
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-toolchain">
+   17.3. The ToolChain
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#toolchain-in-action-a-simple-c-version-of-sumit">
+   17.4. ToolChain in action: A simple C version of sumit
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#run-assembler-on-usecsumit1-s">
+     17.4.1. Run Assembler on usecsumit1.S
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#run-compiler-on-csumit-c">
+     17.4.2. Run Compiler on csumit.c
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#run-assembler-on-csumit1-s">
+     17.4.3. Run Assembler on csumit1.s
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#linking-it-all-together">
+     17.4.4. Linking it all together
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#run-our-executable">
+     17.4.5. Run our executable
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#exercises">
+       17.4.5.1. Exercises
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#remember-objdump-is-another-useful-tool">
+   17.5. Remember
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     objdump
+    </span>
+   </code>
+   is another useful tool
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#of-course-the-debugger-is-still-our-best-friend">
+     17.5.1. OF COURSE THE DEBUGGER IS STILL OUR BEST FRIEND
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#before-we-can-get-really-get-going">
+   17.6. Before we can get really get going
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#our-particular-compiler-gcc">
+     17.6.1. Our particular compiler : GCC
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#controlling-the-compiler-with-its-command-line-options">
+     17.6.2. Controlling the compiler with its command line options
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#optimization-level-o">
+       17.6.2.1. Optimization level
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         -O
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#turning-off-features-that-we-don-t-need">
+       17.6.2.2. Turning off features that we don’t need
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#we-are-going-to-force-ourselves-to-write-good-code-making-all-warning-errors">
+       17.6.2.3. We are going to force ourselves to write good code making all warning errors
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#explicitly-produce-assembly-files">
+       17.6.2.4. Explicitly produce assembly files
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#generate-intel-syntax-assembly-code">
+       17.6.2.5. Generate intel syntax assembly code
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#eg">
+       17.6.2.6. Eg.
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#compiler-driver-vs-compiler-and-building">
+   17.7. Compiler Driver vs Compiler and “Building”
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#another-link-the-c-preprocessor">
+   17.8. Another Link: The C Preprocessor
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#preprocessor-in-action">
+     17.8.1. Preprocessor in action
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -359,8 +515,876 @@
         
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="sls-lecuture-17-topics">
-<h1><span class="section-number">17. </span>SLS Lecuture 17 : Topics<a class="headerlink" href="#sls-lecuture-17-topics" title="Permalink to this headline">¶</a></h1>
+  <div class="tex2jax_ignore mathjax_ignore section" id="uc-sls-lecuture-17-in-to-the-light-c-intro">
+<h1><span class="section-number">17. </span>UC-SLS Lecuture 17 : In to the Light - C Intro<a class="headerlink" href="#uc-sls-lecuture-17-in-to-the-light-c-intro" title="Permalink to this headline">¶</a></h1>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<ul class="simple">
+<li><p>create a directory <code class="docutils literal notranslate"><span class="pre">mkdir</span> <span class="pre">cintro;</span> <span class="pre">cd</span> <span class="pre">cintro</span></code></p></li>
+<li><p>copy examples</p></li>
+<li><p>add a <code class="docutils literal notranslate"><span class="pre">Makefile</span></code> to automate assembling and linking</p>
+<ul>
+<li><p>we are going run the commands by hand this time to highlight the details</p></li>
+</ul>
+</li>
+<li><p>add our <code class="docutils literal notranslate"><span class="pre">setup.gdb</span></code> to make working in gdb easier</p></li>
+<li><p>normally you would want to track everything in git</p></li>
+</ul>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>$ ls /home/jovyan/cintro
+csumit1.c  loop.c  Makefile  misc.h  myfunc0.c  setup.gdb  usecsumit1.S
+$ 
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="what-are-some-the-downsides-of-assembly-programming">
+<h2><span class="section-number">17.1. </span>What are some the downsides of Assembly Programming?<a class="headerlink" href="#what-are-some-the-downsides-of-assembly-programming" title="Permalink to this headline">¶</a></h2>
+<ol class="simple">
+<li><p>The human burden of assembly programming and programmer lock in</p></li>
+<li><p>The code we write is locked to a specific CPU</p></li>
+<li><p>The code we write is locked to a specific OS</p></li>
+</ol>
+</div>
+<div class="section" id="high-level-languages">
+<h2><span class="section-number">17.2. </span>High level languages<a class="headerlink" href="#high-level-languages" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>downsides</p></li>
+<li><p>lets look at python</p></li>
+</ul>
+</div>
+<div class="section" id="the-toolchain">
+<h2><span class="section-number">17.3. </span>The ToolChain<a class="headerlink" href="#the-toolchain" title="Permalink to this headline">¶</a></h2>
+<center>
+<img src="../images/C-001/C-001.001.png" >
+</center><center>
+<img src="../images/C-001/C-001.002.png" >
+</center><center>
+<img src="../images/C-001/C-001.003.png" >
+</center><center>
+<img src="../images/C-001/C-001.004.png" >
+</center></div>
+<div class="section" id="toolchain-in-action-a-simple-c-version-of-sumit">
+<h2><span class="section-number">17.4. </span>ToolChain in action: A simple C version of sumit<a class="headerlink" href="#toolchain-in-action-a-simple-c-version-of-sumit" title="Permalink to this headline">¶</a></h2>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<p><b>CODE: csumit1.c</p>
+<div style="width:107em; height:100%; font-size:inherit; overflow: auto;" >
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">long</span> <span class="kt">long</span> <span class="n">XARRAY</span><span class="p">[</span><span class="mi">1024</span><span class="p">];</span>
+
+<span class="kt">long</span> <span class="kt">long</span>  <span class="n">sumit</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="kt">long</span> <span class="kt">long</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="kt">long</span> <span class="kt">long</span> <span class="n">sum</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  
+  <span class="k">for</span> <span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="mi">10</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">sum</span> <span class="o">+=</span> <span class="n">XARRAY</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="n">sum</span><span class="p">;</span>
+<span class="p">}</span>
+
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<p><b>CODE: usecsumit1.S</p>
+<div style="width:107em; height:100%; font-size:inherit; overflow: auto;" >
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span>	.intel_syntax noprefix
+
+	.global _start	
+_start:
+	call sumit
+	mov rdi, 0      # rdi = 0 = exit return value
+	mov rax, 60     # rax = 60 = exit syscall num
+	syscall         # exit(0)
+
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="run-assembler-on-usecsumit1-s">
+<h3><span class="section-number">17.4.1. </span>Run Assembler on usecsumit1.S<a class="headerlink" href="#run-assembler-on-usecsumit1-s" title="Permalink to this headline">¶</a></h3>
+<p>**Use assembler as expected to <code class="docutils literal notranslate"><span class="pre">usecsumit1.S</span></code> <span class="math notranslate nohighlight">\(\rightarrow\)</span> <code class="docutils literal notranslate"><span class="pre">usecsumit1.o</span></code></p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>as -g  usecsumit1.S -o usecsumit1.o
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>$ ls -l usecsumit1.o
+-rw-r--r-- 1 jovyan root 2016 Dec  4 14:06 usecsumit1.o
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="run-compiler-on-csumit-c">
+<h3><span class="section-number">17.4.2. </span>Run Compiler on csumit.c<a class="headerlink" href="#run-compiler-on-csumit-c" title="Permalink to this headline">¶</a></h3>
+<p><strong>A New Step - compile for <code class="docutils literal notranslate"><span class="pre">csumit1.c</span></code> <span class="math notranslate nohighlight">\(\rightarrow\)</span> <code class="docutils literal notranslate"><span class="pre">csumit1.s</span></code></strong></p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>gcc -fno-stack-protector -fno-pic  -static -Werror -fcf-protection=none -fno-asynchronous-unwind-tables -Os -S -masm=intel csumit1.c -o csumit1.s
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>$ ls -l csumit1.s
+-rw-r--r-- 1 jovyan root 347 Dec  4 14:06 csumit1.s
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<p><b>CODE: csumit1.c</p>
+<div style="width:107em; height:100%; font-size:inherit; overflow: auto;" >
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">long</span> <span class="kt">long</span> <span class="n">XARRAY</span><span class="p">[</span><span class="mi">1024</span><span class="p">];</span>
+
+<span class="kt">long</span> <span class="kt">long</span>  <span class="n">sumit</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="kt">long</span> <span class="kt">long</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="kt">long</span> <span class="kt">long</span> <span class="n">sum</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  
+  <span class="k">for</span> <span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="mi">10</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">sum</span> <span class="o">+=</span> <span class="n">XARRAY</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="n">sum</span><span class="p">;</span>
+<span class="p">}</span>
+
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<p><b>CODE: csumit1.s</p>
+<div style="width:107em; height:100%; font-size:inherit; overflow: auto;" >
+<div class="highlight-gas notranslate"><div class="highlight"><pre><span></span>	.file	&quot;csumit1.c&quot;
+	.intel_syntax noprefix
+	.text
+	.globl	sumit
+	.type	sumit, @function
+sumit:
+	xor	r8d, r8d
+	xor	eax, eax
+.L2:
+	add	r8, QWORD PTR XARRAY[0+rax*8]
+	inc	rax
+	cmp	rax, 10
+	jne	.L2
+	mov	rax, r8
+	ret
+	.size	sumit, .-sumit
+	.comm	XARRAY,8192,32
+	.ident	&quot;GCC: (Ubuntu 9.3.0-17ubuntu1~20.04) 9.3.0&quot;
+	.section	.note.GNU-stack,&quot;&quot;,@progbits
+
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="run-assembler-on-csumit1-s">
+<h3><span class="section-number">17.4.3. </span>Run Assembler on csumit1.s<a class="headerlink" href="#run-assembler-on-csumit1-s" title="Permalink to this headline">¶</a></h3>
+<p><strong>Now same old same old for <code class="docutils literal notranslate"><span class="pre">csumit1.s</span></code> <span class="math notranslate nohighlight">\(\rightarrow\)</span> <code class="docutils literal notranslate"><span class="pre">csumit1.o</span></code></strong></p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>as -g  csumit1.s -o csumit1.o
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>$ ls -l csumit1.o
+-rw-r--r-- 1 jovyan root 2304 Dec  4 14:06 csumit1.o
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="linking-it-all-together">
+<h3><span class="section-number">17.4.4. </span>Linking it all together<a class="headerlink" href="#linking-it-all-together" title="Permalink to this headline">¶</a></h3>
+<p><strong>Use Linker to create executable <code class="docutils literal notranslate"><span class="pre">usecsumit1.o</span></code> <span class="math notranslate nohighlight">\(+\)</span> <code class="docutils literal notranslate"><span class="pre">csumit1.o</span></code> <span class="math notranslate nohighlight">\(\rightarrow\)</span> <code class="docutils literal notranslate"><span class="pre">usecsumit1</span></code></strong></p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>$ ls -l usecsumit1.* csumit1.*
+-rw-r--r-- 1 jovyan root  160 Dec  4 14:06 csumit1.c
+-rw-r--r-- 1 jovyan root 2304 Dec  4 14:06 csumit1.o
+-rw-r--r-- 1 jovyan root  347 Dec  4 14:06 csumit1.s
+-rw-r--r-- 1 jovyan root 2016 Dec  4 14:06 usecsumit1.o
+-rw-r--r-- 1 jovyan root  183 Dec  4 14:06 usecsumit1.S
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ld -g  usecsumit1.o csumit1.o -o usecsumit1
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>$ ls -l usecsumit1* csumit1.*
+-rw-r--r-- 1 jovyan root  160 Dec  4 14:06 csumit1.c
+-rw-r--r-- 1 jovyan root 2304 Dec  4 14:06 csumit1.o
+-rw-r--r-- 1 jovyan root  347 Dec  4 14:06 csumit1.s
+-rwxr-xr-x 1 jovyan root 5920 Dec  4 14:06 <span class=" -Color -Color-Bold -Color-Bold-Green">usecsumit1</span>
+-rw-r--r-- 1 jovyan root 2016 Dec  4 14:06 usecsumit1.o
+-rw-r--r-- 1 jovyan root  183 Dec  4 14:06 usecsumit1.S
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="run-our-executable">
+<h3><span class="section-number">17.4.5. </span>Run our executable<a class="headerlink" href="#run-our-executable" title="Permalink to this headline">¶</a></h3>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>$ ./usecsumit1
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="exercises">
+<h4><span class="section-number">17.4.5.1. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>add io to usecsumit1</p>
+<ul>
+<li><p>read binary input in from stdin into XARRAY</p></li>
+<li><p>add a sum memory variable</p></li>
+<li><p>after call to sumit move the result in rax into the sum memory variable</p></li>
+<li><p>write value of sum memory variable to stdout</p></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="section" id="remember-objdump-is-another-useful-tool">
+<h2><span class="section-number">17.5. </span>Remember <code class="docutils literal notranslate"><span class="pre">objdump</span></code> is another useful tool<a class="headerlink" href="#remember-objdump-is-another-useful-tool" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Let’s us work directly with object files both relocatable and executables</p></li>
+<li><p>Let’s us see what’s inside and where and what the loader is supposed to do</p></li>
+<li><p>Has similar capabilities to debugger like <code class="docutils literal notranslate"><span class="pre">gdb</span></code></p>
+<ul>
+<li><p>but often easer to use when you just want to look at things and not actually debug/run things.</p></li>
+</ul>
+</li>
+</ul>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>$ objdump -M intel -S -d usecsumit1
+
+usecsumit1:     file format elf64-x86-64
+
+
+Disassembly of section .text:
+
+0000000000401000 &lt;_start&gt;:
+	.intel_syntax noprefix
+
+	.global _start	
+_start:
+	call sumit
+  401000:	e8 10 00 00 00       	call   401015 &lt;sumit&gt;
+	mov rdi, 0      # rdi = 0 = exit return value
+  401005:	48 c7 c7 00 00 00 00 	mov    rdi,0x0
+	mov rax, 60     # rax = 60 = exit syscall num
+  40100c:	48 c7 c0 3c 00 00 00 	mov    rax,0x3c
+	syscall         # exit(0)
+  401013:	0f 05                	syscall 
+
+0000000000401015 &lt;sumit&gt;:
+	.intel_syntax noprefix
+	.text
+	.globl	sumit
+	.type	sumit, @function
+sumit:
+	xor	r8d, r8d
+  401015:	45 31 c0             	xor    r8d,r8d
+	xor	eax, eax
+  401018:	31 c0                	xor    eax,eax
+.L2:
+	add	r8, QWORD PTR XARRAY[0+rax*8]
+  40101a:	4c 03 04 c5 00 20 40 	add    r8,QWORD PTR [rax*8+0x402000]
+  401021:	00 
+	inc	rax
+  401022:	48 ff c0             	inc    rax
+	cmp	rax, 10
+  401025:	48 83 f8 0a          	cmp    rax,0xa
+	jne	.L2
+  401029:	75 ef                	jne    40101a &lt;sumit+0x5&gt;
+	mov	rax, r8
+  40102b:	4c 89 c0             	mov    rax,r8
+	ret
+  40102e:	c3                   	ret    
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="of-course-the-debugger-is-still-our-best-friend">
+<h3><span class="section-number">17.5.1. </span>OF COURSE THE DEBUGGER IS STILL OUR BEST FRIEND<a class="headerlink" href="#of-course-the-debugger-is-still-our-best-friend" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>we can do everything we were doing before</p></li>
+<li><p>examine memory</p></li>
+<li><p>list assembly source</p></li>
+<li><p>disassemble</p></li>
+<li><p>set break points</p></li>
+<li><p>But now if we allow the assembler and linker to produce debug info <code class="docutils literal notranslate"><span class="pre">-g</span></code> then</p>
+<ul>
+<li><p>we can work with C source level</p>
+<ul>
+<li><p>list C source that corresponds to the opcodes</p></li>
+<li><p>set break points via C source lines</p></li>
+<li><p>examine C variables with the debugger knowing the correct types</p>
+<ul>
+<li><p>1, 2, 4 or 8 byte types</p></li>
+<li><p>pointers vs variables</p></li>
+<li><p>signed versus unsigned</p></li>
+<li><p>and support for complex heterogeneous types (we will see this later)</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<p><b>Debug</b></p>
+</div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">gcc</span> <span class="pre">--static</span> <span class="pre">-g</span> <span class="pre">-nostartfiles</span> <span class="pre">-nostdlib</span>&#160; <span class="pre">csumit1.c</span> <span class="pre">usecsumit1.S</span> <span class="pre">-o</span> <span class="pre">sum</span></code></p>
+<ul>
+<li><p>here we let the compiler driver do all the steps for us</p>
+<ul>
+<li><p>it creates the necessary “intermediary” files (.s and .o files) and removes then when done</p></li>
+<li><p>it runs the “compiler”, “assembler” and “linker” for us : use <code class="docutils literal notranslate"><span class="pre">-v</span></code> flags to sees this happend</p></li>
+</ul>
+</li>
+<li><p>in our case since we are not using the C library or “runtime” we suppress their use</p>
+<ul>
+<li><p>rather we want to provide our own <code class="docutils literal notranslate"><span class="pre">_start</span></code></p></li>
+<li><p>we are just using the compiler to avoid writing all our code in assembly</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>we can now <code class="docutils literal notranslate"><span class="pre">list</span> <span class="pre">sumit</span></code></p></li>
+<li><p>set breakpoints on C lines <code class="docutils literal notranslate"><span class="pre">break</span> <span class="pre">8</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">disassemble</span> <span class="pre">sumit</span></code></p></li>
+<li><p>print and examine C variables</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">p</span> <span class="pre">i</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">p</span> <span class="pre">sum</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">p</span> <span class="pre">XARRAY</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">p</span> <span class="pre">XARRAY[0]</span></code></p></li>
+</ul>
+</li>
+<li><p>ask what the type of a variable is</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">whatis</span> <span class="pre">XARRAY</span></code></p></li>
+</ul>
+</li>
+</ul>
+<p><strong>In other words our use of a particular memory location is now clear and explicit</strong></p>
+<center>
+<img src="../images/C-001/C-001.014.png" >
+</center><center>
+<img src="../images/C-001/C-001.015.png" >
+</center><center>
+<img src="../images/C-001/C-001.016.png" >
+</center><center>
+<img src="../images/C-001/C-001.017.png" >
+</center></div>
+</div>
+<div class="section" id="before-we-can-get-really-get-going">
+<h2><span class="section-number">17.6. </span>Before we can get really get going<a class="headerlink" href="#before-we-can-get-really-get-going" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="our-particular-compiler-gcc">
+<h3><span class="section-number">17.6.1. </span>Our particular compiler : GCC<a class="headerlink" href="#our-particular-compiler-gcc" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="https://gcc.gnu.org/onlinedocs/gcc/index.html#SEC_Contents">https://gcc.gnu.org/onlinedocs/gcc/index.html#SEC_Contents</a></p>
+<ul class="simple">
+<li><p>is the back bone of the GNU Linux software environment</p></li>
+<li><p>however it is by no means the only C compiler tool chain</p>
+<ul>
+<li><p>llvm</p></li>
+<li><p>xlc</p></li>
+<li><p>Microsoft’s C compiler</p></li>
+<li><p>and many more</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="controlling-the-compiler-with-its-command-line-options">
+<h3><span class="section-number">17.6.2. </span>Controlling the compiler with its command line options<a class="headerlink" href="#controlling-the-compiler-with-its-command-line-options" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>The C compiler is a very sophisticated program and has many options that control the assembly code it creates</p></li>
+<li><p>we are going to use options so that make it easier to read the code it creates</p>
+<ul>
+<li><p>normally the code it creates does not target human readability</p></li>
+<li><p>It usually includes a lot of extra directives to provide the debugger and other tools with more information</p></li>
+<li><p>and by default wants to keep compilation fast</p></li>
+</ul>
+</li>
+</ul>
+<p><a class="reference external" href="https://gcc.gnu.org/onlinedocs/gcc/Optimize-Options.html">https://gcc.gnu.org/onlinedocs/gcc/Optimize-Options.html</a></p>
+<div class="section" id="optimization-level-o">
+<h4><span class="section-number">17.6.2.1. </span>Optimization level <code class="docutils literal notranslate"><span class="pre">-O</span></code><a class="headerlink" href="#optimization-level-o" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>by default if no optimization level is given to <code class="docutils literal notranslate"><span class="pre">gcc</span></code> the compiler suite we are using</p>
+<ul>
+<li><p>produces code that is suited for use and manipulation in the debugger</p>
+<ul>
+<li><p>this code sacrifices efficiency so that it is easy to work at the “C” source level</p></li>
+</ul>
+</li>
+<li><p>we will use <code class="docutils literal notranslate"><span class="pre">-Os</span></code> to set the optimization level to <code class="docutils literal notranslate"><span class="pre">s</span></code> which</p>
+<ul>
+<li><p>does many optimizations but tries to keep the code “small”</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="turning-off-features-that-we-don-t-need">
+<h4><span class="section-number">17.6.2.2. </span>Turning off features that we don’t need<a class="headerlink" href="#turning-off-features-that-we-don-t-need" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>We also going turn off some features designed to exploit features of the Intel processor that make the code more secure</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">-fcf-protection=none</span></code></p></li>
+</ul>
+</li>
+<li><p>We are going to turn off certain debugging directives</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">-fno-asynchronous-unwind-tables</span></code></p></li>
+</ul>
+</li>
+<li><p>We are going to turn off support for dynamic (load/runtime) relocation and linking</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">-fno-pic</span></code>  : turn off generation of position independent code</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-static</span></code>    : force static linking</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="we-are-going-to-force-ourselves-to-write-good-code-making-all-warning-errors">
+<h4><span class="section-number">17.6.2.3. </span>We are going to force ourselves to write good code making all warning errors<a class="headerlink" href="#we-are-going-to-force-ourselves-to-write-good-code-making-all-warning-errors" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">-Werror</span></code></p></li>
+<li><p>In general you should never have warning in your code - it is a sign that you don’t know what you are doing</p></li>
+</ul>
+</div>
+<div class="section" id="explicitly-produce-assembly-files">
+<h4><span class="section-number">17.6.2.4. </span>Explicitly produce assembly files<a class="headerlink" href="#explicitly-produce-assembly-files" title="Permalink to this headline">¶</a></h4>
+<p>To have the compiler driver only preprocess and compile to produce .s files</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">-S</span></code></p></li>
+</ul>
+</div>
+<div class="section" id="generate-intel-syntax-assembly-code">
+<h4><span class="section-number">17.6.2.5. </span>Generate intel syntax assembly code<a class="headerlink" href="#generate-intel-syntax-assembly-code" title="Permalink to this headline">¶</a></h4>
+<p>To have it generate intel syntax</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">-masm=intel</span></code></p></li>
+</ul>
+</div>
+<div class="section" id="eg">
+<h4><span class="section-number">17.6.2.6. </span>Eg.<a class="headerlink" href="#eg" title="Permalink to this headline">¶</a></h4>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>gcc -fno-stack-protector -fno-pic  -static -Werror -fcf-protection=none -fno-asynchronous-unwind-tables -Os -S -masm=intel myfunc0.c -o myfunc0.s
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="compiler-driver-vs-compiler-and-building">
+<h2><span class="section-number">17.7. </span>Compiler Driver vs Compiler and “Building”<a class="headerlink" href="#compiler-driver-vs-compiler-and-building" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>The term compiler is used in multiple ways</p>
+<ol class="simple">
+<li><p>component of the tool chain that translates C into assembly</p>
+<ul>
+<li><p>or whatever language it was built for (eg. Fortran, etc)</p></li>
+</ul>
+</li>
+<li><p>The master command of the the tool chain that</p>
+<ul>
+<li><p>a meta command that knowns how to invoke each of the components of the tool chain</p></li>
+<li><p>passed a default set of options to the components</p>
+<ul>
+<li><p>you can override these</p></li>
+</ul>
+</li>
+<li><p>default behavior is to try and run all steps of the toolchain to try and create and executable from the files specified</p>
+<ul>
+<li><p>eg. <code class="docutils literal notranslate"><span class="pre">gcc</span> <span class="pre">my1.c</span> <span class="pre">my2.c</span> <span class="pre">myasm.S</span> <span class="pre">neuralnet.o</span> <span class="pre">-o</span> <span class="pre">myexe</span></code></p></li>
+<li><p>if any errors occurs it will stop and report them from which ever component failed</p></li>
+<li><p>it creates all intermediary files as temporaries and removes them once done</p>
+<ul>
+<li><p>eg. it creates <code class="docutils literal notranslate"><span class="pre">.s</span></code> and <code class="docutils literal notranslate"><span class="pre">.o</span></code> files as it needs too and deletes them when it is done</p></li>
+<li><p>you can override this behavior</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">-E</span></code> only pre-process</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-S</span></code> pre-process and compile to produce <code class="docutils literal notranslate"><span class="pre">.s</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-c</span></code> pre-process, compile and assemble to produce <code class="docutils literal notranslate"><span class="pre">.o</span></code></p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>The most common use is to separated out creating <code class="docutils literal notranslate"><span class="pre">.o</span></code> from linking into an executable eg.</p>
+<ul>
+<li><p>Your program is composed from a mixture of source files:</p>
+<ul>
+<li><p>my1.c, my2.c, myasm.S</p></li>
+<li><p>for these you would separately “compile” each to produce a corresponding .o</p>
+<ol class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">gcc</span> <span class="pre">-c</span> <span class="pre">my1.c</span> <span class="pre">-o</span> <span class="pre">my1.o</span></code> (runs pre-processor, compiler, and assembler)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">gcc</span> <span class="pre">-c</span> <span class="pre">my2.c</span> <span class="pre">-o</span> <span class="pre">my2.o</span></code> (runs pre-processor, compiler, and assembler)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">gcc</span> <span class="pre">-c</span> <span class="pre">myasm.S</span> <span class="pre">-o</span> <span class="pre">myasm.o</span></code> (runs pre-processor and assembler)</p></li>
+</ol>
+</li>
+</ul>
+</li>
+<li><p>Your program uses an existing object file from a library that someone gave you</p>
+<ul>
+<li><p>neuralnet.o</p></li>
+</ul>
+</li>
+<li><p>Now you as a separate step you link all the object files together to produce your binary</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">gcc</span> <span class="pre">my1.o</span> <span class="pre">my2.o</span> <span class="pre">myasm.o</span> <span class="pre">neuralnet.o</span> <span class="pre">-o</span> <span class="pre">myexe</span></code></p></li>
+</ul>
+</li>
+<li><p>You would automate all of this with an Makefile so that when you want to “build” your executable</p>
+<ul>
+<li><p>make will</p>
+<ol class="simple">
+<li><p>Only run the necessary steps “compile” steps depending on what source files are newer than their corresponding <code class="docutils literal notranslate"><span class="pre">.o</span></code></p></li>
+<li><p>Then it will re-link all the <code class="docutils literal notranslate"><span class="pre">.o</span></code>, updated ones and existing ones, to produce a new version of the executable</p></li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+</div>
+<div class="section" id="another-link-the-c-preprocessor">
+<h2><span class="section-number">17.8. </span>Another Link: The C Preprocessor<a class="headerlink" href="#another-link-the-c-preprocessor" title="Permalink to this headline">¶</a></h2>
+<center>
+<img src="../images/C-001/C-001.018.png" >
+</center><center>
+<img src="../images/C-001/C-001.019.png" >
+</center><center>
+<img src="../images/C-001/C-001.020.png" >
+</center><center>
+<img src="../images/C-001/C-001.021.png" >
+</center><center>
+<img src="../images/C-001/C-001.022.png" >
+</center><center>
+<img src="../images/C-001/C-001.023.png" >
+</center><center>
+<img src="../images/C-001/C-001.024.png" >
+</center><div class="section" id="preprocessor-in-action">
+<h3><span class="section-number">17.8.1. </span>Preprocessor in action<a class="headerlink" href="#preprocessor-in-action" title="Permalink to this headline">¶</a></h3>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<p><b>CODE: misc.h</p>
+<div style="width:107em; height:100%; font-size:inherit; overflow: auto;" >
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#ifndef __MISC_H__</span>
+<span class="cp">#define __MISC_H__</span>
+
+<span class="c1">//#define ENABLE_VERBOSE</span>
+<span class="c1">//#define ENABLE_TRACE_LOOP</span>
+<span class="c1">//#define ENABLE_TRACE_MEM</span>
+
+<span class="cp">#ifdef ENABLE_VERBOSE</span>
+<span class="cp">#define VPRINT(fmt, ...) fprintf(stderr, &quot;%s: &quot; fmt, __func__,__VA_ARGS__)</span>
+<span class="cp">#else</span>
+<span class="cp">#define VPRINT(...)</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifdef ENABLE_TRACE_LOOP</span>
+<span class="cp">#define TRACE_LOOP(stmt) { stmt; }</span>
+<span class="cp">#else</span>
+<span class="cp">#define TRACE_LOOP(stmt)</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifdef ENABLE_TRACE_MEM</span>
+<span class="cp">#define TRACE_MEM(stmt) { stmt; }</span>
+<span class="cp">#else</span>
+<span class="cp">#define TRACE_MEM(stmt)</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#define NYI fprintf(stderr, &quot;%s: NYI\n&quot;, __func__)</span>
+<span class="cp">#endif</span>
+
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<p><b>CODE: loop.c</p>
+<div style="width:107em; height:100%; font-size:inherit; overflow: auto;" >
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&quot;misc.h&quot;</span><span class="cp"></span>
+
+<span class="kt">int</span> <span class="nf">fetch</span><span class="p">(</span><span class="k">struct</span> <span class="nc">machine</span> <span class="o">*</span><span class="n">m</span><span class="p">)</span> <span class="p">{</span> <span class="n">NYI</span><span class="p">;</span> <span class="p">}</span>
+<span class="kt">int</span> <span class="nf">decode</span><span class="p">(</span><span class="k">struct</span> <span class="nc">machine</span> <span class="o">*</span><span class="n">m</span><span class="p">)</span> <span class="p">{</span> <span class="n">NYI</span><span class="p">;</span> <span class="p">}</span>
+<span class="kt">int</span> <span class="nf">execute</span><span class="p">(</span><span class="k">struct</span> <span class="nc">machine</span> <span class="o">*</span><span class="n">m</span><span class="p">)</span> <span class="p">{</span> <span class="n">NYI</span><span class="p">;</span> <span class="p">}</span>
+
+<span class="kt">int</span>
+<span class="nf">loop</span><span class="p">(</span><span class="kt">int</span> <span class="n">count</span><span class="p">,</span> <span class="k">struct</span> <span class="nc">machine</span> <span class="o">*</span><span class="n">m</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="kt">int</span> <span class="n">rc</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+  <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+  <span class="k">if</span> <span class="p">(</span><span class="n">count</span><span class="o">&lt;</span><span class="mi">0</span><span class="p">)</span> <span class="k">return</span> <span class="n">rc</span><span class="p">;</span>
+
+  <span class="k">while</span> <span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">TRACE_LOOP</span><span class="p">(</span><span class="n">dump_cpu</span><span class="p">(</span><span class="n">m</span><span class="p">));</span>
+    <span class="n">rc</span> <span class="o">=</span> <span class="n">interrupts</span><span class="p">(</span><span class="n">m</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">rc</span><span class="p">)</span> <span class="n">rc</span> <span class="o">=</span> <span class="n">fetch</span><span class="p">(</span><span class="n">m</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">rc</span><span class="p">)</span> <span class="n">rc</span> <span class="o">=</span> <span class="n">decode</span><span class="p">(</span><span class="n">m</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">rc</span><span class="p">)</span> <span class="n">rc</span> <span class="o">=</span> <span class="n">execute</span><span class="p">(</span><span class="n">m</span><span class="p">);</span>
+    <span class="n">i</span><span class="o">++</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">rc</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="o">||</span> <span class="p">(</span><span class="n">count</span> <span class="o">&amp;&amp;</span> <span class="n">i</span> <span class="o">==</span> <span class="n">count</span><span class="p">))</span>
+      <span class="k">break</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="n">VPRINT</span><span class="p">(</span><span class="s">&quot;EXITING: count=%d i=%d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">count</span><span class="p">,</span><span class="n">i</span><span class="p">);</span>
+  <span class="k">return</span> <span class="n">rc</span><span class="p">;</span>
+<span class="p">}</span>
+
+
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>$  gcc -E loop.c
+# 1 &quot;loop.c&quot;
+# 1 &quot;&lt;built-in&gt;&quot;
+# 1 &quot;&lt;command-line&gt;&quot;
+# 31 &quot;&lt;command-line&gt;&quot;
+# 1 &quot;/usr/include/stdc-predef.h&quot; 1 3 4
+# 32 &quot;&lt;command-line&gt;&quot; 2
+# 1 &quot;loop.c&quot;
+# 1 &quot;misc.h&quot; 1
+# 2 &quot;loop.c&quot; 2
+
+int fetch(struct machine *m) { fprintf(stderr, &quot;%s: NYI\n&quot;, __func__); }
+int decode(struct machine *m) { fprintf(stderr, &quot;%s: NYI\n&quot;, __func__); }
+int execute(struct machine *m) { fprintf(stderr, &quot;%s: NYI\n&quot;, __func__); }
+
+int
+loop(int count, struct machine *m)
+{
+  int rc = 1;
+  unsigned int i = 0;
+
+  if (count&lt;0) return rc;
+
+  while (1) {
+    ;
+    rc = interrupts(m);
+    if (rc) rc = fetch(m);
+    if (rc) rc = decode(m);
+    if (rc) rc = execute(m);
+    i++;
+    if (rc &lt; 0 || (count &amp;&amp; i == count))
+      break;
+  }
+  ;
+  return rc;
+}
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>In some sense the preprocessor lets us “craft” our code into our own creature that can be customized and controlled</p>
+<ul>
+<li><p>We can now change our code by modifying and defining macros</p>
+<ol class="simple">
+<li><p>Edit “misc.h”</p></li>
+<li><p>or use ability to define and undefine macros via gcc command line options</p>
+<ul>
+<li><p><a class="reference external" href="https://gcc.gnu.org/onlinedocs/gcc/Preprocessor-Options.html">https://gcc.gnu.org/onlinedocs/gcc/Preprocessor-Options.html</a></p></li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>-D name
+Predefine name as a macro, with definition 1.
+
+-D name=definition
+The contents of definition are tokenized and processed as if they appeared during translation phase three in a ‘#define’ directive. In particular, the definition is truncated by embedded newline characters.
+
+If you are invoking the preprocessor from a shell or shell-like program you may need to use the shell’s quoting syntax to protect characters such as spaces that have a meaning in the shell syntax.
+
+If you wish to define a function-like macro on the command line, write its argument list with surrounding parentheses before the equals sign (if any). Parentheses are meaningful to most shells, so you should quote the option. With sh and csh, -D&#39;name(args…)=definition&#39; works.
+
+-D and -U options are processed in the order they are given on the command line. All -imacros file and -include file options are processed after all -D and -U options.
+
+-U name
+Cancel any previous definition of name, either built in or provided with a -D option.
+</pre></div>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>$  gcc -D ENABLE_TRACE_LOOP -E loop.c
+# 1 &quot;loop.c&quot;
+# 1 &quot;&lt;built-in&gt;&quot;
+# 1 &quot;&lt;command-line&gt;&quot;
+# 1 &quot;/usr/include/stdc-predef.h&quot; 1 3 4
+# 1 &quot;&lt;command-line&gt;&quot; 2
+# 1 &quot;loop.c&quot;
+# 1 &quot;misc.h&quot; 1
+# 2 &quot;loop.c&quot; 2
+
+int fetch(struct machine *m) { fprintf(stderr, &quot;%s: NYI\n&quot;, __func__); }
+int decode(struct machine *m) { fprintf(stderr, &quot;%s: NYI\n&quot;, __func__); }
+int execute(struct machine *m) { fprintf(stderr, &quot;%s: NYI\n&quot;, __func__); }
+
+int
+loop(int count, struct machine *m)
+{
+  int rc = 1;
+  unsigned int i = 0;
+
+  if (count&lt;0) return rc;
+
+  while (1) {
+    { dump_cpu(m); };
+    rc = interrupts(m);
+    if (rc) rc = fetch(m);
+    if (rc) rc = decode(m);
+    if (rc) rc = execute(m);
+    i++;
+    if (rc &lt; 0 || (count &amp;&amp; i == count))
+      break;
+  }
+  ;
+  return rc;
+}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>$  gcc -D ENABLE_VERBOSE -E loop.c
+# 1 &quot;loop.c&quot;
+# 1 &quot;&lt;built-in&gt;&quot;
+# 1 &quot;&lt;command-line&gt;&quot;
+# 1 &quot;/usr/include/stdc-predef.h&quot; 1 3 4
+# 1 &quot;&lt;command-line&gt;&quot; 2
+# 1 &quot;loop.c&quot;
+# 1 &quot;misc.h&quot; 1
+# 2 &quot;loop.c&quot; 2
+
+int fetch(struct machine *m) { fprintf(stderr, &quot;%s: NYI\n&quot;, __func__); }
+int decode(struct machine *m) { fprintf(stderr, &quot;%s: NYI\n&quot;, __func__); }
+int execute(struct machine *m) { fprintf(stderr, &quot;%s: NYI\n&quot;, __func__); }
+
+int
+loop(int count, struct machine *m)
+{
+  int rc = 1;
+  unsigned int i = 0;
+
+  if (count&lt;0) return rc;
+
+  while (1) {
+    ;
+    rc = interrupts(m);
+    if (rc) rc = fetch(m);
+    if (rc) rc = decode(m);
+    if (rc) rc = execute(m);
+    i++;
+    if (rc &lt; 0 || (count &amp;&amp; i == count))
+      break;
+  }
+  fprintf(stderr, &quot;%s: &quot; &quot;EXITING: count=%d i=%d\n&quot;, __func__,count,i);
+  return rc;
+}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>$  gcc -D ENABLE_VERBOSE -D ENABLE_TRACE_LOOP -E loop.c
+# 1 &quot;loop.c&quot;
+# 1 &quot;&lt;built-in&gt;&quot;
+# 1 &quot;&lt;command-line&gt;&quot;
+# 1 &quot;/usr/include/stdc-predef.h&quot; 1 3 4
+# 1 &quot;&lt;command-line&gt;&quot; 2
+# 1 &quot;loop.c&quot;
+# 1 &quot;misc.h&quot; 1
+# 2 &quot;loop.c&quot; 2
+
+int fetch(struct machine *m) { fprintf(stderr, &quot;%s: NYI\n&quot;, __func__); }
+int decode(struct machine *m) { fprintf(stderr, &quot;%s: NYI\n&quot;, __func__); }
+int execute(struct machine *m) { fprintf(stderr, &quot;%s: NYI\n&quot;, __func__); }
+
+int
+loop(int count, struct machine *m)
+{
+  int rc = 1;
+  unsigned int i = 0;
+
+  if (count&lt;0) return rc;
+
+  while (1) {
+    { dump_cpu(m); };
+    rc = interrupts(m);
+    if (rc) rc = fetch(m);
+    if (rc) rc = decode(m);
+    if (rc) rc = execute(m);
+    i++;
+    if (rc &lt; 0 || (count &amp;&amp; i == count))
+      break;
+  }
+  fprintf(stderr, &quot;%s: &quot; &quot;EXITING: count=%d i=%d\n&quot;, __func__,count,i);
+  return rc;
+}
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
 </div>
 
     <script type="text/x-thebe-config">
@@ -386,31 +1410,22 @@
               </div>
               
         
-            
-
-
-
-<div class='prev-next-bottom'>
-    
-    <div id="prev">
-        <a class="left-prev" href="../assembly/L16.html" title="previous page">
-            <i class="prevnext-label fas fa-angle-left"></i>
-            <div class="prevnext-info">
-                <p class="prevnext-label">previous</p>
-                <p class="prevnext-title"><span class="section-number">16. </span>SLS Lecture 16 : Topics</p>
-            </div>
-        </a>
+            <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="../assembly/L16.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">16. </span>SLS Lecture 16 : Topics</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="L18.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">18. </span>UC-SLS Lecture 18 : Using C to write and organize opcode bytes - Functions</p>
     </div>
-     <div id="next">
-        <a class="right-next" href="L18.html" title="next page">
-            <div class="prevnext-info">
-                <p class="prevnext-label">next</p>
-                <p class="prevnext-title"><span class="section-number">18. </span>SLS Lecture 18 : Topics</p>
-            </div>
-            <i class="prevnext-label fas fa-angle-right"></i>
-        </a>
-     </div>
-
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
         
         </div>
@@ -431,8 +1446,7 @@
       </div>
     </div>
   
-  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
 
-  
   </body>
 </html>

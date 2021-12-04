@@ -5,10 +5,10 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>21. SLS Lecture 21 : Topics &#8212; UndertheCovers</title>
+    <title>21. UC-SLS Lecture 21 : The rest of LibC and other libraries &#8212; UndertheCovers</title>
     
-  <link href="../_static/css/theme.css" rel="stylesheet" />
-  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -31,7 +31,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
@@ -52,9 +52,12 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="22. SLS Lecture 22 : Topics" href="L22.html" />
-    <link rel="prev" title="20. SLS Lecture 20 : Topics" href="L20.html" />
+    <link rel="prev" title="20. UC-SLS Lecture 20 : Using LibC to access the OS and escape the confines our our process" href="L20.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
     
   </head>
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
@@ -93,7 +96,7 @@
   </a>
  </li>
 </ul>
-<p class="caption" role="heading">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Course Specfic Introductions
  </span>
@@ -110,7 +113,7 @@
   </a>
  </li>
 </ul>
-<p class="caption" role="heading">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   The Unix Development Environment
  </span>
@@ -147,7 +150,7 @@
   </a>
  </li>
 </ul>
-<p class="caption" role="heading">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   The Belly of the Beast: The von Neumann Architecture and Assembly Programming
  </span>
@@ -204,7 +207,7 @@
   </a>
  </li>
 </ul>
-<p class="caption" role="heading">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Into the Light : C Programming
  </span>
@@ -212,27 +215,27 @@
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="L17.html">
-   17. SLS Lecuture 17 : Topics
+   17. UC-SLS Lecuture 17 : In to the Light - C Intro
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="L18.html">
-   18. SLS Lecture 18 : Topics
+   18. UC-SLS Lecture 18 : Using C to write and organize opcode bytes - Functions
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="L19.html">
-   19. SLS Lecture 19 : Topics
+   19. UC-SLS Lecture 19 : Using C to map and organize our data bytes - Data Types
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="L20.html">
-   20. SLS Lecture 20 : Topics
+   20. UC-SLS Lecture 20 : Using LibC to access the OS and escape the confines our our process
   </a>
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   21. SLS Lecture 21 : Topics
+   21. UC-SLS Lecture 21 : The rest of LibC and other libraries
   </a>
  </li>
  <li class="toctree-l1">
@@ -359,8 +362,28 @@
         
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="sls-lecture-21-topics">
-<h1><span class="section-number">21. </span>SLS Lecture 21 : Topics<a class="headerlink" href="#sls-lecture-21-topics" title="Permalink to this headline">¶</a></h1>
+  <div class="tex2jax_ignore mathjax_ignore section" id="uc-sls-lecture-21-the-rest-of-libc-and-other-libraries">
+<h1><span class="section-number">21. </span>UC-SLS Lecture 21 : The rest of LibC and other libraries<a class="headerlink" href="#uc-sls-lecture-21-the-rest-of-libc-and-other-libraries" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p>string functions</p></li>
+<li><p>math</p></li>
+<li><p>random</p></li>
+<li><p>setjmp, longjmp</p></li>
+<li><p>communications</p></li>
+<li><p>UNIX</p>
+<ul>
+<li><p>tty</p>
+<ul>
+<li><p>curses</p></li>
+</ul>
+</li>
+<li><p>mkdir</p></li>
+<li><p>rmdir</p></li>
+<li><p>remove</p></li>
+<li><p>rename</p></li>
+</ul>
+</li>
+</ul>
 </div>
 
     <script type="text/x-thebe-config">
@@ -386,31 +409,22 @@
               </div>
               
         
-            
-
-
-
-<div class='prev-next-bottom'>
-    
-    <div id="prev">
-        <a class="left-prev" href="L20.html" title="previous page">
-            <i class="prevnext-label fas fa-angle-left"></i>
-            <div class="prevnext-info">
-                <p class="prevnext-label">previous</p>
-                <p class="prevnext-title"><span class="section-number">20. </span>SLS Lecture 20 : Topics</p>
-            </div>
-        </a>
+            <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="L20.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">20. </span>UC-SLS Lecture 20 : Using LibC to access the OS and escape the confines our our process</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="L22.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">22. </span>SLS Lecture 22 : Topics</p>
     </div>
-     <div id="next">
-        <a class="right-next" href="L22.html" title="next page">
-            <div class="prevnext-info">
-                <p class="prevnext-label">next</p>
-                <p class="prevnext-title"><span class="section-number">22. </span>SLS Lecture 22 : Topics</p>
-            </div>
-            <i class="prevnext-label fas fa-angle-right"></i>
-        </a>
-     </div>
-
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
         
         </div>
@@ -431,8 +445,7 @@
       </div>
     </div>
   
-  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
 
-  
   </body>
 </html>

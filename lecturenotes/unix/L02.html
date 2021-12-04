@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>2. SLS Lecture 2 : Shell Part II : Programming, Files and Directories &#8212; UndertheCovers</title>
     
-  <link href="../_static/css/theme.css" rel="stylesheet" />
-  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -31,7 +31,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
@@ -42,7 +42,7 @@
     <script src="../_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script>
@@ -56,7 +56,10 @@
     <link rel="next" title="3. SLS Lecture 3 : I/O, Process Control and Credentials" href="L03.html" />
     <link rel="prev" title="1. SLS: Part I - UNIX : Introduction &amp; Preliminaries" href="L01.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
     
   </head>
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
@@ -95,7 +98,7 @@
   </a>
  </li>
 </ul>
-<p class="caption" role="heading">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Course Specfic Introductions
  </span>
@@ -112,7 +115,7 @@
   </a>
  </li>
 </ul>
-<p class="caption" role="heading">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   The Unix Development Environment
  </span>
@@ -149,7 +152,7 @@
   </a>
  </li>
 </ul>
-<p class="caption" role="heading">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   The Belly of the Beast: The von Neumann Architecture and Assembly Programming
  </span>
@@ -206,7 +209,7 @@
   </a>
  </li>
 </ul>
-<p class="caption" role="heading">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Into the Light : C Programming
  </span>
@@ -214,27 +217,27 @@
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../C/L17.html">
-   17. SLS Lecuture 17 : Topics
+   17. UC-SLS Lecuture 17 : In to the Light - C Intro
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../C/L18.html">
-   18. SLS Lecture 18 : Topics
+   18. UC-SLS Lecture 18 : Using C to write and organize opcode bytes - Functions
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../C/L19.html">
-   19. SLS Lecture 19 : Topics
+   19. UC-SLS Lecture 19 : Using C to map and organize our data bytes - Data Types
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../C/L20.html">
-   20. SLS Lecture 20 : Topics
+   20. UC-SLS Lecture 20 : Using LibC to access the OS and escape the confines our our process
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../C/L21.html">
-   21. SLS Lecture 21 : Topics
+   21. UC-SLS Lecture 21 : The rest of LibC and other libraries
   </a>
  </li>
  <li class="toctree-l1">
@@ -895,31 +898,22 @@ a new program.  Programs can inspect these values and customize their behavior. 
               </div>
               
         
-            
-
-
-
-<div class='prev-next-bottom'>
-    
-    <div id="prev">
-        <a class="left-prev" href="L01.html" title="previous page">
-            <i class="prevnext-label fas fa-angle-left"></i>
-            <div class="prevnext-info">
-                <p class="prevnext-label">previous</p>
-                <p class="prevnext-title"><span class="section-number">1. </span>SLS: Part I - UNIX : Introduction &amp;  Preliminaries</p>
-            </div>
-        </a>
+            <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="L01.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">1. </span>SLS: Part I - UNIX : Introduction &amp;  Preliminaries</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="L03.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">3. </span>SLS Lecture 3 : I/O, Process Control and Credentials</p>
     </div>
-     <div id="next">
-        <a class="right-next" href="L03.html" title="next page">
-            <div class="prevnext-info">
-                <p class="prevnext-label">next</p>
-                <p class="prevnext-title"><span class="section-number">3. </span>SLS Lecture 3 : I/O, Process Control and Credentials</p>
-            </div>
-            <i class="prevnext-label fas fa-angle-right"></i>
-        </a>
-     </div>
-
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
         
         </div>
@@ -940,8 +934,7 @@ a new program.  Programs can inspect these values and customize their behavior. 
       </div>
     </div>
   
-  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
 
-  
   </body>
 </html>
