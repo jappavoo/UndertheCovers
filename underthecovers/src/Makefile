@@ -1,8 +1,10 @@
-ASMTARGETS=popcnt simple empty add addwithvars hello exit exit_bb exit_bb_bb brk int3 main cbrk mov usesum usesum2 usesum3 usesum4 usesum5 usesum6 codeptrs selfmodify tree tree_bb playertest usesumheap usesumIO
+ASMTARGETS=popcnt simple empty add addwithvars hello exit exit_bb exit_bb_bb brk int3 main cbrk mov usesum usesum2 usesum3 usesum4 usesum5 usesum6 codeptrs selfmodify tree tree_bb playertest usesumheap usesumIO usecsumit usecsumit1 callmyadd
 CTARGETS=hello cbrk
 ASM6502TARGETS=6502add
 
-DEBUG:=-g
+ASFLAGS=-a=$@.lst
+LDFLAGS=-Map=$@.map
+DEBUG=-g
 
 .PHONEY: all clean
 
@@ -19,13 +21,21 @@ DEBUG:=-g
 	gcc -E $< -o $@	
 
 %.o: %.I
-	as ${DEBUG} -a=$@.lst $< -o $@
+	as ${DEBUG} ${ASFLAGS} $< -o $@
 
 %.o: %.S
-	as ${DEBUG} -a=$@.lst $< -o $@
+	as ${DEBUG} ${ASFLAGS} $< -o $@
+
+%.o: %.s
+	as ${DEBUG} $(ASFLAGS) $< -o $@
+
+# -fverbose-asm
+# -v
+%.s: %.c
+	gcc -fno-stack-protector -fno-pic  -static -Werror -fcf-protection=none -fno-asynchronous-unwind-tables -Os -S -masm=intel $^ -o $@
 
 %: %.o
-	ld ${DEBUG} -Map=$@.map $^ -o $@
+	ld ${DEBUG} $(LDFLAGS) $^ -o $@
 
 #	gcc --static -g -nostartfiles -nolibc -Wl,--build-id=none -Wa,-alh -Xlinker -Map=$@.map  $< -o $@ > $@.lst
 
@@ -43,6 +53,9 @@ DEBUG:=-g
 	ld65 -o $@ -C 6502.cfg $< -m $@.map
 	od -An -tx1 -w5  $@
 
+%.dis: %
+	objdump -d $< > $@
+
 all: ${ASMTARGETS} ${CTARGETS} ${ASM6502TARGETS}
 
 usesum: usesum.o sumit.o
@@ -56,18 +69,28 @@ usesum4: usesum4.o sumit3.o
 usesum5: usesum5.o sumit5.o
 
 usesum6: usesum5.o sumit6.o
-	ld ${DEBUG} -Map=$@.map $^ -o $@
+	ld ${DEBUG} $(LDFLAGS) $^ -o $@
+
+csumit1.o: csumit1.s
+
+usecsumit1: usecsumit1.o csumit1.o
 
 selfmodify: selfmodify.o
-	ld --omagic ${DEBUG} -Map=$@.map $^ -o $@
+	ld --omagic ${DEBUG} $(LDFLAGS) $^ -o $@
 
 playertest: playertest.o findplayer.o
 
 usesumheap: usesumheap.o sumit6.o
-	ld ${DEBUG} -Map=$@.map $^ -o $@
+	ld ${DEBUG} $(LDFLAGS) $^ -o $@
 
 usesumIO: usesumIO.o sumit6.o
-	ld ${DEBUG} -Map=$@.map $^ -o $@
+	ld ${DEBUG} $(LDFLAGS) $^ -o $@
+
+main0: main0.s myfunc0.s
+	gcc $(VERBOSE) -fno-pic -static -Os ${DEBUG} $^ -o $@
+
+callmyadd: callmyadd.s myadd.s myadd.h
+	gcc $(VERBOSE) -fno-pic -static -Os ${DEBUG} $^ -o $@
 
 # overides so that we use cpp to proces includes
 exit.o: exit.I
@@ -86,4 +109,4 @@ main: main.S
 	gcc --static -g $< -o $@
 
 clean:
-	rm -f $(wildcard ${ASMTARGETS} ${CTARGETS} ${ASM6502TARGETS} *.o *.6502_o *~ *.lst *.map *.I)
+	rm -f $(wildcard ${ASMTARGETS} ${CTARGETS} ${ASM6502TARGETS} *.o *.6502_o *~ *.lst *.map *.I csumit.s myfunc0.s myfunc1.s myfunc2.s myfunc3.s main0.s myadd.s callmyadd.s csumit1.s  main0 *.dis)
