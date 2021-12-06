@@ -1,4 +1,4 @@
-ASMTARGETS=popcnt simple empty add addwithvars hello exit exit_bb exit_bb_bb brk int3 main cbrk mov usesum usesum2 usesum3 usesum4 usesum5 usesum6 codeptrs selfmodify tree tree_bb playertest usesumheap usesumIO usecsumit usecsumit1 callmyadd
+ASMTARGETS=popcnt simple empty add addwithvars hello exit exit_bb exit_bb_bb brk int3 main cbrk mov usesum usesum2 usesum3 usesum4 usesum5 usesum6 codeptrs selfmodify tree tree_bb playertest usesumheap usesumIO usecsumit usecsumit1 callmyadd cexp dynmem dynmemsyscalls
 CTARGETS=hello cbrk
 ASM6502TARGETS=6502add
 
@@ -91,6 +91,15 @@ main0: main0.s myfunc0.s
 
 callmyadd: callmyadd.s myadd.s myadd.h
 	gcc $(VERBOSE) -fno-pic -static -Os ${DEBUG} $^ -o $@
+
+cexp: cexp.c
+	gcc $(VERBOSE) $(DEBUG)  -Os -static -Xlinker -Map=$@.map $< -o $@ -lm
+
+dynmem: dynmem.c 
+	gcc $(VERBOSE) $(DEBUG) $^ -o $@
+
+dynmemsyscalls: dynmemsyscalls.c 
+	gcc $(VERBOSE) $(DEBUG) $^ -o $@
 
 # overides so that we use cpp to proces includes
 exit.o: exit.I
