@@ -96,11 +96,13 @@ cexp: cexp.c
 	gcc $(VERBOSE) $(DEBUG)  -Os -static -Xlinker -Map=$@.map $< -o $@ -lm
 
 dynmem: dynmem.c 
-	gcc $(VERBOSE) $(DEBUG) $^ -o $@
+	gcc -Werror $(VERBOSE) $(DEBUG) $^ -o $@
 
 dynmemsyscalls: dynmemsyscalls.c 
-	gcc $(VERBOSE) $(DEBUG) $^ -o $@
+	gcc -Werror $(VERBOSE) $(DEBUG) $^ -o $@
 
+badmsgcode.o: badmsgcode.c
+	gcc $(VERBOSE) $(DEBUG) -Werror -c  $^ -o $@
 # overides so that we use cpp to proces includes
 exit.o: exit.I
 exit_bb.o: exit_bb.I

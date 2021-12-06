@@ -1,7 +1,6 @@
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
-#include <sys/syscall.h>   /* For SYS_xxx definitions */
 
 // Use debugger to explore what happens
 
