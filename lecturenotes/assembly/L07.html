@@ -230,7 +230,7 @@
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../C/L20.html">
-   20. UC-SLS Lecture 20 : Using LibC to access the OS and escape the confines our our process
+   20. UC-SLS Lecture 20 : Using LibC to access the OS and escape the confines our process
   </a>
  </li>
  <li class="toctree-l1">
@@ -836,27 +836,27 @@ $
 <div class="highlight-gas notranslate"><div class="highlight"><pre><span></span><span class="cm">/*  General antomy of a assembly program line</span>
 <span class="cm">[lablel]:   &lt;directive or opcode&gt; [operands]  // comment</span>
 <span class="cm">*/</span>
-	<span class="na">.intel_syntax</span> <span class="no">noprefix</span>        <span class="c1">// assembler syntax to use &lt;directive&gt;</span>
-	                              <span class="c1">// set assembly language format to intel  </span>
+	<span class="na">.intel_syntax</span> <span class="no">noprefix</span>        <span class="c1"># assembler syntax to use &lt;directive&gt;</span>
+	                              <span class="c1"># set assembly language format to intel  </span>
 
-	<span class="na">.text</span>                         <span class="c1">// linker section &lt;directive&gt;</span>
-	                              <span class="c1">// let the linker know that what follows are cpu instructions to</span>
-	                              <span class="c1">// to be executed -- uposed to values that represent data.</span>
-	                              <span class="c1">// For historical reasons cpu instructions are called &quot;text&quot;</span>
+	<span class="na">.text</span>                         <span class="c1"># linker section &lt;directive&gt;</span>
+	                              <span class="c1"># let the linker know that what follows are cpu instructions to</span>
+	                              <span class="c1"># to be executed -- uposed to values that represent data.</span>
+	                              <span class="c1"># For historical reasons cpu instructions are called &quot;text&quot;</span>
 	                         
-	<span class="na">.global</span> <span class="no">_start</span>                <span class="c1">// linker symbol type &lt;directive&gt; </span>
-	                              <span class="c1">// makes the symbol _start in this case visible to the linker</span>
-	                              <span class="c1">// The linker looks for an _start symbol so that it knows address</span>
-	                              <span class="c1">// of the first instruction of our program</span>
+	<span class="na">.global</span> <span class="no">_start</span>                <span class="c1"># linker symbol type &lt;directive&gt; </span>
+	                              <span class="c1"># makes the symbol _start in this case visible to the linker</span>
+	                              <span class="c1"># The linker looks for an _start symbol so that it knows address</span>
+	                              <span class="c1"># of the first instruction of our program</span>
 
-<span class="nl">_start:</span>                               <span class="c1">// introduce a symbolic (human readable) label for &quot;this&quot; address</span>
-	                              <span class="c1">// associates the address of this point in our program with the</span>
-      	                              <span class="c1">// name following the &#39;:&#39; -- in our case _start</span>
-	                              <span class="c1">// In our program or in the debugger we can use this name to</span>
-	                              <span class="c1">// to refer to this location -- address.  And thus the values</span>
-	                              <span class="c1">// that end up here.</span>
-	<span class="na">.byte</span> <span class="mi">0x00</span><span class="p">,</span> <span class="mi">0x00</span><span class="p">,</span> <span class="mi">0x00</span><span class="p">,</span> <span class="mi">0x00</span>  <span class="c1">// .byte directive place value at successive locations in memory</span>
-	                              <span class="c1">// (https://sourceware.org/binutils/docs/as/Byte.html#Byte)</span>
+<span class="nl">_start:</span>                               <span class="c1"># introduce a symbolic (human readable) label for &quot;this&quot; address</span>
+	                              <span class="c1"># associates the address of this point in our program with the</span>
+      	                              <span class="c1"># name following the &#39;:&#39; -- in our case _start</span>
+	                              <span class="c1"># In our program or in the debugger we can use this name to</span>
+	                              <span class="c1"># to refer to this location -- address.  And thus the values</span>
+	                              <span class="c1"># that end up here.</span>
+	<span class="na">.byte</span> <span class="mi">0x00</span><span class="p">,</span> <span class="mi">0x00</span><span class="p">,</span> <span class="mi">0x00</span><span class="p">,</span> <span class="mi">0x00</span>  <span class="c1"># .byte directive place value at successive locations in memory</span>
+	                              <span class="c1"># (https://sourceware.org/binutils/docs/as/Byte.html#Byte)</span>
 </pre></div>
 </div>
 </div>

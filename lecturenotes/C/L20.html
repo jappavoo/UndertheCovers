@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>20. UC-SLS Lecture 20 : Using LibC to access the OS and escape the confines our our process &#8212; UndertheCovers</title>
+    <title>20. UC-SLS Lecture 20 : Using LibC to access the OS and escape the confines our process &#8212; UndertheCovers</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -230,7 +230,7 @@
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   20. UC-SLS Lecture 20 : Using LibC to access the OS and escape the confines our our process
+   20. UC-SLS Lecture 20 : Using LibC to access the OS and escape the confines our process
   </a>
  </li>
  <li class="toctree-l1">
@@ -354,6 +354,186 @@
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show">
             
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#overview">
+   20.1. Overview
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#preliminaries">
+   20.2. Preliminaries
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#sdks">
+     20.2.1. SDKs
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#documentation">
+       20.2.1.1. Documentation
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#header-files">
+       20.2.1.2. Header files
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#libraries">
+       20.2.1.3. Libraries
+      </a>
+      <ul class="nav section-nav flex-column">
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#linker-and-libraries">
+         20.2.1.3.1. Linker and Libraries
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#example">
+       20.2.1.4. Example
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#defaults">
+       20.2.1.5. Defaults
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#c-standard-library-libc-lc">
+   20.3. C Standard Library
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     libc
+    </span>
+   </code>
+   (
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     -lc
+    </span>
+   </code>
+   )
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     20.3.1. Overview
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#dynamic-memory-management">
+     20.3.2. Dynamic Memory Management
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#two-categories">
+       20.3.2.1. Two categories
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#main-calls">
+       20.3.2.2. Main calls
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#explore-with-an-example">
+     20.3.3. Explore with an example
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#man-malloc">
+       20.3.3.1. man malloc
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#libc-typically-c-wrappers-for-os-system-calls-and-support-for-making-syscalls-directly-in-c">
+       20.3.3.2. LibC typically C wrappers for OS system calls and support for making syscalls directly in C
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#you-can-use-mmap-and-munmap-in-your-c-programs-to-manage-your-own-dynamic-address-space-mapping">
+       20.3.3.3. You can use
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         mmap
+        </span>
+       </code>
+       and
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         munmap
+        </span>
+       </code>
+       in your C programs to manage your own  dynamic address space mapping
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#under-the-covers-malloc-free-and-friends">
+     20.3.4. Under the covers
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       malloc
+      </span>
+     </code>
+     ,
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       free
+      </span>
+     </code>
+     and friends
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#important-points-about-dynamic-memory">
+       20.3.4.1. Important points about dynamic memory
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#layers">
+   20.4. Layers
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#io-is-no-different">
+   20.5. IO is no different
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#lowest-layer-is-wrappers-for-core-unix-i-o-routines">
+     20.5.1. Lowest layer is wrappers for core UNIX I/O routines
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#a-layer-up-buffered-and-formated-i-o">
+     20.5.2. A layer up buffered and formated I/O
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -362,9 +542,24 @@
         
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="uc-sls-lecture-20-using-libc-to-access-the-os-and-escape-the-confines-our-our-process">
-<h1><span class="section-number">20. </span>UC-SLS Lecture 20 : Using LibC to access the OS and escape the confines our our process<a class="headerlink" href="#uc-sls-lecture-20-using-libc-to-access-the-os-and-escape-the-confines-our-our-process" title="Permalink to this headline">¶</a></h1>
+  <div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">run</span> -i ../python/common.py
+<span class="n">UC_SKIPTERMS</span><span class="o">=</span><span class="kc">True</span>
+<span class="o">%</span><span class="k">run</span> -i ../python/ln_preamble.py
+</pre></div>
+</div>
+</div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="uc-sls-lecture-20-using-libc-to-access-the-os-and-escape-the-confines-our-process">
+<h1><span class="section-number">20. </span>UC-SLS Lecture 20 : Using LibC to access the OS and escape the confines our process<a class="headerlink" href="#uc-sls-lecture-20-using-libc-to-access-the-os-and-escape-the-confines-our-process" title="Permalink to this headline">¶</a></h1>
 <ul class="simple">
+<li><p>Preliminaries</p>
+<ul>
+<li><p>libraries</p></li>
+<li><p>Standard library : <code class="docutils literal notranslate"><span class="pre">libc.a[.so]</span></code></p></li>
+</ul>
+</li>
 <li><p>Address Space management:</p>
 <ul>
 <li><p>dynamic memory for data items: <code class="docutils literal notranslate"><span class="pre">malloc</span></code> and <code class="docutils literal notranslate"><span class="pre">free</span></code></p></li>
@@ -379,6 +574,1298 @@
 </ul>
 </li>
 </ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># setup for sumit examples</span>
+<span class="n">appdir</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s1">&#39;HOME&#39;</span><span class="p">)</span>
+<span class="n">appdir</span><span class="o">=</span><span class="n">appdir</span> <span class="o">+</span> <span class="s2">&quot;/libc&quot;</span>
+<span class="c1">#print(movdir)</span>
+<span class="n">output</span><span class="o">=</span><span class="n">runTermCmd</span><span class="p">(</span><span class="s2">&quot;[[ -d &quot;</span> <span class="o">+</span> <span class="n">appdir</span> <span class="o">+</span> <span class="s2">&quot; ]] &amp;&amp;  rm -rf &quot;</span><span class="o">+</span> <span class="n">appdir</span> <span class="o">+</span> 
+             <span class="s2">&quot;;mkdir &quot;</span> <span class="o">+</span> <span class="n">appdir</span> <span class="o">+</span> 
+             <span class="s2">&quot;;cp ../src/Makefile ../src/cexp.c ../src/badmsgcode.c ../src/dynmem.c ../src/dynmemsyscalls.c &quot;</span> <span class="o">+</span> <span class="n">appdir</span><span class="p">)</span>
+
+<span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">- create a directory `mkdir libc; cd libc`</span>
+<span class="s1">- copy examples</span>
+<span class="s1">- add a `Makefile` to automate assembling and linking</span>
+<span class="s1">    - we are going run the commands by hand this time to highlight the details</span>
+<span class="s1">- normally you would want to track everything in git</span>
+<span class="s1">&#39;&#39;&#39;</span><span class="p">))</span>
+<span class="n">TermShellCmd</span><span class="p">(</span><span class="s2">&quot;ls &quot;</span> <span class="o">+</span> <span class="n">appdir</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<ul class="simple">
+<li><p>create a directory <code class="docutils literal notranslate"><span class="pre">mkdir</span> <span class="pre">libc;</span> <span class="pre">cd</span> <span class="pre">libc</span></code></p></li>
+<li><p>copy examples</p></li>
+<li><p>add a <code class="docutils literal notranslate"><span class="pre">Makefile</span></code> to automate assembling and linking</p>
+<ul>
+<li><p>we are going run the commands by hand this time to highlight the details</p></li>
+</ul>
+</li>
+<li><p>normally you would want to track everything in git</p></li>
+</ul>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>$ ls /home/jovyan/libc
+badmsgcode.c  cexp.c  dynmem.c  dynmemsyscalls.c  Makefile
+$ 
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="overview">
+<h2><span class="section-number">20.1. </span>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<center>
+<img src="../images/LibC-001.png" >
+</center><center>
+<img src="../images/LibC-002.png" >
+</center><center>
+<img src="../images/LibC-003.png" >
+</center></div>
+<div class="section" id="preliminaries">
+<h2><span class="section-number">20.2. </span>Preliminaries<a class="headerlink" href="#preliminaries" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="sdks">
+<h3><span class="section-number">20.2.1. </span>SDKs<a class="headerlink" href="#sdks" title="Permalink to this headline">¶</a></h3>
+<p>Developers package and distribute “native” code for an specific computer and OS as collection of documentation, header files, and libraries.  We often call this collection a Software Development ToolKit (SDK).  The functions and types defined in an SDK are often referred to as an Application Programmer Interface.</p>
+<div class="section" id="documentation">
+<h4><span class="section-number">20.2.1.1. </span>Documentation<a class="headerlink" href="#documentation" title="Permalink to this headline">¶</a></h4>
+<p>Developers provide documentation that explains the API in terms of the functions and types that their code provides for your use.  Traditionally on UNIX systems this comprises as set of man pages.</p>
+<p><strong>man complex</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">TermShellCmd</span><span class="p">(</span><span class="s2">&quot;man complex&quot;</span><span class="p">,</span> <span class="n">noposttext</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">markdown</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>$ man complex
+COMPLEX(7)                 Linux Programmer&#39;s Manual                COMPLEX(7)
+
+NNAAMMEE
+       complex - basics of complex mathematics
+
+SSYYNNOOPPSSIISS
+       ##iinncclluuddee &lt;&lt;ccoommpplleexx..hh&gt;&gt;
+
+DDEESSCCRRIIPPTTIIOONN
+       Complex  numbers  are  numbers of the form z = a+b*i, where a and b are
+       real numbers and i = sqrt(-1), so that i*i = -1.
+
+       There are other ways to represent that number.  The pair (a,b) of  real
+       numbers  may be viewed as a point in the plane, given by X- and Y-coor‐
+       dinates.  This same point may also be described by giving the  pair  of
+       real  numbers (r,phi), where r is the distance to the origin O, and phi
+       the angle between the X-axis and the line Oz.  Now z =  r*exp(i*phi)  =
+       r*(cos(phi)+i*sin(phi)).
+
+       The basic operations are defined on z = a+b*i and w = c+d*i as:
+
+       aaddddiittiioonn:: zz++ww == ((aa++cc)) ++ ((bb++dd))**ii
+
+       mmuullttiipplliiccaattiioonn:: zz**ww == ((aa**cc -- bb**dd)) ++ ((aa**dd ++ bb**cc))**ii
+
+       ddiivviissiioonn:: zz//ww == ((((aa**cc ++ bb**dd))//((cc**cc ++ dd**dd)))) ++ ((((bb**cc -- aa**dd))//((cc**cc ++ dd**dd))))**ii
+
+       Nearly  all math function have a complex counterpart but there are some
+       complex-only functions.
+
+EEXXAAMMPPLLEE
+       Your C-compiler can work with complex numbers if it  supports  the  C99
+       standard.  Link with _-_l_m.  The imaginary unit is represented by I.
+
+       /* check that exp(i * pi) == -1 */
+       #include &lt;math.h&gt;        /* for atan */
+       #include &lt;stdio.h&gt;
+       #include &lt;complex.h&gt;
+
+       int
+       main(void)
+       {
+           double pi = 4 * atan(1.0);
+           double complex z = cexp(I * pi);
+           printf(&quot;%f + %f * i\n&quot;, creal(z), cimag(z));
+       }
+
+SSEEEE AALLSSOO
+       ccaabbss(3),  ccaaccooss(3),  ccaaccoosshh(3), ccaarrgg(3), ccaassiinn(3), ccaassiinnhh(3), ccaattaann(3),
+       ccaattaannhh(3), ccccooss(3), ccccoosshh(3),  cceerrff(3),  cceexxpp(3),  cceexxpp22(3),  cciimmaagg(3),
+       cclloogg(3),  cclloogg1100(3),  cclloogg22(3),  ccoonnjj(3),  ccppooww(3), ccpprroojj(3), ccrreeaall(3),
+       ccssiinn(3), ccssiinnhh(3), ccssqqrrtt(3), ccttaann(3), ccttaannhh(3)
+
+CCOOLLOOPPHHOONN
+       This page is part of release 5.05 of the Linux  _m_a_n_-_p_a_g_e_s  project.   A
+       description  of  the project, information about reporting bugs, and the
+       latest    version    of    this    page,    can     be     found     at
+       https://www.kernel.org/doc/man-pages/.
+
+                                  2019-03-06                        COMPLEX(7)
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>man cexp</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">TermShellCmd</span><span class="p">(</span><span class="s2">&quot;man cexp&quot;</span><span class="p">,</span> <span class="n">noposttext</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">markdown</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>$ man cexp
+CEXP(3)                    Linux Programmer&#39;s Manual                   CEXP(3)
+
+NNAAMMEE
+       cexp, cexpf, cexpl - complex exponential function
+
+SSYYNNOOPPSSIISS
+       ##iinncclluuddee &lt;&lt;ccoommpplleexx..hh&gt;&gt;
+
+       ddoouubbllee ccoommpplleexx cceexxpp((ddoouubbllee ccoommpplleexx _z));;
+       ffllooaatt ccoommpplleexx cceexxppff((ffllooaatt ccoommpplleexx _z));;
+       lloonngg ddoouubbllee ccoommpplleexx cceexxppll((lloonngg ddoouubbllee ccoommpplleexx _z));;
+
+       Link with _-_l_m.
+
+DDEESSCCRRIIPPTTIIOONN
+       These  functions  calculate  e  (2.71828...,  the base of natural loga‐
+       rithms) raised to the power of _z.
+
+       One has:
+
+           cexp(I * z) = ccos(z) + I * csin(z)
+
+VVEERRSSIIOONNSS
+       These functions first appeared in glibc in version 2.1.
+
+AATTTTRRIIBBUUTTEESS
+       For an  explanation  of  the  terms  used  in  this  section,  see  aatt‐‐
+       ttrriibbuutteess(7).
+
+       ┌─────────────────────────┬───────────────┬─────────┐
+       │IInntteerrffaaccee                │ AAttttrriibbuuttee     │ VVaalluuee   │
+       ├─────────────────────────┼───────────────┼─────────┤
+       │cceexxpp(), cceexxppff(), cceexxppll() │ Thread safety │ MT-Safe │
+       └─────────────────────────┴───────────────┴─────────┘
+
+CCOONNFFOORRMMIINNGG TTOO
+       C99, POSIX.1-2001, POSIX.1-2008.
+
+SSEEEE AALLSSOO
+       ccaabbss(3), cceexxpp22(3), cclloogg(3), ccppooww(3), ccoommpplleexx(7)
+
+CCOOLLOOPPHHOONN
+       This  page  is  part of release 5.05 of the Linux _m_a_n_-_p_a_g_e_s project.  A
+       description of the project, information about reporting bugs,  and  the
+       latest     version     of     this    page,    can    be    found    at
+       https://www.kernel.org/doc/man-pages/.
+
+                                  2017-09-15                           CEXP(3)
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Documentation tells us</strong></p>
+<ol class="simple">
+<li><p>Tells us how to use the functions, macros and types of a SDK</p></li>
+<li><p>What header files we must include in our source to call particular functions</p></li>
+<li><p>What libraries we must include when we link</p></li>
+</ol>
+</div>
+<div class="section" id="header-files">
+<h4><span class="section-number">20.2.1.2. </span>Header files<a class="headerlink" href="#header-files" title="Permalink to this headline">¶</a></h4>
+<p>As we discussed to generate assembly for a call to a function compiler must have</p>
+<ol class="simple">
+<li><p>A declaration for a function</p></li>
+<li><p>Definitions for all types it requires</p></li>
+<li><p>and possibly preprocessor macros</p></li>
+</ol>
+<p>The headers files of a library provide these things so that your code can compile with calls to the libraries functions. Remember we use preprocessor <code class="docutils literal notranslate"><span class="pre">#include</span> <span class="pre">&lt;file&gt;</span></code> to substitute the contents of <code class="docutils literal notranslate"><span class="pre">&lt;file&gt;</span></code> into our own source.</p>
+</div>
+<div class="section" id="libraries">
+<h4><span class="section-number">20.2.1.3. </span>Libraries<a class="headerlink" href="#libraries" title="Permalink to this headline">¶</a></h4>
+<p>Libraries are a new kind of file for us. The are “archives” of object files.</p>
+<p>Two main types on</p>
+<ol class="simple">
+<li><p>Static archive eg. Linux: <code class="docutils literal notranslate"><span class="pre">libm.a</span></code></p></li>
+<li><p>Dynamic archive eg. Linux: <code class="docutils literal notranslate"><span class="pre">libm.so</span></code></p></li>
+</ol>
+<p>Statically linking requires static library and dynamic linking requires dynamic</p>
+<div class="section" id="linker-and-libraries">
+<h5><span class="section-number">20.2.1.3.1. </span>Linker and Libraries<a class="headerlink" href="#linker-and-libraries" title="Permalink to this headline">¶</a></h5>
+<p>We can add a library when we link our executable by passing the right parameters to the linker.</p>
+<p>eg.  <code class="docutils literal notranslate"><span class="pre">-l&lt;name&gt;</span></code> will tell linker to use objects from <code class="docutils literal notranslate"><span class="pre">lib&lt;name&gt;.a</span></code> or <code class="docutils literal notranslate"><span class="pre">lib&lt;name&gt;.so</span></code> if it needs too</p>
+<p>Specifically the library file contains a table of contents with all the object files and symbols define in those objects.  If your our object files reference a symbol that you do not define the linker will look for it in the table of contents.  If there is an object file in the library that defines the symbol it will include the necessary object file as if you had specified as one of your object files.</p>
+</div>
+</div>
+<div class="section" id="example">
+<h4><span class="section-number">20.2.1.4. </span>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="s1">&#39;&lt;font size=&quot;6rem&quot;&gt;&#39;</span> <span class="o">+</span> <span class="n">FileCodeBox</span><span class="p">(</span>
+    <span class="n">file</span><span class="o">=</span><span class="n">appdir</span> <span class="o">+</span> <span class="s2">&quot;/cexp.c&quot;</span><span class="p">,</span> 
+    <span class="n">lang</span><span class="o">=</span><span class="s2">&quot;c&quot;</span><span class="p">,</span> 
+    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;&lt;b&gt;C: cexp.c&quot;</span><span class="p">,</span>
+    <span class="n">h</span><span class="o">=</span><span class="s2">&quot;100%&quot;</span><span class="p">,</span> 
+    <span class="n">w</span><span class="o">=</span><span class="s2">&quot;100%&quot;</span>
+<span class="p">)))</span>
+<span class="n">TermShellCmd</span><span class="p">(</span><span class="s2">&quot;[[ -a cexp ]] &amp;&amp; rm cexp;make cexp&quot;</span><span class="p">,</span> <span class="n">cwd</span><span class="o">=</span><span class="n">appdir</span><span class="p">,</span> <span class="n">prompt</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">noposttext</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">TermShellCmd</span><span class="p">(</span><span class="s2">&quot;./cexp&quot;</span><span class="p">,</span> <span class="n">cwd</span><span class="o">=</span><span class="n">appdir</span><span class="p">,</span> <span class="n">noposttext</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<p><font size="6rem"><b>C: cexp.c</p>
+<div style="width:100%; height:100%; font-size:inherit; overflow: auto;" >
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;math.h&gt;</span><span class="c1"> /* for atan */</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;complex.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;stdlib.h&gt;</span><span class="cp"></span>
+
+<span class="kt">int</span>
+<span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span class="o">**</span><span class="n">argv</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="kt">double</span> <span class="n">y</span><span class="o">=</span><span class="mf">1.0</span><span class="p">;</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">argc</span><span class="o">&gt;</span><span class="mi">1</span><span class="p">)</span> <span class="n">y</span><span class="o">=</span><span class="n">atof</span><span class="p">(</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
+  <span class="kt">double</span> <span class="n">pi</span> <span class="o">=</span> <span class="mi">4</span> <span class="o">*</span> <span class="n">atan</span><span class="p">(</span><span class="n">y</span><span class="p">);</span>
+  <span class="kt">double</span> <span class="k">complex</span> <span class="n">z</span> <span class="o">=</span> <span class="n">cexp</span><span class="p">(</span><span class="n">I</span> <span class="o">*</span> <span class="n">pi</span><span class="p">);</span>
+  <span class="n">printf</span><span class="p">(</span><span class="s">&quot;%f + %f * i</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">creal</span><span class="p">(</span><span class="n">z</span><span class="p">),</span> <span class="n">cimag</span><span class="p">(</span><span class="n">z</span><span class="p">));</span>
+<span class="p">}</span>
+
+</pre></div>
+</div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>gcc  -g  -Os -static -Xlinker -Map=cexp.map cexp.c -o cexp -lm
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>$ ./cexp
+-1.000000 + 0.000000 * i
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>How does the preprocessor and linker know where to find things</strong></p>
+<p>The compiler driver, in our case <code class="docutils literal notranslate"><span class="pre">gcc</span></code> passes parameters to both the preprocessor and linker</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">-I</span> <span class="pre">&lt;dir&gt;</span></code> tells preprocessor to look for header files in <code class="docutils literal notranslate"><span class="pre">&lt;dir&gt;</span></code></p>
+<ul>
+<li><p>several standard directories are specified by default</p>
+<ul>
+<li><p>eg. <code class="docutils literal notranslate"><span class="pre">-I/usr/include</span></code></p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">TermShellCmd</span><span class="p">(</span><span class="s2">&quot;ls -la /usr/include/math.h /usr/include/stdio.h /usr/include/complex.h&quot;</span><span class="p">,</span> <span class="n">noposttext</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>$ ls -la /usr/include/math.h /usr/include/stdio.h /usr/include/complex.h
+-rw-r--r-- 1 root root  7164 Dec 16  2020 /usr/include/complex.h
+-rw-r--r-- 1 root root 46404 Dec 16  2020 /usr/include/math.h
+-rw-r--r-- 1 root root 29950 Dec 16  2020 /usr/include/stdio.h
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>We can look at look at these files if we want to see the details</p></li>
+</ul>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">-L</span> <span class="pre">&lt;dir&gt;</span></code> similarly tells the linker to look for libraries in <code class="docutils literal notranslate"><span class="pre">&lt;dir&gt;</span></code></p>
+<ul>
+<li><p>several standard directories are specified by default</p>
+<ul>
+<li><p>eg. <code class="docutils literal notranslate"><span class="pre">-L/usr/lib/x86_64-linux-gnu</span></code></p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>The linker map file lets us see all the .o’s that got linked in and where they came from</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">TermShellCmd</span><span class="p">(</span><span class="s2">&quot;head -20 cexp.map &quot;</span><span class="p">,</span> <span class="n">cwd</span><span class="o">=</span><span class="n">appdir</span><span class="p">,</span> <span class="n">noposttext</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>$ head -20 cexp.map 
+Archive member included to satisfy reference by file (symbol)
+
+/usr/lib/x86_64-linux-gnu/libm-2.31.a(s_atan.o)
+                              /tmp/ccUiGSGY.o (atan)
+/usr/lib/x86_64-linux-gnu/libm-2.31.a(s_cexp.o)
+                              /tmp/ccUiGSGY.o (cexp)
+/usr/lib/x86_64-linux-gnu/libm-2.31.a(mpa.o)
+                              /usr/lib/x86_64-linux-gnu/libm-2.31.a(s_atan.o) (__mp_dbl)
+/usr/lib/x86_64-linux-gnu/libm-2.31.a(mpatan.o)
+                              /usr/lib/x86_64-linux-gnu/libm-2.31.a(s_atan.o) (__mpatan)
+/usr/lib/x86_64-linux-gnu/libm-2.31.a(mpsqrt.o)
+                              /usr/lib/x86_64-linux-gnu/libm-2.31.a(mpatan.o) (__mpsqrt)
+/usr/lib/x86_64-linux-gnu/libm-2.31.a(s_atan-fma.o)
+                              /usr/lib/x86_64-linux-gnu/libm-2.31.a(s_atan.o) (__atan_fma)
+/usr/lib/x86_64-linux-gnu/libm-2.31.a(mpa-fma.o)
+                              /usr/lib/x86_64-linux-gnu/libm-2.31.a(s_atan-fma.o) (__dbl_mp_fma)
+/usr/lib/x86_64-linux-gnu/libm-2.31.a(mpatan-fma.o)
+                              /usr/lib/x86_64-linux-gnu/libm-2.31.a(s_atan-fma.o) (__mpatan_fma)
+/usr/lib/x86_64-linux-gnu/libm-2.31.a(mpsqrt-fma.o)
+                              /usr/lib/x86_64-linux-gnu/libm-2.31.a(mpatan-fma.o) (__mpsqrt_fma)
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong><code class="docutils literal notranslate"><span class="pre">ar</span></code> is a tool for working with static libraries</strong>
+see <code class="docutils literal notranslate"><span class="pre">man</span> <span class="pre">ar</span></code> for details</p>
+<p>We can use it to list the table of contents of the <code class="docutils literal notranslate"><span class="pre">.o</span></code> in the archive</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">TermShellCmd</span><span class="p">(</span><span class="s2">&quot;ar t /usr/lib/x86_64-linux-gnu/libm-2.31.a | head&quot;</span><span class="p">,</span> <span class="n">cwd</span><span class="o">=</span><span class="n">appdir</span><span class="p">,</span> <span class="n">noposttext</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>$ ar t /usr/lib/x86_64-linux-gnu/libm-2.31.a | head
+s_lib_version.o
+s_matherr.o
+s_signgam.o
+fclrexcpt.o
+fgetexcptflg.o
+fraiseexcpt.o
+fsetexcptflg.o
+ftestexcept.o
+fegetround.o
+fesetround.o
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can even use it to extract a member (just like the linker does when linking)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">TermShellCmd</span><span class="p">(</span><span class="s2">&quot;ar x /usr/lib/x86_64-linux-gnu/libm-2.31.a s_cexp.o; ls -l s_cexp.o&quot;</span><span class="p">,</span> <span class="n">cwd</span><span class="o">=</span><span class="n">appdir</span><span class="p">,</span> <span class="n">noposttext</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>$ ar x /usr/lib/x86_64-linux-gnu/libm-2.31.a s_cexp.o; ls -l s_cexp.o
+-rw-r--r-- 1 jovyan root 3792 Dec  9 12:54 s_cexp.o
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>And no surprise it is an object file like the kind we have been creating</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">TermShellCmd</span><span class="p">(</span><span class="s2">&quot;objdump -d -Mintel s_cexp.o | head -20&quot;</span><span class="p">,</span> <span class="n">cwd</span><span class="o">=</span><span class="n">appdir</span><span class="p">,</span> <span class="n">noposttext</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>$ objdump -d -Mintel s_cexp.o | head -20
+
+s_cexp.o:     file format elf64-x86-64
+
+
+Disassembly of section .text:
+
+0000000000000000 &lt;__cexp&gt;:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	53                   	push   rbx
+   5:	66 0f 28 d0          	movapd xmm2,xmm0
+   9:	66 0f 28 e9          	movapd xmm5,xmm1
+   d:	66 0f 28 c1          	movapd xmm0,xmm1
+  11:	66 0f 28 f2          	movapd xmm6,xmm2
+  15:	48 83 ec 40          	sub    rsp,0x40
+  19:	f3 0f 7e 1d 00 00 00 	movq   xmm3,QWORD PTR [rip+0x0]        # 21 &lt;__cexp+0x21&gt;
+  20:	00 
+  21:	64 48 8b 04 25 28 00 	mov    rax,QWORD PTR fs:0x28
+  28:	00 00 
+  2a:	48 89 44 24 38       	mov    QWORD PTR [rsp+0x38],rax
+  2f:	31 c0                	xor    eax,eax
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>What about <code class="docutils literal notranslate"><span class="pre">_start</span></code>, <code class="docutils literal notranslate"><span class="pre">atof</span></code> and <code class="docutils literal notranslate"><span class="pre">fprintf</span></code></strong></p>
+<ul class="simple">
+<li><p>Where did they come from????</p>
+<ul>
+<li><p>Lets look for them in the map file</p>
+<ul>
+<li><p>map file can even tell not only what file a symbol came from but also where it ends up being placed in the memory image of our executable</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">TermShellCmd</span><span class="p">(</span><span class="s2">&quot;grep -B 1 &#39; _start$&#39; cexp.map&quot;</span><span class="p">,</span> <span class="n">cwd</span><span class="o">=</span><span class="n">appdir</span><span class="p">,</span> <span class="n">noposttext</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>$ grep -B 1 &#39; _start$&#39; cexp.map
+ .text          0x0000000000401c30       0x35 /usr/lib/gcc/x86_64-linux-gnu/9/../../../x86_64-linux-gnu/crt1.o
+                0x0000000000401c30               <span class=" -Color -Color-Bold -Color-Bold-Red"> _start</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">TermShellCmd</span><span class="p">(</span><span class="s2">&quot;grep -B 1 &#39; atof$&#39; cexp.map&quot;</span><span class="p">,</span> <span class="n">cwd</span><span class="o">=</span><span class="n">appdir</span><span class="p">,</span> <span class="n">noposttext</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>$ grep -B 1 &#39; atof$&#39; cexp.map
+ .text          0x000000000041f460        0xb /usr/lib/gcc/x86_64-linux-gnu/9/../../../x86_64-linux-gnu/libc.a(atof.o)
+                0x000000000041f460               <span class=" -Color -Color-Bold -Color-Bold-Red"> atof</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">TermShellCmd</span><span class="p">(</span><span class="s2">&quot;grep -B 1 &#39; fprintf$&#39; cexp.map&quot;</span><span class="p">,</span> <span class="n">cwd</span><span class="o">=</span><span class="n">appdir</span><span class="p">,</span> <span class="n">noposttext</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>$ grep -B 1 &#39; fprintf$&#39; cexp.map
+ .text          0x000000000047ae00       0xb7 /usr/lib/gcc/x86_64-linux-gnu/9/../../../x86_64-linux-gnu/libc.a(fprintf.o)
+                0x000000000047ae00               <span class=" -Color -Color-Bold -Color-Bold-Red"> fprintf</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="defaults">
+<h4><span class="section-number">20.2.1.5. </span>Defaults<a class="headerlink" href="#defaults" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>C compiler driver ensures that we always link against a set of standard object files and libraries</p></li>
+<li><p>But the core one is <code class="docutils literal notranslate"><span class="pre">libc</span></code> – The C standard library!</p></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="section" id="c-standard-library-libc-lc">
+<h2><span class="section-number">20.3. </span>C Standard Library <code class="docutils literal notranslate"><span class="pre">libc</span></code> (<code class="docutils literal notranslate"><span class="pre">-lc</span></code>)<a class="headerlink" href="#c-standard-library-libc-lc" title="Permalink to this headline">¶</a></h2>
+<p>The C standard library was developed at the same time as the core language</p>
+<ul class="simple">
+<li><p>There are standards a C compiler and C standard library implementation can conform too</p>
+<ul>
+<li><p>eg. <a class="reference external" href="https://www.iso.org/standard/17782.html">https://www.iso.org/standard/17782.html</a></p></li>
+</ul>
+</li>
+<li><p>The gnu C compiler <code class="docutils literal notranslate"><span class="pre">gcc</span></code> has its associated gnu libc <code class="docutils literal notranslate"><span class="pre">glibc</span></code></p>
+<ul>
+<li><p><a class="reference external" href="https://www.gnu.org/software/libc/manual/html_node/index.html">https://www.gnu.org/software/libc/manual/html_node/index.html</a></p></li>
+<li><p>These are the standards it conforms too</p>
+<ul>
+<li><p><a class="reference external" href="https://www.gnu.org/software/libc/manual/html_node/Standards-and-Portability.html#Standards-and-Portability">https://www.gnu.org/software/libc/manual/html_node/Standards-and-Portability.html#Standards-and-Portability</a></p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<div class="section" id="id1">
+<h3><span class="section-number">20.3.1. </span>Overview<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>The C Standard library is very large and provides many categories of routines</p></li>
+</ul>
+<ul class="simple">
+<li><p>We will only consider a small fraction of its functionality
+2. Dynamic Memory Management
+3. Basic overview of IO</p></li>
+</ul>
+</div>
+<div class="section" id="dynamic-memory-management">
+<h3><span class="section-number">20.3.2. </span>Dynamic Memory Management<a class="headerlink" href="#dynamic-memory-management" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.gnu.org/software/libc/manual/html_mono/libc.html#Memory-Concepts">https://www.gnu.org/software/libc/manual/html_mono/libc.html#Memory-Concepts</a></p></li>
+<li><p><a class="reference external" href="https://www.gnu.org/software/libc/manual/html_mono/libc.html#Dynamic-Memory-Allocation">https://www.gnu.org/software/libc/manual/html_mono/libc.html#Dynamic-Memory-Allocation</a></p>
+<ul>
+<li><p>C Language has no built in support for Dynamic Memory Variables</p></li>
+<li><p>other than automatics (function local variables and function parameters)</p></li>
+<li><p>Must use system calls to get and remove memory from the process</p></li>
+<li><p>Must use pointers to track it</p></li>
+</ul>
+</li>
+</ul>
+<div class="section" id="two-categories">
+<h4><span class="section-number">20.3.2.1. </span>Two categories<a class="headerlink" href="#two-categories" title="Permalink to this headline">¶</a></h4>
+<p>LibC provides routines that give a programmer the ability to dynamically allocate memory</p>
+<ul class="simple">
+<li><p>The Memory Allocator (<a class="reference external" href="https://www.gnu.org/software/libc/manual/html_mono/libc.html#The-GNU-Allocator">https://www.gnu.org/software/libc/manual/html_mono/libc.html#The-GNU-Allocator</a>)</p>
+<ul>
+<li><p>It calls the OS system calls for the programmer</p>
+<ul>
+<li><p>There is a lot of subtlety to implementing a high performance memory allocator</p></li>
+</ul>
+</li>
+<li><p>Basic idea is</p>
+<ol class="simple">
+<li><p>The allocator code in libc <code class="docutils literal notranslate"><span class="pre">malloc</span></code> and <code class="docutils literal notranslate"><span class="pre">free</span></code> are called by the application code</p></li>
+<li><p>These routines allocate large chucks of memory from the OS</p></li>
+<li><p>They then break these large chucks down handing out pieces as requested by <code class="docutils literal notranslate"><span class="pre">malloc</span></code> calls</p></li>
+<li><p>And coaleasing pieces back into the chucks when <code class="docutils literal notranslate"><span class="pre">free</span></code> is called</p></li>
+<li><p>If large requests are made the libc routines call OS to create a separate mappings for these</p></li>
+<li><p>Similarly if these large requests are freed they immediately free them to the OS</p></li>
+</ol>
+</li>
+</ul>
+</li>
+<li><p>Directly calling <code class="docutils literal notranslate"><span class="pre">mmap</span></code> or <code class="docutils literal notranslate"><span class="pre">brk</span></code></p></li>
+</ul>
+</div>
+<div class="section" id="main-calls">
+<h4><span class="section-number">20.3.2.2. </span>Main calls<a class="headerlink" href="#main-calls" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.gnu.org/software/libc/manual/html_node/Summary-of-Malloc.html#Summary-of-Malloc">https://www.gnu.org/software/libc/manual/html_node/Summary-of-Malloc.html#Summary-of-Malloc</a></p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">void</span> <span class="o">*</span><span class="n">malloc</span> <span class="p">(</span><span class="n">size_t</span> <span class="n">size</span><span class="p">)</span>
+<span class="o">//</span> <span class="n">Allocate</span> <span class="n">a</span> <span class="n">block</span> <span class="n">of</span> <span class="n">size</span> <span class="nb">bytes</span><span class="o">.</span> <span class="n">See</span> <span class="n">Basic</span> <span class="n">Allocation</span><span class="o">.</span>
+
+<span class="n">void</span> <span class="n">free</span> <span class="p">(</span><span class="n">void</span> <span class="o">*</span><span class="n">addr</span><span class="p">)</span>
+<span class="o">//</span> <span class="n">Free</span> <span class="n">a</span> <span class="n">block</span> <span class="n">previously</span> <span class="n">allocated</span> <span class="n">by</span> <span class="n">malloc</span><span class="o">.</span> <span class="n">See</span> <span class="n">Freeing</span> <span class="n">after</span> <span class="n">Malloc</span><span class="o">.</span>
+
+<span class="n">void</span> <span class="o">*</span><span class="n">realloc</span> <span class="p">(</span><span class="n">void</span> <span class="o">*</span><span class="n">addr</span><span class="p">,</span> <span class="n">size_t</span> <span class="n">size</span><span class="p">)</span>
+<span class="o">//</span> <span class="n">Make</span> <span class="n">a</span> <span class="n">block</span> <span class="n">previously</span> <span class="n">allocated</span> <span class="n">by</span> <span class="n">malloc</span> <span class="n">larger</span> <span class="ow">or</span> <span class="n">smaller</span><span class="p">,</span> <span class="n">possibly</span> <span class="n">by</span> <span class="n">copying</span> <span class="n">it</span> <span class="n">to</span> <span class="n">a</span> <span class="n">new</span> <span class="n">location</span><span class="o">.</span> <span class="n">See</span> <span class="n">Changing</span> <span class="n">Block</span> <span class="n">Size</span><span class="o">.</span>
+
+<span class="n">void</span> <span class="o">*</span><span class="n">reallocarray</span> <span class="p">(</span><span class="n">void</span> <span class="o">*</span><span class="n">ptr</span><span class="p">,</span> <span class="n">size_t</span> <span class="n">nmemb</span><span class="p">,</span> <span class="n">size_t</span> <span class="n">size</span><span class="p">)</span>
+<span class="o">//</span> <span class="n">Change</span> <span class="n">the</span> <span class="n">size</span> <span class="n">of</span> <span class="n">a</span> <span class="n">block</span> <span class="n">previously</span> <span class="n">allocated</span> <span class="n">by</span> <span class="n">malloc</span> <span class="n">to</span> <span class="n">nmemb</span> <span class="o">*</span> <span class="n">size</span> <span class="nb">bytes</span> <span class="k">as</span> <span class="k">with</span> <span class="n">realloc</span><span class="o">.</span> <span class="n">See</span> <span class="n">Changing</span> <span class="n">Block</span> <span class="n">Size</span><span class="o">.</span>
+
+<span class="n">void</span> <span class="o">*</span><span class="n">calloc</span> <span class="p">(</span><span class="n">size_t</span> <span class="n">count</span><span class="p">,</span> <span class="n">size_t</span> <span class="n">eltsize</span><span class="p">)</span>
+<span class="o">//</span><span class="n">Allocate</span> <span class="n">a</span> <span class="n">block</span> <span class="n">of</span> <span class="n">count</span> <span class="o">*</span> <span class="n">eltsize</span> <span class="nb">bytes</span> <span class="n">using</span> <span class="n">malloc</span><span class="p">,</span> <span class="ow">and</span> <span class="nb">set</span> <span class="n">its</span> <span class="n">contents</span> <span class="n">to</span> <span class="n">zero</span><span class="o">.</span> <span class="n">See</span> <span class="n">Allocating</span> <span class="n">Cleared</span> <span class="n">Space</span><span class="o">.</span>
+
+<span class="n">void</span> <span class="o">*</span><span class="n">valloc</span> <span class="p">(</span><span class="n">size_t</span> <span class="n">size</span><span class="p">)</span>
+<span class="o">//</span> <span class="n">Allocate</span> <span class="n">a</span> <span class="n">block</span> <span class="n">of</span> <span class="n">size</span> <span class="nb">bytes</span><span class="p">,</span> <span class="n">starting</span> <span class="n">on</span> <span class="n">a</span> <span class="n">page</span> <span class="n">boundary</span><span class="o">.</span> <span class="n">See</span> <span class="n">Aligned</span> <span class="n">Memory</span> <span class="n">Blocks</span><span class="o">.</span>
+
+<span class="n">void</span> <span class="o">*</span><span class="n">aligned_alloc</span> <span class="p">(</span><span class="n">size_t</span> <span class="n">size</span><span class="p">,</span> <span class="n">size_t</span> <span class="n">alignment</span><span class="p">)</span>
+<span class="o">//</span> <span class="n">Allocate</span> <span class="n">a</span> <span class="n">block</span> <span class="n">of</span> <span class="n">size</span> <span class="nb">bytes</span><span class="p">,</span> <span class="n">starting</span> <span class="n">on</span> <span class="n">an</span> <span class="n">address</span> <span class="n">that</span> <span class="ow">is</span> <span class="n">a</span> <span class="n">multiple</span> <span class="n">of</span> <span class="n">alignment</span><span class="o">.</span> <span class="n">See</span> <span class="n">Aligned</span> <span class="n">Memory</span> <span class="n">Blocks</span><span class="o">.</span>
+
+<span class="nb">int</span> <span class="n">posix_memalign</span> <span class="p">(</span><span class="n">void</span> <span class="o">**</span><span class="n">memptr</span><span class="p">,</span> <span class="n">size_t</span> <span class="n">alignment</span><span class="p">,</span> <span class="n">size_t</span> <span class="n">size</span><span class="p">)</span>
+<span class="o">//</span> <span class="n">Allocate</span> <span class="n">a</span> <span class="n">block</span> <span class="n">of</span> <span class="n">size</span> <span class="nb">bytes</span><span class="p">,</span> <span class="n">starting</span> <span class="n">on</span> <span class="n">an</span> <span class="n">address</span> <span class="n">that</span> <span class="ow">is</span> <span class="n">a</span> <span class="n">multiple</span> <span class="n">of</span> <span class="n">alignment</span><span class="o">.</span> <span class="n">See</span> <span class="n">Aligned</span> <span class="n">Memory</span> <span class="n">Blocks</span><span class="o">.</span>
+
+<span class="n">void</span> <span class="o">*</span><span class="n">memalign</span> <span class="p">(</span><span class="n">size_t</span> <span class="n">size</span><span class="p">,</span> <span class="n">size_t</span> <span class="n">boundary</span><span class="p">)</span>
+<span class="o">//</span><span class="n">Allocate</span> <span class="n">a</span> <span class="n">block</span> <span class="n">of</span> <span class="n">size</span> <span class="nb">bytes</span><span class="p">,</span> <span class="n">starting</span> <span class="n">on</span> <span class="n">an</span> <span class="n">address</span> <span class="n">that</span> <span class="ow">is</span> <span class="n">a</span> <span class="n">multiple</span> <span class="n">of</span> <span class="n">boundary</span><span class="o">.</span> <span class="n">See</span> <span class="n">Aligned</span> <span class="n">Memory</span> <span class="n">Blocks</span><span class="o">.</span>
+
+<span class="nb">int</span> <span class="n">mallopt</span> <span class="p">(</span><span class="nb">int</span> <span class="n">param</span><span class="p">,</span> <span class="nb">int</span> <span class="n">value</span><span class="p">)</span>
+<span class="o">//</span> <span class="n">Adjust</span> <span class="n">a</span> <span class="n">tunable</span> <span class="n">parameter</span><span class="o">.</span> <span class="n">See</span> <span class="n">Malloc</span> <span class="n">Tunable</span> <span class="n">Parameters</span><span class="o">.</span>
+
+<span class="nb">int</span> <span class="n">mcheck</span> <span class="p">(</span><span class="n">void</span> <span class="p">(</span><span class="o">*</span><span class="n">abortfn</span><span class="p">)</span> <span class="p">(</span><span class="n">void</span><span class="p">))</span>
+<span class="o">//</span> <span class="n">Tell</span> <span class="n">malloc</span> <span class="n">to</span> <span class="n">perform</span> <span class="n">occasional</span> <span class="n">consistency</span> <span class="n">checks</span> <span class="n">on</span> <span class="n">dynamically</span> <span class="n">allocated</span> <span class="n">memory</span><span class="p">,</span> <span class="ow">and</span> <span class="n">to</span> <span class="n">call</span> <span class="n">abortfn</span> <span class="n">when</span> <span class="n">an</span> <span class="n">inconsistency</span> <span class="ow">is</span> <span class="n">found</span><span class="o">.</span> <span class="n">See</span> <span class="n">Heap</span> <span class="n">Consistency</span> <span class="n">Checking</span><span class="o">.</span>
+
+<span class="n">struct</span> <span class="n">mallinfo2</span> <span class="n">mallinfo2</span> <span class="p">(</span><span class="n">void</span><span class="p">)</span>
+<span class="o">//</span> <span class="n">Return</span> <span class="n">information</span> <span class="n">about</span> <span class="n">the</span> <span class="n">current</span> <span class="n">dynamic</span> <span class="n">memory</span> <span class="n">usage</span><span class="o">.</span> <span class="n">See</span> <span class="n">Statistics</span> <span class="n">of</span> <span class="n">Malloc</span><span class="o">.</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="explore-with-an-example">
+<h3><span class="section-number">20.3.3. </span>Explore with an example<a class="headerlink" href="#explore-with-an-example" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="man-malloc">
+<h4><span class="section-number">20.3.3.1. </span>man malloc<a class="headerlink" href="#man-malloc" title="Permalink to this headline">¶</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">TermShellCmd</span><span class="p">(</span><span class="s2">&quot;man 3 malloc&quot;</span><span class="p">,</span> <span class="n">noposttext</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">markdown</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>$ man 3 malloc
+MALLOC(3)                  Linux Programmer&#39;s Manual                 MALLOC(3)
+
+NNAAMMEE
+       malloc, free, calloc, realloc - allocate and free dynamic memory
+
+SSYYNNOOPPSSIISS
+       ##iinncclluuddee &lt;&lt;ssttddlliibb..hh&gt;&gt;
+
+       vvooiidd **mmaalllloocc((ssiizzee__tt _s_i_z_e));;
+       vvooiidd ffrreeee((vvooiidd _*_p_t_r));;
+       vvooiidd **ccaalllloocc((ssiizzee__tt _n_m_e_m_b,, ssiizzee__tt _s_i_z_e));;
+       vvooiidd **rreeaalllloocc((vvooiidd _*_p_t_r,, ssiizzee__tt _s_i_z_e));;
+       vvooiidd **rreeaallllooccaarrrraayy((vvooiidd _*_p_t_r,, ssiizzee__tt _n_m_e_m_b,, ssiizzee__tt _s_i_z_e));;
+
+   Feature Test Macro Requirements for glibc (see ffeeaattuurree__tteesstt__mmaaccrrooss(7)):
+
+       rreeaallllooccaarrrraayy():
+           Since glibc 2.29:
+               _DEFAULT_SOURCE
+           Glibc 2.28 and earlier:
+               _GNU_SOURCE
+
+DDEESSCCRRIIPPTTIIOONN
+       The mmaalllloocc() function allocates _s_i_z_e bytes and returns a pointer to the
+       allocated memory.  _T_h_e _m_e_m_o_r_y _i_s _n_o_t _i_n_i_t_i_a_l_i_z_e_d.  If _s_i_z_e is  0,  then
+       mmaalllloocc()  returns either NULL, or a unique pointer value that can later
+       be successfully passed to ffrreeee().
+
+       The ffrreeee() function frees the memory space pointed  to  by  _p_t_r,  which
+       must  have  been  returned by a previous call to mmaalllloocc(), ccaalllloocc(), or
+       rreeaalllloocc().  Otherwise, or if _f_r_e_e_(_p_t_r_) has already been called  before,
+       undefined behavior occurs.  If _p_t_r is NULL, no operation is performed.
+
+       The  ccaalllloocc()  function allocates memory for an array of _n_m_e_m_b elements
+       of _s_i_z_e bytes each and returns a pointer to the allocated memory.   The
+       memory  is  set  to zero.  If _n_m_e_m_b or _s_i_z_e is 0, then ccaalllloocc() returns
+       either NULL, or a unique pointer value that can later  be  successfully
+       passed to ffrreeee().  If the multiplication of _n_m_e_m_b and _s_i_z_e would result
+       in integer overflow, then ccaalllloocc() returns an error.  By  contrast,  an
+       integer  overflow  would  not be detected in the following call to mmaall‐‐
+       lloocc(), with the result that an incorrectly sized block of memory  would
+       be allocated:
+
+           malloc(nmemb * size);
+
+       The  rreeaalllloocc() function changes the size of the memory block pointed to
+       by _p_t_r to _s_i_z_e bytes.  The contents will be unchanged in the range from
+       the start of the region up to the minimum of the old and new sizes.  If
+       the new size is larger than the old size, the added memory will _n_o_t  be
+       initialized.   If  _p_t_r  is  NULL,  then  the call is equivalent to _m_a_l_‐
+       _l_o_c_(_s_i_z_e_), for all values of _s_i_z_e; if _s_i_z_e is equal to zero, and _p_t_r is
+       not  NULL,  then  the  call  is equivalent to _f_r_e_e_(_p_t_r_).  Unless _p_t_r is
+       NULL, it must have been returned by an earlier call to  mmaalllloocc(),  ccaall‐‐
+       lloocc(),  or rreeaalllloocc().  If the area pointed to was moved, a _f_r_e_e_(_p_t_r_) is
+       done.
+
+       The rreeaallllooccaarrrraayy() function  changes  the  size  of  the  memory  block
+       pointed  to  by  _p_t_r to be large enough for an array of _n_m_e_m_b elements,
+       each of which is _s_i_z_e bytes.  It is equivalent to the call
+
+               realloc(ptr, nmemb * size);
+
+       However, unlike that rreeaalllloocc() call, rreeaallllooccaarrrraayy() fails safely in the
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>What does this code do?</strong></p>
+<ul class="simple">
+<li><p>What do you think will happen?</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="s2">&quot;&lt;font size=&#39;6.5em&#39;&gt;&quot;</span> <span class="o">+</span> <span class="n">FileCodeBox</span><span class="p">(</span>
+    <span class="n">file</span><span class="o">=</span><span class="n">appdir</span> <span class="o">+</span> <span class="s2">&quot;/dynmem.c&quot;</span><span class="p">,</span> 
+    <span class="n">lang</span><span class="o">=</span><span class="s2">&quot;c&quot;</span><span class="p">,</span> 
+    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;&lt;b&gt;C: dynmem.c&quot;</span><span class="p">,</span>
+    <span class="n">h</span><span class="o">=</span><span class="s2">&quot;100%&quot;</span><span class="p">,</span> 
+    <span class="n">w</span><span class="o">=</span><span class="s2">&quot;100%&quot;</span>
+<span class="p">)))</span>
+<span class="n">TermShellCmd</span><span class="p">(</span><span class="s2">&quot;[[ -a dynmem ]] &amp;&amp; rm dynmem;make dynmem&quot;</span><span class="p">,</span> <span class="n">cwd</span><span class="o">=</span><span class="n">appdir</span><span class="p">,</span> <span class="n">prompt</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">noposttext</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<p><font size='6.5em'><b>C: dynmem.c</p>
+<div style="width:100%; height:100%; font-size:inherit; overflow: auto;" >
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;stdlib.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;string.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;unistd.h&gt;</span><span class="cp"></span>
+<span class="c1">// Use debugger to explore what happens</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span class="o">**</span><span class="n">argv</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="kt">char</span> <span class="o">*</span><span class="n">cptr</span><span class="p">;</span>
+  <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">4096</span><span class="p">;</span>
+
+  <span class="n">cptr</span> <span class="o">=</span> <span class="n">malloc</span><span class="p">(</span><span class="n">n</span><span class="p">);</span>
+  <span class="n">memset</span><span class="p">(</span><span class="n">cptr</span><span class="p">,</span> <span class="mh">0xaa</span><span class="p">,</span> <span class="n">n</span><span class="p">);</span>
+  <span class="n">free</span><span class="p">(</span><span class="n">cptr</span><span class="p">);</span>
+  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+
+</pre></div>
+</div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>gcc -Werror  -g dynmem.c -o dynmem
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">showDT</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<p><b>Debug</b></p>
+</div>
+</div>
+<ul class="simple">
+<li><p>demonstrate strace ./dynmem</p>
+<ul>
+<li><p>what do you expect to see
+Use debugger</p></li>
+<li><p>use <code class="docutils literal notranslate"><span class="pre">jump</span></code> command and <code class="docutils literal notranslate"><span class="pre">set</span> <span class="pre">var</span> <span class="pre">n=X</span></code> to execute several malloc calls</p></li>
+<li><p>explore /proc/<pid>/maps</p></li>
+<li><p>set breakpoints on malloc, sbrk, brk,</p>
+<ul>
+<li><p>disass - brk easy see syscall</p></li>
+<li><p>break on syscall instruction - look at maps</p></li>
+<li><p>use where to show call chains</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>then add below and use strace</p></li>
+</ul>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;stdlib.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;unistd.h&gt;</span><span class="cp"></span>
+
+<span class="c1">// Use debugger to explore what happens                                            </span>
+
+<span class="kt">int</span>
+<span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span class="o">**</span><span class="n">argv</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="kt">char</span> <span class="o">*</span><span class="n">cptr</span><span class="p">;</span>
+  <span class="kt">char</span> <span class="n">c</span><span class="p">;</span>
+
+  <span class="n">read</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">c</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+
+  <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">4096</span><span class="p">;</span>
+  <span class="n">cptr</span> <span class="o">=</span> <span class="n">malloc</span><span class="p">(</span><span class="n">n</span><span class="p">);</span>
+  <span class="n">read</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">c</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+
+  <span class="n">n</span> <span class="o">=</span> <span class="mi">1024</span> <span class="o">*</span> <span class="mi">1024</span>  <span class="o">*</span> <span class="mi">1024</span><span class="p">;</span>
+  <span class="n">cptr</span> <span class="o">=</span> <span class="n">malloc</span><span class="p">(</span><span class="n">n</span><span class="p">);</span>
+  <span class="n">read</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">c</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+
+  <span class="n">n</span> <span class="o">=</span> <span class="mi">1024</span> <span class="o">*</span> <span class="mi">1024</span>  <span class="o">*</span> <span class="mi">1024</span><span class="p">;</span>
+  <span class="n">cptr</span> <span class="o">=</span> <span class="n">malloc</span><span class="p">(</span><span class="n">n</span><span class="p">);</span>
+  <span class="n">read</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">c</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+
+  <span class="n">free</span><span class="p">(</span><span class="n">cptr</span><span class="p">);</span>
+  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="libc-typically-c-wrappers-for-os-system-calls-and-support-for-making-syscalls-directly-in-c">
+<h4><span class="section-number">20.3.3.2. </span>LibC typically C wrappers for OS system calls and support for making syscalls directly in C<a class="headerlink" href="#libc-typically-c-wrappers-for-os-system-calls-and-support-for-making-syscalls-directly-in-c" title="Permalink to this headline">¶</a></h4>
+<p><strong>libc provides C wrappers for system calls</strong></p>
+<ul class="simple">
+<li><p>Wrappers expose C function interface for system calls of the OS</p></li>
+<li><p>You can lookup C version and simply call it like any other C function call</p>
+<ul>
+<li><p>implementation in libc takes care of all the assembly stuff for you</p>
+<ul>
+<li><p>putting parameters in the right registers</p></li>
+<li><p>filling in the system call number</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>man 2 syscalls</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">TermShellCmd</span><span class="p">(</span><span class="s2">&quot;man 2 syscalls|head -80&quot;</span><span class="p">,</span> <span class="n">noposttext</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">markdown</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>$ man 2 syscalls|head -80
+SYSCALLS(2)                Linux Programmer&#39;s Manual               SYSCALLS(2)
+
+NAME
+       syscalls - Linux system calls
+
+SYNOPSIS
+       Linux system calls.
+
+DESCRIPTION
+       The system call is the fundamental interface between an application and
+       the Linux kernel.
+
+   System calls and library wrapper functions
+       System calls are generally not invoked directly, but rather via wrapper
+       functions in glibc (or perhaps some other library).  For details of di‐
+       rect invocation of a system call, see intro(2).  Often, but not always,
+       the  name of the wrapper function is the same as the name of the system
+       call that it invokes.  For example, glibc contains a  function  chdir()
+       which invokes the underlying &quot;chdir&quot; system call.
+
+       Often the glibc wrapper function is quite thin, doing little work other
+       than copying arguments to the right registers before invoking the  sys‐
+       tem  call,  and  then setting errno appropriately after the system call
+       has returned.   (These  are  the  same  steps  that  are  performed  by
+       syscall(2), which can be used to invoke system calls for which no wrap‐
+       per function is provided.)  Note: system calls indicate  a  failure  by
+       returning  a negative error number to the caller on architectures with‐
+       out a separate error register/flag, as noted in syscall(2);  when  this
+       happens,  the  wrapper  function  negates the returned error number (to
+       make it positive), copies it to errno, and returns -1 to the caller  of
+       the wrapper.
+
+       Sometimes,  however,  the  wrapper function does some extra work before
+       invoking the system call.  For example, nowadays there are (for reasons
+       described  below)  two  related  system  calls,  truncate(2)  and trun‐
+       cate64(2), and the glibc truncate() wrapper function  checks  which  of
+       those  system  calls  are  provided  by the kernel and determines which
+       should be employed.
+
+   System call list
+       Below is a list of the Linux system calls.  In  the  list,  the  Kernel
+       column  indicates  the  kernel version for those system calls that were
+       new in Linux 2.2, or have appeared since that kernel version.  Note the
+       following points:
+
+       *  Where  no  kernel  version is indicated, the system call appeared in
+          kernel 1.0 or earlier.
+
+       *  Where a system call is marked &quot;1.2&quot; this means the system call prob‐
+          ably  appeared  in  a  1.1.x kernel version, and first appeared in a
+          stable kernel with 1.2.  (Development of the 1.2 kernel  was  initi‐
+          ated from a branch of kernel 1.0.6 via the 1.1.x unstable kernel se‐
+          ries.)
+
+       *  Where a system call is marked &quot;2.0&quot; this means the system call prob‐
+          ably  appeared  in  a  1.3.x kernel version, and first appeared in a
+          stable kernel with 2.0.  (Development of the 2.0 kernel  was  initi‐
+          ated from a branch of kernel 1.2.x, somewhere around 1.2.10, via the
+          1.3.x unstable kernel series.)
+
+       *  Where a system call is marked &quot;2.2&quot; this means the system call prob‐
+          ably  appeared  in  a  2.1.x kernel version, and first appeared in a
+          stable kernel with 2.2.0.  (Development of the 2.2 kernel was initi‐
+          ated  from  a  branch of kernel 2.0.21 via the 2.1.x unstable kernel
+          series.)
+
+       *  Where a system call is marked &quot;2.4&quot; this means the system call prob‐
+          ably  appeared  in  a  2.3.x kernel version, and first appeared in a
+          stable kernel with 2.4.0.  (Development of the 2.4 kernel was initi‐
+          ated from a branch of kernel 2.2.8 via the 2.3.x unstable kernel se‐
+          ries.)
+
+       *  Where a system call is marked &quot;2.6&quot; this means the system call prob‐
+          ably  appeared  in  a  2.5.x kernel version, and first appeared in a
+          stable kernel with 2.6.0.  (Development of kernel 2.6
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>man 2 brk</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">TermShellCmd</span><span class="p">(</span><span class="s2">&quot;man 2 brk&quot;</span><span class="p">,</span> <span class="n">noposttext</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">markdown</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>$ man 2 brk
+BRK(2)                     Linux Programmer&#39;s Manual                    BRK(2)
+
+NNAAMMEE
+       brk, sbrk - change data segment size
+
+SSYYNNOOPPSSIISS
+       ##iinncclluuddee &lt;&lt;uunniissttdd..hh&gt;&gt;
+
+       iinntt bbrrkk((vvooiidd **_a_d_d_r));;
+
+       vvooiidd **ssbbrrkk((iinnttppttrr__tt _i_n_c_r_e_m_e_n_t));;
+
+   Feature Test Macro Requirements for glibc (see ffeeaattuurree__tteesstt__mmaaccrrooss(7)):
+
+       bbrrkk(), ssbbrrkk():
+           Since glibc 2.19:
+               _DEFAULT_SOURCE ||
+                   (_XOPEN_SOURCE &gt;= 500) &amp;&amp;
+                   ! (_POSIX_C_SOURCE &gt;= 200112L)
+           From glibc 2.12 to 2.19:
+               _BSD_SOURCE || _SVID_SOURCE ||
+                   (_XOPEN_SOURCE &gt;= 500) &amp;&amp;
+                   ! (_POSIX_C_SOURCE &gt;= 200112L)
+           Before glibc 2.12:
+               _BSD_SOURCE || _SVID_SOURCE || _XOPEN_SOURCE &gt;= 500
+
+DDEESSCCRRIIPPTTIIOONN
+       bbrrkk()  and  ssbbrrkk()  change the location of the _p_r_o_g_r_a_m _b_r_e_a_k, which de‐
+       fines the end of the process&#39;s data segment (i.e., the program break is
+       the  first  location  after the end of the uninitialized data segment).
+       Increasing the program break has the effect of allocating memory to the
+       process; decreasing the break deallocates memory.
+
+       bbrrkk()  sets the end of the data segment to the value specified by _a_d_d_r,
+       when that value is reasonable, the system has enough  memory,  and  the
+       process does not exceed its maximum data size (see sseettrrlliimmiitt(2)).
+
+       ssbbrrkk() increments the program&#39;s data space by _i_n_c_r_e_m_e_n_t bytes.  Calling
+       ssbbrrkk() with an _i_n_c_r_e_m_e_n_t of 0 can be used to find the current  location
+       of the program break.
+
+RREETTUURRNN VVAALLUUEE
+       On success, bbrrkk() returns zero.  On error, -1 is returned, and _e_r_r_n_o is
+       set to EENNOOMMEEMM.
+
+       On success, ssbbrrkk() returns the previous program break.  (If  the  break
+       was  increased,  then this value is a pointer to the start of the newly
+       allocated memory).  On error, _(_v_o_i_d _*_) _-_1 is returned, and _e_r_r_n_o is set
+       to EENNOOMMEEMM.
+
+CCOONNFFOORRMMIINNGG TTOO
+       4.3BSD; SUSv1, marked LEGACY in SUSv2, removed in POSIX.1-2001.
+
+NNOOTTEESS
+       Avoid  using  bbrrkk() and ssbbrrkk(): the mmaalllloocc(3) memory allocation package
+       is the portable and comfortable way of allocating memory.
+
+       Various systems use various types for the argument of  ssbbrrkk().   Common
+       are _i_n_t, _s_s_i_z_e___t, _p_t_r_d_i_f_f___t, _i_n_t_p_t_r___t.
+
+   CC lliibbrraarryy//kkeerrnneell ddiiffffeerreenncceess
+       The  return value described above for bbrrkk() is the behavior provided by
+       the glibc wrapper function for the Linux bbrrkk() system call.   (On  most
+       other  implementations,  the  return value from bbrrkk() is the same; this
+       return value was also specified in SUSv2.)  However, the  actual  Linux
+       system  call returns the new program break on success.  On failure, the
+       system call returns the current break.  The glibc wrapper function does
+       some  work  (i.e.,  checks  whether the new break is less than _a_d_d_r) to
+       provide the 0 and -1 return values described above.
+
+       On Linux, ssbbrrkk() is implemented as a library  function  that  uses  the
+       bbrrkk()  system  call,  and does some internal bookkeeping so that it can
+       return the old break value.
+
+SSEEEE AALLSSOO
+       eexxeeccvvee(2), ggeettrrlliimmiitt(2), eenndd(3), mmaalllloocc(3)
+
+CCOOLLOOPPHHOONN
+       This page is part of release 5.05 of the Linux  _m_
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>glibc also has support for using the syscall instruction in C</strong></p>
+<p><strong>man 2 syscall</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">TermShellCmd</span><span class="p">(</span><span class="s2">&quot;man 2 syscall&quot;</span><span class="p">,</span> <span class="n">noposttext</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">markdown</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>$ man 2 syscall
+SYSCALL(2)                 Linux Programmer&#39;s Manual                SYSCALL(2)
+
+NNAAMMEE
+       syscall - indirect system call
+
+SSYYNNOOPPSSIISS
+       ##iinncclluuddee &lt;&lt;uunniissttdd..hh&gt;&gt;
+       ##iinncclluuddee &lt;&lt;ssyyss//ssyyssccaallll..hh&gt;&gt;   /* For SYS_xxx definitions */
+
+       lloonngg ssyyssccaallll((lloonngg _n_u_m_b_e_r,, ......));;
+
+   Feature Test Macro Requirements for glibc (see ffeeaattuurree__tteesstt__mmaaccrrooss(7)):
+       ssyyssccaallll():
+           Since glibc 2.19:
+               _DEFAULT_SOURCE
+           Before glibc 2.19:
+               _BSD_SOURCE || _SVID_SOURCE
+
+DDEESSCCRRIIPPTTIIOONN
+       ssyyssccaallll()  is  a  small  library  function that invokes the system call
+       whose assembly language interface has the  specified  _n_u_m_b_e_r  with  the
+       specified  arguments.  Employing ssyyssccaallll() is useful, for example, when
+       invoking a system call that has no wrapper function in the C library.
+
+       ssyyssccaallll() saves CPU registers before making the system  call,  restores
+       the  registers  upon  return from the system call, and stores any error
+       code returned by the system call in eerrrrnnoo(3) if an error occurs.
+
+       Symbolic constants for system call numbers can be found in  the  header
+       file _&lt;_s_y_s_/_s_y_s_c_a_l_l_._h_&gt;.
+
+RREETTUURRNN VVAALLUUEE
+       The  return value is defined by the system call being invoked.  In gen‐
+       eral, a 0 return value indicates success.  A -1 return value  indicates
+       an error, and an error code is stored in _e_r_r_n_o.
+
+NNOOTTEESS
+       ssyyssccaallll() first appeared in 4BSD.
+
+   AArrcchhiitteeccttuurree--ssppeecciiffiicc rreeqquuiirreemmeennttss
+       Each architecture ABI has its own requirements on how system call argu‐
+       ments are passed to the kernel.  For system calls  that  have  a  glibc
+       wrapper (e.g., most system calls), glibc handles the details of copying
+       arguments to the right registers in a manner suitable for the architec‐
+       ture.   However, when using ssyyssccaallll() to make a system call, the caller
+       might need to handle architecture-dependent details;  this  requirement
+       is most commonly encountered on certain 32-bit architectures.
+
+       For  example,  on  the  ARM  architecture Embedded ABI (EABI), a 64-bit
+       value (e.g., _l_o_n_g _l_o_n_g) must be  aligned  to  an  even  register  pair.
+       Thus,  using  ssyyssccaallll()  instead  of the wrapper provided by glibc, the
+       rreeaaddaahheeaadd() system call would be invoked as follows on the  ARM  archi‐
+       tecture with the EABI in little endian mode:
+
+           syscall(SYS_readahead, fd, 0,
+                   (unsigned int) (offset &amp; 0xFFFFFFFF),
+                   (unsigned int) (offset &gt;&gt; 32),
+                   count);
+
+       Since  the  offset  argument is 64 bits, and the first argument (_f_d) is
+       passed in _r_0, the caller must manually split and align the 64-bit value
+       so  that it is passed in the _r_2/_r_3 register pair.  That means inserting
+       a dummy value into _r_1 (the second argument of 0).  Care  also  must  be
+       taken  so that the split follows endian conventions (according to the C
+       ABI for the platform).
+
+       Similar issues can occur on MIPS with  the  O32  ABI,  on  PowerPC  and
+       parisc with the 32-bit ABI, and on Xtensa.
+
+       Note  that  while the parisc C ABI also uses aligned register pairs, it
+       uses a shim layer to hide the issue from user space.
+
+       The  affected  system  calls   are   ffaaddvviissee6644__6644(2),   ffttrruunnccaattee6644(2),
+       ppoossiixx__ffaaddvviissee(2),      pprreeaadd6644(2),      ppwwrri
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>In the following example we will call brk directly rather than letting malloc call it</strong></p>
+<p>Do not do this – you can screw up malloc only for example purposes</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="s1">&#39;&lt;font size=&quot;6rem&quot;&gt;&#39;</span> <span class="o">+</span> <span class="n">FileCodeBox</span><span class="p">(</span>
+    <span class="n">file</span><span class="o">=</span><span class="n">appdir</span> <span class="o">+</span> <span class="s2">&quot;/dynmemsyscalls.c&quot;</span><span class="p">,</span> 
+    <span class="n">lang</span><span class="o">=</span><span class="s2">&quot;c&quot;</span><span class="p">,</span> 
+    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;&lt;b&gt;C: dynmemsyscalls.c&quot;</span><span class="p">,</span>
+    <span class="n">h</span><span class="o">=</span><span class="s2">&quot;100%&quot;</span><span class="p">,</span> 
+    <span class="n">w</span><span class="o">=</span><span class="s2">&quot;107em&quot;</span>
+<span class="p">)))</span>
+<span class="n">TermShellCmd</span><span class="p">(</span><span class="s2">&quot;[[ -a dynmemsyscalls ]] &amp;&amp; rm dynmemsyscalls;make dynmemsyscalls&quot;</span><span class="p">,</span> <span class="n">cwd</span><span class="o">=</span><span class="n">appdir</span><span class="p">,</span> <span class="n">prompt</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">noposttext</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<p><font size="6rem"><b>C: dynmemsyscalls.c</p>
+<div style="width:107em; height:100%; font-size:inherit; overflow: auto;" >
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;stdlib.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;string.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;unistd.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;sys/syscall.h&gt;</span><span class="c1">   /* For SYS_xxx definitions */</span><span class="cp"></span>
+
+<span class="kt">int</span>
+<span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span class="o">**</span><span class="n">argv</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="kt">char</span> <span class="o">*</span><span class="n">cptr</span><span class="p">;</span>
+  <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">4096</span><span class="p">;</span>
+
+  <span class="n">cptr</span> <span class="o">=</span> <span class="n">malloc</span><span class="p">(</span><span class="n">n</span><span class="p">);</span>
+  <span class="n">memset</span><span class="p">(</span><span class="n">cptr</span><span class="p">,</span> <span class="mh">0xaa</span><span class="p">,</span> <span class="n">n</span><span class="p">);</span>
+  <span class="n">free</span><span class="p">(</span><span class="n">cptr</span><span class="p">);</span>
+
+  <span class="n">cptr</span> <span class="o">=</span> <span class="n">sbrk</span><span class="p">(</span><span class="mi">4096</span><span class="p">);</span>
+  <span class="n">memset</span><span class="p">(</span><span class="n">cptr</span><span class="p">,</span> <span class="mh">0xaa</span><span class="p">,</span> <span class="mi">4096</span><span class="p">);</span>
+
+  <span class="n">cptr</span> <span class="o">=</span> <span class="p">(</span><span class="kt">void</span> <span class="o">*</span><span class="p">)</span> <span class="n">syscall</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span> <span class="c1">// hardcode syscall number</span>
+  <span class="n">syscall</span><span class="p">(</span><span class="n">SYS_brk</span><span class="p">,</span> <span class="n">cptr</span> <span class="o">+</span> <span class="mi">4096</span><span class="p">);</span>  <span class="c1">// use constant from header</span>
+  <span class="n">memset</span><span class="p">(</span><span class="n">cptr</span><span class="p">,</span> <span class="mh">0xaa</span><span class="p">,</span> <span class="mi">4096</span><span class="p">);</span>
+
+  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+
+</pre></div>
+</div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>gcc -Werror  -g dynmemsyscalls.c -o dynmemsyscalls
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="you-can-use-mmap-and-munmap-in-your-c-programs-to-manage-your-own-dynamic-address-space-mapping">
+<h4><span class="section-number">20.3.3.3. </span>You can use <code class="docutils literal notranslate"><span class="pre">mmap</span></code> and <code class="docutils literal notranslate"><span class="pre">munmap</span></code> in your C programs to manage your own  dynamic address space mapping<a class="headerlink" href="#you-can-use-mmap-and-munmap-in-your-c-programs-to-manage-your-own-dynamic-address-space-mapping" title="Permalink to this headline">¶</a></h4>
+<p><strong>man mmap</strong></p>
+<p>It is very powerful but also has a lot of parameters</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">TermShellCmd</span><span class="p">(</span><span class="s2">&quot;man 2 mmap|head -40&quot;</span><span class="p">,</span> <span class="n">noposttext</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">markdown</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>$ man 2 mmap|head -40
+MMAP(2)                    Linux Programmer&#39;s Manual                   MMAP(2)
+
+NAME
+       mmap, munmap - map or unmap files or devices into memory
+
+SYNOPSIS
+       #include &lt;sys/mman.h&gt;
+
+       void *mmap(void *addr, size_t length, int prot, int flags,
+                  int fd, off_t offset);
+       int munmap(void *addr, size_t length);
+
+       See NOTES for information on feature test macro requirements.
+
+DESCRIPTION
+       mmap()  creates a new mapping in the virtual address space of the call‐
+       ing process.  The starting address for the new mapping is specified  in
+       addr.   The  length argument specifies the length of the mapping (which
+       must be greater than 0).
+
+       If addr is NULL, then the kernel chooses the (page-aligned) address  at
+       which to create the mapping; this is the most portable method of creat‐
+       ing a new mapping.  If addr is not NULL, then the kernel takes it as  a
+       hint about where to place the mapping; on Linux, the kernel will pick a
+       nearby page boundary (but always above or equal to the value  specified
+       by /proc/sys/vm/mmap_min_addr) and attempt to create the mapping there.
+       If another mapping already exists there, the kernel picks a new address
+       that may or may not depend on the hint.  The address of the new mapping
+       is returned as the result of the call.
+
+       The contents of a file mapping (as opposed to an anonymous mapping; see
+       MAP_ANONYMOUS  below),  are  initialized using length bytes starting at
+       offset offset in the file (or other object) referred to by the file de‐
+       scriptor fd.  offset must be a multiple of the page size as returned by
+       sysconf(_SC_PAGE_SIZE).
+
+       After the mmap() call has returned, the file  descriptor,  fd,  can  be
+       closed immediately without invalidating the mapping.
+
+       The  prot  argument describes the desired memory protection of the map‐
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="under-the-covers-malloc-free-and-friends">
+<h3><span class="section-number">20.3.4. </span>Under the covers <code class="docutils literal notranslate"><span class="pre">malloc</span></code>, <code class="docutils literal notranslate"><span class="pre">free</span></code> and friends<a class="headerlink" href="#under-the-covers-malloc-free-and-friends" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>are calling <code class="docutils literal notranslate"><span class="pre">brk</span></code>, <code class="docutils literal notranslate"><span class="pre">mmap</span></code> and <code class="docutils literal notranslate"><span class="pre">munmap</span></code></p></li>
+<li><p>you and your code does not need to deal with the details</p>
+<ul>
+<li><p>rather a simpler interface that is consistent across CPU types and OS</p>
+<ul>
+<li><p>get me <code class="docutils literal notranslate"><span class="pre">n</span></code> bytes of memory and return a pointer to it</p></li>
+<li><p>give back memory at this address</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<div class="section" id="important-points-about-dynamic-memory">
+<h4><span class="section-number">20.3.4.1. </span>Important points about dynamic memory<a class="headerlink" href="#important-points-about-dynamic-memory" title="Permalink to this headline">¶</a></h4>
+<p>What is wrong with this code?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="s1">&#39;&lt;font size=&quot;6rem&quot;&gt;&#39;</span> <span class="o">+</span> <span class="n">FileCodeBox</span><span class="p">(</span>
+    <span class="n">file</span><span class="o">=</span><span class="n">appdir</span> <span class="o">+</span> <span class="s2">&quot;/badmsgcode.c&quot;</span><span class="p">,</span> 
+    <span class="n">lang</span><span class="o">=</span><span class="s2">&quot;c&quot;</span><span class="p">,</span> 
+    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;&lt;b&gt;C: badmsgcode.c&quot;</span><span class="p">,</span>
+    <span class="n">h</span><span class="o">=</span><span class="s2">&quot;100%&quot;</span><span class="p">,</span> 
+    <span class="n">w</span><span class="o">=</span><span class="s2">&quot;100%&quot;</span>
+<span class="p">)))</span>
+<span class="n">TermShellCmd</span><span class="p">(</span><span class="s2">&quot;[[ -a badmsgcode.o ]] &amp;&amp; rm badmsgcode.o;make badmsgcode.o&quot;</span><span class="p">,</span> <span class="n">cwd</span><span class="o">=</span><span class="n">appdir</span><span class="p">,</span> <span class="n">prompt</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">noposttext</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<p><font size="6rem"><b>C: badmsgcode.c</p>
+<div style="width:100%; height:100%; font-size:inherit; overflow: auto;" >
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;stdlib.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;assert.h&gt;</span><span class="cp"></span>
+
+<span class="c1">// waits for request message to arrive: returns length in bytes and updates integer pointed to</span>
+<span class="c1">// by idPtr with id of request</span>
+<span class="kt">int</span> <span class="nf">getRequest</span><span class="p">(</span><span class="kt">int</span> <span class="o">*</span><span class="n">idPtr</span><span class="p">);</span>
+<span class="c1">// read the data of request with id into memory pointed to by buffer</span>
+<span class="kt">void</span> <span class="nf">readRequestData</span><span class="p">(</span><span class="kt">int</span> <span class="n">id</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span><span class="n">buffer</span><span class="p">);</span>
+<span class="c1">// process request with id and data in memory pointed to by buffer, frees buffer when done</span>
+<span class="kt">void</span> <span class="nf">processRequest</span><span class="p">(</span><span class="kt">int</span> <span class="n">id</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span><span class="n">buffer</span><span class="p">);</span>
+
+<span class="kt">int</span>
+<span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span class="o">**</span><span class="n">argv</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="kt">int</span> <span class="n">n</span><span class="p">;</span>
+  <span class="kt">int</span> <span class="o">*</span><span class="n">id_ptr</span><span class="p">;</span>
+  <span class="kt">char</span> <span class="o">*</span><span class="n">msg_buffer</span><span class="p">;</span>
+
+  <span class="c1">// my server loop</span>
+  <span class="k">while</span> <span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">id_ptr</span> <span class="o">=</span> <span class="n">malloc</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="kt">int</span><span class="p">));</span>
+    <span class="n">assert</span><span class="p">(</span><span class="n">id_ptr</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">);</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="n">getRequest</span><span class="p">(</span><span class="n">id_ptr</span><span class="p">);</span>
+    <span class="n">msg_buffer</span> <span class="o">=</span> <span class="n">malloc</span><span class="p">(</span><span class="n">n</span><span class="p">);</span>
+    <span class="n">assert</span><span class="p">(</span><span class="n">msg_buffer</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">);</span>
+    <span class="n">readRequestData</span><span class="p">(</span><span class="o">*</span><span class="n">id_ptr</span><span class="p">,</span> <span class="n">msg_buffer</span><span class="p">);</span>
+    <span class="n">processRequest</span><span class="p">(</span><span class="o">*</span><span class="n">id_ptr</span><span class="p">,</span> <span class="n">msg_buffer</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="c1">// should never get here</span>
+  <span class="n">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+<span class="p">}</span>
+
+</pre></div>
+</div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>gcc  -g -Werror -c  badmsgcode.c -o badmsgcode.o
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>this is why higher level languages have a lot of code to hide the details of dynamic memory</p>
+<ul>
+<li><p>reference counting</p></li>
+<li><p>garbage collectors</p></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="section" id="layers">
+<h2><span class="section-number">20.4. </span>Layers<a class="headerlink" href="#layers" title="Permalink to this headline">¶</a></h2>
+<p>What we see is a general pattern of layering</p>
+<ul class="simple">
+<li><p>Assembly is at the bottom</p></li>
+<li><p>OS kernel provides an assembly interface to its routines</p>
+<ul>
+<li><p>x86 Linux system calls invoked via <code class="docutils literal notranslate"><span class="pre">syscall</span></code> instruction and the right register values</p></li>
+</ul>
+</li>
+<li><p>lowest layer of libc routines provides wrappers</p></li>
+<li><p>The other lib routines build on these to add more functionality eg. <code class="docutils literal notranslate"><span class="pre">malloc</span></code> and <code class="docutils literal notranslate"><span class="pre">free</span></code></p>
+<ul>
+<li><p>thus programmers and C applications are isolated from details of OS syscalls</p>
+<ul>
+<li><p>simply need to learn libc which is ported to each computer OS pair</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="io-is-no-different">
+<h2><span class="section-number">20.5. </span>IO is no different<a class="headerlink" href="#io-is-no-different" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="lowest-layer-is-wrappers-for-core-unix-i-o-routines">
+<h3><span class="section-number">20.5.1. </span>Lowest layer is wrappers for core UNIX I/O routines<a class="headerlink" href="#lowest-layer-is-wrappers-for-core-unix-i-o-routines" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">open</span></code>, <code class="docutils literal notranslate"><span class="pre">close</span></code>, <code class="docutils literal notranslate"><span class="pre">read</span></code>, <code class="docutils literal notranslate"><span class="pre">write</span></code>, <code class="docutils literal notranslate"><span class="pre">dup</span></code>, <code class="docutils literal notranslate"><span class="pre">mkdir</span></code>, <code class="docutils literal notranslate"><span class="pre">exec</span></code>, <code class="docutils literal notranslate"><span class="pre">mmap</span></code></p></li>
+</ul>
+</div>
+<div class="section" id="a-layer-up-buffered-and-formated-i-o">
+<h3><span class="section-number">20.5.2. </span>A layer up buffered and formated I/O<a class="headerlink" href="#a-layer-up-buffered-and-formated-i-o" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">fopen</span></code>, <code class="docutils literal notranslate"><span class="pre">fclose</span></code>, <code class="docutils literal notranslate"><span class="pre">fread</span></code>, <code class="docutils literal notranslate"><span class="pre">fwrite</span></code>,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">fprintf</span></code> (<code class="docutils literal notranslate"><span class="pre">printf</span></code>), <code class="docutils literal notranslate"><span class="pre">fscanf</span></code> (<code class="docutils literal notranslate"><span class="pre">scanf</span></code>)</p></li>
+</ul>
+</div>
+</div>
 </div>
 
     <script type="text/x-thebe-config">
