@@ -542,16 +542,7 @@
         
               <div>
                 
-  <div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">run</span> -i ../python/common.py
-<span class="n">UC_SKIPTERMS</span><span class="o">=</span><span class="kc">True</span>
-<span class="o">%</span><span class="k">run</span> -i ../python/ln_preamble.py
-</pre></div>
-</div>
-</div>
-</div>
-<div class="tex2jax_ignore mathjax_ignore section" id="uc-sls-lecture-20-using-libc-to-access-the-os-and-escape-the-confines-our-process">
+  <div class="tex2jax_ignore mathjax_ignore section" id="uc-sls-lecture-20-using-libc-to-access-the-os-and-escape-the-confines-our-process">
 <h1><span class="section-number">20. </span>UC-SLS Lecture 20 : Using LibC to access the OS and escape the confines our process<a class="headerlink" href="#uc-sls-lecture-20-using-libc-to-access-the-os-and-escape-the-confines-our-process" title="Permalink to this headline">¶</a></h1>
 <ul class="simple">
 <li><p>Preliminaries</p>
@@ -574,27 +565,7 @@
 </ul>
 </li>
 </ul>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># setup for sumit examples</span>
-<span class="n">appdir</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s1">&#39;HOME&#39;</span><span class="p">)</span>
-<span class="n">appdir</span><span class="o">=</span><span class="n">appdir</span> <span class="o">+</span> <span class="s2">&quot;/libc&quot;</span>
-<span class="c1">#print(movdir)</span>
-<span class="n">output</span><span class="o">=</span><span class="n">runTermCmd</span><span class="p">(</span><span class="s2">&quot;[[ -d &quot;</span> <span class="o">+</span> <span class="n">appdir</span> <span class="o">+</span> <span class="s2">&quot; ]] &amp;&amp;  rm -rf &quot;</span><span class="o">+</span> <span class="n">appdir</span> <span class="o">+</span> 
-             <span class="s2">&quot;;mkdir &quot;</span> <span class="o">+</span> <span class="n">appdir</span> <span class="o">+</span> 
-             <span class="s2">&quot;;cp ../src/Makefile ../src/cexp.c ../src/badmsgcode.c ../src/dynmem.c ../src/dynmemsyscalls.c &quot;</span> <span class="o">+</span> <span class="n">appdir</span><span class="p">)</span>
-
-<span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
-<span class="s1">- create a directory `mkdir libc; cd libc`</span>
-<span class="s1">- copy examples</span>
-<span class="s1">- add a `Makefile` to automate assembling and linking</span>
-<span class="s1">    - we are going run the commands by hand this time to highlight the details</span>
-<span class="s1">- normally you would want to track everything in git</span>
-<span class="s1">&#39;&#39;&#39;</span><span class="p">))</span>
-<span class="n">TermShellCmd</span><span class="p">(</span><span class="s2">&quot;ls &quot;</span> <span class="o">+</span> <span class="n">appdir</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
+<div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <ul class="simple">
 <li><p>create a directory <code class="docutils literal notranslate"><span class="pre">mkdir</span> <span class="pre">libc;</span> <span class="pre">cd</span> <span class="pre">libc</span></code></p></li>
@@ -631,12 +602,7 @@ $
 <h4><span class="section-number">20.2.1.1. </span>Documentation<a class="headerlink" href="#documentation" title="Permalink to this headline">¶</a></h4>
 <p>Developers provide documentation that explains the API in terms of the functions and types that their code provides for your use.  Traditionally on UNIX systems this comprises as set of man pages.</p>
 <p><strong>man complex</strong></p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">TermShellCmd</span><span class="p">(</span><span class="s2">&quot;man complex&quot;</span><span class="p">,</span> <span class="n">noposttext</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">markdown</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
+<div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>$ man complex
 COMPLEX(7)                 Linux Programmer&#39;s Manual                COMPLEX(7)
@@ -704,12 +670,7 @@ CCOOLLOOPPHHOONN
 </div>
 </div>
 <p><strong>man cexp</strong></p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">TermShellCmd</span><span class="p">(</span><span class="s2">&quot;man cexp&quot;</span><span class="p">,</span> <span class="n">noposttext</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">markdown</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
+<div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>$ man cexp
 CEXP(3)                    Linux Programmer&#39;s Manual                   CEXP(3)
@@ -799,20 +760,7 @@ CCOOLLOOPPHHOONN
 </div>
 <div class="section" id="example">
 <h4><span class="section-number">20.2.1.4. </span>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h4>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="s1">&#39;&lt;font size=&quot;6rem&quot;&gt;&#39;</span> <span class="o">+</span> <span class="n">FileCodeBox</span><span class="p">(</span>
-    <span class="n">file</span><span class="o">=</span><span class="n">appdir</span> <span class="o">+</span> <span class="s2">&quot;/cexp.c&quot;</span><span class="p">,</span> 
-    <span class="n">lang</span><span class="o">=</span><span class="s2">&quot;c&quot;</span><span class="p">,</span> 
-    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;&lt;b&gt;C: cexp.c&quot;</span><span class="p">,</span>
-    <span class="n">h</span><span class="o">=</span><span class="s2">&quot;100%&quot;</span><span class="p">,</span> 
-    <span class="n">w</span><span class="o">=</span><span class="s2">&quot;100%&quot;</span>
-<span class="p">)))</span>
-<span class="n">TermShellCmd</span><span class="p">(</span><span class="s2">&quot;[[ -a cexp ]] &amp;&amp; rm cexp;make cexp&quot;</span><span class="p">,</span> <span class="n">cwd</span><span class="o">=</span><span class="n">appdir</span><span class="p">,</span> <span class="n">prompt</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">noposttext</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">TermShellCmd</span><span class="p">(</span><span class="s2">&quot;./cexp&quot;</span><span class="p">,</span> <span class="n">cwd</span><span class="o">=</span><span class="n">appdir</span><span class="p">,</span> <span class="n">noposttext</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
+<div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <p><font size="6rem"><b>C: cexp.c</p>
 <div style="width:100%; height:100%; font-size:inherit; overflow: auto;" >
@@ -834,7 +782,7 @@ CCOOLLOOPPHHOONN
 </pre></div>
 </div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>gcc  -g  -Os -static -Xlinker -Map=cexp.map cexp.c -o cexp -lm
+</font><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>gcc  -g  -Os -static -Xlinker -Map=cexp.map cexp.c -o cexp -lm
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>$ ./cexp
@@ -856,12 +804,7 @@ CCOOLLOOPPHHOONN
 </ul>
 </li>
 </ul>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">TermShellCmd</span><span class="p">(</span><span class="s2">&quot;ls -la /usr/include/math.h /usr/include/stdio.h /usr/include/complex.h&quot;</span><span class="p">,</span> <span class="n">noposttext</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
+<div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>$ ls -la /usr/include/math.h /usr/include/stdio.h /usr/include/complex.h
 -rw-r--r-- 1 root root  7164 Dec 16  2020 /usr/include/complex.h
@@ -886,20 +829,15 @@ CCOOLLOOPPHHOONN
 </li>
 </ul>
 <p><strong>The linker map file lets us see all the .o’s that got linked in and where they came from</strong></p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">TermShellCmd</span><span class="p">(</span><span class="s2">&quot;head -20 cexp.map &quot;</span><span class="p">,</span> <span class="n">cwd</span><span class="o">=</span><span class="n">appdir</span><span class="p">,</span> <span class="n">noposttext</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
+<div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>$ head -20 cexp.map 
 Archive member included to satisfy reference by file (symbol)
 
 /usr/lib/x86_64-linux-gnu/libm-2.31.a(s_atan.o)
-                              /tmp/ccUiGSGY.o (atan)
+                              /tmp/ccFhwSEP.o (atan)
 /usr/lib/x86_64-linux-gnu/libm-2.31.a(s_cexp.o)
-                              /tmp/ccUiGSGY.o (cexp)
+                              /tmp/ccFhwSEP.o (cexp)
 /usr/lib/x86_64-linux-gnu/libm-2.31.a(mpa.o)
                               /usr/lib/x86_64-linux-gnu/libm-2.31.a(s_atan.o) (__mp_dbl)
 /usr/lib/x86_64-linux-gnu/libm-2.31.a(mpatan.o)
@@ -921,12 +859,7 @@ Archive member included to satisfy reference by file (symbol)
 <p><strong><code class="docutils literal notranslate"><span class="pre">ar</span></code> is a tool for working with static libraries</strong>
 see <code class="docutils literal notranslate"><span class="pre">man</span> <span class="pre">ar</span></code> for details</p>
 <p>We can use it to list the table of contents of the <code class="docutils literal notranslate"><span class="pre">.o</span></code> in the archive</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">TermShellCmd</span><span class="p">(</span><span class="s2">&quot;ar t /usr/lib/x86_64-linux-gnu/libm-2.31.a | head&quot;</span><span class="p">,</span> <span class="n">cwd</span><span class="o">=</span><span class="n">appdir</span><span class="p">,</span> <span class="n">noposttext</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
+<div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>$ ar t /usr/lib/x86_64-linux-gnu/libm-2.31.a | head
 s_lib_version.o
@@ -944,26 +877,16 @@ fesetround.o
 </div>
 </div>
 <p>We can even use it to extract a member (just like the linker does when linking)</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">TermShellCmd</span><span class="p">(</span><span class="s2">&quot;ar x /usr/lib/x86_64-linux-gnu/libm-2.31.a s_cexp.o; ls -l s_cexp.o&quot;</span><span class="p">,</span> <span class="n">cwd</span><span class="o">=</span><span class="n">appdir</span><span class="p">,</span> <span class="n">noposttext</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
+<div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>$ ar x /usr/lib/x86_64-linux-gnu/libm-2.31.a s_cexp.o; ls -l s_cexp.o
--rw-r--r-- 1 jovyan root 3792 Dec  9 12:54 s_cexp.o
+-rw-r--r-- 1 jovyan root 3792 Dec  9 13:12 s_cexp.o
 </pre></div>
 </div>
 </div>
 </div>
 <p><strong>And no surprise it is an object file like the kind we have been creating</strong></p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">TermShellCmd</span><span class="p">(</span><span class="s2">&quot;objdump -d -Mintel s_cexp.o | head -20&quot;</span><span class="p">,</span> <span class="n">cwd</span><span class="o">=</span><span class="n">appdir</span><span class="p">,</span> <span class="n">noposttext</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
+<div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>$ objdump -d -Mintel s_cexp.o | head -20
 
@@ -1002,12 +925,7 @@ Disassembly of section .text:
 </ul>
 </li>
 </ul>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">TermShellCmd</span><span class="p">(</span><span class="s2">&quot;grep -B 1 &#39; _start$&#39; cexp.map&quot;</span><span class="p">,</span> <span class="n">cwd</span><span class="o">=</span><span class="n">appdir</span><span class="p">,</span> <span class="n">noposttext</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
+<div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>$ grep -B 1 &#39; _start$&#39; cexp.map
  .text          0x0000000000401c30       0x35 /usr/lib/gcc/x86_64-linux-gnu/9/../../../x86_64-linux-gnu/crt1.o
@@ -1016,12 +934,7 @@ Disassembly of section .text:
 </div>
 </div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">TermShellCmd</span><span class="p">(</span><span class="s2">&quot;grep -B 1 &#39; atof$&#39; cexp.map&quot;</span><span class="p">,</span> <span class="n">cwd</span><span class="o">=</span><span class="n">appdir</span><span class="p">,</span> <span class="n">noposttext</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
+<div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>$ grep -B 1 &#39; atof$&#39; cexp.map
  .text          0x000000000041f460        0xb /usr/lib/gcc/x86_64-linux-gnu/9/../../../x86_64-linux-gnu/libc.a(atof.o)
@@ -1030,12 +943,7 @@ Disassembly of section .text:
 </div>
 </div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">TermShellCmd</span><span class="p">(</span><span class="s2">&quot;grep -B 1 &#39; fprintf$&#39; cexp.map&quot;</span><span class="p">,</span> <span class="n">cwd</span><span class="o">=</span><span class="n">appdir</span><span class="p">,</span> <span class="n">noposttext</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
+<div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>$ grep -B 1 &#39; fprintf$&#39; cexp.map
  .text          0x000000000047ae00       0xb7 /usr/lib/gcc/x86_64-linux-gnu/9/../../../x86_64-linux-gnu/libc.a(fprintf.o)
@@ -1251,19 +1159,7 @@ DDEESSCCRRIIPPTTIIOONN
 <ul class="simple">
 <li><p>What do you think will happen?</p></li>
 </ul>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="s2">&quot;&lt;font size=&#39;6.5em&#39;&gt;&quot;</span> <span class="o">+</span> <span class="n">FileCodeBox</span><span class="p">(</span>
-    <span class="n">file</span><span class="o">=</span><span class="n">appdir</span> <span class="o">+</span> <span class="s2">&quot;/dynmem.c&quot;</span><span class="p">,</span> 
-    <span class="n">lang</span><span class="o">=</span><span class="s2">&quot;c&quot;</span><span class="p">,</span> 
-    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;&lt;b&gt;C: dynmem.c&quot;</span><span class="p">,</span>
-    <span class="n">h</span><span class="o">=</span><span class="s2">&quot;100%&quot;</span><span class="p">,</span> 
-    <span class="n">w</span><span class="o">=</span><span class="s2">&quot;100%&quot;</span>
-<span class="p">)))</span>
-<span class="n">TermShellCmd</span><span class="p">(</span><span class="s2">&quot;[[ -a dynmem ]] &amp;&amp; rm dynmem;make dynmem&quot;</span><span class="p">,</span> <span class="n">cwd</span><span class="o">=</span><span class="n">appdir</span><span class="p">,</span> <span class="n">prompt</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">noposttext</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
+<div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <p><font size='6.5em'><b>C: dynmem.c</p>
 <div style="width:100%; height:100%; font-size:inherit; overflow: auto;" >
@@ -1285,17 +1181,12 @@ DDEESSCCRRIIPPTTIIOONN
 </pre></div>
 </div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>gcc -Werror  -g dynmem.c -o dynmem
+</font><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>gcc -Werror  -g dynmem.c -o dynmem
 </pre></div>
 </div>
 </div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">showDT</span><span class="p">())</span>
-</pre></div>
-</div>
-</div>
+<div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <p><b>Debug</b></p>
 </div>
@@ -1366,12 +1257,7 @@ Use debugger</p></li>
 </li>
 </ul>
 <p><strong>man 2 syscalls</strong></p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">TermShellCmd</span><span class="p">(</span><span class="s2">&quot;man 2 syscalls|head -80&quot;</span><span class="p">,</span> <span class="n">noposttext</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">markdown</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
+<div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>$ man 2 syscalls|head -80
 SYSCALLS(2)                Linux Programmer&#39;s Manual               SYSCALLS(2)
@@ -1454,12 +1340,7 @@ DESCRIPTION
 </div>
 </div>
 <p><strong>man 2 brk</strong></p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">TermShellCmd</span><span class="p">(</span><span class="s2">&quot;man 2 brk&quot;</span><span class="p">,</span> <span class="n">noposttext</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">markdown</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
+<div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>$ man 2 brk
 BRK(2)                     Linux Programmer&#39;s Manual                    BRK(2)
@@ -1547,12 +1428,7 @@ CCOOLLOOPPHHOONN
 </div>
 <p><strong>glibc also has support for using the syscall instruction in C</strong></p>
 <p><strong>man 2 syscall</strong></p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">TermShellCmd</span><span class="p">(</span><span class="s2">&quot;man 2 syscall&quot;</span><span class="p">,</span> <span class="n">noposttext</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">markdown</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
+<div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>$ man 2 syscall
 SYSCALL(2)                 Linux Programmer&#39;s Manual                SYSCALL(2)
@@ -1635,19 +1511,7 @@ NNOOTTEESS
 </div>
 <p><strong>In the following example we will call brk directly rather than letting malloc call it</strong></p>
 <p>Do not do this – you can screw up malloc only for example purposes</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="s1">&#39;&lt;font size=&quot;6rem&quot;&gt;&#39;</span> <span class="o">+</span> <span class="n">FileCodeBox</span><span class="p">(</span>
-    <span class="n">file</span><span class="o">=</span><span class="n">appdir</span> <span class="o">+</span> <span class="s2">&quot;/dynmemsyscalls.c&quot;</span><span class="p">,</span> 
-    <span class="n">lang</span><span class="o">=</span><span class="s2">&quot;c&quot;</span><span class="p">,</span> 
-    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;&lt;b&gt;C: dynmemsyscalls.c&quot;</span><span class="p">,</span>
-    <span class="n">h</span><span class="o">=</span><span class="s2">&quot;100%&quot;</span><span class="p">,</span> 
-    <span class="n">w</span><span class="o">=</span><span class="s2">&quot;107em&quot;</span>
-<span class="p">)))</span>
-<span class="n">TermShellCmd</span><span class="p">(</span><span class="s2">&quot;[[ -a dynmemsyscalls ]] &amp;&amp; rm dynmemsyscalls;make dynmemsyscalls&quot;</span><span class="p">,</span> <span class="n">cwd</span><span class="o">=</span><span class="n">appdir</span><span class="p">,</span> <span class="n">prompt</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">noposttext</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
+<div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <p><font size="6rem"><b>C: dynmemsyscalls.c</p>
 <div style="width:107em; height:100%; font-size:inherit; overflow: auto;" >
@@ -1679,7 +1543,7 @@ NNOOTTEESS
 </pre></div>
 </div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>gcc -Werror  -g dynmemsyscalls.c -o dynmemsyscalls
+</font><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>gcc -Werror  -g dynmemsyscalls.c -o dynmemsyscalls
 </pre></div>
 </div>
 </div>
@@ -1689,12 +1553,7 @@ NNOOTTEESS
 <h4><span class="section-number">20.3.3.3. </span>You can use <code class="docutils literal notranslate"><span class="pre">mmap</span></code> and <code class="docutils literal notranslate"><span class="pre">munmap</span></code> in your C programs to manage your own  dynamic address space mapping<a class="headerlink" href="#you-can-use-mmap-and-munmap-in-your-c-programs-to-manage-your-own-dynamic-address-space-mapping" title="Permalink to this headline">¶</a></h4>
 <p><strong>man mmap</strong></p>
 <p>It is very powerful but also has a lot of parameters</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">TermShellCmd</span><span class="p">(</span><span class="s2">&quot;man 2 mmap|head -40&quot;</span><span class="p">,</span> <span class="n">noposttext</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">markdown</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
+<div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>$ man 2 mmap|head -40
 MMAP(2)                    Linux Programmer&#39;s Manual                   MMAP(2)
@@ -1761,19 +1620,7 @@ DESCRIPTION
 <div class="section" id="important-points-about-dynamic-memory">
 <h4><span class="section-number">20.3.4.1. </span>Important points about dynamic memory<a class="headerlink" href="#important-points-about-dynamic-memory" title="Permalink to this headline">¶</a></h4>
 <p>What is wrong with this code?</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="s1">&#39;&lt;font size=&quot;6rem&quot;&gt;&#39;</span> <span class="o">+</span> <span class="n">FileCodeBox</span><span class="p">(</span>
-    <span class="n">file</span><span class="o">=</span><span class="n">appdir</span> <span class="o">+</span> <span class="s2">&quot;/badmsgcode.c&quot;</span><span class="p">,</span> 
-    <span class="n">lang</span><span class="o">=</span><span class="s2">&quot;c&quot;</span><span class="p">,</span> 
-    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;&lt;b&gt;C: badmsgcode.c&quot;</span><span class="p">,</span>
-    <span class="n">h</span><span class="o">=</span><span class="s2">&quot;100%&quot;</span><span class="p">,</span> 
-    <span class="n">w</span><span class="o">=</span><span class="s2">&quot;100%&quot;</span>
-<span class="p">)))</span>
-<span class="n">TermShellCmd</span><span class="p">(</span><span class="s2">&quot;[[ -a badmsgcode.o ]] &amp;&amp; rm badmsgcode.o;make badmsgcode.o&quot;</span><span class="p">,</span> <span class="n">cwd</span><span class="o">=</span><span class="n">appdir</span><span class="p">,</span> <span class="n">prompt</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">noposttext</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
+<div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <p><font size="6rem"><b>C: badmsgcode.c</p>
 <div style="width:100%; height:100%; font-size:inherit; overflow: auto;" >
@@ -1812,7 +1659,7 @@ DESCRIPTION
 </pre></div>
 </div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>gcc  -g -Werror -c  badmsgcode.c -o badmsgcode.o
+</font><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>gcc  -g -Werror -c  badmsgcode.c -o badmsgcode.o
 </pre></div>
 </div>
 </div>
@@ -1862,7 +1709,7 @@ DESCRIPTION
 <h3><span class="section-number">20.5.2. </span>A layer up buffered and formated I/O<a class="headerlink" href="#a-layer-up-buffered-and-formated-i-o" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">fopen</span></code>, <code class="docutils literal notranslate"><span class="pre">fclose</span></code>, <code class="docutils literal notranslate"><span class="pre">fread</span></code>, <code class="docutils literal notranslate"><span class="pre">fwrite</span></code>,</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">fprintf</span></code> (<code class="docutils literal notranslate"><span class="pre">printf</span></code>), <code class="docutils literal notranslate"><span class="pre">fscanf</span></code> (<code class="docutils literal notranslate"><span class="pre">scanf</span></code>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">fprintf</span></code>/<code class="docutils literal notranslate"><span class="pre">printf</span></code>, <code class="docutils literal notranslate"><span class="pre">fscanf</span></code>/<code class="docutils literal notranslate"><span class="pre">scanf</span></code></p></li>
 </ul>
 </div>
 </div>
