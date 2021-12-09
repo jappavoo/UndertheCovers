@@ -1,5 +1,4 @@
-/* check that exp(i * pi) == -1 */
-#include <math.h>        /* for atan */
+#include <math.h> /* for atan */
 #include <stdio.h>
 #include <complex.h>
 #include <stdlib.h>
