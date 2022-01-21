@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>7. Introduction: Assembly Programming &#8212; UndertheCovers</title>
     
-  <link href="../_static/css/theme.css" rel="stylesheet" />
-  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -31,7 +31,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
@@ -42,7 +42,7 @@
     <script src="../_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script>
@@ -56,7 +56,10 @@
     <link rel="next" title="8. The von Neumann Architecture" href="vonNeumannArchitecture.html" />
     <link rel="prev" title="6. The Shell – Progammable User Interface to the computer" href="../unix/shell.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
     
   </head>
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
@@ -95,7 +98,7 @@
   </a>
  </li>
 </ul>
-<p class="caption" role="heading">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   The Unix Development Environment
  </span>
@@ -127,7 +130,7 @@
   </a>
  </li>
 </ul>
-<p class="caption" role="heading">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   The Belly of the Beast: The von Neumann Architecture and Assembly Programming
  </span>
@@ -149,7 +152,7 @@
   </a>
  </li>
 </ul>
-<p class="caption" role="heading">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Into the Light : C Programming
  </span>
@@ -161,7 +164,7 @@
   </a>
  </li>
 </ul>
-<p class="caption" role="heading">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Course Specific Material
  </span>
@@ -305,7 +308,7 @@
 Most programmers are completely unaware of how the computer really works as the languages that they program in are not natively supported by the hardware.  Rather, most languages, such as JavaScript, Java, Python, Ruby, Rust, C#, C++, and even C must be translated into the native code that the computer does understand – machine code.</p>
 <div class="section" id="machine-code">
 <h2><span class="section-number">7.1. </span>Machine Code<a class="headerlink" href="#machine-code" title="Permalink to this headline">¶</a></h2>
-<p>The hardware of the computer is built out of electrical components that can store and interpret patterns of  bits, binary digits.  A single bit can be though of as a switch that can be in two positions “ON” – 1  and “OFF” – 0.  A group of eight bits forms a byte.  We will say  a lot more about bytes  a little later.  The main thing to observe is that a byte is easily expressed as an 8 digit binary, (base 2), number.  Given that there are 8 bits a byte can take on <span class="math notranslate nohighlight">\(2^8=256\)</span>
+<p>The hardware of the computer is built out of electrical components that can store and interpret patterns of  bits, binary digits.  A single bit can be though of as a switch that can be in two positions “ON” – 1  and “OFF” – 0.  A group of eight bits forms a byte.  We will say  a lot more about bytes  a little <a href="">later</a>.  The main thing to observe is that a byte is easily expressed as an 8 digit binary, (base 2), number.  Given that there are 8 bits a byte can take on <span class="math notranslate nohighlight">\(2^8=256\)</span>
 unique values ranging from <span class="math notranslate nohighlight">\(00000000\)</span> to <span class="math notranslate nohighlight">\(11111111\)</span>.</p>
 <p>Machine code is a binary code – meaning that binary values are used to encoded the operations and values that make up a program.   The following table list twenty of the machine codes of a <a class="reference external" href="https://en.wikipedia.org/wiki/MOS_Technology_6502">MOS 6502 Centeral Processing Unit (CPU)</a> which has a very simple machine code.</p>
 <table class="colwidths-auto table">
@@ -441,7 +444,7 @@ unique values ranging from <span class="math notranslate nohighlight">\(00000000
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>ca65 6502add.s -l 6502add.lst
 </pre></div>
 </div>
-<p>This would produce new file that has the machine code version that could be loaded and run on a 6502 based computer.</p>
+<p>This produces a new file that has the machine code version that can be loaded and run on a 6502 based computer.</p>
 </div></blockquote>
 <p>Unlike our previous machine code version the assembly language version is written using the memonics and also has comments thus making it at least “readable” by a human.  However, unlike other programming languages that you might be familiar with you likely still cannot REALLY read it.  Eg. you probably cannot tell that it a simple program to add two numbers or how and why it works.</p>
 <p>To understand assembly language we need to understand what the operations of the CPU are and what they do.  And to achieve this we must understand the basic functioning of the CPU and the rest of the hardware that makes up the computer.</p>
@@ -474,31 +477,22 @@ unique values ranging from <span class="math notranslate nohighlight">\(00000000
               </div>
               
         
-            
-
-
-
-<div class='prev-next-bottom'>
-    
-    <div id="prev">
-        <a class="left-prev" href="../unix/shell.html" title="previous page">
-            <i class="prevnext-label fas fa-angle-left"></i>
-            <div class="prevnext-info">
-                <p class="prevnext-label">previous</p>
-                <p class="prevnext-title"><span class="section-number">6. </span>The Shell – Progammable User Interface to the computer</p>
-            </div>
-        </a>
+            <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="../unix/shell.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">6. </span>The Shell – Progammable User Interface to the computer</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="vonNeumannArchitecture.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">8. </span>The von Neumann Architecture</p>
     </div>
-     <div id="next">
-        <a class="right-next" href="vonNeumannArchitecture.html" title="next page">
-            <div class="prevnext-info">
-                <p class="prevnext-label">next</p>
-                <p class="prevnext-title"><span class="section-number">8. </span>The von Neumann Architecture</p>
-            </div>
-            <i class="prevnext-label fas fa-angle-right"></i>
-        </a>
-     </div>
-
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
         
         </div>
@@ -519,8 +513,7 @@ unique values ranging from <span class="math notranslate nohighlight">\(00000000
       </div>
     </div>
   
-  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
 
-  
   </body>
 </html>
