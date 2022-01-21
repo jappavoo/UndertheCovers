@@ -17,18 +17,38 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-from IPython.display import Image
-img = Image('../images/UnixL01_SHCHT0/' + ilist[0])
-img
+%run -i ../python/common.py
+%run -i ../python/ln_preamble.py
+# Make three extra terminals to serve as example of 3 terminal emulators
+# We do this to avoid having to change the dimensions of our standard
+# Editor, Build and debugger terminals
+try:
+    EXTERM1=TERMINALS[3]['name']
+except IndexError:
+    EXTERM1=mkTerm()
+try:
+    EXTERM2=TERMINALS[4]['name']
+except IndexError:
+    EXTERM2=mkTerm()
+try:
+    EXTERM3=TERMINALS[5]['name']
+except IndexError:
+    EXTERM3=mkTerm()
+try:
+    HHTERM=TERMINALS[6]['name']
+except IndexError:
+    HHTERM=mkTerm()
 ------------------
 
 [0;31m---------------------------------------------------------------------------[0m
 [0;31mNameError[0m                                 Traceback (most recent call last)
 [0;32m~/work/UndertheCovers/underthecovers/python/ln_preamble.py[0m in [0;36m<module>[0;34m[0m
-[1;32m      1[0m [0;32mfrom[0m [0mIPython[0m[0;34m.[0m[0mdisplay[0m [0;32mimport[0m [0mImage[0m[0;34m[0m[0;34m[0m[0m
-[0;32m----> 2[0;31m [0mimg[0m [0;34m=[0m [0mImage[0m[0;34m([0m[0;34m'../images/UnixL01_SHCHT0/'[0m [0;34m+[0m [0milist[0m[0;34m[[0m[0;36m0[0m[0;34m][0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[0m[1;32m      3[0m [0mimg[0m[0;34m[0m[0;34m[0m[0m
+[1;32m      5[0m [0;31m# Editor, Build and debugger terminals[0m[0;34m[0m[0;34m[0m[0;34m[0m[0m
+[1;32m      6[0m [0;32mtry[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[0;32m----> 7[0;31m     [0mEXTERM1[0m[0;34m=[0m[0mTERMINALS[0m[0;34m[[0m[0;36m3[0m[0;34m][0m[0;34m[[0m[0;34m'name'[0m[0;34m][0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m      8[0m [0;32mexcept[0m [0mIndexError[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[1;32m      9[0m     [0mEXTERM1[0m[0;34m=[0m[0mmkTerm[0m[0;34m([0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
 
-[0;31mNameError[0m: name 'ilist' is not defined
-NameError: name 'ilist' is not defined
+[0;31mNameError[0m: name 'TERMINALS' is not defined
+NameError: name 'TERMINALS' is not defined
 
