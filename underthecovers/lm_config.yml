@@ -25,11 +25,13 @@ html:
 #      repo: "jappavoo/UndertheCovers"
 
 launch_buttons:
-  notebook_interface: "classic"
+  # open lab manual pages in lab to provide desktop env
+  notebook_interface: "jupyterlab"
   binderhub_url: "" # trying to remove binder
-#  jupyterhub_url: " http://127.0.0.1:8888"
-  jupyterhub_url: "https://jupyterhub-opf-jupyterhub.apps.zero.massopen.cloud"  
-#  jupyterhub_url: "https://jupyterhub-opf-jupyterhub.apps.zero.massopen.cloud/hub/spawn?jupyter-book:latest"
+  # launch on the public RedHat Operate First Service
+  jupyterhub_url: "https://jupyterhub-opf-jupyterhub.apps.smaug.na.operate-first.cloud"
+  # launch on the private BU service -- use this for BU courses -- students must be authorized  
+  #jupyterhub_url: "https://jupyterhub-redhat-ods-applications.apps.bu-rosa.8pmt.p1.openshiftapps.com"
 
 parse:
   # see https://jupyterbook.org/customize/config.html
