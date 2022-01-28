@@ -374,38 +374,6 @@
 <h3><span class="section-number">4.3.1. </span>Terminal Windows and the Shell<a class="headerlink" href="#terminal-windows-and-the-shell" title="Permalink to this headline">¶</a></h3>
 <p>Today of course, we rarely use physical terminals any more.  Rather, on our physical client computers (eg. laptops, desktops, tablets, etc) we can start many terminal emulator windows to establish a shell session for each (see below). Each session will stay active until we exit or close the session and kill the associated shell.  Since each window is connected to its own shell they represent independent “conversations” in which we can do different things concurrently.</p>
 <div class="cell tag_remove-input docutils container">
-<div class="cell_output docutils container">
-<div class="output text_html"><!-- produced by: 
-htmlFig("[[{'src': '../images/UnixL01_SHCHT/041SHLLChat.png', 'cellwidth': '47.5%'}, {'src': '../images/terminalwins.png', 'cellwidth': '52%'}]]", 
-        id="", 
-        align="center", 
-        width="100%",
-        margin="auto auto auto auto",
-        caption="Figure: Today terminal emulators running on our desktop act act as ASCII terminals. Every new window is a new terminal connection.", 
-        captionalign="left")
--->
-<table align="center" width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse: collapse; margin: auto auto auto auto">
-    <tr style="padding: 0; margin: 0;"> 
-        <td colspan="1" width="47.5%" style="padding: 0; margin: 0 0 0 0; background-color:inherit;">
-            <div style="padding: 0; margin: 0 0 0 0;">
-              <figure style="padding: 0; margin: 0 0 0 0; width:100%;">
-                   <img src="../images/UnixL01_SHCHT/041SHLLChat.png" width="100%" style="padding: 0; margin: 0;">
-                </figure>
-            </div>
-        </td>
-        <td colspan="1" width="52%" style="padding: 0; margin: 0 0 0 0; background-color:inherit;">
-            <div style="padding: 0; margin: 0 0 0 0;">
-              <figure style="padding: 0; margin: 0 0 0 0; width:100%;">
-                   <img src="../images/terminalwins.png" width="100%" style="padding: 0; margin: 0;">
-                </figure>
-            </div>
-        </td>
-    </tr>
-    <caption align="bottom" style="text-align: left; padding: 0; margin: 0;" >
-          <i>Figure: Today terminal emulators running on our desktop act act as ASCII terminals. Every new window is a new terminal connection.</i> 
-    </caption>
-</table>
-</div></div>
 </div>
 <blockquote>
 <div><p><a class="reference internal" href="../_images/do.svg"><img alt="../_images/do.svg" class="align-left" src="../_images/do.svg" width="40" /></a> <p style="background-color:lightgreen;">  While you are learning how to work with bash it can be really useful to keep a terminal open in which you keep the bash manual page open while you use another terminal shell session to do your exploring.</p>
@@ -440,60 +408,6 @@ Perhaps the simplest thing we can do is send it an empty line by pressing <em>en
 What we should find is that the terminal will move to the next line and display the prompt again.
 But we want to be a little more careful to think about what happened behind the scenes so that we can build a more complete model in our mind about how the shell and terminal interactions work.</p>
 <div class="cell tag_remove-input docutils container">
-<div class="cell_output docutils container">
-<div class="output text_html"><!-- produced by: 
-htmlFig("[[{'src': '../images/UnixL01_SHCHT/06SHLLChat.png', 'caption': 'A: Press Enter', 'border': '1px solid black', 'padding': '1px', 'cellwidth': '33.33%'}, {'src': '../images/UnixL01_SHCHT/07SHLLChat.png', 'caption': 'B: Shell "blank line" input processing', 'border': '1px solid black', 'padding': '1px', 'cellwidth': '33.33%'}, {'src': '../images/UnixL01_SHCHT/08SHLLChat.png', 'caption': 'C: Shell sends Prompt back', 'border': '1px solid black', 'padding': '1px', 'cellwidth': '33.33%'}]]", 
-        id="fig:shell-blankline", 
-        align="center", 
-        width="100%",
-        margin="auto auto auto auto",
-        caption="<center> Figure: Shell blank line behavior </center>", 
-        captionalign="left")
--->
-<table id="fig:shell-blankline" align="center" width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse: collapse; margin: auto auto auto auto">
-    <tr style="padding: 0; margin: 0;"> 
-        <td colspan="1" width="33.33%" style="padding: 0; margin: 0 0 0 0; background-color:inherit;">
-            <div style="padding: 1px; margin: 0 0 0 0;">
-              <figure style="padding: 0; margin: 0 0 0 0; width:100%;border: 1px solid black;">
-                   <img src="../images/UnixL01_SHCHT/06SHLLChat.png" width="100%" style="padding: 0; margin: 0;">
-                  <figcaption>
-                    <div style="background-color: inherit; margin-right:auto; margin-left:auto; text-align: center;">
-                       <i style="color:inherit"> A: Press Enter</i>
-                    </div>
-                  </figcaption>
-                </figure>
-            </div>
-        </td>
-        <td colspan="1" width="33.33%" style="padding: 0; margin: 0 0 0 0; background-color:inherit;">
-            <div style="padding: 1px; margin: 0 0 0 0;">
-              <figure style="padding: 0; margin: 0 0 0 0; width:100%;border: 1px solid black;">
-                   <img src="../images/UnixL01_SHCHT/07SHLLChat.png" width="100%" style="padding: 0; margin: 0;">
-                  <figcaption>
-                    <div style="background-color: inherit; margin-right:auto; margin-left:auto; text-align: center;">
-                       <i style="color:inherit"> B: Shell "blank line" input processing</i>
-                    </div>
-                  </figcaption>
-                </figure>
-            </div>
-        </td>
-        <td colspan="1" width="33.33%" style="padding: 0; margin: 0 0 0 0; background-color:inherit;">
-            <div style="padding: 1px; margin: 0 0 0 0;">
-              <figure style="padding: 0; margin: 0 0 0 0; width:100%;border: 1px solid black;">
-                   <img src="../images/UnixL01_SHCHT/08SHLLChat.png" width="100%" style="padding: 0; margin: 0;">
-                  <figcaption>
-                    <div style="background-color: inherit; margin-right:auto; margin-left:auto; text-align: center;">
-                       <i style="color:inherit"> C: Shell sends Prompt back</i>
-                    </div>
-                  </figcaption>
-                </figure>
-            </div>
-        </td>
-    </tr>
-    <caption align="bottom" style="text-align: left; padding: 0; margin: 0;" >
-          <i><center> Figure: Shell blank line behavior </center></i> 
-    </caption>
-</table>
-</div></div>
 </div>
 <p>What happened after we pressed and release the <em>enter</em> key? The terminal sent through the Unix kernel a byte to the instance of the shell program that our terminal is virtually connected too.  Precisely, it sent the binary pattern <code class="docutils literal notranslate"><span class="pre">0b10000010</span></code> or in hex <code class="docutils literal notranslate"><span class="pre">0xa</span></code> as the left most sub-figure (A) illustrates.  The <a class="reference external" href="#fig:shell-blankline">figure</a> show both the <code class="docutils literal notranslate"><span class="pre">\n</span></code> human readable ASCII symbol and the underlying byte value.  In other diagrams we might stop showing the byte values and only show the ASCII human readable symbol.  It is, however, important to remember that under the covers the terminal and shell are really just exchanging raw binary values that use the ASCII standard to encode the data.</p>
 <p>The middle figure (B), cartoons the logic that the shell does in response to receiving the blank line.  Specifically, it is programmed to do “nothing”, simply sending back to the terminal the prompt so that the user knows it, the shell, is ready for another command line to be sent.  If you are interested in why the terminal displayed a <code class="docutils literal notranslate"><span class="pre">\n</span></code> causing the prompt sent by the shell to be on the next line of the terminal read the fyi ECHO box below.</p>

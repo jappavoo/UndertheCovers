@@ -442,9 +442,9 @@ the general structure of our program should be the same.  After all, all of thes
 <pre style="border: solid #cccccc 2px; background-color: black; font-family: monospace, monospace; font-size: inherit; color: white">
 $ type -p python/opt/conda/bin/python
 </pre><pre style="border: solid #cccccc 2px; background-color: black; font-family: monospace, monospace; font-size: inherit; color: white">
-$ ls -l $(type -p python)lrwxrwxrwx. 1 nayvoj users 9 Jul 26  2021 /opt/conda/bin/python -> python3.9
+$ ls -l $(type -p python)lrwxrwxrwx 1 jovyan users 9 Jul 26 18:15 /opt/conda/bin/python -> python3.9
 </pre><pre style="border: solid #cccccc 2px; background-color: black; font-family: monospace, monospace; font-size: inherit; color: white">
-$ ls -l $(type -p python3.9)-rwxrwxr-x. 1 nayvoj users 24598616 Jul 26  2021 /opt/conda/bin/python3.9
+$ ls -l $(type -p python3.9)-rwxrwxr-x 1 jovyan users 24598616 Jul 26 18:15 /opt/conda/bin/python3.9
 </pre><pre style="border: solid #cccccc 2px; background-color: black; font-family: monospace, monospace; font-size: inherit; color: white">
 $ file $(type -p python3.9)/opt/conda/bin/python3.9: ELF 64-bit LSB shared object, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, for GNU/Linux 2.6.18, with debug_info, not stripped
 </pre><pre style="border: solid #cccccc 2px; background-color: black; font-family: monospace, monospace; font-size: inherit; color: white">
@@ -504,26 +504,26 @@ Reading symbols from /opt/conda/bin/python...
 [Thread debugging using libthread_db enabled]
 Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
 
-Breakpoint 1, 0x000055fdc459a688 in _start ()
+Breakpoint 1, 0x00005578637b4688 in _start ()
 (gdb) Dump of assembler code for function _start:
-=> 0x000055fdc459a688 <+0>:	xor    ebp,ebp
-   0x000055fdc459a68a <+2>:	mov    r9,rdx
-   0x000055fdc459a68d <+5>:	pop    rsi
-   0x000055fdc459a68e <+6>:	mov    rdx,rsp
-   0x000055fdc459a691 <+9>:	and    rsp,0xfffffffffffffff0
-   0x000055fdc459a695 <+13>:	push   rax
-   0x000055fdc459a696 <+14>:	push   rsp
-   0x000055fdc459a697 <+15>:	lea    r8,[rip+0x90462]        # 0x55fdc462ab00 <__libc_csu_fini>
-   0x000055fdc459a69e <+22>:	lea    rcx,[rip+0x9046b]        # 0x55fdc462ab10 <__libc_csu_init>
-   0x000055fdc459a6a5 <+29>:	lea    rdi,[rip+0xfffffffffff12374]        # 0x55fdc44aca20 <main>
-   0x000055fdc459a6ac <+36>:	call   0x55fdc43ea030 <__libc_start_main@plt>
-   0x000055fdc459a6b1 <+41>:	hlt    
-   0x000055fdc459a6b2 <+42>:	nop
-   0x000055fdc459a6b3 <+43>:	nop
+=> 0x00005578637b4688 <+0>:	xor    ebp,ebp
+   0x00005578637b468a <+2>:	mov    r9,rdx
+   0x00005578637b468d <+5>:	pop    rsi
+   0x00005578637b468e <+6>:	mov    rdx,rsp
+   0x00005578637b4691 <+9>:	and    rsp,0xfffffffffffffff0
+   0x00005578637b4695 <+13>:	push   rax
+   0x00005578637b4696 <+14>:	push   rsp
+   0x00005578637b4697 <+15>:	lea    r8,[rip+0x90462]        # 0x557863844b00 <__libc_csu_fini>
+   0x00005578637b469e <+22>:	lea    rcx,[rip+0x9046b]        # 0x557863844b10 <__libc_csu_init>
+   0x00005578637b46a5 <+29>:	lea    rdi,[rip+0xfffffffffff12374]        # 0x5578636c6a20 <main>
+   0x00005578637b46ac <+36>:	call   0x557863604030 <__libc_start_main@plt>
+   0x00005578637b46b1 <+41>:	hlt    
+   0x00005578637b46b2 <+42>:	nop
+   0x00005578637b46b3 <+43>:	nop
 End of assembler dump.
 (gdb) A debugging session is active.
 
-	Inferior 1 [process 738] will be killed.
+	Inferior 1 [process 292] will be killed.
 
 Quit anyway? (y or n) [answered Y; input not from terminal]
 </pre></div>
@@ -541,7 +541,7 @@ Quit anyway? (y or n) [answered Y; input not from terminal]
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>$ ls -lh $(type -p python3.9)
--rwxrwxr-x. 1 nayvoj users 24M Jul 26  2021 <span class=" -Color -Color-Bold -Color-Bold-Green">/opt/conda/bin/python3.9</span>
+-rwxrwxr-x 1 jovyan users 24M Jul 26 18:15 <span class=" -Color -Color-Bold -Color-Bold-Green">/opt/conda/bin/python3.9</span>
 $ 
 </pre></div>
 </div>
