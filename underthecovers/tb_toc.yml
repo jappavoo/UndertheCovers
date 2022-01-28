@@ -21,10 +21,12 @@ parts:
   chapters:
   - file: assembly/intro
   - file: assembly/vonNeumannArchitecture
+  - file: assembly/UnixAssemblyProgramming
   - file: assembly/theByte
   - file: assembly/Memory
   - file: assembly/theLoop
   - file: assembly/assembly
+  - file: assembly/InfoRepl
 - caption: 'Into the Light : C Programming'
   numbered: true
   chapters:

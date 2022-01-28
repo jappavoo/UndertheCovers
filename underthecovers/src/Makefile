@@ -1,6 +1,5 @@
 ASMTARGETS=popcnt simple empty add addwithvars hello exit exit_bb exit_bb_bb brk int3 main cbrk mov usesum usesum2 usesum3 usesum4 usesum5 usesum6 codeptrs selfmodify tree tree_bb playertest usesumheap usesumIO usecsumit usecsumit1 callmyadd cexp dynmem dynmemsyscalls
 CTARGETS=hello cbrk
-ASM6502TARGETS=6502add
 
 ASFLAGS=-a=$@.lst
 LDFLAGS=-Map=$@.map
@@ -46,17 +45,10 @@ DEBUG=-g
 %.bin: %.nums
 	ascii2binary -t sq < $< > $@
 
-%.6502_o: %.6502_s
-	ca65 $< -o $@ -l $@.lst
-
-%: %.6502_o 6502.cfg
-	ld65 -o $@ -C 6502.cfg $< -m $@.map
-	od -An -tx1 -w5  $@
-
 %.dis: %
 	objdump -d $< > $@
 
-all: ${ASMTARGETS} ${CTARGETS} ${ASM6502TARGETS}
+all: ${ASMTARGETS} ${CTARGETS}
 
 usesum: usesum.o sumit.o
 
@@ -120,4 +112,4 @@ main: main.S
 	gcc --static -g $< -o $@
 
 clean:
-	rm -f $(wildcard ${ASMTARGETS} ${CTARGETS} ${ASM6502TARGETS} *.o *.6502_o *~ *.lst *.map *.I csumit.s myfunc0.s myfunc1.s myfunc2.s myfunc3.s main0.s myadd.s callmyadd.s csumit1.s  main0 *.dis)
+	rm -f $(wildcard ${ASMTARGETS} ${CTARGETS} *.o *~ *.lst *.map *.I csumit.s myfunc0.s myfunc1.s myfunc2.s myfunc3.s main0.s myadd.s callmyadd.s csumit1.s  main0 *.dis)

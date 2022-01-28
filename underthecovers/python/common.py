@@ -3,7 +3,7 @@ from IPython.core.display import display, HTML, Markdown, TextDisplayObject, Jav
 from IPython.display import IFrame, Image
 import ipywidgets as widgets
 from ipywidgets import interact, fixed, Layout
-import os, requests, pty, re, subprocess, struct, sys, fcntl, termios
+import os, requests, pty, re, subprocess, struct, sys, fcntl, termios, select
 from notebook.notebookapp import list_running_servers
 import matplotlib
 import matplotlib.pyplot as plt
@@ -565,7 +565,7 @@ ansi_escape_8bit = re.compile(br'''
 def cleanTermBytes(bytes):    
     return  ansi_escape_8bit.sub(b'', bytes)
 
-def runTermCmd(cmd, cwd=os.getcwd(), bufsize=4096, wait=True, rows=20, cols=80):
+def runTermCmd(cmd, cwd=os.getcwd(), bufsize=4096, wait=True, tmout=1.0, rows=20, cols=80):
     master, slave = pty.openpty()
 
     # terminal size stuff from 
@@ -577,14 +577,27 @@ def runTermCmd(cmd, cwd=os.getcwd(), bufsize=4096, wait=True, rows=20, cols=80):
 
     if wait:
         p.wait()
-        
-    import select
-
-    if select.select([master,],[],[],0.0)[0]:
-        output = os.read(master, bufsize)
+        if select.select([master,],[],[],0.0)[0]:
+            output = os.read(master, bufsize)
+        else:
+            output = b''       
     else:
         output = b''
-        
+        while True:
+            read_fds,_,error_fds = select.select([master],[],[master],tmout)  
+            if len(error_fds):
+                break;
+            if len(read_fds):
+                data = os.read(master, bufsize)
+                if len(data)>0:
+                    output += data
+                else:
+                    break
+            else: 
+                break;
+            if not p.returncode == None:
+                break
+            
     subprocess.Popen.kill(p)
     os.close(master)
     return output
