@@ -147,8 +147,13 @@
   </a>
  </li>
  <li class="toctree-l1">
+  <a class="reference internal" href="UnixAssemblyProgramming.html">
+   9. Executables
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="assembly.html">
-   9. Lets write some assembly code
+   10. Lets write some assembly code
   </a>
  </li>
 </ul>
@@ -160,7 +165,7 @@
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../C/intro.html">
-   10. Introduction
+   11. Introduction
   </a>
  </li>
 </ul>
@@ -290,6 +295,13 @@
   <a class="reference internal nav-link" href="#assembly-code">
    7.2. Assembly Code
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#assembly-programming">
+     7.2.1. Assembly Programming
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -381,12 +393,16 @@ unique values ranging from <span class="math notranslate nohighlight">\(00000000
 </tbody>
 </table>
 <blockquote>
-<div><p><a class="reference internal" href="../_images/fyi.svg"><img alt="../_images/fyi.svg" class="align-left" src="../_images/fyi.svg" width="60" /></a><p style="background-color:powderblue;">The 6502 was designed and first built in 1975 but continues to be used today. It has 151 simple operations versus the thousands of complex operations supported by an modern <a class="reference external" href="https://en.wikipedia.org/wiki/X86-64">Intel X86-64 processor</a> which is widely used in computers ranging from laptops to supercomputers.  The following article discusses how to calculate the number of operations an Intel x86-64 processor supports and why it is hard to do so;  <span class="xref myst">“Enumerating x86-64 – It’s Not as Easy as Counting”</span>.   Given the simplicity of the 6502 we will often use it to first get our heads around an idea or mechanism, before looking at the same thing on an Intel X86-64 based computer.</p>
+<div><p><a class="reference internal" href="../_images/fyi.svg"><img alt="../_images/fyi.svg" class="align-left" src="../_images/fyi.svg" width="50" /></a><p style="background-color:powderblue;">The 6502 was designed and first built in 1975 but continues to be used today. It has 151 simple operations versus the thousands of complex operations supported by an modern <a class="reference external" href="https://en.wikipedia.org/wiki/X86-64">Intel X86-64 processor</a> which is widely used in computers ranging from laptops to supercomputers.  The following article discusses how to calculate the number of operations an Intel x86-64 processor supports and why it is hard to do so;  <span class="xref myst">“Enumerating x86-64 – It’s Not as Easy as Counting”</span>.   Given the simplicity of the 6502 we will often use it to first get our heads around an idea or mechanism, before looking at the same thing on an Intel X86-64 based computer or an <a class="reference external" href="https://en.wikipedia.org/wiki/AArch64">ARM Arch64</a> based computer.</p>
 </div></blockquote>
 <p>A program written directly in machine code is a sequence of binary values.  The following is a small 6502 machine code program that calculates <span class="math notranslate nohighlight">\(1+1\)</span>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">00011000</span><span class="p">,</span> <span class="mi">10101001</span><span class="p">,</span> <span class="mi">00000001</span><span class="p">,</span> <span class="mi">01101001</span><span class="p">,</span> <span class="mi">00000001</span>
 </pre></div>
 </div>
+<p>To execute this small program you need place these values in the memory of the computer and properly configure the CPU so that they can be found and executed.</p>
+<blockquote>
+<div><p><a class="reference internal" href="../_images/fyi.svg"><img alt="../_images/fyi.svg" class="align-left" src="../_images/fyi.svg" width="40" /></a> <p style="background-color:powderblue;"> In the <span class="xref myst">von Neumann Architecture</span> chapter we will use the book’s companion 6502 based computer, <a class="reference external" href="http://jappavoo.github.io/SOL6502">SOL6502</a>, to load and execute this machine code program by hand.</p>
+</div></blockquote>
 </div>
 <div class="section" id="assembly-code">
 <h2><span class="section-number">7.2. </span>Assembly Code<a class="headerlink" href="#assembly-code" title="Permalink to this headline">¶</a></h2>
@@ -440,17 +456,21 @@ unique values ranging from <span class="math notranslate nohighlight">\(00000000
 </pre></div>
 </div>
 <blockquote>
-<div><p>Using an editor we could write the above into a file (eg. 6502add.s) and then use a 6502 assembler to translate it into 6502 machine code. eg.</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>ca65 6502add.s -l 6502add.lst
+<div><p>Using an editor we could write the above into a file (eg. add.s) and then use a 6502 assembler to translate it into 6502 machine code. eg.</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>ca65 add.s 
 </pre></div>
 </div>
-<p>This produces a new file that has the machine code version that can be loaded and run on a 6502 based computer.</p>
+<p>This produces a new file, named <code class="docutils literal notranslate"><span class="pre">add.o</span></code> that has the machine code version encoded within it, this is called and object file. The object file contains the binay coded values but does not specify where and how exactly they should go in the mmory of the computer nor does it describe how to setup the CPU.  In some sense the object file is just a fragment of an executable program.  We use another tool called a linker to convert and combine object files into a complete exectuable memory “image” that describes the exact location and values that need to be place in memory and how to configure the CPU to get the program to run.  For example <code class="docutils literal notranslate"><span class="pre">ld65</span> <span class="pre">add.o</span> <span class="pre">-C</span> <span class="pre">SOL6502.cfg</span> <span class="pre">-o</span> <span class="pre">add.img</span></code> invokes the linker on our <code class="docutils literal notranslate"><span class="pre">add.o</span></code> with a description of the SOL6502 computer’s memory layout.  This produces a file <code class="docutils literal notranslate"><span class="pre">add.img</span></code> that is an exact copy of what needs to be loaded into the entire memory of the SOL6502 computer.</p>
 </div></blockquote>
 <p>Unlike our previous machine code version the assembly language version is written using the memonics and also has comments thus making it at least “readable” by a human.  However, unlike other programming languages that you might be familiar with you likely still cannot REALLY read it.  Eg. you probably cannot tell that it a simple program to add two numbers or how and why it works.</p>
 <p>To understand assembly language we need to understand what the operations of the CPU are and what they do.  And to achieve this we must understand the basic functioning of the CPU and the rest of the hardware that makes up the computer.</p>
+<div class="section" id="assembly-programming">
+<h3><span class="section-number">7.2.1. </span>Assembly Programming<a class="headerlink" href="#assembly-programming" title="Permalink to this headline">¶</a></h3>
+<p>As we will see later the assembly language, understood by the assembler, includes additional syntax for carefully controlling and placing arbitrary value in memory beyond just opcodes.  Assembly programming is all about understanding how the computer works and creating a initial image of memory that when loaded will get the computer to do what you want.</p>
 <blockquote>
-<div><p><a class="reference internal" href="../_images/concept.svg"><img alt="../_images/concept.svg" class="align-left" src="../_images/concept.svg" width="60" /></a> <p style="background-color:powderblue;">The jump from machine code to assembly code illustrates an important pattern that we will see applied over and over again – Program Translation. Rather than needing to understand and remember of all the details of machine code a programmer can simply learn the assembly language and then rely on the assembler to translate it correctly into machine code.  The assembler is a program who’s job is to do this translation – in some sense it acts like a machine code programmer that we give an assembly code version of our program to.   In a similar manner we can design another programming language and write assembly programs that translate that language into assembly language and then use the assembler to translate the result into machine code.   A programmer that learns our new language need never now about assembly or machine language.</p>
+<div><p><a class="reference internal" href="../_images/concept.svg"><img alt="../_images/concept.svg" class="align-left" src="../_images/concept.svg" width="60" /></a> <p style="background-color:powderblue;">The jump from machine code to assembly code illustrates an important pattern that we will see applied over and over again – Program Translation. Rather than needing to understand and remember of all the details of machine code a programmer can simply learn the assembly language and then rely on the assembler to translate it correctly into machine code.  The assembler is a program who’s job is to do this translation – in some sense it acts like a machine code programmer that we give an assembly code version of our program.   In a similar manner we can design a new programming language and write a translation program written in assembly lnaguage that translate the new language into assembly language and then use the assembler to translate the result into machine code.   A programmer that learns our new language need never now about assembly or machine language!</p>
 </div></blockquote>
+</div>
 </div>
 </div>
 

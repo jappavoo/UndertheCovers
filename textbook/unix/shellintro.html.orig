@@ -145,8 +145,13 @@
   </a>
  </li>
  <li class="toctree-l1">
+  <a class="reference internal" href="../assembly/UnixAssemblyProgramming.html">
+   9. Executables
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="../assembly/assembly.html">
-   9. Lets write some assembly code
+   10. Lets write some assembly code
   </a>
  </li>
 </ul>
@@ -158,7 +163,7 @@
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../C/intro.html">
-   10. Introduction
+   11. Introduction
   </a>
  </li>
 </ul>
@@ -328,23 +333,6 @@
      4.5. Our first shell session
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#built-in-and-external-commands">
-     4.6. Built-in and External “commands”
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#built-in-commands">
-       4.6.1. Built-in commands
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#the-shell-s-basic-interactive-loop">
-       4.6.2. The Shell’s basic interactive loop
-      </a>
-     </li>
-    </ul>
-   </li>
   </ul>
  </li>
  <li class="toc-h1 nav-item toc-entry">
@@ -512,17 +500,6 @@ htmlFig("[[{'src': '../images/UnixL01_SHCHT/06SHLLChat.png', 'caption': 'A: Pres
 <blockquote>
 <div><p><a class="reference internal" href="../_images/fyi.svg"><img alt="../_images/fyi.svg" class="align-left" src="../_images/fyi.svg" width="50" /></a> <p style="background-color:powderblue;"> <strong>ECHO:</strong>.  You might be wondering why is it that you see the characters you type at the keyboard of terminal appear on the screen of the terminal.  If pressing a key really sends the data to the Unix kernel and then to the program running such as the shell there is not reason we would see it.  Does the Shell send a copy back of what it received?  No it does not.  Rather typically the UNIX kernel is configured, by default, to send back a copy of what it receives on a specific terminal connection back to the terminal itself.  This is setting is called terminal ECHO mode.  So by default even before the Kernel sends data up to the destination program  it sends a copy back to the terminal so that the user can see what they typed.  This includes the <code class="docutils literal notranslate"><span class="pre">\n</span></code> that the user pressed to indicate the end of the command line.  Hence in this default mode any data send back from the shells behavior will appear on a new-line.  Programs can ask the kernel to disable this setting to have more control of what the users sees.  As a matter of fact like many things in Unix there is a command you can issue to have the kernel adjust the setting for you terminal connect including turning off the echo behavior (<code class="docutils literal notranslate"><span class="pre">stty</span> <span class="pre">-echo</span></code> to turn off and <code class="docutils literal notranslate"><span class="pre">stty</span> <span class="pre">echo</span></code> to turn back on).  Doing so lets you observe what is really being sent back in response to your command and not what the kernel automatically generated as echo data.  Note things might get confusing quickly if you turn echo off.   But Unix is all about understanding how things work and have the power to control them.  If you want to know more try <code class="docutils literal notranslate"><span class="pre">man</span> <span class="pre">stty</span></code> but be warned you will find that communications on a terminal is actually quite a bit more complex than it might seem – there is a lot of history and skeletons buried here and the kernel is <em>cooking</em> the communications quite a bit ;-)</p>
 </div></blockquote>
-</div>
-<div class="section" id="built-in-and-external-commands">
-<h2><span class="section-number">4.6. </span>Built-in and External “commands”<a class="headerlink" href="#built-in-and-external-commands" title="Permalink to this headline">¶</a></h2>
-<p>To truly understand the Unix development environment and the philosophy behind it one needs to understand the distinction between shell built-in commands and external commands/programs.</p>
-<div class="section" id="built-in-commands">
-<h3><span class="section-number">4.6.1. </span>Built-in commands<a class="headerlink" href="#built-in-commands" title="Permalink to this headline">¶</a></h3>
-<p>As we saw t</p>
-</div>
-<div class="section" id="the-shell-s-basic-interactive-loop">
-<h3><span class="section-number">4.6.2. </span>The Shell’s basic interactive loop<a class="headerlink" href="#the-shell-s-basic-interactive-loop" title="Permalink to this headline">¶</a></h3>
-</div>
 </div>
 </div>
 <div class="tex2jax_ignore mathjax_ignore section" id="summary">
