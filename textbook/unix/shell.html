@@ -154,6 +154,11 @@
    10. Lets write some assembly code
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../assembly/InfoRepI.html">
+   11. Representing information - The Basics: Bits, Bytes and Notation
+  </a>
+ </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
@@ -163,7 +168,7 @@
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../C/intro.html">
-   11. Introduction
+   12. Introduction
   </a>
  </li>
 </ul>
@@ -408,11 +413,6 @@ enter or return key to terminate the line and submit it to the shell.  At this p
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hello World foo bar foo
-</pre></div>
-</div>
-</div>
 </div>
 </div>
 <div class="section" id="comments-ignoring-everthing-else">
@@ -428,11 +428,6 @@ enter or return key to terminate the line and submit it to the shell.  At this p
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">echo</span> <span class="s2">&quot;Hello World&quot;</span>  <span class="c1"># we can use echo to print to the screen</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hello World
 </pre></div>
 </div>
 </div>
@@ -456,11 +451,6 @@ To create a variable and set its value one simply types the name you want to use
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hello
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -472,11 +462,6 @@ To create a variable and set its value one simply types the name you want to use
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">echo</span> <span class="s2">&quot;The value of i is </span><span class="nv">$i</span><span class="s2"> and the value of j is </span><span class="nv">$j</span><span class="s2"> and myVar is &#39;</span><span class="nv">$myVar</span><span class="s2">&#39;&quot;</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The value of i is 0 and the value of j is 10 and myVar is &#39;Hello&#39;
 </pre></div>
 </div>
 </div>
@@ -492,83 +477,6 @@ To create a variable and set its value one simply types the name you want to use
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>BASH=/usr/bin/bash
-BASHOPTS=checkwinsize:cmdhist:complete_fullquote:expand_aliases:extquote:force_fignore:globasciiranges:histappend:hostcomplete:interactive_comments:progcomp:promptvars:sourcepath
-BASH_ALIASES=()
-BASH_ARGC=([0]=&quot;0&quot;)
-BASH_ARGV=()
-BASH_CMDS=()
-BASH_LINENO=()
-BASH_SOURCE=()
-BASH_VERSINFO=([0]=&quot;5&quot; [1]=&quot;0&quot; [2]=&quot;17&quot; [3]=&quot;1&quot; [4]=&quot;release&quot; [5]=&quot;x86_64-pc-linux-gnu&quot;)
-BASH_VERSION=&#39;5.0.17(1)-release&#39;
-COLUMNS=80
-DIRSTACK=()
-EUID=1000
-GIT_PYTHON_REFRESH=quiet
-GROUPS=()
-HISTCONTROL=ignoreboth
-HISTFILE=/home/jappavoo/.bash_history
-HISTFILESIZE=2000
-HISTSIZE=1000
-HOME=/home/jappavoo
-HOSTNAME=ade02912b5cb
-HOSTTYPE=x86_64
-IFS=$&#39; \t\n&#39;
-JPY_API_TOKEN=d4da5eb3785f405b9101cb8c9c30075a
-JPY_PARENT_PID=432
-JUPYTERHUB_ACTIVITY_URL=http://127.0.0.1:8081/hub/api/users/jappavoo/activity
-JUPYTERHUB_API_TOKEN=d4da5eb3785f405b9101cb8c9c30075a
-JUPYTERHUB_API_URL=http://127.0.0.1:8081/hub/api
-JUPYTERHUB_BASE_URL=/
-JUPYTERHUB_CLIENT_ID=jupyterhub-user-jappavoo
-JUPYTERHUB_HOST=
-JUPYTERHUB_OAUTH_CALLBACK_URL=/user/jappavoo/oauth_callback
-JUPYTERHUB_SERVER_NAME=
-JUPYTERHUB_SERVICE_PREFIX=/user/jappavoo/
-JUPYTERHUB_SINGLEUSER_APP=jupyter_server.serverapp.ServerApp
-JUPYTERHUB_USER=jappavoo
-LANG=en_US.UTF-8
-LC_ALL=en_US.UTF-8
-LESSCLOSE=&#39;/usr/bin/lesspipe %s %s&#39;
-LESSOPEN=&#39;| /usr/bin/lesspipe %s&#39;
-LINES=24
-LS_COLORS=
-MACHTYPE=x86_64-pc-linux-gnu
-MAILCHECK=60
-OPTERR=1
-OPTIND=1
-OSTYPE=linux-gnu
-PAGER=cat
-PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
-PIPESTATUS=([0]=&quot;0&quot;)
-PPID=465
-PROMPT_COMMAND=
-PS1=&#39;[PEXP\[\]ECT_PROMPT&gt;&#39;
-PS2=&#39;[PEXP\[\]ECT_PROMPT+&#39;
-PS4=&#39;+ &#39;
-PWD=/home/jappavoo/UndertheCovers/underthecovers/unix
-SHELL=/bin/bash
-SHELLOPTS=braceexpand:emacs:hashall:histexpand:history:interactive-comments:monitor
-SHLVL=1
-TERM=dumb
-UID=1000
-USER=jappavoo
-_=0
-fruit=pear
-i=3
-j=10
-myVar=Hello
-display () 
-{ 
-    TMPFILE=$(mktemp ${TMPDIR-/tmp}/bash_kernel.XXXXXXXXXX);
-    cat &gt; $TMPFILE;
-    echo &quot;bash_kernel: saved image data to: $TMPFILE&quot; 1&gt;&amp;2
-}
-</pre></div>
-</div>
-</div>
 </div>
 </div>
 <div class="section" id="logic-return-values-test-statements-and-if-statements">
@@ -580,20 +488,10 @@ display ()
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hello
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">echo</span> <span class="nv">$?</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0
 </pre></div>
 </div>
 </div>
@@ -605,20 +503,10 @@ display ()
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">[[</span> <span class="nv">$myVar</span> <span class="o">==</span> <span class="s2">&quot;Goodbye&quot;</span> <span class="o">]]</span><span class="p">;</span> <span class="nb">echo</span> <span class="nv">$?</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1
 </pre></div>
 </div>
 </div>
@@ -629,22 +517,12 @@ display ()
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">j</span><span class="o">=</span><span class="m">10</span> 
 <span class="o">((</span> <span class="nv">$j</span> &lt;<span class="o">=</span> <span class="m">10</span> <span class="o">))</span>
 <span class="nb">echo</span> <span class="nv">$?</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0
 </pre></div>
 </div>
 </div>
@@ -665,11 +543,6 @@ display ()
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>I don&#39;t know who likes pears
-</pre></div>
-</div>
-</div>
 </div>
 </div>
 <div class="section" id="loops">
@@ -686,15 +559,6 @@ display ()
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0
-1
-2
-3
-4
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -702,13 +566,6 @@ display ()
 <span class="k">do</span>
    <span class="nb">echo</span> <span class="nv">$i</span>
 <span class="k">done</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0
-1
-2
 </pre></div>
 </div>
 </div>
@@ -737,20 +594,6 @@ myInfo <span class="s2">&quot;full&quot;</span>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Name: Bob Blah-Blah
-Age: 64
-
-Lets try the full info
-
-Name: Bob Blah-Blah
-Age: 64
-Occupation: Space Explorer
-Favorite Food: Bits and Bytes
-OS of choice: UNIX
-</pre></div>
-</div>
-</div>
 </div>
 </div>
 </div>
@@ -763,23 +606,10 @@ OS of choice: UNIX
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>intro.ipynb  shell.ipynb  terminal.ipynb
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ls -l
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>total 28
--rw-rw-r-- 1 jappavoo jappavoo  5445 Jun  2 03:55 intro.ipynb
--rw-rw-r-- 1 jappavoo jappavoo 13789 Jun  2 03:29 shell.ipynb
--rw-rw-r-- 1 jappavoo jappavoo  2024 Jun  2 16:51 terminal.ipynb
 </pre></div>
 </div>
 </div>
@@ -790,25 +620,10 @@ OS of choice: UNIX
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Bold -Color-Bold-Blue">.</span>                   _config.yml     intro.md         references.bib
-<span class=" -Color -Color-Bold -Color-Bold-Blue">..</span>                  _toc.yml        <span class=" -Color -Color-Bold -Color-Bold-Magenta">logo.jpg</span>         shell.ipynb
-<span class=" -Color -Color-Bold -Color-Bold-Blue">.ipynb_checkpoints</span>  assembly.ipynb  markdown.md      <span class=" -Color -Color-Bold -Color-Bold-Blue">src</span>
-<span class=" -Color -Color-Bold -Color-Bold-Blue">_build</span>              content.md      notebooks.ipynb
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ls .
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Bold -Color-Bold-Blue">_build</span>       assembly.ipynb  <span class=" -Color -Color-Bold -Color-Bold-Magenta">logo.jpg</span>         references.bib
-_config.yml  content.md      markdown.md      shell.ipynb
-_toc.yml     intro.md        notebooks.ipynb  <span class=" -Color -Color-Bold -Color-Bold-Blue">src</span>
 </pre></div>
 </div>
 </div>
@@ -819,22 +634,10 @@ _toc.yml     intro.md        notebooks.ipynb  <span class=" -Color -Color-Bold -
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CONDUCT.md       <span class=" -Color -Color-Bold -Color-Bold-Green">LICENSE</span>    requirements.txt
-CONTRIBUTING.md  README.md  <span class=" -Color -Color-Bold -Color-Bold-Blue">underthecovers</span>
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ls /
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Bold -Color-Bold-Cyan">bin</span>   <span class=" -Color -Color-Bold -Color-Bold-Blue">dev</span>  <span class=" -Color -Color-Bold -Color-Bold-Blue">home</span>  <span class=" -Color -Color-Bold -Color-Bold-Cyan">lib32</span>  <span class=" -Color -Color-Bold -Color-Bold-Cyan">libx32</span>      <span class=" -Color -Color-Bold -Color-Bold-Blue">media</span>  <span class=" -Color -Color-Bold -Color-Bold-Blue">opt</span>   <span class=" -Color -Color-Bold -Color-Bold-Blue">root</span>  <span class=" -Color -Color-Bold -Color-Bold-Cyan">sbin</span>  <span class=" -Color -Color-Bold -Color-Bold-Blue">srv</span>       <span class=" -Color -Color-Bold -Color-Bold-Blue">sys</span>  <span class=" -Color -Color-Bold -Color-Bold-Blue">usr</span>
-<span class=" -Color -Color-Bold -Color-Bold-Blue">boot</span>  <span class=" -Color -Color-Bold -Color-Bold-Blue">etc</span>  <span class=" -Color -Color-Bold -Color-Bold-Cyan">lib</span>   <span class=" -Color -Color-Bold -Color-Bold-Cyan">lib64</span>  <span class=" -Color -Color-Bold -Color-Bold-Blue">lost+found</span>  <span class=" -Color -Color-Bold -Color-Bold-Blue">mnt</span>    <span class=" -Color -Color-Bold -Color-Bold-Blue">proc</span>  <span class=" -Color -Color-Bold -Color-Bold-Blue">run</span>   <span class=" -Color -Color-Bold -Color-Bold-Blue">snap</span>  swap.img  <span class=" -Color -Color-Black -Color-Black-BGGreen">tmp</span>  <span class=" -Color -Color-Bold -Color-Bold-Blue">var</span>
 </pre></div>
 </div>
 </div>
@@ -845,15 +648,6 @@ CONTRIBUTING.md  README.md  <span class=" -Color -Color-Bold -Color-Bold-Blue">u
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Bold -Color-Bold-Blue">aarch64vm</span>  <span class=" -Color -Color-Bold -Color-Bold-Blue">jovyan</span>
-?2004h
-</pre></div>
-</div>
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -861,27 +655,10 @@ CONTRIBUTING.md  README.md  <span class=" -Color -Color-Bold -Color-Bold-Blue">u
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;#raw.asm#&#39;      <span class=" -Color -Color-Bold -Color-Bold-Blue">UndertheCovers</span>                           installKvm
- <span class=" -Color -Color-Bold -Color-Bold-Blue">06</span>              Untitled.ipynb                           <span class=" -Color -Color-Bold -Color-Bold-Blue">juypter</span>
- <span class=" -Color -Color-Bold -Color-Bold-Blue">6502</span>            Untitled1.sh                             <span class=" -Color -Color-Bold -Color-Bold-Blue">masmtest</span>
- <span class=" -Color -Color-Bold -Color-Bold-Blue">CS210TextBook</span>   <span class=" -Color -Color-Bold -Color-Bold-Blue">anaconda3</span>                                mkKvm
- <span class=" -Color -Color-Bold -Color-Bold-Blue">Om</span>              <span class=" -Color -Color-Bold -Color-Bold-Blue">compress</span>                                 resetKvm
- <span class=" -Color -Color-Bold -Color-Bold-Blue">Symbi-OS</span>        <span class=" -Color -Color-Bold -Color-Bold-Red">google-chrome-stable_current_amd64.deb</span>   <span class=" -Color -Color-Bold -Color-Bold-Blue">tmp</span>
- <span class=" -Color -Color-Bold -Color-Bold-Blue">UASM</span>            <span class=" -Color -Color-Bold -Color-Bold-Blue">hostKernel</span>                               <span class=" -Color -Color-Bold -Color-Bold-Blue">yasmtest</span>
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">echo</span> <span class="s2">&quot;\$ date&quot;</span><span class="p">;</span> date
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>$ date
-Fri Mar 19 12:13:02 UTC 2021
 </pre></div>
 </div>
 </div>

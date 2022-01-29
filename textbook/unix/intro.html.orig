@@ -154,6 +154,11 @@
    10. Lets write some assembly code
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../assembly/InfoRepI.html">
+   11. Representing information - The Basics: Bits, Bytes and Notation
+  </a>
+ </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
@@ -163,7 +168,7 @@
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../C/intro.html">
-   11. Introduction
+   12. Introduction
   </a>
  </li>
 </ul>
