@@ -211,6 +211,8 @@ def toBits(v,dtype,count,numbits):
 #        print("oops v: ", v, type(v), len(v));
         return [" " for i in range(numbits)]
 
+# could not get latex math in column titles working consistently both in notebook and jupyterbook
+# so use html to format "math"
 def displayBytes(bytes=[[0x00]],
                  labels=[],
                  labelstitle="",
@@ -218,7 +220,14 @@ def displayBytes(bytes=[[0x00]],
                  prefixcolumns=[],
                  numbits=8,
                  dtype=np.uint8,
-                 columns=["[$b_7$","$b_6$", "$b_5$", "$b_4$", "$b_3$", "$b_2$", "$b_1$","$b_0$]"],
+                 columns=["[<em>b<sub>7</sub></em>",
+                      "<em>b<sub>6</sub></em>", 
+                      "<em>b<sub>5</sub></em>", 
+                      "<em>b<sub>4</sub></em>", 
+                      "<em>b<sub>3</sub></em>", 
+                      "<em>b<sub>2</sub></em>", 
+                      "<em>b<sub>1</sub></em>",
+                      "<em>b<sub>0</sub></em>]"], 
                  center=True,
                  th_font_size="1.5vw",
                  th_border_color="#cccccc",
@@ -229,7 +238,8 @@ def displayBytes(bytes=[[0x00]],
                  tr_hover_bgcolor="#11cccccc",
                  tr_hover_border_color="red",
                  td_hover_bgcolor="white",
-                 td_hover_color="black"
+                 td_hover_color="black",
+                 disp=True
                  ):
 
     # if no labels specified then send in blanks to supress
@@ -339,7 +349,10 @@ def displayBytes(bytes=[[0x00]],
             ]
         body.set_table_styles([{'selector': '', 'props' : margins }], overwrite=False);
     body=body.to_html()
-    display(HTML(body))   
+    if disp:
+        display(HTML(body))
+    else:    
+        return body   
 
 def mkHexTbl():
     displayBytes(bytes=[i for i in range(16)], numbits=4, 
