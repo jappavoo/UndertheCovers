@@ -451,7 +451,7 @@ Using computers and managing information has become synonymous.   You probably t
 <div class="section" id="directory-tree-example">
 <h4><span class="section-number">3.3.1.1. </span>Directory Tree Example<a class="headerlink" href="#directory-tree-example" title="Permalink to this headline">¶</a></h4>
 <p>Lets assume that you are a CS student and like poetry and want to organize yourself.  To this end you might choose to create the following directory and file structure.
-<img alt="dirtree" src="../_images/dirtree.pdf" /></p>
+<img alt="dirtree" src="../_images/dirtree.png" /></p>
 <p>In this diagram we use circles to represent directories and rectangles to represent files.  The name of a directory or file is its label.  Arrows are used to show the entries of a particular directory (A file cannot have any arrows starting from it).</p>
 </div>
 <div class="section" id="home-directory">
