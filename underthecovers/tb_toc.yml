@@ -22,6 +22,7 @@ parts:
   - file: assembly/intro
   - file: assembly/vonNeumannArchitecture
   - file: assembly/UnixAssemblyProgramming
+  - file: assembly/Debuggers
   - file: assembly/theByte
   - file: assembly/Memory
   - file: assembly/theLoop
