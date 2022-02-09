@@ -41,7 +41,9 @@
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script>
         const thebe_selector = ".thebe"
@@ -150,13 +152,18 @@
   </a>
  </li>
  <li class="toctree-l1">
+  <a class="reference internal" href="Debuggers.html">
+   10. Machine Debuggers &amp; Open Process Surgery
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="assembly.html">
-   10. Lets write some assembly code
+   11. Lets write some assembly code
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="InfoRepI.html">
-   11. Representing information - The Basics: Bits, Bytes and Notation
+   12. Representing information - The Basics: Bits, Bytes and Notation
   </a>
  </li>
 </ul>
@@ -168,7 +175,7 @@
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../C/intro.html">
-   12. Introduction
+   13. Introduction
   </a>
  </li>
 </ul>
@@ -229,7 +236,7 @@
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
 
@@ -282,7 +289,7 @@
         </div>
 
         <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
             <div class="tocsection onthispage pt-5 pb-3">
                 <i class="fas fa-list"></i> Contents
@@ -290,13 +297,71 @@
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#the-parts">
-   8.1. The Parts
+  <a class="reference internal nav-link" href="#the-central-processing-unit-cpu">
+   8.1. The Central Processing Unit (CPU)
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#physically">
+     8.1.1. Physically
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#logically">
+     8.1.2. Logically
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#visualizing-a-generic-von-neumann-computer">
+   8.2. Visualizing a generic von Neumann computer
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-cpu">
+     8.2.1. The CPU
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#operations">
+     8.2.2. Operations
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#registers">
+     8.2.3. Registers
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#general-purpose-registers-gprs">
+       8.2.3.1. General Purpose Registers (GPRS)
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#instruction-register-ir">
+       8.2.3.2. Instruction Register (IR)
+      </a>
+      <ul class="nav section-nav flex-column">
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#opcode">
+         8.2.3.2.1. OPCODE
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#program-counter-pc">
+       8.2.3.3. Program Counter (PC)
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#the-loop-program-execution">
-   8.2. The Loop – Program Execution
+   8.3. The Loop – Program Execution
   </a>
  </li>
 </ul>
@@ -307,22 +372,251 @@
 </div>
     <div id="main-content" class="row">
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>The von Neumann Architecture</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-central-processing-unit-cpu">
+   8.1. The Central Processing Unit (CPU)
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#physically">
+     8.1.1. Physically
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#logically">
+     8.1.2. Logically
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#visualizing-a-generic-von-neumann-computer">
+   8.2. Visualizing a generic von Neumann computer
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-cpu">
+     8.2.1. The CPU
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#operations">
+     8.2.2. Operations
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#registers">
+     8.2.3. Registers
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#general-purpose-registers-gprs">
+       8.2.3.1. General Purpose Registers (GPRS)
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#instruction-register-ir">
+       8.2.3.2. Instruction Register (IR)
+      </a>
+      <ul class="nav section-nav flex-column">
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#opcode">
+         8.2.3.2.1. OPCODE
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#program-counter-pc">
+       8.2.3.3. Program Counter (PC)
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-loop-program-execution">
+   8.3. The Loop – Program Execution
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="the-von-neumann-architecture">
 <h1><span class="section-number">8. </span>The von Neumann Architecture<a class="headerlink" href="#the-von-neumann-architecture" title="Permalink to this headline">¶</a></h1>
 <p>As we saw in the <a class="reference internal" href="intro.html"><span class="doc std std-doc">introduction</span></a> assembly code directly maps to the native machine code of a computer.  As such the assembly instructions directly allow a programmer to use and control the basic functions of the computer in order to get the computer to do what they want.   Whether that is to search or sort an array of numbers, play a music file or some other task.</p>
 <p>But to understand assembly programming we have to learn what the basic parts are of any computer are and how they work so we can understand what the assembly instructions allow us to do.    This is why understanding how computers and software work are one in the same as learning assembly programming.</p>
-<p><a class="reference internal" href="../_images/SLS_TheMachine.svg"><img alt="../_images/SLS_TheMachine.svg" src="../_images/SLS_TheMachine.svg" width="60%" /></a> Despite the fact that there are many different manufactures of computers they all largely share a basic common structure.  We call the generic components, their organization and the way they interact the architecture of a machine.  In our case the common architecture to which most programmable computers are built around is that of the von Neumann Architecture named after <a class="reference external" href="https://en.wikipedia.org/wiki/John_von_Neumann">John von Neumann</a>.</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<!-- produced by: 
+htmlFig("[{'src': '../images/SLS_TheMachine.png'}]", 
+        id="fig:vnm", 
+        align="left", 
+        width="60%",
+        margin="auto 1em 0 auto",
+        caption="Figure: Our illustration of a von Neumann computer", 
+        captionalign="left")
+-->
+<table id="fig:vnm" align="left" width="60%" cellpadding="0" cellspacing="0" border="0" style="border-collapse: collapse; margin: auto 1em 0 auto">
+    <tr style="padding: 0; margin: 0;"> 
+        <td colspan="1" width="100%" style="padding: 0; margin: 0 0 0 0; background-color:inherit;">
+            <div style="padding: 0; margin: 0 0 0 0;">
+              <figure style="padding: 0; margin: 0 0 0 0; width:100%;">
+                   <img src="../images/SLS_TheMachine.png" width="100%" style="padding: 0; margin: 0;">
+                </figure>
+            </div>
+        </td>
+    </tr>
+    <caption align="bottom" style="text-align: left; padding: 0; margin: 0;" >
+          <i>Figure: Our illustration of a von Neumann computer</i> 
+    </caption>
+</table>
+<p>Despite the fact that there are many different manufactures of computers they all largely
+share a basic common structure.  We call the generic components, their organization
+and the way they interact the architecture of a machine.  In our
+case the common architecture to which most programmable computers are built around
+is that of the von Neumann Architecture named after <a class="reference external" href="https://en.wikipedia.org/wiki/John_von_Neumann">
+John von Neumann</a>.</p>
+</div>
+</div>
 <blockquote>
 <div><p><a class="reference internal" href="../_images/commentary.svg"><img alt="../_images/commentary.svg" class="align-left" src="../_images/commentary.svg" width="60" /></a> <p style="background-color:powderblue;"> In our journey to understand computers we will be exploring a fascinating story of human innovation and ingenuity.  This story is full of characters, such as John von Neumann, Alan Turning, Admiral Grace Hopper, Ada Love Lace, and many more, that dared to be and think differently.  Not only do we owe a great deal of gratitude to these courageous people, who often risked a lot in suggesting new ways of thinking and doing things, challenging the orthodoxy of their day, we can also draw inspiration in their diversity and bravery. Remember who you are and that your voice matters, tomorrows innovation rests on your actions!</p>
 </div></blockquote>
-<div class="section" id="the-parts">
-<h2><span class="section-number">8.1. </span>The Parts<a class="headerlink" href="#the-parts" title="Permalink to this headline">¶</a></h2>
+<div class="cell tag_popout tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<!-- produced by: 
+htmlFig("[{'src': '../images/edvac.png'}]", 
+        id="fig:edvac", 
+        align="center", 
+        width="100%",
+        margin="auto 0 0 auto",
+        caption="Figure: The archetype of the general-purpose digital computer", 
+        captionalign="left")
+-->
+<table id="fig:edvac" align="center" width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse: collapse; margin: auto 0 0 auto">
+    <tr style="padding: 0; margin: 0;"> 
+        <td colspan="1" width="100%" style="padding: 0; margin: 0 0 0 0; background-color:inherit;">
+            <div style="padding: 0; margin: 0 0 0 0;">
+              <figure style="padding: 0; margin: 0 0 0 0; width:100%;">
+                   <img src="../images/edvac.png" width="100%" style="padding: 0; margin: 0;">
+                </figure>
+            </div>
+        </td>
+    </tr>
+    <caption align="bottom" style="text-align: left; padding: 0; margin: 0;" >
+          <i>Figure: The archetype of the general-purpose digital computer</i> 
+    </caption>
+</table>
+</div>
+</div>
+<div class="section" id="the-central-processing-unit-cpu">
+<h2><span class="section-number">8.1. </span>The Central Processing Unit (CPU)<a class="headerlink" href="#the-central-processing-unit-cpu" title="Permalink to this headline">¶</a></h2>
+<p>There are many words today that we might hear used to refer to the Central Processing Unit (CPU) including processor, micro-processor and core.  Our goal, at this point, is to build our knowledge of how all computers work and then dive into more details by looking at how a particular computer works.  From this more generic perspective there are two ways of considering what a CPU is.</p>
+<ol class="simple">
+<li><p>Physically: A complex electical device composed of <a class="reference external" href="https://en.wikipedia.org/wiki/Transistor">transistors</a> and wires.</p></li>
+<li><p>Logically: A core building block for programmable information processing</p></li>
+</ol>
+<div class="section" id="physically">
+<h3><span class="section-number">8.1.1. </span>Physically<a class="headerlink" href="#physically" title="Permalink to this headline">¶</a></h3>
+<p>While we won’t dwell too much on the physical nature of a CPU it is worth “looking” at a few examples and noting a few if their characteristics and various challenges we face in building more advanced versions.  These challenges arise from physical limitation in the construction, connection to other devices and powering of the CPU itself. These challenges and the current approachs to trying to mitigate them also has an effect on how one needs to write software that will perform well on modern hardware.  We don’t really need to worry about that right now but it is a theme we will revist later once we have a core understanding of the basics of how software and hardware interact.</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<!-- produced by: 
+htmlFig("[{'src': '../images/physcpus.png'}]", 
+        id="fig:physcpus", 
+        align="left", 
+        width="100%",
+        margin="auto 1em 0 auto",
+        caption="Figure: Examples of physical CPUs.  For each CPU we note the product name, the number of 'pins' that connect it to the reset of the computer and the count of transistors it is composed of.", 
+        captionalign="left")
+-->
+<table id="fig:physcpus" align="left" width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse: collapse; margin: auto 1em 0 auto">
+    <tr style="padding: 0; margin: 0;"> 
+        <td colspan="1" width="100%" style="padding: 0; margin: 0 0 0 0; background-color:inherit;">
+            <div style="padding: 0; margin: 0 0 0 0;">
+              <figure style="padding: 0; margin: 0 0 0 0; width:100%;">
+                   <img src="../images/physcpus.png" width="100%" style="padding: 0; margin: 0;">
+                </figure>
+            </div>
+        </td>
+    </tr>
+    <caption align="bottom" style="text-align: left; padding: 0; margin: 0;" >
+          <i>Figure: Examples of physical CPUs.  For each CPU we note the product name, the number of 'pins' that connect it to the reset of the computer and the count of transistors it is composed of.</i> 
+    </caption>
+</table>
+</div>
+</div>
+<p>In the <a href="#fig:physcpus">Examples of physical CPUs figure</a>, above, we see photos of some physical cpus along with a “pin out” diagram that describes how to physically connect it to the rest of the computer.  Over the years it is clear that the complexity of CPUs has certainly grown.  In the 1970’s CPUs were composed of thousands of transistors and only required tens of pins to connect to rest of the computer.  By 2021 we see that cpus now contain billions of transistors and require thousands for physical connections to the reset of the system.</p>
+<p>While an over-simplification, one of the uses of transistors in a CPU is to create, “switches” that from the logic circuts used to implement basic operations such as adding numbers. In order to make the CPU do these operations faster we need to be able to operate the transitors, turn them on and off, faster and faster.  Unfortunately doing so requires more and more energy and creates more more heat.  As such over the last decade it has become harder and harder to speed up CPUs, given the increase in energy and attendant increase in heat it leads too.   On the other hand we have managed to figure out how to continually shrink the size of transistors that has allowed us to pack more and more transistors into CPUs, however some believe that we are getting to end of this ability as we are approching the physical limits to how small we can make a transistor.</p>
+<p>Regardless we have reached a point that making cpus operate faster is very hard to do and while we might be able to fit more transitors on the chip we are at the limits of how many we have powered on at the same time (due to energy and heat constraints).  Finally it is also very hard to imagine that we can fit many more “pins” that connect the cpu to the rest of the computer.</p>
+<p>Over the years these effects have resulted in a situation that the performance of the software we write has become more and more dependent on how it interacts with the internal way the extra transistors are used.  For example in a modern processor a large number of transistors are used to form what is called <a class="reference external" href="https://en.wikipedia.org/wiki/CPU_cache">cache</a> memory.  While software can benefit, its performance increases, from caches it is possible to write the same software in different ways that get greater or lesser benefit if you understand how the caches work and the way your software interacts with them.  Similarly today CPU’s often use the extra transistors to create multiple internal sub-CPUs, called <a class="reference external" href="https://en.wikipedia.org/wiki/Multi-core_processor">cores</a>.  A program, however does not automatically benefit from multiple cores unless it is written to explicity exploit them via “parallel threads” of execution.  But to understand how to do this one first needs to understand the classic model by which a single core CPU works and its interaction with memory.</p>
+<p>The bottom line is CPU’s are complex organizations of transistors and as we reach the physical limits to how we traditionaly build them the way software is written and structured becomes more and more important with respect to our ability to get computers to do more.  But the first step to understanding how to do this is understanding the basics of the von Neumann model of software execution that CPUs implement.</p>
+</div>
+<div class="section" id="logically">
+<h3><span class="section-number">8.1.2. </span>Logically<a class="headerlink" href="#logically" title="Permalink to this headline">¶</a></h3>
+<p>So while physical CPU’s have clearly gotten more and more complex their basic role and function as defined by the von Neumann architecture has remained more or less the same.   It is this precise property that makes it possible to learn the basics of how a generic CPU works and understand how software executes on any computer.  As a matter of fact if we consider the line of CPU’s from INTEL software written on a 1970 verions of their products can still be run on the CPU’s they produced in 2021 because at the heart of it the 2021 version still remains consistent with basic model of a computer built around the 1970’s CPU.</p>
+<p>While the physical aspects of a CPU matter there is a logical internal structure and operation that define its programming model and this is what we need to care about so that we can get a precise idea of what it exactly means to execute software and therefore what software is exactly. The CPU has a set of internal components, functions a core “Loop” behaviour that combines its capabilities with the other two components of a computer; Memory and Input/Output (I/O) to execute programs.</p>
+<p>In what remains of this chapter we will build up our understanding of the von Neumann architecture outwards from the internals of the CPU and “The Loop” it implements outwards to the memory and I/O components.</p>
+</div>
+</div>
+<div class="section" id="visualizing-a-generic-von-neumann-computer">
+<h2><span class="section-number">8.2. </span>Visualizing a generic von Neumann computer<a class="headerlink" href="#visualizing-a-generic-von-neumann-computer" title="Permalink to this headline">¶</a></h2>
+<p>In order to understand a generic model of a von Neumann computer we will use a series of diagrams that progressively visualize the components and show how they interact to execute a program.      To be clear we are using a logical representation that refects a working model that captures the things we need to care about to program a computer and what it execution means.  Each part we introduce while generic maps to things that we will find refected in the “real” computers we will learn to practically program in this section of the book.</p>
+<p>At the end of this chapter we will look at how the SOL6502 simulated computer lets us look at the parts, manipulate them and watch them in action.</p>
+<div class="section" id="the-cpu">
+<h3><span class="section-number">8.2.1. </span>The CPU<a class="headerlink" href="#the-cpu" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="operations">
+<h3><span class="section-number">8.2.2. </span>Operations<a class="headerlink" href="#operations" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="registers">
+<h3><span class="section-number">8.2.3. </span>Registers<a class="headerlink" href="#registers" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><p>Registers are memory locations within the CPU that are connect to the operation circuits.  Each register has a unique fixed name and a value that can be changed.  Their values can be feed as input to an operation or set as as the output from an operation.   Typically three types categories of registers: 1) General Purpose Registers (GPRS) 2) Special Purpose Registers (SPRS) and 3) Hidden Registers.</p>
+</div></blockquote>
+<p>With respect to “normal” programming we largely only need to concern ourselves with the the GPRS and knowing about a couple of standard SPRS. As we will see soon it will also be useful to explicitly introduce at least one of the register that usually hidden from programmers to make understanding execution easier.</p>
+<blockquote>
+<div><p><a class="reference internal" href="../_images/fyi.png"><img alt="../_images/fyi.png" class="align-left" src="../_images/fyi.png" style="width: 40px;" /></a> <p style="background-color:powderblue;">
+What do we mean by “normal” programming?  As we saw in Part I: The UNIX Development Environment software is largley broken down into two parts: 1) application software that runs within processes and 2) a single operating system kernel composed of software that provides all processes with a wide range of special functions.  Most CPU’s provide a special mode of execution for the OS kernel in this mode an expanded set of operations and SPRS are available for use.  As such OS kernel software uses the GPRS, SPRS and the expanded set of operations to implement is routines.  We typically call this mode of operation “Priveliged” and as such we often call the kernel software priveledged code given its expanded access to the hardware resources of the computer and the application or user software as unprivedged.   Many CPUs expand on this idea to provide multiple levels of priviledge which enables a further degree of layering of the systems softwae.  For example may CPUs use extra levels of priviledge to introduction support for a virtual machine monitor (or hypervisor) layer of software that can sit below standard operating system kernels and allow the hardware to be shared by multiple OS’s each thinking they are running on the computer by themselves.</p>
+</div></blockquote>
+<div class="section" id="general-purpose-registers-gprs">
+<h4><span class="section-number">8.2.3.1. </span>General Purpose Registers (GPRS)<a class="headerlink" href="#general-purpose-registers-gprs" title="Permalink to this headline">¶</a></h4>
+</div>
+<div class="section" id="instruction-register-ir">
+<h4><span class="section-number">8.2.3.2. </span>Instruction Register (IR)<a class="headerlink" href="#instruction-register-ir" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="opcode">
+<h5><span class="section-number">8.2.3.2.1. </span>OPCODE<a class="headerlink" href="#opcode" title="Permalink to this headline">¶</a></h5>
+<blockquote>
+<div><p>An OPCODE is an encoded value that identifies a particular operation and where it inputs come from and if output that is created should go too.  Inputs to an operation are typically called <strong>Operands</strong>.</p>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="program-counter-pc">
+<h4><span class="section-number">8.2.3.3. </span>Program Counter (PC)<a class="headerlink" href="#program-counter-pc" title="Permalink to this headline">¶</a></h4>
+</div>
+</div>
 </div>
 <div class="section" id="the-loop-program-execution">
-<h2><span class="section-number">8.2. </span>The Loop – Program Execution<a class="headerlink" href="#the-loop-program-execution" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">8.3. </span>The Loop – Program Execution<a class="headerlink" href="#the-loop-program-execution" title="Permalink to this headline">¶</a></h2>
 </div>
 </div>
 
@@ -348,8 +642,8 @@
 
               </div>
               
-        
-            <!-- Previous / next buttons -->
+            
+                <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
     <a class='left-prev' id="prev-link" href="intro.html" title="previous page">
         <i class="fas fa-angle-left"></i>
@@ -366,19 +660,17 @@
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-        
+            
         </div>
     </div>
     <footer class="footer">
-    <div class="container">
-      <p>
-        
-          By Jonathan Appavoo<br/>
-        
-            &copy; Copyright 2021.<br/>
-      </p>
-    </div>
-  </footer>
+  <p>
+    
+      By Jonathan Appavoo<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
 </main>
 
 

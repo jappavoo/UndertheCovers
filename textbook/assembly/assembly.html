@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>10. Lets write some assembly code &#8212; UndertheCovers</title>
+    <title>11. Lets write some assembly code &#8212; UndertheCovers</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -41,7 +41,9 @@
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script>
         const thebe_selector = ".thebe"
@@ -51,8 +53,8 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="11. Representing information - The Basics: Bits, Bytes and Notation" href="InfoRepI.html" />
-    <link rel="prev" title="9. Executables" href="UnixAssemblyProgramming.html" />
+    <link rel="next" title="12. Representing information - The Basics: Bits, Bytes and Notation" href="InfoRepI.html" />
+    <link rel="prev" title="10. Machine Debuggers &amp; Open Process Surgery" href="Debuggers.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -149,14 +151,19 @@
    9. Executables
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Debuggers.html">
+   10. Machine Debuggers &amp; Open Process Surgery
+  </a>
+ </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   10. Lets write some assembly code
+   11. Lets write some assembly code
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="InfoRepI.html">
-   11. Representing information - The Basics: Bits, Bytes and Notation
+   12. Representing information - The Basics: Bits, Bytes and Notation
   </a>
  </li>
 </ul>
@@ -168,7 +175,7 @@
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../C/intro.html">
-   12. Introduction
+   13. Introduction
   </a>
  </li>
 </ul>
@@ -229,7 +236,7 @@
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
 
@@ -282,7 +289,7 @@
         </div>
 
         <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
             <div class="tocsection onthispage pt-5 pb-3">
                 <i class="fas fa-list"></i> Contents
@@ -291,17 +298,17 @@
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#editor-terminal-to-run-our-editor">
-   10.1. EDITOR : Terminal to run our editor
+   11.1. EDITOR : Terminal to run our editor
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#building-terminal-to-run-our-build-commands">
-   10.2. Building: Terminal to run our build commands
+   11.2. Building: Terminal to run our build commands
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#debugger-terminal-to-run-our-debugger-actually-it-is-much-more-than-just-a-debugger">
-   10.3. Debugger: Terminal to run our debugger – actually it is much more than just a debugger
+   11.3. Debugger: Terminal to run our debugger – actually it is much more than just a debugger
   </a>
  </li>
 </ul>
@@ -312,7 +319,40 @@
 </div>
     <div id="main-content" class="row">
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Lets write some assembly code</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#editor-terminal-to-run-our-editor">
+   11.1. EDITOR : Terminal to run our editor
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#building-terminal-to-run-our-build-commands">
+   11.2. Building: Terminal to run our build commands
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#debugger-terminal-to-run-our-debugger-actually-it-is-much-more-than-just-a-debugger">
+   11.3. Debugger: Terminal to run our debugger – actually it is much more than just a debugger
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
               <div>
                 
   <div class="cell docutils container">
@@ -360,11 +400,11 @@
 </div>
 </div>
 <div class="tex2jax_ignore mathjax_ignore section" id="lets-write-some-assembly-code">
-<h1><span class="section-number">10. </span>Lets write some assembly code<a class="headerlink" href="#lets-write-some-assembly-code" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">11. </span>Lets write some assembly code<a class="headerlink" href="#lets-write-some-assembly-code" title="Permalink to this headline">¶</a></h1>
 <p>In this chapter we will get going and write some simple assembly code,  “build” it and run it within a “debugger” so that we can get a sense of how everything fits together.</p>
 <p>To do this we will use three terminal sessions one terminal to run an ascii editor, one to run the shell on its own so that we can compile our source code, and one to run our debugger.  We use three different terminals so that we can stay organized and avoid having to constantly stop and start the different programs.   In some sense we are using multiple terminals to form our own Integrated Development Environmnt (IDE) where we are using each terminal as if it were a subwindow of our IDE.  In actuality the editor that we will be using (emacs) has support for integrating all three tasks within itself but for the moment we will keep things seperate to make sure we know what is going on and not tie ourselves to this particular editor (there are many others including the popular VIM).</p>
 <div class="section" id="editor-terminal-to-run-our-editor">
-<h2><span class="section-number">10.1. </span>EDITOR : Terminal to run our editor<a class="headerlink" href="#editor-terminal-to-run-our-editor" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">11.1. </span>EDITOR : Terminal to run our editor<a class="headerlink" href="#editor-terminal-to-run-our-editor" title="Permalink to this headline">¶</a></h2>
 <p>An editor allows us to create and udpate plain text ascii files. An editor is the core tool of a programmer!  Programming is all about writing software in the form of ascii files that encode what we want the computer to do in some language or another (in our case assembly and C). So far you my have been taught to use various Integrated Development Environments (IDEs) that include an editor, build system and debugger within them.  In this class we will strip things down to there traditional bare essentials so you can get an idea of how things are really working and how IDE’s are themselves constructed.</p>
 <div class="cell tag_hide_input docutils container">
 <div class="cell_input docutils container">
@@ -373,16 +413,6 @@
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html">
-<iframe
-    width="1000"
-    height="600"
-    src="/terminals/1"
-    frameborder="0"
-    allowfullscreen
-></iframe>
-</div></div>
 </div>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">emacs</span> <span class="pre">popcnt.S</span></code></p></li>
@@ -404,7 +434,7 @@ To do this issue the above command.  Emacs is like many of our tools cryptic but
 <p>The following is a version of this code that is verbosely documented: <span class="xref myst">popcnt.S</span></p>
 </div>
 <div class="section" id="building-terminal-to-run-our-build-commands">
-<h2><span class="section-number">10.2. </span>Building: Terminal to run our build commands<a class="headerlink" href="#building-terminal-to-run-our-build-commands" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">11.2. </span>Building: Terminal to run our build commands<a class="headerlink" href="#building-terminal-to-run-our-build-commands" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">IFrame</span>
@@ -412,16 +442,6 @@ To do this issue the above command.  Emacs is like many of our tools cryptic but
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html">
-<iframe
-    width="1000"
-    height="600"
-    src="/terminals/2"
-    frameborder="0"
-    allowfullscreen
-></iframe>
-</div></div>
 </div>
 <ul class="simple">
 <li><p>gcc –static -g -nostartfiles -nolibc popcnt.S -o popcnt</p></li>
@@ -434,7 +454,7 @@ To do this issue the above command.  Emacs is like many of our tools cryptic but
 <p>Later on we will see how to use another tool called make to further simplify and automate the building process.</p>
 </div>
 <div class="section" id="debugger-terminal-to-run-our-debugger-actually-it-is-much-more-than-just-a-debugger">
-<h2><span class="section-number">10.3. </span>Debugger: Terminal to run our debugger – actually it is much more than just a debugger<a class="headerlink" href="#debugger-terminal-to-run-our-debugger-actually-it-is-much-more-than-just-a-debugger" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">11.3. </span>Debugger: Terminal to run our debugger – actually it is much more than just a debugger<a class="headerlink" href="#debugger-terminal-to-run-our-debugger-actually-it-is-much-more-than-just-a-debugger" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">IFrame</span>
@@ -442,16 +462,6 @@ To do this issue the above command.  Emacs is like many of our tools cryptic but
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html">
-<iframe
-    width="1000"
-    height="600"
-    src="/terminals/3"
-    frameborder="0"
-    allowfullscreen
-></iframe>
-</div></div>
 </div>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">gdb</span> <span class="pre">-tui</span> <span class="pre">popcnt</span></code></p></li>
@@ -508,37 +518,35 @@ To do this issue the above command.  Emacs is like many of our tools cryptic but
 
               </div>
               
-        
-            <!-- Previous / next buttons -->
+            
+                <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="UnixAssemblyProgramming.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="Debuggers.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">9. </span>Executables</p>
+            <p class="prev-next-title"><span class="section-number">10. </span>Machine Debuggers &amp; Open Process Surgery</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="InfoRepI.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">11. </span>Representing information - The Basics: Bits, Bytes and Notation</p>
+        <p class="prev-next-title"><span class="section-number">12. </span>Representing information - The Basics: Bits, Bytes and Notation</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-        
+            
         </div>
     </div>
     <footer class="footer">
-    <div class="container">
-      <p>
-        
-          By Jonathan Appavoo<br/>
-        
-            &copy; Copyright 2021.<br/>
-      </p>
-    </div>
-  </footer>
+  <p>
+    
+      By Jonathan Appavoo<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
 </main>
 
 

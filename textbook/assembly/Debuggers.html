@@ -1,0 +1,546 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>10. Machine Debuggers &amp; Open Process Surgery &#8212; UndertheCovers</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="11. Lets write some assembly code" href="assembly.html" />
+    <link rel="prev" title="9. Executables" href="UnixAssemblyProgramming.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/logo.jpg" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">UndertheCovers</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro_tb.html">
+   Under the Covers : The Secret Life of Software
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  The Unix Development Environment
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../unix/intro.html">
+   1. Operating Systems and UNIX
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../unix/terminal.html">
+   2. What is a Terminal and why do we still use them?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../unix/files.html">
+   3. Organizing and Managing Information as a Tree of Files and Directories
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../unix/shellintro.html">
+   4. The Shell - Part I: Having an ASCII conversation with the OS
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../unix/shell.html">
+   6. The Shell – Progammable User Interface to the computer
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  The Belly of the Beast: The von Neumann Architecture and Assembly Programming
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
+   7. Introduction: Assembly Programming
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="vonNeumannArchitecture.html">
+   8. The von Neumann Architecture
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="UnixAssemblyProgramming.html">
+   9. Executables
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   10. Machine Debuggers &amp; Open Process Surgery
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="assembly.html">
+   11. Lets write some assembly code
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="InfoRepI.html">
+   12. Representing information - The Basics: Bits, Bytes and Notation
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Into the Light : C Programming
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../C/intro.html">
+   13. Introduction
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Course Specific Material
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../BUCS210_intro.html">
+   BU CS210 Overview
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/assembly/Debuggers.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/jappavoo/UndertheCovers"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/jappavoo/UndertheCovers/issues/new?title=Issue%20on%20page%20%2Fassembly/Debuggers.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/jappavoo/UndertheCovers/edit/main/underthecovers/assembly/Debuggers.ipynb"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        
+        <a class="jupyterhub-button" href="https://jupyterhub-opf-jupyterhub.apps.smaug.na.operate-first.cloud/hub/user-redirect/git-pull?repo=https://github.com/jappavoo/UndertheCovers&urlpath=lab/tree/UndertheCovers/underthecovers/assembly/Debuggers.ipynb&branch=main"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch JupyterHub" data-toggle="tooltip"
+                data-placement="left"><img class="jupyterhub-button-logo"
+                    src="../_static/images/logo_jupyterhub.svg"
+                    alt="Interact on JupyterHub">JupyterHub</button></a>
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#overview">
+   10.1. Overview
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#getting-started-with-gdb">
+   10.2. Getting Started with gdb
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercises">
+   10.3. Exercises
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Machine Debuggers & Open Process Surgery</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#overview">
+   10.1. Overview
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#getting-started-with-gdb">
+   10.2. Getting Started with gdb
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercises">
+   10.3. Exercises
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="machine-debuggers-open-process-surgery">
+<h1><span class="section-number">10. </span>Machine Debuggers &amp; Open Process Surgery<a class="headerlink" href="#machine-debuggers-open-process-surgery" title="Permalink to this headline">¶</a></h1>
+<p>While you may be familiar with debuggers and their use to find bugs in Java or python code there is much more to them than meets the eye.</p>
+<p>There are low-level-debuggers that are designed and built to allow you to inspect and control the cpu and memory of a process, giving you direct access to the inner binary works of the computer and your code while it is running.  In addition, low-level-debuggers  may simultaneously let you work symbolically (with the source code of the program being debugged).  This lets you both see what is going on in the CPU and memory and how this relates to the original ASCII source files you wrote to create the binary being run in the process.  In our case the source files will be assembly source at first and then C later.   Regardless using the underlying view of the CPU and memory will reveal what is really going on.</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<!-- produced by: 
+htmlFig("[{'src': '../images/gdbsurgery/gdbsurgery.002.png'}]", 
+        id="fig:surgery", 
+        align="center", 
+        width="80%",
+        margin="auto auto auto auto",
+        caption="Figure: Using a debugger to conduct open Process Surgery.  This figure illustrates the analogy between using a debugger like gdb to explore and mainiputate a process in a way that is similar to conducting a robotic surgery on a human patient. The patient is a running process, the robotic surgery tool is a gdb process attached to the target process, and finally the terminal we are running gdb is our inteface where we use the facilities of gdb to explore and mainipulate the target process.", 
+        captionalign="left")
+-->
+<table id="fig:surgery" align="center" width="80%" cellpadding="0" cellspacing="0" border="0" style="border-collapse: collapse; margin: auto auto auto auto">
+    <tr style="padding: 0; margin: 0;"> 
+        <td colspan="1" width="100%" style="padding: 0; margin: 0 0 0 0; background-color:inherit;">
+            <div style="padding: 0; margin: 0 0 0 0;">
+              <figure style="padding: 0; margin: 0 0 0 0; width:100%;">
+                   <img src="../images/gdbsurgery/gdbsurgery.002.png" width="100%" style="padding: 0; margin: 0;">
+                </figure>
+            </div>
+        </td>
+    </tr>
+    <caption align="bottom" style="text-align: left; padding: 0; margin: 0;" >
+          <i>Figure: Using a debugger to conduct open Process Surgery.  This figure illustrates the analogy between using a debugger like gdb to explore and mainiputate a process in a way that is similar to conducting a robotic surgery on a human patient. The patient is a running process, the robotic surgery tool is a gdb process attached to the target process, and finally the terminal we are running gdb is our inteface where we use the facilities of gdb to explore and mainipulate the target process.</i> 
+    </caption>
+</table>
+</div>
+</div>
+<p>While they  can seem intimidating at first such low-level debuggers are incredibly powerful tools that help us freeze, dissect and modify a running program.   In some sense they let us conduct <a href="#fig:surgery">surgery</a> on a process.  In doing so the anatomy of the hardware and software are laid bare for us to see and manipulate.</p>
+<p>Like the shell the debugger, GDB, that we will use has a some what  cryptic terminal interface with a some times strange command syntax.    But like the shell once you get over the initial learning curve you will find the power you have at your fingertips to be quite remarkable.</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<!-- produced by: 
+htmlFig("[{'src': '../images/gdbtuiexample.png'}]", 
+        id="fig:gdbtui", 
+        align="center", 
+        width="80%",
+        margin="auto auto auto auto",
+        caption="Figure: Example of using the 'TUI' mode of gdb. Using the flexibility of TUI mode we have br", 
+        captionalign="left")
+-->
+<table id="fig:gdbtui" align="center" width="80%" cellpadding="0" cellspacing="0" border="0" style="border-collapse: collapse; margin: auto auto auto auto">
+    <tr style="padding: 0; margin: 0;"> 
+        <td colspan="1" width="100%" style="padding: 0; margin: 0 0 0 0; background-color:inherit;">
+            <div style="padding: 0; margin: 0 0 0 0;">
+              <figure style="padding: 0; margin: 0 0 0 0; width:100%;">
+                   <img src="../images/gdbtuiexample.png" width="100%" style="padding: 0; margin: 0;">
+                </figure>
+            </div>
+        </td>
+    </tr>
+    <caption align="bottom" style="text-align: left; padding: 0; margin: 0;" >
+          <i>Figure: Example of using the 'TUI' mode of gdb. Using the flexibility of TUI mode we have br</i> 
+    </caption>
+</table>
+</div>
+</div>
+<blockquote>
+<div><p>GNU Debugger (gdb) is the debugger we will use as it is the default debugger available on Linux.  GDB was originally modeled after XDB from the BSD family of UNIX systems.    To make our lives a little easier we will use the built in support gdb has for text windowed interface called TUI.   The TUI mode will allow us to split the terminal interface of gdb into multiple portions in which we can keep a constant eye on information like the cpu registers while we issue commands.  One can start gdb in tui mode in three ways: 1) use <code class="docutils literal notranslate"><span class="pre">gdbtui</span></code> as a shotcut for 2) starting gdb with the tui flag <code class="docutils literal notranslate"><span class="pre">gdb</span> <span class="pre">-tui</span></code> and 3) switching into tui mode after you started gdb in its default nontui mode eg.  issue <code class="docutils literal notranslate"><span class="pre">gdb</span></code> to start it in its default mode and then issue the following command to gdb to switch into tui mode <code class="docutils literal notranslate"><span class="pre">tui</span> <span class="pre">enable</span></code> (similarly you can switch out of tui mode vai <code class="docutils literal notranslate"><span class="pre">tui</span> <span class="pre">disable</span></code>).</p>
+</div></blockquote>
+<p>From here on in we will use gdb as our working choice but it is worth remembering that the concepts we talk about are applicable to other debuggers like <code class="docutils literal notranslate"><span class="pre">xdb</span></code> and <code class="docutils literal notranslate"><span class="pre">lldb</span></code>.</p>
+<div class="section" id="overview">
+<h2><span class="section-number">10.1. </span>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<!-- produced by: 
+htmlFig("[{'src': '../images/gdbprocesses.png'}]", 
+        id="fig:gdbprocesses", 
+        align="center", 
+        width="100%",
+        margin="auto auto auto auto",
+        caption="Figure: Debugger in control of a target process running the executable myPgm.  Here two processes; 1) running the executable `myPgm` and 2) running the `gdb` executable.  `gdb` establishes a special relationship to the target process.  In particular, it uses special calls to the operating system kernel to control the target process and access the data structures that the kernel uses to maintain the memory and cpu state of the process, called its 'Context'.  Like other standard UNIX processes gdb has a connection to a terminal.  This allows the user to explore and mainpulate the target process via the commands of gdb. The software in a UNIX kernel that represents a processes connction to a terminal is called a `tty`.", 
+        captionalign="left")
+-->
+<table id="fig:gdbprocesses" align="center" width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse: collapse; margin: auto auto auto auto">
+    <tr style="padding: 0; margin: 0;"> 
+        <td colspan="1" width="100%" style="padding: 0; margin: 0 0 0 0; background-color:inherit;">
+            <div style="padding: 0; margin: 0 0 0 0;">
+              <figure style="padding: 0; margin: 0 0 0 0; width:100%;">
+                   <img src="../images/gdbprocesses.png" width="100%" style="padding: 0; margin: 0;">
+                </figure>
+            </div>
+        </td>
+    </tr>
+    <caption align="bottom" style="text-align: left; padding: 0; margin: 0;" >
+          <i>Figure: Debugger in control of a target process running the executable myPgm.  Here two processes; 1) running the executable `myPgm` and 2) running the `gdb` executable.  `gdb` establishes a special relationship to the target process.  In particular, it uses special calls to the operating system kernel to control the target process and access the data structures that the kernel uses to maintain the memory and cpu state of the process, called its 'Context'.  Like other standard UNIX processes gdb has a connection to a terminal.  This allows the user to explore and mainpulate the target process via the commands of gdb. The software in a UNIX kernel that represents a processes connction to a terminal is called a `tty`.</i> 
+    </caption>
+</table>
+</div>
+</div>
+<p>Let’s begin with an overview of the relationship between the debugger and the process we want to debug running a particular binary executable.</p>
+<p>There are three basic way of setting up this relationship:</p>
+<ol class="simple">
+<li><p>Start gdb, tell it what executable we want to work with, at this point it will let us explore the executable but it will not start a new running instants of it. Then give gdb a command to start the specified executable as a process that is under gdb’s control.  Now we can explore and manipulate this new process created from the executable.</p></li>
+<li><p>Start gdb and tell it to attach to an existing running process.  Here one will need to know the process identifier (pid) of the existing process which can be obtained with the ‘ps’ command.   Once attached we can explore and control the process and the explore the binary the process was started from.  See <a class="reference external" href="https://sourceware.org/gdb/onlinedocs/gdb/Attach.html">attaching</a> for more info.</p></li>
+<li><p>The final option is more advanced and uses features of gdb to communicate with “remote” programs or computers that are not under the control of the OS kernel that gdb is running on.  This allows one to setup environments where it is possible to use gdb to explore and debug programs running on remote computers or new computer hardware that does not have an OS. See <a class="reference external" href="https://sourceware.org/gdb/onlinedocs/gdb/Remote-Debugging.html">remote debugging</a> for more information.</p></li>
+</ol>
+<p>The first approach is the most common and the one we will focus on.  The above <a href="#fig:gdbprocesses">figure</a> illustrates the running relationship that we setup.</p>
+<p>As a illustrated gdb is a separate process that we interact with.  It uses the OS to access the binary and the target or “inferior” process that we start from the binary (<code class="docutils literal notranslate"><span class="pre">myPgm</span></code>).</p>
+<p>There are four key things that gdb provides us:</p>
+<ol class="simple">
+<li><p>The ability to control the cpu loop of the target process.  That is to say we can cause it to stop, execute a single iteration  (step a single machine instruction), or have it run normally.  Further we can go back and forth between these modes of operation.</p></li>
+<li><p>It lets us inspect and set the raw binary values of the cpu registers and memory locations  of the target process.  <code class="docutils literal notranslate"><span class="pre">gdb</span></code> knows about the cpu we are running on and let’s us use commands that name the cpu registers so that we can print their current values and change them. Similarly it lets us display and set the values of memory locations.  In this case we specify the starting address, the size of the unit we want to display and the number of such units.  Eg we want to display memory values starting at address 0x4938f80 in units of  4 bytes (each unit of 4 bytes are shown as a single value) and we want to see 16 units.   The syntax for changing values in memory is a little more complex as it borrows syntax for the C programming language.</p></li>
+<li><p>A very important aspect of gdb is that it has built in knowledge of various binary information representation encodings.  As such gdb will let us display and set values using various formats including; binary, hexadecimal, unsigned integers, 2’s complement signed integers, floating point and others.  Perhaps one of the most important encoding it knows is the CPU’s opcode to assembly mnemonics.  This means we can ask gdb to reverse what the assembler did.   Eg it can disassemble memory values and show us the assembly instructions mnemonics that it corresponds to.  It is important to note this is not the source code we wrote (even if what we wrote was assembly).  Rather this is gdb’s ability to tell us how the processor will interpret an area of memory as instructions if we were to try and execute that area.  This is very powerful as we will see later.</p></li>
+<li><p>Finally the other really power thing that gdb can do is read information that the tools that converted our source code into the executable binary left in it.  Specifically information that encodes how the memory addresses of the binary correspond to our source code.  This allows gdb to let us name and view memory in terms of what we wrote at the source level.   Eg.  rather than needing to know what address a variable of our program got mapped to we can simply use the symbolic name from our program source (‘PLAYER_ARRAY’) and gdb will look up in the binary the information required to know where in memory it is (how big it is, it’s default encoding) and let use see the value of the bytes at the associated address, this way can ask to see the value of a variable by it name. This makes it feel like we are working with source code and not memory.  Similarly gdb lets us list the lines of our source code and reference line numbers while it uses the information in the binary, that the assemble and complier left, to figure out what the address of the corresponding instructions in memory are.  We can then control the cpu execution by source lines rather than instructions. Additionally, using the information in the binary it can know where and how many machine instructions to execute for a particular source line.  This means we can see execution in context of positions  in the files we wrote rather than strange looking memory addresses.  In assembly source the number of instructions each source line <code class="docutils literal notranslate"><span class="pre">step</span></code>  will be obvious as we wrote our source in terms of individual instructions but when we use a high level language like C this will not be true.   This source/symbolic support is very important as gdb lets us work at the “source” level of our program and yet view the machine level of the process simultaneously.</p></li>
+</ol>
+<blockquote>
+<div><p><a class="reference internal" href="../_images/concept.svg"><img alt="../_images/concept.svg" class="align-left" src="../_images/concept.svg" width="60" /></a> <p style="background-color:powderblue;"> In some sense a debugger like gdb lets us get a similar level of access to a running process that the SOL6502 provides albeit without the animation of the inners workings of each instruction. But stop and think of what that means you now have the ability to look right into the binary heart of real running programs, understand it and even change it.  </p></p>
+</div></blockquote>
+<p>From here on our primary tools and working organization  will be:</p>
+<ol class="simple">
+<li><p>A terminal in which we run our editor of choice to write our source code.</p></li>
+<li><p>A terminal where we run gdb in to explore the a process we create from our binaries.</p></li>
+<li><p>A terminal where we will run a shell to issue commands to assemble and link our source into binaries (usually using make to automate these steps).</p></li>
+</ol>
+<p>Oh and maybe one more terminal for the man pages ;-)</p>
+</div>
+<div class="section" id="getting-started-with-gdb">
+<h2><span class="section-number">10.2. </span>Getting Started with gdb<a class="headerlink" href="#getting-started-with-gdb" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="exercises">
+<h2><span class="section-number">10.3. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./assembly"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="UnixAssemblyProgramming.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">9. </span>Executables</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="assembly.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">11. </span>Lets write some assembly code</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Jonathan Appavoo<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>
