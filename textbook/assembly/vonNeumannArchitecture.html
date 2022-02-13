@@ -463,8 +463,8 @@
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#modern-extensions">
-       8.4.7.5. Modern Extensions
+      <a class="reference internal nav-link" href="#modern-extensions-and-beyond">
+       8.4.7.5. Modern Extensions and beyond
       </a>
       <ul class="nav section-nav flex-column">
        <li class="toc-h5 nav-item toc-entry">
@@ -478,23 +478,18 @@
         </a>
        </li>
        <li class="toc-h5 nav-item toc-entry">
-        <a class="reference internal nav-link" href="#pipe-lining-and-super-scalar-designs">
-         8.4.7.5.3. pipe-lining and super-scalar designs
-        </a>
-       </li>
-       <li class="toc-h5 nav-item toc-entry">
-        <a class="reference internal nav-link" href="#hyper-threading">
-         8.4.7.5.4. hyper-threading
+        <a class="reference internal nav-link" href="#pipe-lining-and-beyond">
+         8.4.7.5.3. Pipe-lining and beyond
         </a>
        </li>
        <li class="toc-h5 nav-item toc-entry">
         <a class="reference internal nav-link" href="#multi-cores">
-         8.4.7.5.5. multi-cores
+         8.4.7.5.4. Multi-cores
         </a>
        </li>
        <li class="toc-h5 nav-item toc-entry">
-        <a class="reference internal nav-link" href="#non-volatile-memory">
-         8.4.7.5.6. Non-volatile Memory
+        <a class="reference internal nav-link" href="#what-s-next">
+         8.4.7.5.5. What’s next?
         </a>
        </li>
       </ul>
@@ -703,8 +698,8 @@
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#modern-extensions">
-       8.4.7.5. Modern Extensions
+      <a class="reference internal nav-link" href="#modern-extensions-and-beyond">
+       8.4.7.5. Modern Extensions and beyond
       </a>
       <ul class="nav section-nav flex-column">
        <li class="toc-h5 nav-item toc-entry">
@@ -718,23 +713,18 @@
         </a>
        </li>
        <li class="toc-h5 nav-item toc-entry">
-        <a class="reference internal nav-link" href="#pipe-lining-and-super-scalar-designs">
-         8.4.7.5.3. pipe-lining and super-scalar designs
-        </a>
-       </li>
-       <li class="toc-h5 nav-item toc-entry">
-        <a class="reference internal nav-link" href="#hyper-threading">
-         8.4.7.5.4. hyper-threading
+        <a class="reference internal nav-link" href="#pipe-lining-and-beyond">
+         8.4.7.5.3. Pipe-lining and beyond
         </a>
        </li>
        <li class="toc-h5 nav-item toc-entry">
         <a class="reference internal nav-link" href="#multi-cores">
-         8.4.7.5.5. multi-cores
+         8.4.7.5.4. Multi-cores
         </a>
        </li>
        <li class="toc-h5 nav-item toc-entry">
-        <a class="reference internal nav-link" href="#non-volatile-memory">
-         8.4.7.5.6. Non-volatile Memory
+        <a class="reference internal nav-link" href="#what-s-next">
+         8.4.7.5.5. What’s next?
         </a>
        </li>
       </ul>
@@ -1762,32 +1752,50 @@ htmlFig("[[{'src': '../images/ASSEMBLY-VNA-SOFTWARE/ASSEMBLY-VNA-SOFTWARE.006.pn
 </table>
 </div></div>
 </div>
-<div id='MODERNVNAEXT_sec' style="background-color:powderblue;">
 </div>
-<div class="section" id="modern-extensions">
-<h4><span class="section-number">8.4.7.5. </span>Modern Extensions<a class="headerlink" href="#modern-extensions" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="modern-extensions-and-beyond">
+<h4><span class="section-number">8.4.7.5. </span>Modern Extensions and beyond<a class="headerlink" href="#modern-extensions-and-beyond" title="Permalink to this headline">¶</a></h4>
+<div id='MODERNVNAEXT_sec' style="background-color:powderblue;">
 <p>Before we can talk about some of the extensions to the basic model of execution that modern CPUs incorporate we need to introduce the CPU clock and The Cycle.</p>
 <div class="section" id="the-clock-and-the-cycles">
 <h5><span class="section-number">8.4.7.5.1. </span>The Clock and The Cycles<a class="headerlink" href="#the-clock-and-the-cycles" title="Permalink to this headline">¶</a></h5>
-<p>While as programmers it is generally hidden from us it is worth known that the inner workings of the CPU execution loop is driven by an electrical oscillator called the CPU <strong>clock</strong>.  This clock produces a continuous and pulse of high and low voltages. One <strong>cycle</strong> of the clock is the time it takes the clock to transit from a starting value, lets say low, go to high and then return back to low.  This signal is what drives the inner workings of the CPU execution loop. The faster the frequency the faster the the loop operates and the faster instructions of our program complete.   Different CPU’s will be able to operate at different maximum clock frequencies.  Regardless though one cycle of the CPU’s clock can act as a reference unit for use to measure how fast our instructions are executing – Instruction Per Cycle (IPC).</p>
+<a class="reference internal image-reference" href="../_images/VNA-clock.png"><img alt="../_images/VNA-clock.png" class="align-left" src="../_images/VNA-clock.png" style="width: 50%;" /></a>
+<p>While as programmers it is generally hidden from us it is worth known that the inner workings of the CPU execution loop is driven by an electrical oscillator called the CPU <strong>clock</strong>.  This clock produces a continuous and pulse of high and low voltages. One <strong>cycle</strong> of the clock is the time it takes the clock to transit from a starting value, lets say low, go to high and then return back to low.  This signal is what drives the inner workings of the CPU execution loop. The faster the frequency the faster the the loop operates and the faster instructions of our program complete.   Different CPU’s will be able to operate at different maximum clock frequencies.  Regardless though one cycle of the CPU’s clock can act as a reference unit for use to measure how fast our instructions are executing – Cycles per Instruction (CPI)</p>
 <p>On a modern CPU different instructions, and for that matter sequence of instructions can require more or less cycles to complete.  Many of the complexities added over the years are to try and improve the average number of cycles it takes for the instructions of a program to execute.  Knowing how these features work allow you to write your programs in ways that minimize the number of cycles it takes.  In this section we will provide some insight into these but not go into any details.</p>
 </div>
 <div class="section" id="cpu-caches">
 <h5><span class="section-number">8.4.7.5.2. </span>CPU caches<a class="headerlink" href="#cpu-caches" title="Permalink to this headline">¶</a></h5>
-<p>One thing that should jump out at us is the amount of communication that is required between the CPU and memory to get work done.</p>
+<p>One thing that should jump out at us is the amount of communication that is required between the CPU and memory to get work done.  As we made CPU’s faster and faster the speed of the memory bus and the memory devices became the limiting factor in how long it took to execute instructions.  The processors were spending more and more cycles “stalled” waiting for values to be received or sent from and to memory.  To alleviate this disparity CPU designers added “cache” memories inside the CPUs and dramatically expanded the data bus.  Programmers do not directly manage the caches, the CPU uses them internally to try and automatically improve performance.   Rather than reading or writing single values at a time when accessing memory CPUs now transfer larger blocks of several near by memory values at a time staging these block in the caches.  The caches close to the registers and can feed value to them very quickly.  CPUs have particular caching algorithms built into them to manage the caches and data within them.   The idea is that accessing a value at a particular address implies that the code will likely access the other nearby values as well.  If this turns out to be true then those values will be in the cache and no memory bus transactions will be required. If it is not true then memory transactions, that will slow down execution, will occur.  There are many details that we are skipping for the moment but it should be apparent that how you write your code and organize your data in memory can dramatically impact the effectiveness of the caches to hide the time to do memory bus transactions.</p>
 </div>
-<div class="section" id="pipe-lining-and-super-scalar-designs">
-<h5><span class="section-number">8.4.7.5.3. </span>pipe-lining and super-scalar designs<a class="headerlink" href="#pipe-lining-and-super-scalar-designs" title="Permalink to this headline">¶</a></h5>
-</div>
-<div class="section" id="hyper-threading">
-<h5><span class="section-number">8.4.7.5.4. </span>hyper-threading<a class="headerlink" href="#hyper-threading" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="pipe-lining-and-beyond">
+<h5><span class="section-number">8.4.7.5.3. </span>Pipe-lining and beyond<a class="headerlink" href="#pipe-lining-and-beyond" title="Permalink to this headline">¶</a></h5>
+<p>In our simple model we broke the execution loop down into three distinct stages; 1) fetch, 2) decode and 3) execute.  Assuming that internally to the CPU there are physical components that implement these stages then one can observe that once the decode phase has started the fetch components are inactive and similarly while in the execute phase both the fetch and decode components would be inactive.  Lets assume for the moment that in the best case each stage takes a single cycle.  This means that each instruction will take at least three cycles and at best an instruction will complete every three cycles.  However, if we could identify cases in which we could start the next instruction so early so that it could use the prior inactive stages then while each individual instruction will still take three cycles will in the best case would be completing an instruction every cycle!</p>
+<p>CPU designers exploited the observation and introduced the “pipe lining”.  Internally the way CPUs implement execution was carefully decomposed into several stage each corresponding to separate functional units.  The CPU has various mechanism to allow multiple instructions to be come active in the stages as prior instructions have finished using them.  This is actually quite a tricky and some sequences of instruction and data accesses will inherently cause “stalls” in the pipeline.  Again while we have left out many details we again can intuitively observe that how the software is written can positively or negatively interact with pipe-lining.</p>
+<p>Pipe lined execution spurred many more advanced CPU execution techniques including the addition of; <a class="reference external" href="https://en.wikipedia.org/wiki/Out-of-order_execution">out-of-order execution</a>,  <a class="reference external" href="https://en.wikipedia.org/wiki/Superscalar_processor">super-scalar</a>, <a class="reference external" href="https://en.wikipedia.org/wiki/Hyper-threading">hyper-threading</a>, <a class="reference external" href="https://en.wikipedia.org/wiki/Branch_predictor">branch prediction</a> and <a class="reference external" href="https://en.wikipedia.org/wiki/Speculative_execution">speculative execution</a>.  This list is by no-means exhaustive CPU designers and researcher continue every year to explore new  techniques to try and reduce the number of cycles required to execute instructions.  We are now at the point that the many interacting techniques, several of which rely on statistical mechanisms, all interact with the code and data in subtle ways.</p>
 </div>
 <div class="section" id="multi-cores">
-<h5><span class="section-number">8.4.7.5.5. </span>multi-cores<a class="headerlink" href="#multi-cores" title="Permalink to this headline">¶</a></h5>
+<h5><span class="section-number">8.4.7.5.4. </span>Multi-cores<a class="headerlink" href="#multi-cores" title="Permalink to this headline">¶</a></h5>
+<p>The extensions discussed so far all try and improve performance without the explicit need to fundamentally re-design the software.  Multi-cores are different in this respect at least with regards to a single program.  A multi-core CPU is decomposed into several sub-cpus, cores.  Each core has its own registers and private caches and implement and independent execution loop.  As such multi-cores provide a programmer with the ability to explicitly structure their code into multiple “threads” of execution.  Where each thread can execute in parallel on a core and concurrently get work done while all have access to the main memory.  The level of true parallelism, the number of threads executing instruction at exactly the same time, will be limited by the number of cores in the system.</p>
+<p>Parallelism can be very powerful but also has many pitfalls associated with it.  To truly make use of it you typically need to re-think your software from the ground up and deal with various subtleties of how the cores interact with each other and memory.  To understand these interaction one must first get a solid grasp on how a single core works – which is our fundamental goal.</p>
 </div>
-<div class="section" id="non-volatile-memory">
-<h5><span class="section-number">8.4.7.5.6. </span>Non-volatile Memory<a class="headerlink" href="#non-volatile-memory" title="Permalink to this headline">¶</a></h5>
-</div>
+<div class="section" id="what-s-next">
+<h5><span class="section-number">8.4.7.5.5. </span>What’s next?<a class="headerlink" href="#what-s-next" title="Permalink to this headline">¶</a></h5>
+<p>As we face many challenges to improving the performance of von Neumann based computers researches across many fields are pushing the envelop look for new ways to increase the power of computers.  This includes looking at designs that are no-longer consistent with the von Neumann model such as the following.</p>
+<ul class="simple">
+<li><p>Exploiting the  highly  parallel vector processing models associated with <a class="reference external" href="https://en.wikipedia.org/wiki/Graphics_processing_unit">Graphics Processing Units GPUs</a> for non-graphics computing.</p></li>
+<li><p>Designing special purpose <a class="reference external" href="https://en.wikipedia.org/wiki/Hardware_acceleration">hardware accelerators</a> that do only one kind of things like neural network processing.</p></li>
+<li><p>The integration and use of <a class="reference external" href="https://en.wikipedia.org/wiki/Field-programmable_gate_array">Field Programmable Gate Arrays (FPGAs)</a> into general purpose systems.</p></li>
+<li><p>The use of <a class="reference external" href="https://en.wikipedia.org/wiki/Neuromorphic_engineering">neuromorphic computing</a> where neuron biology is used to inspire new hardware.</p></li>
+<li><p>The possibility of constructing and exploiting <a class="reference external" href="https://en.wikipedia.org/wiki/Quantum_computing">quantum computers</a>.</p></li>
+</ul>
+<p>While we continue to explore alternatives  it is more important than ever to have a solid understanding of the von Neumann model as</p>
+<ol class="simple">
+<li><p>it is the benchmark for evaluating the alternatives,</p></li>
+<li><p>to date its ease of programming is still unmatched, and</p></li>
+<li><p>it will still serve as the foundation of computer for a long time to come.</p></li>
+</ol>
+<p>von Nuemann based systems will likely still be our interface to the alternatives we develop and for that matter be the tool that we use to develop the alternatives.</p>
+</div></div>
 </div>
 </div>
 </div>
