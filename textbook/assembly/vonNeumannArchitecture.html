@@ -472,6 +472,31 @@
          8.4.7.5.1. The Clock and The Cycles
         </a>
        </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#cpu-caches">
+         8.4.7.5.2. CPU caches
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#pipe-lining-and-super-scalar-designs">
+         8.4.7.5.3. pipe-lining and super-scalar designs
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#hyper-threading">
+         8.4.7.5.4. hyper-threading
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#multi-cores">
+         8.4.7.5.5. multi-cores
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#non-volatile-memory">
+         8.4.7.5.6. Non-volatile Memory
+        </a>
+       </li>
       </ul>
      </li>
     </ul>
@@ -687,6 +712,31 @@
          8.4.7.5.1. The Clock and The Cycles
         </a>
        </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#cpu-caches">
+         8.4.7.5.2. CPU caches
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#pipe-lining-and-super-scalar-designs">
+         8.4.7.5.3. pipe-lining and super-scalar designs
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#hyper-threading">
+         8.4.7.5.4. hyper-threading
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#multi-cores">
+         8.4.7.5.5. multi-cores
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#non-volatile-memory">
+         8.4.7.5.6. Non-volatile Memory
+        </a>
+       </li>
       </ul>
      </li>
     </ul>
@@ -719,6 +769,7 @@
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="the-von-neumann-architecture">
 <h1><span class="section-number">8. </span>The von Neumann Architecture<a class="headerlink" href="#the-von-neumann-architecture" title="Permalink to this headline">¶</a></h1>
+<p><em>NOTE about reading this chapter: We recommend that you first read this chapter skipping over the blue text boxes and then go back and read them after</em></p>
 <p>As we saw in the <a class="reference internal" href="intro.html"><span class="doc std std-doc">introduction</span></a> assembly code directly maps to the native machine code of a computer.  As such the assembly instructions directly allow a programmer to use and control the basic functions of the computer in order to get the computer to do what they want.   Whether that is to search or sort an array of numbers, play a music file or some other task.</p>
 <p>But to understand assembly programming we have to learn what the basic parts are of any computer are and how they work so we can understand what the assembly instructions allow us to do.    This is why understanding how computers and software work are one in the same as learning assembly programming.</p>
 <div class="cell tag_popout tag_remove-input docutils container">
@@ -1711,7 +1762,7 @@ htmlFig("[[{'src': '../images/ASSEMBLY-VNA-SOFTWARE/ASSEMBLY-VNA-SOFTWARE.006.pn
 </table>
 </div></div>
 </div>
-<p><a id='MODERNVNAEXT_sec'></a></p>
+<div id='MODERNVNAEXT_sec' style="background-color:powderblue;">
 </div>
 <div class="section" id="modern-extensions">
 <h4><span class="section-number">8.4.7.5. </span>Modern Extensions<a class="headerlink" href="#modern-extensions" title="Permalink to this headline">¶</a></h4>
@@ -1720,13 +1771,22 @@ htmlFig("[[{'src': '../images/ASSEMBLY-VNA-SOFTWARE/ASSEMBLY-VNA-SOFTWARE.006.pn
 <h5><span class="section-number">8.4.7.5.1. </span>The Clock and The Cycles<a class="headerlink" href="#the-clock-and-the-cycles" title="Permalink to this headline">¶</a></h5>
 <p>While as programmers it is generally hidden from us it is worth known that the inner workings of the CPU execution loop is driven by an electrical oscillator called the CPU <strong>clock</strong>.  This clock produces a continuous and pulse of high and low voltages. One <strong>cycle</strong> of the clock is the time it takes the clock to transit from a starting value, lets say low, go to high and then return back to low.  This signal is what drives the inner workings of the CPU execution loop. The faster the frequency the faster the the loop operates and the faster instructions of our program complete.   Different CPU’s will be able to operate at different maximum clock frequencies.  Regardless though one cycle of the CPU’s clock can act as a reference unit for use to measure how fast our instructions are executing – Instruction Per Cycle (IPC).</p>
 <p>On a modern CPU different instructions, and for that matter sequence of instructions can require more or less cycles to complete.  Many of the complexities added over the years are to try and improve the average number of cycles it takes for the instructions of a program to execute.  Knowing how these features work allow you to write your programs in ways that minimize the number of cycles it takes.  In this section we will provide some insight into these but not go into any details.</p>
-<ul class="simple">
-<li><p>CPU caches</p></li>
-<li><p>pipe-lined and super-scalar designs</p></li>
-<li><p>hyper-threading</p></li>
-<li><p>multi-cores</p></li>
-<li><p>Non-volatile Memory</p></li>
-</ul>
+</div>
+<div class="section" id="cpu-caches">
+<h5><span class="section-number">8.4.7.5.2. </span>CPU caches<a class="headerlink" href="#cpu-caches" title="Permalink to this headline">¶</a></h5>
+<p>One thing that should jump out at us is the amount of communication that is required between the CPU and memory to get work done.</p>
+</div>
+<div class="section" id="pipe-lining-and-super-scalar-designs">
+<h5><span class="section-number">8.4.7.5.3. </span>pipe-lining and super-scalar designs<a class="headerlink" href="#pipe-lining-and-super-scalar-designs" title="Permalink to this headline">¶</a></h5>
+</div>
+<div class="section" id="hyper-threading">
+<h5><span class="section-number">8.4.7.5.4. </span>hyper-threading<a class="headerlink" href="#hyper-threading" title="Permalink to this headline">¶</a></h5>
+</div>
+<div class="section" id="multi-cores">
+<h5><span class="section-number">8.4.7.5.5. </span>multi-cores<a class="headerlink" href="#multi-cores" title="Permalink to this headline">¶</a></h5>
+</div>
+<div class="section" id="non-volatile-memory">
+<h5><span class="section-number">8.4.7.5.6. </span>Non-volatile Memory<a class="headerlink" href="#non-volatile-memory" title="Permalink to this headline">¶</a></h5>
 </div>
 </div>
 </div>
@@ -1741,7 +1801,7 @@ htmlFig("[{'src': '../images/VNA_13.png'}]",
         align="center", 
         width="80%",
         margin="auto auto auto auto",
-        caption="Figure: I/O", 
+        caption="Figure: Abstract Visualization of I/O paths", 
         captionalign="left")
 -->
 <table id="fig:vna_13" align="center" width="80%" cellpadding="0" cellspacing="0" border="0" style="border-collapse: collapse; margin: auto auto auto auto">
@@ -1755,27 +1815,63 @@ htmlFig("[{'src': '../images/VNA_13.png'}]",
         </td>
     </tr>
     <caption align="bottom" style="text-align: left; padding: 0; margin: 0;" >
-          <i>Figure: I/O</i> 
+          <i>Figure: Abstract Visualization of I/O paths</i> 
     </caption>
 </table>
 </div>
 </div>
 <p>While we have covered how a CPU and memory can operate together to implement program execution  we have no way to transfer values in or out of the computer.  The I/O subsystems of a computer are precisely to enable this ability.</p>
 <p>Traditionally I/O devices are called peripherals.  The goal is to allow software executing on the CPU to communicate with a wide range of devices ranging from terminals, keyboards, touch screens, wired and wireless networks, solid state drives, speakers, etc.  To facilitate this the hardware manufactures have created standardized I/O Buses that various peripheral devices can be built to connect too.  An example I/O Bus standard is <a class="reference external" href="https://en.wikipedia.org/wiki/PCI_Express">PCIe</a>.</p>
-<p>Computer designers typically bridge the I/O Bus to the CPU in two ways:</p>
+<p>Computer designers typically bridge the I/O devices such that software running on the CPU can have two paths to communicating with them.</p>
 <ol class="simple">
 <li><p>Memory Mapped I/O Path</p></li>
 <li><p>CPU I/O Path</p></li>
 </ol>
-<p><strong>Memory Mapped I/O Path</strong>: In this approach circuity connects a range of the memory bus addresses to the I/O Bus. CPU memory bus transactions to this range are translated into transactions on the I/O bus that then sent to a particular peripheral.  In this way the CPU can communicate values to particular I/O peripherals by simply reading and writing to the correct addresses. It is important to remember that while from a software perspective memory mapped I/O seems like communicating with memory devices reads and writes to the I/O peripherals are much slower given the extra circuitry and the slower nature of the devices.</p>
-<p><strong>CPU I/O Path</strong>: Some CPU’s contain extra connections that allow it to connect to an I/O bus and corresponding operations that enable values to be transferred on to the I/O bus and thus to particular peripherals. In this case software must be written to specifically use the correct I/O instructions to communicate with peripherals.  Again it is important to remember that despite having these connections communicating with peripherals is indirect and slower that communicating with memory devices.</p>
-<p>Modern computers can support both paths but often primarily rely on memory mapped I/O for the majority of I/O communications.  Regardless, in general, the only software that can communicate with I/O devices are in the OS Kernel.  These OS components are called <a class="reference external" href="https://en.wikipedia.org/wiki/Device_driver">devices drivers</a>.  As such application software running on an OS makes calls to the OS to conduct I/O and need not worry about the details of how to control and communicate with I/O devices which can be quite complex and device specific.</p>
-<p>If we do need to conceptualize I/O operation we will assume Memory Mapped I/O.  The main thing to note about I/O is that it is really just another way of using value.  Specifically peripherals are designed to receive and interpret in device specific ways.  For example writing the correct value to an ASCII terminal device will cause it to display the appropriate character while writing other values to it will move the cursor to a different location.  Similarly a usb microphone will produce a stream of values that represent audio frequency samples.</p>
+<p><strong>Memory Mapped I/O Path</strong>: In this approach  a range of the memory bus addresses are mapped to the I/O Bus. CPU memory bus transactions to this range are translated into transactions on the I/O buses.   In this way the CPU can communicate values to particular I/O peripherals by simply reading and writing to the correct addresses. It is important to remember that while from a software perspective memory mapped I/O seems like communicating with memory devices reads and writes to the I/O peripherals are much slower given the extra circuitry and the slower nature of the devices.</p>
+<p><strong>CPU I/O Path</strong>: Some CPU’s have instructions and support for transferring data on an I/O bus and thus to particular peripherals. In this case software must be written to specifically use the correct I/O instructions to communicate with peripherals.  Again it is important to remember that despite having these connections communicating with peripherals is indirect and slower that communicating with memory devices.</p>
+<p>Modern computers  primarily rely on memory mapped I/O for the majority of I/O communications.  Regardless, in general, the only software that directly controls and communicates with I/O devices are in the OS Kernel.  These OS components are called <a class="reference external" href="https://en.wikipedia.org/wiki/Device_driver">devices drivers</a>.  As such application software running on an OS makes calls to the OS to conduct I/O and need not worry about the details of how to control and communicate with I/O devices which can be quite complex and device specific.</p>
+<p>If we do need to conceptualize I/O operation we will assume Memory Mapped I/O.  The main thing to note about I/O is that it is really just another destination for the CPU to send and receive values to and from.  Peripherals are designed to receive and interpret values in device specific ways.  For example writing the correct value to an ASCII terminal device will cause it to display the appropriate character while writing other values will move the cursor to a different location.  Similarly a <a class="reference external" href="https://en.wikipedia.org/wiki/USB">USB</a> microphone will produce a stream of values that represent audio frequency samples and reading and storing them in memory lets us process audio.</p>
+<div id='BUSES_sec' style="background-color:powderblue;">
+<h3>I/O The Ugly Underbelly</h3>
+The above discussion is conceptual so that as programmers we have a working knowledge of how values can flow to and from the outside world.  But the truth is that I/O hardware is very complex and the act of controlling and coordinating with the devices requires a lot of software and knowledge of the devices.  A major role of the operating system is to hide this complexity and details from most programmers.
+<p>Figure A below, while still abstract give us a sense of the complexity that exists with respect to I/O.  As we see the I/O subsystems of a computer are composed of many interconnected buses, controllers and devices.  Each having its own standards and rules about how to operate them.  Figure B is an image of a more modern computer mother board where the functional areas have been label.  As one can see much of the area is dedicated to the I/O components.</p>
+<table id="fig:buses" align="center" width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse: collapse; margin: auto auto auto auto">
+    <tr style="padding: 0; margin: 0;"> 
+        <td colspan="1" width="50.00%" style="padding: 0; margin: 0 0 0 0; background-color:inherit;">
+            <div style="padding: 1px; margin: 0 0 0 0;">
+              <figure style="padding: 0; margin: 0 0 0 0; width:100%;border: 1px solid black;">
+                   <img src="../images/VNA-Busses.png" width="100%" style="padding: 0; margin: 0;">
+                  <figcaption>
+                    <div style="background-color: inherit; margin-right:auto; margin-left:auto; text-align: center;">
+                       <i style="color:inherit"> A: I/O centric view of a computer</i>
+                    </div>
+                  </figcaption>
+                </figure>
+            </div>
+        </td>
+        <td colspan="1" width="50%" style="padding: 0; margin: 0 0 0 0; background-color:inherit;">
+            <div style="padding: 1px; margin: 0 0 0 0;">
+              <figure style="padding: 0; margin: 0 0 0 0; width:100%;border: 1px solid black;">
+                   <img src="../images/motherboard.png" width="100%" style="padding: 0; margin: 0;">
+                  <figcaption>
+                    <div style="background-color: inherit; margin-right:auto; margin-left:auto; text-align: center;">
+                       <i style="color:inherit"> B: Modern Mother Board</i>
+                    </div>
+                  </figcaption>
+                </figure>
+            </div>
+        </td>
+    </tr>
+    <caption align="bottom" style="text-align: left; padding: 0; margin: 0;" >
+          <i><center>Figure:A More detailed view of I/O and a physical example of a modern motherboard.</center></i> 
+    </caption>
+</table>
+<p>Thankfully we don’t have to write all the software to deal with this complexity but perhaps more importantly we also don’t have to understand all the details.  A major goal of the operating systems software is to abstract the details away and provide programmers with a simple set of concepts, like files and streams.  These “abstractions” and the functions that the operating system provides are the key to enabling us to focus on writing our programs with out having to worry about how to control the I/O devices.  Think of all that must have to happen so when we issue the following UNIX shell command <code class="docutils literal notranslate"><span class="pre">ls</span> <span class="pre">&gt;</span> <span class="pre">listoffiles.txt</span></code></p>
 </div>
 <div class="section" id="stored-program-computer">
 <h2><span class="section-number">8.6. </span>Stored Program Computer<a class="headerlink" href="#stored-program-computer" title="Permalink to this headline">¶</a></h2>
-<p>One last conceptual thing before we go on to play with a running Von Neumann computer.  Implicit in our model has been that both the opcodes and the data of a program are stored in memory as indistinguishable values.</p>
-<p>While that might seem like an obvious choice it was not.  It was a revolution to realize that instructions could be just values like data in memory.  In later chapters we will see that there are interesting things we can do knowing that opcodes are just like any other values in memory that can be read and written.</p>
+<p>One last conceptual thing before we go on to play with a running Von Neumann computer.  Implicit to our model is that both the opcodes and the data of a program are stored in memory as indistinguishable values.</p>
+<p>While that might seem like an obvious choice it was not.  It was a revolution to realize that instructions could be values just like data in memory.  In later chapters we will see that there are interesting things we can do knowing that opcodes are just like any other values in memory that can be read and written.</p>
 </div>
 <div class="section" id="sol6502">
 <h2><span class="section-number">8.7. </span>SOL6502<a class="headerlink" href="#sol6502" title="Permalink to this headline">¶</a></h2>
