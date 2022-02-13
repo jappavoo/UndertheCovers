@@ -582,9 +582,9 @@ the general structure of our program should be the same.  After all, all of thes
 <pre style="border: solid #cccccc 2px; background-color: black; font-family: monospace, monospace; font-size: inherit; color: white">
 $ type -p python/opt/conda/bin/python
 </pre><pre style="border: solid #cccccc 2px; background-color: black; font-family: monospace, monospace; font-size: inherit; color: white">
-$ ls -l $(type -p python)lrwxrwxrwx. 1 nayvoj users 9 Feb  6 13:30 /opt/conda/bin/python -> python3.9
+$ ls -l $(type -p python)lrwxrwxrwx 1 jovyan users 9 Jul 26 18:15 /opt/conda/bin/python -> python3.9
 </pre><pre style="border: solid #cccccc 2px; background-color: black; font-family: monospace, monospace; font-size: inherit; color: white">
-$ ls -l $(type -p python3.9)-rwxrwxr-x. 1 nayvoj users 24543952 Feb  6 13:30 /opt/conda/bin/python3.9
+$ ls -l $(type -p python3.9)-rwxrwxr-x 1 jovyan users 24598616 Jul 26 18:15 /opt/conda/bin/python3.9
 </pre><pre style="border: solid #cccccc 2px; background-color: black; font-family: monospace, monospace; font-size: inherit; color: white">
 $ file $(type -p python3.9)/opt/conda/bin/python3.9: ELF 64-bit LSB shared object, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, for GNU/Linux 2.6.18, with debug_info, not stripped
 </pre><pre style="border: solid #cccccc 2px; background-color: black; font-family: monospace, monospace; font-size: inherit; color: white">
@@ -596,18 +596,18 @@ Disassembly of section .init:
 
 000000000005c000 <_init>:
    5c000:	48 83 ec 08          	sub    rsp,0x8
-   5c004:	e8 4b ea 1a 00       	call   20aa54 <call_gmon_start>
-   5c009:	48 83 c4 08          	add    rsp,0x8
-   5c00d:	c3                   	ret    
+   5c004:	e8 ab 06 1b 00       	call   20c6b4 <call_gmon_start>
+   5c009:	e8 87 07 1b 00       	call   20c795 <frame_dummy>
+   5c00e:	e8 86 0b 24 00       	call   29cb99 <__do_global_ctors_aux>
+   5c013:	48 83 c4 08          	add    rsp,0x8
+   5c017:	c3                   	ret    
 
 Disassembly of section .plt:
 
-000000000005c010 <__libc_start_main@plt-0x10>:
-   5c010:	ff 35 92 84 33 00    	push   QWORD PTR [rip+0x338492]        # 3944a8 <_GLOBAL_OFFSET_TABLE_+0x8>
-   5c016:	ff 25 94 84 33 00    	jmp    QWORD PTR [rip+0x338494]        # 3944b0 <_GLOBAL_OFFSET_TABLE_+0x10>
-   5c01c:	0f 1f 40 00          	nop    DWORD PTR [rax+0x0]
-
-000000000005c020 <__libc_start_main@plt>:
+000000000005c020 <__libc_start_main@plt-0x10>:
+   5c020:	ff 35 82 94 33 00    	push   QWORD PTR [rip+0x339482]        # 3954a8 <_GLOBAL_OFFSET_TABLE_+0x8>
+   5c026:	ff 25 84 94 33 00    	jmp    QWORD PTR [rip+0x339484]        # 3954b0 <_GLOBAL_OFFSET_TABLE_+0x10>
+   5c02c:	0f 1f 40 00          	nop    DWORD PTR [rax+0x0]
 </pre></div>
 </div>
 <p>If we want we can even run it in the debugger</p>
@@ -639,31 +639,31 @@ Find the GDB manual and other documentation resources online at:
 For help, type "help".
 Type "apropos word" to search for commands related to "word"...
 Reading symbols from /opt/conda/bin/python...
-(gdb) (gdb) Breakpoint 1 at 0x20aa28
+(gdb) (gdb) Breakpoint 1 at 0x20c688
 (gdb) Starting program: /opt/conda/bin/python 
 [Thread debugging using libthread_db enabled]
 Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
 
-Breakpoint 1, 0x0000563dc9323a28 in _start ()
+Breakpoint 1, 0x00005578637b4688 in _start ()
 (gdb) Dump of assembler code for function _start:
-=> 0x0000563dc9323a28 <+0>:	xor    ebp,ebp
-   0x0000563dc9323a2a <+2>:	mov    r9,rdx
-   0x0000563dc9323a2d <+5>:	pop    rsi
-   0x0000563dc9323a2e <+6>:	mov    rdx,rsp
-   0x0000563dc9323a31 <+9>:	and    rsp,0xfffffffffffffff0
-   0x0000563dc9323a35 <+13>:	push   rax
-   0x0000563dc9323a36 <+14>:	push   rsp
-   0x0000563dc9323a37 <+15>:	lea    r8,[rip+0x91392]        # 0x563dc93b4dd0 <__libc_csu_fini>
-   0x0000563dc9323a3e <+22>:	lea    rcx,[rip+0x9139b]        # 0x563dc93b4de0 <__libc_csu_init>
-   0x0000563dc9323a45 <+29>:	lea    rdi,[rip+0xfffffffffff136d4]        # 0x563dc9237120 <main>
-   0x0000563dc9323a4c <+36>:	call   0x563dc9175020 <__libc_start_main@plt>
-   0x0000563dc9323a51 <+41>:	hlt    
-   0x0000563dc9323a52 <+42>:	nop
-   0x0000563dc9323a53 <+43>:	nop
+=> 0x00005578637b4688 <+0>:	xor    ebp,ebp
+   0x00005578637b468a <+2>:	mov    r9,rdx
+   0x00005578637b468d <+5>:	pop    rsi
+   0x00005578637b468e <+6>:	mov    rdx,rsp
+   0x00005578637b4691 <+9>:	and    rsp,0xfffffffffffffff0
+   0x00005578637b4695 <+13>:	push   rax
+   0x00005578637b4696 <+14>:	push   rsp
+   0x00005578637b4697 <+15>:	lea    r8,[rip+0x90462]        # 0x557863844b00 <__libc_csu_fini>
+   0x00005578637b469e <+22>:	lea    rcx,[rip+0x9046b]        # 0x557863844b10 <__libc_csu_init>
+   0x00005578637b46a5 <+29>:	lea    rdi,[rip+0xfffffffffff12374]        # 0x5578636c6a20 <main>
+   0x00005578637b46ac <+36>:	call   0x557863604030 <__libc_start_main@plt>
+   0x00005578637b46b1 <+41>:	hlt    
+   0x00005578637b46b2 <+42>:	nop
+   0x00005578637b46b3 <+43>:	nop
 End of assembler dump.
 (gdb) A debugging session is active.
 
-	Inferior 1 [process 3024] will be killed.
+	Inferior 1 [process 292] will be killed.
 
 Quit anyway? (y or n) [answered Y; input not from terminal]
 </pre></div>
@@ -681,7 +681,7 @@ Quit anyway? (y or n) [answered Y; input not from terminal]
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>$ ls -lh $(type -p python3.9)
--rwxrwxr-x. 1 nayvoj users 24M Feb  6 13:30 <span class=" -Color -Color-Bold -Color-Bold-Green">/opt/conda/bin/python3.9</span>
+-rwxrwxr-x 1 jovyan users 24M Jul 26 18:15 <span class=" -Color -Color-Bold -Color-Bold-Green">/opt/conda/bin/python3.9</span>
 $ 
 </pre></div>
 </div>

@@ -44,6 +44,8 @@
     <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script>
         const thebe_selector = ".thebe"
@@ -344,8 +346,8 @@
       </a>
       <ul class="nav section-nav flex-column">
        <li class="toc-h5 nav-item toc-entry">
-        <a class="reference internal nav-link" href="#opcode">
-         8.2.3.2.1. OPCODE
+        <a class="reference internal nav-link" href="#opcode-and-operands">
+         8.2.3.2.1. OPCODE and OPERANDS
         </a>
        </li>
       </ul>
@@ -360,8 +362,135 @@
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#the-loop-program-execution">
-   8.3. The Loop – Program Execution
+  <a class="reference internal nav-link" href="#memory">
+   8.3. Memory
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#program-execution">
+   8.4. Program Execution
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#setup">
+     8.4.1. Setup:
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#program-values-in-memory">
+       8.4.1.1. Program: Values in Memory
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#initialize-the-pc-to-location-of-first-instruction">
+       8.4.1.2. Initialize the PC to location of first instruction
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#categorizing-values-and-their-interpretation">
+       8.4.1.3. Categorizing values and their Interpretation
+      </a>
+      <ul class="nav section-nav flex-column">
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#text">
+         8.4.1.3.1. Text
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#data">
+         8.4.1.3.2. Data
+        </a>
+       </li>
+      </ul>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-loop">
+     8.4.2. The Loop
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#step-1-fetch-opcode">
+     8.4.3. Step 1: Fetch Opcode
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#step-2-decode">
+     8.4.4. Step 2: Decode
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#addressing-modes">
+       8.4.4.1. Addressing Modes
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#execute-conduct-the-operation-and-update-the-pc">
+     8.4.5. Execute : Conduct the operation and update the PC
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#repeat-back-to-step-1-of-the-loop-and-on-we-go">
+     8.4.6. Repeat : Back to Step 1 of the Loop and on we go.
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#some-additions-to-the-basics-of-instruction-execution">
+     8.4.7. Some additions to the basics of instruction execution
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#status-flags-register">
+       8.4.7.1. Status/Flags Register
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#stack-pointer-register-sp">
+       8.4.7.2. Stack Pointer Register (SP)
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#reset">
+       8.4.7.3. Reset
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#rom-and-firmware">
+       8.4.7.4. ROM and Firmware
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#modern-extensions">
+       8.4.7.5. Modern Extensions
+      </a>
+      <ul class="nav section-nav flex-column">
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#the-clock-and-the-cycles">
+         8.4.7.5.1. The Clock and The Cycles
+        </a>
+       </li>
+      </ul>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#i-o">
+   8.5. I/O
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#stored-program-computer">
+   8.6. Stored Program Computer
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sol6502">
+   8.7. SOL6502
   </a>
  </li>
 </ul>
@@ -432,8 +561,8 @@
       </a>
       <ul class="nav section-nav flex-column">
        <li class="toc-h5 nav-item toc-entry">
-        <a class="reference internal nav-link" href="#opcode">
-         8.2.3.2.1. OPCODE
+        <a class="reference internal nav-link" href="#opcode-and-operands">
+         8.2.3.2.1. OPCODE and OPERANDS
         </a>
        </li>
       </ul>
@@ -448,8 +577,135 @@
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#the-loop-program-execution">
-   8.3. The Loop – Program Execution
+  <a class="reference internal nav-link" href="#memory">
+   8.3. Memory
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#program-execution">
+   8.4. Program Execution
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#setup">
+     8.4.1. Setup:
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#program-values-in-memory">
+       8.4.1.1. Program: Values in Memory
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#initialize-the-pc-to-location-of-first-instruction">
+       8.4.1.2. Initialize the PC to location of first instruction
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#categorizing-values-and-their-interpretation">
+       8.4.1.3. Categorizing values and their Interpretation
+      </a>
+      <ul class="nav section-nav flex-column">
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#text">
+         8.4.1.3.1. Text
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#data">
+         8.4.1.3.2. Data
+        </a>
+       </li>
+      </ul>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-loop">
+     8.4.2. The Loop
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#step-1-fetch-opcode">
+     8.4.3. Step 1: Fetch Opcode
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#step-2-decode">
+     8.4.4. Step 2: Decode
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#addressing-modes">
+       8.4.4.1. Addressing Modes
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#execute-conduct-the-operation-and-update-the-pc">
+     8.4.5. Execute : Conduct the operation and update the PC
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#repeat-back-to-step-1-of-the-loop-and-on-we-go">
+     8.4.6. Repeat : Back to Step 1 of the Loop and on we go.
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#some-additions-to-the-basics-of-instruction-execution">
+     8.4.7. Some additions to the basics of instruction execution
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#status-flags-register">
+       8.4.7.1. Status/Flags Register
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#stack-pointer-register-sp">
+       8.4.7.2. Stack Pointer Register (SP)
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#reset">
+       8.4.7.3. Reset
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#rom-and-firmware">
+       8.4.7.4. ROM and Firmware
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#modern-extensions">
+       8.4.7.5. Modern Extensions
+      </a>
+      <ul class="nav section-nav flex-column">
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#the-clock-and-the-cycles">
+         8.4.7.5.1. The Clock and The Cycles
+        </a>
+       </li>
+      </ul>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#i-o">
+   8.5. I/O
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#stored-program-computer">
+   8.6. Stored Program Computer
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sol6502">
+   8.7. SOL6502
   </a>
  </li>
 </ul>
@@ -465,42 +721,6 @@
 <h1><span class="section-number">8. </span>The von Neumann Architecture<a class="headerlink" href="#the-von-neumann-architecture" title="Permalink to this headline">¶</a></h1>
 <p>As we saw in the <a class="reference internal" href="intro.html"><span class="doc std std-doc">introduction</span></a> assembly code directly maps to the native machine code of a computer.  As such the assembly instructions directly allow a programmer to use and control the basic functions of the computer in order to get the computer to do what they want.   Whether that is to search or sort an array of numbers, play a music file or some other task.</p>
 <p>But to understand assembly programming we have to learn what the basic parts are of any computer are and how they work so we can understand what the assembly instructions allow us to do.    This is why understanding how computers and software work are one in the same as learning assembly programming.</p>
-<div class="cell tag_remove-input docutils container">
-<div class="cell_output docutils container">
-<!-- produced by: 
-htmlFig("[{'src': '../images/SLS_TheMachine.png'}]", 
-        id="fig:vnm", 
-        align="left", 
-        width="60%",
-        margin="auto 1em 0 auto",
-        caption="Figure: Our illustration of a von Neumann computer", 
-        captionalign="left")
--->
-<table id="fig:vnm" align="left" width="60%" cellpadding="0" cellspacing="0" border="0" style="border-collapse: collapse; margin: auto 1em 0 auto">
-    <tr style="padding: 0; margin: 0;"> 
-        <td colspan="1" width="100%" style="padding: 0; margin: 0 0 0 0; background-color:inherit;">
-            <div style="padding: 0; margin: 0 0 0 0;">
-              <figure style="padding: 0; margin: 0 0 0 0; width:100%;">
-                   <img src="../images/SLS_TheMachine.png" width="100%" style="padding: 0; margin: 0;">
-                </figure>
-            </div>
-        </td>
-    </tr>
-    <caption align="bottom" style="text-align: left; padding: 0; margin: 0;" >
-          <i>Figure: Our illustration of a von Neumann computer</i> 
-    </caption>
-</table>
-<p>Despite the fact that there are many different manufactures of computers they all largely
-share a basic common structure.  We call the generic components, their organization
-and the way they interact the architecture of a machine.  In our
-case the common architecture to which most programmable computers are built around
-is that of the von Neumann Architecture named after <a class="reference external" href="https://en.wikipedia.org/wiki/John_von_Neumann">
-John von Neumann</a>.</p>
-</div>
-</div>
-<blockquote>
-<div><p><a class="reference internal" href="../_images/commentary.svg"><img alt="../_images/commentary.svg" class="align-left" src="../_images/commentary.svg" width="60" /></a> <p style="background-color:powderblue;"> In our journey to understand computers we will be exploring a fascinating story of human innovation and ingenuity.  This story is full of characters, such as John von Neumann, Alan Turning, Admiral Grace Hopper, Ada Love Lace, and many more, that dared to be and think differently.  Not only do we owe a great deal of gratitude to these courageous people, who often risked a lot in suggesting new ways of thinking and doing things, challenging the orthodoxy of their day, we can also draw inspiration in their diversity and bravery. Remember who you are and that your voice matters, tomorrows innovation rests on your actions!</p>
-</div></blockquote>
 <div class="cell tag_popout tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <!-- produced by: 
@@ -528,16 +748,52 @@ htmlFig("[{'src': '../images/edvac.png'}]",
 </table>
 </div>
 </div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<!-- produced by: 
+htmlFig("[{'src': '../images/SLS_TheMachine.png'}]", 
+        id="fig:vnm", 
+        align="center", 
+        width="80%",
+        margin="auto auto auto auto",
+        caption="<center>Figure: Our illustration of a von Neumann computer.  Our view is slightly updated to put the model interms of todays computers.</center>", 
+        captionalign="left")
+-->
+<table id="fig:vnm" align="center" width="80%" cellpadding="0" cellspacing="0" border="0" style="border-collapse: collapse; margin: auto auto auto auto">
+    <tr style="padding: 0; margin: 0;"> 
+        <td colspan="1" width="100%" style="padding: 0; margin: 0 0 0 0; background-color:inherit;">
+            <div style="padding: 0; margin: 0 0 0 0;">
+              <figure style="padding: 0; margin: 0 0 0 0; width:100%;">
+                   <img src="../images/SLS_TheMachine.png" width="100%" style="padding: 0; margin: 0;">
+                </figure>
+            </div>
+        </td>
+    </tr>
+    <caption align="bottom" style="text-align: left; padding: 0; margin: 0;" >
+          <i><center>Figure: Our illustration of a von Neumann computer.  Our view is slightly updated to put the model interms of todays computers.</center></i> 
+    </caption>
+</table>
+</div>
+</div>
+<p>Despite the fact that there are many different manufactures of computers they all largely
+share a basic common structure.  We call the generic components, their organization
+and the way they interact the <strong>architecture</strong> of a machine.  In our
+case the common architecture to which most programmable computers are built around
+is the von Neumann Architecture named after <a class="reference external" href="https://en.wikipedia.org/wiki/John_von_Neumann">
+John von Neumann</a>.</p>
+<blockquote>
+<div><p><a class="reference internal" href="../_images/commentary.png"><img alt="../_images/commentary.png" class="align-left" src="../_images/commentary.png" style="width: 60px;" /></a> <p style="background-color:powderblue;"> In our journey to understand computers we will be exploring a fascinating story of human innovation and ingenuity.  This story is full of characters, such as John von Neumann, Alan Turning, Admiral Grace Hopper, Ada Love Lace, and many more, that dared to be and think differently.  Not only do we owe a great deal of gratitude to these courageous people, who often risked a lot in suggesting new ways of thinking and doing things, challenging the orthodoxy of their day, we can also draw inspiration in their diversity and bravery. Remember who you are and that your voice matters, tomorrows innovation rests on your actions! </p></p>
+</div></blockquote>
 <div class="section" id="the-central-processing-unit-cpu">
 <h2><span class="section-number">8.1. </span>The Central Processing Unit (CPU)<a class="headerlink" href="#the-central-processing-unit-cpu" title="Permalink to this headline">¶</a></h2>
 <p>There are many words today that we might hear used to refer to the Central Processing Unit (CPU) including processor, micro-processor and core.  Our goal, at this point, is to build our knowledge of how all computers work and then dive into more details by looking at how a particular computer works.  From this more generic perspective there are two ways of considering what a CPU is.</p>
 <ol class="simple">
-<li><p>Physically: A complex electical device composed of <a class="reference external" href="https://en.wikipedia.org/wiki/Transistor">transistors</a> and wires.</p></li>
+<li><p>Physically: A complex electrical device composed of <a class="reference external" href="https://en.wikipedia.org/wiki/Transistor">transistors</a> and wires.</p></li>
 <li><p>Logically: A core building block for programmable information processing</p></li>
 </ol>
 <div class="section" id="physically">
 <h3><span class="section-number">8.1.1. </span>Physically<a class="headerlink" href="#physically" title="Permalink to this headline">¶</a></h3>
-<p>While we won’t dwell too much on the physical nature of a CPU it is worth “looking” at a few examples and noting a few if their characteristics and various challenges we face in building more advanced versions.  These challenges arise from physical limitation in the construction, connection to other devices and powering of the CPU itself. These challenges and the current approachs to trying to mitigate them also has an effect on how one needs to write software that will perform well on modern hardware.  We don’t really need to worry about that right now but it is a theme we will revist later once we have a core understanding of the basics of how software and hardware interact.</p>
+<p>While we won’t dwell too much on the physical nature of a CPU it is worth “looking” at a few examples and noting a few if their characteristics and various challenges we face in building more advanced versions.  These challenges arise from physical limitation in the construction, connection to other devices and powering of the CPU itself. These challenges and the current approach to trying to mitigate them also has an effect on how one needs to write software that will perform well on modern hardware.  We don’t really need to worry about that right now but it is a theme we will revisit later once we have a core understanding of the basics of how software and hardware interact.</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <!-- produced by: 
@@ -565,58 +821,977 @@ htmlFig("[{'src': '../images/physcpus.png'}]",
 </table>
 </div>
 </div>
-<p>In the <a href="#fig:physcpus">Examples of physical CPUs figure</a>, above, we see photos of some physical cpus along with a “pin out” diagram that describes how to physically connect it to the rest of the computer.  Over the years it is clear that the complexity of CPUs has certainly grown.  In the 1970’s CPUs were composed of thousands of transistors and only required tens of pins to connect to rest of the computer.  By 2021 we see that cpus now contain billions of transistors and require thousands for physical connections to the reset of the system.</p>
-<p>While an over-simplification, one of the uses of transistors in a CPU is to create, “switches” that from the logic circuts used to implement basic operations such as adding numbers. In order to make the CPU do these operations faster we need to be able to operate the transitors, turn them on and off, faster and faster.  Unfortunately doing so requires more and more energy and creates more more heat.  As such over the last decade it has become harder and harder to speed up CPUs, given the increase in energy and attendant increase in heat it leads too.   On the other hand we have managed to figure out how to continually shrink the size of transistors that has allowed us to pack more and more transistors into CPUs, however some believe that we are getting to end of this ability as we are approching the physical limits to how small we can make a transistor.</p>
-<p>Regardless we have reached a point that making cpus operate faster is very hard to do and while we might be able to fit more transitors on the chip we are at the limits of how many we have powered on at the same time (due to energy and heat constraints).  Finally it is also very hard to imagine that we can fit many more “pins” that connect the cpu to the rest of the computer.</p>
-<p>Over the years these effects have resulted in a situation that the performance of the software we write has become more and more dependent on how it interacts with the internal way the extra transistors are used.  For example in a modern processor a large number of transistors are used to form what is called <a class="reference external" href="https://en.wikipedia.org/wiki/CPU_cache">cache</a> memory.  While software can benefit, its performance increases, from caches it is possible to write the same software in different ways that get greater or lesser benefit if you understand how the caches work and the way your software interacts with them.  Similarly today CPU’s often use the extra transistors to create multiple internal sub-CPUs, called <a class="reference external" href="https://en.wikipedia.org/wiki/Multi-core_processor">cores</a>.  A program, however does not automatically benefit from multiple cores unless it is written to explicity exploit them via “parallel threads” of execution.  But to understand how to do this one first needs to understand the classic model by which a single core CPU works and its interaction with memory.</p>
-<p>The bottom line is CPU’s are complex organizations of transistors and as we reach the physical limits to how we traditionaly build them the way software is written and structured becomes more and more important with respect to our ability to get computers to do more.  But the first step to understanding how to do this is understanding the basics of the von Neumann model of software execution that CPUs implement.</p>
+<p>In the <a href="#fig:physcpus">Examples of physical CPUs figure</a>, above, we see photos of some physical cpus along with a “pin out” diagram that describes how to physically connect it to the rest of the computer.  Over the years it is clear that the complexity of CPUs has certainly grown.  In the 1970’s CPUs were composed of thousands of transistors and only required tens of pins to connect to rest of the computer.  By 2021 we see that cpus now contain billions of transistors and require thousands for physical connections to the rest of the system.  We have, in fact, pushed the physical boundaries to the point that it is unclear exactly how we can make more powerful cpus that still preserve a simple programming model. The way software is written and structured becomes more and more important in order to get most out of a computer.  But the first step to understanding how to construct advanced software, is understanding the basics of how the parts of a computer interact to execute software.</p>
+<div style="background-color:powderblue;">  
+<img style="margin: auto 1em auto auto;" align="left" width="60" src="../images/fyi.png">
+While an over-simplification, one of the uses of transistors in a CPU is to create, "switches" that form the logic circuits used to implement basic operations such as adding numbers. In order to make the CPU do these operations faster we need to be able to operate the transistors, turn them on and off, faster and faster.  Unfortunately doing so requires more and more energy and creates more more heat.  As such over the last decade it has become harder and harder to speed up CPUs, given the increase in energy and attendant increase in heat it leads too.   On the other hand we have managed to figure out how to continually shrink the size of transistors.  This has allowed us to pack more and more transistors into CPUs, however some believe that we are getting to end of this ability as we are approaching the physical limits to how small we can make a transistor.</p> 
+<p>Regardless we have reached a point that making cpus operate faster is very hard to do and while we might be able to fit more transistors on the chip we are reaching the limits of how many we have powered on at the same time (due to energy and heat constraints).  Finally it is also very hard to imagine that we can fit many more “pins” that connect the cpu to the rest of the computer.</p>
+<p>Over the years these effects have resulted in a situation that the performance of the software we write has become more and more dependent on how it interacts with the internal way the extra transistors are used.  For example in a modern processor a large number of transistors are used to form what is called <a class="reference external" href="https://en.wikipedia.org/wiki/CPU_cache">cache</a> memory.  While software can benefit, its performance increases, from caches it is possible to write the same software in different ways that get greater or lesser benefit if you understand how the caches work and the way your software interacts with them.  Similarly today CPU’s often use the extra transistors to create multiple internal sub-CPUs, called <a class="reference external" href="https://en.wikipedia.org/wiki/Multi-core_processor">cores</a>.  A program, however does not automatically benefit from multiple cores unless it is written to explicitly exploit them via “parallel threads” of execution.  But to understand how to do this one first needs to understand the classic model by which a single core CPU works and its interaction with memory.</p>
+<p>The bottom line is CPU’s are complex organizations of transistors and we reaching the physical limits to their construction.</p>
 </div>
 <div class="section" id="logically">
 <h3><span class="section-number">8.1.2. </span>Logically<a class="headerlink" href="#logically" title="Permalink to this headline">¶</a></h3>
-<p>So while physical CPU’s have clearly gotten more and more complex their basic role and function as defined by the von Neumann architecture has remained more or less the same.   It is this precise property that makes it possible to learn the basics of how a generic CPU works and understand how software executes on any computer.  As a matter of fact if we consider the line of CPU’s from INTEL software written on a 1970 verions of their products can still be run on the CPU’s they produced in 2021 because at the heart of it the 2021 version still remains consistent with basic model of a computer built around the 1970’s CPU.</p>
-<p>While the physical aspects of a CPU matter there is a logical internal structure and operation that define its programming model and this is what we need to care about so that we can get a precise idea of what it exactly means to execute software and therefore what software is exactly. The CPU has a set of internal components, functions a core “Loop” behaviour that combines its capabilities with the other two components of a computer; Memory and Input/Output (I/O) to execute programs.</p>
-<p>In what remains of this chapter we will build up our understanding of the von Neumann architecture outwards from the internals of the CPU and “The Loop” it implements outwards to the memory and I/O components.</p>
+<p>There is a common “logical” model of operation to von Neumman computers that defines how software execution works and therefore what software is exactly.  Our goal for this chapter is to understand this logical model and not the details of a particular computer.   The CPU’s operation is at the heart of this logical model as it is core to understanding and programming a computer.</p>
+<p>Logically a CPU has:</p>
+<ol class="simple">
+<li><p>A set of internal components</p></li>
+<li><p>Connections to the computers other two main parts – Memory and Input/Output (I/O) devices</p></li>
+<li><p>A core “Loop” that combine and coordinates its internal components with Memory and I/O devices to execute programs.</p></li>
+</ol>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<blockquote>
+<div><p><img style="margin: auto 1em auto auto;" align="left" width="60" src="../images/fyi.png"> <p style="background-color:powderblue;">  It is a common logical model that makes it possible to learn the basics of how a generic CPU works and understand how software executes on any computer.  As a matter of fact if we consider the line of CPU's from INTEL, software written on a 1970 versions of their products can still be run on the CPU's they produced in 2021 because at the heart of it the 2021 version still remains consistent with the basic model of a computer that the 1970's CPU was built around.  Similarly the basic model of programming, and the tools used, are consistent across computers regardless if they based on an old 6502 or a modern X86 or ARM CPU.</p>
+</div></blockquote>
+</div>
+</div>
+<blockquote>
+<div><p><a class="reference internal" href="../_images/commentary.png"><img alt="../_images/commentary.png" class="align-left" src="../_images/commentary.png" style="width: 60px;" /></a> <p style="background-color:powderblue;"> <strong>First Principles</strong>  We are comfortable with the idea of using a first principles understanding of a subject, like mathematics, to be able to reason about new problems we face in that subject with out having to limit ourselves to blind memorization of facts and recipes for doing things. Computing in no different understanding the core ideas of how computers works including a foundation in the theory of computer science can allow you to transcend simply regurgitating snip-its of code you have memorized and truly unleash your ability to creatively build new things.  For that matter it also allows you to gain an intuitive understanding for how things work that enables you to debug and solve problems that others don’t know where to begin with.  Learning the first principles of how computers work is your first steps in becoming a master of the digital universe.</p>
+</div></blockquote>
 </div>
 </div>
 <div class="section" id="visualizing-a-generic-von-neumann-computer">
 <h2><span class="section-number">8.2. </span>Visualizing a generic von Neumann computer<a class="headerlink" href="#visualizing-a-generic-von-neumann-computer" title="Permalink to this headline">¶</a></h2>
-<p>In order to understand a generic model of a von Neumann computer we will use a series of diagrams that progressively visualize the components and show how they interact to execute a program.      To be clear we are using a logical representation that refects a working model that captures the things we need to care about to program a computer and what it execution means.  Each part we introduce while generic maps to things that we will find refected in the “real” computers we will learn to practically program in this section of the book.</p>
-<p>At the end of this chapter we will look at how the SOL6502 simulated computer lets us look at the parts, manipulate them and watch them in action.</p>
+<p>In order to understand a generic model of a von Neumann computer we will use a series of diagrams that progressively visualize the components and show how they interact to execute a program.</p>
+<p>There are many ways that one can “build” a computer around the von Neumann model.  The one we present is designed to make it easy for us to concretely understand the model and make the connections, at least logically, to modern systems.  Each part we introduce corresponds to things that are reflected in the “real” computers.  And perhaps more importantly are necessary to understand in order to program any modern computer.  That being said we also, at this stage avoid, details specific to how modern systems have evolved.  Once one has a good understanding of the basic generic model one can then understand how things have varied over the years.</p>
+<p>At the end of this chapter we use the SOL6502 simulated computer to explore the parts and model in action.</p>
 <div class="section" id="the-cpu">
 <h3><span class="section-number">8.2.1. </span>The CPU<a class="headerlink" href="#the-cpu" title="Permalink to this headline">¶</a></h3>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<!-- produced by: 
+htmlFig("[{'src': '../images/VNA_0.png'}]", 
+        id="fig:vna_0", 
+        align="left", 
+        width="60%",
+        margin="auto 1em 0 auto",
+        caption="Figure: The CPU", 
+        captionalign="left")
+-->
+<table id="fig:vna_0" align="left" width="60%" cellpadding="0" cellspacing="0" border="0" style="border-collapse: collapse; margin: auto 1em 0 auto">
+    <tr style="padding: 0; margin: 0;"> 
+        <td colspan="1" width="100%" style="padding: 0; margin: 0 0 0 0; background-color:inherit;">
+            <div style="padding: 0; margin: 0 0 0 0;">
+              <figure style="padding: 0; margin: 0 0 0 0; width:100%;">
+                   <img src="../images/VNA_0.png" width="100%" style="padding: 0; margin: 0;">
+                </figure>
+            </div>
+        </td>
+    </tr>
+    <caption align="bottom" style="text-align: left; padding: 0; margin: 0;" >
+          <i>Figure: The CPU</i> 
+    </caption>
+</table>
+<p>The cpu is a distinct physical region of the computer. Within it is housed several important parts that we need to understand.</p>
+</div>
+</div>
 </div>
 <div class="section" id="operations">
 <h3><span class="section-number">8.2.2. </span>Operations<a class="headerlink" href="#operations" title="Permalink to this headline">¶</a></h3>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<!-- produced by: 
+htmlFig("[{'src': '../images/VNA_1.png'}]", 
+        id="fig:vna_1", 
+        align="right", 
+        width="60%",
+        margin="auto auto auto auto",
+        caption="Figure: CPU's contain a set of <em>M</em> operations that we will use in our programs. We label each operation with a unique number so that we can identify one from another.", 
+        captionalign="left")
+-->
+<table id="fig:vna_1" align="right" width="60%" cellpadding="0" cellspacing="0" border="0" style="border-collapse: collapse; margin: auto auto auto auto">
+    <tr style="padding: 0; margin: 0;"> 
+        <td colspan="1" width="100%" style="padding: 0; margin: 0 0 0 0; background-color:inherit;">
+            <div style="padding: 0; margin: 0 0 0 0;">
+              <figure style="padding: 0; margin: 0 0 0 0; width:100%;">
+                   <img src="../images/VNA_1.png" width="100%" style="padding: 0; margin: 0;">
+                </figure>
+            </div>
+        </td>
+    </tr>
+    <caption align="bottom" style="text-align: left; padding: 0; margin: 0;" >
+          <i>Figure: CPU's contain a set of <em>M</em> operations that we will use in our programs. We label each operation with a unique number so that we can identify one from another.</i> 
+    </caption>
+</table>
+<p>Within the cpu there are circuits/components that provide a set of operations.  The exact set of
+operations and the number can differ widely between particular CPU brands and models (eg INTEL vs ARM).
+However, commonly we can expect operations that 1) performance arithmetic and logic (eg. adding and
+comparing numbers), 2) move values in and out of the CPU, 3) Control what happens next. Collectivelly
+the ones that perform arithmetic and logic  are often referred to as the Arithmetic Logic Unit (ALU).</p>
+<p>In the diagram we can think of each blue labeled operation box as a unique operation that the CPU supports.
+As an example the box labeled <code class="docutils literal notranslate"><span class="pre">OPERATION</span> <span class="pre">2</span></code> might implement the addition of two input values to produce a single result value.
+The designers of a particular CPU, like INTEL, choose and define the set of operations for their CPUs and must tell us what they are and what they do.</p>
+<p>From our prespective the most important thing, is that the set of operations form the 'built' functions
+that we can use in our programs for the particular cpu we are working with. Given that the
+operations are CPU specific our programs will inherintly be CPU specific.</p>
+</div>
+</div>
 </div>
 <div class="section" id="registers">
 <h3><span class="section-number">8.2.3. </span>Registers<a class="headerlink" href="#registers" title="Permalink to this headline">¶</a></h3>
 <blockquote>
-<div><p>Registers are memory locations within the CPU that are connect to the operation circuits.  Each register has a unique fixed name and a value that can be changed.  Their values can be feed as input to an operation or set as as the output from an operation.   Typically three types categories of registers: 1) General Purpose Registers (GPRS) 2) Special Purpose Registers (SPRS) and 3) Hidden Registers.</p>
+<div><p>Registers are memory locations within the CPU that are connected to the operation circuits.  Each register has a unique fixed name and a value that can be changed.  Their values can be feed as input to an operation or set as as the output from an operation.   Typically three types categories of registers: 1) General Purpose Registers (GPRS) 2) Special Purpose Registers (SPRS) and 3) Hidden Registers.</p>
 </div></blockquote>
 <p>With respect to “normal” programming we largely only need to concern ourselves with the the GPRS and knowing about a couple of standard SPRS. As we will see soon it will also be useful to explicitly introduce at least one of the register that usually hidden from programmers to make understanding execution easier.</p>
 <blockquote>
 <div><p><a class="reference internal" href="../_images/fyi.png"><img alt="../_images/fyi.png" class="align-left" src="../_images/fyi.png" style="width: 40px;" /></a> <p style="background-color:powderblue;">
-What do we mean by “normal” programming?  As we saw in Part I: The UNIX Development Environment software is largley broken down into two parts: 1) application software that runs within processes and 2) a single operating system kernel composed of software that provides all processes with a wide range of special functions.  Most CPU’s provide a special mode of execution for the OS kernel in this mode an expanded set of operations and SPRS are available for use.  As such OS kernel software uses the GPRS, SPRS and the expanded set of operations to implement is routines.  We typically call this mode of operation “Priveliged” and as such we often call the kernel software priveledged code given its expanded access to the hardware resources of the computer and the application or user software as unprivedged.   Many CPUs expand on this idea to provide multiple levels of priviledge which enables a further degree of layering of the systems softwae.  For example may CPUs use extra levels of priviledge to introduction support for a virtual machine monitor (or hypervisor) layer of software that can sit below standard operating system kernels and allow the hardware to be shared by multiple OS’s each thinking they are running on the computer by themselves.</p>
+What do we mean by “normal” programming?  As we saw in Part I: The UNIX Development Environment software is largely broken down into two parts: 1) application software that runs within processes and 2) a single operating system kernel composed of software that provides all processes with a wide range of special functions.  This includes the ability to create processes from an executable file and to share the computer among the processes.  Most CPU’s provide a special mode of execution for the OS kernel.  In this mode an expanded set of operations and SPRS are available for use.  OS kernel software uses the GPRS, SPRS and the expanded set of operations to implement is routines.  We typically call this mode of operation Privileged” and as such we often call the kernel software privileged code.  expanded access to the hardware resources of the computer and the application or user software as unprivileged.   Many CPUs expand on this idea to provide multiple levels of privileged which enables a further degree of layering of the systems software.  For example may CPUs use extra levels of privileged to introduction support for a virtual machine monitor (or hypervisor) layer of software that can sit below standard operating system kernels and allow the hardware to be shared by multiple OS’s each thinking they are running on the computer by themselves.</p>
 </div></blockquote>
+<p>We will visualize registers as boxes within the CPU.  Each box will be broken down so that the name of the register will be on left and the space for the value it contains on the right.</p>
 <div class="section" id="general-purpose-registers-gprs">
 <h4><span class="section-number">8.2.3.1. </span>General Purpose Registers (GPRS)<a class="headerlink" href="#general-purpose-registers-gprs" title="Permalink to this headline">¶</a></h4>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<!-- produced by: 
+htmlFig("[{'src': '../images/VNA_2.png'}]", 
+        id="fig:vna_2", 
+        align="left", 
+        width="60%",
+        margin="auto 1em auto auto",
+        caption="Figure: Geneal purpose registers (GPRS)", 
+        captionalign="left")
+-->
+<table id="fig:vna_2" align="left" width="60%" cellpadding="0" cellspacing="0" border="0" style="border-collapse: collapse; margin: auto 1em auto auto">
+    <tr style="padding: 0; margin: 0;"> 
+        <td colspan="1" width="100%" style="padding: 0; margin: 0 0 0 0; background-color:inherit;">
+            <div style="padding: 0; margin: 0 0 0 0;">
+              <figure style="padding: 0; margin: 0 0 0 0; width:100%;">
+                   <img src="../images/VNA_2.png" width="100%" style="padding: 0; margin: 0;">
+                </figure>
+            </div>
+        </td>
+    </tr>
+    <caption align="bottom" style="text-align: left; padding: 0; margin: 0;" >
+          <i>Figure: Geneal purpose registers (GPRS)</i> 
+    </caption>
+</table>
+<p>The general purpose registers provide us with a place to store input and output values for operations we want
+to conduct.  In general the number of GPRS is small, often less than 50.  In later chapters we will go into
+more detail on how values are represented in registers.  For the moment it is sufficient to think of them as
+generic places to hold the values that we want to immediately work with in our code using the built in operations
+of the CPU.</p>
+<p>A typical thing we might want to do is use an <code class="docutils literal notranslate"><span class="pre">add</span></code> operation to add the current values in two of the GPRS replacing
+the existing value of one of them with the result.  For example given our diagram so far one would expect there to
+be a way to have <code class="docutils literal notranslate"><span class="pre">OPERATION</span> <span class="pre">2</span></code>, which we will assume to implement addition, take its input values from <code class="docutils literal notranslate"><span class="pre">R0</span></code> and <code class="docutils literal notranslate"><span class="pre">R2</span></code> and
+place the output result back in <code class="docutils literal notranslate"><span class="pre">R2</span></code>.</p>
+<p>Given that there are a small number of GPRS it will be our responsibility to use them wisely and organize what
+values of our program are stored in which GPRS at any given time.   Furthermore,  it will be our job to move values in and out of them to
+deal with the fact that we have so few.  CPUs have operations dedicated to transferring values between the GPRS.<br />
+For example, given our illustration, one expects there to be an operation that would allow us to transfer the
+current value of <code class="docutils literal notranslate"><span class="pre">R2</span></code> to <code class="docutils literal notranslate"><span class="pre">R4</span></code>, replacing <code class="docutils literal notranslate"><span class="pre">R4</span></code> existing value.  Such register to register tansfer operations permit
+all such combinations of GPR transfers.   Additionally there will be operations for moving values between
+locations outside of the CPU and the GPRS.  But more on this when we add connections from the CPU to Memory.</p>
+</div>
+</div>
 </div>
 <div class="section" id="instruction-register-ir">
 <h4><span class="section-number">8.2.3.2. </span>Instruction Register (IR)<a class="headerlink" href="#instruction-register-ir" title="Permalink to this headline">¶</a></h4>
-<div class="section" id="opcode">
-<h5><span class="section-number">8.2.3.2.1. </span>OPCODE<a class="headerlink" href="#opcode" title="Permalink to this headline">¶</a></h5>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<!-- produced by: 
+htmlFig("[{'src': '../images/VNA_3.png'}]", 
+        id="fig:vna_3", 
+        align="right", 
+        width="60%",
+        margin="auto auto auto 1em",
+        caption="Figure: Instruction Register: A internal hidden register that we introduce to help us understand how a CPU works internally.", 
+        captionalign="left")
+-->
+<table id="fig:vna_3" align="right" width="60%" cellpadding="0" cellspacing="0" border="0" style="border-collapse: collapse; margin: auto auto auto 1em">
+    <tr style="padding: 0; margin: 0;"> 
+        <td colspan="1" width="100%" style="padding: 0; margin: 0 0 0 0; background-color:inherit;">
+            <div style="padding: 0; margin: 0 0 0 0;">
+              <figure style="padding: 0; margin: 0 0 0 0; width:100%;">
+                   <img src="../images/VNA_3.png" width="100%" style="padding: 0; margin: 0;">
+                </figure>
+            </div>
+        </td>
+    </tr>
+    <caption align="bottom" style="text-align: left; padding: 0; margin: 0;" >
+          <i>Figure: Instruction Register: A internal hidden register that we introduce to help us understand how a CPU works internally.</i> 
+    </caption>
+</table>
+<p>Built into the CPU is an encoding that allows us to use numeric values to indicate what
+operation we want done and how to configure which registers the inputs should come from and where any
+outputs it might produce should go.  We call such values <strong>Opcodes</strong>.  Given how the CPU Loop works, as we will see soon,
+as programmers it is not actually necessary for us to know how and where the opcode  we want the CPU to execute is stored
+within the CPU. As such this detail is generally hidden from us by the manufacturer.  However, in order for us to gain
+a concrete working understanding it is worth explicitly introducing a special purpose register which we will call
+the Instruction Register (IR). Our model of the CPU will use the IR to store the opcode that we want the CPU to execute.
+Again while modern CPUs do not necessarly document the IR in their programming manuals, also called their
+Instruction Set Archiecture (ISA) manuals, they internally will have something that serves this purpose.</p>
 <blockquote>
-<div><p>An OPCODE is an encoded value that identifies a particular operation and where it inputs come from and if output that is created should go too.  Inputs to an operation are typically called <strong>Operands</strong>.</p>
+<div><p><strong>Instruction Set Architecture (ISA)</strong>: This is the term used by CPU manufactures to referred to the details of their
+specific CPUS that a programmer needs to know about to write code and implement tools for computers that use their CPUS.</p>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="opcode-and-operands">
+<h5><span class="section-number">8.2.3.2.1. </span>OPCODE and OPERANDS<a class="headerlink" href="#opcode-and-operands" title="Permalink to this headline">¶</a></h5>
+<blockquote>
+<div><p>An <strong>Opcode</strong> is an encoded value that identifies a particular operation and where it inputs come from and if output that is created should go too.  Inputs to an operation are typically called <strong>Operands</strong>.  You will often find that the term <strong>instruction</strong> and opcode will be used interchangeably.  For historical reason one is used in some context versus the other.</p>
 </div></blockquote>
 </div>
 </div>
 <div class="section" id="program-counter-pc">
 <h4><span class="section-number">8.2.3.3. </span>Program Counter (PC)<a class="headerlink" href="#program-counter-pc" title="Permalink to this headline">¶</a></h4>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<!-- produced by: 
+htmlFig("[{'src': '../images/VNA_4.png'}]", 
+        id="fig:vna_4", 
+        align="left", 
+        width="60%",
+        margin="auto 1em auto auto",
+        caption="Figure: Program Counter (PC) Register: A Special Purpose Reister (also called the Instruction Pointer (IP) Register", 
+        captionalign="left")
+-->
+<table id="fig:vna_4" align="left" width="60%" cellpadding="0" cellspacing="0" border="0" style="border-collapse: collapse; margin: auto 1em auto auto">
+    <tr style="padding: 0; margin: 0;"> 
+        <td colspan="1" width="100%" style="padding: 0; margin: 0 0 0 0; background-color:inherit;">
+            <div style="padding: 0; margin: 0 0 0 0;">
+              <figure style="padding: 0; margin: 0 0 0 0; width:100%;">
+                   <img src="../images/VNA_4.png" width="100%" style="padding: 0; margin: 0;">
+                </figure>
+            </div>
+        </td>
+    </tr>
+    <caption align="bottom" style="text-align: left; padding: 0; margin: 0;" >
+          <i>Figure: Program Counter (PC) Register: A Special Purpose Reister (also called the Instruction Pointer (IP) Register</i> 
+    </caption>
+</table>
+<p>CPUs have a special purpose register that indicates where in memory the opcode that we want executed is located.  This register is typically called either the Program Counter (PC) or Instruction Pointer (IR).
+This register is only used for this purpose and unlike GPRS cannot be used to store arbitrary inputs or outputs of operations.
+Rather its value is only treated like an Memory Address.  Where an Address is a number that indicates a postion in the Memory array that is external to the CPU.
+As we will see, the value in the PC is used to load the IR with the opcodes of our program.</p>
+</div>
+</div>
+<p><a id="#MEM_sec"></a></p>
 </div>
 </div>
 </div>
-<div class="section" id="the-loop-program-execution">
-<h2><span class="section-number">8.3. </span>The Loop – Program Execution<a class="headerlink" href="#the-loop-program-execution" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="memory">
+<h2><span class="section-number">8.3. </span>Memory<a class="headerlink" href="#memory" title="Permalink to this headline">¶</a></h2>
+<div class="cell tag_popout tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<!-- produced by: 
+htmlFig("[{'src': '../images/edvacextract.png'}]", 
+        id="fig:vnm", 
+        align="center", 
+        width="100%",
+        margin="auto auto auto auto",
+        caption="<center>Figure: Extract form EDVAC Report discussing Memory and its role.</center>", 
+        captionalign="left")
+-->
+<table id="fig:vnm" align="center" width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse: collapse; margin: auto auto auto auto">
+    <tr style="padding: 0; margin: 0;"> 
+        <td colspan="1" width="100%" style="padding: 0; margin: 0 0 0 0; background-color:inherit;">
+            <div style="padding: 0; margin: 0 0 0 0;">
+              <figure style="padding: 0; margin: 0 0 0 0; width:100%;">
+                   <img src="../images/edvacextract.png" width="100%" style="padding: 0; margin: 0;">
+                </figure>
+            </div>
+        </td>
+    </tr>
+    <caption align="bottom" style="text-align: left; padding: 0; margin: 0;" >
+          <i><center>Figure: Extract form EDVAC Report discussing Memory and its role.</center></i> 
+    </caption>
+</table>
+</div>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<!-- produced by: 
+htmlFig("[{'src': '../images/VNA_5.png'}]", 
+        id="fig:vna_5", 
+        align="left", 
+        width="60%",
+        margin="auto 1em auto auto",
+        caption="Figure: CPU Connected to a large array of external memory", 
+        captionalign="left")
+-->
+<table id="fig:vna_5" align="left" width="60%" cellpadding="0" cellspacing="0" border="0" style="border-collapse: collapse; margin: auto 1em auto auto">
+    <tr style="padding: 0; margin: 0;"> 
+        <td colspan="1" width="100%" style="padding: 0; margin: 0 0 0 0; background-color:inherit;">
+            <div style="padding: 0; margin: 0 0 0 0;">
+              <figure style="padding: 0; margin: 0 0 0 0; width:100%;">
+                   <img src="../images/VNA_5.png" width="100%" style="padding: 0; margin: 0;">
+                </figure>
+            </div>
+        </td>
+    </tr>
+    <caption align="bottom" style="text-align: left; padding: 0; margin: 0;" >
+          <i>Figure: CPU Connected to a large array of external memory</i> 
+    </caption>
+</table>
+<p>While the CPU is the central part of the computer that has the ability to do operations it
+is limited in the number of regiters it has and further we have no direct way of placing values
+into the CPU's register.  This is the core role that the memory of a computer serves.</p>
+<p><strong>Memory</strong> is a large collection of devices, external to the CPU that can store values.  The devices are organized into an array in which each devices
+has a unique numeric index called its address.  The memory
+of a modern computer is on the order of $10^9$ locations. The CPU has sets of wires, called the Memory Bus,
+that physically allow the values from the memory devices to be electrically transfer between the registers of the CPU and the locations in memory
+and vicersa.  The memory Bus is broken down into to an Address Bus and a Data Bus.  The CPU uses its connection
+to the address bus to place a value that is interpreted by the Memory controlling hardware as the address of where in memory
+the transfer should happen.  For example by placing $5$ on the address bus the CPU is activating the memory devices at address $5$.
+The Data Bus is used to communicate the value that the CPU wants to send, write, to the address it has activated via the address bus or that the memory at
+the activated address is to sent to the CPU (read).</p>
+<p>The act of transferring values on the Memory Bus is called a <strong>Bus Transaction</strong>. And as we have seen there are two types
+A Write transaction and a Read transaction.  Writes are also some times referred to as Stores and Reads as Loads.</p>
+<p>The set of memory devices connected to the address bus is also some times called &quot;main&quot; memory to distinguish it from
+other types of devices on the computer that can store values.  Typically there are three defining features of memory in addition
+to there being a large number of them:</p>
+<ol class="simple">
+<li><p>The CPU has direct access to them via the Memory Bus</p></li>
+<li><p>The majority are <strong>Volatile</strong>.  They consume electricity to maintain their values and if the computer is turned off
+or if it's battery dies it's values will be lost.  Typically when first turned on such devices will have random values in them.</p></li>
+<li><p>Compared to other types of memory they are fast with respect to the time it takes the CPU to communicate values with them.</p></li>
+</ol>
+<p>Like the GPRS as a programmer it is our responsibility to organize and manage where and what values are placed in memory.
+Memory is like a big blank sheet of paper on which we organize our work interms of values that encode the various aspects
+of our program; Opcodes and Data. This last aspect will make more sense when we look at how program execution works next.
+Many of the tools like programming languages and operating systems are precisely there to help us with the tasks of
+expressing, organizing and loading our program as values into memory.</p>
+<blockquote>
+<div><p>It is important to remember, to make use of a value in memory it must be transfered into the CPU,
+similarly updated values must be transfer back from CPU registers to memory.</p>
+</div></blockquote>
+</div>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<blockquote>
+<div><p><img style="display: inline; margin: 1em 1em auto auto;" align="left" width="40px" src="../images/fyi.png"> <p style="background-color:powderblue;">  When we buy personal computing devices such as laptops and phones a key feature of them is how much main memory they have.  But sometimes you really have to pay attention to figure it out.  Main memory will often be referred to as RAM (Random Access Memory) the other types of memory that are not directly connected to the CPU will often be referred to as Storage.  While these types of devices permit you to store data on your phone the CPU cannot use them directly to run you programs.</p>
+</div></blockquote>
+</div>
+</div>
+</div>
+<div class="section" id="program-execution">
+<h2><span class="section-number">8.4. </span>Program Execution<a class="headerlink" href="#program-execution" title="Permalink to this headline">¶</a></h2>
+<p>Now that we have introduced a set of components, and their organization, we can move on to use them to illustrate and understand what it means to execute a program.</p>
+<div class="section" id="setup">
+<h3><span class="section-number">8.4.1. </span>Setup:<a class="headerlink" href="#setup" title="Permalink to this headline">¶</a></h3>
+<p>There are two steps that we must perform before we can have the computer execute our program: 1) we must load the values that make up our program into memory and 2) we must minimally initialize the CPU’s PC register.</p>
+<div class="section" id="program-values-in-memory">
+<h4><span class="section-number">8.4.1.1. </span>Program: Values in Memory<a class="headerlink" href="#program-values-in-memory" title="Permalink to this headline">¶</a></h4>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<!-- produced by: 
+htmlFig("[{'src': '../images/VNA_6.png'}]", 
+        id="fig:vna_6", 
+        align="right", 
+        width="60%",
+        margin="auto auto auto 1em",
+        caption="Figure: A Program is a collection of values in Memeory", 
+        captionalign="left")
+-->
+<table id="fig:vna_6" align="right" width="60%" cellpadding="0" cellspacing="0" border="0" style="border-collapse: collapse; margin: auto auto auto 1em">
+    <tr style="padding: 0; margin: 0;"> 
+        <td colspan="1" width="100%" style="padding: 0; margin: 0 0 0 0; background-color:inherit;">
+            <div style="padding: 0; margin: 0 0 0 0;">
+              <figure style="padding: 0; margin: 0 0 0 0; width:100%;">
+                   <img src="../images/VNA_6.png" width="100%" style="padding: 0; margin: 0;">
+                </figure>
+            </div>
+        </td>
+    </tr>
+    <caption align="bottom" style="text-align: left; padding: 0; margin: 0;" >
+          <i>Figure: A Program is a collection of values in Memeory</i> 
+    </caption>
+</table>
+<p>To program we must first studied the opcodes of our computer's CPU.  We then must pick an address in memory where the opode values
+of our program will be loaded and then write our program as opcodes at that location (we will discuss data values later).
+The figure to the right illustrates a simplified example fragment of a program made up of three values that have been
+loaded into memory starting at address $5$.  In this simple example we will assume that the first value $146$
+encodes the addition of the current values in <code class="docutils literal notranslate"><span class="pre">R0</span></code> and <code class="docutils literal notranslate"><span class="pre">R2</span></code> with the result being placed back in <code class="docutils literal notranslate"><span class="pre">R2</span></code>.  And that
+the values <code class="docutils literal notranslate"><span class="pre">36</span></code> and <code class="docutils literal notranslate"><span class="pre">1</span></code> together encode storing the value in <code class="docutils literal notranslate"><span class="pre">R2</span></code> to memory at address $1$.</p>
+<p>Of course a real program would be composed of many more memory values and we to be sensible we would have
+first transferred useful values into <code class="docutils literal notranslate"><span class="pre">R0</span></code> and <code class="docutils literal notranslate"><span class="pre">R2</span></code>.  But once we understand the basics of
+how execution of a single instruction works and how we move on to the next one there is very little more to undertand.
+At that point extending this program is nothing harder than loading more values into memory.</p>
+</div>
+</div>
+</div>
+<div class="section" id="initialize-the-pc-to-location-of-first-instruction">
+<h4><span class="section-number">8.4.1.2. </span>Initialize the PC to location of first instruction<a class="headerlink" href="#initialize-the-pc-to-location-of-first-instruction" title="Permalink to this headline">¶</a></h4>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<!-- produced by: 
+htmlFig("[{'src': '../images/VNA_7.png'}]", 
+        id="fig:vna_7", 
+        align="left", 
+        width="60%",
+        margin="auto 1em auto auto",
+        caption="Figure: PC Initialized to location of first instruction of Program", 
+        captionalign="left")
+-->
+<table id="fig:vna_7" align="left" width="60%" cellpadding="0" cellspacing="0" border="0" style="border-collapse: collapse; margin: auto 1em auto auto">
+    <tr style="padding: 0; margin: 0;"> 
+        <td colspan="1" width="100%" style="padding: 0; margin: 0 0 0 0; background-color:inherit;">
+            <div style="padding: 0; margin: 0 0 0 0;">
+              <figure style="padding: 0; margin: 0 0 0 0; width:100%;">
+                   <img src="../images/VNA_7.png" width="100%" style="padding: 0; margin: 0;">
+                </figure>
+            </div>
+        </td>
+    </tr>
+    <caption align="bottom" style="text-align: left; padding: 0; margin: 0;" >
+          <i>Figure: PC Initialized to location of first instruction of Program</i> 
+    </caption>
+</table>
+<p>Before we can start the process of execution we must initialize the PC to the address in memory of where
+we want it to start executing.  There are several ways to do this. When
+we are using an operating system this is taken care of for us by the OS when it loads our program (we will examine this process
+in later chapters). For the moment we will assume we have the magical abillity to reach into the CPU and set the PC to
+a value.  In our example we see that we have set the PC to address 5 which is where we loaded our code.
+At the end of this chapter when we use the SOL6502 to explore program execution we will use the ability it gives us,
+as a teaching computer, do precisly this -- directly set the PC value.  It is worth noting one can also have this
+magical ability on a real computer when using <a href="./Debuggers">machine level debugger</a>.  Finally, when
+working with the hardware directly, before an OS is started or if you are not using one, the CPU provides a <a href="#POR">Reset</a>
+sequence to help with initializing the PC (and other CPU registers).</p>
+</div>
+</div>
+</div>
+<div class="section" id="categorizing-values-and-their-interpretation">
+<h4><span class="section-number">8.4.1.3. </span>Categorizing values and their Interpretation<a class="headerlink" href="#categorizing-values-and-their-interpretation" title="Permalink to this headline">¶</a></h4>
+<p>Staying organized is very important when programming at this level.  To help we have
+some standard conventions for referring to the two main categories of values we load into memory to form our programs.</p>
+<div class="section" id="text">
+<h5><span class="section-number">8.4.1.3.1. </span>Text<a class="headerlink" href="#text" title="Permalink to this headline">¶</a></h5>
+<p>Sets of values to be loaded into memory that encode opcodes and their operands for the cpu to execute are called <strong>text</strong>.  We call areas of memory in which we load text values <strong>executable</strong>.</p>
+</div>
+<div class="section" id="data">
+<h5><span class="section-number">8.4.1.3.2. </span>Data<a class="headerlink" href="#data" title="Permalink to this headline">¶</a></h5>
+<p>Sets of values to be loaded into memory that purely encode various forms of data that we want our program to operate on, such as numbers of various types or ASCII strings, we unsurprising collectively call <strong>data</strong>.  The main distinction is that as a programmer we don’t intend for these values to be treated as opcodes and thus executed.  By forming this distinction the tools we use can try and help us catch bugs in our program which lead it to accidentally attempting to execute values from areas of memory that contain data.  See the <a href="#INTERP_sec">Challenges of Interpretation</a> for a more general discussion.</p>
+</div>
+</div>
+</div>
+<div class="section" id="the-loop">
+<h3><span class="section-number">8.4.2. </span>The Loop<a class="headerlink" href="#the-loop" title="Permalink to this headline">¶</a></h3>
+<p>At the heart of the CPU is a built in infinite loop that coordinates the parts of the CPU and memory to enable program execution, the successive execution of instructions.  The following Figure, <a href="#fig:theLoop">The Loop</a> has extracts from early processor manuals that describe at a high level this loop.  Our generic CPU breaks this down into three distinct internal phases:</p>
+<ol class="simple">
+<li><p>Fetch</p></li>
+<li><p>Decode</p></li>
+<li><p>Execute</p></li>
+</ol>
+<p>We do this so that we can have a clear understanding of what a von Neumann CPU must do to execute a program.  The internals operation of modern CPU’s have evolved <a href="#MODERNVNAEXT_sec">extensions</a> to improve performance but regardless they generally maintain this same basic view of execution.  This allows programmers to start with this basic view to both understand how software works and to understand the purpose of the extensions and how to write code that is exploits them.</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<!-- produced by: 
+htmlFig("[{'src': '../images/ASSEMBLY-VNA-THECPU/ASSEMBLY-VNA-THECPU.018.png'}]", 
+        id="fig:theloop", 
+        align="center", 
+        width="80%",
+        margin="auto auto auto auto",
+        caption="Figure: The Loop: Descriptions from the 6502 and 8086 manuals of their execution loop.", 
+        captionalign="left")
+-->
+<table id="fig:theloop" align="center" width="80%" cellpadding="0" cellspacing="0" border="0" style="border-collapse: collapse; margin: auto auto auto auto">
+    <tr style="padding: 0; margin: 0;"> 
+        <td colspan="1" width="100%" style="padding: 0; margin: 0 0 0 0; background-color:inherit;">
+            <div style="padding: 0; margin: 0 0 0 0;">
+              <figure style="padding: 0; margin: 0 0 0 0; width:100%;">
+                   <img src="../images/ASSEMBLY-VNA-THECPU/ASSEMBLY-VNA-THECPU.018.png" width="100%" style="padding: 0; margin: 0;">
+                </figure>
+            </div>
+        </td>
+    </tr>
+    <caption align="bottom" style="text-align: left; padding: 0; margin: 0;" >
+          <i>Figure: The Loop: Descriptions from the 6502 and 8086 manuals of their execution loop.</i> 
+    </caption>
+</table>
+</div>
+</div>
+</div>
+<div class="section" id="step-1-fetch-opcode">
+<h3><span class="section-number">8.4.3. </span>Step 1: Fetch Opcode<a class="headerlink" href="#step-1-fetch-opcode" title="Permalink to this headline">¶</a></h3>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<!-- produced by: 
+htmlFig("[{'src': '../images/VNA_8.png'}]", 
+        id="fig:vna_8", 
+        align="right", 
+        width="60%",
+        margin="auto auto auto auto",
+        caption="Figure: First step of exection loop is to fetch the value at the location pointed to by the PC", 
+        captionalign="left")
+-->
+<table id="fig:vna_8" align="right" width="60%" cellpadding="0" cellspacing="0" border="0" style="border-collapse: collapse; margin: auto auto auto auto">
+    <tr style="padding: 0; margin: 0;"> 
+        <td colspan="1" width="100%" style="padding: 0; margin: 0 0 0 0; background-color:inherit;">
+            <div style="padding: 0; margin: 0 0 0 0;">
+              <figure style="padding: 0; margin: 0 0 0 0; width:100%;">
+                   <img src="../images/VNA_8.png" width="100%" style="padding: 0; margin: 0;">
+                </figure>
+            </div>
+        </td>
+    </tr>
+    <caption align="bottom" style="text-align: left; padding: 0; margin: 0;" >
+          <i>Figure: First step of exection loop is to fetch the value at the location pointed to by the PC</i> 
+    </caption>
+</table>
+<p><strong>Fetch</strong>: The step of the CPU program execution loop is the act doing a read bus transation to the address &quot;pointed&quot; to by the PC to load the IR with
+the value there so that it can be executed.  When we interpret a number as a memory address we often say that the value &quot;points&quot; to then value in
+memory at that address.  This is why some manufactures call the PC register an Instruction Pointer (IP) Register.</p>
+<p>In our example this means that the CPU places the address value contained in the PC ($5$) onto the address bus and the memory
+reponds by placing the value at that address onto the data bus ($146$) .  When the CPU receives the value it internally routes the
+value into the IR.</p>
+</div>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<blockquote>
+<div><p><img style="display: inline; margin: 1em 1em auto auto;" align="left" width="40px" src="../images/fyi.png"> <p style="background-color:powderblue;"> Generally speaking the number of values,
+measured in <a href="../assembly/InfoRepl#THEBYTE_sec">bytes</a>, that encode
+instructions (opcodes) vary widely depending on the design of the CPU. As a matter of fact this is one of the things that distinctly distinguishes the INTEL instruction set from the ARM instruction set.  The length of an INTEL instruction are variable with some encoded in as few as a single byte while others can require fifteen. In contrast the ARM arch64 instruction set uses a fixed length encoding of four bytes for all instructions.  The 6502 instructions require either one, two or three bytes.
+Instruction sets like INTEL are called complex instruction set computers (CISC), both because of the complexity of
+the instruction encodings and the rich and high-level nature of operations they provide.  Where as ARM like instruction sets are called Reduced Instruction Set Computers (RISC),
+both due to the fixed and simple nature of the encoding and the realatively simple nature of the operations they provide.</p>
+</div></blockquote>
+</div>
+</div>
+</div>
+<div class="section" id="step-2-decode">
+<h3><span class="section-number">8.4.4. </span>Step 2: Decode<a class="headerlink" href="#step-2-decode" title="Permalink to this headline">¶</a></h3>
+<p>Certain things happen in the decode phase: 1) Identify which operation is to be executed 2) determine where the inputs are coming from (getting them from memory if needed) and 3) setting up where the output will go.  The parts of the CPU that do the setup is often called the control plane/path of the CPU.  We are not particularly concerned with details of how this is implemented in the CPU what we care about is have a concrete knowledge of how an opcode is interpreted – decoded. As such we artificially break it down into decoding down into three distinct steps for clarity.</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<!-- produced by: 
+htmlFig("[{'src': '../images/VNA_9.png'}]", 
+        id="fig:vna_9", 
+        align="left", 
+        width="60%",
+        margin="auto 1em auto auto",
+        caption="Figure: By examining the opcode the CPU identifies and configures the correct operation unit.", 
+        captionalign="left")
+-->
+<table id="fig:vna_9" align="left" width="60%" cellpadding="0" cellspacing="0" border="0" style="border-collapse: collapse; margin: auto 1em auto auto">
+    <tr style="padding: 0; margin: 0;"> 
+        <td colspan="1" width="100%" style="padding: 0; margin: 0 0 0 0; background-color:inherit;">
+            <div style="padding: 0; margin: 0 0 0 0;">
+              <figure style="padding: 0; margin: 0 0 0 0; width:100%;">
+                   <img src="../images/VNA_9.png" width="100%" style="padding: 0; margin: 0;">
+                </figure>
+            </div>
+        </td>
+    </tr>
+    <caption align="bottom" style="text-align: left; padding: 0; margin: 0;" >
+          <i>Figure: By examining the opcode the CPU identifies and configures the correct operation unit.</i> 
+    </caption>
+</table>
+<p>Perhaps the obvious thing that needs to be done is to identify which internal operation unit
+is required to do the work encoded in the opcode.  In our example our CPU is built to interpret the opcode
+value of $146$ as targeting <code class="docutils literal notranslate"><span class="pre">OPERATION</span> <span class="pre">2</span></code>.  To be concrete and consistent with our example, we define <code class="docutils literal notranslate"><span class="pre">OPERATION</span> <span class="pre">2</span></code> to
+implement addition.  That is to say it take in two values as inputs and produces the sum as output. In a real CPU the operations
+and what are called funtional units (the components that do the work) may not have such a simple one to one relationship and the setting
+up of which functional units need to be used to conduct the operation could be much more subtle and complex.</p>
+</div>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<!-- produced by: 
+htmlFig("[{'src': '../images/VNA_10.png'}]", 
+        id="fig:vna_9", 
+        align="right", 
+        width="60%",
+        margin="auto auto auto auto",
+        caption="Figure: The opcode includes the information that allows the CPU to route the inputs and outputs specified to the operation unit.", 
+        captionalign="left")
+-->
+<table id="fig:vna_9" align="right" width="60%" cellpadding="0" cellspacing="0" border="0" style="border-collapse: collapse; margin: auto auto auto auto">
+    <tr style="padding: 0; margin: 0;"> 
+        <td colspan="1" width="100%" style="padding: 0; margin: 0 0 0 0; background-color:inherit;">
+            <div style="padding: 0; margin: 0 0 0 0;">
+              <figure style="padding: 0; margin: 0 0 0 0; width:100%;">
+                   <img src="../images/VNA_10.png" width="100%" style="padding: 0; margin: 0;">
+                </figure>
+            </div>
+        </td>
+    </tr>
+    <caption align="bottom" style="text-align: left; padding: 0; margin: 0;" >
+          <i>Figure: The opcode includes the information that allows the CPU to route the inputs and outputs specified to the operation unit.</i> 
+    </caption>
+</table>
+<p>In addition to which operation is to be executed the opcode also encodes where the input operands,
+if any are required for the particualr operation must come from and where any outputs should be written too.  In our example, the opcode $146$ identifies that the two values for the addition
+should explicitly come from <code class="docutils literal notranslate"><span class="pre">R0</span></code> and <code class="docutils literal notranslate"><span class="pre">R2</span></code>.  We visualize this as the control path of the CPU configuring the operation unit, <code class="docutils literal notranslate"><span class="pre">OPERATION</span> <span class="pre">2</span></code>, to
+receive its inputs fom the two specified GPRS.</p>
+</div>
+</div>
+<div class="section" id="addressing-modes">
+<h4><span class="section-number">8.4.4.1. </span>Addressing Modes<a class="headerlink" href="#addressing-modes" title="Permalink to this headline">¶</a></h4>
+<p>More generally, most CPUS support several ways of specifying where the operands for an operation can come from.  These are called <strong>addressing
+modes</strong>.  In the example, since all the operands, specified by the opcode <span class="math notranslate nohighlight">\(146\)</span> are in GPRS this might be called <em>Register</em> address modes.  Depending on the
+CPU opcodes can encode many other variants, examples include:</p>
+<ol class="simple">
+<li><p><em>Implied</em>: no operands are required or the operands come from a fixed set of register (eg. an instruction might implicity use the value in the PC as an operand)</p></li>
+<li><p><em>Memory</em>: an operand is located in memory and additional memory bus transactions will be nececessary prior to executing the operations (there are usually several memory addressing modes)</p></li>
+</ol>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div style="background-color:powderblue;">
+<img style="display: inline; margin: 1em 1em auto auto;" align="left" width="40px" src="../images/fyi.png">
+<b>Memory Addressing Modes</b>
+It is the second case of address modes, where an operand is located in memory, that adds much of the power and complexity to assembly programming.
+We will explore memory addressing modes in more detail in subsequent chapters.  For the moment there two things to note:
+<ol>
+<li> If an operand value is in memory we will need to have a way of figuring out its address (often called the operands <b>Effective Address</b>). As such there can be several address modes 
+that support various ways of calculating the effective address.  There is no standard set of addressing modes rather each CPU will define their own.  That begin said
+most CPUs provide some varation of at least the following:
+    <ol>
+    <li><em>Immediate</em>: the effective address of the operand is the next locations after the first values of the opcode.  In other works the operand value is encoded in the instruction values in memory.
+    <li><em>Absolute</em>: the effective address is encoded in bytes of the opcode.  This is the case in the second instruction of our example.  
+    Address 6 and 7 encode the store of the value of R2 into the memory location 1.  In this case the opcode 36 encodes a store of the value 
+    in GPR R2 to the address who's value is stored in the second value of the instruction, address 7.
+    Given that the value at address 7 is 1 we know that the effective address of the store is the location 1.  
+    <li><em>Register Indirect</em>: the effective address is calculated using values in one ore more registers.  Eg. The effective address is the sum of the value in R3 and R4.
+    </ol>
+<li> Additional memory bus transtations will be required get the needed values from memory.
+</ol>
+<div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="execute-conduct-the-operation-and-update-the-pc">
+<h3><span class="section-number">8.4.5. </span>Execute : Conduct the operation and update the PC<a class="headerlink" href="#execute-conduct-the-operation-and-update-the-pc" title="Permalink to this headline">¶</a></h3>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<!-- produced by: 
+htmlFig("[{'src': '../images/VNA_11.png'}]", 
+        id="fig:vna_11", 
+        align="left", 
+        width="60%",
+        margin="auto 1em auto auto",
+        caption="Figure: First step of exection loop is to fetch the value at the location pointed to by the PC", 
+        captionalign="left")
+-->
+<table id="fig:vna_11" align="left" width="60%" cellpadding="0" cellspacing="0" border="0" style="border-collapse: collapse; margin: auto 1em auto auto">
+    <tr style="padding: 0; margin: 0;"> 
+        <td colspan="1" width="100%" style="padding: 0; margin: 0 0 0 0; background-color:inherit;">
+            <div style="padding: 0; margin: 0 0 0 0;">
+              <figure style="padding: 0; margin: 0 0 0 0; width:100%;">
+                   <img src="../images/VNA_11.png" width="100%" style="padding: 0; margin: 0;">
+                </figure>
+            </div>
+        </td>
+    </tr>
+    <caption align="bottom" style="text-align: left; padding: 0; margin: 0;" >
+          <i>Figure: First step of exection loop is to fetch the value at the location pointed to by the PC</i> 
+    </caption>
+</table>
+<p>Once the opcode has been decoded and if any additional memory bus transactions where required to fetch operand values from memory have completed, the operation unit is activated.<br />
+The activated unit performs is function and the specified output locations are updated.   In our figure we visualize this with the operation unit being coloured yellow and the upated value in <code class="docutils literal notranslate"><span class="pre">R2</span></code>.
+Once the operation unit is done it is deactivated but any values updated will of course remain.</p>
+</div>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<!-- produced by: 
+htmlFig("[{'src': '../images/VNA_12.png'}]", 
+        id="fig:vna_12", 
+        align="right", 
+        width="60%",
+        margin="auto auto auto auto",
+        caption="Figure: Once decoded and any additional memory bus transactions have completed to fetch necessary operand values the operation unit is activated and the function it implements is 'Executed'.", 
+        captionalign="left")
+-->
+<table id="fig:vna_12" align="right" width="60%" cellpadding="0" cellspacing="0" border="0" style="border-collapse: collapse; margin: auto auto auto auto">
+    <tr style="padding: 0; margin: 0;"> 
+        <td colspan="1" width="100%" style="padding: 0; margin: 0 0 0 0; background-color:inherit;">
+            <div style="padding: 0; margin: 0 0 0 0;">
+              <figure style="padding: 0; margin: 0 0 0 0; width:100%;">
+                   <img src="../images/VNA_12.png" width="100%" style="padding: 0; margin: 0;">
+                </figure>
+            </div>
+        </td>
+    </tr>
+    <caption align="bottom" style="text-align: left; padding: 0; margin: 0;" >
+          <i>Figure: Once decoded and any additional memory bus transactions have completed to fetch necessary operand values the operation unit is activated and the function it implements is 'Executed'.</i> 
+    </caption>
+</table>
+<p>Additionally, unless the operation explictly set the PC to a new value the PC will be incremented
+by the number of values that encoded the current instrution.  In our diagram, given that the first
+instruction only took one value to encode, the PC is incremented by one.  It now contains the value $6$ which
+is the address where the next instruction in our program is encoded.</p>
+<p>The exact point at which the PC is updated varies from CPU to CPU but what is critical is that it is done before the current execution loop
+iteration is considered completed.</p>
+<p>All CPUs contain a special category of &quot;control flow&quot; operations (<em>jumps</em>, <em>branchs</em>, <em>calls</em>) that will override the default update of the PC
+so that the program can force the PC to a programmer specified value.   This allows the programmer to have the control to redirect execution to an alternative
+address where they have placed opcodes.  This ability is the core that we use to implement high level programming ideas like <em>loops</em>, <em>if</em> statements,
+<em>switches</em> and <em>functions</em>.</p>
+</div>
+</div>
+</div>
+<div class="section" id="repeat-back-to-step-1-of-the-loop-and-on-we-go">
+<h3><span class="section-number">8.4.6. </span>Repeat : Back to Step 1 of the Loop and on we go.<a class="headerlink" href="#repeat-back-to-step-1-of-the-loop-and-on-we-go" title="Permalink to this headline">¶</a></h3>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<!-- produced by: 
+htmlFig("[{'src': '../images/VNA_14.png'}]", 
+        id="fig:vna_14", 
+        align="right", 
+        width="60%",
+        margin="auto auto auto 1em",
+        caption="Figure: State of the computer at the end of the second iteration of the execution loop.", 
+        captionalign="left")
+-->
+<table id="fig:vna_14" align="right" width="60%" cellpadding="0" cellspacing="0" border="0" style="border-collapse: collapse; margin: auto auto auto 1em">
+    <tr style="padding: 0; margin: 0;"> 
+        <td colspan="1" width="100%" style="padding: 0; margin: 0 0 0 0; background-color:inherit;">
+            <div style="padding: 0; margin: 0 0 0 0;">
+              <figure style="padding: 0; margin: 0 0 0 0; width:100%;">
+                   <img src="../images/VNA_14.png" width="100%" style="padding: 0; margin: 0;">
+                </figure>
+            </div>
+        </td>
+    </tr>
+    <caption align="bottom" style="text-align: left; padding: 0; margin: 0;" >
+          <i>Figure: State of the computer at the end of the second iteration of the execution loop.</i> 
+    </caption>
+</table>
+<p>At this point we are done all the steps of one interation of the execution loop and  one instruction  of the program
+that was loaded into memory has been executed.  At this point the CPU will simply go back to step 1 and repeat the
+process over and over again. In our case this will mean fetching the value at address $6$ into the IR.<br />
+Decoding this value, $36$, as a store of the value in <code class="docutils literal notranslate"><span class="pre">R2</span></code> into the address that is encoded in address $7$
+which is $1$.  Thus it will transfer the value in <code class="docutils literal notranslate"><span class="pre">R2</span></code> to the memory location $1$.<br />
+The figure to the right illustrates the state of the compute after the second instruction of our program has completed.</p>
+<p>Notice that the PC is now pointing at address $8$.  So what will happen next?
+It is important to realize the CPU is just a blind infinite loop and will happy go onto
+interpret the value at address $8$ as an opcode.  In this case we will assume that blank means a location has
+some random value.  So either it will be interpreted as some instruction or if we are lucky it will be an invalid
+instruction that causes an error that the OS (if we are using one) will catch and terminate our program.
+More likely however it will be correspond to some instruction that the cpu will happily execute, of course
+this instruction might very well overwrite values that we worked so hard to produce.  It is our job
+not to let this happen!  We must always direct the CPU to valid instructions of our program and
+if we are done then it is our job to ensure that the CPU executes instructions that transfers control
+to the OS letting it know we are done.  If you are not using an OS then you better figure out what to do next with the CPU ;-).</p>
+</div>
+</div>
+<div id='INTERP_sec' style="background-color:tomato;">
+<img style="margin: auto auto auto auto;"  align="left" width="60" src="../images/warning.svg">
+<img style="margin: auto auto auto auto;"  align="left" width="60" src="../images/concept.svg"><img style="margin: auto auto auto auto;"  align="left" width="60" src="../images/donot.svg">
+<img style="margin: auto auto auto auto;" align="left" width="60" src="../images/do.svg"><b>Challenges of Interpretation</b> 
+<p>It is important to note, there is no reason for our example CPU not to interpret any location in memory which has the value 36 as the start of a store instruction if the PC gets set to that address.  There are many reasons why we might have the value 36 in memory at various locations.  At some location we might be using it to encode the dollar sign character in <a href="../unix/terminal.ipynb#ASCII_sec">ASCII</a> or maybe at some other location we are using the value 36 to represent the age of a player in our game or maybe it is in the link field of a linked list node indicating that the memory address of the next node is 36.  In all these instances we would not want to try and interpret those areas of memory as instructions by executing them.</p>
+<p>This is indicative of the more general challenge. When it comes to programming a computer we must be very careful to not accidentally interpret a value at a location in a way that we did not intent for it to be.  Most of our higher level programming tools and languages work very hard to help us avoid this by forcing a very strict organization on where things are put in memory and add checks to the code to make sure that the our program is not trying to interpret a memory location in a way was not intended.  When programming in lower-level languages, like assembly and C, we have the power to direct the CPU to do anything it can.  However, it is then our job to take care to interpret all values correctly, by staying extremely organized and writing careful code.</p>
+<p>There is nothing that marks a particular address as containing a particular type of data item.  The only thing that determines what the value at a location “means” is code that uses it!  So you must organize memory and write code very carefully to avoid the computer from doing something you do not intend.  Remember that a modern computer can execute hundreds of billions of instructions per second so once things go off the rails, because of a miss-interpretation of a value, many instructions can be executed after and you may or may not ever know that an error occurred and where or why!</p>
+</div></div>
+<div class="section" id="some-additions-to-the-basics-of-instruction-execution">
+<h3><span class="section-number">8.4.7. </span>Some additions to the basics of instruction execution<a class="headerlink" href="#some-additions-to-the-basics-of-instruction-execution" title="Permalink to this headline">¶</a></h3>
+<p>In the next few subsections we will add a few more details to the basic features of the CPU and how execution is conducted.</p>
+<div class="section" id="status-flags-register">
+<h4><span class="section-number">8.4.7.1. </span>Status/Flags Register<a class="headerlink" href="#status-flags-register" title="Permalink to this headline">¶</a></h4>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<!-- produced by: 
+htmlFig("[{'src': '../images/VNA_15.png'}]", 
+        id="fig:vna_15", 
+        align="left", 
+        width="60%",
+        margin="auto 1em auto auto",
+        caption="Figure: Many CPUs have a SPR status or flags register.", 
+        captionalign="left")
+-->
+<table id="fig:vna_15" align="left" width="60%" cellpadding="0" cellspacing="0" border="0" style="border-collapse: collapse; margin: auto 1em auto auto">
+    <tr style="padding: 0; margin: 0;"> 
+        <td colspan="1" width="100%" style="padding: 0; margin: 0 0 0 0; background-color:inherit;">
+            <div style="padding: 0; margin: 0 0 0 0;">
+              <figure style="padding: 0; margin: 0 0 0 0; width:100%;">
+                   <img src="../images/VNA_15.png" width="100%" style="padding: 0; margin: 0;">
+                </figure>
+            </div>
+        </td>
+    </tr>
+    <caption align="bottom" style="text-align: left; padding: 0; margin: 0;" >
+          <i>Figure: Many CPUs have a SPR status or flags register.</i> 
+    </caption>
+</table>
+<p>Many CPUs have a special register, often called a status or flags register, that operations will update to indicate various things beyond its main output value.  For example, an add operation might, additionally set values in the processor status
+register indicating that the result was zero or that the result exceeded the maximum value that a GPR can store.</p>
+</div>
+</div>
+</div>
+<div class="section" id="stack-pointer-register-sp">
+<h4><span class="section-number">8.4.7.2. </span>Stack Pointer Register (SP)<a class="headerlink" href="#stack-pointer-register-sp" title="Permalink to this headline">¶</a></h4>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<!-- produced by: 
+htmlFig("[{'src': '../images/VNA_16.png'}]", 
+        id="fig:vna_14", 
+        align="right", 
+        width="60%",
+        margin="auto auto auto 1em",
+        caption="Figure: Most CPUs have a Stack Pointer Register.", 
+        captionalign="left")
+-->
+<table id="fig:vna_14" align="right" width="60%" cellpadding="0" cellspacing="0" border="0" style="border-collapse: collapse; margin: auto auto auto 1em">
+    <tr style="padding: 0; margin: 0;"> 
+        <td colspan="1" width="100%" style="padding: 0; margin: 0 0 0 0; background-color:inherit;">
+            <div style="padding: 0; margin: 0 0 0 0;">
+              <figure style="padding: 0; margin: 0 0 0 0; width:100%;">
+                   <img src="../images/VNA_16.png" width="100%" style="padding: 0; margin: 0;">
+                </figure>
+            </div>
+        </td>
+    </tr>
+    <caption align="bottom" style="text-align: left; padding: 0; margin: 0;" >
+          <i>Figure: Most CPUs have a Stack Pointer Register.</i> 
+    </caption>
+</table>
+<p>Most CPUs contain a register that is called the Stack Pointer (SP) Register.  Software initializes this register to the beginning address
+of an area of memory that it wants to use as a <a href="https://en.wikipedia.org/wiki/Stack_(abstract_data_type)">stack</a>.
+The CPU provides <strong>push</strong> and <strong>pop</strong> operations that use and update this pointer to place values in and get values back from this area of
+memory.  Having this support is very useful as it provides a very easy way as a programmer to track and use memory for temporary data.
+As we will see it is also very useful for implementing software functions.</p>
+</div>
+</div>
+</div>
+<div class="section" id="reset">
+<h4><span class="section-number">8.4.7.3. </span>Reset<a class="headerlink" href="#reset" title="Permalink to this headline">¶</a></h4>
+<p>As we read early, before we can use the CPU execution loop it is necessary to initialize the CPU’s PC register to the address of where we have loaded our program instructions. While this is usually handled by the OS when we start programs via the OS.  But in order to facilitate getting the CPU executing code correctly when we are not using an OS (as is the case for SOL6502) the CPU provides a special reset procedure.  Usually when you power on the processor it enters this reset procedure.  Devices also often provide a physical button that can also put the CPU back into its reset procedure.</p>
+<p>Each CPU varies in what the reset procedure does.  The documentation for the CPU will tell the programmer what register will be initialized to particular values and what registers will not be (those that are not will have random values and it will be the initial software’s job to set these registers to known values).  One of the critical jobs of the reset procedure is to have set the PC to a particular value.  On some systems the value is a fixed address in memory on other systems the CPU will read the initial value for the PC from a fixed location in memory.  In either case it is the system designer who must arrange to have the values in memory so that the starting software will correctly begin executing after the reset procedure.  We will get to see how this works on the 6502 when we use SOL6502.</p>
+</div>
+<div class="section" id="rom-and-firmware">
+<h4><span class="section-number">8.4.7.4. </span>ROM and Firmware<a class="headerlink" href="#rom-and-firmware" title="Permalink to this headline">¶</a></h4>
+<p>While most of the memory devices attached to the memory bus are volatile <a class="reference external" href="https://en.wikipedia.org/wiki/Random-access_memory">Random Access Memory (RAM)</a> devices a small amount are not.  Rather they are some type of <a class="reference external" href="https://en.wikipedia.org/wiki/Read-only_memory">Read Only Memory (ROM)</a> devices.  Unlike RAM devices these are not volatile meaning that they maintain their values even when the computer is off.  As such they are usually attached to the memory bus so that reset sequence will set the PC to an address that points to startup code placed in these devices.  This code is often called <strong>firmware</strong>.  This code is software but because it is always present it is a little like the hardware.  The firmware is responsible for taking over  after the CPU reset procedure.  It initializes the CPU and the rest of the hardware (including  testing memory devices to make sure everything is working).  After that the firmware is responsible for locating, loading and starting the operating system kernel which will take over from their and allow application programs to run.</p>
+<p>On early computers it was easy to see the physical components that implement the parts of the von Neumann architecture (CPU, Memory and I/O devices)  as can be seen in the images of the 1981 IBM PC in Figure A below.  The manuals of the original IBM PC shows how the ROM devices are placed on the system to form part of the main memory (Figure B) and the manual also contains the assembly source for the firmware called Basic Input/Output System (BIOS) on these computers.</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output text_html"><!-- produced by: 
+htmlFig("[[{'src': '../images/ASSEMBLY-VNA-SOFTWARE/ASSEMBLY-VNA-SOFTWARE.006.png', 'caption': 'A: Mother board', 'border': '1px solid black', 'padding': '1px', 'cellwidth': '33.33%'}, {'src': '../images/ASSEMBLY-VNA-SOFTWARE/ASSEMBLY-VNA-SOFTWARE.007.png', 'caption': 'B: ROM', 'border': '1px solid black', 'padding': '1px', 'cellwidth': '33.33%'}, {'src': '../images/ASSEMBLY-VNA-SOFTWARE/ASSEMBLY-VNA-SOFTWARE.015.png', 'caption': 'C: Firmware reset code', 'border': '1px solid black', 'padding': '1px', 'cellwidth': '33.33%'}]]", 
+        id="fig:firmware", 
+        align="center", 
+        width="100%",
+        margin="auto auto auto auto",
+        caption="<center> Figure: Images of early PC in which one can easily see the VNA components and for which the fimware code was documented in the manual of the system.</center>", 
+        captionalign="left")
+-->
+<table id="fig:firmware" align="center" width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse: collapse; margin: auto auto auto auto">
+    <tr style="padding: 0; margin: 0;"> 
+        <td colspan="1" width="33.33%" style="padding: 0; margin: 0 0 0 0; background-color:inherit;">
+            <div style="padding: 1px; margin: 0 0 0 0;">
+              <figure style="padding: 0; margin: 0 0 0 0; width:100%;border: 1px solid black;">
+                   <img src="../images/ASSEMBLY-VNA-SOFTWARE/ASSEMBLY-VNA-SOFTWARE.006.png" width="100%" style="padding: 0; margin: 0;">
+                  <figcaption>
+                    <div style="background-color: inherit; margin-right:auto; margin-left:auto; text-align: center;">
+                       <i style="color:inherit"> A: Mother board</i>
+                    </div>
+                  </figcaption>
+                </figure>
+            </div>
+        </td>
+        <td colspan="1" width="33.33%" style="padding: 0; margin: 0 0 0 0; background-color:inherit;">
+            <div style="padding: 1px; margin: 0 0 0 0;">
+              <figure style="padding: 0; margin: 0 0 0 0; width:100%;border: 1px solid black;">
+                   <img src="../images/ASSEMBLY-VNA-SOFTWARE/ASSEMBLY-VNA-SOFTWARE.007.png" width="100%" style="padding: 0; margin: 0;">
+                  <figcaption>
+                    <div style="background-color: inherit; margin-right:auto; margin-left:auto; text-align: center;">
+                       <i style="color:inherit"> B: ROM</i>
+                    </div>
+                  </figcaption>
+                </figure>
+            </div>
+        </td>
+        <td colspan="1" width="33.33%" style="padding: 0; margin: 0 0 0 0; background-color:inherit;">
+            <div style="padding: 1px; margin: 0 0 0 0;">
+              <figure style="padding: 0; margin: 0 0 0 0; width:100%;border: 1px solid black;">
+                   <img src="../images/ASSEMBLY-VNA-SOFTWARE/ASSEMBLY-VNA-SOFTWARE.015.png" width="100%" style="padding: 0; margin: 0;">
+                  <figcaption>
+                    <div style="background-color: inherit; margin-right:auto; margin-left:auto; text-align: center;">
+                       <i style="color:inherit"> C: Firmware reset code</i>
+                    </div>
+                  </figcaption>
+                </figure>
+            </div>
+        </td>
+    </tr>
+    <caption align="bottom" style="text-align: left; padding: 0; margin: 0;" >
+          <i><center> Figure: Images of early PC in which one can easily see the VNA components and for which the fimware code was documented in the manual of the system.</center></i> 
+    </caption>
+</table>
+</div></div>
+</div>
+<p><a id='MODERNVNAEXT_sec'></a></p>
+</div>
+<div class="section" id="modern-extensions">
+<h4><span class="section-number">8.4.7.5. </span>Modern Extensions<a class="headerlink" href="#modern-extensions" title="Permalink to this headline">¶</a></h4>
+<p>Before we can talk about some of the extensions to the basic model of execution that modern CPUs incorporate we need to introduce the CPU clock and The Cycle.</p>
+<div class="section" id="the-clock-and-the-cycles">
+<h5><span class="section-number">8.4.7.5.1. </span>The Clock and The Cycles<a class="headerlink" href="#the-clock-and-the-cycles" title="Permalink to this headline">¶</a></h5>
+<p>While as programmers it is generally hidden from us it is worth known that the inner workings of the CPU execution loop is driven by an electrical oscillator called the CPU <strong>clock</strong>.  This clock produces a continuous and pulse of high and low voltages. One <strong>cycle</strong> of the clock is the time it takes the clock to transit from a starting value, lets say low, go to high and then return back to low.  This signal is what drives the inner workings of the CPU execution loop. The faster the frequency the faster the the loop operates and the faster instructions of our program complete.   Different CPU’s will be able to operate at different maximum clock frequencies.  Regardless though one cycle of the CPU’s clock can act as a reference unit for use to measure how fast our instructions are executing – Instruction Per Cycle (IPC).</p>
+<p>On a modern CPU different instructions, and for that matter sequence of instructions can require more or less cycles to complete.  Many of the complexities added over the years are to try and improve the average number of cycles it takes for the instructions of a program to execute.  Knowing how these features work allow you to write your programs in ways that minimize the number of cycles it takes.  In this section we will provide some insight into these but not go into any details.</p>
+<ul class="simple">
+<li><p>CPU caches</p></li>
+<li><p>pipe-lined and super-scalar designs</p></li>
+<li><p>hyper-threading</p></li>
+<li><p>multi-cores</p></li>
+<li><p>Non-volatile Memory</p></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="i-o">
+<h2><span class="section-number">8.5. </span>I/O<a class="headerlink" href="#i-o" title="Permalink to this headline">¶</a></h2>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<!-- produced by: 
+htmlFig("[{'src': '../images/VNA_13.png'}]", 
+        id="fig:vna_13", 
+        align="center", 
+        width="80%",
+        margin="auto auto auto auto",
+        caption="Figure: I/O", 
+        captionalign="left")
+-->
+<table id="fig:vna_13" align="center" width="80%" cellpadding="0" cellspacing="0" border="0" style="border-collapse: collapse; margin: auto auto auto auto">
+    <tr style="padding: 0; margin: 0;"> 
+        <td colspan="1" width="100%" style="padding: 0; margin: 0 0 0 0; background-color:inherit;">
+            <div style="padding: 0; margin: 0 0 0 0;">
+              <figure style="padding: 0; margin: 0 0 0 0; width:100%;">
+                   <img src="../images/VNA_13.png" width="100%" style="padding: 0; margin: 0;">
+                </figure>
+            </div>
+        </td>
+    </tr>
+    <caption align="bottom" style="text-align: left; padding: 0; margin: 0;" >
+          <i>Figure: I/O</i> 
+    </caption>
+</table>
+</div>
+</div>
+<p>While we have covered how a CPU and memory can operate together to implement program execution  we have no way to transfer values in or out of the computer.  The I/O subsystems of a computer are precisely to enable this ability.</p>
+<p>Traditionally I/O devices are called peripherals.  The goal is to allow software executing on the CPU to communicate with a wide range of devices ranging from terminals, keyboards, touch screens, wired and wireless networks, solid state drives, speakers, etc.  To facilitate this the hardware manufactures have created standardized I/O Buses that various peripheral devices can be built to connect too.  An example I/O Bus standard is <a class="reference external" href="https://en.wikipedia.org/wiki/PCI_Express">PCIe</a>.</p>
+<p>Computer designers typically bridge the I/O Bus to the CPU in two ways:</p>
+<ol class="simple">
+<li><p>Memory Mapped I/O Path</p></li>
+<li><p>CPU I/O Path</p></li>
+</ol>
+<p><strong>Memory Mapped I/O Path</strong>: In this approach circuity connects a range of the memory bus addresses to the I/O Bus. CPU memory bus transactions to this range are translated into transactions on the I/O bus that then sent to a particular peripheral.  In this way the CPU can communicate values to particular I/O peripherals by simply reading and writing to the correct addresses. It is important to remember that while from a software perspective memory mapped I/O seems like communicating with memory devices reads and writes to the I/O peripherals are much slower given the extra circuitry and the slower nature of the devices.</p>
+<p><strong>CPU I/O Path</strong>: Some CPU’s contain extra connections that allow it to connect to an I/O bus and corresponding operations that enable values to be transferred on to the I/O bus and thus to particular peripherals. In this case software must be written to specifically use the correct I/O instructions to communicate with peripherals.  Again it is important to remember that despite having these connections communicating with peripherals is indirect and slower that communicating with memory devices.</p>
+<p>Modern computers can support both paths but often primarily rely on memory mapped I/O for the majority of I/O communications.  Regardless, in general, the only software that can communicate with I/O devices are in the OS Kernel.  These OS components are called <a class="reference external" href="https://en.wikipedia.org/wiki/Device_driver">devices drivers</a>.  As such application software running on an OS makes calls to the OS to conduct I/O and need not worry about the details of how to control and communicate with I/O devices which can be quite complex and device specific.</p>
+<p>If we do need to conceptualize I/O operation we will assume Memory Mapped I/O.  The main thing to note about I/O is that it is really just another way of using value.  Specifically peripherals are designed to receive and interpret in device specific ways.  For example writing the correct value to an ASCII terminal device will cause it to display the appropriate character while writing other values to it will move the cursor to a different location.  Similarly a usb microphone will produce a stream of values that represent audio frequency samples.</p>
+</div>
+<div class="section" id="stored-program-computer">
+<h2><span class="section-number">8.6. </span>Stored Program Computer<a class="headerlink" href="#stored-program-computer" title="Permalink to this headline">¶</a></h2>
+<p>One last conceptual thing before we go on to play with a running Von Neumann computer.  Implicit in our model has been that both the opcodes and the data of a program are stored in memory as indistinguishable values.</p>
+<p>While that might seem like an obvious choice it was not.  It was a revolution to realize that instructions could be just values like data in memory.  In later chapters we will see that there are interesting things we can do knowing that opcodes are just like any other values in memory that can be read and written.</p>
+</div>
+<div class="section" id="sol6502">
+<h2><span class="section-number">8.7. </span>SOL6502<a class="headerlink" href="#sol6502" title="Permalink to this headline">¶</a></h2>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output text_html">
+<iframe
+    width="100%"
+    height="895px"
+    src="http://jappavoo.github.io/SOL6502/index.html"
+    frameborder="0"
+    allowfullscreen
+
+></iframe>
+</div></div>
+</div>
 </div>
 </div>
 
