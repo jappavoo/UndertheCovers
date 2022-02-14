@@ -879,13 +879,9 @@ While an over-simplification, one of the uses of transistors in a CPU is to crea
 <li><p>Connections to the computers other two main parts – Memory and Input/Output (I/O) devices</p></li>
 <li><p>A core “Loop” that combine and coordinates its internal components with Memory and I/O devices to execute programs.</p></li>
 </ol>
-<div class="cell tag_remove-input docutils container">
-<div class="cell_output docutils container">
 <blockquote>
-<div><p><img style="margin: auto 1em auto auto;" align="left" width="60" src="../images/fyi.png"> <p style="background-color:powderblue;">  It is a common logical model that makes it possible to learn the basics of how a generic CPU works and understand how software executes on any computer.  As a matter of fact if we consider the line of CPU's from INTEL, software written on a 1970 versions of their products can still be run on the CPU's they produced in 2021 because at the heart of it the 2021 version still remains consistent with the basic model of a computer that the 1970's CPU was built around.  Similarly the basic model of programming, and the tools used, are consistent across computers regardless if they based on an old 6502 or a modern X86 or ARM CPU.</p>
+<div><p><a class="reference internal" href="../_images/fyi.png"><img alt="../_images/fyi.png" class="align-left" src="../_images/fyi.png" style="width: 60px;" /></a> <p style="background-color:powderblue;">  It is a common logical model that makes it possible to learn the basics of how a generic CPU works and understand how software executes on any computer.  As a matter of fact if we consider the line of CPU’s from INTEL, software written on a 1970 versions of their products can still be run on the CPU’s they produced in 2021 because at the heart of it the 2021 version still remains consistent with the basic model of a computer that the 1970’s CPU was built around.  Similarly the basic model of programming, and the tools used, are consistent across computers regardless if they based on an old 6502 or a modern X86 or ARM CPU.</p>
 </div></blockquote>
-</div>
-</div>
 <blockquote>
 <div><p><a class="reference internal" href="../_images/commentary.png"><img alt="../_images/commentary.png" class="align-left" src="../_images/commentary.png" style="width: 60px;" /></a> <p style="background-color:powderblue;"> <strong>First Principles</strong>  We are comfortable with the idea of using a first principles understanding of a subject, like mathematics, to be able to reason about new problems we face in that subject with out having to limit ourselves to blind memorization of facts and recipes for doing things. Computing in no different understanding the core ideas of how computers works including a foundation in the theory of computer science can allow you to transcend simply regurgitating snip-its of code you have memorized and truly unleash your ability to creatively build new things.  For that matter it also allows you to gain an intuitive understanding for how things work that enables you to debug and solve problems that others don’t know where to begin with.  Learning the first principles of how computers work is your first steps in becoming a master of the digital universe.</p>
 </div></blockquote>
@@ -1172,16 +1168,12 @@ of our program; Opcodes and Data. This last aspect will make more sense when we 
 Many of the tools like programming languages and operating systems are precisely there to help us with the tasks of
 expressing, organizing and loading our program as values into memory.</p>
 <blockquote>
-<div><p>It is important to remember, to make use of a value in memory it must be transfered into the CPU,
-similarly updated values must be transfer back from CPU registers to memory.</p>
+<div><p><a class="reference internal" href="../_images/do.svg"><img alt="../_images/do.svg" class="align-left" src="../_images/do.svg" width="60px" /></a> <p style="background-color:tomato;"> It is important to remember, to make use of a value in memory it must be transfered into the CPU,
+similarly updated values must be transfer back from CPU registers to memory.</p></p>
 </div></blockquote>
-<div class="cell tag_remove-input docutils container">
-<div class="cell_output docutils container">
 <blockquote>
-<div><p><img style="display: inline; margin: 1em 1em auto auto;" align="left" width="40px" src="../images/fyi.png"> <p style="background-color:powderblue;">  When we buy personal computing devices such as laptops and phones a key feature of them is how much main memory they have.  But sometimes you really have to pay attention to figure it out.  Main memory will often be referred to as RAM (Random Access Memory) the other types of memory that are not directly connected to the CPU will often be referred to as Storage.  While these types of devices permit you to store data on your phone the CPU cannot use them directly to run you programs.</p>
+<div><p><a class="reference internal" href="../_images/fyi.png"><img alt="../_images/fyi.png" class="align-left" src="../_images/fyi.png" style="width: 40px;" /></a> <p style="background-color:powderblue;">  When we buy personal computing devices such as laptops and phones a key feature of them is how much main memory they have.  But sometimes you really have to pay attention to figure it out.  Main memory will often be referred to as RAM (Random Access Memory) the other types of memory that are not directly connected to the CPU will often be referred to as Storage.  While these types of devices permit you to store data on your phone the CPU cannot use them directly to run you programs.</p>
 </div></blockquote>
-</div>
-</div>
 </div>
 <div class="section" id="program-execution">
 <h2><span class="section-number">8.4. </span>Program Execution<a class="headerlink" href="#program-execution" title="Permalink to this headline">¶</a></h2>
@@ -1343,18 +1335,14 @@ memory at that address.  This is why some manufactures call the PC register an I
 <p>In our example this means that the CPU places the address value contained in the PC (<span class="math notranslate nohighlight">\(5\)</span>) onto the address bus and the memory
 responds by placing the value at that address onto the data bus (<span class="math notranslate nohighlight">\(146\)</span>) .  When the CPU receives the value it internally routes the
 value into the IR.</p>
-<div class="cell tag_remove-input docutils container">
-<div class="cell_output docutils container">
 <blockquote>
-<div><p><img style="display: inline; margin: 1em 1em auto auto;" align="left" width="40px" src="../images/fyi.png"> <p style="background-color:powderblue;"> Generally speaking the number of values,
+<div><p><a class="reference internal" href="../_images/fyi.png"><img alt="../_images/fyi.png" class="align-left" src="../_images/fyi.png" style="width: 40px;" /></a> <p style="background-color:powderblue;"> Generally speaking the number of values,
 measured in <a href="../assembly/InfoRepl#THEBYTE_sec">bytes</a>, that encode
 instructions (opcodes) vary widely depending on the design of the CPU. As a matter of fact this is one of the things that distinctly distinguishes the INTEL instruction set from the ARM instruction set.  The length of an INTEL instruction are variable with some encoded in as few as a single byte while others can require fifteen. In contrast the ARM arch64 instruction set uses a fixed length encoding of four bytes for all instructions.  The 6502 instructions require either one, two or three bytes.
 Instruction sets like INTEL are called complex instruction set computers (CISC), both because of the complexity of
-the instruction encodings and the rich and high-level nature of operations they provide.  Where as ARM like instruction sets are called Reduced Instruction Set Computers (RISC),
-both due to the fixed and simple nature of the encoding and the realatively simple nature of the operations they provide.</p>
+the instruction encoding and the rich and high-level nature of operations they provide.  Where as ARM like instruction sets are called Reduced Instruction Set Computers (RISC),
+both due to the fixed and simple nature of the encoding and the relatively simple nature of the operations they provide.</p>
 </div></blockquote>
-</div>
-</div>
 </div>
 <div class="section" id="step-2-decode">
 <h3><span class="section-number">8.4.4. </span>Step 2: Decode<a class="headerlink" href="#step-2-decode" title="Permalink to this headline">¶</a></h3>
@@ -1424,31 +1412,27 @@ CPU opcodes can encode many other variants, examples include:</p>
 <li><p><em>Implied</em>: no operands are required or the operands come from a fixed set of register (eg. an instruction might implicitly use the value in the PC as an operand)</p></li>
 <li><p><em>Memory</em>: an operand is located in memory and additional memory bus transactions will be necessary prior to executing the operations (there are usually several memory addressing modes)</p></li>
 </ol>
-<div class="cell tag_remove-input docutils container">
-<div class="cell_output docutils container">
 <div style="background-color:powderblue;">
 <img style="display: inline; margin: 1em 1em auto auto;" align="left" width="40px" src="../images/fyi.png">
-<b>Memory Addressing Modes</b>
+<p><strong>Memory Addressing Modes</strong>
 It is the second case of address modes, where an operand is located in memory, that adds much of the power and complexity to assembly programming.
-We will explore memory addressing modes in more detail in subsequent chapters.  For the moment there two things to note:
-<ol>
-<li> If an operand value is in memory we will need to have a way of figuring out its address (often called the operands <b>Effective Address</b>). As such there can be several address modes 
+We will explore memory addressing modes in more detail in subsequent chapters.  For the moment there two things to note:</p>
+<ol class="simple">
+<li><p>If an operand value is in memory we will need to have a way of figuring out its address (often called the operands <strong>Effective Address</strong>). As such there can be several address modes
 that support various ways of calculating the effective address.  There is no standard set of addressing modes rather each CPU will define their own.  That begin said
-most CPUs provide some varation of at least the following:
-    <ol>
-    <li><em>Immediate</em>: the effective address of the operand is the next locations after the first values of the opcode.  In other works the operand value is encoded in the instruction values in memory.
-    <li><em>Absolute</em>: the effective address is encoded in bytes of the opcode.  This is the case in the second instruction of our example.  
-    Address 6 and 7 encode the store of the value of R2 into the memory location 1.  In this case the opcode 36 encodes a store of the value 
-    in GPR R2 to the address who's value is stored in the second value of the instruction, address 7.
-    Given that the value at address 7 is 1 we know that the effective address of the store is the location 1.  
-    <li><em>Register Indirect</em>: the effective address is calculated using values in one ore more registers.  Eg. The effective address is the sum of the value in R3 and R4.
-    </ol>
-<li> Additional memory bus transtations will be required get the needed values from memory.
+most CPUs provide some variation of at least the following:</p>
+<ol class="simple">
+<li><p><em>Immediate</em>: the effective address of the operand is the next locations after the first values of the opcode.  In other works the operand value is encoded in the instruction values in memory.</p></li>
+<li><p><em>Absolute</em>: the effective address is encoded in bytes of the opcode.  This is the case in the second instruction of our example.<br />
+Address <span class="math notranslate nohighlight">\(6\)</span> and <span class="math notranslate nohighlight">\(7\)</span> encode the store of the value of <code class="docutils literal notranslate"><span class="pre">R2</span></code> into the memory location <span class="math notranslate nohighlight">\(1\)</span>.  In this case the opcode 36 encodes a store of the value
+in GPR <code class="docutils literal notranslate"><span class="pre">R2</span></code> to the address who’s value is stored in the second value of the instruction, address 7.
+Given that the value at address <span class="math notranslate nohighlight">\(7\)</span> is <span class="math notranslate nohighlight">\(1\)</span> we know that the effective address of the store is the location <span class="math notranslate nohighlight">\(1\)</span>.</p></li>
+<li><p><em>Register Indirect</em>: the effective address is calculated using values in one ore more registers.  Eg. The effective address is the sum of the value in <code class="docutils literal notranslate"><span class="pre">R3</span></code> and <code class="docutils literal notranslate"><span class="pre">R4</span></code>.</p></li>
 </ol>
-<div>
-</div>
-</div>
-</div>
+</li>
+<li><p>Additional memory bus transactions will be required get the needed values from memory.</p></li>
+</ol>
+<div></div>
 </div>
 <div class="section" id="execute-conduct-the-operation-and-update-the-pc">
 <h3><span class="section-number">8.4.5. </span>Execute : Conduct the operation and update the PC<a class="headerlink" href="#execute-conduct-the-operation-and-update-the-pc" title="Permalink to this headline">¶</a></h3>
@@ -1829,8 +1813,8 @@ The above discussion is conceptual so that as programmers we have a working know
 <iframe src="http://jappavoo.github.io/SOL6502/index.html", height="1000px", width="100%"></iframe>
             </div>
         </td>
-        <td colspan="1" width="40.00%" style="padding:0 0 0 1em; margin: 0 0 0 0; background-color:blue;">
-        <div style="height:400px; overflow:auto; text-align: left; vertical-align:-200px; background-color:green;">
+        <td colspan="1" width="40.00%" style="padding:0 0 0 1em; margin:0 0 0 0; background-color:blue;">
+        <div style="height:400px; overflow:auto; text-align: left; background-color:green;">
 <h2>The SOL6502 Computer</h2>
 
 To the left is a simulated computer that is designed to let us explore the inner workings of a simple but 
