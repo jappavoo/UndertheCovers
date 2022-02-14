@@ -865,11 +865,11 @@ htmlFig("[{'src': '../images/physcpus.png'}]",
 <p>In the <a href="#fig:physcpus">Examples of physical CPUs figure</a>, above, we see photos of some physical cpus along with a “pin out” diagram that describes how to physically connect it to the rest of the computer.  Over the years it is clear that the complexity of CPUs has certainly grown.  In the 1970’s CPUs were composed of thousands of transistors and only required tens of pins to connect to rest of the computer.  By 2021 we see that cpus now contain billions of transistors and require thousands for physical connections to the rest of the system.  We have, in fact, pushed the physical boundaries to the point that it is unclear exactly how we can make more powerful cpus that still preserve a simple programming model. The way software is written and structured becomes more and more important in order to get most out of a computer.  But the first step to understanding how to construct advanced software, is understanding the basics of how the parts of a computer interact to execute software.</p>
 <div style="background-color:powderblue;">  
 <img style="margin: auto 1em auto auto;" align="left" width="60" src="../images/fyi.png">
-While an over-simplification, one of the uses of transistors in a CPU is to create, "switches" that form the logic circuits used to implement basic operations such as adding numbers. In order to make the CPU do these operations faster we need to be able to operate the transistors, turn them on and off, faster and faster.  Unfortunately doing so requires more and more energy and creates more more heat.  As such over the last decade it has become harder and harder to speed up CPUs, given the increase in energy and attendant increase in heat it leads too.   On the other hand we have managed to figure out how to continually shrink the size of transistors.  This has allowed us to pack more and more transistors into CPUs, however some believe that we are getting to end of this ability as we are approaching the physical limits to how small we can make a transistor.</p> 
+While an over-simplification, one of the uses of transistors in a CPU is to create, "switches" that form the logic circuits used to implement basic operations such as adding numbers. In order to make the CPU do these operations faster we need to be able to operate the transistors, turn them on and off, faster and faster.  Unfortunately doing so requires more and more energy and creates more more heat.  As such over the last decade it has become harder and harder to speed up CPUs, given the increase in energy and attendant increase in heat it leads too.   On the other hand we have managed to figure out how to continually shrink the size of transistors.  This has allowed us to pack more and more transistors into CPUs, however some believe that we are getting to end of this ability as we are approaching the physical limits to how small we can make a transistor. 
 <p>Regardless we have reached a point that making cpus operate faster is very hard to do and while we might be able to fit more transistors on the chip we are reaching the limits of how many we have powered on at the same time (due to energy and heat constraints).  Finally it is also very hard to imagine that we can fit many more “pins” that connect the cpu to the rest of the computer.</p>
 <p>Over the years these effects have resulted in a situation that the performance of the software we write has become more and more dependent on how it interacts with the internal way the extra transistors are used.  For example in a modern processor a large number of transistors are used to form what is called <a class="reference external" href="https://en.wikipedia.org/wiki/CPU_cache">cache</a> memory.  While software can benefit, its performance increases, from caches it is possible to write the same software in different ways that get greater or lesser benefit if you understand how the caches work and the way your software interacts with them.  Similarly today CPU’s often use the extra transistors to create multiple internal sub-CPUs, called <a class="reference external" href="https://en.wikipedia.org/wiki/Multi-core_processor">cores</a>.  A program, however does not automatically benefit from multiple cores unless it is written to explicitly exploit them via “parallel threads” of execution.  But to understand how to do this one first needs to understand the classic model by which a single core CPU works and its interaction with memory.</p>
 <p>The bottom line is CPU’s are complex organizations of transistors and we reaching the physical limits to their construction.</p>
-</div>
+</div>    </div>
 <div class="section" id="logically">
 <h3><span class="section-number">8.1.2. </span>Logically<a class="headerlink" href="#logically" title="Permalink to this headline">¶</a></h3>
 <p>There is a common “logical” model of operation to von Neumman computers that defines how software execution works and therefore what software is exactly.  Our goal for this chapter is to understand this logical model and not the details of a particular computer.   The CPU’s operation is at the heart of this logical model as it is core to understanding and programming a computer.</p>
@@ -898,8 +898,6 @@ While an over-simplification, one of the uses of transistors in a CPU is to crea
 <p>At the end of this chapter we use the SOL6502 simulated computer to explore the parts and model in action.</p>
 <div class="section" id="the-cpu">
 <h3><span class="section-number">8.2.1. </span>The CPU<a class="headerlink" href="#the-cpu" title="Permalink to this headline">¶</a></h3>
-<div class="cell tag_remove-input docutils container">
-<div class="cell_output docutils container">
 <!-- produced by: 
 htmlFig("[{'src': '../images/VNA_0.png'}]", 
         id="fig:vna_0", 
@@ -925,12 +923,8 @@ htmlFig("[{'src': '../images/VNA_0.png'}]",
 </table>
 <p>The cpu is a distinct physical region of the computer. Within it is housed several important parts that we need to understand.</p>
 </div>
-</div>
-</div>
 <div class="section" id="operations">
 <h3><span class="section-number">8.2.2. </span>Operations<a class="headerlink" href="#operations" title="Permalink to this headline">¶</a></h3>
-<div class="cell tag_remove-input docutils container">
-<div class="cell_output docutils container">
 <!-- produced by: 
 htmlFig("[{'src': '../images/VNA_1.png'}]", 
         id="fig:vna_1", 
@@ -957,16 +951,14 @@ htmlFig("[{'src': '../images/VNA_1.png'}]",
 <p>Within the cpu there are circuits/components that provide a set of operations.  The exact set of
 operations and the number can differ widely between particular CPU brands and models (eg INTEL vs ARM).
 However, commonly we can expect operations that 1) performance arithmetic and logic (eg. adding and
-comparing numbers), 2) move values in and out of the CPU, 3) Control what happens next. Collectivelly
+comparing numbers), 2) move values in and out of the CPU, 3) Control what happens next.  Collectively
 the ones that perform arithmetic and logic  are often referred to as the Arithmetic Logic Unit (ALU).</p>
 <p>In the diagram we can think of each blue labeled operation box as a unique operation that the CPU supports.
 As an example the box labeled <code class="docutils literal notranslate"><span class="pre">OPERATION</span> <span class="pre">2</span></code> might implement the addition of two input values to produce a single result value.
 The designers of a particular CPU, like INTEL, choose and define the set of operations for their CPUs and must tell us what they are and what they do.</p>
-<p>From our prespective the most important thing, is that the set of operations form the 'built' functions
+<p>From our perspective the most important thing, is that the set of operations form the ‘built’ functions
 that we can use in our programs for the particular cpu we are working with. Given that the
-operations are CPU specific our programs will inherintly be CPU specific.</p>
-</div>
-</div>
+operations are CPU specific our programs will inherently be CPU specific.</p>
 </div>
 <div class="section" id="registers">
 <h3><span class="section-number">8.2.3. </span>Registers<a class="headerlink" href="#registers" title="Permalink to this headline">¶</a></h3>
@@ -981,8 +973,6 @@ What do we mean by “normal” programming?  As we saw in Part I: The UNIX Deve
 <p>We will visualize registers as boxes within the CPU.  Each box will be broken down so that the name of the register will be on left and the space for the value it contains on the right.</p>
 <div class="section" id="general-purpose-registers-gprs">
 <h4><span class="section-number">8.2.3.1. </span>General Purpose Registers (GPRS)<a class="headerlink" href="#general-purpose-registers-gprs" title="Permalink to this headline">¶</a></h4>
-<div class="cell tag_remove-input docutils container">
-<div class="cell_output docutils container">
 <!-- produced by: 
 htmlFig("[{'src': '../images/VNA_2.png'}]", 
         id="fig:vna_2", 
@@ -1019,16 +1009,12 @@ place the output result back in <code class="docutils literal notranslate"><span
 values of our program are stored in which GPRS at any given time.   Furthermore,  it will be our job to move values in and out of them to
 deal with the fact that we have so few.  CPUs have operations dedicated to transferring values between the GPRS.<br />
 For example, given our illustration, one expects there to be an operation that would allow us to transfer the
-current value of <code class="docutils literal notranslate"><span class="pre">R2</span></code> to <code class="docutils literal notranslate"><span class="pre">R4</span></code>, replacing <code class="docutils literal notranslate"><span class="pre">R4</span></code> existing value.  Such register to register tansfer operations permit
+current value of <code class="docutils literal notranslate"><span class="pre">R2</span></code> to <code class="docutils literal notranslate"><span class="pre">R4</span></code>, replacing <code class="docutils literal notranslate"><span class="pre">R4</span></code> existing value.  Such register to register transfer operations permit
 all such combinations of GPR transfers.   Additionally there will be operations for moving values between
 locations outside of the CPU and the GPRS.  But more on this when we add connections from the CPU to Memory.</p>
 </div>
-</div>
-</div>
 <div class="section" id="instruction-register-ir">
 <h4><span class="section-number">8.2.3.2. </span>Instruction Register (IR)<a class="headerlink" href="#instruction-register-ir" title="Permalink to this headline">¶</a></h4>
-<div class="cell tag_remove-input docutils container">
-<div class="cell_output docutils container">
 <!-- produced by: 
 htmlFig("[{'src': '../images/VNA_3.png'}]", 
         id="fig:vna_3", 
@@ -1059,14 +1045,12 @@ as programmers it is not actually necessary for us to know how and where the opc
 within the CPU. As such this detail is generally hidden from us by the manufacturer.  However, in order for us to gain
 a concrete working understanding it is worth explicitly introducing a special purpose register which we will call
 the Instruction Register (IR). Our model of the CPU will use the IR to store the opcode that we want the CPU to execute.
-Again while modern CPUs do not necessarly document the IR in their programming manuals, also called their
-Instruction Set Archiecture (ISA) manuals, they internally will have something that serves this purpose.</p>
+Again while modern CPUs do not necessarily document the IR in their programming manuals, also called their
+Instruction Set Architecture (ISA) manuals, they internally will have something that serves this purpose.</p>
 <blockquote>
 <div><p><strong>Instruction Set Architecture (ISA)</strong>: This is the term used by CPU manufactures to referred to the details of their
 specific CPUS that a programmer needs to know about to write code and implement tools for computers that use their CPUS.</p>
 </div></blockquote>
-</div>
-</div>
 <div class="section" id="opcode-and-operands">
 <h5><span class="section-number">8.2.3.2.1. </span>OPCODE and OPERANDS<a class="headerlink" href="#opcode-and-operands" title="Permalink to this headline">¶</a></h5>
 <blockquote>
@@ -1076,8 +1060,6 @@ specific CPUS that a programmer needs to know about to write code and implement 
 </div>
 <div class="section" id="program-counter-pc">
 <h4><span class="section-number">8.2.3.3. </span>Program Counter (PC)<a class="headerlink" href="#program-counter-pc" title="Permalink to this headline">¶</a></h4>
-<div class="cell tag_remove-input docutils container">
-<div class="cell_output docutils container">
 <!-- produced by: 
 htmlFig("[{'src': '../images/VNA_4.png'}]", 
         id="fig:vna_4", 
@@ -1103,10 +1085,8 @@ htmlFig("[{'src': '../images/VNA_4.png'}]",
 </table>
 <p>CPUs have a special purpose register that indicates where in memory the opcode that we want executed is located.  This register is typically called either the Program Counter (PC) or Instruction Pointer (IR).
 This register is only used for this purpose and unlike GPRS cannot be used to store arbitrary inputs or outputs of operations.
-Rather its value is only treated like an Memory Address.  Where an Address is a number that indicates a postion in the Memory array that is external to the CPU.
+Rather its value is only treated like an Memory Address.  Where an Address is a number that indicates a position in the Memory array that is external to the CPU.
 As we will see, the value in the PC is used to load the IR with the opcodes of our program.</p>
-</div>
-</div>
 <p><a id="#MEM_sec"></a></p>
 </div>
 </div>
@@ -1140,8 +1120,6 @@ htmlFig("[{'src': '../images/edvacextract.png'}]",
 </table>
 </div>
 </div>
-<div class="cell tag_remove-input docutils container">
-<div class="cell_output docutils container">
 <!-- produced by: 
 htmlFig("[{'src': '../images/VNA_5.png'}]", 
         id="fig:vna_5", 
@@ -1166,26 +1144,26 @@ htmlFig("[{'src': '../images/VNA_5.png'}]",
     </caption>
 </table>
 <p>While the CPU is the central part of the computer that has the ability to do operations it
-is limited in the number of regiters it has and further we have no direct way of placing values
-into the CPU's register.  This is the core role that the memory of a computer serves.</p>
+is limited in the number of registers it has and further we have no direct way of placing values
+into the CPU’s register.  This is the core role that the memory of a computer serves.</p>
 <p><strong>Memory</strong> is a large collection of devices, external to the CPU that can store values.  The devices are organized into an array in which each devices
 has a unique numeric index called its address.  The memory
-of a modern computer is on the order of $10^9$ locations. The CPU has sets of wires, called the Memory Bus,
+of a modern computer is on the order of <span class="math notranslate nohighlight">\(10^9\)</span> locations. The CPU has sets of wires, called the Memory Bus,
 that physically allow the values from the memory devices to be electrically transfer between the registers of the CPU and the locations in memory
-and vicersa.  The memory Bus is broken down into to an Address Bus and a Data Bus.  The CPU uses its connection
+and versa.  The memory Bus is broken down into to an Address Bus and a Data Bus.  The CPU uses its connection
 to the address bus to place a value that is interpreted by the Memory controlling hardware as the address of where in memory
-the transfer should happen.  For example by placing $5$ on the address bus the CPU is activating the memory devices at address $5$.
+the transfer should happen.  For example by placing <span class="math notranslate nohighlight">\(5\)</span> on the address bus the CPU is activating the memory devices at address <span class="math notranslate nohighlight">\(5\)</span>.
 The Data Bus is used to communicate the value that the CPU wants to send, write, to the address it has activated via the address bus or that the memory at
 the activated address is to sent to the CPU (read).</p>
 <p>The act of transferring values on the Memory Bus is called a <strong>Bus Transaction</strong>. And as we have seen there are two types
 A Write transaction and a Read transaction.  Writes are also some times referred to as Stores and Reads as Loads.</p>
-<p>The set of memory devices connected to the address bus is also some times called &quot;main&quot; memory to distinguish it from
+<p>The set of memory devices connected to the address bus is also some times called “main” memory to distinguish it from
 other types of devices on the computer that can store values.  Typically there are three defining features of memory in addition
 to there being a large number of them:</p>
 <ol class="simple">
 <li><p>The CPU has direct access to them via the Memory Bus</p></li>
 <li><p>The majority are <strong>Volatile</strong>.  They consume electricity to maintain their values and if the computer is turned off
-or if it's battery dies it's values will be lost.  Typically when first turned on such devices will have random values in them.</p></li>
+or if it’s battery dies it’s values will be lost.  Typically when first turned on such devices will have random values in them.</p></li>
 <li><p>Compared to other types of memory they are fast with respect to the time it takes the CPU to communicate values with them.</p></li>
 </ol>
 <p>Like the GPRS as a programmer it is our responsibility to organize and manage where and what values are placed in memory.
@@ -1197,8 +1175,6 @@ expressing, organizing and loading our program as values into memory.</p>
 <div><p>It is important to remember, to make use of a value in memory it must be transfered into the CPU,
 similarly updated values must be transfer back from CPU registers to memory.</p>
 </div></blockquote>
-</div>
-</div>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <blockquote>
@@ -1215,8 +1191,6 @@ similarly updated values must be transfer back from CPU registers to memory.</p>
 <p>There are two steps that we must perform before we can have the computer execute our program: 1) we must load the values that make up our program into memory and 2) we must minimally initialize the CPU’s PC register.</p>
 <div class="section" id="program-values-in-memory">
 <h4><span class="section-number">8.4.1.1. </span>Program: Values in Memory<a class="headerlink" href="#program-values-in-memory" title="Permalink to this headline">¶</a></h4>
-<div class="cell tag_remove-input docutils container">
-<div class="cell_output docutils container">
 <!-- produced by: 
 htmlFig("[{'src': '../images/VNA_6.png'}]", 
         id="fig:vna_6", 
@@ -1240,23 +1214,19 @@ htmlFig("[{'src': '../images/VNA_6.png'}]",
           <i>Figure: A Program is a collection of values in Memeory</i> 
     </caption>
 </table>
-<p>To program we must first studied the opcodes of our computer's CPU.  We then must pick an address in memory where the opode values
+<p>To program we must first studied the opcodes of our computer’s CPU.  We then must pick an address in memory where the opcode values
 of our program will be loaded and then write our program as opcodes at that location (we will discuss data values later).
 The figure to the right illustrates a simplified example fragment of a program made up of three values that have been
-loaded into memory starting at address $5$.  In this simple example we will assume that the first value $146$
+loaded into memory starting at address <span class="math notranslate nohighlight">\(5\)</span>.  In this simple example we will assume that the first value <span class="math notranslate nohighlight">\(146\)</span>
 encodes the addition of the current values in <code class="docutils literal notranslate"><span class="pre">R0</span></code> and <code class="docutils literal notranslate"><span class="pre">R2</span></code> with the result being placed back in <code class="docutils literal notranslate"><span class="pre">R2</span></code>.  And that
-the values <code class="docutils literal notranslate"><span class="pre">36</span></code> and <code class="docutils literal notranslate"><span class="pre">1</span></code> together encode storing the value in <code class="docutils literal notranslate"><span class="pre">R2</span></code> to memory at address $1$.</p>
+the values <code class="docutils literal notranslate"><span class="pre">36</span></code> and <code class="docutils literal notranslate"><span class="pre">1</span></code> together encode storing the value in <code class="docutils literal notranslate"><span class="pre">R2</span></code> to memory at address <span class="math notranslate nohighlight">\(1\)</span>.</p>
 <p>Of course a real program would be composed of many more memory values and we to be sensible we would have
 first transferred useful values into <code class="docutils literal notranslate"><span class="pre">R0</span></code> and <code class="docutils literal notranslate"><span class="pre">R2</span></code>.  But once we understand the basics of
-how execution of a single instruction works and how we move on to the next one there is very little more to undertand.
+how execution of a single instruction works and how we move on to the next one there is very little more to understand.
 At that point extending this program is nothing harder than loading more values into memory.</p>
-</div>
-</div>
 </div>
 <div class="section" id="initialize-the-pc-to-location-of-first-instruction">
 <h4><span class="section-number">8.4.1.2. </span>Initialize the PC to location of first instruction<a class="headerlink" href="#initialize-the-pc-to-location-of-first-instruction" title="Permalink to this headline">¶</a></h4>
-<div class="cell tag_remove-input docutils container">
-<div class="cell_output docutils container">
 <!-- produced by: 
 htmlFig("[{'src': '../images/VNA_7.png'}]", 
         id="fig:vna_7", 
@@ -1283,15 +1253,13 @@ htmlFig("[{'src': '../images/VNA_7.png'}]",
 <p>Before we can start the process of execution we must initialize the PC to the address in memory of where
 we want it to start executing.  There are several ways to do this. When
 we are using an operating system this is taken care of for us by the OS when it loads our program (we will examine this process
-in later chapters). For the moment we will assume we have the magical abillity to reach into the CPU and set the PC to
+in later chapters). For the moment we will assume we have the magical ability to reach into the CPU and set the PC to
 a value.  In our example we see that we have set the PC to address 5 which is where we loaded our code.
 At the end of this chapter when we use the SOL6502 to explore program execution we will use the ability it gives us,
-as a teaching computer, do precisly this -- directly set the PC value.  It is worth noting one can also have this
+as a teaching computer, do precisely this – directly set the PC value.  It is worth noting one can also have this
 magical ability on a real computer when using <a href="./Debuggers">machine level debugger</a>.  Finally, when
 working with the hardware directly, before an OS is started or if you are not using one, the CPU provides a <a href="#POR">Reset</a>
 sequence to help with initializing the PC (and other CPU registers).</p>
-</div>
-</div>
 </div>
 <div class="section" id="categorizing-values-and-their-interpretation">
 <h4><span class="section-number">8.4.1.3. </span>Categorizing values and their Interpretation<a class="headerlink" href="#categorizing-values-and-their-interpretation" title="Permalink to this headline">¶</a></h4>
@@ -1346,8 +1314,6 @@ htmlFig("[{'src': '../images/ASSEMBLY-VNA-THECPU/ASSEMBLY-VNA-THECPU.018.png'}]"
 </div>
 <div class="section" id="step-1-fetch-opcode">
 <h3><span class="section-number">8.4.3. </span>Step 1: Fetch Opcode<a class="headerlink" href="#step-1-fetch-opcode" title="Permalink to this headline">¶</a></h3>
-<div class="cell tag_remove-input docutils container">
-<div class="cell_output docutils container">
 <!-- produced by: 
 htmlFig("[{'src': '../images/VNA_8.png'}]", 
         id="fig:vna_8", 
@@ -1368,17 +1334,15 @@ htmlFig("[{'src': '../images/VNA_8.png'}]",
         </td>
     </tr>
     <caption align="bottom" style="text-align: left; padding: 0; margin: 0;" >
-          <i>Figure: First step of exection loop is to fetch the value at the location pointed to by the PC</i> 
+          <i>Figure: First step of execution loop is to fetch the value at the location pointed to by the PC</i> 
     </caption>
 </table>
-<p><strong>Fetch</strong>: The step of the CPU program execution loop is the act doing a read bus transation to the address &quot;pointed&quot; to by the PC to load the IR with
-the value there so that it can be executed.  When we interpret a number as a memory address we often say that the value &quot;points&quot; to then value in
+<p><strong>Fetch</strong>: The step of the CPU program execution loop is the act doing a read bus transaction to the address “pointed” to by the PC to load the IR with
+the value there so that it can be executed.  When we interpret a number as a memory address we often say that the value “points” to then value in
 memory at that address.  This is why some manufactures call the PC register an Instruction Pointer (IP) Register.</p>
-<p>In our example this means that the CPU places the address value contained in the PC ($5$) onto the address bus and the memory
-reponds by placing the value at that address onto the data bus ($146$) .  When the CPU receives the value it internally routes the
+<p>In our example this means that the CPU places the address value contained in the PC (<span class="math notranslate nohighlight">\(5\)</span>) onto the address bus and the memory
+responds by placing the value at that address onto the data bus (<span class="math notranslate nohighlight">\(146\)</span>) .  When the CPU receives the value it internally routes the
 value into the IR.</p>
-</div>
-</div>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <blockquote>
@@ -1395,8 +1359,6 @@ both due to the fixed and simple nature of the encoding and the realatively simp
 <div class="section" id="step-2-decode">
 <h3><span class="section-number">8.4.4. </span>Step 2: Decode<a class="headerlink" href="#step-2-decode" title="Permalink to this headline">¶</a></h3>
 <p>Certain things happen in the decode phase: 1) Identify which operation is to be executed 2) determine where the inputs are coming from (getting them from memory if needed) and 3) setting up where the output will go.  The parts of the CPU that do the setup is often called the control plane/path of the CPU.  We are not particularly concerned with details of how this is implemented in the CPU what we care about is have a concrete knowledge of how an opcode is interpreted – decoded. As such we artificially break it down into decoding down into three distinct steps for clarity.</p>
-<div class="cell tag_remove-input docutils container">
-<div class="cell_output docutils container">
 <!-- produced by: 
 htmlFig("[{'src': '../images/VNA_9.png'}]", 
         id="fig:vna_9", 
@@ -1422,14 +1384,10 @@ htmlFig("[{'src': '../images/VNA_9.png'}]",
 </table>
 <p>Perhaps the obvious thing that needs to be done is to identify which internal operation unit
 is required to do the work encoded in the opcode.  In our example our CPU is built to interpret the opcode
-value of $146$ as targeting <code class="docutils literal notranslate"><span class="pre">OPERATION</span> <span class="pre">2</span></code>.  To be concrete and consistent with our example, we define <code class="docutils literal notranslate"><span class="pre">OPERATION</span> <span class="pre">2</span></code> to
+value of <span class="math notranslate nohighlight">\(146\)</span> as targeting <code class="docutils literal notranslate"><span class="pre">OPERATION</span> <span class="pre">2</span></code>.  To be concrete and consistent with our example, we define <code class="docutils literal notranslate"><span class="pre">OPERATION</span> <span class="pre">2</span></code> to
 implement addition.  That is to say it take in two values as inputs and produces the sum as output. In a real CPU the operations
-and what are called funtional units (the components that do the work) may not have such a simple one to one relationship and the setting
+and what are called functional units (the components that do the work) may not have such a simple one to one relationship and the setting
 up of which functional units need to be used to conduct the operation could be much more subtle and complex.</p>
-</div>
-</div>
-<div class="cell tag_remove-input docutils container">
-<div class="cell_output docutils container">
 <!-- produced by: 
 htmlFig("[{'src': '../images/VNA_10.png'}]", 
         id="fig:vna_9", 
@@ -1452,21 +1410,19 @@ htmlFig("[{'src': '../images/VNA_10.png'}]",
     <caption align="bottom" style="text-align: left; padding: 0; margin: 0;" >
           <i>Figure: The opcode includes the information that allows the CPU to route the inputs and outputs specified to the operation unit.</i> 
     </caption>
-</table>
+</table>                    
 <p>In addition to which operation is to be executed the opcode also encodes where the input operands,
-if any are required for the particualr operation must come from and where any outputs should be written too.  In our example, the opcode $146$ identifies that the two values for the addition
+if any are required for the particular operation must come from and where any outputs should be written too.  In our example, the opcode <span class="math notranslate nohighlight">\(146\)</span> identifies that the two values for the addition
 should explicitly come from <code class="docutils literal notranslate"><span class="pre">R0</span></code> and <code class="docutils literal notranslate"><span class="pre">R2</span></code>.  We visualize this as the control path of the CPU configuring the operation unit, <code class="docutils literal notranslate"><span class="pre">OPERATION</span> <span class="pre">2</span></code>, to
-receive its inputs fom the two specified GPRS.</p>
-</div>
-</div>
+receive its inputs from the two specified GPRS.</p>
 <div class="section" id="addressing-modes">
 <h4><span class="section-number">8.4.4.1. </span>Addressing Modes<a class="headerlink" href="#addressing-modes" title="Permalink to this headline">¶</a></h4>
 <p>More generally, most CPUS support several ways of specifying where the operands for an operation can come from.  These are called <strong>addressing
 modes</strong>.  In the example, since all the operands, specified by the opcode <span class="math notranslate nohighlight">\(146\)</span> are in GPRS this might be called <em>Register</em> address modes.  Depending on the
 CPU opcodes can encode many other variants, examples include:</p>
 <ol class="simple">
-<li><p><em>Implied</em>: no operands are required or the operands come from a fixed set of register (eg. an instruction might implicity use the value in the PC as an operand)</p></li>
-<li><p><em>Memory</em>: an operand is located in memory and additional memory bus transactions will be nececessary prior to executing the operations (there are usually several memory addressing modes)</p></li>
+<li><p><em>Implied</em>: no operands are required or the operands come from a fixed set of register (eg. an instruction might implicitly use the value in the PC as an operand)</p></li>
+<li><p><em>Memory</em>: an operand is located in memory and additional memory bus transactions will be necessary prior to executing the operations (there are usually several memory addressing modes)</p></li>
 </ol>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
@@ -1496,8 +1452,6 @@ most CPUs provide some varation of at least the following:
 </div>
 <div class="section" id="execute-conduct-the-operation-and-update-the-pc">
 <h3><span class="section-number">8.4.5. </span>Execute : Conduct the operation and update the PC<a class="headerlink" href="#execute-conduct-the-operation-and-update-the-pc" title="Permalink to this headline">¶</a></h3>
-<div class="cell tag_remove-input docutils container">
-<div class="cell_output docutils container">
 <!-- produced by: 
 htmlFig("[{'src': '../images/VNA_11.png'}]", 
         id="fig:vna_11", 
@@ -1522,12 +1476,8 @@ htmlFig("[{'src': '../images/VNA_11.png'}]",
     </caption>
 </table>
 <p>Once the opcode has been decoded and if any additional memory bus transactions where required to fetch operand values from memory have completed, the operation unit is activated.<br />
-The activated unit performs is function and the specified output locations are updated.   In our figure we visualize this with the operation unit being coloured yellow and the upated value in <code class="docutils literal notranslate"><span class="pre">R2</span></code>.
+The activated unit performs is function and the specified output locations are updated.   In our figure we visualize this with the operation unit being coloured yellow and the updated value in <code class="docutils literal notranslate"><span class="pre">R2</span></code>.
 Once the operation unit is done it is deactivated but any values updated will of course remain.</p>
-</div>
-</div>
-<div class="cell tag_remove-input docutils container">
-<div class="cell_output docutils container">
 <!-- produced by: 
 htmlFig("[{'src': '../images/VNA_12.png'}]", 
         id="fig:vna_12", 
@@ -1551,23 +1501,19 @@ htmlFig("[{'src': '../images/VNA_12.png'}]",
           <i>Figure: Once decoded and any additional memory bus transactions have completed to fetch necessary operand values the operation unit is activated and the function it implements is 'Executed'.</i> 
     </caption>
 </table>
-<p>Additionally, unless the operation explictly set the PC to a new value the PC will be incremented
-by the number of values that encoded the current instrution.  In our diagram, given that the first
-instruction only took one value to encode, the PC is incremented by one.  It now contains the value $6$ which
+<p>Additionally, unless the operation explicitly set the PC to a new value the PC will be incremented
+by the number of values that encoded the current instruction.  In our diagram, given that the first
+instruction only took one value to encode, the PC is incremented by one.  It now contains the value <span class="math notranslate nohighlight">\(6\)</span> which
 is the address where the next instruction in our program is encoded.</p>
 <p>The exact point at which the PC is updated varies from CPU to CPU but what is critical is that it is done before the current execution loop
 iteration is considered completed.</p>
-<p>All CPUs contain a special category of &quot;control flow&quot; operations (<em>jumps</em>, <em>branchs</em>, <em>calls</em>) that will override the default update of the PC
+<p>All CPUs contain a special category of “control flow” operations (<em>jumps</em>, <em>branches</em>, <em>calls</em>) that will override the default update of the PC
 so that the program can force the PC to a programmer specified value.   This allows the programmer to have the control to redirect execution to an alternative
 address where they have placed opcodes.  This ability is the core that we use to implement high level programming ideas like <em>loops</em>, <em>if</em> statements,
 <em>switches</em> and <em>functions</em>.</p>
 </div>
-</div>
-</div>
 <div class="section" id="repeat-back-to-step-1-of-the-loop-and-on-we-go">
 <h3><span class="section-number">8.4.6. </span>Repeat : Back to Step 1 of the Loop and on we go.<a class="headerlink" href="#repeat-back-to-step-1-of-the-loop-and-on-we-go" title="Permalink to this headline">¶</a></h3>
-<div class="cell tag_remove-input docutils container">
-<div class="cell_output docutils container">
 <!-- produced by: 
 htmlFig("[{'src': '../images/VNA_14.png'}]", 
         id="fig:vna_14", 
@@ -1591,15 +1537,15 @@ htmlFig("[{'src': '../images/VNA_14.png'}]",
           <i>Figure: State of the computer at the end of the second iteration of the execution loop.</i> 
     </caption>
 </table>
-<p>At this point we are done all the steps of one interation of the execution loop and  one instruction  of the program
+<p>At this point we are done all the steps of one iteration of the execution loop and  one instruction  of the program
 that was loaded into memory has been executed.  At this point the CPU will simply go back to step 1 and repeat the
-process over and over again. In our case this will mean fetching the value at address $6$ into the IR.<br />
-Decoding this value, $36$, as a store of the value in <code class="docutils literal notranslate"><span class="pre">R2</span></code> into the address that is encoded in address $7$
-which is $1$.  Thus it will transfer the value in <code class="docutils literal notranslate"><span class="pre">R2</span></code> to the memory location $1$.<br />
+process over and over again. In our case this will mean fetching the value at address <span class="math notranslate nohighlight">\(6\)</span> into the IR.<br />
+Decoding this value, <span class="math notranslate nohighlight">\(36\)</span>, as a store of the value in <code class="docutils literal notranslate"><span class="pre">R2</span></code> into the address that is encoded in address <span class="math notranslate nohighlight">\(7\)</span>
+which is <span class="math notranslate nohighlight">\(1\)</span>.  Thus it will transfer the value in <code class="docutils literal notranslate"><span class="pre">R2</span></code> to the memory location <span class="math notranslate nohighlight">\(1\)</span>.<br />
 The figure to the right illustrates the state of the compute after the second instruction of our program has completed.</p>
-<p>Notice that the PC is now pointing at address $8$.  So what will happen next?
+<p>Notice that the PC is now pointing at address <span class="math notranslate nohighlight">\(8\)</span>.  So what will happen next?
 It is important to realize the CPU is just a blind infinite loop and will happy go onto
-interpret the value at address $8$ as an opcode.  In this case we will assume that blank means a location has
+interpret the value at address <span class="math notranslate nohighlight">\(8\)</span> as an opcode.  In this case we will assume that blank means a location has
 some random value.  So either it will be interpreted as some instruction or if we are lucky it will be an invalid
 instruction that causes an error that the OS (if we are using one) will catch and terminate our program.
 More likely however it will be correspond to some instruction that the cpu will happily execute, of course
@@ -1607,8 +1553,6 @@ this instruction might very well overwrite values that we worked so hard to prod
 not to let this happen!  We must always direct the CPU to valid instructions of our program and
 if we are done then it is our job to ensure that the CPU executes instructions that transfers control
 to the OS letting it know we are done.  If you are not using an OS then you better figure out what to do next with the CPU ;-).</p>
-</div>
-</div>
 <div id='INTERP_sec' style="background-color:tomato;">
 <img style="margin: auto auto auto auto;"  align="left" width="60" src="../images/warning.svg">
 <img style="margin: auto auto auto auto;"  align="left" width="60" src="../images/concept.svg"><img style="margin: auto auto auto auto;"  align="left" width="60" src="../images/donot.svg">
@@ -1622,8 +1566,6 @@ to the OS letting it know we are done.  If you are not using an OS then you bett
 <p>In the next few subsections we will add a few more details to the basic features of the CPU and how execution is conducted.</p>
 <div class="section" id="status-flags-register">
 <h4><span class="section-number">8.4.7.1. </span>Status/Flags Register<a class="headerlink" href="#status-flags-register" title="Permalink to this headline">¶</a></h4>
-<div class="cell tag_remove-input docutils container">
-<div class="cell_output docutils container">
 <!-- produced by: 
 htmlFig("[{'src': '../images/VNA_15.png'}]", 
         id="fig:vna_15", 
@@ -1650,12 +1592,8 @@ htmlFig("[{'src': '../images/VNA_15.png'}]",
 <p>Many CPUs have a special register, often called a status or flags register, that operations will update to indicate various things beyond its main output value.  For example, an add operation might, additionally set values in the processor status
 register indicating that the result was zero or that the result exceeded the maximum value that a GPR can store.</p>
 </div>
-</div>
-</div>
 <div class="section" id="stack-pointer-register-sp">
 <h4><span class="section-number">8.4.7.2. </span>Stack Pointer Register (SP)<a class="headerlink" href="#stack-pointer-register-sp" title="Permalink to this headline">¶</a></h4>
-<div class="cell tag_remove-input docutils container">
-<div class="cell_output docutils container">
 <!-- produced by: 
 htmlFig("[{'src': '../images/VNA_16.png'}]", 
         id="fig:vna_14", 
@@ -1684,8 +1622,6 @@ of an area of memory that it wants to use as a <a href="https://en.wikipedia.org
 The CPU provides <strong>push</strong> and <strong>pop</strong> operations that use and update this pointer to place values in and get values back from this area of
 memory.  Having this support is very useful as it provides a very easy way as a programmer to track and use memory for temporary data.
 As we will see it is also very useful for implementing software functions.</p>
-</div>
-</div>
 </div>
 <div class="section" id="reset">
 <h4><span class="section-number">8.4.7.3. </span>Reset<a class="headerlink" href="#reset" title="Permalink to this headline">¶</a></h4>
@@ -1886,7 +1822,72 @@ The above discussion is conceptual so that as programmers we have a working know
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <div class="output text_html">
+<table id="fig:buses" align="center" width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse: collapse; margin: auto auto auto auto">
+    <tr  style="padding: 0; margin: 0;"> 
+        <td colspan="1" width="60.00%" style="padding: 0; margin: 0 0 0 0; background-color:inherit;">
+            <div style="padding: 1px; margin: 0 0 0 0;">
 <iframe src="http://jappavoo.github.io/SOL6502/index.html", height="1000px", width="100%"></iframe>
+            </div>
+        </td>
+        <td colspan="1" width="40.00%" style="padding:0 0 0 1em; margin: 0 0 0 0; background-color:blue;">
+        <div style="height:400px; overflow:auto; text-align: left; vertical-align:-200px; background-color:green;">
+<h2>The SOL6502 Computer</h2>
+
+To the left is a simulated computer that is designed to let us explore the inner workings of a simple but 
+full functional von Neumann computer.
+
+<p>All registers and memory locations are one byte big, except the PC which is 2 bytes.  All values are displayed
+binary. Clicking on the value of register or memory location will let you set the value.  Using this feature we will
+load a program and setup the CPU so that we can then execute the program.
+
+<h3>The code</h3>
+We will start with the three instruction 6502 program presented in the introduction.
+
+<pre>
+    CLC         ; Clear the Carry Flag
+    LDA #1      ; Load the accumulator with the value 1
+    ADC #1      ; Add the value 1 to the accumulator 
+</pre>
+
+In binary encoding of this program the following 5 byte sequence
+<pre>
+CLC    -> 00011000
+LDA #1 -> 10101001, 00000001
+ADC #1 -> 01101001, 00000001
+</pre>
+
+<h3>Setup: Load program into memory</h3>
+
+Since our program does not have explicity reference any specific addresses we can load it any where we like.
+To keep things simple let's put the five opcodes in the first five address of memory.  To do this first we navigate
+the memory view to the 0th address by single clicking on the black memory location indicator to the right of the Memory.  
+Doing so should prompt you for an address to scroll too.  Entering 0 should scroll memory so that top address displayed is 0.
+
+Now we can load the values of our program into the first five address. To do this click on the value of an address you want to set 
+and then enter the value you want to set it too.  The following are the locations and values that you want to set.
+<pre>
+Address            : Value
+000000000000000000 : 00011000
+000000000000000001 : 10101001
+
+000000000000000010 : 00000001
+000000000000000011 : 01101001
+000000000000000100 : 00000001
+</pre>
+
+<h3>Setup: Now set the PC to the starting address of our program</h3>
+
+Click on the PC and set its value to 0.  This might already be the case but it is a good idea
+to explicitly do it any way.
+
+<h3>Execute the first instruction</h3>
+Below the view of the system you will set a set of controls and sliders.
+At this point we will keep the animations on and also set the speed of the machine to its slowest setting so that we can carefully watch 
+watch how things work.  To do this make sure the "Animation: On" checkbox is checked and the "Speed" slider is all the way to the left.    
+</div>
+        </td>
+    </tr>
+</table>    
 </div></div>
 </div>
 </div>
