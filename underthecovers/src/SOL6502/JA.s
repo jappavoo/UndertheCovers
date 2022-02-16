@@ -1,0 +1,5 @@
+	LDA #'J'
+	STA $FF00
+	LDA #'A'
+	STA $FF00
+	BRK
