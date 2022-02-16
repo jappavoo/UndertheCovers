@@ -37,9 +37,13 @@
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
-    <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
@@ -471,7 +475,7 @@ the following two Intel instruction sequence directs the components of the compu
 <h2><span class="section-number">12.1. </span>Information<a class="headerlink" href="#information" title="Permalink to this headline">¶</a></h2>
 <p>Given that the components of a computer are built to work with discrete binary, two valued, patterns it is natural for us to use arrays of binary digits (bits) to represent what values we want the components to store or the operations we want done.</p>
 <p>As such the world of software is really a world in which we translate our ideas into arrays of bits. Remember, however, as we continue our discussion of information representation the components of the computer are simply working on patterns of electrical signals, charges, resistance, magnetic polarity, etc. They do not store or operate explicitly on strings, integers, floats, functions, instructions, hexadecimal values or even ones and zeros. All these things are how we as programmers use the values within the components to represent information (including the instructions of our programs that implement algorithms).</p>
-<p><a id="#THEBYTE_sec"></a></p>
+<p><a id="THEBYTE_sec"></a></p>
 <div class="section" id="the-byte">
 <h3><span class="section-number">12.1.1. </span>The Byte<a class="headerlink" href="#the-byte" title="Permalink to this headline">¶</a></h3>
 <div class="cell tag_remove-input docutils container">

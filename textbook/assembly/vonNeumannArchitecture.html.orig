@@ -2663,7 +2663,7 @@ FEATURES {
 <p>Hints:</p>
 <ol class="simple">
 <li><p>Examining the SOL6502 you will see that the ASCII terminal console is mapped to the address <span class="math notranslate nohighlight">\(1111111100000000\)</span>.  Writing a value to this address will send the value to the terminal.</p></li>
-<li><p>Remember the Terminal is an <a class="reference external" href="../unix/terminal.html#ASCII_sec">ASCII</a> device.</p></li>
+<li><p>Remember the Terminal is an <a class="reference external" href="../unix/terminal.ipynb#ASCII_sec">ASCII</a> device.</p></li>
 </ol>
 <div class="cell tag_remove-input tag_hide-output docutils container">
 <div class="cell_output docutils container">

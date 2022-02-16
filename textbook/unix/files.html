@@ -37,9 +37,13 @@
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
-    <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
@@ -533,7 +537,7 @@ Using computers and managing information has become synonymous.   You probably t
 <div class="section" id="data">
 <h3><span class="section-number">3.2.1. </span>Data<a class="headerlink" href="#data" title="Permalink to this headline">¶</a></h3>
 <p>We think of the contents of the file as the “data” of the file.</p>
-<p>It is important to note that we do not distinguish the “type” of information that the data of a file contains – rather files just contain a collection of <a class="reference external" href="../assembly/InfoRepl#THEBYTE_sec">bytes</a>.  The bytes of the file might encode <a class="reference external" href="../unix/terminal.html#ASCII_sec">ASCII</a> data, image data, audio data, an executable program, etc.  As we will see later it will be up to us to decide how we want to interpret the contents of a file by what we do with it (eg. open it in a text editor versus opening it in a music player).</p>
+<p>It is important to note that we do not distinguish the “type” of information that the data of a file contains – rather files just contain a collection of <span class="xref myst">bytes</span>.  The bytes of the file might encode <a class="reference external" href="../unix/terminal.html#ASCII_sec">ASCII</a> data, image data, audio data, an executable program, etc.  As we will see later it will be up to us to decide how we want to interpret the contents of a file by what we do with it (eg. open it in a text editor versus opening it in a music player).</p>
 </div>
 <div class="section" id="meta-data">
 <h3><span class="section-number">3.2.2. </span>Meta Data<a class="headerlink" href="#meta-data" title="Permalink to this headline">¶</a></h3>
