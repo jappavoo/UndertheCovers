@@ -652,7 +652,12 @@ def TermShellCmd(cmd, prompt='$ ', markdown=False, pretext='', posttext='', heig
                 print(text)
             return out
 
-
+def gdbCmds(gdbcmds, pretext='$ gdb', prompt='', wait=False, noposttext=True, **kwargs):
+    gdbcmds = gdbcmds + '''
+quit'''
+    #print(gdbcmds)
+    return TermShellCmd("echo '" + gdbcmds + "' | gdb -ex 'set trace-commands on' | sed 's/^(gdb) +/(gdb) /'", pretext=pretext, prompt=prompt, wait=wait, noposttext=noposttext, **kwargs)
+    
 # Standard way to present answer for question and answer
 #  put question in a cell as normal markdown
 #  use the Answer function in the next cell as code, passing in markdown answer text
