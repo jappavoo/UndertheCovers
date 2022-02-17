@@ -11,6 +11,7 @@ from matplotlib import animation
 import numpy as np
 import pandas as pd
 
+
 matplotlib.rcParams['animation.html'] = 'jshtml'
 
 # from IPython.display import Javascript
@@ -330,14 +331,17 @@ def displayBytes(bytes=[[0x00]],
             {'selector' : 'tr:hover', 'props': tr_hover_props },
             {'selector' : 'th:hover', 'props': th_hover_props }
         ])
-    
+    # JA hide_index and hide_columns is deprecated
+    # hack until we fix the code
+    import warnings
+    warnings.filterwarnings('ignore')
     # if no row labels hide them
     if (len(labels)==0):
-        df.style.hide(axis='index')
+        body.hide_index()
     # if no column labels hide them 
     if (len(columns)==0):
         body.hide_columns()
-        
+    del warnings
     # make body sticky header if present stay in place    
     body.set_sticky(axis=1)
 
