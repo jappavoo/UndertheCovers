@@ -656,8 +656,8 @@ def TermShellCmd(cmd, prompt='$ ', markdown=False, pretext='', posttext='', heig
                 print(text)
             return out
 
-def gdbCmds(gdbcmds, pretext='$ gdb', quit=True, prompt='', wait=False, noposttext=True, **kwargs):
-    gdbcmds = gdbcmds + '''kill
+def gdbCmds(gdbcmds, pretext='$ gdb', prompt='', wait=False, noposttext=True, **kwargs):
+    gdbcmds = gdbcmds + '''
 quit'''
     #print(gdbcmds)
     return TermShellCmd("echo '" + gdbcmds + "' | gdb -ex 'set trace-commands on' | sed 's/^(gdb) +/(gdb) /'", pretext=pretext, prompt=prompt, wait=wait, noposttext=noposttext, **kwargs)
@@ -669,9 +669,3 @@ quit'''
 def Answer(md):
     display(Markdown(md))
 
-def setupExamples(name,files,basedir=os.getenv('HOME')):
-    global exdir
-    exdir=basedir + "/" + name
-    output=runTermCmd("[[ -d " + exdir + " ]] &&  rm -rf "+ exdir + 
-                 ";mkdir " + exdir + 
-                 ";cp " + files + " " + exdir)
