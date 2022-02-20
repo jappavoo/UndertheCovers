@@ -203,14 +203,24 @@ def bin2Hex(x, sep=' $\\rightarrow$ '):
 #    displayBytes(bytes=[[i] for i in range(256)], labels=["0x"+format(i,"02x")+ " (" + format(i,"03d") +")" for i in range(256)], center=True)
 def toBits(v,dtype,count,numbits):
     try:
-        x=np.unpackbits(dtype(v),count=count)
+        if (count>8):
+            x=np.unpackbits(np.array([v], dtype=">i"+str(np.uint8(count/8))).view(np.uint8))
+        else:
+            x=np.unpackbits(dtype(v),count=count)
         if (numbits<8):
             return x[numbits:]
         else:
             return x
     except:
-#        print("oops v: ", v, type(v), len(v));
+#        print("oops v: ", v, dtype(v), len(v));
         return [" " for i in range(numbits)]
+
+def bitLabels(n):
+    labels=[None] * n
+    n=n-1
+    for i in range(n,-1,-1): 
+        labels[n-i]="<em>b<sub>" + str(i) + "</sub></em>"
+    return labels
 
 # could not get latex math in column titles working consistently both in notebook and jupyterbook
 # so use html to format "math"
@@ -247,16 +257,18 @@ def displayBytes(bytes=[[0x00]],
     # there is probably a better way to do this
     #if not labels:
     #    labels = ["" for i in range(len(bytes))]
-
-    sizeinbits = (dtype(0).nbytes)*8
-
+    
+#    print(bytes, bytes[0], np.dtype(bytes[0], dtype(bytes[0]).nbytes))
+    sizeinbits = dtype(0).nbytes
+    sizeinbits = sizeinbits * 8
+    
     # have attempted to support specifiy the number of bits
     # but not sure it really works will need to be tested
     if numbits<sizeinbits:
         count=sizeinbits;
     else:
         count=numbits
-        
+  
     # convert each byte value into an array of bits        
     try:    
         x = np.unpackbits(np.array(bytes,dtype=dtype),count,axis=1)
@@ -264,7 +276,7 @@ def displayBytes(bytes=[[0x00]],
             x = [ i[numbits:] for i in x ]
     except:
         x = np.array([ toBits(i,dtype=dtype,count=count,numbits=numbits) for i in bytes ])
-        
+
     # Add any prefix data columns to the bits 
     if prefixvalues:
         x = np.concatenate((prefixvalues,x),axis=1)
