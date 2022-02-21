@@ -591,8 +591,8 @@ ansi_escape_8bit = re.compile(br'''
     )
 ''', re.VERBOSE)
 
-def cleanTermBytes(bytes):    
-    return  ansi_escape_8bit.sub(b'', bytes)
+#def cleanTermBytes(bytes):    
+#    return  ansi_escape_8bit.sub(b'', bytes)
 
 def runTermCmd(cmd, cwd=os.getcwd(), bufsize=4096, wait=True, tmout=1.0, rows=20, cols=80):
     master, slave = pty.openpty()
@@ -631,9 +631,19 @@ def runTermCmd(cmd, cwd=os.getcwd(), bufsize=4096, wait=True, tmout=1.0, rows=20
     os.close(master)
     return output
 
-def TermShellCmd(cmd, prompt='$ ', markdown=False, pretext='', posttext='', height='', width='', outputlayout={'border': '1px solid black'}, noposttext=False, raw=False, **kwargs):
+# 'latin-1' 
+def TermShellCmd(cmd, prompt='$ ', markdown=False, pretext='', posttext='', prenl=True, stripnl=False, height='100%', width='', outputlayout={'border': '1px solid black'}, noposttext=False, raw=False, encoding=sys.getdefaultencoding(), decodeerrors='replace', **kwargs):
     output = runTermCmd(cmd, **kwargs)
-    
+    output=output.decode('utf-8',decodeerrors)
+    if stripnl:
+        output.strip()
+        
+    if prenl:
+        prenl='''
+'''
+    else:
+        prenl=''
+        
     if height:
         outputlayout['height']=height
         outputlayout['overflow_y']='scroll'
@@ -645,11 +655,11 @@ def TermShellCmd(cmd, prompt='$ ', markdown=False, pretext='', posttext='', heig
     if prompt:
         pretext += prompt + cmd #+ "\n"
         if not noposttext:
-           posttext += prompt
+            posttext += prompt
         
     if markdown:
         md = Markdown(htmlTerm('''
-''' + pretext + cleanTermBytes(output).decode('utf-8') + posttext ))
+''' + pretext + output + posttext ))
         if raw:
             return md
         else:
@@ -658,14 +668,15 @@ def TermShellCmd(cmd, prompt='$ ', markdown=False, pretext='', posttext='', heig
                 display(md)
             return out
     else:
-        text = pretext + '''
-''' + output.decode('utf-8') + posttext
+        text = pretext + prenl + output + posttext
+#       text = pretext + '''
+#''' + output.decode('utf-8') + posttext
         if raw:
             return text
         else:
             out=widgets.Output(layout=outputlayout)
             with out:
-                print(text)
+                print(text,end='')
             return out
 
 def gdbCmds(gdbcmds, pretext='$ gdb', quit=True, prompt='', wait=False, noposttext=True, **kwargs):
