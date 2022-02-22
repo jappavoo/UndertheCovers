@@ -23,11 +23,9 @@ parts:
   - file: assembly/vonNeumannArchitecture
   - file: assembly/UnixAssemblyProgramming
   - file: assembly/Debuggers
-  - file: assembly/theByte
-  - file: assembly/Memory
-  - file: assembly/theLoop
   - file: assembly/assembly
   - file: assembly/InfoRepI
+  - file: assembly/nativetypes
 - caption: 'Into the Light : C Programming'
   numbered: true
   chapters:

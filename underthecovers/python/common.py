@@ -34,6 +34,7 @@ def MDBox(contents, title="", w="100%", h="100%",
           color="inherit",
           bgcolor="inherit",
           overflow="auto"):
+        
     md_text = title 
     md_text += '''
 <div style="width:''' + w
@@ -42,7 +43,7 @@ def MDBox(contents, title="", w="100%", h="100%",
     md_text += '''; overflow: ''' + overflow
     md_text += ''';" >
 
-'''
+'''      
     md_text += contents
     md_text += '''
 
@@ -50,12 +51,24 @@ def MDBox(contents, title="", w="100%", h="100%",
 '''
     return md_text
 
+def numberLines(data):
+    lines = ''
+    i=0
+    for l in data.splitlines():
+        lines += str(i) + ": " + l + "\n"
+        i=i+1
+    return lines
+
 # This probably should be a class
-def FileCodeBox(file, lang, **kwargs):
+def FileCodeBox(file, lang, number=False, **kwargs):
     #open text file in read mode
     text_file = open(file, "r")
     #read whole file to a string
     data = text_file.read()
+    
+    if number:
+        data = numberLines(data)
+        
     #close file
     text_file.close()
     # build contents from file and language
@@ -250,7 +263,9 @@ def displayBytes(bytes=[[0x00]],
                  tr_hover_border_color="red",
                  td_hover_bgcolor="white",
                  td_hover_color="black",
-                 disp=True
+                 disp=True,
+				 prehtml='<div style="overflow:scroll; display: table; margin:auto auto;">',
+				 posthtml='</div>'
                  ):
 
     # if no labels specified then send in blanks to supress
@@ -364,7 +379,8 @@ def displayBytes(bytes=[[0x00]],
             ('margin-right', 'auto')
             ]
         body.set_table_styles([{'selector': '', 'props' : margins }], overwrite=False);
-    body=body.to_html()
+    body= body.to_html()
+    body = prehtml + body + posthtml
     if disp:
         display(HTML(body))
     else:    
@@ -684,7 +700,10 @@ def gdbCmds(gdbcmds, pretext='$ gdb', quit=True, prompt='', wait=False, nopostte
 quit'''
     #print(gdbcmds)
     return TermShellCmd("echo '" + gdbcmds + "' | gdb -ex 'set trace-commands on' | sed 's/^(gdb) +/(gdb) /'", pretext=pretext, prompt=prompt, wait=wait, noposttext=noposttext, **kwargs)
-    
+
+def gdbFile(file, pretext='$ gdb', quit=True, prompt='', wait=False, noposttext=True, **kwargs):
+    return TermShellCmd("cat " + file + " | gdb -ex 'set trace-commands on' | sed 's/^(gdb) +/(gdb) /'", pretext=pretext, prompt=prompt, wait=wait, noposttext=noposttext, **kwargs)
+
 # Standard way to present answer for question and answer
 #  put question in a cell as normal markdown
 #  use the Answer function in the next cell as code, passing in markdown answer text
