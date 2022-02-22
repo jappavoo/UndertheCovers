@@ -368,7 +368,8 @@
   <div class="tex2jax_ignore mathjax_ignore section" id="introduction-assembly-programming">
 <h1><span class="section-number">7. </span>Introduction: Assembly Programming<a class="headerlink" href="#introduction-assembly-programming" title="Permalink to this headline">¶</a></h1>
 <p>Assembly Programming means writing code in the language that the hardware of the computer understands – or at least very close to it.
-Most programmers are completely unaware of how the computer really works, as the languages that they program in are not natively supported by the hardware.  Rather, most languages, such as JavaScript, Java, Python, Ruby, Rust, C#, C++, and even C must be translated into the native code that the computer does understand – machine code.</p>
+Most programmers are completely unaware of how the computer really works, as the languages that they program in are not directly supported by the hardware.  Rather, most languages, such as JavaScript, Java, Python, Ruby, Rust, C#, C++, and even C must be translated into the native code that the computer does understand – machine code.</p>
+<p><a id="machinecode_sec"></a></p>
 <div class="section" id="machine-code">
 <h2><span class="section-number">7.1. </span>Machine Code<a class="headerlink" href="#machine-code" title="Permalink to this headline">¶</a></h2>
 <p>The hardware of the computer is built out of electrical components that can store and interpret patterns of  bits, eg. binary digits.  A single bit can be though of as a switch that can be in two positions “ON” – 1  and “OFF” – 0.  A group of eight bits forms a byte.  We will say  a lot more about bytes  a little <a href="">later</a>.  The main thing to observe is that a byte is easily expressed as an 8 digit binary, (base 2), number.  Given that there are 8 bits a byte can take on <span class="math notranslate nohighlight">\(2^8=256\)</span>
@@ -454,6 +455,7 @@ unique values ranging from <span class="math notranslate nohighlight">\(00000000
 <blockquote>
 <div><p><a class="reference internal" href="../_images/fyi.svg"><img alt="../_images/fyi.svg" class="align-left" src="../_images/fyi.svg" width="40" /></a> <p style="background-color:powderblue;"> In the <span class="xref myst">von Neumann Architecture</span> chapter we will use the book’s companion 6502 based computer, <a class="reference external" href="http://jappavoo.github.io/SOL6502">SOL6502</a>, to load and execute this machine code program by hand.</p>
 </div></blockquote>
+<p><a id="assemblycode_sec"></a></p>
 </div>
 <div class="section" id="assembly-code">
 <h2><span class="section-number">7.2. </span>Assembly Code<a class="headerlink" href="#assembly-code" title="Permalink to this headline">¶</a></h2>

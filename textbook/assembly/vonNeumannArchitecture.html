@@ -410,8 +410,8 @@
     </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#the-loop">
-     8.4.2. The Loop
+    <a class="reference internal nav-link" href="#the-execution-loop">
+     8.4.2. The Execution Loop
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
@@ -665,8 +665,8 @@
     </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#the-loop">
-     8.4.2. The Loop
+    <a class="reference internal nav-link" href="#the-execution-loop">
+     8.4.2. The Execution Loop
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
@@ -962,6 +962,7 @@ htmlFig("[{'src': '../images/VNA_0.png'}]",
     </caption>
 </table>
 <p>The cpu is a distinct physical region of the computer. Housed within it are several important parts that we need to understand.</p>
+<p><a id="operations_sec">&lt;/a</p>
 </div>
 <div class="section" id="operations">
 <h3><span class="section-number">8.2.2. </span>Operations<a class="headerlink" href="#operations" title="Permalink to this headline">¶</a></h3>
@@ -1296,6 +1297,7 @@ as a teaching computer, do precisely this – directly set the PC value.  It is 
 magical ability on a real computer when using <a href="./Debuggers">machine level debugger</a>.  Finally, when
 working with the hardware directly, before an OS is started or if you are not using one, the CPU provides a <a href="#POR">Reset</a>
 sequence to help with initializing the PC (and other CPU registers).</p>
+<p><a id="textanddata_sec"></a></p>
 </div>
 <div class="section" id="categorizing-values-and-their-interpretation">
 <h4><span class="section-number">8.4.1.3. </span>Categorizing values and their Interpretation<a class="headerlink" href="#categorizing-values-and-their-interpretation" title="Permalink to this headline">¶</a></h4>
@@ -1308,11 +1310,12 @@ some standard conventions for referring to the two main categories of values we 
 <div class="section" id="data">
 <h5><span class="section-number">8.4.1.3.2. </span>Data<a class="headerlink" href="#data" title="Permalink to this headline">¶</a></h5>
 <p>Sets of values to be loaded into memory that purely encode various forms of data that we want our program to operate on, such as numbers of various types or ASCII strings, we unsurprising collectively call <strong>data</strong>.  The main distinction is that as a programmer we don’t intend for these values to be treated as opcodes and thus executed.  By forming this distinction the tools we use can try and help us catch bugs in our program which lead it to accidentally attempting to execute values from areas of memory that contain data.  See the <a href="#INTERP_sec">Challenges of Interpretation</a> for a more general discussion.</p>
+<p><a id="exloop_sec"></a></p>
 </div>
 </div>
 </div>
-<div class="section" id="the-loop">
-<h3><span class="section-number">8.4.2. </span>The Loop<a class="headerlink" href="#the-loop" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="the-execution-loop">
+<h3><span class="section-number">8.4.2. </span>The Execution Loop<a class="headerlink" href="#the-execution-loop" title="Permalink to this headline">¶</a></h3>
 <p>At the heart of the CPU is a built in infinite loop that coordinates the parts of the CPU and memory to enable program execution, the successive execution of instructions.  The following Figure, <a href="#fig:theLoop">The Loop</a> has extracts from early processor manuals that describe at a high level this loop.  Our generic CPU breaks this down into three distinct internal phases:</p>
 <ol class="simple">
 <li><p>Fetch</p></li>
