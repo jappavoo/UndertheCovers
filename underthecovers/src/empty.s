@@ -14,11 +14,11 @@
 	                              # The linker looks for an _start symbol so that it knows address
 	                              # of the first instruction of our program
 
-_start:                           # introduce a symbolic (human readable) label for "this" address
+_start:                               # introduce a symbolic (human readable) label for "this" address
 	                              # associates the address of this point in our program with the
 	                              # name following the ':' -- in our case _start
 	                              # In our program or in the debugger we can use this name to
 	                              # to refer to this location -- address.  And thus the values
 	                              # that end up here.
 	.byte 0x00, 0x00, 0x00, 0x00  # .byte directive place value at successive locations in memory
-	                              # (https://sourceware.org/binutils/docs/as/Byte.html#Byte)
+	.byte 0x00, 0x00, 0x00, 0x00  # (https://sourceware.org/binutils/docs/as/Byte.html#Byte)
