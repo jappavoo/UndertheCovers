@@ -1,6 +1,10 @@
 format: jb-book
 root: intro_tb
 parts:
+- caption: 'How to read this book'
+  numbered: false
+  chapters:
+  - file: howto
 - caption: 'The Unix Development Environment'
   numbered: true
   chapters:
