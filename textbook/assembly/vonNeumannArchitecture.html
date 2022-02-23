@@ -59,7 +59,7 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="9. Executables" href="UnixAssemblyProgramming.html" />
+    <link rel="next" title="9. Executables and Processes" href="UnixAssemblyProgramming.html" />
     <link rel="prev" title="7. Introduction: Assembly Programming" href="intro.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -154,7 +154,7 @@
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="UnixAssemblyProgramming.html">
-   9. Executables
+   9. Executables and Processes
   </a>
  </li>
  <li class="toctree-l1">
@@ -172,6 +172,11 @@
    12. Representing information - Preliminaries: Bits, Bytes and Notation
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="nativetypes.html">
+   13. Information Representation - Native Types
+  </a>
+ </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
@@ -181,7 +186,7 @@
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../C/intro.html">
-   13. Introduction
+   14. Introduction
   </a>
  </li>
 </ul>
@@ -962,7 +967,7 @@ htmlFig("[{'src': '../images/VNA_0.png'}]",
     </caption>
 </table>
 <p>The cpu is a distinct physical region of the computer. Housed within it are several important parts that we need to understand.</p>
-<p><a id="operations_sec">&lt;/a</p>
+<p><a id="operations_sec"></a></p>
 </div>
 <div class="section" id="operations">
 <h3><span class="section-number">8.2.2. </span>Operations<a class="headerlink" href="#operations" title="Permalink to this headline">¶</a></h3>
@@ -1008,7 +1013,7 @@ operations are CPU specific our programs will inherently be CPU specific.</p>
 </div></blockquote>
 <p>With respect to “normal” programming, we largely only need to concern ourselves with the the GPRS and knowing about a couple of standard SPRS. As we will see soon, it will also be useful to explicitly introduce at least one of the registers that are usually hidden from programmers to make understanding execution easier.</p>
 <blockquote>
-<div><p><a class="reference internal" href="../_images/fyi.png"><img alt="../_images/fyi.png" class="align-left" src="../_images/fyi.png" style="width: 40px;" /></a> <p style="background-color:powderblue;">
+<div><p><a class="reference internal" href="../_images/fyi.png"><img alt="../_images/fyi.png" class="align-left" src="../_images/fyi.png" style="width: 40px;" /></a> <p id="priv_sec" style="background-color:powderblue;">
 What do we mean by “normal” programming?  As we saw in Part I: The UNIX Development Environment software is largely broken down into two parts: 1) application software that runs within processes and 2) a single operating system kernel composed of software that provides all processes with a wide range of special functions.  This includes the ability to create processes from an executable file and to share the computer among the processes.  Most CPU’s provide a special mode of execution for the OS kernel.  In this mode, an expanded set of operations and SPRS are available for use.  OS kernel software uses the GPRS, SPRS and the expanded set of operations to implement its routines.  We typically call this mode of operation Privileged” , and as such we often call the kernel software privileged code.  Expanded access to the hardware resources of the computer and the application or user software as unprivileged.   Many CPUs expand on this idea to provide multiple levels of privilege, which enables a further degree of layering of the system’s software.  For example, many CPUs use extra levels of privilege to introduce support for a virtual machine monitor (or hypervisor) layer of software. This software can sit below standard operating system kernels, and allow the hardware to be shared by multiple OS’s that each think they are running on the computer by themselves.</p>
 </div></blockquote>
 <p>We will visualize registers as boxes within the CPU.  Each box will be broken down so that the name of the register will be on left, and the space for the value it contains is on the right.</p>
@@ -1798,6 +1803,7 @@ While we have covered how a CPU and memory can operate together to implement pro
 <p><strong>CPU I/O Path</strong>: Some CPU’s have instructions and support for transferring data on an I/O bus and thus to particular peripherals. In this case software must be written to specifically use the correct I/O instructions to communicate with peripherals.  Again it is important to remember that despite having these connections communicating with peripherals is indirect and slower that communicating with memory devices.</p>
 <p>Modern computers  primarily rely on memory mapped I/O for the majority of I/O communications.  Regardless, in general, the only software that directly controls and communicates with I/O devices are in the OS Kernel.  These OS components are called <a class="reference external" href="https://en.wikipedia.org/wiki/Device_driver">devices drivers</a>.  As such application software running on an OS makes calls to the OS to conduct I/O and need not worry about the details of how to control and communicate with I/O devices which can be quite complex and device specific.</p>
 <p>If we do need to conceptualize I/O operation we will assume Memory Mapped I/O.  The main thing to note about I/O is that it is really just another destination for the CPU to send and receive values to and from.  Peripherals are designed to receive and interpret values in device specific ways.  For example writing the correct value to an ASCII terminal device will cause it to display the appropriate character while writing other values will move the cursor to a different location.  Similarly a <a class="reference external" href="https://en.wikipedia.org/wiki/USB">USB</a> microphone will produce a stream of values that represent audio frequency samples and reading and storing them in memory lets us process audio.</p>
+<p><a id="uglyio"></a></p>
 <div id='BUSES_sec' style="background-color:powderblue;">
 <h3>I/O The Ugly Underbelly</h3>
 The above discussion is conceptual so that as programmers we have a working knowledge of how values can flow to and from the outside world.  But the truth is that I/O hardware is very complex and the act of controlling and coordinating with the devices requires a lot of software and knowledge of the devices.  A major role of the operating system is to hide this complexity and details from most programmers.
@@ -2724,7 +2730,7 @@ HIGH ADDR: 11111111
     <a class='right-next' id="next-link" href="UnixAssemblyProgramming.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">9. </span>Executables</p>
+        <p class="prev-next-title"><span class="section-number">9. </span>Executables and Processes</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

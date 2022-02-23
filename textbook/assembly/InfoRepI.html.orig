@@ -59,7 +59,7 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="13. Introduction" href="../C/intro.html" />
+    <link rel="next" title="13. Information Representation - Native Types" href="nativetypes.html" />
     <link rel="prev" title="11. Lets write some assembly code" href="assembly.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -154,7 +154,7 @@
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="UnixAssemblyProgramming.html">
-   9. Executables
+   9. Executables and Processes
   </a>
  </li>
  <li class="toctree-l1">
@@ -172,6 +172,11 @@
    12. Representing information - Preliminaries: Bits, Bytes and Notation
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="nativetypes.html">
+   13. Information Representation - Native Types
+  </a>
+ </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
@@ -181,7 +186,7 @@
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../C/intro.html">
-   13. Introduction
+   14. Introduction
   </a>
  </li>
 </ul>
@@ -4436,7 +4441,7 @@ This allows us to write ASCII mnemonics, English short hands, that the CPU manua
 </ol>
 </li>
 </ol>
-<p>Our focus will be to understand the <span class="xref myst">Native Types</span>  and Programmer Defined Types.  The later we will discuss part of our coverage of program anatomy.  With an understanding of these you can go on to but understand the Standardized Data Formats and for that matter create your own.</p>
+<p>Our focus will be to understand the <a class="reference internal" href="nativetypes.html"><span class="doc std std-doc">Native Types</span></a>  and Programmer Defined Types.  The later we will discuss part of our coverage of program anatomy.  With an understanding of these you can go on to but understand the Standardized Data Formats and for that matter create your own.</p>
 <div style="background-color:LimeGreen;">
 <img style="display: inline; margin: auto auto auto auto;" align="left" width="40px" src="../images/do.svg"> 
 <p><strong>GDB:</strong> Gdb has built-in support to help us encode and decode the native types of the hardware.  Using this support can be very useful in learning how these types are represented in binary.  To do this we must know how to tell gdb what types we are working with.  As mentioned before the print and examine command support several data formats that correspond to the native types of the cpu.  See help examine output in the example below.  In order to set a value to a specific type we must carefully specify the value in a way gdb knows what encoding to use.  We will look at these in more detail as we examine the various encodings.  Note the assemble also understands various encodings to make our job easier when writing assembly code as well.  In the following we will only use the examine syntax and the ability to enclose a ASCII character in single quotes to tell gdb to encode it into a binary value. Another things we illustrate is gdb’s knowledge of the fact that ASCII
@@ -4531,10 +4536,10 @@ strings are by convention encoded as a sequence of memory locations encoded in A
             <p class="prev-next-title"><span class="section-number">11. </span>Lets write some assembly code</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="../C/intro.html" title="next page">
+    <a class='right-next' id="next-link" href="nativetypes.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">13. </span>Introduction</p>
+        <p class="prev-next-title"><span class="section-number">13. </span>Information Representation - Native Types</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
