@@ -57,7 +57,7 @@
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="1. Operating Systems and UNIX" href="unix/intro.html" />
+    <link rel="next" title="How to read this book" href="howto.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -98,6 +98,18 @@
  <li class="toctree-l1 current">
   <a class="reference internal" href="#">
    Under the Covers : The Secret Life of Software
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  How to read this book
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="howto.html">
+   How to read this book
   </a>
  </li>
 </ul>
@@ -362,6 +374,8 @@ Understanding this process will reveal to us how the layers make it simpler and 
 </div>
 <div class="toctree-wrapper compound">
 </div>
+<div class="toctree-wrapper compound">
+</div>
 </div>
 
     <script type="text/x-thebe-config">
@@ -389,10 +403,10 @@ Understanding this process will reveal to us how the layers make it simpler and 
             
                 <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='right-next' id="next-link" href="unix/intro.html" title="next page">
+    <a class='right-next' id="next-link" href="howto.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">1. </span>Operating Systems and UNIX</p>
+        <p class="prev-next-title">How to read this book</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

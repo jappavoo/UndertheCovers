@@ -1,0 +1,1239 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SLS Lecture 11 : Program Anatomy II : Functions &#8212; My Jupyter Book</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">My Jupyter Book</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro_tb.html">
+   Under the Covers : The Secret Life of Software
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  How to read this book
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../howto.html">
+   How to read this book
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  The Unix Development Environment
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../unix/intro.html">
+   1. Operating Systems and UNIX
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../unix/terminal.html">
+   2. What is a Terminal and why do we still use them?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../unix/files.html">
+   3. Organizing and Managing Information as a Tree of Files and Directories
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../unix/shellintro.html">
+   4. The Shell - Part I: Having an ASCII conversation with the OS
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../unix/shell.html">
+   6. The Shell – Progammable User Interface to the computer
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  The Belly of the Beast: The von Neumann Architecture and Assembly Programming
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
+   7. Introduction: Assembly Programming
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="vonNeumannArchitecture.html">
+   8. The von Neumann Architecture
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="UnixAssemblyProgramming.html">
+   9. Executables and Processes
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Debuggers.html">
+   10. Machine Debuggers &amp; Open Process Surgery
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="assembly.html">
+   11. Lets write some assembly code
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="InfoRepI.html">
+   12. Representing information - Preliminaries: Bits, Bytes and Notation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="nativetypes.html">
+   13. Information Representation - Native Types
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Into the Light : C Programming
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../C/intro.html">
+   14. Introduction
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Course Specific Material
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../BUCS210_intro.html">
+   BU CS210 Overview
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/assembly/L11.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/assembly/L11.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#examples-used-in-previous-slides">
+   Examples used in previous slides
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#sumit-as-per-last-lecture">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       sumit
+      </span>
+     </code>
+     as per last lecture
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#made-sumit-more-generic-but">
+     Made
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       sumit
+      </span>
+     </code>
+     more generic but …
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#version-3-fix-our-problem-by-passing-in-the-return-address-in-a-register-in-our-case-we-use-rdx-and-jump-back-via-this-register">
+     Version 3:  Fix our problem by passing in the return address in a register.  In our case we use ‘rdx’ and jump back via this register.
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#version-4-use-stack-to-spill-rdx-before-making-any-call">
+     Version 4:  Use stack to spill
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       rdx
+      </span>
+     </code>
+     before making any call.
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#version-5-use-call-and-ret-instructions-to-turn-our-code-into-an-real-x86-function">
+     Version 5: Use
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       call
+      </span>
+     </code>
+     and
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       ret
+      </span>
+     </code>
+     instructions to turn our code into an “real” X86 function
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#version-6-improving-code-by-spilling-rdi-in-sumit">
+     Version 6 improving code by “spilling”
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       rdi
+      </span>
+     </code>
+     in
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       sumIt
+      </span>
+     </code>
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>SLS Lecture 11 :  Program Anatomy II : Functions</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#examples-used-in-previous-slides">
+   Examples used in previous slides
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#sumit-as-per-last-lecture">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       sumit
+      </span>
+     </code>
+     as per last lecture
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#made-sumit-more-generic-but">
+     Made
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       sumit
+      </span>
+     </code>
+     more generic but …
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#version-3-fix-our-problem-by-passing-in-the-return-address-in-a-register-in-our-case-we-use-rdx-and-jump-back-via-this-register">
+     Version 3:  Fix our problem by passing in the return address in a register.  In our case we use ‘rdx’ and jump back via this register.
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#version-4-use-stack-to-spill-rdx-before-making-any-call">
+     Version 4:  Use stack to spill
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       rdx
+      </span>
+     </code>
+     before making any call.
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#version-5-use-call-and-ret-instructions-to-turn-our-code-into-an-real-x86-function">
+     Version 5: Use
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       call
+      </span>
+     </code>
+     and
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       ret
+      </span>
+     </code>
+     instructions to turn our code into an “real” X86 function
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#version-6-improving-code-by-spilling-rdi-in-sumit">
+     Version 6 improving code by “spilling”
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       rdi
+      </span>
+     </code>
+     in
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       sumIt
+      </span>
+     </code>
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="sls-lecture-11-program-anatomy-ii-functions">
+<h1>SLS Lecture 11 :  Program Anatomy II : Functions<a class="headerlink" href="#sls-lecture-11-program-anatomy-ii-functions" title="Permalink to this headline">¶</a></h1>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<ul class="simple">
+<li><p>create a directory <code class="docutils literal notranslate"><span class="pre">mkdir</span> <span class="pre">sum;</span> <span class="pre">cd</span> <span class="pre">sum</span></code></p></li>
+<li><p>copy sumit and usesumit code examples</p></li>
+<li><p>add a <code class="docutils literal notranslate"><span class="pre">Makefile</span></code> to automate assembling and linking</p>
+<ul>
+<li><p>we are going run the commands by hand this time to highlight the details</p></li>
+</ul>
+</li>
+<li><p>add our <code class="docutils literal notranslate"><span class="pre">setup.gdb</span></code> and <code class="docutils literal notranslate"><span class="pre">usesumABC.gdb</span></code> to make working in gdb easier</p></li>
+<li><p>normally you would want to track everything in git</p></li>
+</ul>
+</div>
+</div>
+<center>
+<img src=../images/ASSEMBLY-PGMIII/ASSEMBLY-PGMIII.001.png>
+</center><center>
+<img src=../images/ASSEMBLY-PGMIII/ASSEMBLY-PGMIII.002.png>
+</center><center>
+<img src=../images/ASSEMBLY-PGMIII/ASSEMBLY-PGMIII.003.png>
+</center><center>
+<img src=../images/ASSEMBLY-PGMIII/ASSEMBLY-PGMIII.004.png>
+</center><center>
+<img src=../images/ASSEMBLY-PGMIII/ASSEMBLY-PGMIII.005.png>
+</center><center>
+<img src=../images/ASSEMBLY-PGMIII/ASSEMBLY-PGMIII.006.png>
+</center><center>
+<img src=../images/ASSEMBLY-PGMIII/ASSEMBLY-PGMIII.007.png>
+</center><center>
+<img src=../images/ASSEMBLY-PGMIII/ASSEMBLY-PGMIII.008.png>
+</center><center>
+<img src=../images/ASSEMBLY-PGMIII/ASSEMBLY-PGMIII.009.png>
+</center><center>
+<img src=../images/ASSEMBLY-PGMIII/ASSEMBLY-PGMIII.010.png>
+</center><center>
+<img src=../images/ASSEMBLY-PGMIII/ASSEMBLY-PGMIII.011.png>
+</center><center>
+<img src=../images/ASSEMBLY-PGMIII/ASSEMBLY-PGMIII.012.png>
+</center><center>
+<img src=../images/ASSEMBLY-PGMIII/ASSEMBLY-PGMIII.013.png>
+</center><center>
+<img src=../images/ASSEMBLY-PGMIII/ASSEMBLY-PGMIII.014.png>
+</center><center>
+<img src=../images/ASSEMBLY-PGMIII/ASSEMBLY-PGMIII.015.png>
+</center><center>
+<img src=../images/ASSEMBLY-PGMIII/ASSEMBLY-PGMIII.016.png>
+</center><center>
+<img src=../images/ASSEMBLY-PGMIII/ASSEMBLY-PGMIII.017.png>
+</center><center>
+<img src=../images/ASSEMBLY-PGMIII/ASSEMBLY-PGMIII.018.png>
+</center><center>
+<img src=../images/ASSEMBLY-PGMIII/ASSEMBLY-PGMIII.019.png>
+</center><center>
+<img src=../images/ASSEMBLY-PGMIII/ASSEMBLY-PGMIII.020.png>
+</center><center>
+<img src=../images/ASSEMBLY-PGMIII/ASSEMBLY-PGMIII.021.png>
+</center><center>
+<img src=../images/ASSEMBLY-PGMIII/ASSEMBLY-PGMIII.022.png>
+</center><center>
+<img src=../images/ASSEMBLY-PGMIII/ASSEMBLY-PGMIII.023.png>
+</center><center>
+<img src=../images/ASSEMBLY-PGMIII/ASSEMBLY-PGMIII.024.png>
+</center><center>
+<img src=../images/ASSEMBLY-PGMIII/ASSEMBLY-PGMIII.025.png>
+</center><center>
+<img src=../images/ASSEMBLY-PGMIII/ASSEMBLY-PGMIII.026.png>
+</center><center>
+<img src=../images/ASSEMBLY-PGMIII/ASSEMBLY-PGMIII.027.png>
+</center><center>
+<img src=../images/ASSEMBLY-PGMIII/ASSEMBLY-PGMIII.028.png>
+</center><center>
+<img src=../images/ASSEMBLY-PGMIII/ASSEMBLY-PGMIII.029.png>
+</center><center>
+<img src=../images/ASSEMBLY-PGMIII/ASSEMBLY-PGMIII.030.png>
+</center><center>
+<img src=../images/ASSEMBLY-PGMIII/ASSEMBLY-PGMIII.031.png>
+</center><center>
+<img src=../images/ASSEMBLY-PGMIII/ASSEMBLY-PGMIII.033.png>
+</center><center>
+<img src=../images/ASSEMBLY-PGMIII/ASSEMBLY-PGMIII.034.png>
+</center><center>
+<img src=../images/ASSEMBLY-PGMIII/ASSEMBLY-PGMIII.035.png>
+</center><center>
+<img src=../images/ASSEMBLY-PGMIII/ASSEMBLY-PGMIII.036.png>
+</center><center>
+<img src=../images/ASSEMBLY-PGMIII/ASSEMBLY-PGMIII.037.png>
+</center><center>
+<img src=../images/ASSEMBLY-PGMIII/ASSEMBLY-PGMIII.038.png>
+</center><center>
+<img src=../images/ASSEMBLY-PGMIII/ASSEMBLY-PGMIII.039.png>
+</center><center>
+<img src=../images/ASSEMBLY-PGMIII/ASSEMBLY-PGMIII.040.png>
+</center><center>
+<img src=../images/ASSEMBLY-PGMIII/ASSEMBLY-PGMIII.041.png>
+</center><center>
+<img src=../images/ASSEMBLY-PGMIII/ASSEMBLY-PGMIII.042.png>
+</center><center>
+<img src=../images/ASSEMBLY-PGMIII/ASSEMBLY-PGMIII.043.png>
+</center><center>
+<img src=../images/ASSEMBLY-PGMIII/ASSEMBLY-PGMIII.044.png>
+</center><center>
+<img src=../images/ASSEMBLY-PGMIII/ASSEMBLY-PGMIII.045.png>
+</center><center>
+<img src=../images/ASSEMBLY-PGMIII/ASSEMBLY-PGMIII.046.png>
+</center><center>
+<img src=../images/ASSEMBLY-PGMIII/ASSEMBLY-PGMIII.047.png>
+</center><center>
+<img src=../images/ASSEMBLY-PGMIII/ASSEMBLY-PGMIII.048.png>
+</center><center>
+<img src=../images/ASSEMBLY-PGMIII/ASSEMBLY-PGMIII.049.png>
+</center><center>
+<img src=../images/ASSEMBLY-PGMIII/ASSEMBLY-PGMIII.050.png>
+</center><center>
+<img src=../images/ASSEMBLY-PGMIII/ASSEMBLY-PGMIII.051.png>
+</center><center>
+<img src=../images/ASSEMBLY-PGMIII/ASSEMBLY-PGMIII.052.png>
+</center><center>
+<img src=../images/ASSEMBLY-PGMIII/ASSEMBLY-PGMIII.053.png>
+</center><center>
+<img src=../images/ASSEMBLY-PGMIII/ASSEMBLY-PGMIII.054.png>
+</center><center>
+<img src=../images/ASSEMBLY-PGMIII/ASSEMBLY-PGMIII.055.png>
+</center><center>
+<img src=../images/ASSEMBLY-PGMIII/ASSEMBLY-PGMIII.056.png>
+</center><center>
+<img src=../images/ASSEMBLY-PGMIII/ASSEMBLY-PGMIII.057.png>
+</center><center>
+<img src=../images/ASSEMBLY-PGMIII/ASSEMBLY-PGMIII.058.png>
+</center><center>
+<img src=../images/ASSEMBLY-PGMIII/ASSEMBLY-PGMIII.059.png>
+</center><center>
+<img src=../images/ASSEMBLY-PGMIII/ASSEMBLY-PGMIII.060.png>
+</center><center>
+<img src=../images/ASSEMBLY-PGMIII/ASSEMBLY-PGMIII.061.png>
+</center><center>
+<img src=../images/ASSEMBLY-PGMIII/ASSEMBLY-PGMIII.062.png>
+</center><center>
+<img src=../images/ASSEMBLY-PGMIII/ASSEMBLY-PGMIII.063.png>
+</center><center>
+<img src=../images/ASSEMBLY-PGMIII/ASSEMBLY-PGMIII.064.png>
+</center><center>
+<img src=../images/ASSEMBLY-PGMIII/ASSEMBLY-PGMIII.065.png>
+</center><center>
+<img src=../images/ASSEMBLY-PGMIII/ASSEMBLY-PGMIII.066.png>
+</center><center>
+<img src=../images/ASSEMBLY-PGMIII/ASSEMBLY-PGMIII.067.png>
+</center><center>
+<img src=../images/ASSEMBLY-PGMIII/ASSEMBLY-PGMIII.068.png>
+</center><center>
+<img src=../images/ASSEMBLY-PGMIII/ASSEMBLY-PGMIII.069.png>
+</center><center>
+<img src=../images/ASSEMBLY-PGMIII/ASSEMBLY-PGMIII.070.png>
+</center><center>
+<img src=../images/ASSEMBLY-PGMIII/ASSEMBLY-PGMIII.071.png>
+</center><center>
+<img src=../images/ASSEMBLY-PGMIII/ASSEMBLY-PGMIII.072.png>
+</center><div class="section" id="examples-used-in-previous-slides">
+<h2>Examples used in previous slides<a class="headerlink" href="#examples-used-in-previous-slides" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="sumit-as-per-last-lecture">
+<h3><code class="docutils literal notranslate"><span class="pre">sumit</span></code> as per last lecture<a class="headerlink" href="#sumit-as-per-last-lecture" title="Permalink to this headline">¶</a></h3>
+<p>Hardcode <code class="docutils literal notranslate"><span class="pre">int3</span></code> stops us from saving our sum as we would like</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<p><b>CODE: asm - sumit.S : Version 1</p>
+<div style="width:107em; height:100%; font-size:inherit; overflow: auto;" >
+<div class="highlight-gas notranslate"><div class="highlight"><pre><span></span>	.intel_syntax noprefix
+	
+	.global sumIt	      	      #	 directive to let the linker
+
+	# code to sum data at XARRAY
+	# we assume rbx has length  rbx -&gt; len
+	# and that we will leave final sum in rax
+sumIt:	                              # location of this code is
+	xor  rax, rax            # rax -&gt; sum : sum = 0
+	xor  rdi, rdi            # rax -&gt; i : i = 0
+
+	# code to sum data at XARRAY
+	# we assume rbx has length  rbx -&gt; len
+	# and that we will leave final sum in rax
+loop_start:
+	cmp  rbx, rdi
+	jz   loop_done
+	add  rax, QWORD PTR [XARRAY + rdi * 8] # add the i&#39;th value to the sum
+	inc  rdi                   # i=i+1
+	jmp   loop_start
+loop_done:
+	int3
+
+</pre></div>
+</div>
+</div>
+<p><strong>Corresponding: usesum</strong></p>
+<p><b>CODE: asm - sumit.S : Version 1</p>
+<div style="width:107em; height:100%; font-size:inherit; overflow: auto;" >
+<div class="highlight-gas notranslate"><div class="highlight"><pre><span></span><span class="w">	</span><span class="na">.intel_syntax</span><span class="w"> </span><span class="no">noprefix</span><span class="w"></span>
+<span class="w">	</span>
+<span class="w">	</span><span class="na">.data</span><span class="w"></span>
+<span class="w">	</span><span class="c1">#  a place for us to store how much data is in the XARRAY</span>
+<span class="w">	</span><span class="c1">#  initalized it to 0</span>
+<span class="nl">XARRAY_LEN:</span><span class="w"></span>
+<span class="w">	</span><span class="na">.quad</span><span class="w"> </span><span class="mi">0x0</span><span class="w"></span>
+<span class="w">	</span><span class="c1"># reserve enough space for 1024 8 byte values</span>
+<span class="w">	</span><span class="c1">#  third argument is alignment.... turns out cpu</span>
+<span class="w">	</span><span class="c1">#  cpu is more efficient if things are located at address</span>
+<span class="w">	</span><span class="c1">#  of a particular &#39;alignment (see intel manual)</span>
+<span class="w">	</span><span class="na">.comm</span><span class="w"> </span><span class="no">XARRAY</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">*</span><span class="mi">1024</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="w">	</span>
+<span class="w">	</span><span class="no">.comm</span><span class="w"> </span><span class="no">sum</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="w"> 	</span><span class="c1"># space to store final sum</span>
+
+<span class="w">	</span><span class="na">.text</span><span class="w"></span>
+<span class="w">	</span><span class="na">.global</span><span class="w"> </span><span class="no">_start</span><span class="w"> </span>
+<span class="no">_start</span><span class="p">:</span><span class="w"></span>
+<span class="w">	</span><span class="nf">mov</span><span class="w"> </span><span class="no">rbx</span><span class="p">,</span><span class="w"> </span><span class="no">QWORD</span><span class="w"> </span><span class="no">PTR</span><span class="w"> </span><span class="p">[</span><span class="no">XARRAY_LEN</span><span class="p">]</span><span class="w"></span>
+
+<span class="w">	</span><span class="nf">jmp</span><span class="w"> </span><span class="no">sumIt</span><span class="w"></span>
+<span class="w">	</span><span class="nf">mov</span><span class="w"> </span><span class="no">QWORD</span><span class="w"> </span><span class="no">PTR</span><span class="w"> </span><span class="p">[</span><span class="no">sum</span><span class="p">],</span><span class="w"> </span><span class="no">rax</span><span class="w"></span>
+
+<span class="w">	</span><span class="nf">int3</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">
+{"version_major": 2, "version_minor": 0, "model_id": "ed3f8f2d8321420c98f4ccd8f9ea27fe"}
+</script></div>
+</div>
+<p>see last lecture notes to in terms of how to use <code class="docutils literal notranslate"><span class="pre">gdb</span></code> to run and play with <code class="docutils literal notranslate"><span class="pre">usesum</span></code></p>
+</div>
+<div class="section" id="made-sumit-more-generic-but">
+<h3>Made <code class="docutils literal notranslate"><span class="pre">sumit</span></code> more generic but …<a class="headerlink" href="#made-sumit-more-generic-but" title="Permalink to this headline">¶</a></h3>
+<ol class="simple">
+<li><p>Make the address of the array a parameter passed to <code class="docutils literal notranslate"><span class="pre">sumit</span></code>.</p></li>
+<li><p>Changed <code class="docutils literal notranslate"><span class="pre">sumit</span></code> code to use this instead of <code class="docutils literal notranslate"><span class="pre">XARRAY</span></code></p></li>
+<li><p>Now have <code class="docutils literal notranslate"><span class="pre">usesum</span></code> leave space for three arrays and have three jumps to <code class="docutils literal notranslate"><span class="pre">sumit</span></code></p></li>
+<li><p>remove <code class="docutils literal notranslate"><span class="pre">int3</span></code> from <code class="docutils literal notranslate"><span class="pre">sumit</span></code> and replace it with a <code class="docutils literal notranslate"><span class="pre">jmp</span></code> back to the address after the first
+jump.</p></li>
+<li><p>BUT WE HAVE PROBLEMS IN <code class="docutils literal notranslate"><span class="pre">sumit</span></code>:</p></li>
+</ol>
+<ul class="simple">
+<li><p>how do we <code class="docutils literal notranslate"><span class="pre">jump</span></code> back to the right spot?</p></li>
+</ul>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<p><b>CODE: asm - sumit2.S : Version 2</p>
+<div style="width:107em; height:100%; font-size:inherit; overflow: auto;" >
+<div class="highlight-gas notranslate"><div class="highlight"><pre><span></span>	.intel_syntax noprefix
+	
+	.global sumIt	      	      #	 directive to let the linker
+
+	# code to sum data in array who&#39;s address is in rcx
+	# we assume rbx has length  rbx -&gt; len
+	# and that we will leave final sum in rax
+sumIt:	                              # location of this code is
+	xor  rax, rax            # rax -&gt; sum : sum = 0
+	xor  rdi, rdi            # rax -&gt; i : i = 0
+
+	# code to sum data at value in rcx
+	# we assume rbx has length  rbx -&gt; len
+	# and that we will leave final sum in rax
+loop_start:
+	cmp  rbx, rdi
+	jz   loop_done
+	add  rax, QWORD PTR [rcx + rdi * 8] # add the i&#39;th value to the sum
+	inc  rdi                   # i=i+1
+	jmp   loop_start
+loop_done:
+	jmp RETURN_1
+
+
+</pre></div>
+</div>
+</div>
+<p><strong>Corresponding: usesum</strong></p>
+<p><b>CODE: asm - sumit2.S : Version 2</p>
+<div style="width:107em; height:100%; font-size:inherit; overflow: auto;" >
+<div class="highlight-gas notranslate"><div class="highlight"><pre><span></span><span class="w">	</span><span class="na">.intel_syntax</span><span class="w"> </span><span class="no">noprefix</span><span class="w"></span>
+<span class="w">	</span><span class="na">.data</span><span class="w">	</span>
+<span class="w">	</span><span class="no">.comm</span><span class="w"> </span><span class="no">A_SUM</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="w"></span>
+<span class="w">	</span><span class="na">.comm</span><span class="w"> </span><span class="no">A_LEN</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="w"></span>
+<span class="w">	</span><span class="na">.comm</span><span class="w"> </span><span class="no">A</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">*</span><span class="mi">1024</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="w">	</span>
+
+<span class="w">	</span><span class="no">.comm</span><span class="w"> </span><span class="no">B_SUM</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="w"></span>
+<span class="w">	</span><span class="na">.comm</span><span class="w"> </span><span class="no">B_LEN</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="w"></span>
+<span class="w">	</span><span class="na">.comm</span><span class="w"> </span><span class="no">B</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">*</span><span class="mi">1024</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="w">	</span>
+
+<span class="w">	</span><span class="no">.comm</span><span class="w"> </span><span class="no">C_SUM</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="w"></span>
+<span class="w">	</span><span class="na">.comm</span><span class="w"> </span><span class="no">C_LEN</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="w"></span>
+<span class="w">	</span><span class="na">.comm</span><span class="w"> </span><span class="no">C</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">*</span><span class="mi">1024</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="w">	</span>
+
+<span class="w">	</span><span class="no">.text</span><span class="w"></span>
+<span class="w">	</span><span class="na">.global</span><span class="w"> </span><span class="no">_start</span><span class="w"> </span>
+<span class="no">_start</span><span class="p">:</span><span class="w"></span>
+<span class="w">	</span><span class="nf">mov</span><span class="w"> </span><span class="no">rbx</span><span class="p">,</span><span class="w"> </span><span class="no">QWORD</span><span class="w"> </span><span class="no">PTR</span><span class="w"> </span><span class="p">[</span><span class="no">A_LEN</span><span class="p">]</span><span class="w"></span>
+<span class="w">	</span><span class="nf">mov</span><span class="w"> </span><span class="no">rcx</span><span class="p">,</span><span class="w"> </span><span class="no">OFFSET</span><span class="w"> </span><span class="no">A</span><span class="w"></span>
+<span class="w">	</span><span class="nf">jmp</span><span class="w"> </span><span class="no">sumIt</span><span class="w"></span>
+<span class="nl">RETURN_1:</span><span class="w">	</span>
+<span class="w">	</span><span class="nf">mov</span><span class="w"> </span><span class="no">QWORD</span><span class="w"> </span><span class="no">PTR</span><span class="w"> </span><span class="p">[</span><span class="no">A_SUM</span><span class="p">],</span><span class="w"> </span><span class="no">rax</span><span class="w"></span>
+
+<span class="w">	</span><span class="nf">mov</span><span class="w"> </span><span class="no">rbx</span><span class="p">,</span><span class="w"> </span><span class="no">QWORD</span><span class="w"> </span><span class="no">PTR</span><span class="w"> </span><span class="p">[</span><span class="no">B_LEN</span><span class="p">]</span><span class="w"></span>
+<span class="w">	</span><span class="nf">mov</span><span class="w"> </span><span class="no">rcx</span><span class="p">,</span><span class="w"> </span><span class="no">OFFSET</span><span class="w"> </span><span class="no">B</span><span class="w"></span>
+<span class="w">	</span><span class="nf">jmp</span><span class="w"> </span><span class="no">sumIt</span><span class="w"></span>
+<span class="nl">RETURN_2:</span><span class="w">	</span>
+<span class="w">	</span><span class="nf">mov</span><span class="w"> </span><span class="no">QWORD</span><span class="w"> </span><span class="no">PTR</span><span class="w"> </span><span class="p">[</span><span class="no">B_SUM</span><span class="p">],</span><span class="w"> </span><span class="no">rax</span><span class="w"></span>
+
+<span class="w">	</span><span class="nf">mov</span><span class="w"> </span><span class="no">rbx</span><span class="p">,</span><span class="w"> </span><span class="no">QWORD</span><span class="w"> </span><span class="no">PTR</span><span class="w"> </span><span class="p">[</span><span class="no">C_LEN</span><span class="p">]</span><span class="w"></span>
+<span class="w">	</span><span class="nf">mov</span><span class="w"> </span><span class="no">rcx</span><span class="p">,</span><span class="w"> </span><span class="no">OFFSET</span><span class="w"> </span><span class="no">C</span><span class="w"></span>
+<span class="w">	</span><span class="nf">jmp</span><span class="w"> </span><span class="no">sumIt</span><span class="w"></span>
+<span class="nl">RETURN_3:</span><span class="w">	</span>
+<span class="w">	</span><span class="nf">mov</span><span class="w"> </span><span class="no">QWORD</span><span class="w"> </span><span class="no">PTR</span><span class="w"> </span><span class="p">[</span><span class="no">C_SUM</span><span class="p">],</span><span class="w"> </span><span class="no">rax</span><span class="w"></span>
+<span class="w">	</span><span class="nf">int3</span><span class="w"></span>
+
+<span class="w">	</span><span class="na">.global</span><span class="w"> </span><span class="no">RETURN_1</span><span class="w"></span>
+<span class="w">	</span><span class="na">.global</span><span class="w"> </span><span class="no">RETURN_2</span><span class="w"></span>
+<span class="w">	</span><span class="na">.global</span><span class="w"> </span><span class="no">RETURN_3</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">
+{"version_major": 2, "version_minor": 0, "model_id": "214cc856a0754f5c9dec9e78ad95de07"}
+</script></div>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<p><b>GDB commands to use</p>
+<div style="width:107em; height:100%; font-size:inherit; overflow: auto;" >
+<div class="highlight-gdb notranslate"><div class="highlight"><pre><span></span>b _start
+run
+restore A.bin binary &amp;A
+set *((long long *)&amp;A_LEN)=10
+restore B.bin binary &amp;B
+set *((long long *)&amp;B_LEN)=10
+restore C.bin binary &amp;C
+set *((long long *)&amp;C_LEN)=10
+
+display /d { (long long)A_SUM, (long long)B_SUM, (long long)C_SUM }
+
+
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<p>Now you can single step or continue as you like</p>
+</div>
+<div class="section" id="version-3-fix-our-problem-by-passing-in-the-return-address-in-a-register-in-our-case-we-use-rdx-and-jump-back-via-this-register">
+<h3>Version 3:  Fix our problem by passing in the return address in a register.  In our case we use ‘rdx’ and jump back via this register.<a class="headerlink" href="#version-3-fix-our-problem-by-passing-in-the-return-address-in-a-register-in-our-case-we-use-rdx-and-jump-back-via-this-register" title="Permalink to this headline">¶</a></h3>
+<p>Note this approach requires one register for each call to hold the return address.  This has problems if we were to nest calls.</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<p><b>CODE: asm - sumit3.S : Version 3</p>
+<div style="width:107em; height:100%; font-size:inherit; overflow: auto;" >
+<div class="highlight-gas notranslate"><div class="highlight"><pre><span></span>	.intel_syntax noprefix
+	
+	.global sumIt	      	      #	 directive to let the linker
+
+	# code to sum data in array who&#39;s address is in rcx
+	# we assume rdx has the address to jump back too
+	# we assume rbx has length  rbx -&gt; len
+	# and that we will leave final sum in rax
+sumIt:	                              # location of this code is
+	xor  rax, rax            # rax -&gt; sum : sum = 0
+	xor  rdi, rdi            # rax -&gt; i : i = 0
+
+	# code to sum data at value in rcx
+	# we assume rbx has length  rbx -&gt; len
+	# and that we will leave final sum in rax
+loop_start:
+	cmp  rbx, rdi
+	jz   loop_done
+	add  rax, QWORD PTR [rcx + rdi * 8] # add the i&#39;th value to the sum
+	inc  rdi                   # i=i+1
+	jmp   loop_start
+loop_done:
+	jmp rdx
+
+
+</pre></div>
+</div>
+</div>
+<p><strong>Corresponding: usesum</strong></p>
+<p><b>CODE: asm - usesum3.S : Version 3</p>
+<div style="width:107em; height:100%; font-size:inherit; overflow: auto;" >
+<div class="highlight-gas notranslate"><div class="highlight"><pre><span></span><span class="w">	</span><span class="na">.intel_syntax</span><span class="w"> </span><span class="no">noprefix</span><span class="w"></span>
+<span class="w">	</span><span class="na">.data</span><span class="w">	</span>
+<span class="w">	</span><span class="no">.comm</span><span class="w"> </span><span class="no">A_SUM</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="w"></span>
+<span class="w">	</span><span class="na">.comm</span><span class="w"> </span><span class="no">A_LEN</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="w"></span>
+<span class="w">	</span><span class="na">.comm</span><span class="w"> </span><span class="no">A</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">*</span><span class="mi">1024</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="w">	</span>
+
+<span class="w">	</span><span class="no">.comm</span><span class="w"> </span><span class="no">B_SUM</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="w"></span>
+<span class="w">	</span><span class="na">.comm</span><span class="w"> </span><span class="no">B_LEN</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="w"></span>
+<span class="w">	</span><span class="na">.comm</span><span class="w"> </span><span class="no">B</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">*</span><span class="mi">1024</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="w">	</span>
+
+<span class="w">	</span><span class="no">.comm</span><span class="w"> </span><span class="no">C_SUM</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="w"></span>
+<span class="w">	</span><span class="na">.comm</span><span class="w"> </span><span class="no">C_LEN</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="w"></span>
+<span class="w">	</span><span class="na">.comm</span><span class="w"> </span><span class="no">C</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">*</span><span class="mi">1024</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="w">	</span>
+
+<span class="w">	</span><span class="no">.text</span><span class="w"></span>
+<span class="w">	</span><span class="na">.global</span><span class="w"> </span><span class="no">_start</span><span class="w"> </span>
+<span class="no">_start</span><span class="p">:</span><span class="w"></span>
+<span class="w">	</span><span class="nf">mov</span><span class="w"> </span><span class="no">rbx</span><span class="p">,</span><span class="w"> </span><span class="no">QWORD</span><span class="w"> </span><span class="no">PTR</span><span class="w"> </span><span class="p">[</span><span class="no">A_LEN</span><span class="p">]</span><span class="w"></span>
+<span class="w">	</span><span class="nf">mov</span><span class="w"> </span><span class="no">rcx</span><span class="p">,</span><span class="w"> </span><span class="no">OFFSET</span><span class="w"> </span><span class="no">A</span><span class="w"></span>
+<span class="w">	</span><span class="nf">mov</span><span class="w"> </span><span class="no">rdx</span><span class="p">,</span><span class="w"> </span><span class="no">OFFSET</span><span class="w"> </span><span class="no">RETURN_1</span><span class="w"></span>
+<span class="w">	</span><span class="nf">jmp</span><span class="w"> </span><span class="no">sumIt</span><span class="w"></span>
+<span class="nl">RETURN_1:</span><span class="w">	</span>
+<span class="w">	</span><span class="nf">mov</span><span class="w"> </span><span class="no">QWORD</span><span class="w"> </span><span class="no">PTR</span><span class="w"> </span><span class="p">[</span><span class="no">A_SUM</span><span class="p">],</span><span class="w"> </span><span class="no">rax</span><span class="w"></span>
+
+<span class="w">	</span><span class="nf">mov</span><span class="w"> </span><span class="no">rbx</span><span class="p">,</span><span class="w"> </span><span class="no">QWORD</span><span class="w"> </span><span class="no">PTR</span><span class="w"> </span><span class="p">[</span><span class="no">B_LEN</span><span class="p">]</span><span class="w"></span>
+<span class="w">	</span><span class="nf">mov</span><span class="w"> </span><span class="no">rcx</span><span class="p">,</span><span class="w"> </span><span class="no">OFFSET</span><span class="w"> </span><span class="no">B</span><span class="w"></span>
+<span class="w">	</span><span class="nf">mov</span><span class="w"> </span><span class="no">rdx</span><span class="p">,</span><span class="w"> </span><span class="no">OFFSET</span><span class="w"> </span><span class="no">RETURN_2</span><span class="w"></span>
+<span class="w">	</span><span class="nf">jmp</span><span class="w"> </span><span class="no">sumIt</span><span class="w"></span>
+<span class="nl">RETURN_2:</span><span class="w">	</span>
+<span class="w">	</span><span class="nf">mov</span><span class="w"> </span><span class="no">QWORD</span><span class="w"> </span><span class="no">PTR</span><span class="w"> </span><span class="p">[</span><span class="no">B_SUM</span><span class="p">],</span><span class="w"> </span><span class="no">rax</span><span class="w"></span>
+
+<span class="w">	</span><span class="nf">mov</span><span class="w"> </span><span class="no">rbx</span><span class="p">,</span><span class="w"> </span><span class="no">QWORD</span><span class="w"> </span><span class="no">PTR</span><span class="w"> </span><span class="p">[</span><span class="no">C_LEN</span><span class="p">]</span><span class="w"></span>
+<span class="w">	</span><span class="nf">mov</span><span class="w"> </span><span class="no">rcx</span><span class="p">,</span><span class="w"> </span><span class="no">OFFSET</span><span class="w"> </span><span class="no">C</span><span class="w"></span>
+<span class="w">	</span><span class="nf">mov</span><span class="w"> </span><span class="no">rdx</span><span class="p">,</span><span class="w"> </span><span class="no">OFFSET</span><span class="w"> </span><span class="no">RETURN_3</span><span class="w">	</span>
+<span class="w">	</span><span class="no">jmp</span><span class="w"> </span><span class="no">sumIt</span><span class="w"></span>
+<span class="nl">RETURN_3:</span><span class="w">	</span>
+<span class="w">	</span><span class="nf">mov</span><span class="w"> </span><span class="no">QWORD</span><span class="w"> </span><span class="no">PTR</span><span class="w"> </span><span class="p">[</span><span class="no">C_SUM</span><span class="p">],</span><span class="w"> </span><span class="no">rax</span><span class="w"></span>
+<span class="w">	</span><span class="nf">int3</span><span class="w"></span>
+
+<span class="w">	</span><span class="na">.global</span><span class="w"> </span><span class="no">RETURN_1</span><span class="w"></span>
+<span class="w">	</span><span class="na">.global</span><span class="w"> </span><span class="no">RETURN_2</span><span class="w"></span>
+<span class="w">	</span><span class="na">.global</span><span class="w"> </span><span class="no">RETURN_3</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">
+{"version_major": 2, "version_minor": 0, "model_id": "b0ce0d2f42b14d8e91deec547981e519"}
+</script></div>
+</div>
+</div>
+<div class="section" id="version-4-use-stack-to-spill-rdx-before-making-any-call">
+<h3>Version 4:  Use stack to spill <code class="docutils literal notranslate"><span class="pre">rdx</span></code> before making any call.<a class="headerlink" href="#version-4-use-stack-to-spill-rdx-before-making-any-call" title="Permalink to this headline">¶</a></h3>
+<p>Although we don’t use it this would allow us to make nested calls assuming we always used the same register to pass the return address in.  In our case <code class="docutils literal notranslate"><span class="pre">rdx</span></code>.  This approach effectively uses the stack to spill <code class="docutils literal notranslate"><span class="pre">rdx</span></code> before we use it to make a call.  In this way the caller is using the stack to hang on to where it needs to return before making a new call.</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<p><b>CODE: asm - sumit3.S : Version 4 no change use version 3</p>
+<div style="width:107em; height:100%; font-size:inherit; overflow: auto;" >
+<div class="highlight-gas notranslate"><div class="highlight"><pre><span></span>	.intel_syntax noprefix
+	
+	.global sumIt	      	      #	 directive to let the linker
+
+	# code to sum data in array who&#39;s address is in rcx
+	# we assume rdx has the address to jump back too
+	# we assume rbx has length  rbx -&gt; len
+	# and that we will leave final sum in rax
+sumIt:	                              # location of this code is
+	xor  rax, rax            # rax -&gt; sum : sum = 0
+	xor  rdi, rdi            # rax -&gt; i : i = 0
+
+	# code to sum data at value in rcx
+	# we assume rbx has length  rbx -&gt; len
+	# and that we will leave final sum in rax
+loop_start:
+	cmp  rbx, rdi
+	jz   loop_done
+	add  rax, QWORD PTR [rcx + rdi * 8] # add the i&#39;th value to the sum
+	inc  rdi                   # i=i+1
+	jmp   loop_start
+loop_done:
+	jmp rdx
+
+
+</pre></div>
+</div>
+</div>
+<p><strong>Corresponding: usesum</strong></p>
+<p><b>CODE: asm - usesum4.S : Version 4</p>
+<div style="width:107em; height:100%; font-size:inherit; overflow: auto;" >
+<div class="highlight-gas notranslate"><div class="highlight"><pre><span></span><span class="w">	</span><span class="na">.intel_syntax</span><span class="w"> </span><span class="no">noprefix</span><span class="w"></span>
+<span class="w">	</span><span class="na">.data</span><span class="w">	</span>
+<span class="w">	</span><span class="no">.comm</span><span class="w"> </span><span class="no">A_SUM</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="w"></span>
+<span class="w">	</span><span class="na">.comm</span><span class="w"> </span><span class="no">A_LEN</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="w"></span>
+<span class="w">	</span><span class="na">.comm</span><span class="w"> </span><span class="no">A</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">*</span><span class="mi">1024</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="w">	</span>
+
+<span class="w">	</span><span class="no">.comm</span><span class="w"> </span><span class="no">B_SUM</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="w"></span>
+<span class="w">	</span><span class="na">.comm</span><span class="w"> </span><span class="no">B_LEN</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="w"></span>
+<span class="w">	</span><span class="na">.comm</span><span class="w"> </span><span class="no">B</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">*</span><span class="mi">1024</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="w">	</span>
+
+<span class="w">	</span><span class="no">.comm</span><span class="w"> </span><span class="no">C_SUM</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="w"></span>
+<span class="w">	</span><span class="na">.comm</span><span class="w"> </span><span class="no">C_LEN</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="w"></span>
+<span class="w">	</span><span class="na">.comm</span><span class="w"> </span><span class="no">C</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">*</span><span class="mi">1024</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="w">	</span>
+
+<span class="w">	</span><span class="no">.text</span><span class="w"></span>
+<span class="w">	</span><span class="na">.global</span><span class="w"> </span><span class="no">_start</span><span class="w"> </span>
+<span class="no">_start</span><span class="p">:</span><span class="w"></span>
+<span class="w">	</span><span class="nf">mov</span><span class="w"> </span><span class="no">rbx</span><span class="p">,</span><span class="w"> </span><span class="no">QWORD</span><span class="w"> </span><span class="no">PTR</span><span class="w"> </span><span class="p">[</span><span class="no">A_LEN</span><span class="p">]</span><span class="w"></span>
+<span class="w">	</span><span class="nf">mov</span><span class="w"> </span><span class="no">rcx</span><span class="p">,</span><span class="w"> </span><span class="no">OFFSET</span><span class="w"> </span><span class="no">A</span><span class="w"></span>
+<span class="w">	</span><span class="nf">push</span><span class="w"> </span><span class="no">rdx</span><span class="w"></span>
+<span class="w">	</span><span class="nf">mov</span><span class="w"> </span><span class="no">rdx</span><span class="p">,</span><span class="w"> </span><span class="no">OFFSET</span><span class="w"> </span><span class="no">RETURN_1</span><span class="w"></span>
+<span class="w">	</span><span class="nf">jmp</span><span class="w"> </span><span class="no">sumIt</span><span class="w"></span>
+<span class="nl">RETURN_1:</span><span class="w"></span>
+<span class="w">	</span><span class="nf">pop</span><span class="w"> </span><span class="no">rdx</span><span class="w"></span>
+<span class="w">	</span><span class="nf">mov</span><span class="w"> </span><span class="no">QWORD</span><span class="w"> </span><span class="no">PTR</span><span class="w"> </span><span class="p">[</span><span class="no">A_SUM</span><span class="p">],</span><span class="w"> </span><span class="no">rax</span><span class="w"></span>
+
+<span class="w">	</span><span class="nf">mov</span><span class="w"> </span><span class="no">rbx</span><span class="p">,</span><span class="w"> </span><span class="no">QWORD</span><span class="w"> </span><span class="no">PTR</span><span class="w"> </span><span class="p">[</span><span class="no">B_LEN</span><span class="p">]</span><span class="w"></span>
+<span class="w">	</span><span class="nf">mov</span><span class="w"> </span><span class="no">rcx</span><span class="p">,</span><span class="w"> </span><span class="no">OFFSET</span><span class="w"> </span><span class="no">B</span><span class="w"></span>
+<span class="w">	</span><span class="nf">push</span><span class="w"> </span><span class="no">rdx</span><span class="w"></span>
+<span class="w">	</span><span class="nf">mov</span><span class="w"> </span><span class="no">rdx</span><span class="p">,</span><span class="w"> </span><span class="no">OFFSET</span><span class="w"> </span><span class="no">RETURN_2</span><span class="w"></span>
+<span class="w">	</span><span class="nf">jmp</span><span class="w"> </span><span class="no">sumIt</span><span class="w"></span>
+<span class="nl">RETURN_2:</span><span class="w"></span>
+<span class="w">	</span><span class="nf">pop</span><span class="w"> </span><span class="no">rdx</span><span class="w"></span>
+<span class="w">	</span><span class="nf">mov</span><span class="w"> </span><span class="no">QWORD</span><span class="w"> </span><span class="no">PTR</span><span class="w"> </span><span class="p">[</span><span class="no">B_SUM</span><span class="p">],</span><span class="w"> </span><span class="no">rax</span><span class="w"></span>
+
+<span class="w">	</span><span class="nf">mov</span><span class="w"> </span><span class="no">rbx</span><span class="p">,</span><span class="w"> </span><span class="no">QWORD</span><span class="w"> </span><span class="no">PTR</span><span class="w"> </span><span class="p">[</span><span class="no">C_LEN</span><span class="p">]</span><span class="w"></span>
+<span class="w">	</span><span class="nf">mov</span><span class="w"> </span><span class="no">rcx</span><span class="p">,</span><span class="w"> </span><span class="no">OFFSET</span><span class="w"> </span><span class="no">C</span><span class="w"></span>
+<span class="w">	</span><span class="nf">push</span><span class="w"> </span><span class="no">rdx</span><span class="w"></span>
+<span class="w">	</span><span class="nf">mov</span><span class="w"> </span><span class="no">rdx</span><span class="p">,</span><span class="w"> </span><span class="no">OFFSET</span><span class="w"> </span><span class="no">RETURN_3</span><span class="w">	</span>
+<span class="w">	</span><span class="no">jmp</span><span class="w"> </span><span class="no">sumIt</span><span class="w"></span>
+<span class="nl">RETURN_3:</span><span class="w"></span>
+<span class="w">	</span><span class="nf">pop</span><span class="w"> </span><span class="no">rdx</span><span class="w"></span>
+<span class="w">	</span><span class="nf">mov</span><span class="w"> </span><span class="no">QWORD</span><span class="w"> </span><span class="no">PTR</span><span class="w"> </span><span class="p">[</span><span class="no">C_SUM</span><span class="p">],</span><span class="w"> </span><span class="no">rax</span><span class="w"></span>
+<span class="w">	</span><span class="nf">int3</span><span class="w"></span>
+
+<span class="w">	</span><span class="na">.global</span><span class="w"> </span><span class="no">RETURN_1</span><span class="w"></span>
+<span class="w">	</span><span class="na">.global</span><span class="w"> </span><span class="no">RETURN_2</span><span class="w"></span>
+<span class="w">	</span><span class="na">.global</span><span class="w"> </span><span class="no">RETURN_3</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">
+{"version_major": 2, "version_minor": 0, "model_id": "c90a5823d2b247f6a4342a43501c72ac"}
+</script></div>
+</div>
+</div>
+<div class="section" id="version-5-use-call-and-ret-instructions-to-turn-our-code-into-an-real-x86-function">
+<h3>Version 5: Use <code class="docutils literal notranslate"><span class="pre">call</span></code> and <code class="docutils literal notranslate"><span class="pre">ret</span></code> instructions to turn our code into an “real” X86 function<a class="headerlink" href="#version-5-use-call-and-ret-instructions-to-turn-our-code-into-an-real-x86-function" title="Permalink to this headline">¶</a></h3>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<p><b>CODE: asm - sumit5.S : Version 5</p>
+<div style="width:107em; height:100%; font-size:inherit; overflow: auto;" >
+<div class="highlight-gas notranslate"><div class="highlight"><pre><span></span>	.intel_syntax noprefix
+	
+	.global sumIt	      	      #	 directive to let the linker
+
+	# code to sum data in array who&#39;s address is in rcx
+	# we assume we were started with call so return address on stack
+	# we assume rbx has length  rbx -&gt; len
+	# and that we will leave final sum in rax
+sumIt:	                              # location of this code is
+	xor  rax, rax            # rax -&gt; sum : sum = 0
+	xor  rdi, rdi            # rax -&gt; i : i = 0
+
+	# code to sum data at value in rcx
+	# we assume rbx has length  rbx -&gt; len
+	# and that we will leave final sum in rax
+loop_start:
+	cmp  rbx, rdi
+	jz   loop_done
+	add  rax, QWORD PTR [rcx + rdi * 8] # add the i&#39;th value to the sum
+	inc  rdi                   # i=i+1
+	jmp   loop_start
+loop_done:
+	ret
+
+
+</pre></div>
+</div>
+</div>
+<p><strong>Corresponding: usesum</strong></p>
+<p><b>CODE: asm - usesum5.S : Version 5</p>
+<div style="width:107em; height:100%; font-size:inherit; overflow: auto;" >
+<div class="highlight-gas notranslate"><div class="highlight"><pre><span></span><span class="w">	</span><span class="na">.intel_syntax</span><span class="w"> </span><span class="no">noprefix</span><span class="w"></span>
+<span class="w">	</span><span class="na">.data</span><span class="w">	</span>
+<span class="w">	</span><span class="no">.comm</span><span class="w"> </span><span class="no">A_SUM</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="w"></span>
+<span class="w">	</span><span class="na">.comm</span><span class="w"> </span><span class="no">A_LEN</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="w"></span>
+<span class="w">	</span><span class="na">.comm</span><span class="w"> </span><span class="no">A</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">*</span><span class="mi">1024</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="w">	</span>
+
+<span class="w">	</span><span class="no">.comm</span><span class="w"> </span><span class="no">B_SUM</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="w"></span>
+<span class="w">	</span><span class="na">.comm</span><span class="w"> </span><span class="no">B_LEN</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="w"></span>
+<span class="w">	</span><span class="na">.comm</span><span class="w"> </span><span class="no">B</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">*</span><span class="mi">1024</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="w">	</span>
+
+<span class="w">	</span><span class="no">.comm</span><span class="w"> </span><span class="no">C_SUM</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="w"></span>
+<span class="w">	</span><span class="na">.comm</span><span class="w"> </span><span class="no">C_LEN</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="w"></span>
+<span class="w">	</span><span class="na">.comm</span><span class="w"> </span><span class="no">C</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">*</span><span class="mi">1024</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="w">	</span>
+
+<span class="w">	</span><span class="no">.text</span><span class="w"></span>
+<span class="w">	</span><span class="na">.global</span><span class="w"> </span><span class="no">_start</span><span class="w"> </span>
+<span class="no">_start</span><span class="p">:</span><span class="w"></span>
+<span class="w">	</span><span class="nf">mov</span><span class="w"> </span><span class="no">rbx</span><span class="p">,</span><span class="w"> </span><span class="no">QWORD</span><span class="w"> </span><span class="no">PTR</span><span class="w"> </span><span class="p">[</span><span class="no">A_LEN</span><span class="p">]</span><span class="w"></span>
+<span class="w">	</span><span class="nf">mov</span><span class="w"> </span><span class="no">rcx</span><span class="p">,</span><span class="w"> </span><span class="no">OFFSET</span><span class="w"> </span><span class="no">A</span><span class="w"></span>
+<span class="w">	</span><span class="nf">call</span><span class="w"> </span><span class="no">sumIt</span><span class="w"></span>
+<span class="w">	</span><span class="nf">mov</span><span class="w"> </span><span class="no">QWORD</span><span class="w"> </span><span class="no">PTR</span><span class="w"> </span><span class="p">[</span><span class="no">A_SUM</span><span class="p">],</span><span class="w"> </span><span class="no">rax</span><span class="w"></span>
+
+<span class="w">	</span><span class="nf">mov</span><span class="w"> </span><span class="no">rbx</span><span class="p">,</span><span class="w"> </span><span class="no">QWORD</span><span class="w"> </span><span class="no">PTR</span><span class="w"> </span><span class="p">[</span><span class="no">B_LEN</span><span class="p">]</span><span class="w"></span>
+<span class="w">	</span><span class="nf">mov</span><span class="w"> </span><span class="no">rcx</span><span class="p">,</span><span class="w"> </span><span class="no">OFFSET</span><span class="w"> </span><span class="no">B</span><span class="w"></span>
+<span class="w">	</span><span class="nf">call</span><span class="w"> </span><span class="no">sumIt</span><span class="w"></span>
+<span class="w">	</span><span class="nf">mov</span><span class="w"> </span><span class="no">QWORD</span><span class="w"> </span><span class="no">PTR</span><span class="w"> </span><span class="p">[</span><span class="no">B_SUM</span><span class="p">],</span><span class="w"> </span><span class="no">rax</span><span class="w"></span>
+
+<span class="w">	</span><span class="nf">mov</span><span class="w"> </span><span class="no">rbx</span><span class="p">,</span><span class="w"> </span><span class="no">QWORD</span><span class="w"> </span><span class="no">PTR</span><span class="w"> </span><span class="p">[</span><span class="no">C_LEN</span><span class="p">]</span><span class="w"></span>
+<span class="w">	</span><span class="nf">mov</span><span class="w"> </span><span class="no">rcx</span><span class="p">,</span><span class="w"> </span><span class="no">OFFSET</span><span class="w"> </span><span class="no">C</span><span class="w"></span>
+<span class="w">	</span><span class="nf">call</span><span class="w"> </span><span class="no">sumIt</span><span class="w"></span>
+<span class="w">	</span><span class="nf">mov</span><span class="w"> </span><span class="no">QWORD</span><span class="w"> </span><span class="no">PTR</span><span class="w"> </span><span class="p">[</span><span class="no">C_SUM</span><span class="p">],</span><span class="w"> </span><span class="no">rax</span><span class="w"></span>
+<span class="w">	</span><span class="nf">int3</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">
+{"version_major": 2, "version_minor": 0, "model_id": "a148840db4814f689cfcd88b7935da03"}
+</script></div>
+</div>
+</div>
+<div class="section" id="version-6-improving-code-by-spilling-rdi-in-sumit">
+<h3>Version 6 improving code by “spilling” <code class="docutils literal notranslate"><span class="pre">rdi</span></code> in <code class="docutils literal notranslate"><span class="pre">sumIt</span></code><a class="headerlink" href="#version-6-improving-code-by-spilling-rdi-in-sumit" title="Permalink to this headline">¶</a></h3>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<p><b>CODE: asm - sumit6.S : Version 6</p>
+<div style="width:107em; height:100%; font-size:inherit; overflow: auto;" >
+<div class="highlight-gas notranslate"><div class="highlight"><pre><span></span>	.intel_syntax noprefix
+	
+	.global sumIt	      	      #	 directive to let the linker
+
+	# code to sum data in array who&#39;s address is in rcx
+	# we assume we were started with call so return address on stack
+	# we assume rbx has length  rbx -&gt; len
+	# and that we will leave final sum in rax
+sumIt:	                              # location of this code is
+	xor  rax, rax            # rax -&gt; sum : sum = 0
+	push rdi                 # spill current value of rdi before we use
+	xor  rdi, rdi            # rax -&gt; i : i = 0
+
+	# code to sum data at value in rcx
+	# we assume rbx has length  rbx -&gt; len
+	# and that we will leave final sum in rax
+loop_start:
+	cmp  rbx, rdi
+	jz   loop_done
+	add  rax, QWORD PTR [rcx + rdi * 8] # add the i&#39;th value to the sum
+	inc  rdi                   # i=i+1
+	jmp   loop_start
+loop_done:
+	pop  rdi                 # restore rdi back to its original value
+	ret
+
+
+</pre></div>
+</div>
+</div>
+<p><strong>Corresponding: usesum</strong></p>
+<p><b>CODE: asm - usesum5.S : Version 6 no change to usesum use Version 5</p>
+<div style="width:107em; height:100%; font-size:inherit; overflow: auto;" >
+<div class="highlight-gas notranslate"><div class="highlight"><pre><span></span><span class="w">	</span><span class="na">.intel_syntax</span><span class="w"> </span><span class="no">noprefix</span><span class="w"></span>
+<span class="w">	</span><span class="na">.data</span><span class="w">	</span>
+<span class="w">	</span><span class="no">.comm</span><span class="w"> </span><span class="no">A_SUM</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="w"></span>
+<span class="w">	</span><span class="na">.comm</span><span class="w"> </span><span class="no">A_LEN</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="w"></span>
+<span class="w">	</span><span class="na">.comm</span><span class="w"> </span><span class="no">A</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">*</span><span class="mi">1024</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="w">	</span>
+
+<span class="w">	</span><span class="no">.comm</span><span class="w"> </span><span class="no">B_SUM</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="w"></span>
+<span class="w">	</span><span class="na">.comm</span><span class="w"> </span><span class="no">B_LEN</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="w"></span>
+<span class="w">	</span><span class="na">.comm</span><span class="w"> </span><span class="no">B</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">*</span><span class="mi">1024</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="w">	</span>
+
+<span class="w">	</span><span class="no">.comm</span><span class="w"> </span><span class="no">C_SUM</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="w"></span>
+<span class="w">	</span><span class="na">.comm</span><span class="w"> </span><span class="no">C_LEN</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="w"></span>
+<span class="w">	</span><span class="na">.comm</span><span class="w"> </span><span class="no">C</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">*</span><span class="mi">1024</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="w">	</span>
+
+<span class="w">	</span><span class="no">.text</span><span class="w"></span>
+<span class="w">	</span><span class="na">.global</span><span class="w"> </span><span class="no">_start</span><span class="w"> </span>
+<span class="no">_start</span><span class="p">:</span><span class="w"></span>
+<span class="w">	</span><span class="nf">mov</span><span class="w"> </span><span class="no">rbx</span><span class="p">,</span><span class="w"> </span><span class="no">QWORD</span><span class="w"> </span><span class="no">PTR</span><span class="w"> </span><span class="p">[</span><span class="no">A_LEN</span><span class="p">]</span><span class="w"></span>
+<span class="w">	</span><span class="nf">mov</span><span class="w"> </span><span class="no">rcx</span><span class="p">,</span><span class="w"> </span><span class="no">OFFSET</span><span class="w"> </span><span class="no">A</span><span class="w"></span>
+<span class="w">	</span><span class="nf">call</span><span class="w"> </span><span class="no">sumIt</span><span class="w"></span>
+<span class="w">	</span><span class="nf">mov</span><span class="w"> </span><span class="no">QWORD</span><span class="w"> </span><span class="no">PTR</span><span class="w"> </span><span class="p">[</span><span class="no">A_SUM</span><span class="p">],</span><span class="w"> </span><span class="no">rax</span><span class="w"></span>
+
+<span class="w">	</span><span class="nf">mov</span><span class="w"> </span><span class="no">rbx</span><span class="p">,</span><span class="w"> </span><span class="no">QWORD</span><span class="w"> </span><span class="no">PTR</span><span class="w"> </span><span class="p">[</span><span class="no">B_LEN</span><span class="p">]</span><span class="w"></span>
+<span class="w">	</span><span class="nf">mov</span><span class="w"> </span><span class="no">rcx</span><span class="p">,</span><span class="w"> </span><span class="no">OFFSET</span><span class="w"> </span><span class="no">B</span><span class="w"></span>
+<span class="w">	</span><span class="nf">call</span><span class="w"> </span><span class="no">sumIt</span><span class="w"></span>
+<span class="w">	</span><span class="nf">mov</span><span class="w"> </span><span class="no">QWORD</span><span class="w"> </span><span class="no">PTR</span><span class="w"> </span><span class="p">[</span><span class="no">B_SUM</span><span class="p">],</span><span class="w"> </span><span class="no">rax</span><span class="w"></span>
+
+<span class="w">	</span><span class="nf">mov</span><span class="w"> </span><span class="no">rbx</span><span class="p">,</span><span class="w"> </span><span class="no">QWORD</span><span class="w"> </span><span class="no">PTR</span><span class="w"> </span><span class="p">[</span><span class="no">C_LEN</span><span class="p">]</span><span class="w"></span>
+<span class="w">	</span><span class="nf">mov</span><span class="w"> </span><span class="no">rcx</span><span class="p">,</span><span class="w"> </span><span class="no">OFFSET</span><span class="w"> </span><span class="no">C</span><span class="w"></span>
+<span class="w">	</span><span class="nf">call</span><span class="w"> </span><span class="no">sumIt</span><span class="w"></span>
+<span class="w">	</span><span class="nf">mov</span><span class="w"> </span><span class="no">QWORD</span><span class="w"> </span><span class="no">PTR</span><span class="w"> </span><span class="p">[</span><span class="no">C_SUM</span><span class="p">],</span><span class="w"> </span><span class="no">rax</span><span class="w"></span>
+<span class="w">	</span><span class="nf">int3</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">
+{"version_major": 2, "version_minor": 0, "model_id": "96d81a83b7734c838869d47423900ce5"}
+</script></div>
+</div>
+</div>
+</div>
+</div>
+
+
+<script type="application/vnd.jupyter.widget-state+json">
+{"state": {"f7200ee1381a45909052def5e84d1569": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": "1px solid black", "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "100%", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": "scroll", "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "ed3f8f2d8321420c98f4ccd8f9ea27fe": {"model_name": "OutputModel", "model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_f7200ee1381a45909052def5e84d1569", "msg_id": "", "outputs": [{"output_type": "stream", "name": "stdout", "text": "\nas -g -a=usesum.o.lst usesum.S -o usesum.o\r\nas -g -a=sumit.o.lst sumit.S -o sumit.o\r\nld -g -Map=usesum.map usesum.o sumit.o -o usesum\r\n"}]}}, "bffd9ff394554c38b7e52d4269f5484a": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": "1px solid black", "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "100%", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": "scroll", "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "214cc856a0754f5c9dec9e78ad95de07": {"model_name": "OutputModel", "model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_bffd9ff394554c38b7e52d4269f5484a", "msg_id": "", "outputs": [{"output_type": "stream", "name": "stdout", "text": "\nas -g -a=usesum2.o.lst usesum2.S -o usesum2.o\r\nas -g -a=sumit2.o.lst sumit2.S -o sumit2.o\r\nld -g -Map=usesum2.map usesum2.o sumit2.o -o usesum2\r\n"}]}}, "3dcf9745e67b4095aeb8a4816c2cb695": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": "1px solid black", "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "100%", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": "scroll", "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "b0ce0d2f42b14d8e91deec547981e519": {"model_name": "OutputModel", "model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_3dcf9745e67b4095aeb8a4816c2cb695", "msg_id": "", "outputs": [{"output_type": "stream", "name": "stdout", "text": "\nas -g -a=usesum3.o.lst usesum3.S -o usesum3.o\r\nas -g -a=sumit3.o.lst sumit3.S -o sumit3.o\r\nld -g -Map=usesum3.map usesum3.o sumit3.o -o usesum3\r\n"}]}}, "cb8389f02fe94a06ae2512b66df4d6a9": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": "1px solid black", "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "100%", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": "scroll", "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "c90a5823d2b247f6a4342a43501c72ac": {"model_name": "OutputModel", "model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_cb8389f02fe94a06ae2512b66df4d6a9", "msg_id": "", "outputs": [{"output_type": "stream", "name": "stdout", "text": "\nas -g -a=usesum4.o.lst usesum4.S -o usesum4.o\r\nld -g -Map=usesum4.map usesum4.o sumit3.o -o usesum4\r\n"}]}}, "bb823003c19d4c91a1494dfb881e8c6a": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": "1px solid black", "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "100%", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": "scroll", "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "a148840db4814f689cfcd88b7935da03": {"model_name": "OutputModel", "model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_bb823003c19d4c91a1494dfb881e8c6a", "msg_id": "", "outputs": [{"output_type": "stream", "name": "stdout", "text": "\nas -g -a=usesum5.o.lst usesum5.S -o usesum5.o\r\nas -g -a=sumit5.o.lst sumit5.S -o sumit5.o\r\nld -g -Map=usesum5.map usesum5.o sumit5.o -o usesum5\r\n"}]}}, "db7e787e5dbd48499759c7a6718de35f": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": "1px solid black", "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "100%", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": "scroll", "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "96d81a83b7734c838869d47423900ce5": {"model_name": "OutputModel", "model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_db7e787e5dbd48499759c7a6718de35f", "msg_id": "", "outputs": [{"output_type": "stream", "name": "stdout", "text": "\nas -g -a=sumit6.o.lst sumit6.S -o sumit6.o\r\nld -g -Map=usesum6.map usesum5.o sumit6.o -o usesum6\r\n"}]}}}, "version_major": 2, "version_minor": 0}
+</script>
+
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./assembly"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By The Jupyter Book community<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>

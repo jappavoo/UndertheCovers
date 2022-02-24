@@ -58,7 +58,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="2. What is a Terminal and why do we still use them?" href="terminal.html" />
-    <link rel="prev" title="Under the Covers : The Secret Life of Software" href="../intro_tb.html" />
+    <link rel="prev" title="How to read this book" href="../howto.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -99,6 +99,18 @@
  <li class="toctree-l1">
   <a class="reference internal" href="../intro_tb.html">
    Under the Covers : The Secret Life of Software
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  How to read this book
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../howto.html">
+   How to read this book
   </a>
  </li>
 </ul>
@@ -654,11 +666,11 @@ a world of its own, inside the machine, with the kernel enabling its constructio
             
                 <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="../intro_tb.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="../howto.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Under the Covers : The Secret Life of Software</p>
+            <p class="prev-next-title">How to read this book</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="terminal.html" title="next page">
