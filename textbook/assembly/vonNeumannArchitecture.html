@@ -858,7 +858,7 @@ htmlFig("[{'src': '../images/SLS_TheMachine.png'}]",
         align="center", 
         width="80%",
         margin="auto auto auto auto",
-        caption="<center>Figure: Our illustration of a von Neumann computer.  Our view is slightly updated to put the model interms of todays computers.</center>", 
+        caption="<center>Figure: Our illustration of a von Neumann computer.  Our view is slightly updated to put the model in terms of todays computers.</center>", 
         captionalign="left")
 -->
 <table id="fig:vnm" align="center" width="80%" cellpadding="0" cellspacing="0" border="0" style="border-collapse: collapse; margin: auto auto auto auto">
@@ -872,7 +872,7 @@ htmlFig("[{'src': '../images/SLS_TheMachine.png'}]",
         </td>
     </tr>
     <caption align="bottom" style="text-align: left; padding: 0; margin: 0;" >
-          <i><center>Figure: Our illustration of a von Neumann computer.  Our view is slightly updated to put the model interms of todays computers.</center></i> 
+          <i><center>Figure: Our illustration of a von Neumann computer.  Our view is slightly updated to put the model in terms of todays computers.</center></i> 
     </caption>
 </table>
 </div>
@@ -884,7 +884,7 @@ case, the common architecture to which most programmable computers are built
 is the von Neumann Architecture, named after <a class="reference external" href="https://en.wikipedia.org/wiki/John_von_Neumann">
 John von Neumann</a>.</p>
 <blockquote>
-<div><p><a class="reference internal" href="../_images/commentary.png"><img alt="../_images/commentary.png" class="align-left" src="../_images/commentary.png" style="width: 60px;" /></a> <p style="background-color:powderblue;"> In our journey to understand computers we will be exploring a fascinating story of human innovation and ingenuity.  This story is full of characters, such as John von Neumann, Alan Turning, Admiral Grace Hopper, Ada Love Lace, and many more, that dared to be and think differently.  Not only do we owe a great deal of gratitude to these courageous people, who often risked a lot in suggesting new ways of thinking and doing things, challenging the orthodoxy of their day, we can also draw inspiration in their diversity and bravery. Remember who you are and that your voice matters, tomorrows innovation rests on your actions! </p></p>
+<div><p><a class="reference internal" href="../_images/commentary.png"><img alt="../_images/commentary.png" class="align-left" src="../_images/commentary.png" style="width: 60px;" /></a> <p style="background-color:powderblue;"> In our journey to understand computers we will be exploring a fascinating story of human innovation and ingenuity.  This story is full of characters, such as John von Neumann, Alan Turning, Admiral Grace Hopper, Ada Love Lace, and many more, that dared to be and think differently.  Not only do we owe a great deal of gratitude to these courageous people, who often risked a lot in suggesting new ways of thinking and doing things, challenging the orthodoxy of their day, we can also draw inspiration in their diversity and bravery. Remember who you are and that your voice matters. Tomorrow’s innovation rests on your actions! </p></p>
 </div></blockquote>
 <div class="section" id="the-central-processing-unit-cpu">
 <h2><span class="section-number">8.1. </span>The Central Processing Unit (CPU)<a class="headerlink" href="#the-central-processing-unit-cpu" title="Permalink to this headline">¶</a></h2>
@@ -923,12 +923,12 @@ htmlFig("[{'src': '../images/physcpus.png'}]",
 </table>
 </div>
 </div>
-<p>In the <a href="#fig:physcpus">Examples of physical CPUs figure</a>, above, we see photos of some physical cpus along with a “pin out” diagram that describes how to physically connect it to the rest of the computer.  Over the years, it is clear that the complexity of CPUs has certainly grown.  In the 1970’s, CPUs were composed of thousands of transistors and only required tens of pins to connect to rest of the computer.  By 2021 we see that cpus now contain billions of transistors and require thousands for physical connections to the rest of the system.  We have, in fact, pushed the physical boundaries to the point that it is unclear exactly how we can make more powerful cpus that still preserve a simple programming model. The way software is written and structured becomes more and more important in order to get most out of a computer.  But, the first step to understanding how to construct advanced software is understanding the basics of how the parts of a computer interact to execute software.</p>
+<p>In the <a href="#fig:physcpus">Examples of physical CPUs figure</a>, above, we see photos of some physical CPUs along with a “pin out” diagram that describes how to physically connect it to the rest of the computer.  Over the years, it is clear that the complexity of CPUs has certainly grown.  In the 1970’s, CPUs were composed of thousands of transistors and only required tens of pins to connect to rest of the computer.  By 2021 we see that CPUs now contain billions of transistors and require thousands of physical connections to the rest of the system.  We have, in fact, pushed the physical boundaries to the point that it is unclear exactly how we can make more powerful CPUs that still preserve a simple programming model. The way software is written and structured becomes more and more important in order to get most out of a computer.  But, the first step to understanding how to construct advanced software is understanding the basics of how the parts of a computer interact to execute software.</p>
 <div style="background-color:powderblue;">  
 <img style="margin: auto 1em auto auto;" align="left" width="60" src="../images/fyi.png">
-While an over-simplification, one of the uses of transistors in a CPU is to create, "switches" that form the logic circuits used to implement basic operations such as adding numbers. In order to make the CPU do these operations faster, we need to be able to operate the transistors (turn them on and off) faster and faster.  Unfortunately, doing so requires more and more energy, and thus creates more and more heat.  As such, over the last decade it has become harder and harder to speed up CPUs given the increase in energy and increase in heat it leads to.   On the other hand, we have managed to figure out how to continually shrink the size of transistors.  This has allowed us to pack more and more transistors into CPUs; however, some believe that we are getting to end of this ability as we are approaching the physical limits of how small we can make a transistor. 
-<p>Regardless, we have reached a point where making cpus operate faster is very hard to do, and while we might be able to fit more transistors on the chip, we are reaching the limits of how many we can have powered on at the same time (due to energy and heat constraints).  Finally, it is also very hard to imagine that we can fit many more “pins” that connect the cpu to the rest of the computer.</p>
-<p>Over the years these effects have resulted in a situation where the performance of the software we write has become more and more dependent on how it interacts with the internal way the extra transistors are used.  For example, in a modern processor, a large number of transistors are used to form what is called <a class="reference external" href="https://en.wikipedia.org/wiki/CPU_cache">cache</a> memory.  While software can benefit from performance increases due to caches, writing the same software in different ways can impact performance (positively or negatively) depending on how that software interacts with the cache. In understanding how the caches work and the way your software interacts with them, you gain the ability to write better and more performant programs.  Similarly, today’s CPU’s often use the extra transistors to create multiple internal sub-CPUs, called <a class="reference external" href="https://en.wikipedia.org/wiki/Multi-core_processor">cores</a>.  A program, however, does not automatically benefit from multiple cores unless it is written to explicitly exploit them via “parallel threads” of execution.  To understand how to do this, one first needs to understand the classic model by which a single core CPU works, and its interaction with memory.</p>
+While it is an oversimplification, one of the uses of transistors in a CPU is to create, "switches" that form the logic circuits used to implement basic operations such as adding numbers. In order to make the CPU do these operations faster, we need to be able to operate the transistors (turn them on and off) faster and faster.  Unfortunately, doing so requires more and more energy, and thus creates more and more heat.  As such, over the last decade it has become harder and harder to speed up CPUs given the increase in energy and increase in heat it leads to.   On the other hand, we have managed to figure out how to continually shrink the size of transistors.  This has allowed us to pack more and more transistors into CPUs; however, some believe that we are getting to end of this ability as we are approaching the physical limits of how small we can make a transistor. 
+<p>Regardless, we have reached a point where making CPUs operate faster is very hard to do, and while we might be able to fit more transistors on the chip, we are reaching the limits of how many we can have powered on at the same time (due to energy and heat constraints).  Finally, it is also very hard to imagine that we can fit many more “pins” that connect the CPU to the rest of the computer.</p>
+<p>Over the years these effects have resulted in a situation where the performance of the software we write has become more and more dependent on how it interacts with the internal way the extra transistors are used.  For example, in a modern processor, a large number of transistors are used to form what is called <a class="reference external" href="https://en.wikipedia.org/wiki/CPU_cache">cache</a> memory.  While software can benefit from performance increases due to caches, writing the same software in different ways can impact performance (positively or negatively) depending on how that software interacts with the cache. In understanding how the caches work and the way your software interacts with them, you gain the ability to write better and more efficient programs.  Similarly, today’s CPU’s often use the extra transistors to create multiple internal sub-CPUs, called <a class="reference external" href="https://en.wikipedia.org/wiki/Multi-core_processor">cores</a>.  A program, however, does not automatically benefit from multiple cores unless it is written to explicitly exploit them via “parallel threads” of execution.  To understand how to do this, one first needs to understand the classic model by which a single core CPU works, and its interaction with memory.</p>
 <p>The bottom line is CPUs are complex organizations of transistors and we are reaching the physical limits to their construction.</p>
 </div>    </div>
 <div class="section" id="logically">
@@ -978,7 +978,7 @@ htmlFig("[{'src': '../images/VNA_0.png'}]",
           <i>Figure: The CPU</i> 
     </caption>
 </table>
-<p>The cpu is a distinct physical region of the computer. Housed within it are several important parts that we need to understand.</p>
+<p>The CPU is a distinct physical region of the computer. Housed within it are several important parts that we need to understand.</p>
 <p><a id="operations_sec"></a></p>
 </div>
 <div class="section" id="operations">
@@ -1006,7 +1006,7 @@ htmlFig("[{'src': '../images/VNA_1.png'}]",
           <i>Figure: CPU's contain a set of <em>M</em> operations that we will use in our programs. We label each operation with a unique number so that we can identify one from another.</i> 
     </caption>
 </table>
-<p>Within the cpu there are circuits/components that provide a set of operations.  The exact set of
+<p>Within the CPU there are circuits/components that provide a set of operations.  The exact set of
 operations and the number can differ widely between particular CPU brands and models (eg INTEL vs ARM).
 However, commonly we can expect operations that 1) perform arithmetic and logic (eg. adding and
 comparing numbers), 2) move values into and out of the CPU, 3) Control what happens next.  Collectively
@@ -1015,7 +1015,7 @@ the ones that perform arithmetic and logic  are often referred to as the Arithme
 As an example, the box labeled <code class="docutils literal notranslate"><span class="pre">OPERATION</span> <span class="pre">2</span></code> might implement the addition of two input values to produce a single result value.
 The designers of a particular CPU, like INTEL, choose and define the set of operations for their CPUs, and must tell us what they are and what they do.</p>
 <p>From our perspective, the most important thing is that the set of operations form the ‘built-in’ functions
-that we can use in our programs for the particular cpu we are working with. Given that the
+that we can use in our programs for the particular CPU we are working with. Given that the
 operations are CPU specific our programs will inherently be CPU specific.</p>
 </div>
 <div class="section" id="registers">
@@ -1322,7 +1322,7 @@ sequence to help with initializing the PC (and other CPU registers).</p>
 some standard conventions for referring to the two main categories of values we load into memory to form our programs.</p>
 <div class="section" id="text">
 <h5><span class="section-number">8.4.1.3.1. </span>Text<a class="headerlink" href="#text" title="Permalink to this headline">¶</a></h5>
-<p>Sets of values to be loaded into memory that encode opcodes and their operands for the cpu to execute are called <strong>text</strong>.  We call areas of memory in which we load text values <strong>executable</strong>.</p>
+<p>Sets of values to be loaded into memory that encode opcodes and their operands for the CPU to execute are called <strong>text</strong>.  We call areas of memory in which we load text values <strong>executable</strong>.</p>
 </div>
 <div class="section" id="data">
 <h5><span class="section-number">8.4.1.3.2. </span>Data<a class="headerlink" href="#data" title="Permalink to this headline">¶</a></h5>
@@ -1596,7 +1596,7 @@ It is important to realize the CPU is just a blind infinite loop and will happy 
 interpret the value at address <span class="math notranslate nohighlight">\(8\)</span> as an opcode.  In this case we will assume that blank means a location has
 some random value.  So either it will be interpreted as some instruction or if we are lucky it will be an invalid
 instruction that causes an error that the OS (if we are using one) will catch and terminate our program.
-More likely however it will be correspond to some instruction that the cpu will happily execute, of course
+More likely however it will be correspond to some instruction that the CPU will happily execute, of course
 this instruction might very well overwrite values that we worked so hard to produce.  It is our job
 not to let this happen!  We must always direct the CPU to valid instructions of our program and
 if we are done then it is our job to ensure that the CPU executes instructions that transfers control
@@ -1759,7 +1759,7 @@ htmlFig("[[{'src': '../images/ASSEMBLY-VNA-SOFTWARE/ASSEMBLY-VNA-SOFTWARE.006.pn
 </div>
 <div class="section" id="multi-cores">
 <h5><span class="section-number">8.4.7.5.4. </span>Multi-cores<a class="headerlink" href="#multi-cores" title="Permalink to this headline">¶</a></h5>
-<p>The extensions discussed so far all try and improve performance without the explicit need to fundamentally re-design the software.  Multi-cores are different in this respect at least with regards to a single program.  A multi-core CPU is decomposed into several sub-cpus, cores.  Each core has its own registers and private caches and implement and independent execution loop.  As such multi-cores provide a programmer with the ability to explicitly structure their code into multiple “threads” of execution.  Where each thread can execute in parallel on a core and concurrently get work done while all have access to the main memory.  The level of true parallelism, the number of threads executing instruction at exactly the same time, will be limited by the number of cores in the system.</p>
+<p>The extensions discussed so far all try and improve performance without the explicit need to fundamentally re-design the software.  Multi-cores are different in this respect at least with regards to a single program.  A multi-core CPU is decomposed into several sub-CPUs, cores.  Each core has its own registers and private caches and implement and independent execution loop.  As such multi-cores provide a programmer with the ability to explicitly structure their code into multiple “threads” of execution.  Where each thread can execute in parallel on a core and concurrently get work done while all have access to the main memory.  The level of true parallelism, the number of threads executing instruction at exactly the same time, will be limited by the number of cores in the system.</p>
 <p>Parallelism can be very powerful but also has many pitfalls associated with it.  To truly make use of it you typically need to re-think your software from the ground up and deal with various subtleties of how the cores interact with each other and memory.  To understand these interaction one must first get a solid grasp on how a single core works – which is our fundamental goal.</p>
 </div>
 <div class="section" id="what-s-next">
