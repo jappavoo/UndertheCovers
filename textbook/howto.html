@@ -328,6 +328,11 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#warning-danger">
+   WARNING – DANGER
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#step-0-start-your-server">
    Step 0: Start your server
   </a>
@@ -335,6 +340,40 @@
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#bu-server-startup">
      BU Server startup
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#booting-your-server">
+     Booting your server
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#jupyter-lab-environment">
+   Jupyter Lab Environment
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#creating-terminals">
+     Creating Terminals
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#shutting-down-your-server">
+   Shutting Down Your Server
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#hub-control-panel">
+     Hub Control Panel
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#shutdown">
+     Shutdown
     </a>
    </li>
   </ul>
@@ -370,6 +409,11 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#warning-danger">
+   WARNING – DANGER
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#step-0-start-your-server">
    Step 0: Start your server
   </a>
@@ -377,6 +421,40 @@
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#bu-server-startup">
      BU Server startup
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#booting-your-server">
+     Booting your server
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#jupyter-lab-environment">
+   Jupyter Lab Environment
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#creating-terminals">
+     Creating Terminals
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#shutting-down-your-server">
+   Shutting Down Your Server
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#hub-control-panel">
+     Hub Control Panel
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#shutdown">
+     Shutdown
     </a>
    </li>
   </ul>
@@ -410,6 +488,13 @@ and follow the instructions be sure to state what browser you were using and
 what the problem was.  If possible include a screen shot.</p>
 <p>Thanks!</p>
 </div>
+<div class="section" id="warning-danger">
+<h2>WARNING – DANGER<a class="headerlink" href="#warning-danger" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p style="background-color:tomato;">  <b>The files you create within your Linux server are NOT PERMANENT!</b>  In other words you cannot rely on the files to be there if the server crashes for some reason, it gets shutdown due to inactivity, or you purposefully shut it down.   You must frequently save your work to an external service like <a href="https://cs210-gitlab.bu.edu">https://cs210-gitlab.bu.edu</a>.
+</div></blockquote>
+</p>
+</div>
 <div class="section" id="step-0-start-your-server">
 <h2>Step 0: Start your server<a class="headerlink" href="#step-0-start-your-server" title="Permalink to this headline">¶</a></h2>
 <p>If you are in a BU class that is using this book follow this link:</p>
@@ -422,9 +507,105 @@ what the problem was.  If possible include a screen shot.</p>
 </ul>
 <div class="section" id="bu-server-startup">
 <h3>BU Server startup<a class="headerlink" href="#bu-server-startup" title="Permalink to this headline">¶</a></h3>
-<p>The following video shows what should happen in when you follow the link and what you need to do to login.
+<p>Clicking on the above link should take you to the login page displayed below.
 If you are not able to login and you are sure you are in a class that is using the book please contact the
 teaching staff and they will add your BU user to the service.</p>
+<center>
+<img src="images/howto/howto0.png" >
+</center>
+</div>
+<div class="section" id="booting-your-server">
+<h3>Booting your server<a class="headerlink" href="#booting-your-server" title="Permalink to this headline">¶</a></h3>
+<p>After login you should be presented with the following panel.  You will need to 1) Select the right “Notebook Image” and then 2) click on the “Start Server” button at the bottom of the page.</p>
+<center>
+<img src="images/howto/howto1.png" >
+</center>
+<p>You will then should observer the following sequence progress as your server starts up</p>
+<!-- produced by: 
+htmlFig("[[{'src': 'images/howto/howto2.png', 'cellwidth': '33.33%'}, {'src': 'images/howto/howto3.png', 'cellwidth': '33%'}, {'src': 'images/howto/howto4.png', 'cellwidth': '33%'}]]", 
+        id="", 
+        align="center", 
+        width="100%",
+        margin="auto auto auto auto",
+        caption="", 
+        captionalign="left")
+-->
+<table align="center" width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse: collapse; margin: auto auto auto auto">
+    <tr style="padding: 0; margin: 0;"> 
+        <td colspan="1" width="33.33%" style="padding: 0; margin: 0 0 0 0; background-color:inherit;">
+            <div style="padding: 0; margin: 0 0 0 0;">
+              <figure style="padding: 0; margin: 0 0 0 0; width:100%;">
+                   <img src="images/howto/howto2.png" width="100%" style="padding: 0; margin: 0;">
+                </figure>
+            </div>
+        </td>
+        <td colspan="1" width="33%" style="padding: 0; margin: 0 0 0 0; background-color:inherit;">
+            <div style="padding: 0; margin: 0 0 0 0;">
+              <figure style="padding: 0; margin: 0 0 0 0; width:100%;">
+                   <img src="images/howto/howto3.png" width="100%" style="padding: 0; margin: 0;">
+                </figure>
+            </div>
+        </td>
+        <td colspan="1" width="33%" style="padding: 0; margin: 0 0 0 0; background-color:inherit;">
+            <div style="padding: 0; margin: 0 0 0 0;">
+              <figure style="padding: 0; margin: 0 0 0 0; width:100%;">
+                   <img src="images/howto/howto4.png" width="100%" style="padding: 0; margin: 0;">
+                </figure>
+            </div>
+        </td>
+    </tr>
+</table></div>
+</div>
+<div class="section" id="jupyter-lab-environment">
+<h2>Jupyter Lab Environment<a class="headerlink" href="#jupyter-lab-environment" title="Permalink to this headline">¶</a></h2>
+<p>After the boot process you should be presented with Jupyter Lab development user interface as illustrated below.</p>
+<center>
+<img src="images/howto/howto5.png" >
+</center>>
+<p>To allow us to have a rich UNIX environment to work with that we can access via a web browser your server has been configured to start the <a class="reference external" href="https://jupyterlab.readthedocs.io/en/stable/">Jupyter Lab</a> development environment.  While most people focus on the use of Jupyter Lab for data science we will mainly focus on its support for letting users start their own UNIX server that can be accessed in a web browser.  The core feature we will care about is Jupyter Lab’s support for creating multiple terminals that we can use to access shell session running on the server.</p>
+<div class="section" id="creating-terminals">
+<h3>Creating Terminals<a class="headerlink" href="#creating-terminals" title="Permalink to this headline">¶</a></h3>
+<center>
+<img src="images/howto/howto6.png" >
+</center>
+<p>There are a few ways to create terminals in Jupyter Lab.  We will focus on the one shown above.  Using the “File” menu select “New” then “Terminal”.  This should then
+start a Terminal as shown below:</p>
+<center>
+<img src="images/howto/howto7.png" >
+</center>
+<p>You can create and organize as many terminal as you like.  Dragging the “Terminal” tab title bar around will allow you to adjust the layout.  For example below we have start three terminals and organized them in two rows – two on first row and one on the second.</p>
+<center>
+<img src="images/howto/howto8.png" >
+</center>
+<p>To see what terminal you have running and to close them you can use the “Running Terminals and Kernels” side-bar tool on the left as shown below:</p>
+<center>
+<img src="images/howto/howto9.png" >
+</center>
+</div>
+</div>
+<div class="section" id="shutting-down-your-server">
+<h2>Shutting Down Your Server<a class="headerlink" href="#shutting-down-your-server" title="Permalink to this headline">¶</a></h2>
+<p>When you have finished your session of working you should shutdown all your terminals and then your server.  If you do not shutdown the server it will eventually be killed automatically but it is best you manually shut it down.  Do do this by selecting the “Hub Control” feature from the “File” menu as illustrated below</p>
+<center>
+<img src="images/howto/howto10.png" >
+</center>
+<div class="section" id="hub-control-panel">
+<h3>Hub Control Panel<a class="headerlink" href="#hub-control-panel" title="Permalink to this headline">¶</a></h3>
+<p>This will open a new tab or window with following page.</p>
+<center>
+<img src="images/howto/howto11.png" >
+</center>
+</div>
+<div class="section" id="shutdown">
+<h3>Shutdown<a class="headerlink" href="#shutdown" title="Permalink to this headline">¶</a></h3>
+<p>Selecting “Shutdown” will terminate your server.  <b>ALL PROCESSES WILL BE KILLED AND ALL FILES DELETED</b></p>
+<center>
+<img src="images/howto/howto12.png" >
+</center>
+<p>At this point the browser tab or window that you used for your Jupyter Lab session will no longer be valid, see below, and you can close it.</p>
+<center>
+<img src="images/howto/howto13.png" >
+</center>
 </div>
 </div>
 </div>
