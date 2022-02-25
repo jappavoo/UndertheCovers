@@ -59,7 +59,7 @@ except IndexError:
 
 [0;31m--------------------------------------------------------------------[0m
 [0;31mStopIteration[0m                      Traceback (most recent call last)
-[0;32m/tmp/ipykernel_14633/1079121966.py[0m in [0;36m<module>[0;34m[0m
+[0;32m/tmp/ipykernel_16248/1079121966.py[0m in [0;36m<module>[0;34m[0m
 [1;32m      4[0m [0mservers[0m[0;34m=[0m[0mlist[0m[0;34m([0m[0mlist_running_servers[0m[0;34m([0m[0;34m)[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
 [1;32m      5[0m [0;34m[0m[0m
 [0;32m----> 6[0;31m [0minfo[0m[0;34m=[0m[0mnext[0m[0;34m([0m[0mlist_running_servers[0m[0;34m([0m[0;34m)[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
