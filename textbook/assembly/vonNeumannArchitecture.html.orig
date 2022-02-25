@@ -1333,7 +1333,7 @@ some standard conventions for referring to the two main categories of values we 
 </div>
 <div class="section" id="the-execution-loop">
 <h3><span class="section-number">8.4.2. </span>The Execution Loop<a class="headerlink" href="#the-execution-loop" title="Permalink to this headline">¶</a></h3>
-<p>At the heart of the CPU is a built in infinite loop that coordinates the parts of the CPU and memory to enable program execution, the successive execution of instructions.  The following Figure, <a href="#fig:theLoop">The Loop</a> has extracts from early processor manuals that describe at a high level this loop.  Our generic CPU breaks this down into three distinct internal phases:</p>
+<p>At the heart of the CPU is a built in infinite loop that coordinates the parts of the CPU and memory to enable program execution, the successive execution of instructions.  The following Figure, <a href="#theLoop_fig">The Loop</a> has extracts from early processor manuals that describe at a high level this loop.  Our generic CPU breaks this down into three distinct internal phases:</p>
 <ol class="simple">
 <li><p>Fetch</p></li>
 <li><p>Decode</p></li>
@@ -1344,14 +1344,14 @@ some standard conventions for referring to the two main categories of values we 
 <div class="cell_output docutils container">
 <!-- produced by: 
 htmlFig("[{'src': '../images/ASSEMBLY-VNA-THECPU/ASSEMBLY-VNA-THECPU.018.png'}]", 
-        id="fig:theloop", 
+        id="theloop_fig", 
         align="center", 
         width="80%",
         margin="auto auto auto auto",
         caption="Figure: The Loop: Descriptions from the 6502 and 8086 manuals of their execution loop.", 
         captionalign="left")
 -->
-<table id="fig:theloop" align="center" width="80%" cellpadding="0" cellspacing="0" border="0" style="border-collapse: collapse; margin: auto auto auto auto">
+<table id="theloop_fig" align="center" width="80%" cellpadding="0" cellspacing="0" border="0" style="border-collapse: collapse; margin: auto auto auto auto">
     <tr style="padding: 0; margin: 0;"> 
         <td colspan="1" width="100%" style="padding: 0; margin: 0 0 0 0; background-color:inherit;">
             <div style="padding: 0; margin: 0 0 0 0;">
