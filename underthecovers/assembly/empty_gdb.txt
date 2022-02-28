@@ -27,9 +27,6 @@ info proc
 # lets examine the cpu
 info registers
 
-# or we can use the tui layout we made
-layout mylayout
-
 # we can print out the value of an individual register with
 # variables in gdb $<name> there are convience variables for each
 # of the registers 
