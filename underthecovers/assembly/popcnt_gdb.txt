@@ -18,8 +18,8 @@
   run
 # play around with popcnt
 
-set rbx = 0b11
-set rbx = 0xFFFE
+set $rbx = 0b11
+set $rbx = 0xFFFE
 
 
 
