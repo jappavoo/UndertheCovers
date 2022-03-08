@@ -369,6 +369,13 @@
    </code>
    assembly program
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#setup">
+     8.1.1. Setup
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#writing-an-add-assembly-program">
@@ -380,6 +387,13 @@
    </code>
    assembly program
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercises">
+     8.2.1. Exercises
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#ending-exiting-our-program-process">
@@ -413,11 +427,28 @@
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#here-is-a-fully-documented-fancy-version">
-       8.3.4.1. Here is a fully documented fancy version
+      <a class="reference internal nav-link" href="#avoiding-hard-coding-system-call-numbers">
+       8.3.4.1. Avoiding Hard coding system call numbers
       </a>
      </li>
     </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercises-and-extra-materials">
+   8.4. Exercises  and extra materials
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#makefile-for-all-the-lecture-examples">
+     8.4.1. Makefile for all the lecture examples
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#here-is-a-fully-documented-fancy-version-of-exit">
+     8.4.2. Here is a fully documented fancy version of exit
+    </a>
    </li>
   </ul>
  </li>
@@ -492,6 +523,68 @@
 </ul>
 </li>
 </ul>
+<div class="section" id="setup">
+<h3><span class="section-number">8.1.1. </span>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">¶</a></h3>
+<ol class="simple">
+<li><p>make directory</p></li>
+<li><p>create git database</p></li>
+<li><p>seed with a file</p></li>
+<li><p>create a remote copy of the database</p></li>
+<li><p>push contents to remote</p></li>
+<li><p>next time we start by cloning</p></li>
+</ol>
+<ol class="simple">
+<li><p>make a directory for our work :</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">mkdir</span> <span class="pre">firstasm</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">popcnt</span></code></p></li>
+</ul>
+</li>
+<li><p>create a git database to track our record our changes</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">init</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ls</span> <span class="pre">-la</span></code></p></li>
+</ul>
+</li>
+<li><p>add <a class="reference external" href="http://readme.md">readme.md</a>:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">emacs</span>&#160; <span class="pre">README.md</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">add</span> <span class="pre">README.md</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">commit</span> <span class="pre">-m</span> <span class="pre">&quot;add</span> <span class="pre">readme&quot;</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">branch</span> <span class="pre">-m</span> <span class="pre">master</span> <span class="pre">main</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">status</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">log</span> <span class="pre">--oneline</span> <span class="pre">--graph</span> <span class="pre">--all</span></code></p></li>
+</ul>
+</li>
+<li><p>replicate the repository on gitlab so we have a back remote repo</p>
+<ul class="simple">
+<li><p>There are three main protocols to choose from</p>
+<ol class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">https</span></code> – requires that you use a password every time you push :-(</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ssh</span></code> – requires you create an ssh key and install it on the gitlab server</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">api</span> <span class="pre">token</span></code> - requires you to setup a token on the gitlab server and remember it</p></li>
+</ol>
+</li>
+<li><p>going to use ssh</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">remote</span> <span class="pre">add</span> <span class="pre">origin</span> <span class="pre">git&#64;cs210-gitlab.bu.edu:jappavoo/firstasm.git</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">remote</span> <span class="pre">show</span></code></p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>push to remote</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">push</span> <span class="pre">origin</span> <span class="pre">main</span></code></p></li>
+<li><p>do this constantly while we are working to be sure we remote us up to date</p></li>
+</ul>
+</li>
+<li><p>Once the remote is created we would start our work session by “cloning” a fresh copy from the server.  Lets test this out by deleting and cloning a new copy:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">clone</span> <span class="pre">git&#64;cs210-gitlab.bu.edu:jappavoo/firstasm.git</span></code></p></li>
+</ul>
+</li>
+</ol>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <p><b>CODE: asm - The 'popcnt' assembly program</p>
@@ -563,7 +656,9 @@ eg.</p>
 <div class="cell_output docutils container">
 <div style="width:100%; height:100%; font-size:inherit; overflow: auto;" >
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1">#To assemble and link the code we will use the following command:</span>
-gcc --static -g -nostartfiles -nostdlib -Wl,--build-id<span class="o">=</span>none -Wa,-alh -Xlinker -Map<span class="o">=</span>popcnt.map popcnt.S -o popcnt &gt; popcnt.lst
+as -g popcnt.s -o popcnt.o
+ld -g popcnt.o -o popcnt
+
 <span class="c1"># We can automate this using a makefile so that all we would need to do is:</span>
 make popcnt
 </pre></div>
@@ -594,9 +689,10 @@ make popcnt
   run
 <span class="c1"># play around with popcnt</span>
 
-<span class="nb">set</span> <span class="nv">rbx</span> <span class="o">=</span> 0b11
-<span class="nb">set</span> <span class="nv">rbx</span> <span class="o">=</span> 0xFFFE
+<span class="nb">set</span> <span class="nv">$rbx</span> <span class="o">=</span> 0b11
+<span class="nb">set</span> <span class="nv">$rbx</span> <span class="o">=</span> 0xFFFE
 </pre></div>
+</div>
 </div>
 </div>
 </div>
@@ -609,9 +705,12 @@ make popcnt
 <ul>
 <li><p>begin to explore CPU support for working with “numbers”</p>
 <ul>
-<li><p>cpu as a calculator</p></li>
+<li><p>we will get into how numbers “work” later</p></li>
+<li><p>learn enough so that you can poke around yourself</p></li>
 </ul>
 </li>
+<li><p>get an idea of cool things that INTEL instructions can do</p></li>
+<li><p>try adding some variables in memory to our program</p></li>
 </ul>
 </li>
 </ul>
@@ -650,12 +749,8 @@ make popcnt
         <span class="nf">mov</span> <span class="no">rax</span><span class="p">,</span> <span class="no">QWORD</span> <span class="no">PTR</span> <span class="no">x</span>
         <span class="nf">add</span> <span class="no">rax</span><span class="p">,</span> <span class="no">QWORD</span> <span class="no">PTR</span> <span class="no">y</span>
         <span class="nf">mov</span> <span class="no">QWORD</span> <span class="no">PTR</span> <span class="no">sum</span><span class="p">,</span> <span class="no">rax</span>
-        <span class="nf">int3</span>
 </pre></div>
 </div>
-<ul class="simple">
-<li><p>try replacing add with <code class="docutils literal notranslate"><span class="pre">imul</span></code>, <code class="docutils literal notranslate"><span class="pre">and</span></code>, <code class="docutils literal notranslate"><span class="pre">or</span></code>, <code class="docutils literal notranslate"><span class="pre">xor</span></code></p></li>
-</ul>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <div style="width:100%; height:100%; font-size:inherit; overflow: auto;" >
@@ -673,9 +768,11 @@ make popcnt
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <div style="width:100%; height:100%; font-size:inherit; overflow: auto;" >
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>gcc --static -g -nostartfiles -nostdlib -Wl,--build-id<span class="o">=</span>none -Wa,-alh -Xlinker -Map<span class="o">=</span>add.map add.S -o add &gt; add.lst
-<span class="c1"># create makefile that automates</span>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># add targets to Makefile</span>
 make add
+
+as -g add.s -o add.o
+ld -g add.o -o add
 </pre></div>
 </div>
 </div>
@@ -696,6 +793,18 @@ run
 </div>
 </div>
 </div>
+</div>
+<div class="section" id="exercises">
+<h3><span class="section-number">8.2.1. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>try repeating what we did with <code class="docutils literal notranslate"><span class="pre">add</span></code> with <code class="docutils literal notranslate"><span class="pre">imul</span></code>, <code class="docutils literal notranslate"><span class="pre">and</span></code>, <code class="docutils literal notranslate"><span class="pre">or</span></code>, <code class="docutils literal notranslate"><span class="pre">xor</span></code>: for each</p>
+<ul>
+<li><p>create a new file</p></li>
+<li><p>add targets to Makefile for it</p></li>
+<li><p>use gdb to explore what the instruction does</p></li>
+</ul>
+</li>
+</ul>
 </div>
 </div>
 <div class="section" id="ending-exiting-our-program-process">
@@ -811,15 +920,94 @@ run
 </div>
 </div>
 </div>
+<p>We will revisit OS system calls in more detail later</p>
+<ul class="simple">
+<li><p>this is good enough for the moment</p></li>
+</ul>
+<div class="section" id="avoiding-hard-coding-system-call-numbers">
+<h4><span class="section-number">8.3.4.1. </span>Avoiding Hard coding system call numbers<a class="headerlink" href="#avoiding-hard-coding-system-call-numbers" title="Permalink to this headline">¶</a></h4>
 <p>Operating system code usually provides files that you can include in your code so that you don’t have to hardcode magic numbers like <code class="docutils literal notranslate"><span class="pre">60</span></code> for exit.  In Linux you can add the following file <code class="docutils literal notranslate"><span class="pre">#include</span> <span class="pre">&lt;asm/unistd_64.h&gt;</span></code> to get all the system call numbers.  You can then use <code class="docutils literal notranslate"><span class="pre">__NR_exit</span></code> to mean the number for the exit system call.</p>
-<p>eg.</p>
-<div class="highlight-gas notranslate"><div class="highlight"><pre><span></span>    <span class="nf">mov</span> <span class="no">rax</span><span class="p">,</span><span class="no">__NR_exit</span> <span class="c1"># exit system call number</span>
+<p>eg.
+exitfancy.S</p>
+<div class="highlight-gas notranslate"><div class="highlight"><pre><span></span><span class="c1">#include &lt;asm/unistd_64.h&gt;</span>
+    <span class="na">.intel_syntax</span> <span class="no">noprefix</span>
+    <span class="na">.text</span>
+    <span class="na">.global</span> <span class="no">_start</span>
+<span class="nl">_start:</span>
+    <span class="nf">mov</span> <span class="no">rax</span><span class="p">,</span><span class="no">__NR_exit</span> <span class="c1"># exit system call number</span>
     <span class="nf">mov</span> <span class="no">rdi</span><span class="p">,</span><span class="mi">0</span>         <span class="c1"># UNIX success value is 0</span>
     <span class="nf">syscall</span>           <span class="c1"># call OS. This will not return</span>
 </pre></div>
 </div>
-<div class="section" id="here-is-a-fully-documented-fancy-version">
-<h4><span class="section-number">8.3.4.1. </span>Here is a fully documented fancy version<a class="headerlink" href="#here-is-a-fully-documented-fancy-version" title="Permalink to this headline">¶</a></h4>
+<p>But the assemble does not support have support for including files.
+We must first use another tool called a preprocessor eg.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cc</span> <span class="o">-</span><span class="n">E</span> <span class="n">exitfancy</span><span class="o">.</span><span class="n">S</span> <span class="o">&gt;</span> <span class="n">exitfancy</span><span class="o">.</span><span class="n">s</span>
+<span class="k">as</span> <span class="o">-</span><span class="n">g</span> <span class="n">exitfancy</span><span class="o">.</span><span class="n">s</span> <span class="o">-</span><span class="n">o</span> <span class="n">exitfancy</span><span class="o">.</span><span class="n">o</span>
+<span class="n">ld</span> <span class="o">-</span><span class="n">g</span> <span class="n">exitfancy</span><span class="o">.</span><span class="n">o</span> <span class="o">-</span><span class="n">o</span> <span class="n">exitfancy</span>
+</pre></div>
+</div>
+<p>In general we will just skip this and we will just use hardcoded numbers.</p>
+</div>
+</div>
+</div>
+<div class="section" id="exercises-and-extra-materials">
+<h2><span class="section-number">8.4. </span>Exercises  and extra materials<a class="headerlink" href="#exercises-and-extra-materials" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>rewrite all the examples to use int3 at the end</p></li>
+<li><p>rewrite all the examples to call OS exit call</p></li>
+<li><p>combine some of the examples</p></li>
+<li><p>see what happens when you add <code class="docutils literal notranslate"><span class="pre">1</span></code> to <code class="docutils literal notranslate"><span class="pre">0xffffffffffffffff</span></code> using the add instructions.</p>
+<ul>
+<li><p>any idea what is going on?</p></li>
+</ul>
+</li>
+</ul>
+<div class="section" id="makefile-for-all-the-lecture-examples">
+<h3><span class="section-number">8.4.1. </span>Makefile for all the lecture examples<a class="headerlink" href="#makefile-for-all-the-lecture-examples" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-make notranslate"><div class="highlight"><pre><span></span><span class="nf">popcnt</span><span class="o">:</span> <span class="n">popcnt</span>.<span class="n">o</span>
+        ld -g popcnt.o -o popcnt
+
+<span class="nf">popcnt.o</span><span class="o">:</span> <span class="n">popcnt</span>.<span class="n">s</span>
+        as -g popcnt.s -o popcnt.o
+
+<span class="nf">add</span><span class="o">:</span> <span class="n">add</span>.<span class="n">o</span>
+        ld -g add.o -o add
+
+<span class="nf">add.o</span><span class="o">:</span> <span class="n">add</span>.<span class="n">s</span>
+        as -g add.s -o add.o
+
+<span class="nf">exit</span><span class="o">:</span> <span class="n">exit</span>.<span class="n">o</span>
+        ld -g exit.o -o <span class="nb">exit</span>
+
+<span class="nf">exit.o</span><span class="o">:</span> <span class="n">exit</span>.<span class="n">s</span>
+        as -g exit.s -o exit.o
+
+<span class="nf">int3</span><span class="o">:</span> <span class="n">int</span>3.<span class="n">o</span>
+        ld -g int3.o -o int3
+
+<span class="nf">int3.o</span><span class="o">:</span> <span class="n">int</span>3.<span class="n">s</span>
+        as -g int3.s -o int3.o
+
+<span class="nf">exitfancy</span><span class="o">:</span> <span class="n">exitfancy</span>.<span class="n">o</span>
+        ld -g exitfancy.o -o exitfancy
+
+<span class="nf">exitfancy.o</span><span class="o">:</span> <span class="n">exitfancy</span>.<span class="n">s</span>
+        as -g exitfancy.s -o exitfancy.o
+
+<span class="nf">exitfancy.s</span><span class="o">:</span> <span class="n">exitfancy</span>.<span class="n">S</span>
+        cc -E exitfancy.S &gt; exitfancy.s
+
+<span class="nf">clean</span><span class="o">:</span>
+        -rm -f <span class="k">$(</span>wildcard *.o  popcnt  add int3 <span class="nb">exit</span> exitfancy exitfancy.s<span class="k">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="here-is-a-fully-documented-fancy-version-of-exit">
+<h3><span class="section-number">8.4.2. </span>Here is a fully documented fancy version of exit<a class="headerlink" href="#here-is-a-fully-documented-fancy-version-of-exit" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>We use the the preprocessor to include the OS system call numbers</p></li>
+<li><p>and we use the <code class="docutils literal notranslate"><span class="pre">.equ</span></code> directive of the assembler to make our code more readable</p></li>
+</ul>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <p>A commented version that avoids &quot;magic&quot; numbers.</p>
@@ -898,7 +1086,6 @@ run
 	                                       <span class="c1"># need follow it</span>
 	
 </pre></div>
-</div>
 </div>
 </div>
 </div>
