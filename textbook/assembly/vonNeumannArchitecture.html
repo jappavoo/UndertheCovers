@@ -37,19 +37,16 @@
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script>let toggleHintShow = 'Click to show';</script>
-    <script>let toggleHintHide = 'Click to hide';</script>
-    <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js"></script>
     <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script>
         const thebe_selector = ".thebe"
@@ -259,7 +256,7 @@
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
 
@@ -312,7 +309,7 @@
         </div>
 
         <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+        <div class="d-none d-md-block col-md-2 bd-toc show">
             
             <div class="tocsection onthispage pt-5 pb-3">
                 <i class="fas fa-list"></i> Contents
@@ -562,260 +559,7 @@
 </div>
     <div id="main-content" class="row">
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>The von Neumann Architecture</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#the-central-processing-unit-cpu">
-   8.1. The Central Processing Unit (CPU)
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#physically">
-     8.1.1. Physically
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#logically">
-     8.1.2. Logically
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#visualizing-a-generic-von-neumann-computer">
-   8.2. Visualizing a generic von Neumann computer
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#the-cpu">
-     8.2.1. The CPU
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#operations">
-     8.2.2. Operations
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#registers">
-     8.2.3. Registers
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#general-purpose-registers-gprs">
-       8.2.3.1. General Purpose Registers (GPRS)
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#instruction-register-ir">
-       8.2.3.2. Instruction Register (IR)
-      </a>
-      <ul class="nav section-nav flex-column">
-       <li class="toc-h5 nav-item toc-entry">
-        <a class="reference internal nav-link" href="#opcode-and-operands">
-         8.2.3.2.1. OPCODE and OPERANDS
-        </a>
-       </li>
-      </ul>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#program-counter-pc">
-       8.2.3.3. Program Counter (PC)
-      </a>
-     </li>
-    </ul>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#memory">
-   8.3. Memory
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#program-execution">
-   8.4. Program Execution
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#setup">
-     8.4.1. Setup:
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#program-values-in-memory">
-       8.4.1.1. Program: Values in Memory
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#initialize-the-pc-to-location-of-first-instruction">
-       8.4.1.2. Initialize the PC to location of first instruction
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#categorizing-values-and-their-interpretation">
-       8.4.1.3. Categorizing values and their Interpretation
-      </a>
-      <ul class="nav section-nav flex-column">
-       <li class="toc-h5 nav-item toc-entry">
-        <a class="reference internal nav-link" href="#text">
-         8.4.1.3.1. Text
-        </a>
-       </li>
-       <li class="toc-h5 nav-item toc-entry">
-        <a class="reference internal nav-link" href="#data">
-         8.4.1.3.2. Data
-        </a>
-       </li>
-      </ul>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#the-execution-loop">
-     8.4.2. The Execution Loop
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#step-1-fetch-opcode">
-     8.4.3. Step 1: Fetch Opcode
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#step-2-decode">
-     8.4.4. Step 2: Decode
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#addressing-modes">
-       8.4.4.1. Addressing Modes
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#execute-conduct-the-operation-and-update-the-pc">
-     8.4.5. Execute : Conduct the operation and update the PC
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#repeat-back-to-step-1-of-the-loop-and-on-we-go">
-     8.4.6. Repeat : Back to Step 1 of the Loop and on we go.
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#some-additions-to-the-basics-of-instruction-execution">
-     8.4.7. Some additions to the basics of instruction execution
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#status-flags-register">
-       8.4.7.1. Status/Flags Register
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#stack-pointer-register-sp">
-       8.4.7.2. Stack Pointer Register (SP)
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#reset">
-       8.4.7.3. Reset
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#rom-and-firmware">
-       8.4.7.4. ROM and Firmware
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#modern-extensions-and-beyond">
-       8.4.7.5. Modern Extensions and beyond
-      </a>
-      <ul class="nav section-nav flex-column">
-       <li class="toc-h5 nav-item toc-entry">
-        <a class="reference internal nav-link" href="#the-clock-and-the-cycles">
-         8.4.7.5.1. The Clock and The Cycles
-        </a>
-       </li>
-       <li class="toc-h5 nav-item toc-entry">
-        <a class="reference internal nav-link" href="#cpu-caches">
-         8.4.7.5.2. CPU caches
-        </a>
-       </li>
-       <li class="toc-h5 nav-item toc-entry">
-        <a class="reference internal nav-link" href="#pipe-lining-and-beyond">
-         8.4.7.5.3. Pipe-lining and beyond
-        </a>
-       </li>
-       <li class="toc-h5 nav-item toc-entry">
-        <a class="reference internal nav-link" href="#multi-cores">
-         8.4.7.5.4. Multi-cores
-        </a>
-       </li>
-       <li class="toc-h5 nav-item toc-entry">
-        <a class="reference internal nav-link" href="#what-s-next">
-         8.4.7.5.5. What’s next?
-        </a>
-       </li>
-      </ul>
-     </li>
-    </ul>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#i-o">
-   8.5. I/O
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#stored-program-computer">
-   8.6. Stored Program Computer
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#sol6502">
-   8.7. SOL6502
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#exercises">
-   8.8. Exercises
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#added-250-5-1">
-     8.8.1. Added
-     <span class="math notranslate nohighlight">
-      \(250 + 5 + 1\)
-     </span>
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#printing-your-initials">
-     8.8.2. Printing your initials
-    </a>
-   </li>
-  </ul>
- </li>
-</ul>
-
-                        </nav>
-                    </div>
-                </div>
-            </div>
-            
+        
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="the-von-neumann-architecture">
@@ -923,7 +667,7 @@ htmlFig("[{'src': '../images/physcpus.png'}]",
 </table>
 </div>
 </div>
-<p>In the <a href="#fig:physcpus">Examples of physical CPUs figure</a>, above, we see photos of some physical CPUs along with a “pin out” diagram that describes how to physically connect it to the rest of the computer.  Over the years, it is clear that the complexity of CPUs has certainly grown.  In the 1970’s, CPUs were composed of thousands of transistors and only required tens of pins to connect to rest of the computer.  By 2021 we see that CPUs now contain billions of transistors and require thousands of physical connections to the rest of the system.  We have, in fact, pushed the physical boundaries to the point that it is unclear exactly how we can make more powerful CPUs that still preserve a simple programming model. The way software is written and structured becomes more and more important in order to get most out of a computer.  But, the first step to understanding how to construct advanced software is understanding the basics of how the parts of a computer interact to execute software.</p>
+<p>In the <a href="#fig:physcpus">Examples of physical CPUs figure</a>, above, we see photos of some physical CPUs along with a “pin out” diagram that describes how to physically connect it to the rest of the computer.  Over the years, it is clear that the complexity of CPUs has certainly grown.  In the 1970’s, CPUs were composed of thousands of transistors and only required tens of pins to connect to rest of the computer.  By 2021 we see that CPUs now contain billions of transistors, and require thousands of physical connections to the rest of the system.  We have, in fact, pushed the physical boundaries to the point that it is unclear exactly how we can make more powerful CPUs that still preserve a simple programming model. The way software is written and structured becomes more and more important in order to get most out of a computer.  But, the first step to understanding how to construct advanced software is understanding the basics of how the parts of a computer interact to execute software.</p>
 <div style="background-color:powderblue;">  
 <img style="margin: auto 1em auto auto;" align="left" width="60" src="../images/fyi.png">
 While it is an oversimplification, one of the uses of transistors in a CPU is to create, "switches" that form the logic circuits used to implement basic operations such as adding numbers. In order to make the CPU do these operations faster, we need to be able to operate the transistors (turn them on and off) faster and faster.  Unfortunately, doing so requires more and more energy, and thus creates more and more heat.  As such, over the last decade it has become harder and harder to speed up CPUs given the increase in energy and increase in heat it leads to.   On the other hand, we have managed to figure out how to continually shrink the size of transistors.  This has allowed us to pack more and more transistors into CPUs; however, some believe that we are getting to end of this ability as we are approaching the physical limits of how small we can make a transistor. 
@@ -944,7 +688,7 @@ While it is an oversimplification, one of the uses of transistors in a CPU is to
 <div><p><a class="reference internal" href="../_images/fyi.png"><img alt="../_images/fyi.png" class="align-left" src="../_images/fyi.png" style="width: 60px;" /></a> <p style="background-color:powderblue;">  It is a common logical model that makes it possible to learn the basics of how a generic CPU works and to understand how software executes on any computer.  As a matter of fact, if we consider the line of CPU’s from INTEL, software written on a 1970’s version of their products can still be run on the CPU’s they produced in 2021. This is because at the heart of it, the 2021 version still remains consistent with the basic model of a computer that the 1970’s CPU was built around.  Similarly, the basic model of programming and the tools used are consistent across computers, regardless of whether they are based on an old 6502, or a modern X86 or ARM CPU.</p>
 </div></blockquote>
 <blockquote>
-<div><p><a class="reference internal" href="../_images/commentary.png"><img alt="../_images/commentary.png" class="align-left" src="../_images/commentary.png" style="width: 60px;" /></a> <p style="background-color:powderblue;"> <strong>First Principles</strong>  We are comfortable with the idea of using a first principles understanding of a subject, like mathematics, to be able to reason about new problems we face in that subject, without having to limit ourselves to blind memorization of facts and recipes for doing things. Computing in no different. Understanding the core ideas of how computers work, including a foundation in the theory of computer science, can allow you to transcend simply regurgitating snip-its of code you have memorized. Armed with this foundational knowledge, you can truly unleash your ability to creatively build new things.  For that matter, it also allows you to gain an intuitive understanding of how things work - an understanding that enables you to debug and solve problems in situations where others would not know where to begin.  Learning the first principles of how computers work is your first step in becoming a master of the digital universe.</p>
+<div><p><a class="reference internal" href="../_images/commentary.png"><img alt="../_images/commentary.png" class="align-left" src="../_images/commentary.png" style="width: 60px;" /></a> <p style="background-color:powderblue;"> <strong>First Principles</strong>  We are comfortable with the idea of using a first principles understanding of a subject, like mathematics, to be able to reason about new problems we face in that subject, without having to limit ourselves to blind memorization of facts and recipes for doing things. Computing is no different. Understanding the core ideas of how computers work, including a foundation in the theory of computer science, can allow you to transcend simply regurgitating snip-its of code you have memorized. Armed with this foundational knowledge, you can truly unleash your ability to creatively build new things.  For that matter, it also allows you to gain an intuitive understanding of how things work - an understanding that enables you to debug and solve problems in situations where others would not know where to begin.  Learning the first principles of how computers work is your first step in becoming a master of the digital universe.</p>
 </div></blockquote>
 </div>
 </div>
@@ -1016,7 +760,7 @@ As an example, the box labeled <code class="docutils literal notranslate"><span 
 The designers of a particular CPU, like INTEL, choose and define the set of operations for their CPUs, and must tell us what they are and what they do.</p>
 <p>From our perspective, the most important thing is that the set of operations form the ‘built-in’ functions
 that we can use in our programs for the particular CPU we are working with. Given that the
-operations are CPU specific our programs will inherently be CPU specific.</p>
+operations are CPU specific, our programs will inherently be CPU specific.</p>
 </div>
 <div class="section" id="registers">
 <h3><span class="section-number">8.2.3. </span>Registers<a class="headerlink" href="#registers" title="Permalink to this headline">¶</a></h3>
@@ -1026,7 +770,7 @@ operations are CPU specific our programs will inherently be CPU specific.</p>
 <p>With respect to “normal” programming, we largely only need to concern ourselves with the the GPRS and knowing about a couple of standard SPRS. As we will see soon, it will also be useful to explicitly introduce at least one of the registers that are usually hidden from programmers to make understanding execution easier.</p>
 <blockquote>
 <div><p><a class="reference internal" href="../_images/fyi.png"><img alt="../_images/fyi.png" class="align-left" src="../_images/fyi.png" style="width: 40px;" /></a> <p id="priv_sec" style="background-color:powderblue;">
-What do we mean by “normal” programming?  As we saw in Part I: The UNIX Development Environment software is largely broken down into two parts: 1) application software that runs within processes and 2) a single operating system kernel composed of software that provides all processes with a wide range of special functions.  This includes the ability to create processes from an executable file and to share the computer among the processes.  Most CPU’s provide a special mode of execution for the OS kernel.  In this mode, an expanded set of operations and SPRS are available for use.  OS kernel software uses the GPRS, SPRS and the expanded set of operations to implement its routines.  We typically call this mode of operation Privileged” , and as such we often call the kernel software privileged code.  Expanded access to the hardware resources of the computer and the application or user software as unprivileged.   Many CPUs expand on this idea to provide multiple levels of privilege, which enables a further degree of layering of the system’s software.  For example, many CPUs use extra levels of privilege to introduce support for a virtual machine monitor (or hypervisor) layer of software. This software can sit below standard operating system kernels, and allow the hardware to be shared by multiple OS’s that each think they are running on the computer by themselves.</p>
+What do we mean by “normal” programming?  As we saw in Part I: The UNIX Development Environment software is largely broken down into two parts: 1) application software that runs within processes and 2) a single operating system kernel composed of software that provides all processes with a wide range of special functions.  This includes the ability to create processes from an executable file and to share the computer among the processes.  Most CPU’s provide a special mode of execution for the OS kernel.  In this mode, an expanded set of operations and SPRS are available for use.  OS kernel software uses the GPRS, SPRS and the expanded set of operations to implement its routines.  We typically call this mode of operation Privileged” , and as such we often call the kernel software privileged code, and the application or user software unprivileged. Privilege provides the kernel with expanded access to the hardware resources of the computer .   Many CPUs expand on this idea to provide multiple levels of privilege, which enables a further degree of layering of the system’s software.  For example, many CPUs use extra levels of privilege to introduce support for a virtual machine monitor (or hypervisor) layer of software. This software can sit below standard operating system kernels, and allow the hardware to be shared by multiple OS’s that each think they are running on the computer by themselves.</p>
 </div></blockquote>
 <p>We will visualize registers as boxes within the CPU.  Each box will be broken down so that the name of the register will be on left, and the space for the value it contains is on the right.</p>
 <div class="section" id="general-purpose-registers-gprs">
@@ -1057,13 +801,13 @@ htmlFig("[{'src': '../images/VNA_2.png'}]",
 <p>The general purpose registers provide us with a place to store input and output values for operations we want
 to conduct.  In general, the number of GPRS is small - often less than 50.  In later chapters we will go into
 more detail on how values are represented in registers.  For the moment, it is sufficient to think of them as
-generic places to hold the values that we want to immediately work within our code using the built in operations
+generic places to hold the values that we want to immediately work with in our code using the built in operations
 of the CPU.</p>
 <p>A typical thing we might want to do is use an <code class="docutils literal notranslate"><span class="pre">add</span></code> operation to add the current values in two of the GPRS, replacing
 the existing value of one of them with the result.  For example, given our diagram so far, one would expect there to
 be a way to have <code class="docutils literal notranslate"><span class="pre">OPERATION</span> <span class="pre">2</span></code> (which we will assume to implement addition) take its input values from <code class="docutils literal notranslate"><span class="pre">R0</span></code> and <code class="docutils literal notranslate"><span class="pre">R2</span></code> and
 place the output result back in <code class="docutils literal notranslate"><span class="pre">R2</span></code>.</p>
-<p>Given that there are a small number of GPRS, it will be our responsibility to use them wisely and organize what
+<p>Given that there are a small number of GPRS, it will be our responsibility to use them wisely and organize which
 values of our program are stored in which GPRS at any given time.   Furthermore,  it will be our job to move values into and out of them to
 deal with the fact that we have so few.  CPUs have operations dedicated to transferring values between the GPRS.<br />
 For example, given our illustration, one expects there to be an operation that would allow us to transfer the
@@ -1096,14 +840,13 @@ htmlFig("[{'src': '../images/VNA_3.png'}]",
           <i>Figure: Instruction Register: An internal hidden register that we introduce to help us understand how a CPU works internally.</i> 
     </caption>
 </table>
-<p>Built into the CPU is an encoding that allows us to use numeric values to indicate what
-operation we want done, and how to configure which registers the inputs should come from and where any
-outputs it might produce should go.  We call such values <strong>Opcodes</strong>.  Given how the CPU Loop works, as we will see soon,
+<p>The CPU has a built in code. This code is composed of numeric values that specify what operation to conduct and where the
+inputs and outputs come from and go to.  We call such values <strong>Opcodes</strong>.  Given how the CPU Loop works, as we will see soon,
 it is not actually necessary for us, as programmers, to know how and where the opcode  we want the CPU to execute is stored
 within the CPU. As such this detail is generally hidden from us by the manufacturer.  However, in order for us to gain
 a concrete working understanding, it is worth explicitly introducing a special purpose register which we will call
 the Instruction Register (IR). Our model of the CPU will use the IR to store the opcode that we want the CPU to execute.
-Again while modern CPUs do not necessarily document the IR in their programming manuals, also called their
+Again, while modern CPUs do not necessarily document the IR in their programming manuals, also called their
 Instruction Set Architecture (ISA) manuals, they internally will have something that serves this purpose.</p>
 <blockquote>
 <div><p><strong>Instruction Set Architecture (ISA)</strong>: This is the term used by CPU manufactures to referred to the details of their
@@ -1112,7 +855,7 @@ specific CPUS that a programmer needs to know about to write code and implement 
 <div class="section" id="opcode-and-operands">
 <h5><span class="section-number">8.2.3.2.1. </span>OPCODE and OPERANDS<a class="headerlink" href="#opcode-and-operands" title="Permalink to this headline">¶</a></h5>
 <blockquote>
-<div><p>An <strong>Opcode</strong> is an encoded value that identifies a particular operation and where it’s inputs come from and it’s output that is created should go too.  Inputs to an operation are typically called <strong>Operands</strong>.  You will often find that the term <strong>instruction</strong> and opcode will be used interchangeably.  For historical reason one is used in some context versus the other.</p>
+<div><p>An <strong>Opcode</strong> is an encoded value that identifies a particular operation, where it’s inputs come from, and where it’s output, if any, should go.  Inputs to an operation are typically called <strong>Operands</strong>.  You will often find that the term <strong>instruction</strong> and opcode will be used interchangeably.  For historical reason one is used in some context versus the other.</p>
 </div></blockquote>
 </div>
 </div>
@@ -2729,8 +2472,8 @@ HIGH ADDR: 11111111
 
               </div>
               
-            
-                <!-- Previous / next buttons -->
+        
+            <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
     <a class='left-prev' id="prev-link" href="intro.html" title="previous page">
         <i class="fas fa-angle-left"></i>
@@ -2747,17 +2490,19 @@ HIGH ADDR: 11111111
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-            
+        
         </div>
     </div>
     <footer class="footer">
-  <p>
-    
-      By Jonathan Appavoo<br/>
-    
-        &copy; Copyright 2021.<br/>
-  </p>
-</footer>
+    <div class="container">
+      <p>
+        
+          By Jonathan Appavoo<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
 </main>
 
 

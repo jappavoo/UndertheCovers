@@ -37,15 +37,12 @@
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script>let toggleHintShow = 'Click to show';</script>
-    <script>let toggleHintHide = 'Click to hide';</script>
-    <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js"></script>
     <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
@@ -257,7 +254,7 @@
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
 
@@ -310,7 +307,7 @@
         </div>
 
         <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+        <div class="d-none d-md-block col-md-2 bd-toc show">
             
             <div class="tocsection onthispage pt-5 pb-3">
                 <i class="fas fa-list"></i> Contents
@@ -432,132 +429,7 @@
 </div>
     <div id="main-content" class="row">
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>What is a Terminal and why do we still use them?</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#the-origin-story">
-   2.1. The origin story
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#ascii">
-     2.1.1. ASCII
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#terminal-emulators">
-   2.2. Terminal Emulators
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#exercises">
-   2.3. Exercises
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#a-terminal-provides-a-text-oriented-way-for-a-human-to-interact-with-a-computer-t-f">
-     2.3.1. A terminal provides a text oriented way for a human to interact with a computer? (T/F)
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#what-would-be-displayed-on-an-ascii-terminal-if-following-byte-values-were-sent-to-it-note-the-byte-values-are-given-in-hexademical-notation-0x48-0x65-0x6c-0x6c-0x6f-0x20-0x57-0x6f-0x72-0x6c-0x64-0x21">
-     2.3.2. What would be displayed on an ASCII terminal if following byte values were sent to it (note the byte values are given in hexademical notation)?
-     <code class="docutils literal notranslate">
-      <span class="pre">
-       0x48
-      </span>
-     </code>
-     <code class="docutils literal notranslate">
-      <span class="pre">
-       0x65
-      </span>
-     </code>
-     <code class="docutils literal notranslate">
-      <span class="pre">
-       0x6c
-      </span>
-     </code>
-     <code class="docutils literal notranslate">
-      <span class="pre">
-       0x6c
-      </span>
-     </code>
-     <code class="docutils literal notranslate">
-      <span class="pre">
-       0x6f
-      </span>
-     </code>
-     <code class="docutils literal notranslate">
-      <span class="pre">
-       0x20
-      </span>
-     </code>
-     <code class="docutils literal notranslate">
-      <span class="pre">
-       0x57
-      </span>
-     </code>
-     <code class="docutils literal notranslate">
-      <span class="pre">
-       0x6f
-      </span>
-     </code>
-     <code class="docutils literal notranslate">
-      <span class="pre">
-       0x72
-      </span>
-     </code>
-     <code class="docutils literal notranslate">
-      <span class="pre">
-       0x6c
-      </span>
-     </code>
-     <code class="docutils literal notranslate">
-      <span class="pre">
-       0x64
-      </span>
-     </code>
-     <code class="docutils literal notranslate">
-      <span class="pre">
-       0x21
-      </span>
-     </code>
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#if-the-following-keys-where-pressed-on-the-keyboard-of-an-ascii-terminal-in-order-from-left-to-right-byte-values-would-be-sent-to-the-computer-values-should-be-given-in-hexadecimal-notation-nice">
-     2.3.3. If the following keys where pressed on the keyboard of an ASCII terminal, in order (from left to right), byte values would be sent to the computer (values should be given in hexadecimal notation)?
-     <code class="docutils literal notranslate">
-      <span class="pre">
-       Nice
-      </span>
-      <span class="pre">
-       :-)
-      </span>
-     </code>
-    </a>
-   </li>
-  </ul>
- </li>
-</ul>
-
-                        </nav>
-                    </div>
-                </div>
-            </div>
-            
+        
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="what-is-a-terminal-and-why-do-we-still-use-them">
@@ -698,8 +570,8 @@ Want to have some fun.  Believe it or not we used to develop and play games on A
 
               </div>
               
-            
-                <!-- Previous / next buttons -->
+        
+            <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
     <a class='left-prev' id="prev-link" href="intro.html" title="previous page">
         <i class="fas fa-angle-left"></i>
@@ -716,17 +588,19 @@ Want to have some fun.  Believe it or not we used to develop and play games on A
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-            
+        
         </div>
     </div>
     <footer class="footer">
-  <p>
-    
-      By Jonathan Appavoo<br/>
-    
-        &copy; Copyright 2021.<br/>
-  </p>
-</footer>
+    <div class="container">
+      <p>
+        
+          By Jonathan Appavoo<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
 </main>
 
 

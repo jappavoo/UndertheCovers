@@ -37,15 +37,12 @@
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script>let toggleHintShow = 'Click to show';</script>
-    <script>let toggleHintHide = 'Click to hide';</script>
-    <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js"></script>
     <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
@@ -257,7 +254,7 @@
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
 
@@ -310,7 +307,7 @@
         </div>
 
         <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+        <div class="d-none d-md-block col-md-2 bd-toc show">
             
             <div class="tocsection onthispage pt-5 pb-3">
                 <i class="fas fa-list"></i> Contents
@@ -492,192 +489,7 @@
 </div>
     <div id="main-content" class="row">
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Executables and Processes</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#running-executables">
-   9.1. “Running” Executables
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#what-s-inside-an-executable">
-   9.2. What’s inside an executable
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#what-does-ls-tell-us-about-ls">
-     9.2.1. What does ls tell us about ls ;-)
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#can-we-display-its-contents-to-the-terminal-with-cat">
-     9.2.2. Can we display its contents to the Terminal with
-     <code class="docutils literal notranslate">
-      <span class="pre">
-       cat
-      </span>
-     </code>
-     ?
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#lets-look-at-the-byte-values-of-bin-ls-using-xxd">
-     9.2.3. Lets look at the byte values of
-     <code class="docutils literal notranslate">
-      <span class="pre">
-       /bin/ls
-      </span>
-     </code>
-     using
-     <code class="docutils literal notranslate">
-      <span class="pre">
-       xxd
-      </span>
-     </code>
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#using-the-unix-file-command-on-bin-ls">
-     9.2.4. Using the UNIX
-     <code class="docutils literal notranslate">
-      <span class="pre">
-       file
-      </span>
-     </code>
-     command on
-     <code class="docutils literal notranslate">
-      <span class="pre">
-       /bin/ls
-      </span>
-     </code>
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#elf-files-executable-and-linking-format-files">
-     9.2.5. ELF Files - Executable and Linking Format Files
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#executing-an-executable-in-a-process">
-   9.3. Executing an Executable in a Process
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#binary-executables-as-process-images">
-   9.4. Binary Executables as Process Images.
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#process-contexts">
-     9.4.1. Process Contexts
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#context-switch-scheduling-processes">
-       9.4.1.1. Context Switch – Scheduling Processes
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#executables-initial-images-for-creating-process-contexts">
-     9.4.2. Executables: Initial Images for creating Process Contexts
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#creating-executables">
-   9.5. Creating executables
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#assemblers">
-     9.5.1. Assemblers
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#gnu-assembler-gas">
-       9.5.1.1. GNU Assembler (gas)
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#linkers">
-     9.5.2. Linkers
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#gnu-linker-ld">
-       9.5.2.1. GNU Linker (ld)
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#creating-and-using-our-first-executable">
-     9.5.3. Creating and using our first executable.
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#the-source-code">
-       9.5.3.1. The source code
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#assembling-the-source-into-an-object-file">
-       9.5.3.2. Assembling the source into an object file
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#linking-the-object-file-into-an-executable">
-       9.5.3.3. Linking the object file into an executable
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#running-the-executable">
-       9.5.3.4. Running the executable
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#segmentation-fault">
-       9.5.3.5. Segmentation Fault
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#using-empty-with-gdb">
-       9.5.3.6. Using empty with gdb
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#the-code-to-create-an-executable-for-a-larger-empty-process">
-     9.5.4. The code to create an executable for a larger empty process
-    </a>
-   </li>
-  </ul>
- </li>
-</ul>
-
-                        </nav>
-                    </div>
-                </div>
-            </div>
-            
+        
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="executables-and-processes">
@@ -1169,28 +981,28 @@ However, we will be able to use it with the debugger to explore the process that
 <div style="width:70em; height:100%; font-size:inherit; overflow: auto;" >
 <div class="highlight-gas notranslate"><div class="highlight"><pre><span></span><span class="cm">/*  General antomy of a assembly program line</span>
 <span class="cm">[lablel]:   &lt;directive or opcode&gt; [operands]  // comment</span>
-<span class="cm">*/</span><span class="w"></span>
-<span class="w">	</span><span class="na">.intel_syntax</span><span class="w"> </span><span class="no">noprefix</span><span class="w">        </span><span class="c1"># assembler syntax to use &lt;directive&gt;</span>
-<span class="w">	                              </span><span class="c1"># set assembly language format to intel  </span>
+<span class="cm">*/</span>
+	<span class="na">.intel_syntax</span> <span class="no">noprefix</span>        <span class="c1"># assembler syntax to use &lt;directive&gt;</span>
+	                              <span class="c1"># set assembly language format to intel  </span>
 
-<span class="w">	</span><span class="na">.text</span><span class="w">                         </span><span class="c1"># linker section &lt;directive&gt;</span>
-<span class="w">	                              </span><span class="c1"># let the linker know that what follows are cpu instructions to</span>
-<span class="w">	                              </span><span class="c1"># to be executed -- uposed to values that represent data.</span>
-<span class="w">	                              </span><span class="c1"># For historical reasons cpu instructions are called &quot;text&quot;</span>
-<span class="w">	                         </span>
-<span class="w">	</span><span class="na">.global</span><span class="w"> </span><span class="no">_start</span><span class="w">                </span><span class="c1"># linker symbol type &lt;directive&gt; </span>
-<span class="w">	                              </span><span class="c1"># makes the symbol _start in this case visible to the linker</span>
-<span class="w">	                              </span><span class="c1"># The linker looks for an _start symbol so that it knows address</span>
-<span class="w">	                              </span><span class="c1"># of the first instruction of our program</span>
+	<span class="na">.text</span>                         <span class="c1"># linker section &lt;directive&gt;</span>
+	                              <span class="c1"># let the linker know that what follows are cpu instructions to</span>
+	                              <span class="c1"># to be executed -- uposed to values that represent data.</span>
+	                              <span class="c1"># For historical reasons cpu instructions are called &quot;text&quot;</span>
+	                         
+	<span class="na">.global</span> <span class="no">_start</span>                <span class="c1"># linker symbol type &lt;directive&gt; </span>
+	                              <span class="c1"># makes the symbol _start in this case visible to the linker</span>
+	                              <span class="c1"># The linker looks for an _start symbol so that it knows address</span>
+	                              <span class="c1"># of the first instruction of our program</span>
 
-<span class="nl">_start:</span><span class="w">                               </span><span class="c1"># introduce a symbolic (human readable) label for &quot;this&quot; address</span>
-<span class="w">	                              </span><span class="c1"># associates the address of this point in our program with the</span>
-<span class="w">	                              </span><span class="c1"># name following the &#39;:&#39; -- in our case _start</span>
-<span class="w">	                              </span><span class="c1"># In our program or in the debugger we can use this name to</span>
-<span class="w">	                              </span><span class="c1"># to refer to this location -- address.  And thus the values</span>
-<span class="w">	                              </span><span class="c1"># that end up here.</span>
-<span class="w">	</span><span class="na">.byte</span><span class="w"> </span><span class="mi">0x00</span><span class="p">,</span><span class="w"> </span><span class="mi">0x00</span><span class="p">,</span><span class="w"> </span><span class="mi">0x00</span><span class="p">,</span><span class="w"> </span><span class="mi">0x00</span><span class="w">  </span><span class="c1"># .byte directive place value at successive locations in memory</span>
-<span class="w">	</span><span class="na">.byte</span><span class="w"> </span><span class="mi">0x00</span><span class="p">,</span><span class="w"> </span><span class="mi">0x00</span><span class="p">,</span><span class="w"> </span><span class="mi">0x00</span><span class="p">,</span><span class="w"> </span><span class="mi">0x00</span><span class="w">  </span><span class="c1"># (https://sourceware.org/binutils/docs/as/Byte.html#Byte)</span>
+<span class="nl">_start:</span>                               <span class="c1"># introduce a symbolic (human readable) label for &quot;this&quot; address</span>
+	                              <span class="c1"># associates the address of this point in our program with the</span>
+	                              <span class="c1"># name following the &#39;:&#39; -- in our case _start</span>
+	                              <span class="c1"># In our program or in the debugger we can use this name to</span>
+	                              <span class="c1"># to refer to this location -- address.  And thus the values</span>
+	                              <span class="c1"># that end up here.</span>
+	<span class="na">.byte</span> <span class="mi">0x00</span><span class="p">,</span> <span class="mi">0x00</span><span class="p">,</span> <span class="mi">0x00</span><span class="p">,</span> <span class="mi">0x00</span>  <span class="c1"># .byte directive place value at successive locations in memory</span>
+	<span class="na">.byte</span> <span class="mi">0x00</span><span class="p">,</span> <span class="mi">0x00</span><span class="p">,</span> <span class="mi">0x00</span><span class="p">,</span> <span class="mi">0x00</span>  <span class="c1"># (https://sourceware.org/binutils/docs/as/Byte.html#Byte)</span>
 </pre></div>
 </div>
 </div>
@@ -1200,12 +1012,12 @@ However, we will be able to use it with the debugger to explore the process that
 <p>This code has been extensively commented so that we can use it to learn a little about the assembly syntax and what it lets us do.
 In general, as said before, it is good practice to write lots of
 comments in your assembly code.  The following is an un-commented version:</p>
-<div class="highlight-gas notranslate"><div class="highlight"><pre><span></span><span class="w">    </span><span class="na">.intel_syntax</span><span class="w"> </span><span class="no">noprefix</span><span class="w"></span>
-<span class="w">    </span><span class="na">.text</span><span class="w"> </span>
-<span class="w">    </span><span class="no">.global</span><span class="w"> </span><span class="no">_start</span><span class="w"></span>
-<span class="nl">_start:</span><span class="w"> </span>
-<span class="w">    </span><span class="na">.byte</span><span class="w"> </span><span class="mi">0x00</span><span class="p">,</span><span class="w"> </span><span class="mi">0x00</span><span class="p">,</span><span class="w"> </span><span class="mi">0x00</span><span class="p">,</span><span class="w"> </span><span class="mi">0x00</span><span class="w"></span>
-<span class="w">    </span><span class="na">.byte</span><span class="w"> </span><span class="mi">0x00</span><span class="p">,</span><span class="w"> </span><span class="mi">0x00</span><span class="p">,</span><span class="w"> </span><span class="mi">0x00</span><span class="p">,</span><span class="w"> </span><span class="mi">0x00</span><span class="w"></span>
+<div class="highlight-gas notranslate"><div class="highlight"><pre><span></span>    <span class="na">.intel_syntax</span> <span class="no">noprefix</span>
+    <span class="na">.text</span> 
+    <span class="no">.global</span> <span class="no">_start</span>
+<span class="nl">_start:</span> 
+    <span class="na">.byte</span> <span class="mi">0x00</span><span class="p">,</span> <span class="mi">0x00</span><span class="p">,</span> <span class="mi">0x00</span><span class="p">,</span> <span class="mi">0x00</span>
+    <span class="na">.byte</span> <span class="mi">0x00</span><span class="p">,</span> <span class="mi">0x00</span><span class="p">,</span> <span class="mi">0x00</span><span class="p">,</span> <span class="mi">0x00</span>
 </pre></div>
 </div>
 <p>As described the keywords that start with <code class="docutils literal notranslate"><span class="pre">.</span></code> are directives.  The assembler does not attempt to interpret them as CPU mnemonics.  Rather
@@ -1446,8 +1258,8 @@ In our case we are using hex notation and simply specify eight bytes all zero va
 
               </div>
               
-            
-                <!-- Previous / next buttons -->
+        
+            <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
     <a class='left-prev' id="prev-link" href="vonNeumannArchitecture.html" title="previous page">
         <i class="fas fa-angle-left"></i>
@@ -1464,17 +1276,19 @@ In our case we are using hex notation and simply specify eight bytes all zero va
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-            
+        
         </div>
     </div>
     <footer class="footer">
-  <p>
-    
-      By Jonathan Appavoo<br/>
-    
-        &copy; Copyright 2021.<br/>
-  </p>
-</footer>
+    <div class="container">
+      <p>
+        
+          By Jonathan Appavoo<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
 </main>
 
 
