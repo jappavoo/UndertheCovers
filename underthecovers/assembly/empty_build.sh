@@ -1,12 +1,13 @@
-# To assemble and link the code we will use the following command:
-gcc --static -g -nostartfiles -nostdlib -Wl,--build-id=none -Wa,-alh -Xlinker -Map=empty.map empty.S -o empty > empty.lst
+# To assemble the code we will use the following command:
+as empty.s -o empty.o
 
 # ok lets see what happened
 ls
 
-# lets see what's in empty.lst
-cat empty.lst
+# lets link it up
+ld empty.o -o empty
 
+ls
 
 # lets examine this elf file
 file empty

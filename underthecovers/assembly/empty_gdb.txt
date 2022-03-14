@@ -27,9 +27,6 @@ info proc
 # lets examine the cpu
 info registers
 
-# or we can use the tui layout we made
-layout mylayout
-
 # we can print out the value of an individual register with
 # variables in gdb $<name> there are convience variables for each
 # of the registers 
@@ -57,13 +54,13 @@ x/2i
 # rex.w = 0x48 -- 64 bit operand
 # D8 -- encodes which registers are the operands
 
-set ((char *)_start)[0] = 0xF3
+set {unsigned char}(_start) = 0xF3
 x/5xb _start
 disas _start
-set ((char *)_start)[1] = 0x48
-set ((char *)_start)[2] = 0x0F
-set ((char *)_start)[3] = 0xB8
-set ((char *)_start)[4] = 0xD8
+set {unsigned char}(_start+1} = 0x48
+set {unsigned char}(_start+2) = 0x0F
+set {unsigned char}(_start+3) = 0xB8
+set {unsigned char}(_start+4) = 0xD8
 x/5xb _start
 x/5tb _start
 x/5db _start
