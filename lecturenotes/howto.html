@@ -1,0 +1,696 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>How to read this book &#8212; UndertheCovers</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet">
+  <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="1. SLS: Part I - UNIX : Introduction &amp; Preliminaries" href="unix/L01.html" />
+    <link rel="prev" title="How to “view” lecture notes" href="lnhowto.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="_static/logo.jpg" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">UndertheCovers</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro_ln.html">
+   Under the Covers : The Secret Life of Software
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Course Specfic Introductions
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="L00_210_JA.html">
+   CS210 Computer Systems
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="L00_400_F21_JA.html">
+   CS400 Fall 2021 : Machine Level Programming
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Viewing Lectures
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="lnhowto.html">
+   How to “view” lecture notes
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   How to read this book
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  The Unix Development Environment
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="unix/L01.html">
+   1. SLS: Part I - UNIX : Introduction &amp;  Preliminaries
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="unix/L02.html">
+   2. SLS Lecture 2 : Shell Part II : Programming, Files and Directories
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="unix/L03.html">
+   3. SLS Lecture 3 : I/O, Process Control and Credentials
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="unix/L04.html">
+   4. SLS Lecture 4 : Editors, Make and Terminal IDEs
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="unix/L05.html">
+   5. SLS Lecture 5 : Version Control and GIT: The Basics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="unix/L06.html">
+   6. SLS Lecture 6 : Versions Control and GIT :  Beyond the Basics
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  The Belly of the Beast: The von Neumann Architecture and Assembly Programming
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="assembly/L07.html">
+   7. SLS Lecture 7 : Assembly Programming Introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="assembly/L08.html">
+   8. SLS Lecture 8 :  Writing some simple assembly programs
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="assembly/L09.html">
+   9. UC-SLS Lecture 9 : Assembly : Operations and Data Types
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="assembly/L10.html">
+   10. SLS Lecture 10 : Assembly : Program Anatomy I
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="assembly/L11.html">
+   11. SLS Lecture 11 :  Program Anatomy II : Functions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="assembly/L12.html">
+   12. SLS Lecture 12 : Program Anatomy III : Code as Data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="assembly/L13.html">
+   13. SLS Lecture 13 : Program Anatomy V: The Tree of Bytes and Data Structures
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="assembly/L14.html">
+   14. SLS Lecture 14 : Assembly using the OS
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="assembly/L15.html">
+   15. SLS Lecture 15 : Topics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="assembly/L16.html">
+   16. SLS Lecture 16 : Topics
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Into the Light : C Programming
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="C/L17.html">
+   17. UC-SLS Lecuture 17 : In to the Light - C Intro
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="C/L18.html">
+   18. UC-SLS Lecture 18 : Using C to write and organize opcode bytes - Functions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="C/L19.html">
+   19. UC-SLS Lecture 19 : Using C to map and organize our data bytes - Data Types
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="C/L20.html">
+   20. UC-SLS Lecture 20 : Using LibC to access the OS and escape the confines our process
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="C/L21.html">
+   21. UC-SLS Lecture 21 : The rest of LibC and other libraries
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="C/L22.html">
+   22. SLS Lecture 22 : Topics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="C/L23.html">
+   23. SLS Lecture 23 : Topics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="C/L24.html">
+   24. SLS Lecture 24 : Topics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="C/L25.html">
+   25. SLS Lecture 25 : Topics
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/howto.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/jappavoo/UndertheCovers"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        
+        <a class="jupyterhub-button" href="https://jupyterhub-opf-jupyterhub.apps.smaug.na.operate-first.cloud/hub/user-redirect/git-pull?repo=https://github.com/jappavoo/UndertheCovers&urlpath=tree/UndertheCovers/underthecovers/howto.ipynb&branch=main"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch JupyterHub" data-toggle="tooltip"
+                data-placement="left"><img class="jupyterhub-button-logo"
+                    src="_static/images/logo_jupyterhub.svg"
+                    alt="Interact on JupyterHub">JupyterHub</button></a>
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#browser-compatibility">
+   Browser compatibility
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#opening-an-issue">
+   Opening an issue
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#warning-danger">
+   WARNING – DANGER
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#step-0-start-your-server">
+   Step 0: Start your server
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#bu-server-startup">
+     BU Server startup
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#booting-your-server">
+     Booting your server
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#jupyter-lab-environment">
+   Jupyter Lab Environment
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#creating-terminals">
+     Creating Terminals
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#shutting-down-your-server">
+   Shutting Down Your Server
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#hub-control-panel">
+     Hub Control Panel
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#shutdown">
+     Shutdown
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#switching-from-classic-notebook-interface-to-the-lab-interface">
+   Switching from Classic Notebook interface to the Lab interface
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#classic-interface-address">
+     Classic Interface Address
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#lab-interface-address">
+     Lab Interface Address
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="how-to-read-this-book">
+<h1>How to read this book<a class="headerlink" href="#how-to-read-this-book" title="Permalink to this headline">¶</a></h1>
+<p>This book has been designed so that you can actively engage with the material.  We have constructed an online environment that you can login too from your browser.
+Once you have logged in you can then start a “server” that you can then access in your browser.  This server is identical to the server that was used to author
+the content of the book and has all the software required for the examples and more.</p>
+<p>In general we recommend that you read the book at a computer with a mouse and keyboard so that you can follow along with the examples.  Below we will walk you
+though a typical session of work with the book.</p>
+<div class="section" id="browser-compatibility">
+<h2>Browser compatibility<a class="headerlink" href="#browser-compatibility" title="Permalink to this headline">¶</a></h2>
+<p>The author was using Safari but most the content should work with most browsers.  If you run into issues please one an issue and
+the try switching browsers to see if this solves your problem.</p>
+</div>
+<div class="section" id="opening-an-issue">
+<h2>Opening an issue<a class="headerlink" href="#opening-an-issue" title="Permalink to this headline">¶</a></h2>
+<p>Towards the top at the top right hand side of the page you will see a few icons.
+Putting you mouse over the git icon will reveal a drop down.  Select “open issue”
+and follow the instructions be sure to state what browser you were using and
+what the problem was.  If possible include a screen shot.</p>
+<p>Thanks!</p>
+</div>
+<div class="section" id="warning-danger">
+<h2>WARNING – DANGER<a class="headerlink" href="#warning-danger" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p style="background-color:tomato;">  <b>The files you create within your Linux server are NOT PERMANENT!</b>  In other words you cannot rely on the files to be there if the server crashes for some reason, it gets shutdown due to inactivity, or you purposefully shut it down.   You must frequently save your work to an external service like <a href="https://cs210-gitlab.bu.edu">https://cs210-gitlab.bu.edu</a>.
+</div></blockquote>
+</p>
+</div>
+<div class="section" id="step-0-start-your-server">
+<h2>Step 0: Start your server<a class="headerlink" href="#step-0-start-your-server" title="Permalink to this headline">¶</a></h2>
+<p>If you are in a BU class that is using this book follow this link:</p>
+<ul class="simple">
+<li><p><a target="_blank" rel="noopener noreferrer" href="https://jupyterhub-redhat-ods-applications.apps.bu-rosa.8pmt.p1.openshiftapps.com/hub/user-redirect/lab">https://jupyterhub-redhat-ods-applications.apps.bu-rosa.8pmt.p1.openshiftapps.com/hub/user-redirect/lab</a></p></li>
+</ul>
+<p>If you are not in a BU class follow this link</p>
+<ul class="simple">
+<li><p><a target="_blank" rel="noopener noreferrer" href="https://jupyterhub-opf-jupyterhub.apps.smaug.na.operate-first.cloud/hub/user-redirect/lab">https://jupyterhub-opf-jupyterhub.apps.smaug.na.operate-first.cloud/hub/user-redirect/lab</a></p></li>
+</ul>
+<div class="section" id="bu-server-startup">
+<h3>BU Server startup<a class="headerlink" href="#bu-server-startup" title="Permalink to this headline">¶</a></h3>
+<p>Clicking on the above link should take you to the login page displayed below.
+If you are not able to login and you are sure you are in a class that is using the book please contact the
+teaching staff and they will add your BU user to the service.</p>
+<center>
+<img src="images/howto/howto0.png" >
+</center>
+</div>
+<div class="section" id="booting-your-server">
+<h3>Booting your server<a class="headerlink" href="#booting-your-server" title="Permalink to this headline">¶</a></h3>
+<p>After login you should be presented with the following panel.  You will need to 1) Select the right “Notebook Image” and then 2) click on the “Start Server” button at the bottom of the page.</p>
+<center>
+<img src="images/howto/howto1.png" >
+</center>
+<p>You will then should observer the following sequence progress as your server starts up</p>
+<!-- produced by: 
+htmlFig("[[{'src': 'images/howto/howto2.png', 'cellwidth': '33.33%'}, {'src': 'images/howto/howto3.png', 'cellwidth': '33%'}, {'src': 'images/howto/howto4.png', 'cellwidth': '33%'}]]", 
+        id="", 
+        align="center", 
+        width="100%",
+        margin="auto auto auto auto",
+        caption="", 
+        captionalign="left")
+-->
+<table align="center" width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse: collapse; margin: auto auto auto auto">
+    <tr style="padding: 0; margin: 0;"> 
+        <td colspan="1" width="33.33%" style="padding: 0; margin: 0 0 0 0; background-color:inherit;">
+            <div style="padding: 0; margin: 0 0 0 0;">
+              <figure style="padding: 0; margin: 0 0 0 0; width:100%;">
+                   <img src="images/howto/howto2.png" width="100%" style="padding: 0; margin: 0;">
+                </figure>
+            </div>
+        </td>
+        <td colspan="1" width="33%" style="padding: 0; margin: 0 0 0 0; background-color:inherit;">
+            <div style="padding: 0; margin: 0 0 0 0;">
+              <figure style="padding: 0; margin: 0 0 0 0; width:100%;">
+                   <img src="images/howto/howto3.png" width="100%" style="padding: 0; margin: 0;">
+                </figure>
+            </div>
+        </td>
+        <td colspan="1" width="33%" style="padding: 0; margin: 0 0 0 0; background-color:inherit;">
+            <div style="padding: 0; margin: 0 0 0 0;">
+              <figure style="padding: 0; margin: 0 0 0 0; width:100%;">
+                   <img src="images/howto/howto4.png" width="100%" style="padding: 0; margin: 0;">
+                </figure>
+            </div>
+        </td>
+    </tr>
+</table></div>
+</div>
+<div class="section" id="jupyter-lab-environment">
+<h2>Jupyter Lab Environment<a class="headerlink" href="#jupyter-lab-environment" title="Permalink to this headline">¶</a></h2>
+<p>After the boot process you should be presented with Jupyter Lab development user interface as illustrated below.  If you do not see the Lab interface you might be viewing the older “Classic Notebook” interface (as it is the default).  This is not a problem go to <a href="#classictolab">”Switching from Classic Notebook interface to the Lab interface”</a></p>
+<center>
+<img src="images/howto/howto5.png" >
+</center>>
+<p>To allow us to have a rich UNIX environment to work with that we can access via a web browser your server has been configured to start the <a class="reference external" href="https://jupyterlab.readthedocs.io/en/stable/">Jupyter Lab</a> development environment.  While most people focus on the use of Jupyter Lab for data science we will mainly focus on its support for letting users start their own UNIX server that can be accessed in a web browser.  The core feature we will care about is Jupyter Lab’s support for creating multiple terminals that we can use to access shell session running on the server.</p>
+<div class="section" id="creating-terminals">
+<h3>Creating Terminals<a class="headerlink" href="#creating-terminals" title="Permalink to this headline">¶</a></h3>
+<center>
+<img src="images/howto/howto6.png" >
+</center>
+<p>There are a few ways to create terminals in Jupyter Lab.  We will focus on the one shown above.  Using the “File” menu select “New” then “Terminal”.  This should then
+start a Terminal as shown below:</p>
+<center>
+<img src="images/howto/howto7.png" >
+</center>
+<p>You can create and organize as many terminal as you like.  Dragging the “Terminal” tab title bar around will allow you to adjust the layout.  For example below we have start three terminals and organized them in two rows – two on first row and one on the second.</p>
+<center>
+<img src="images/howto/howto8.png" >
+</center>
+<p>To see what terminal you have running and to close them you can use the “Running Terminals and Kernels” side-bar tool on the left as shown below:</p>
+<center>
+<img src="images/howto/howto9.png" >
+</center>
+</div>
+</div>
+<div class="section" id="shutting-down-your-server">
+<h2>Shutting Down Your Server<a class="headerlink" href="#shutting-down-your-server" title="Permalink to this headline">¶</a></h2>
+<p>When you have finished your session of working you should shutdown all your terminals and then your server.  If you do not shutdown the server it will eventually be killed automatically but it is best you manually shut it down.  Do do this by selecting the “Hub Control” feature from the “File” menu as illustrated below</p>
+<center>
+<img src="images/howto/howto10.png" >
+</center>
+<div class="section" id="hub-control-panel">
+<h3>Hub Control Panel<a class="headerlink" href="#hub-control-panel" title="Permalink to this headline">¶</a></h3>
+<p>This will open a new tab or window with following page.</p>
+<center>
+<img src="images/howto/howto11.png" >
+</center>
+</div>
+<div class="section" id="shutdown">
+<h3>Shutdown<a class="headerlink" href="#shutdown" title="Permalink to this headline">¶</a></h3>
+<p>Selecting “Shutdown” will terminate your server.  <b>ALL PROCESSES WILL BE KILLED AND ALL FILES DELETED</b></p>
+<center>
+<img src="images/howto/howto12.png" >
+</center>
+<p>At this point the browser tab or window that you used for your Jupyter Lab session will no longer be valid, see below, and you can close it.</p>
+<center>
+<img src="images/howto/howto13.png" >
+</center><p><a id="classictolab"></a></p>
+</div>
+</div>
+<div class="section" id="switching-from-classic-notebook-interface-to-the-lab-interface">
+<h2>Switching from Classic Notebook interface to the Lab interface<a class="headerlink" href="#switching-from-classic-notebook-interface-to-the-lab-interface" title="Permalink to this headline">¶</a></h2>
+<p>If you find yourself at the old Jupyter Classic Notebook interface that is not a problem you can switch back by a simple edit of the web address.  You have to change the word <code class="docutils literal notranslate"><span class="pre">tree</span></code> to <code class="docutils literal notranslate"><span class="pre">lab</span></code>.   The following images illustrate how to do this.</p>
+<div class="section" id="classic-interface-address">
+<h3>Classic Interface Address<a class="headerlink" href="#classic-interface-address" title="Permalink to this headline">¶</a></h3>
+<p>Go to the address bar of your browser.</p>
+<center>
+<img src="images/howto/howto14.png" >
+</center>
+<p>Towards the end of the address you will see the word <code class="docutils literal notranslate"><span class="pre">tree</span></code> as illustrated above.</p>
+</div>
+<div class="section" id="lab-interface-address">
+<h3>Lab Interface Address<a class="headerlink" href="#lab-interface-address" title="Permalink to this headline">¶</a></h3>
+<p>To switch to the Lab interface edit the address, changing <code class="docutils literal notranslate"><span class="pre">tree</span></code> to <code class="docutils literal notranslate"><span class="pre">lab</span></code></p>
+<center>
+<img src="images/howto/howto15.png" >
+</center>
+<p>Following this address should take you to your servers Jupyter Lab Interface.</p>
+<center>
+<img src="images/howto/howto5.png" >
+</center></div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="lnhowto.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">How to “view” lecture notes</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="unix/L01.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">1. </span>SLS: Part I - UNIX : Introduction &amp;  Preliminaries</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          By Jonathan Appavoo<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>
