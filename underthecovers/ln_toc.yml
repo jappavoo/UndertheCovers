@@ -6,6 +6,11 @@ parts:
   chapters:
   - file: L00_210_JA
   - file: L00_400_F21_JA
+- caption: 'Viewing Lectures'
+  numbered: false
+  chapters:
+  - file: lnhowto
+  - file: howto
 - caption: 'The Unix Development Environment'
   numbered: true
   chapters:
