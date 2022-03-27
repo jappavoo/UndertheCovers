@@ -76,6 +76,8 @@
 	.section .text
 	.global _start
 	# we will ada
-_start:         
-	.byte 0xcc
+_start:
+	# for the record if we know the bytes for an intruction
+	# we can specify them as values. Any where we like
+	.short 0xcc90  # what am I doing here? Fancy :)
 	
