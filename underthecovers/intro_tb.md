@@ -7,19 +7,19 @@ In this book we will look under the covers to learn exactly what software is and
 We will learn how hardware and software are broken down and organized. Learning the generic models that apply to most modern computers.   We will see how physical devices are turned into a blank canvas on which humans paint information as collections of binary bits.  Learning how different types of data are represented and how programs themselves are represented.  We will build our way to understanding how layers of software are fitted together to allow more complex information and ideas, not natively supported by the hardware, to be represented and worked with. 
 Understanding this process will reveal to us how the layers make it simpler and simpler for humans to program computers and the limits and overheads that comes along with the layering.    
 
-While this is not explicitly a programming course as part of our journey we will be learning practical skills.
-- Learning the tools and ideas that make up the UNIX program development environment, as this is the defacto environment for industrial and academic computing and for look under the covers.
+While this is not explicitly a programming course, as part of our journey we will be learning practical skills:
+- Learning the tools and ideas that make up the UNIX program development environment, as this is the defacto environment for industrial and academic computing and for looking under the covers.
 - Learning how to read, write and understand software as assembly code as we learn how computers operate and how data and programs are represented at the binary level.  
-- Learning how to read, write and understand 'C' code from an assembly language perspective.  Experiencing how higher level data-structures and programming ideas, expressed in a human friendly way, are translated into assembly code while maintaining direct control of the hardware. 
+- Learning how to read, write and understand 'C' code from an assembly language perspective.  Experiencing how higher level data structures and programming ideas, expressed in a human friendly way, are translated into assembly code while maintaining direct control of the hardware. 
 
-A core goal of this material is to help a reader learn to use the tools that enable developing and controlling all fundamental aspects of a computer.    This includes being productive in the UNIX command line environment understanding the core concepts of files, terminal interaction, processes and UNIX credentials.  This coverage will include the use of editors, the make utility and GIT as a repository control system.  Using knowledge of  these tools we will then explore how to use assemblers and compilers to convert human readable code into machine executable software. Through out this process we will learn how to use a machine level debugger, such as gdb, both to explore and control how the software and hardware work from a memory oriented perspective and how to map the human symbolic version of code onto the memory.  
+A core goal of this material is to help a reader learn to use the tools that enable developing and controlling all fundamental aspects of a computer.    This includes being productive in the UNIX command line environment, understanding the core concepts of files, terminal interaction, processes, and UNIX credentials.  This coverage will include the use of editors, the make utility, and GIT as a repository control system.  Using knowledge of  these tools we will then explore how to use assemblers and compilers to convert human readable code into machine executable software. Throughout this process we will learn how to use a machine level debugger, such as gdb, both to explore and control how the software and hardware work from a memory-oriented perspective and how to map the human symbolic version of code onto the memory.  
 
-In the material is broken down in to three parts: 
+The material is broken down into three parts: 
 1. The Unix Software development environment
 2. The Belly of the Beast: The von Neumann Architecture and assembly programming
 3. Into the Light: C Programming
 
-This textbook was developed for Boston University's College of Arts and Sciences Computer Science CS210 Computer Systems Class.  For a more detailed list of topic that the books covers can be found in [CS210 Learning outcomes](BUCS210_intro.md).
+This textbook was developed for Boston University's College of Arts and Sciences Computer Science CS210 Computer Systems class. A more detailed list of topics that the book covers can be found in [CS210 Learning outcomes](BUCS210_intro.md).
 
 
 ## About
