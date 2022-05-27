@@ -3599,7 +3599,7 @@ htmlFig("[{'src': '../images/ASSEMBLY-PGMI/ASSEMBLY-PGMI.034.png'}]",
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">p</span> <span class="pre">/t</span> <span class="pre">$&lt;register</span> <span class="pre">name&gt;</span></code> : print out the current value of a register in binary notation</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">set</span> <span class="pre">$&lt;register</span> <span class="pre">name&gt;=0b&lt;binary</span> <span class="pre">value</span></code> : to set a register’s value in binary notation</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">p</span> <span class="pre">/t</span> <span class="pre">$&lt;register</span> <span class="pre">name&gt;</span></code> : print out the current value of a register in hex</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">p</span> <span class="pre">/x</span> <span class="pre">$&lt;register</span> <span class="pre">name&gt;</span></code> : print out the current value of a register in hex</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">set</span> <span class="pre">$&lt;register</span> <span class="pre">name&gt;=0x&lt;hex</span> <span class="pre">value&gt;</span></code> : to set a register’s value in hex notation</p></li>
 </ul>
 <p>As we see in <a href="#fig:intelGPRBreakdown">Intel Register Figure</a>.  Each register name
