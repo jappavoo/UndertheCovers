@@ -31,7 +31,7 @@ DEBUG=-g
 # -fverbose-asm
 # -v
 %.s: %.c
-	gcc -fno-stack-protector -fno-pic  -static -Werror -fcf-protection=none -fno-asynchronous-unwind-tables -Os -S -masm=intel $^ -o $@
+	gcc -fno-inline -fno-stack-protector -fno-pic  -static -Werror -fcf-protection=none -fno-asynchronous-unwind-tables -Os -S -masm=intel $^ -o $@
 
 %: %.o
 	ld ${DEBUG} $(LDFLAGS) $^ -o $@
