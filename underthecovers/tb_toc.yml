@@ -16,7 +16,7 @@ parts:
   - file: unix/editors
   - file: unix/shellscripts
   - file: unix/processes
-  - file: unix/ids
+  - file: unix/ides
   - file: unix/make
   - file: unix/gitintro
   - file: unix/git
@@ -30,10 +30,16 @@ parts:
   - file: assembly/assembly
   - file: assembly/InfoRepI
   - file: assembly/nativetypes
+  - file: assembly/anatomyI 
+  - file: assembly/anatomyII 
+  - file: assembly/anatomyIII 
+  - file: assembly/anatomyIV 
+  - file: assembly/assemblyOS 
 - caption: 'Into the Light : C Programming'
   numbered: true
   chapters:
   - file: C/intro
+  - file: C/mychapter
 - caption: 'Course Specific Material'
   numbered: false
   chapters:
