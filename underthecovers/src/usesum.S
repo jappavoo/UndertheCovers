@@ -1,6 +1,6 @@
 	.intel_syntax noprefix
 	
-	.data
+	.section .data
 	#  a place for us to store how much data is in the XARRAY
 	#  initalized it to 0
 XARRAY_LEN:
@@ -12,7 +12,7 @@ XARRAY_LEN:
 	.comm XARRAY, 8*1024, 8	
 	.comm sum, 8, 8 	# space to store final sum
 
-	.text
+	.section .text
 	.global _start 
 _start:
 	mov rbx, QWORD PTR [XARRAY_LEN]

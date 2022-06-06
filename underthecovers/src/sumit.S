@@ -1,4 +1,6 @@
 	.intel_syntax noprefix
+
+	.section .text
 	
 	.global sumIt	      	      #	 directive to let the linker
 
