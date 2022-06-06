@@ -39,7 +39,7 @@ function mk
 
 function update
 {
-    arg = $1
+    arg=$1
     if [[ $arg = '-h' ]]; then
 	echo "USAGE: update"
 	return -1
@@ -49,7 +49,7 @@ function update
 
 function build 
 {
-    arg = $1
+    arg=$1
     if [[ -z $arg || $arg = '-h' ]]; then
 	echo "USAGE: build"
 	return -1
@@ -58,7 +58,7 @@ function build
 
 function pub
 {
-    arg = $1
+    arg=$1
     if [[ -z $arg || $arg = '-h' ]]; then
 	echo "USAGE: pub"
 	return -1
