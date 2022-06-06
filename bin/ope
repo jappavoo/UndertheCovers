@@ -1,0 +1,92 @@
+#!/bin/bash
+#set -x
+# Copyright (C) 2022 by Jonathan Appavoo, Boston University
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy
+# of this software and associated documentation files (the "Software"), to deal
+# in the Software without restriction, including without limitation the rights
+# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+# copies of the Software, and to permit persons to whom the Software is
+# furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in
+# all copies or substantial portions of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+# THE SOFTWARE.
+
+
+function mk
+{
+   name=$1
+
+   if [[ -z $name || $name = '-h' ]]; then
+      echo "USAGE: mk <bookName>"
+      echo "   makes a template book of the name specified"
+      echo "   eg. ope mk MyBook"
+      echo "   will create a new local repository seeded from the ope "
+      echo "   template.  See the ope gettings started doc for more info."
+      return -1
+   fi
+
+
+}
+
+function update
+{
+    arg = $1
+    if [[ $arg = '-h' ]]; then
+	echo "USAGE: update"
+	return -1
+    fi
+    
+}
+
+function build 
+{
+    arg = $1
+    if [[ -z $arg || $arg = '-h' ]]; then
+	echo "USAGE: build"
+	return -1
+    fi    
+}
+
+function pub
+{
+    arg = $1
+    if [[ -z $arg || $arg = '-h' ]]; then
+	echo "USAGE: pub"
+	return -1
+    fi    
+}
+
+usage()
+{
+    echo "USAGE:  ${0##*/} func args" >&2
+    grep '^function' $0
+    echo "for each func use '-h' to print its usage: eg. ${0##*/} dump -h"
+    echo "will print the usage for the dump command"
+}
+
+processargs()
+{
+  if [[ $# == 0 || $1 = '-h' ]]
+  then
+    usage
+    exit -1
+  fi
+
+  dofunc=$1
+}
+
+processargs "$@"
+shift
+
+$dofunc "$@"
+
+exit $?
