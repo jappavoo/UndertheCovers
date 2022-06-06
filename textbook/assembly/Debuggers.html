@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>10. Machine Debuggers &amp; Open Process Surgery &#8212; UndertheCovers</title>
+    <title>16. Machine Debuggers &amp; Open Process Surgery &#8212; UndertheCovers</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -54,8 +54,8 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="11. Lets write some assembly code" href="assembly.html" />
-    <link rel="prev" title="9. Executables and Processes" href="UnixAssemblyProgramming.html" />
+    <link rel="next" title="17. Lets write some assembly code" href="assembly.html" />
+    <link rel="prev" title="15. Executables and Processes" href="UnixAssemblyProgramming.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -142,6 +142,36 @@
    6. The Shell – Progammable User Interface to the computer
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../unix/editors.html">
+   7. Editors
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../unix/processes.html">
+   8. Processes
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../unix/ides.html">
+   9. IDEs
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../unix/make.html">
+   10. Make
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../unix/gitintro.html">
+   11. Intro to Git
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../unix/git.html">
+   12. Git
+  </a>
+ </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
@@ -151,37 +181,62 @@
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="intro.html">
-   7. Introduction: Assembly Programming
+   13. Introduction: Assembly Programming
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="vonNeumannArchitecture.html">
-   8. The von Neumann Architecture
+   14. The von Neumann Architecture
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="UnixAssemblyProgramming.html">
-   9. Executables and Processes
+   15. Executables and Processes
   </a>
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   10. Machine Debuggers &amp; Open Process Surgery
+   16. Machine Debuggers &amp; Open Process Surgery
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="assembly.html">
-   11. Lets write some assembly code
+   17. Lets write some assembly code
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="InfoRepI.html">
-   12. Representing information - Preliminaries: Bits, Bytes and Notation
+   18. Representing information - Preliminaries: Bits, Bytes and Notation
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="nativetypes.html">
-   13. Information Representation - Native Types
+   19. Information Representation - Native Types
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="anatomyI.html">
+   20. Assembly : Program Anatomy I
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="anatomyII.html">
+   21. Program Anatomy II : Functions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="anatomyIII.html">
+   22. Program Anatomy III : Code as Data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="anatomyIV.html">
+   23. Program Anatomy IV: The Tree of Bytes and Data Structures
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="assemblyOS.html">
+   24. Assembly using the OS
   </a>
  </li>
 </ul>
@@ -193,7 +248,7 @@
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../C/intro.html">
-   14. Introduction
+   25. Introduction
   </a>
  </li>
 </ul>
@@ -316,17 +371,17 @@
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#overview">
-   10.1. Overview
+   16.1. Overview
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#getting-started-with-gdb">
-   10.2. Getting Started with gdb
+   16.2. Getting Started with gdb
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#exercises">
-   10.3. Exercises
+   16.3. Exercises
   </a>
  </li>
 </ul>
@@ -341,7 +396,7 @@
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="machine-debuggers-open-process-surgery">
-<h1><span class="section-number">10. </span>Machine Debuggers &amp; Open Process Surgery<a class="headerlink" href="#machine-debuggers-open-process-surgery" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">16. </span>Machine Debuggers &amp; Open Process Surgery<a class="headerlink" href="#machine-debuggers-open-process-surgery" title="Permalink to this headline">¶</a></h1>
 <p>While you may be familiar with debuggers and their use to find bugs in Java or python code there is much more to them than meets the eye.</p>
 <p>There are low-level-debuggers that are designed and built to allow you to inspect and control the cpu and memory of a process, giving you direct access to the inner binary works of the computer and your code while it is running.  In addition, low-level-debuggers  may simultaneously let you work symbolically (with the source code of the program being debugged).  This lets you both see what is going on in the CPU and memory and how this relates to the original ASCII source files you wrote to create the binary being run in the process.  In our case the source files will be assembly source at first and then C later.   Regardless using the underlying view of the CPU and memory will reveal what is really going on.</p>
 <div class="cell tag_remove-input docutils container">
@@ -405,7 +460,7 @@ htmlFig("[{'src': '../images/gdbtuiexample.png'}]",
 </div></blockquote>
 <p>From here on in we will use gdb as our working choice but it is worth remembering that the concepts we talk about are applicable to other debuggers like <code class="docutils literal notranslate"><span class="pre">xdb</span></code> and <code class="docutils literal notranslate"><span class="pre">lldb</span></code>.</p>
 <div class="section" id="overview">
-<h2><span class="section-number">10.1. </span>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">16.1. </span>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <!-- produced by: 
@@ -461,10 +516,10 @@ htmlFig("[{'src': '../images/gdbprocesses.png'}]",
 <p>Oh and maybe one more terminal for the man pages ;-)</p>
 </div>
 <div class="section" id="getting-started-with-gdb">
-<h2><span class="section-number">10.2. </span>Getting Started with gdb<a class="headerlink" href="#getting-started-with-gdb" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">16.2. </span>Getting Started with gdb<a class="headerlink" href="#getting-started-with-gdb" title="Permalink to this headline">¶</a></h2>
 </div>
 <div class="section" id="exercises">
-<h2><span class="section-number">10.3. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">16.3. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">HTML</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
@@ -510,13 +565,13 @@ htmlFig("[{'src': '../images/gdbprocesses.png'}]",
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">9. </span>Executables and Processes</p>
+            <p class="prev-next-title"><span class="section-number">15. </span>Executables and Processes</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="assembly.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">11. </span>Lets write some assembly code</p>
+        <p class="prev-next-title"><span class="section-number">17. </span>Lets write some assembly code</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
