@@ -607,9 +607,95 @@ ansi_escape_8bit = re.compile(br'''
     )
 ''', re.VERBOSE)
 
+def closeSession(session):
+    subprocess.Popen.kill(session['process'])
+    os.close(session['master'])
+    return None
+
+def openSession(cmd, cwd, rows, cols):
+    session = dict()
+    master, slave = pty.openpty()
+    session['master']=master
+    session['slave']=slave
+    # terminal size stuff from 
+    # https://github.com/terminal-labs/cli-passthrough/blob/master/cli_passthrough/_passthrough.py  
+    size = struct.pack("HHHH", rows, cols, 0, 0)
+    fcntl.ioctl(master, termios.TIOCSWINSZ, size)
+    
+    #   nttysettings = termios.tcgetattr(master)
+    #   nttysettings[3] &= ~termios.ECHO
+    #   termios.tcsetattr(master, termios.TCSANOW, nttysettings)    
+    p=subprocess.Popen(cmd, cwd=cwd, stdin=slave, stdout=slave, stderr=slave, start_new_session=True)
+    session['process']=p
+    session['output']=b''
+    
+    return session
+
+def renderSessionOutput(output):
+    if isinstance(output, dict):
+        output=session['output']
+    outputlayout={'border': '1px solid black'}
+    output=output.decode('utf-8','replace') 
+    out=widgets.Output(layout=outputlayout)
+    with out:
+        print(output,end='')
+    return out
+       
 #def cleanTermBytes(bytes):    
 #    return  ansi_escape_8bit.sub(b'', bytes)
+def bashSessionCmds(cmds, cwd=os.getcwd(), bufsize=4096, wait=True, rows=20, cols=80, session=None, kill=True):
+    if not session:
+        session = openSession(['bash', '-l', '-i'], cwd, rows, cols)
+        new_session = True
+    else:
+        new_session=False
+        
+    master = session['master']
+    slave = session['slave']
+    p = session['process']
+    
+    if not isinstance(cmds,list):
+        cmds = cmds.split(b'\n')
+        
+    output = b''
+    numcmds = len(cmds)
+    i = 0
+    
+    if not new_session:
+        os.write(master, cmds[i] + b'\n')
+        i=i+1 
+        
+    while True:
+        read_fds,_,error_fds = select.select([master],[],[master])  
+        if len(error_fds):
+            kill = True;
+            break;
+        if len(read_fds):
+            data = os.read(master, bufsize)
+            # print("data: ", data)
+            if len(data)>0:
+                output += data
+                n = len(output)
+               # print("output:", output, "n:", n, "output[n-2]:", output[n-2]," output[n-1]:", output[n-1])
+                if n>2 and output[n-2] == 36 and output[n-1] == 32:
+                    if i == numcmds:
+                        break
+                    else:
+                        os.write(master, cmds[i] + b'\n')
+                        i=i+1
+        if not p.returncode == None:
+            kill = True
+            break
+    
+    if kill:
+        session=closeSession(session)
+    else:
+        session['output'] = session['output'] + output
+        
+    return output,session
 
+
+# FIXME: JA Given the new Session code above this needs to be re thought out and cleaned up or removed
 def runTermCmd(cmd, cwd=os.getcwd(), bufsize=4096, wait=True, tmout=1.0, rows=20, cols=80):
     master, slave = pty.openpty()
 
