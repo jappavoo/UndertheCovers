@@ -610,8 +610,8 @@ ansi_escape_8bit = re.compile(br'''
 def closeSession(session):
     subprocess.Popen.kill(session['process'])
     os.close(session['master'])
-    return None
-
+    session['open'] = False;
+    
 def openSession(cmd, cwd, rows, cols):
     session = dict()
     master, slave = pty.openpty()
@@ -628,26 +628,40 @@ def openSession(cmd, cwd, rows, cols):
     p=subprocess.Popen(cmd, cwd=cwd, stdin=slave, stdout=slave, stderr=slave, start_new_session=True)
     session['process']=p
     session['output']=b''
-    
+    session['open']=True
     return session
 
-def renderSessionOutput(output):
+def renderSessionOutput(output, height='100%', width='', outputlayout={'border': '1px solid black'}, encoding=sys.getdefaultencoding(), decodeerrors='replace', **kwargs):
     if isinstance(output, dict):
-        output=session['output']
-    outputlayout={'border': '1px solid black'}
-    output=output.decode('utf-8','replace') 
+        text=session['output']
+    else:
+        text=output
+    if height:
+        outputlayout['height']=height
+        outputlayout['overflow_y']='scroll'
+
+    if width:
+        outputlayout['width']=width
+        outputlayout['overflow_x']='auto'
+    
+    text=text.decode(encoding,decodeerrors) 
     out=widgets.Output(layout=outputlayout)
     with out:
-        print(output,end='')
+        print(text,end='')
     return out
        
 #def cleanTermBytes(bytes):    
 #    return  ansi_escape_8bit.sub(b'', bytes)
-def bashSessionCmds(cmds, cwd=os.getcwd(), bufsize=4096, wait=True, rows=20, cols=80, session=None, kill=True):
+def bashSessionCmds(cmds, cwd=os.getcwd(), bufsize=4096, wait=True, rows=20, cols=80, session=None, kill=True, **kwargs):
     if not session:
-        session = openSession(['bash', '-l', '-i'], cwd, rows, cols)
+        session = openSession(['bash', '-l', '-i'], cwd, rows, cols) 
         new_session = True
+        init = False
     else:
+        # print("old session")
+        if not session['open']:
+            print("ERROR: session not open")
+            return None, None
         new_session=False
         
     master = session['master']
@@ -655,6 +669,8 @@ def bashSessionCmds(cmds, cwd=os.getcwd(), bufsize=4096, wait=True, rows=20, col
     p = session['process']
     
     if not isinstance(cmds,list):
+        if isinstance(cmds, str):
+            cmds = cmds.encode('utf-8')
         cmds = cmds.split(b'\n')
         
     output = b''
@@ -678,21 +694,37 @@ def bashSessionCmds(cmds, cwd=os.getcwd(), bufsize=4096, wait=True, rows=20, col
                 n = len(output)
                # print("output:", output, "n:", n, "output[n-2]:", output[n-2]," output[n-1]:", output[n-1])
                 if n>2 and output[n-2] == 36 and output[n-1] == 32:
+                    # print("prompt received")
                     if i == numcmds:
                         break
                     else:
-                        os.write(master, cmds[i] + b'\n')
-                        i=i+1
+                        if new_session:
+                            if not init:
+                                os.write(master,b'bind "set enable-bracketed-paste off"\n')
+                                init = True
+                            else:
+                                session['init'] = output
+                                session['output'] = b'$ '
+                                output = b''
+                                os.write(master, cmds[i] + b'\n')
+                                i=i+1
+                        else:
+                            os.write(master, cmds[i] + b'\n')
+                            i=i+1
         if not p.returncode == None:
             kill = True
             break
     
     if kill:
-        session=closeSession(session)
-    else:
-        session['output'] = session['output'] + output
+        closeSession(session)
         
+    session['output'] = session['output'] + output
+    output = b'$ ' + output
     return output,session
+
+def BashCmds(cmds, cwd=os.getenv('HOME'), **kwargs):
+    output, session = bashSessionCmds(cmds, cwd, **kwargs)
+    return renderSessionOutput(output, **kwargs)
 
 
 # FIXME: JA Given the new Session code above this needs to be re thought out and cleaned up or removed
