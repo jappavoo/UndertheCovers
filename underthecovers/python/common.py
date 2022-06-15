@@ -607,12 +607,21 @@ ansi_escape_8bit = re.compile(br'''
     )
 ''', re.VERBOSE)
 
-def closeSession(session):
+TtyOpenSessions = []
+
+def closeTtySession(session):
+    global TtyOpenSessions
     subprocess.Popen.kill(session['process'])
     os.close(session['master'])
     session['open'] = False;
-    
-def openSession(cmd, cwd, rows, cols):
+    TtyOpenSessions.remove(session)
+
+def closeAllOpenTtySessions():
+    for s in TtyOpenSessions:
+        closeTtySession(s)
+        
+def openTtySession(cmd, cwd, rows, cols):
+    global TtySessions
     session = dict()
     master, slave = pty.openpty()
     session['master']=master
@@ -629,9 +638,10 @@ def openSession(cmd, cwd, rows, cols):
     session['process']=p
     session['output']=b''
     session['open']=True
+    TtyOpenSessions.append(session)
     return session
 
-def renderSessionOutput(output, height='100%', width='', outputlayout={'border': '1px solid black'}, encoding=sys.getdefaultencoding(), decodeerrors='replace', **kwargs):
+def renderTtySessionOutput(output, height='100%', width='', outputlayout={'border': '1px solid black'}, encoding=sys.getdefaultencoding(), decodeerrors='replace', **kwargs):
     if isinstance(output, dict):
         text=session['output']
     else:
@@ -652,17 +662,18 @@ def renderSessionOutput(output, height='100%', width='', outputlayout={'border':
        
 #def cleanTermBytes(bytes):    
 #    return  ansi_escape_8bit.sub(b'', bytes)
-def bashSessionCmds(cmds, cwd=os.getcwd(), bufsize=4096, wait=True, rows=20, cols=80, session=None, kill=True, **kwargs):
+def bashSessionCmds(cmds, cwd=os.getcwd(), bufsize=4096, wait=True, rows=20, cols=80, session=None, close=True, **kwargs):
     if not session:
-        session = openSession(['bash', '-l', '-i'], cwd, rows, cols) 
+        session = openTtySession(['bash', '-l', '-i'], cwd, rows, cols) 
         new_session = True
-        init = False
+        initdone = 0
     else:
         # print("old session")
         if not session['open']:
             print("ERROR: session not open")
             return None, None
         new_session=False
+        initdone = 2
         
     master = session['master']
     slave = session['slave']
@@ -675,7 +686,7 @@ def bashSessionCmds(cmds, cwd=os.getcwd(), bufsize=4096, wait=True, rows=20, col
         
     output = b''
     numcmds = len(cmds)
-    #print("numcmds:", numcmds)
+    # print("numcmds:", numcmds)
     i = 0
     
     if not new_session:
@@ -696,20 +707,26 @@ def bashSessionCmds(cmds, cwd=os.getcwd(), bufsize=4096, wait=True, rows=20, col
                 # print("output:", output, "n:", n, "output[n-2]:", output[n-2]," output[n-1]:", output[n-1])
                 if n>2 and output[n-2] == 36 and output[n-1] == 32:
                     # print("prompt received")
-                    if i == numcmds:
+                    if i == numcmds and initdone == 2:
                         break
                     else:
                         if new_session:
-                            if not init:
+                            if initdone == 0:
+                                #print("Initializing Session")
                                 os.write(master,b'bind "set enable-bracketed-paste off"\n')
-                                init = True
+                                initdone=1
                             else:
+                                #print("Session Initialized")
                                 session['init'] = output
                                 session['output'] = b'$ '
                                 output = b''
+                                initdone = 2
                                 new_session = False
-                                os.write(master, cmds[i] + b'\n')
-                                i=i+1
+                                if numcmds > 0:
+                                    os.write(master, cmds[i] + b'\n')
+                                    i=i+1
+                                else:
+                                    break
                         else:
                             os.write(master, cmds[i] + b'\n')
                             i=i+1
@@ -717,14 +734,17 @@ def bashSessionCmds(cmds, cwd=os.getcwd(), bufsize=4096, wait=True, rows=20, col
             kill = True
             break
     
-    if kill:
-        closeSession(session)
+    if close:
+        closeTtySession(session)
         
     session['output'] = session['output'] + output
     output = b'$ ' + output
     return output,session
 
-def BashCmds(cmds, cwd=os.getenv('HOME'), **kwargs):
+def bashSessionClose(session):
+    closeTtySession(session)
+    
+def bashCmds(cmds, cwd=os.getenv('HOME'), **kwargs):
     output, session = bashSessionCmds(cmds, cwd, **kwargs)
     return renderSessionOutput(output, **kwargs)
 
