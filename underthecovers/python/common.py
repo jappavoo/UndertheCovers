@@ -675,6 +675,7 @@ def bashSessionCmds(cmds, cwd=os.getcwd(), bufsize=4096, wait=True, rows=20, col
         
     output = b''
     numcmds = len(cmds)
+    #print("numcmds:", numcmds)
     i = 0
     
     if not new_session:
@@ -692,7 +693,7 @@ def bashSessionCmds(cmds, cwd=os.getcwd(), bufsize=4096, wait=True, rows=20, col
             if len(data)>0:
                 output += data
                 n = len(output)
-               # print("output:", output, "n:", n, "output[n-2]:", output[n-2]," output[n-1]:", output[n-1])
+                # print("output:", output, "n:", n, "output[n-2]:", output[n-2]," output[n-1]:", output[n-1])
                 if n>2 and output[n-2] == 36 and output[n-1] == 32:
                     # print("prompt received")
                     if i == numcmds:
@@ -706,6 +707,7 @@ def bashSessionCmds(cmds, cwd=os.getcwd(), bufsize=4096, wait=True, rows=20, col
                                 session['init'] = output
                                 session['output'] = b'$ '
                                 output = b''
+                                new_session = False
                                 os.write(master, cmds[i] + b'\n')
                                 i=i+1
                         else:
