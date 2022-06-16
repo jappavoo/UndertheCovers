@@ -662,7 +662,7 @@ def renderTtySessionOutput(output, height='100%', width='', outputlayout={'borde
        
 #def cleanTermBytes(bytes):    
 #    return  ansi_escape_8bit.sub(b'', bytes)
-def bashSessionCmds(cmds, cwd=os.getcwd(), bufsize=4096, wait=True, rows=20, cols=80, session=None, close=True, **kwargs):
+def bashSessionCmds(cmds, cwd=os.getcwd(), bufsize=4096, wait=True, rows=20, cols=80, session=None, close=True, ignoreoutput=False, **kwargs):
     if not session:
         session = openTtySession(['bash', '-l', '-i'], cwd, rows, cols) 
         new_session = True
@@ -690,6 +690,7 @@ def bashSessionCmds(cmds, cwd=os.getcwd(), bufsize=4096, wait=True, rows=20, col
     i = 0
     
     if not new_session:
+        #print(cmds[i] + b'\n')
         os.write(master, cmds[i] + b'\n')
         i=i+1 
         
@@ -713,7 +714,7 @@ def bashSessionCmds(cmds, cwd=os.getcwd(), bufsize=4096, wait=True, rows=20, col
                         if new_session:
                             if initdone == 0:
                                 #print("Initializing Session")
-                                os.write(master,b'bind "set enable-bracketed-paste off"\n')
+                                os.write(master,b' bind "set enable-bracketed-paste off"\n')
                                 initdone=1
                             else:
                                 #print("Session Initialized")
@@ -723,11 +724,13 @@ def bashSessionCmds(cmds, cwd=os.getcwd(), bufsize=4096, wait=True, rows=20, col
                                 initdone = 2
                                 new_session = False
                                 if numcmds > 0:
+                                    #print(cmds[i] + b'\n')
                                     os.write(master, cmds[i] + b'\n')
                                     i=i+1
                                 else:
                                     break
                         else:
+                            #print(cmds[i] + b'\n')
                             os.write(master, cmds[i] + b'\n')
                             i=i+1
         if not p.returncode == None:
@@ -736,8 +739,10 @@ def bashSessionCmds(cmds, cwd=os.getcwd(), bufsize=4096, wait=True, rows=20, col
     
     if close:
         closeTtySession(session)
-        
-    session['output'] = session['output'] + output
+    
+    if not ignoreoutput:
+        #print(output)
+        session['output'] = session['output'] + output
     output = b'$ ' + output
     return output,session
 
@@ -757,7 +762,11 @@ class BashSession:
     # create session  
     def __init__(self, **kwargs):
         self.session = bashSessionOpen(**kwargs)
- 
+        # turn off tab completion
+        self.runNoOutput("bind 'set disable-completion on'", ignoreoutput=True)
+        # clear all bash history so that our history examples are clean
+        self.runNoOutput(" history -c\n history -w", ignoreoutput=True)
+        
     # Deleting (Calling destructor)
     def __del__(self):
         bashSessionClose(self.session)
