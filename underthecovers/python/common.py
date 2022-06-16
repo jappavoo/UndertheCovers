@@ -643,7 +643,7 @@ def openTtySession(cmd, cwd, rows, cols):
 
 def renderTtySessionOutput(output, height='100%', width='', outputlayout={'border': '1px solid black'}, encoding=sys.getdefaultencoding(), decodeerrors='replace', **kwargs):
     if isinstance(output, dict):
-        text=session['output']
+        text=output['output']
     else:
         text=output
     if height:
@@ -741,13 +741,41 @@ def bashSessionCmds(cmds, cwd=os.getcwd(), bufsize=4096, wait=True, rows=20, col
     output = b'$ ' + output
     return output,session
 
+
 def bashSessionClose(session):
     closeTtySession(session)
+
+def bashSessionOpen(cwd=os.getenv('HOME'), **kwargs):
+    _, session = bashSessionCmds(cmds=[], close=False, cwd=cwd, **kwargs)
+    return session
     
 def bashCmds(cmds, cwd=os.getenv('HOME'), **kwargs):
-    output, session = bashSessionCmds(cmds, cwd, **kwargs)
-    return renderSessionOutput(output, **kwargs)
+    output, session = bashSessionCmds(cmds=cmds, cwd=cwd, **kwargs)
+    return renderTtySessionOutput(output, **kwargs)
 
+class BashSession:
+    # create session  
+    def __init__(self, **kwargs):
+        self.session = bashSessionOpen(**kwargs)
+ 
+    # Deleting (Calling destructor)
+    def __del__(self):
+        bashSessionClose(self.session)
+        
+    def run(self, cmds, **kwargs):
+        text, self.session = bashSessionCmds(cmds, session=self.session, close=False, **kwargs)
+        return renderTtySessionOutput(text, **kwargs)
+
+    def runNoOutput(self, cmds, **kwargs):
+        _, self.session = bashSessionCmds(cmds, session=self.session, close=False, **kwargs)
+    
+    def output(self, **kwargs):
+        return renderTtySessionOutput(self.session, **kwargs)
+
+    def runAllOutput(self, cmds, **kwargs):
+        self.runNoOutput(cmds, **kwargs)
+        return self.output(**kwargs)
+        
 
 # FIXME: JA Given the new Session code above this needs to be re thought out and cleaned up or removed
 def runTermCmd(cmd, cwd=os.getcwd(), bufsize=4096, wait=True, tmout=1.0, rows=20, cols=80):
