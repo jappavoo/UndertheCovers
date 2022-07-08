@@ -1,41 +1,27 @@
 #!/bin/bash
 
 set -x
-
 set -eo pipefail
 
-# Execute original assemble script.
 
+# Insert code which is required run before base assemble
+
+
+# Execute original assemble script.
 /opt/app-root/builder/assemble
 
-# Activate ipywidgets extension.
+# local customizations
+jupyter nbextension enable spellchecker/main 
+jupyter nbextension enable splitcell/splitcell
+jupyter nbextension enable hide_input_all/main 
+jupyter nbextension enable hide_input/main 
+jupyter nbextension enable python-markdown/main
 
-jupyter nbextension enable --py widgetsnbextension --sys-prefix
 
-# Also activate ipywidgets/bokeh extension for JupyterLab.
+# Make sure the S2I source directory is empty as we will use the image
+# produced to run further S2I builds
 
-jupyter labextension install @jupyter-widgets/jupyterlab-manager@^1.0.1 --no-build
-jupyter labextension install jupyterlab_bokeh@1.0.0 --no-build
-
-jupyter lab build
-
-# Install facets which does not have a pip package.
-
-cd /tmp
-
-git clone https://github.com/PAIR-code/facets.git
-
-cd facets
-
-jupyter nbextension install facets-dist/ --sys-prefix
-
-cd $HOME
-
-rm -rf /tmp/facets
-
-# Import matplotlib the first time to build the font cache.
-
-MPLBACKEND=Agg python -c "import matplotlib.pyplot"
+(shopt -s dotglob ; rm -rf ${APP_ROOT}/src/*)
 
 # Fix up permissions.
 

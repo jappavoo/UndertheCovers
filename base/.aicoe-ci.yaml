@@ -1,0 +1,4 @@
+check: []
+build:
+  base-image: "quay.io/thoth-station/s2i-minimal-py38-notebook:v0.2.2"
+  build-stratergy: Source
