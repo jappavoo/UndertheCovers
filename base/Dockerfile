@@ -46,14 +46,16 @@ USER root
 #  man pages
 #  find
 #  we add xterm to pick up resize :-(
-
+#
 # build-essential
-RUN yum -y install texinfo ncurses-devel vim emacs-nox \
-    cc65 man-db man-pages bc xterm gdb cmake gcc-c++ \
-    openssh strace bison flex openssl-devel elfutils-libelf \
-    nasm socat rlwrap qemu-system-aarch64 libgcc.i686 libedit-devel.i686 libbsd && \
-    yum update --assumeyes --nobest --setopt=tsflags=nodocs && \
-    yum --assumeyes clean all && \
+#Unable to find a matchs for these in ubi8: texinfo emacs-nox cc65 man-pages xterm strace bison flex nasm rlwrap qemu-system-aarch64 libbsd
+RUN dnf -y upgrade && \
+    dnf -y install ncurses-devel vim  \
+    man-db  bc gdb cmake gcc-c++ \
+    openssh openssl-devel elfutils-libelf \
+    socat libgcc.i686 libedit-devel.i686 && \
+    dnf update --assumeyes --nobest --setopt=tsflags=nodocs && \
+    dnf --assumeyes clean all && \
     rm -rf /var/cache/dnf
 
 #  adding moria for old time sake

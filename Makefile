@@ -8,8 +8,9 @@ BASE?=jupyter
 VERSION?=stable
 
 BASE_REG?=quay.io/
-BASE_IMAGE?=thoth-station/s2i-minimal-f34-py39-notebook
-#BASE_STABLE_TAG?=@sha256:8dd0326cdb8f89dedd1a858ed7469fce77a84a444c2656f134896ab20449121
+# fedora is behaving strangely with respect to user ids at startup
+#BASE_IMAGE?=thoth-station/s2i-minimal-f34-py39-notebook
+BASE_IMAGE?=thoth-station/s2i-minimal-py38-notebook
 BASE_STABLE_TAG?=:v0.3.0
 BASE_TEST_TAG?=:latest
 
