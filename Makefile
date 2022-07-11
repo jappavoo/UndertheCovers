@@ -7,11 +7,9 @@ BASE?=jupyter
 # we use this to choose between a build from the blessed known stable version or a test version
 VERSION?=stable
 
-BASE_REG?=quay.io/
-# fedora is behaving strangely with respect to user ids at startup
-#BASE_IMAGE?=thoth-station/s2i-minimal-f34-py39-notebook
-BASE_IMAGE?=thoth-station/s2i-minimal-py38-notebook
-BASE_STABLE_TAG?=:v0.3.0
+BASE_REG?=docker.io/
+BASE_IMAGE?=jupyter/minimal-notebook
+BASE_STABLE_TAG?=:2022-07-07
 BASE_TEST_TAG?=:latest
 
 PUB_REG?=quay.io/
@@ -77,9 +75,16 @@ base-default: ## start container with root shell to do admin and poke around
 
 base-nb: IMAGE=$(PUB_IMAGE)-base
 base-nb: ARGS?=
-base-nb: DARGS?=--user $(shell id -u)  -e JUPYTER_ENABLE_LAB=0  -v "${HOST_DIR}":"${MOUNT_DIR}" 
+base-nb: DARGS?=-e DOCKER_STACKS_JUPYTER_CMD=notebook -v "${HOST_DIR}":"${MOUNT_DIR}" 
 base-nb: PORT?=8080
 base-nb: ## start a jupyter classic notebook server container instance 
+	docker run -it --rm -p $(PORT):$(PORT) $(DARGS) $(PUB_REG)$(IMAGE)$(PUB_TAG) $(ARGS) 
+
+base-lab: IMAGE=$(PUB_IMAGE)-base
+base-lab: ARGS?=
+base-lab: DARGS?=-v "${HOST_DIR}":"${MOUNT_DIR}"
+base-lab: PORT?=8888
+base-lab: ## start a jupyter classic notebook server container instance 
 	docker run -it --rm -p $(PORT):$(PORT) $(DARGS) $(PUB_REG)$(IMAGE)$(PUB_TAG) $(ARGS) 
 
 

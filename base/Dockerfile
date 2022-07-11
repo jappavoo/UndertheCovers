@@ -7,88 +7,72 @@ ARG BASE_IMAGE
 ARG BASE_TAG
 FROM ${BASE_REG}${BASE_IMAGE}${BASE_TAG}
 
-LABEL name="s2i-odh-ope-base" \
-      version="latest" \
-      summary="Open Education Effort Customized Jupyter Notebook Source-to-Image for Python 3.9 applications." \
-      description="Notebook image based on Source-to-Image.These images can be used in OpenDatahub JupterHub." \
-      io.k8s.description="Notebook image based on Source-to-Image.These images can be used in OpenDatahub JupterHub." \
-      io.k8s.display-name="Custom Notebook Python 3.9 S2I" \
-      io.openshift.expose-services="8888:http" \
-      io.openshift.tags="python,python39" \
-      io.openshift.s2i.build.commit.ref="container" \
-      io.openshift.s2i.build.source-location="https://github.com/OPEFFORT/ope"
-ENV XDG_CACHE_HOME="/opt/app-root/src/.cache" \
-    THAMOS_RUNTIME_ENVIRONMENT="" \
-    UPGRADE_PIP_TO_LATEST="1" \
-    WEB_CONCURRENCY="1" \
-    THOTH_ADVISE="0" \
-    THOTH_ERROR_FALLBACK="1" \
-    THOTH_DRY_RUN="1" \
-    THAMOS_DEBUG="0" \
-    THAMOS_VERBOSE="1" \
-    THOTH_PROVENANCE_CHECK="0"
+# Add RUN statements to install packages as the $NB_USER defined in the base images.
 
+# Add a "USER root" statement followed by RUN statements to install system packages using apt-get,
+# change file permissions, etc.
+
+# install linux packages that we require for systems classes
 USER root
 
-# Add all build time work that we need to do as root here
-# 1) install linux packages that we need for OPE book development and course materials
-#    FIXME: Right now this is a mess of stuff that JA and OK need for systems classes in addition
-#    to the minimum needed for OPE juypter book authorimg
+RUN apt-get -y update --fix-missing && \
+    apt-get -y install build-essential \
+               texinfo \
+	       libncurses-dev \
+	       vim \
+	       ssh \
+	       emacs-nox \
+	       cc65 \
+	       bsdmainutils \
+	       file \
+	       man-db \
+	       manpages-posix \
+	       manpages-dev \
+	       manpages-posix-dev \
+	       findutils \
+	       less \
+	       bc \
+	       valgrind \
+	       libasan5 \
+	       libubsan1 \
+	       xterm \
+	       moria \
+	       acl \
+	       cmake \
+	       zip \
+	       ascii2binary \
+	       strace \
+               bison \
+	       flex \
+	       libssl-dev \
+	       libelf-dev \
+	       nasm \
+	       qemu-system-aarch64 \
+	       socat \
+	       rlwrap
 
-# minimal-notebook no longer inludes compiler and other tools we we install them
-# and some other standard unix develpment tools
-#  stuff for gdb texinfo libncurses 
-#  ssh
-#  vim 
-#  emacs
-#  6502 tool chain -- includes C compiler, assembler and a linker
-#  file utility -- guesses the type of content in a file -- standard unix tool
-#  man pages
-#  find
-#  we add xterm to pick up resize :-(
-#
-# build-essential
-#Unable to find a matchs for these in ubi8: texinfo emacs-nox cc65 man-pages xterm strace bison flex nasm rlwrap qemu-system-aarch64 libbsd
-RUN dnf -y upgrade && \
-    dnf -y install ncurses-devel vim  \
-    man-db  bc gdb cmake gcc-c++ \
-    openssh openssl-devel elfutils-libelf \
-    socat libgcc.i686 libedit-devel.i686 && \
-    dnf update --assumeyes --nobest --setopt=tsflags=nodocs && \
-    dnf --assumeyes clean all && \
-    rm -rf /var/cache/dnf
+RUN dpkg --add-architecture i386 && apt-get -y update && apt-get install -y lib32gcc-9-dev libedit-dev:i386
 
-#  adding moria for old time sake
-#  sed '36d' CMakeLists.txt -> Ref: https://github.com/dungeons-of-moria/umoria/issues/44
-RUN cd /tmp && wget https://github.com/dungeons-of-moria/umoria/archive/refs/tags/v5.7.15.tar.gz \
-    && tar -zxf v5.7.15.tar.gz && cd umoria-5.7.15 && sed -i '36d' CMakeLists.txt \
-    && cmake . && make \
-    && mv umoria /opt/umoria \
-    && ln -s /opt/umoria/umoria /opt/umoria/moria \
-    && cd /tmp && rm -rf v5.7.15 && rm v5.7.15.tar.gz
+# get and build gdb form source so that we have a current version >10 that support more advanced tui functionality 
+#RUN cd /tmp && wget http://ftp.gnu.org/gnu/gdb/gdb-10.2.tar.gz && tar -zxf gdb-10.2.tar.gz && cd gdb-10.2 && ./configure --prefix /usr/local --enable-tui=yes && make -j 4 && make install
+#RUN cd /tmp && rm -rf gdb-10.2 && rm gdb-10.2.tar.gz
 
-ENV PATH=$PATH:/opt/umoria
+COPY aarch64vm /home/aarch64vm
 
-# FIXME: This probably should go back to being a seperate image but to ease bootstrap
-# have merged this into the base image
-# Un-minimize the system -- aka add documentation and man pages back to the container
-# To ensure a more complete UNIX user experience
-# from http://docs.projectatomic.io/container-best-practices/
-RUN [ -e /etc/dnf/dnf.conf ] && sed -i '/tsflags=nodocs/d' /etc/dnf/dnf.conf || true
-RUN dnf -y reinstall "*"
+USER root
+RUN chown -R jovyan /home/aarch64vm
+RUN chgrp -R root /home/aarch64vm && chmod -R g+rX /home/aarch64vm && chmod g+w /home/aarch64vm && chmod g+w /home/aarch64vm/*
 
-### What Follows is the s2i standard stuff that we want to continue along with
+# turned off for the moment to minimize size
+# we want the container to feel more like a fully fledged system so we are pulling the trigger and unminimizing it
+#RUN yes | unminimize || true
 
-# clean up cache
-RUN rm -rf /var/cache/dnf
-# Copying in override assemble/run scripts
-COPY .s2i/bin /tmp/scripts
-# Copying in source code
-COPY . /tmp/src
+# jupyter-stack contains logic to run custom start hook scripts from
+# two locations -- /usr/local/bin/start-notebook.d and
+#                 /usr/local/bin/before-notebook.d
+# and scripts in these directoreis are run automatically
+# an opportunity to set things up based on dynamic facts such as user name
+COPY start-notebook.d /usr/local/bin/start-notebook.d
 
-# Change file ownership to the assemble user. Builder image must support chown command.
-RUN chown -R 1001:0 /tmp/scripts /tmp/src
-USER 1001
+USER $NB_USER
 
-RUN /tmp/scripts/assemble
-CMD /tmp/scripts/run
