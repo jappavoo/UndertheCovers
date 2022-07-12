@@ -1,3 +1,6 @@
+# packages in environment at /opt/conda:
+#
+# Name                    Version                   Build  Channel
 _libgcc_mutex             0.1                 conda_forge    conda-forge
 _openmp_mutex             4.5                       2_gnu    conda-forge
 alabaster                 0.7.12                     py_0    conda-forge
@@ -103,7 +106,6 @@ jupyterhub-base           2.3.1              pyhd8ed1ab_0    conda-forge
 jupyterlab                3.4.3              pyhd8ed1ab_0    conda-forge
 jupyterlab-markup         1.0.1              pyhd8ed1ab_0    conda-forge
 jupyterlab-myst           0.1.6              pyhd8ed1ab_0    conda-forge
-jupyterlab-spellchecker   0.7.2              pyhd8ed1ab_0    conda-forge
 jupyterlab_pygments       0.2.2              pyhd8ed1ab_0    conda-forge
 jupyterlab_server         2.15.0             pyhd8ed1ab_0    conda-forge
 jupyterlab_widgets        1.1.1              pyhd8ed1ab_0    conda-forge
@@ -318,4 +320,4 @@ yaml-cpp                  0.7.0                h27087fc_1    conda-forge
 zeromq                    4.3.4                h9c3ff4c_1    conda-forge
 zipp                      3.8.0              pyhd8ed1ab_0    conda-forge
 zlib                      1.2.12               h166bdaf_1    conda-forge
-zstd                      1.5.2                h8a7
+zstd                      1.5.2                h8a70e8d_2    conda-forge

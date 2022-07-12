@@ -1,5 +1,5 @@
 # this was seeded from https://github.com/umsi-mads/education-notebook/blob/master/Makefile
-.PHONEY: help base-build base-default base-root base-push base-lab base-nb clean
+.PHONEY: help base-build base-default base-root base-push base-lab base-nb base-python-versions clean
 .IGNORE: base-default base-root
 
 # We use this to choose between a jupyter or a gradescope build
@@ -79,11 +79,18 @@ help:
 # http://marmelab.com/blog/2016/02/29/auto-documented-makefile.html
 	@grep -E '^[a-zA-Z0-9_%/-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
 
-base/mamba.versons:
-	docker run docker run -it --rm $(DARGS) $(PUB_REG)$(IMAGE)$(PUB_TAG) mamba list > $@
 
-base/apt.versons:
-	docker run docker run -it --rm $(DARGS) $(PUB_REG)$(IMAGE)$(PUB_TAG) apt list > $@
+base-python-versions: ## gather version of python packages
+base-python-versions: base/mamba_versions.stable
+
+base/mamba_versions.stable: IMAGE=$(PUB_IMAGE)-base
+base/mamba_versions.stable: ARGS?=/bin/bash
+base/mamba_versions.stable: DARGS?=
+base/mamba_versions.stable:
+	docker run -it --rm $(DARGS) $(PUB_REG)$(IMAGE)$(PUB_TAG) mamba list | tr -d '\r' > $@
+
+base/apt.versions:
+	docker run -it --rm $(DARGS) $(PUB_REG)$(IMAGE)$(PUB_TAG) apt list > $@
 
 base/aarch64vm/README.md:
 	cd base && wget -O - ${ARCH64VMTGZ} | tar -zxf -

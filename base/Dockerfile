@@ -79,7 +79,7 @@ RUN if [[ -n "${GDB_BUILD_SRC}" ]] ; then \
       wget http://ftp.gnu.org/gnu/gdb/${GDB_BUILD_SRC}.tar.gz && \
       tar -zxf ${GDB_BUILD_SRC}.tar.gz && \
       cd ${GDB_BUILD_SRC} && \
-      ./configure --prefix /usr/local --enable-tui=yes --with-python && \
+      ./configure --prefix /usr/local --enable-tui=yes && \
       make -j 4 && make install && \
       cd /tmp && \
       rm -rf ${GDB_BUILD_SRC} && rm ${GDB_BUILD_SRC}.tar.gz ; \
