@@ -1,0 +1,9 @@
+#!/bin/bash
+
+VERSIONS=base/mamba_versions.stable
+
+echo $(while read pkg; do
+  grep "^${pkg}" $VERSIONS | while read pkg ver rest; do
+    echo "${pkg}=$ver"
+  done
+done)

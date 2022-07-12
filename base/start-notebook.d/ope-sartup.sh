@@ -1,6 +1,6 @@
 #!/bin/bash
 #set -x
-SN=bu-cs-book-dev-startup.sh
+SN=ope-startup.sh
 [[ -z $MOUNT_DIR ]] && export MOUNT_DIR=/opt/app-root/src
 
 # this script is designed to be run by the jupyter stack /usr/local/bin/start.sh
@@ -65,6 +65,10 @@ fi
 
 # force classic notebook interface
 echo "$SN: BEFORE:  DOCKER_STACKS_JUPYTER_CMD: ${cmd[@]}"
-export cmd=( jupyter notebook )
+if [[ ${cmd[1]} == "lab" ]] ; then
+    echo "$SN: overide lab to notebook"
+    cmd[1]=notebook
+fi
+
 echo "$SN: AFTER: DOCKER_STACKS_JUPYTER_CMD: ${cmd[@]}"
 echo "$0: END"
