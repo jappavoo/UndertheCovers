@@ -65,10 +65,10 @@ fi
 
 # force classic notebook interface
 echo "$SN: BEFORE:  DOCKER_STACKS_JUPYTER_CMD: ${cmd[@]}"
-if [[ ${cmd[1]} == "lab" ]] ; then
-    echo "$SN: overide lab to notebook"
-    cmd[1]=notebook
-fi
+#if [[ ${cmd[1]} == "lab" ]] ; then
+#    echo "$SN: overide lab to notebook"
+#    cmd[1]=notebook
+#fi
 
 echo "$SN: AFTER: DOCKER_STACKS_JUPYTER_CMD: ${cmd[@]}"
 echo "$0: END"

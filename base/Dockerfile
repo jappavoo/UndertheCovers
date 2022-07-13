@@ -85,22 +85,16 @@ RUN if [[ -n "${GDB_BUILD_SRC}" ]] ; then \
       rm -rf ${GDB_BUILD_SRC} && rm ${GDB_BUILD_SRC}.tar.gz ; \
     fi 
 
-COPY aarch64vm /home/aarch64vm
-RUN fix-permissions /home/aarch64vm
 
 USER root
 
 # we want the container to feel more like a fully fledged system so we are pulling the trigger and unminimizing it
 RUN [[ $UNMIN == "yes" ]] &&  yes | unminimize || true
 
-# jupyter-stack contains logic to run custom start hook scripts from
-# two locations -- /usr/local/bin/start-notebook.d and
-#                 /usr/local/bin/before-notebook.d
-# and scripts in these directoreis are run automatically
-# an opportunity to set things up based on dynamic facts such as user name
-COPY start-notebook.d /usr/local/bin/start-notebook.d
 
-USER $NB_USER
+# Add ARM development environtment
+COPY aarch64vm /home/aarch64vm
+RUN fix-permissions /home/aarch64vm
 
 # final bits of cleanup 
 RUN touch /home/${NB_USER}/.hushlogin && \
@@ -111,4 +105,37 @@ RUN touch /home/${NB_USER}/.hushlogin && \
 # finally remove default working directory from joyvan home
     rmdir /home/${NB_USER}/work && \
     fix-permissions "/home/${NB_USER}"
+
+# Static Customize for OPE USER ID choices
+# To avoid problems with start.sh logic we do not modify user name
+# FIXME: Add support for swinging home directory if you want to point to a mounted volume
+ARG DEFAULT_NB_UID=${NB_UID}
+ARG OPE_UID
+ARG CHOWN_HOME=yes
+ARG CHOWN_HOME_OPTS="-R"
+ARG CHOWN_EXTRA_OPTS='-R'
+ARG CHOWN_EXTRA="/home/aarch64vm ${CONDA_DIR}"
+ENV OPE_UID=${OPE_UID}
+
+ARG NB_UID=${OPE_UID}
+ENV NB_UID=${NB_UID}
+
+# # use built in startup script to setup new user home
+RUN /usr/local/bin/start.sh true; \
+    echo "hardcoding $NB_USER shell to /bin/bash" ; \
+    usermod -s /bin/bash $NB_USER ; \
+    [[ -w /etc/passwd ]] && echo "Removing write access to /etc/passwd" && chmod go-w /etc/passwd
+
+# Done customization
+
+# jupyter-stack contains logic to run custom start hook scripts from
+# two locations -- /usr/local/bin/start-notebook.d and
+#                 /usr/local/bin/before-notebook.d
+# and scripts in these directoreis are run automatically
+# an opportunity to set things up based on dynamic facts such as user name
+COPY start-notebook.d /usr/local/bin/start-notebook.d
+
+USER $NB_USER
+
+
 

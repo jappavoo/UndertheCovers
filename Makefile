@@ -1,9 +1,12 @@
 # this was seeded from https://github.com/umsi-mads/education-notebook/blob/master/Makefile
-.PHONEY: help base-build base-default base-root base-push base-lab base-nb base-python-versions clean
-.IGNORE: base-default base-root
+.PHONEY: help base-build base-ope base-root base-push base-lab base-nb base-python-versions clean
+.IGNORE: base-ope base-root
 
 # We use this to choose between a jupyter or a gradescope build
 BASE?=jupyter
+
+# USER id
+OPE_UID?=$(shell cat base/ope_uid)
 
 # we use this to choose between a build from the blessed known stable version or a test version
 VERSION?=stable
@@ -13,11 +16,11 @@ BASE_IMAGE?=jupyter/minimal-notebook
 BASE_STABLE_TAG?=:2022-07-07
 BASE_TEST_TAG?=:latest
 
+PUB_USER=${USER}
 PUB_REG?=quay.io/
-PUB_IMAGE=jappavoo/bu-cs-book-dev
-PUB_STABLE_TAG=:ope_stable
-PUB_TEST_TAG=:ope_test
-
+PUB_IMAGE=$(PUB_USER)/ope
+PUB_STABLE_TAG=:stable
+PUB_TEST_TAG=:test
 
 # Linux distro packages to install
 # FIXME: JA add documetation explaining why we need each package
@@ -100,6 +103,7 @@ base-build: IMAGE=$(PUB_IMAGE)-base
 base-build: DARGS?=--build-arg FROM_REG=$(BASE_REG) \
                    --build-arg FROM_IMAGE=$(BASE_IMAGE) \
                    --build-arg FROM_TAG=$(BASE_TAG) \
+                   --build-arg OPE_UID=$(OPE_UID) \
                    --build-arg ADDITIONAL_DISTRO_PACKAGES="$(BASE_DISTRO_PACKAGES)" \
                    --build-arg PYTHON_PREREQ_VERSIONS="$(PYTHON_PREREQ_VERSIONS)" \
                    --build-arg PYTHON_INSTALL_PACKAGES="$(PYTHON_INSTALL_PACKAGES)" \
@@ -120,10 +124,10 @@ base-root: DARGS?=-u 0
 base-root: ## start container with root shell to do admin and poke around
 	docker run -it --rm $(DARGS) $(PUB_REG)$(IMAGE)$(PUB_TAG) $(ARGS)
 
-base-default: IMAGE=$(PUB_IMAGE)-base
-base-default: ARGS?=/bin/bash
-base-default: DARGS?=
-base-default: ## start container with root shell to do admin and poke around
+base-ope: IMAGE=$(PUB_IMAGE)-base
+base-ope: ARGS?=/bin/bash
+base-ope: DARGS?=
+base-ope: ## start container with root shell to do admin and poke around
 	docker run -it --rm $(DARGS) $(PUB_REG)$(IMAGE)$(PUB_TAG) $(ARGS)
 
 base-nb: IMAGE=$(PUB_IMAGE)-base
@@ -135,7 +139,7 @@ base-nb: ## start a jupyter classic notebook server container instance
 
 base-lab: IMAGE=$(PUB_IMAGE)-base
 base-lab: ARGS?=
-base-lab: DARGS?=-v "${HOST_DIR}":"${MOUNT_DIR}"
+base-lab: DARGS?=-u $(OPE_UID) -v "${HOST_DIR}":"${MOUNT_DIR}"
 base-lab: PORT?=8888
 base-lab: ## start a jupyter classic notebook server container instance 
 	docker run -it --rm -p $(PORT):$(PORT) $(DARGS) $(PUB_REG)$(IMAGE)$(PUB_TAG) $(ARGS) 
