@@ -65,13 +65,6 @@ fi
 
 # force classic notebook interface when run from start-singleuser.sh (aka we are on jupyter hub)
 export JUPYTERHUB_SINGLEUSER_APP='notebook.notebookapp.NotebookApp'
-echo "$SN: forced  JUPYTERHUB_SINGLEUSER_APP=$JUPYTERHUB_SINGLEUSER_APP"
+echo "$SN: forced notebook interface on JupyterHub:  JUPYTERHUB_SINGLEUSER_APP=$JUPYTERHUB_SINGLEUSER_APP"
 
-echo "$SN: BEFORE:  DOCKER_STACKS_JUPYTER_CMD: ${cmd[@]}"
-#if [[ ${cmd[1]} == "lab" ]] ; then
-#    echo "$SN: overide lab to notebook"
-#    cmd[1]=notebook
-#fi
-
-echo "$SN: AFTER: DOCKER_STACKS_JUPYTER_CMD: ${cmd[@]}"
 echo "$0: END"

@@ -166,7 +166,7 @@ nb: IMAGE?=$(PUBLIC_IMAGE)
 nb: REG?=$(PUBLIC_REG)
 nb: TAG?=$(PUBLIC_TAG)
 nb: ARGS?=
-nb: DARGS?=-e DOCKER_STACKS_JUPYTER_CMD=notebook -v "${HOST_DIR}":"${MOUNT_DIR}" 
+nb: DARGS?=-e DOCKER_STACKS_JUPYTER_CMD=notebook -v "${HOST_DIR}":"${MOUNT_DIR}" -e SSH_AUTH_SOCK=${SSH_AUTH_SOCK} -p ${SSH_PORT}:22
 nb: PORT?=8888
 nb: ## start published version with jupyter classic notebook interface
 	docker run -it --rm -p $(PORT):$(PORT) $(DARGS) $(REG)$(IMAGE)$(TAG) $(ARGS) 
@@ -175,7 +175,7 @@ lab: IMAGE?=$(PUBLIC_IMAGE)
 lab: REG?=$(PUBLIC_REG)
 lab: TAG?=$(PUBLIC_TAG)
 lab: ARGS?=
-lab: DARGS?=-u $(OPE_UID) -v "${HOST_DIR}":"${MOUNT_DIR}"
+lab: DARGS?=-u $(OPE_UID) -v "${HOST_DIR}":"${MOUNT_DIR}" -v "${SSH_AUTH_SOCK}":"${SSH_AUTH_SOCK}" -e SSH_AUTH_SOCK=${SSH_AUTH_SOCK} -p ${SSH_PORT}:22
 lab: PORT?=8888
 lab: ## start published version with jupyter lab interface
 	docker run -it --rm -p $(PORT):$(PORT) $(DARGS) $(REG)$(IMAGE)$(TAG) $(ARGS) 
