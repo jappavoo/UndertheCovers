@@ -5,22 +5,22 @@
 # We use this to choose between a jupyter or a gradescope build
 BASE?=jupyter
 
-OPE_BOOK=$(shell cat base/ope_book)
+OPE_BOOK?=$(shell cat base/ope_book)
 # USER id
 OPE_UID?=$(shell cat base/ope_uid)
 
 # we use this to choose between a build from the blessed known stable version or a test version
 VERSION?=stable
 
-BASE_REG?=docker.io/
-BASE_IMAGE?=jupyter/minimal-notebook
-BASE_STABLE_TAG?=:2022-07-07
+BASE_REG?=$(shell cat base/base_registry)/
+BASE_IMAGE?=$(shell cat base/base_image)
+BASE_STABLE_TAG?=$(shell cat base/base_tag)
 BASE_TEST_TAG?=:latest
 
 DATE_TAG=$(shell date +"%m.%d.%y_%H.%M.%S")
 
-PRIVATE_USER?=${USER}
-PRIVATE_REG?=quay.io/
+PRIVATE_USER?=$(shell if  [[ -a base/private_user ]]; then cat base/private_user; else echo ${USER}; fi)
+PRIVATE_REG?=$(shell cat base/private_registry)/
 PRIVATE_IMAGE?=$(PRIVATE_USER)/$(OPE_BOOK)
 PRIVATE_STABLE_TAG?=:stable
 PRIVATE_TEST_TAG?=:test
@@ -31,21 +31,10 @@ PUBLIC_IMAGE?=$(PUBLIC_USER)/$(OPE_BOOK)
 PUBLIC_STABLE_TAG?=:stable
 PUBLIC_TEST_TAG?=:test
 
-# Linux distro packages to install
-# FIXME: JA add documetation explaining why we need each package
-#  libgmp-dev    : for build of gdb
-#  libexpat1-dev : for build of gdb
-#  lib32gcc-9-dev : permit 32 bit development (eg datalab)
-#  libedit-dev:i386 : permit 32 bit development
-#  cm-super : for latex labels (copied from scipy jupyter docker stacks)
-#  dvipng : for latex labels (copied from scipy jupyter docker stacks)
-#  ffmpeg :  for matplotlib anim
-
 BASE_DISTRO_PACKAGES = $(shell cat base/distro_pkgs)
 
 PYTHON_PREREQ_VERSIONS_STABLE =  $(shell cat base/python_prereqs | base/mkversions)
 PYTHON_INSTALL_PACKAGES_STABLE = $(shell cat base/python_pkgs | base/mkversions)
-
 
 PYTHON_PREREQ_VERSIONS_TEST = 
 PYTHON_INSTALL_PACKAGES_TEST = $(shell cat base/python_pkgs)
