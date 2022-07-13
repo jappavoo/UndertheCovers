@@ -1,10 +1,11 @@
 # this was seeded from https://github.com/umsi-mads/education-notebook/blob/master/Makefile
-.PHONEY: help base-build base-ope base-root base-push base-lab base-nb base-python-versions clean
-.IGNORE: base-ope base-root
+.PHONEY: help build ope root push publish lab nb python-versions clean
+.IGNORE: ope root
 
 # We use this to choose between a jupyter or a gradescope build
 BASE?=jupyter
 
+OPE_BOOK=$(shell cat base/ope_book)
 # USER id
 OPE_UID?=$(shell cat base/ope_uid)
 
@@ -16,11 +17,19 @@ BASE_IMAGE?=jupyter/minimal-notebook
 BASE_STABLE_TAG?=:2022-07-07
 BASE_TEST_TAG?=:latest
 
-PUB_USER=${USER}
-PUB_REG?=quay.io/
-PUB_IMAGE=$(PUB_USER)/ope
-PUB_STABLE_TAG=:stable
-PUB_TEST_TAG=:test
+DATE_TAG=$(shell date +"%m.%d.%y_%H.%M.%S")
+
+PRIVATE_USER?=${USER}
+PRIVATE_REG?=quay.io/
+PRIVATE_IMAGE?=$(PRIVATE_USER)/$(OPE_BOOK)
+PRIVATE_STABLE_TAG?=:stable
+PRIVATE_TEST_TAG?=:test
+
+PUBLIC_USER?=$(shell cat base/ope_book_user)
+PUBLIC_REG?=$(shell cat base/ope_book_registry)/
+PUBLIC_IMAGE?=$(PUBLIC_USER)/$(OPE_BOOK)
+PUBLIC_STABLE_TAG?=:stable
+PUBLIC_TEST_TAG?=:test
 
 # Linux distro packages to install
 # FIXME: JA add documetation explaining why we need each package
@@ -63,12 +72,14 @@ HOST_DIR=${HOME}
 ifeq ($(BASE),jupyter)
   ifeq ($(VERSION),stable)
     BASE_TAG=$(BASE_STABLE_TAG)
-    PUB_TAG=$(PUB_STABLE_TAG)
+    PRIVATE_TAG=$(PRIVATE_STABLE_TAG)
+    PUBLIC_TAG=$(PUBLIC_STABLE_TAG)
     PYTHON_PREREQ_VERSIONS=$(PYTHON_PREREQ_VERSIONS_STABLE)
     PYTHON_INSTALL_PACKAGES=$(PYTHON_INSTALL_PACKAGES_STABLE)
   else
     BASE_TAG=$(BASE_TEST_TAG)
-    PUB_TAG=$(PUB_TEST_TAG)
+    PRIVATE_TAG=$(PRIVATE_TEST_TAG)
+    PUBLIC_TAG=$(PUBLIC_TEST_TAG)
     PYTHON_PREREQ_VERSIONS=$(PYTHON_PREREQ_VERSIONS_TEST)
     PYTHON_INSTALL_PACKAGES=$(PYTHON_INSTALL_PACKAGES_TEST)
   endif
@@ -86,21 +97,21 @@ help:
 base-python-versions: ## gather version of python packages
 base-python-versions: base/mamba_versions.stable
 
-base/mamba_versions.stable: IMAGE=$(PUB_IMAGE)-base
+base/mamba_versions.stable: IMAGE=$(PRIVATE_IMAGE)
 base/mamba_versions.stable: ARGS?=/bin/bash
 base/mamba_versions.stable: DARGS?=
 base/mamba_versions.stable:
-	docker run -it --rm $(DARGS) $(PUB_REG)$(IMAGE)$(PUB_TAG) mamba list | tr -d '\r' > $@
+	docker run -it --rm $(DARGS) $(PRIVATE_REG)$(IMAGE)$(PRIVATE_TAG) mamba list | tr -d '\r' > $@
 
 base/apt.versions:
-	docker run -it --rm $(DARGS) $(PUB_REG)$(IMAGE)$(PUB_TAG) apt list > $@
+	docker run -it --rm $(DARGS) $(PRIVATE_REG)$(IMAGE)$(PRIVATE_TAG) apt list > $@
 
 base/aarch64vm/README.md:
 	cd base && wget -O - ${ARCH64VMTGZ} | tar -zxf -
 
-base-build: base/aarch64vm/README.md
-base-build: IMAGE=$(PUB_IMAGE)-base
-base-build: DARGS?=--build-arg FROM_REG=$(BASE_REG) \
+build: base/aarch64vm/README.md
+build: IMAGE=$(PRIVATE_IMAGE)
+build: DARGS?=--build-arg FROM_REG=$(BASE_REG) \
                    --build-arg FROM_IMAGE=$(BASE_IMAGE) \
                    --build-arg FROM_TAG=$(BASE_TAG) \
                    --build-arg OPE_UID=$(OPE_UID) \
@@ -110,38 +121,55 @@ base-build: DARGS?=--build-arg FROM_REG=$(BASE_REG) \
                    --build-arg JUPYTER_ENABLE_EXTENSIONS="$(JUPYTER_ENABLE_EXTENSIONS)" \
                    --build-arg GDB_BUILD_SRC=$(GDB_BUILD_SRC) \
                    --build-arg UNMIN=$(UNMIN)
-base-build: ## Make the base image
-	-docker build $(DARGS) $(DCACHING) --rm --force-rm -t $(PUB_REG)$(IMAGE)$(PUB_TAG) base
+build: ## Make the image customized appropriately
+	-docker build $(DARGS) $(DCACHING) --rm --force-rm -t $(PRIVATE_REG)$(IMAGE)$(PRIVATE_TAG) base
 
-base-push: IMAGE=$(PUB_IMAGE)-base
-base-push: DARGS?=
-base-push: ## push base image
-	docker push $(PUB_REG)$(IMAGE)$(PUB_TAG)
+push: IMAGE=$(PRIVATE_IMAGE)
+push: DARGS?=
+push: ## push private build
+# make dated version
+	docker tag $(PRIVATE_REG)$(IMAGE)$(PRIVATE_TAG) $(PRIVATE_REG)$(IMAGE)$(PRIVATE_TAG)_$(DATE_TAG)
+# push to private image repo
+	docker push $(PRIVATE_REG)$(IMAGE)$(PRIVATE_TAG)_$(DATE_TAG)
+# push to update tip to current version
+	docker push $(PRIVATE_REG)$(IMAGE)$(PRIVATE_TAG)
 
-base-root: IMAGE=$(PUB_IMAGE)-base
-base-root: ARGS?=/bin/bash
-base-root: DARGS?=-u 0
-base-root: ## start container with root shell to do admin and poke around
-	docker run -it --rm $(DARGS) $(PUB_REG)$(IMAGE)$(PUB_TAG) $(ARGS)
+publish: IMAGE=$(PUBLIC_IMAGE)
+publish: DARGS?=
+publish: ## publish current private build to public version
+# make dated version
+	docker tag $(PRIVATE_REG)$(PRIVATE_IMAGE)$(PRIVATE_TAG) $(PUBLIC_REG)$(IMAGE)$(PUBLIC_TAG)_$(DATE_TAG)
+# push to private image repo
+	docker push $(PUBLIC_REG)$(IMAGE)$(PUBLIC_TAG)_$(DATE_TAG)
+# copy to tip version
+	docker tag $(PUBLIC_REG)$(IMAGE)$(PUBLIC_TAG)_$(DATE_TAG) $(PUBLIC_REG)$(IMAGE)$(PUBLIC_TAG)
+# push to update tip to current version
+	docker push $(PUBLIC_REG)$(IMAGE)$(PUBLIC_TAG)
 
-base-ope: IMAGE=$(PUB_IMAGE)-base
-base-ope: ARGS?=/bin/bash
-base-ope: DARGS?=
-base-ope: ## start container with root shell to do admin and poke around
-	docker run -it --rm $(DARGS) $(PUB_REG)$(IMAGE)$(PUB_TAG) $(ARGS)
+root: IMAGE=$(PRIVATE_IMAGE)
+root: ARGS?=/bin/bash
+root: DARGS?=-u 0
+root: ## start container with root shell to do admin and poke around
+	docker run -it --rm $(DARGS) $(PRIVATE_REG)$(IMAGE)$(PRIVATE_TAG) $(ARGS)
 
-base-nb: IMAGE=$(PUB_IMAGE)-base
-base-nb: ARGS?=
-base-nb: DARGS?=-e DOCKER_STACKS_JUPYTER_CMD=notebook -v "${HOST_DIR}":"${MOUNT_DIR}" 
-base-nb: PORT?=8888
-base-nb: ## start a jupyter classic notebook server container instance 
-	docker run -it --rm -p $(PORT):$(PORT) $(DARGS) $(PUB_REG)$(IMAGE)$(PUB_TAG) $(ARGS) 
+ope: IMAGE=$(PRIVATE_IMAGE)
+ope: ARGS?=/bin/bash
+ope: DARGS?=
+ope: ## start container with root shell to do admin and poke around
+	docker run -it --rm $(DARGS) $(PRIVATE_REG)$(IMAGE)$(PRIVATE_TAG) $(ARGS)
 
-base-lab: IMAGE=$(PUB_IMAGE)-base
-base-lab: ARGS?=
-base-lab: DARGS?=-u $(OPE_UID) -v "${HOST_DIR}":"${MOUNT_DIR}"
-base-lab: PORT?=8888
-base-lab: ## start a jupyter classic notebook server container instance 
-	docker run -it --rm -p $(PORT):$(PORT) $(DARGS) $(PUB_REG)$(IMAGE)$(PUB_TAG) $(ARGS) 
+nb: IMAGE=$(PRIVATE_IMAGE)
+nb: ARGS?=
+nb: DARGS?=-e DOCKER_STACKS_JUPYTER_CMD=notebook -v "${HOST_DIR}":"${MOUNT_DIR}" 
+nb: PORT?=8888
+nb: ## start a jupyter classic notebook server container instance 
+	docker run -it --rm -p $(PORT):$(PORT) $(DARGS) $(PRIVATE_REG)$(IMAGE)$(PRIVATE_TAG) $(ARGS) 
+
+lab: IMAGE=$(PRIVATE_IMAGE)
+lab: ARGS?=
+lab: DARGS?=-u $(OPE_UID) -v "${HOST_DIR}":"${MOUNT_DIR}"
+lab: PORT?=8888
+lab: ## start a jupyter classic notebook server container instance 
+	docker run -it --rm -p $(PORT):$(PORT) $(DARGS) $(PRIVATE_REG)$(IMAGE)$(PRIVATE_TAG) $(ARGS) 
 
 

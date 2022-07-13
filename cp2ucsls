@@ -1,0 +1,12 @@
+#!/bin/bash
+set -x
+
+# copy public ope stable to bu-cs-book-dev for uc-sls
+builtimage=quay.io/opeffort/ope_book:stable
+ucslsimage=quay.io/jappavoo/bu-cs-book-dev
+ts=$(date +"%m.%d.%y_%H.%M.%S")
+
+docker tag ${builtimage} ${ucslsimage}:ope_stable_${ts}
+docker push ${ucslsimage}:ope_stable_${ts}
+docker tag ${ucslsimage}:ope_stable_${ts}  ${ucslsimage}:latest
+docker push ${ucslsimage}:latest
