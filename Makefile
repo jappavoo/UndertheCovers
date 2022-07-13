@@ -136,7 +136,7 @@ push: ## push private build
 
 publish: IMAGE=$(PUBLIC_IMAGE)
 publish: DARGS?=
-publish: ## publish current private build to public version
+publish: ## publish current private build to public published version
 # make dated version
 	docker tag $(PRIVATE_REG)$(PRIVATE_IMAGE)$(PRIVATE_TAG) $(PUBLIC_REG)$(IMAGE)$(PUBLIC_TAG)_$(DATE_TAG)
 # push to private image repo
@@ -146,30 +146,38 @@ publish: ## publish current private build to public version
 # push to update tip to current version
 	docker push $(PUBLIC_REG)$(IMAGE)$(PUBLIC_TAG)
 
-root: IMAGE=$(PRIVATE_IMAGE)
+root: IMAGE?=$(PRIVATE_IMAGE)
+root: REG?=$(PRIVATE_REG)
+root: TAG?=$(PRIVATE_TAG)
 root: ARGS?=/bin/bash
 root: DARGS?=-u 0
-root: ## start container with root shell to do admin and poke around
-	docker run -it --rm $(DARGS) $(PRIVATE_REG)$(IMAGE)$(PRIVATE_TAG) $(ARGS)
+root: ## start private version  with root shell to do admin and poke around
+	docker run -it --rm $(DARGS) $(REG)$(IMAGE)$(TAG) $(ARGS)
 
-ope: IMAGE=$(PRIVATE_IMAGE)
+ope: IMAGE?=$(PRIVATE_IMAGE)
+ope: REG?=$(PRIVATE_REG)
+ope: TAG?=$(PRIVATE_TAG)
 ope: ARGS?=/bin/bash
 ope: DARGS?=
-ope: ## start container with root shell to do admin and poke around
-	docker run -it --rm $(DARGS) $(PRIVATE_REG)$(IMAGE)$(PRIVATE_TAG) $(ARGS)
+ope: ## start privae version with root shell to do admin and poke around
+	docker run -it --rm $(DARGS) $(REG)$(IMAGE)$(TAG) $(ARGS)
 
-nb: IMAGE=$(PRIVATE_IMAGE)
+nb: IMAGE?=$(PUBLIC_IMAGE)
+nb: REG?=$(PUBLIC_REG)
+nb: TAG?=$(PUBLIC_TAG)
 nb: ARGS?=
 nb: DARGS?=-e DOCKER_STACKS_JUPYTER_CMD=notebook -v "${HOST_DIR}":"${MOUNT_DIR}" 
 nb: PORT?=8888
-nb: ## start a jupyter classic notebook server container instance 
-	docker run -it --rm -p $(PORT):$(PORT) $(DARGS) $(PRIVATE_REG)$(IMAGE)$(PRIVATE_TAG) $(ARGS) 
+nb: ## start published version with jupyter classic notebook interface
+	docker run -it --rm -p $(PORT):$(PORT) $(DARGS) $(REG)$(IMAGE)$(TAG) $(ARGS) 
 
-lab: IMAGE=$(PRIVATE_IMAGE)
+lab: IMAGE?=$(PUBLIC_IMAGE)
+lab: REG?=$(PUBLIC_REG)
+lab: TAG?=$(PUBLIC_TAG)
 lab: ARGS?=
 lab: DARGS?=-u $(OPE_UID) -v "${HOST_DIR}":"${MOUNT_DIR}"
 lab: PORT?=8888
-lab: ## start a jupyter classic notebook server container instance 
-	docker run -it --rm -p $(PORT):$(PORT) $(DARGS) $(PRIVATE_REG)$(IMAGE)$(PRIVATE_TAG) $(ARGS) 
+lab: ## start published version with jupyter lab interface
+	docker run -it --rm -p $(PORT):$(PORT) $(DARGS) $(REG)$(IMAGE)$(TAG) $(ARGS) 
 
 
