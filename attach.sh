@@ -11,4 +11,4 @@ fi
 
 docker ps 
 read -p "Enter Container id: " id
-docker exec -u $(uid) -it $id /bin/bash
+docker exec -u ${uid} -it $id /bin/bash
