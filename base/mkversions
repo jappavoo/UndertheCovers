@@ -3,7 +3,12 @@
 VERSIONS=base/mamba_versions.stable
 
 echo $(while read pkg; do
-  grep "^${pkg}" $VERSIONS | while read pkg ver rest; do
-    echo "${pkg}=$ver"
-  done
+   info=$(grep "^${pkg}" $VERSIONS)
+   if [[ -n $info ]]; then	   
+     echo "$info" | while read pkg ver rest; do
+       echo "${pkg}=$ver"
+     done
+   else
+       echo "${pkg}"
+   fi
 done)
