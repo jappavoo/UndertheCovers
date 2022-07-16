@@ -83,8 +83,8 @@ help:
 	@grep -E '^[a-zA-Z0-9_%/-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
 
 
-base-python-versions: ## gather version of python packages
-base-python-versions: base/mamba_versions.stable
+python-versions: ## gather version of python packages
+python-versions: base/mamba_versions.stable
 
 base/mamba_versions.stable: IMAGE=$(PRIVATE_IMAGE)
 base/mamba_versions.stable: ARGS?=/bin/bash
@@ -111,7 +111,9 @@ build: DARGS?=--build-arg FROM_REG=$(BASE_REG) \
                    --build-arg GDB_BUILD_SRC=$(GDB_BUILD_SRC) \
                    --build-arg UNMIN=$(UNMIN)
 build: ## Make the image customized appropriately
-	-docker build $(DARGS) $(DCACHING) --rm --force-rm -t $(PRIVATE_REG)$(IMAGE)$(PRIVATE_TAG) base
+	docker build $(DARGS) $(DCACHING) --rm --force-rm -t $(PRIVATE_REG)$(IMAGE)$(PRIVATE_TAG) base
+	rm base/mamba_versions.stable
+	make base/mamba_versions.stable
 
 push: IMAGE=$(PRIVATE_IMAGE)
 push: DARGS?=
@@ -141,7 +143,7 @@ root: TAG?=$(PRIVATE_TAG)
 root: ARGS?=/bin/bash
 root: DARGS?=-u 0
 root: ## start private version  with root shell to do admin and poke around
-	docker run -it --rm $(DARGS) $(REG)$(IMAGE)$(TAG) $(ARGS)
+	-docker run -it --rm $(DARGS) $(REG)$(IMAGE)$(TAG) $(ARGS)
 
 ope: IMAGE?=$(PRIVATE_IMAGE)
 ope: REG?=$(PRIVATE_REG)
@@ -149,7 +151,7 @@ ope: TAG?=$(PRIVATE_TAG)
 ope: ARGS?=/bin/bash
 ope: DARGS?=
 ope: ## start privae version with root shell to do admin and poke around
-	docker run -it --rm $(DARGS) $(REG)$(IMAGE)$(TAG) $(ARGS)
+	-docker run -it --rm $(DARGS) $(REG)$(IMAGE)$(TAG) $(ARGS)
 
 nb: IMAGE?=$(PUBLIC_IMAGE)
 nb: REG?=$(PUBLIC_REG)

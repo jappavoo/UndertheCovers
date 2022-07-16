@@ -17,6 +17,8 @@ babel                     2.10.3             pyhd8ed1ab_0    conda-forge
 backcall                  0.2.0              pyh9f0ad1d_0    conda-forge
 backports                 1.0                        py_2    conda-forge
 backports.functools_lru_cache 1.6.4              pyhd8ed1ab_0    conda-forge
+bash                      5.1.16               hd863ed2_0    conda-forge
+bash_kernel               0.7.2           py310hff52083_4    conda-forge
 beautifulsoup4            4.11.1             pyha770c72_0    conda-forge
 bleach                    5.0.1              pyhd8ed1ab_0    conda-forge
 blinker                   1.4                        py_1    conda-forge
@@ -106,6 +108,7 @@ jupyterhub-base           2.3.1              pyhd8ed1ab_0    conda-forge
 jupyterlab                3.4.3              pyhd8ed1ab_0    conda-forge
 jupyterlab-markup         1.0.1              pyhd8ed1ab_0    conda-forge
 jupyterlab-myst           0.1.6              pyhd8ed1ab_0    conda-forge
+jupyterlab-spellchecker   0.7.2              pyhd8ed1ab_0    conda-forge
 jupyterlab_pygments       0.2.2              pyhd8ed1ab_0    conda-forge
 jupyterlab_server         2.15.0             pyhd8ed1ab_0    conda-forge
 jupyterlab_widgets        1.1.1              pyhd8ed1ab_0    conda-forge
