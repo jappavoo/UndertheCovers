@@ -665,6 +665,10 @@ def renderTtySessionOutput(output, height='100%', width='', outputlayout={'borde
         print(text,end='')
     return out
 
+def bashSessionSendEOF(session):
+    master = session['master']
+    os.write(master, b'\x04')
+    
 def bashSessionRawWrite(data, session,  
                         batchsize=1, 
                         interbatchdelayms=140, 
@@ -703,7 +707,7 @@ def bashSessionRawWrite(data, session,
             break;
             
         # write data aslong as there is data to write   
-        if e<n and len(write_fds): 
+        if e<=n and len(write_fds): 
             s = e
             e = s + batchsize
             if (e>n):
@@ -720,7 +724,8 @@ def bashSessionRawWrite(data, session,
                     time.sleep(delaysec)
                     # print("EOF: zero lenght write")
                     #os.write(master, b'')
-                    os.write(master, b'\x04')
+                    bashSessionSendEOF(session)
+                e = n + 1   
                     
         # read data if there is any to read, if we find a prompt assume we are done
         if len(read_fds):
@@ -748,7 +753,7 @@ def bashSessionRawWrite(data, session,
         #print(output)
         session['output'] = session['output'] + output
         
-    output = b'$ ' + output
+    # output = b'$ ' + output
     return output,session
     
 #def cleanTermBytes(bytes):    
@@ -869,19 +874,28 @@ class BashSession:
     def runNoOutput(self, cmds, **kwargs):
         _, self.session = bashSessionCmds(cmds, session=self.session, close=False, **kwargs)
     
+    def runAllOutput(self, cmds, **kwargs):
+        self.runNoOutput(cmds, **kwargs)
+        return self.output(**kwargs)
+    
     def rawWrite(self, data, **kwargs):
         text, self.session = bashSessionRawWrite(data, session=self.session, **kwargs)
         return renderTtySessionOutput(text, **kwargs)
     
     def rawWriteNoOutput(self, data, **kwargs):
-        _, self.session = bashSessionCmds(cmds, session=self.session, close=False, **kwargs)
+        _, self.session = bashSessionRawWrite(data, session=self.session, **kwargs)
     
+    def rawWriteAllOutput(self, data, **kwargs):
+        self.rawWriteNoOutput(data, **kwargs)
+        return self.output(**kwargs)
+    
+    def sendEOF(self):
+        bashSessionSendEOF(self.session)
+            
     def output(self, **kwargs):
         return renderTtySessionOutput(self.session, **kwargs)
 
-    def runAllOutput(self, cmds, **kwargs):
-        self.runNoOutput(cmds, **kwargs)
-        return self.output(**kwargs)
+  
         
     def getPid(self):
         return self.session['process'].pid
