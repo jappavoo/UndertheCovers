@@ -738,7 +738,7 @@ def bashSessionRawWrite(data, session,
             if len(rdata)>0:
                 output += rdata
                 rn = len(output)
-                if stoponprompt and rn>2 and output[rn-2] == 36 and output[rn-1] == 32:
+                if stoponprompt and rn>=2 and output[rn-2] == 36 and output[rn-1] == 32:
                     # print("prompt received")
                     break
                     
@@ -802,7 +802,7 @@ def bashSessionCmds(cmds, cwd=os.getcwd(), bufsize=4096, wait=True, rows=20, col
                 output += data
                 n = len(output)
                 # print("output:", output, "n:", n, "output[n-2]:", output[n-2]," output[n-1]:", output[n-1])
-                if n>2 and output[n-2] == 36 and output[n-1] == 32:
+                if n>=2 and output[n-2] == 36 and output[n-1] == 32:
                     # print("prompt received")
                     if i == numcmds and initdone == 2:
                         break
