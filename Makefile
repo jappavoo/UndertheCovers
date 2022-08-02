@@ -41,6 +41,7 @@ PYTHON_PREREQ_VERSIONS_TEST :=
 PYTHON_INSTALL_PACKAGES_TEST := $(shell cat base/python_pkgs)
 
 JUPYTER_ENABLE_EXTENSIONS := $(shell cat base/jupyter_enable_exts)
+JUPYTER_DISABLE_EXTENSIONS := $(shell if  [[ -a base/jupyter_disable_exts  ]]; then cat base/jupyter_disable_exts; fi) 
 
 # build gdb from source to ensure we get the right version and build with tui support
 GDB_BUILD_SRC := gdb-12.1
@@ -109,6 +110,7 @@ build: DARGS ?= --build-arg FROM_REG=$(BASE_REG) \
                    --build-arg PYTHON_PREREQ_VERSIONS="$(PYTHON_PREREQ_VERSIONS)" \
                    --build-arg PYTHON_INSTALL_PACKAGES="$(PYTHON_INSTALL_PACKAGES)" \
                    --build-arg JUPYTER_ENABLE_EXTENSIONS="$(JUPYTER_ENABLE_EXTENSIONS)" \
+                   --build-arg JUPYTER_DISABLE_EXTENSIONS="$(JUPYTER_DISABLE_EXTENSIONS)" \
                    --build-arg GDB_BUILD_SRC=$(GDB_BUILD_SRC) \
                    --build-arg UNMIN=$(UNMIN)
 build: ## Make the image customized appropriately

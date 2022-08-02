@@ -1,0 +1,9 @@
+{
+    "@jupyterlab/terminal-extension:plugin": {
+        "shutdownOnClose": true,
+        "theme": "dark"
+    },
+    "@jupyterlab/statusbar-extension:plugin": {
+        "visible": false
+    }
+}

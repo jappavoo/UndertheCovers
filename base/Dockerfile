@@ -17,6 +17,7 @@ ARG ADDITIONAL_DISTRO_PACKAGES
 ARG PYTHON_PREREQ_VERSIONS
 ARG PYTHON_INSTALL_PACKAGES
 ARG JUPYTER_ENABLE_EXTENSIONS
+ARG JUPYTER_DISABLE_EXTENSIONS
 ARG GDB_BUILD_SRC
 ARG UNMIN
 
@@ -69,6 +70,14 @@ RUN for ext in ${JUPYTER_ENABLE_EXTENSIONS} ; do \
    fix-permissions "${CONDA_DIR}" && \
    fix-permissions "/home/${NB_USER}"
 
+# disable extensions -- disabling core extensions can be really useful for customizing
+#                       jupyterlab user experience
+RUN for ext in ${JUPYTER_DISABLE_EXTENSIONS} ; do \
+   jupyter labextension disable "$ext" ; \
+   done && \
+   fix-permissions "${CONDA_DIR}" && \
+   fix-permissions "/home/${NB_USER}"
+
 USER root
 # as per the nbstripout readme we setup nbstripout be always be used for the joyvan user for all repos
 RUN nbstripout --install --system 
@@ -85,6 +94,9 @@ RUN if [[ -n "${GDB_BUILD_SRC}" ]] ; then \
       rm -rf ${GDB_BUILD_SRC} && rm ${GDB_BUILD_SRC}.tar.gz ; \
     fi 
 
+# copy overrides.json
+COPY settings ${CONDA_DIR}/share/jupyter/lab/settings
+RUN fix-permissions ${CONDA_DIR}/share/jupyter/lab/settings
 
 USER root
 
