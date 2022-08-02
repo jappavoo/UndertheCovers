@@ -12,7 +12,7 @@ parts:
   - file: unix/terminal
   - file: unix/files
   - file: unix/shellintro
-  - file: unix/shell
+  - file: unix/shelldetails
   - file: unix/editors
   - file: unix/shellscripts
   - file: unix/processes
