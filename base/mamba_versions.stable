@@ -185,8 +185,8 @@ matplotlib-inline         0.1.3              pyhd8ed1ab_0    conda-forge
 mdit-py-plugins           0.2.8              pyhd8ed1ab_0    conda-forge
 mistune                   0.8.4           py310h6acc77f_1005    conda-forge
 munkres                   1.1.4              pyh9f0ad1d_0    conda-forge
-mysql-common              8.0.29               haf5c9bc_1    conda-forge
-mysql-libs                8.0.29               h28c427c_1    conda-forge
+mysql-common              8.0.30               haf5c9bc_0    conda-forge
+mysql-libs                8.0.30               h28c427c_0    conda-forge
 myst-nb                   0.13.2             pyhd8ed1ab_0    conda-forge
 myst-parser               0.15.2             pyhd8ed1ab_0    conda-forge
 nbclassic                 0.3.7              pyhd8ed1ab_0    conda-forge
@@ -258,7 +258,7 @@ reproc                    14.2.3               h7f98852_0    conda-forge
 reproc-cpp                14.2.3               h9c3ff4c_0    conda-forge
 requests                  2.28.1             pyhd8ed1ab_0    conda-forge
 requests_cache            0.4.13                     py_0    conda-forge
-rise                      5.7.1           py310hff52083_1    conda-forge
+rise                      5.8.0                     dev_0    <develop>
 ruamel.yaml               0.17.21         py310h5764c6d_1    conda-forge
 ruamel.yaml.clib          0.2.6           py310h5764c6d_1    conda-forge
 ruamel_yaml               0.15.80         py310h5764c6d_1007    conda-forge

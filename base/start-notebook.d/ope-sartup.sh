@@ -68,7 +68,7 @@ if [[ -d $MOUNT_DIR ]]; then
 fi
 
 # force classic notebook interface when run from start-singleuser.sh (aka we are on jupyter hub)
-export JUPYTERHUB_SINGLEUSER_APP='notebook.notebookapp.NotebookApp'
-echo "$SN: forced notebook interface on JupyterHub:  JUPYTERHUB_SINGLEUSER_APP=$JUPYTERHUB_SINGLEUSER_APP"
+#export JUPYTERHUB_SINGLEUSER_APP='notebook.notebookapp.NotebookApp'
+#echo "$SN: forced notebook interface on JupyterHub:  JUPYTERHUB_SINGLEUSER_APP=$JUPYTERHUB_SINGLEUSER_APP"
 
 echo "$0: $SN:  END"

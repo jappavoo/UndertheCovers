@@ -79,8 +79,6 @@ RUN for ext in ${JUPYTER_DISABLE_EXTENSIONS} ; do \
    fix-permissions "/home/${NB_USER}"
 
 USER root
-# as per the nbstripout readme we setup nbstripout be always be used for the joyvan user for all repos
-RUN nbstripout --install --system 
 
 # get and build gdb form source so that we have a current version >10 that support more advanced tui functionality 
 RUN if [[ -n "${GDB_BUILD_SRC}" ]] ; then \
@@ -118,6 +116,42 @@ RUN touch /home/${NB_USER}/.hushlogin && \
     rmdir /home/${NB_USER}/work && \
     fix-permissions "/home/${NB_USER}"
 
+# adding our custom OPE version of RISE for lab -- remove once main RISE is fixed
+RUN  wget -O - https://dl.yarnpkg.com/debian/pubkey.gpg 2> /dev/null | sudo apt-key add - && \
+ echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list && \
+ sudo apt-get update -y && \
+ sudo apt-get install yarn -y && \
+ mkdir /home/RISE && \
+ chown jovyan /home/RISE && \
+ fix-permissions /home/RISE
+
+USER $NB_USER
+RUN  git clone https://github.com/OPEFFORT/RISE.git /home/RISE  && \
+ cd /home/RISE && \
+ git checkout dev && \
+ yarn install && \
+ yarn run build && \
+ pip install -e . && \
+ jupyter server extension enable rise && \
+ jupyter serverextension enable rise && \
+ jupyter labextension develop --overwrite . && \
+ jupyter-nbextension install rise --py --sys-prefix --symlink && \
+ jupyter-nbextension enable rise --py --sys-prefix && \
+ rm -rf /tmp/yarn* /tmp/nodejs* /tmp/npm* /tmp/v8* && \
+ cd -
+
+USER root
+RUN fix-permissions "/home/RISE"
+
+# done with custom install of RISE for lab
+
+# one more fix permissions for good measure ;-)
+RUN  fix-permissions "${CONDA_DIR}" && \
+     fix-permissions "/home/${NB_USER}"
+     
+# as per the nbstripout readme we setup nbstripout be always be used for the joyvan user for all repos
+RUN nbstripout --install --system 
+
 # Static Customize for OPE USER ID choices
 # To avoid problems with start.sh logic we do not modify user name
 # FIXME: Add support for swinging home directory if you want to point to a mounted volume
@@ -126,7 +160,7 @@ ARG OPE_UID
 ARG CHOWN_HOME=yes
 ARG CHOWN_HOME_OPTS="-R"
 ARG CHOWN_EXTRA_OPTS='-R'
-ARG CHOWN_EXTRA="/home/aarch64vm ${CONDA_DIR}"
+ARG CHOWN_EXTRA="/home/aarch64vm /home/RISE ${CONDA_DIR}"
 ENV OPE_UID=${OPE_UID}
 
 ARG NB_UID=${OPE_UID}

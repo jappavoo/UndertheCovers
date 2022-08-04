@@ -1,5 +1,4 @@
 nbstripout 
-rise
 jupyter-book 
 ghp-import
 jupytext 
@@ -11,3 +10,4 @@ ipydrawio
 ipydrawio-export 
 jupyterlab-myst 
 jupyterlab-spellchecker
+nbconvert
