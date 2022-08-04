@@ -995,10 +995,10 @@ def gdbCmds(gdbcmds, pretext='$ gdb', quit=True, prompt='', wait=False, nopostte
     gdbcmds = gdbcmds + '''kill
 quit'''
     #print(gdbcmds)
-    return TermShellCmd("echo '" + gdbcmds + "' | gdb -ex 'set trace-commands on' | sed 's/^(gdb) +/(gdb) /'", pretext=pretext, prompt=prompt, wait=wait, noposttext=noposttext, **kwargs)
+    return TermShellCmd("echo '" + gdbcmds + "' | TERM=dumb gdb -ex 'set trace-commands on' | sed 's/^(gdb) +/(gdb) /'", pretext=pretext, prompt=prompt, wait=wait, noposttext=noposttext, **kwargs)
 
 def gdbFile(file, pretext='$ gdb', quit=True, prompt='', wait=False, noposttext=True, **kwargs):
-    return TermShellCmd("cat " + file + " | gdb -ex 'set trace-commands on' | sed 's/^(gdb) +/(gdb) /'", pretext=pretext, prompt=prompt, wait=wait, noposttext=noposttext, **kwargs)
+    return TermShellCmd("cat " + file + " | TERM=dumb gdb -ex 'set trace-commands on' | sed 's/^(gdb) +/(gdb) /'", pretext=pretext, prompt=prompt, wait=wait, noposttext=noposttext, **kwargs)
 
 # Standard way to present answer for question and answer
 #  put question in a cell as normal markdown
