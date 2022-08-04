@@ -2,6 +2,9 @@
 .PHONEY: help build ope root push publish lab nb python-versions clean
 .IGNORE: ope root
 
+# see if there is a specified customization in the base settting
+CUST := $(shell if  [[ -a base/customization_name ]]; then cat base/customization_name;  fi)
+
 # User must specify customization suffix
 ifndef CUST
 $(error CUST is not set.  You must specify which customized version of the image you want to work with. Eg. make CUST=opf build)
