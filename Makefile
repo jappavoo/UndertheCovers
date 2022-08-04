@@ -2,6 +2,11 @@
 .PHONEY: help build ope root push publish lab nb python-versions clean
 .IGNORE: ope root
 
+# User must specify customization suffix
+ifndef CUST
+$(error CUST is not set.  You must specify which customized version of the image you want to work with. Eg. make CUST=opf build)
+endif
+
 # We use this to choose between a jupyter or a gradescope build
 BASE := jupyter
 
@@ -22,14 +27,14 @@ DATE_TAG := $(shell date +"%m.%d.%y_%H.%M.%S")
 PRIVATE_USER := $(shell if  [[ -a base/private_user ]]; then cat base/private_user; else echo ${USER}; fi)
 PRIVATE_REG := $(shell cat base/private_registry)/
 PRIVATE_IMAGE := $(PRIVATE_USER)/$(OPE_BOOK)
-PRIVATE_STABLE_TAG := :stable
-PRIVATE_TEST_TAG := :test
+PRIVATE_STABLE_TAG := :stable-$(CUST)
+PRIVATE_TEST_TAG := :test-$(CUST)
 
 PUBLIC_USER := $(shell cat base/ope_book_user)
 PUBLIC_REG := $(shell cat base/ope_book_registry)/
 PUBLIC_IMAGE := $(PUBLIC_USER)/$(OPE_BOOK)
-PUBLIC_STABLE_TAG := :stable
-PUBLIC_TEST_TAG := :test
+PUBLIC_STABLE_TAG := :stable-$(CUST)
+PUBLIC_TEST_TAG := :test-$(CUST)
 
 BASE_DISTRO_PACKAGES := $(shell cat base/distro_pkgs)
 
