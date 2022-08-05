@@ -181,6 +181,7 @@ RUN /usr/local/bin/start.sh true; \
 # an opportunity to set things up based on dynamic facts such as user name
 COPY start-notebook.d /usr/local/bin/start-notebook.d
 
+ENV USER=$NB_USER
 USER $NB_USER
 
 
