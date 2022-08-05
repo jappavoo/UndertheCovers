@@ -4,11 +4,13 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>3. Organizing and Managing Information as a Tree of Files and Directories &#8212; UndertheCovers</title>
     
-  <link href="../_static/css/theme.css" rel="stylesheet">
-  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -18,42 +20,41 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin
     href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    
-      
-
-    
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
-    <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
     <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script>
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="4. The Shell - Part I: Having an ASCII conversation with the OS" href="shellintro.html" />
@@ -65,7 +66,21 @@
     <!-- Google Analytics -->
     
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
     
     <div class="container-fluid" id="banner"></div>
 
@@ -74,9 +89,10 @@
     <div class="container-xl">
       <div class="row">
           
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../index.html">
       
         <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
@@ -94,14 +110,15 @@
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
-        <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../intro_tb.html">
-   Under the Covers : The Secret Life of Software
-  </a>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro_tb.html">
+                    Under the Covers : The Secret Life of Software
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   How to read this book
  </span>
@@ -140,38 +157,38 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="shell.html">
-   6. The Shell – Progammable User Interface to the computer
+  <a class="reference internal" href="shelldetails.html">
+   5. The Shell - Part II: Some UNIX details
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="editors.html">
-   7. Editors
+   6. Editors
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="processes.html">
-   8. Processes
+   7. Processes
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="ides.html">
-   9. IDEs
+   8. IDEs
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="make.html">
-   10. Make
+   9. Make
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="gitintro.html">
-   11. Intro to Git
+   10. Intro to Git
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="git.html">
-   12. Git
+   11. Git
   </a>
  </li>
 </ul>
@@ -183,62 +200,62 @@
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../assembly/intro.html">
-   13. Introduction: Assembly Programming
+   12. Introduction: Assembly Programming
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../assembly/vonNeumannArchitecture.html">
-   14. The von Neumann Architecture
+   13. The von Neumann Architecture
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../assembly/UnixAssemblyProgramming.html">
-   15. Executables and Processes
+   14. Executables and Processes
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../assembly/Debuggers.html">
-   16. Machine Debuggers &amp; Open Process Surgery
+   15. Machine Debuggers &amp; Open Process Surgery
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../assembly/assembly.html">
-   17. Lets write some assembly code
+   16. Lets write some assembly code
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../assembly/InfoRepI.html">
-   18. Representing information - Preliminaries: Bits, Bytes and Notation
+   17. Representing information - Preliminaries: Bits, Bytes and Notation
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../assembly/nativetypes.html">
-   19. Information Representation - Native Types
+   18. Information Representation - Native Types
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../assembly/anatomyI.html">
-   20. Assembly : Program Anatomy I
+   19. Assembly : Program Anatomy I
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../assembly/anatomyII.html">
-   21. Program Anatomy II : Functions
+   20. Program Anatomy II : Functions
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../assembly/anatomyIII.html">
-   22. Program Anatomy III : Code as Data
+   21. Program Anatomy III : Code as Data
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../assembly/anatomyIV.html">
-   23. Program Anatomy IV: The Tree of Bytes and Data Structures
+   22. Program Anatomy IV: The Tree of Bytes and Data Structures
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../assembly/assemblyOS.html">
-   24. Assembly using the OS
+   23. Assembly using the OS
   </a>
  </li>
 </ul>
@@ -250,7 +267,7 @@
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../C/intro.html">
-   25. Introduction
+   24. Introduction
   </a>
  </li>
 </ul>
@@ -268,109 +285,226 @@
 </ul>
 
     </div>
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-</div>
-
-</div>
-
-
-          
-
-
-          
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
             
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
-        
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/unix/files.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
-    </div>
-</div>
-
-            <!-- Source interaction buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
-    <div class="dropdown-buttons sourcebuttons">
-        <a class="repository-button"
-            href="https://github.com/jappavoo/UndertheCovers"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="Source repository"><i
-                    class="fab fa-github"></i>repository</button></a>
-        <a class="issues-button"
-            href="https://github.com/jappavoo/UndertheCovers/issues/new?title=Issue%20on%20page%20%2Funix/files.html&body=Your%20issue%20content%20here."><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
-        <a class="edit-button" href="https://github.com/jappavoo/UndertheCovers/edit/main/underthecovers/unix/files.ipynb"><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
-    </div>
-</div>
-
-            <!-- Full screen (wrap in <a> to have style consistency -->
-
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
-
-            <!-- Launch buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        
-        <a class="jupyterhub-button" href="https://jupyterhub-opf-jupyterhub.apps.smaug.na.operate-first.cloud/hub/user-redirect/git-pull?repo=https://github.com/jappavoo/UndertheCovers&urlpath=lab/tree/UndertheCovers/underthecovers/unix/files.ipynb&branch=main"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch JupyterHub" data-toggle="tooltip"
-                data-placement="left"><img class="jupyterhub-button-logo"
-                    src="../_static/images/logo_jupyterhub.svg"
-                    alt="Interact on JupyterHub">JupyterHub</button></a>
-        
-        
-        
-    </div>
-</div>
-
-        </div>
-
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
-            
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
             </div>
-            <nav id="bd-toc-nav" aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://jupyterhub-opf-jupyterhub.apps.smaug.na.operate-first.cloud/hub/user-redirect/git-pull?repo=https%3A//github.com/jappavoo/UndertheCovers&urlpath=lab/tree/UndertheCovers/underthecovers/unix/files.ipynb&branch=main"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on JupyterHub"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_jupyterhub.svg">
+  </span>
+<span class="headerbtn__text-container">JupyterHub</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/jappavoo/UndertheCovers"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/jappavoo/UndertheCovers/issues/new?title=Issue%20on%20page%20%2Funix/files.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/jappavoo/UndertheCovers/edit/main/underthecovers/unix/files.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Edit this page"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="headerbtn__text-container">suggest edit</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/unix/files.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#information-management">
    3.1. Information Management
@@ -466,39 +600,150 @@
  </li>
 </ul>
 
-            </nav>
-        </div>
-    </div>
+    </nav>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Organizing and Managing Information as a Tree of Files and Directories</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#information-management">
+   3.1. Information Management
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#files">
+   3.2. Files
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#data">
+     3.2.1. Data
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#meta-data">
+     3.2.2. Meta Data
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#an-abstract-object">
+     3.2.3. An Abstract Object
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#directory-tree">
+   3.3. Directory Tree
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#directories">
+     3.3.1. Directories
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#directory-tree-example">
+       3.3.1.1. Directory Tree Example
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#home-directory">
+       3.3.1.2. HOME Directory
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#paths-and-the-root">
+       3.3.1.3. PATHS and the ROOT
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercises">
+   3.4. Exercises
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#a-unix-file-is-a-physical-object-that-exists-on-the-computer-s-hard-drive-true-or-false">
+     3.4.1. A UNIX file is a physical object that exists on the computer’s hard-drive:  True or False?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#what-is-meta-data-versus-data-with-respect-to-files">
+     3.4.2. What is meta-data versus data with respect to files?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-directory-structure-and-name-of-the-directories-is-fixed-true-or-false">
+     3.4.3. The directory structure and name of the directories is fixed: True or False?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#in-the-directory-tree-example-what-is-the-full-path-name-of-jonathan-s-vogon-poetry-directory">
+     3.4.4. In the directory tree example what is the full  path name of jonathan’s vogon poetry directory?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#in-the-directry-tree-example-what-is-the-full-path-name-of-jonathan-s-poem-celebrating-semicolons">
+     3.4.5. In the directry tree example what is the full path name of jonathan’s poem celebrating semicolons?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#a-directory-can-contain-both-files-and-directories-true-or-false">
+     3.4.6. A directory can contain both files and directories: True or False?
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="organizing-and-managing-information-as-a-tree-of-files-and-directories">
-<h1><span class="section-number">3. </span>Organizing and Managing Information as a Tree of Files and Directories<a class="headerlink" href="#organizing-and-managing-information-as-a-tree-of-files-and-directories" title="Permalink to this headline">¶</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="organizing-and-managing-information-as-a-tree-of-files-and-directories">
+<h1><span class="section-number">3. </span>Organizing and Managing Information as a Tree of Files and Directories<a class="headerlink" href="#organizing-and-managing-information-as-a-tree-of-files-and-directories" title="Permalink to this headline">#</a></h1>
 <p>Before we get our hands dirty there are a few “ideas” that are worth understanding in order to make our UNIX adventure a little easier.</p>
-<div class="section" id="information-management">
-<h2><span class="section-number">3.1. </span>Information Management<a class="headerlink" href="#information-management" title="Permalink to this headline">¶</a></h2>
+<section id="information-management">
+<h2><span class="section-number">3.1. </span>Information Management<a class="headerlink" href="#information-management" title="Permalink to this headline">#</a></h2>
 <img align="right" width="400" src="../images/Files-Cabinets.jpg">
 Using computers and managing information has become synonymous.   You probably take for granted that everyone knowns what a computer "file" and "folder" are and that they have always existed.  
 <p>This, however, is not true and a fundamental contribution of operating systems was standardizing the notion of files and their organization into a tree structure.</p>
 <p>Files and directories are so fundamental to UNIX it is very hard to say anything about UNIX without first understanding a little bit about both.</p>
-</div>
-<div class="section" id="files">
-<h2><span class="section-number">3.2. </span>Files<a class="headerlink" href="#files" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="files">
+<h2><span class="section-number">3.2. </span>Files<a class="headerlink" href="#files" title="Permalink to this headline">#</a></h2>
 <!-- comment -->
 <img align="right" width="300" src="../images/file.png">
 <!-- ![file](../images/file.pdf) -->
 <!-- img  width="300" src="../images/file.pdf"-->
 <p>In UNIX a file is an abstract object that can store information.  In particular we can write and read contents too and from it.</p>
-<div class="section" id="data">
-<h3><span class="section-number">3.2.1. </span>Data<a class="headerlink" href="#data" title="Permalink to this headline">¶</a></h3>
+<section id="data">
+<h3><span class="section-number">3.2.1. </span>Data<a class="headerlink" href="#data" title="Permalink to this headline">#</a></h3>
 <p>We think of the contents of the file as the “data” of the file.</p>
 <p>It is important to note that we do not distinguish the “type” of information that the data of a file contains – rather files just contain a collection of <span class="xref myst">bytes</span>.  The bytes of the file might encode <a class="reference external" href="../unix/terminal.html#ASCII_sec">ASCII</a> data, image data, audio data, an executable program, etc.  As we will see later it will be up to us to decide how we want to interpret the contents of a file by what we do with it (eg. open it in a text editor versus opening it in a music player).</p>
-</div>
-<div class="section" id="meta-data">
-<h3><span class="section-number">3.2.2. </span>Meta Data<a class="headerlink" href="#meta-data" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="meta-data">
+<h3><span class="section-number">3.2.2. </span>Meta Data<a class="headerlink" href="#meta-data" title="Permalink to this headline">#</a></h3>
 <p>Beyond the information it contains a file has associated with it several other descriptive facts.  Examples of these facts include:</p>
 <ul class="simple">
 <li><p>who owns the file</p></li>
@@ -509,39 +754,41 @@ Using computers and managing information has become synonymous.   You probably t
 <li><p>the time that the descriptive facts where last changed (eg the file permissions were modified)</p></li>
 </ul>
 <p>We think of other information as the “meta-data” of the file.</p>
-</div>
-<div class="section" id="an-abstract-object">
-<h3><span class="section-number">3.2.3. </span>An Abstract Object<a class="headerlink" href="#an-abstract-object" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="an-abstract-object">
+<h3><span class="section-number">3.2.3. </span>An Abstract Object<a class="headerlink" href="#an-abstract-object" title="Permalink to this headline">#</a></h3>
 <p>Why do say that a file is an “abstract” object?  Well when it comes to computers most of the things we think of as “real” are just constructions of software.  An operating system like UNIX is responsible for providing us with things like files but in reality there is rarely a single physical object that corresponds to any given file.  Rather it is the job of the operating system to use the resources of the computer to create an abstract file object if we ask it to do so and ensure that it behaves as expected.</p>
-</div>
-</div>
-<div class="section" id="directory-tree">
-<h2><span class="section-number">3.3. </span>Directory Tree<a class="headerlink" href="#directory-tree" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="directory-tree">
+<h2><span class="section-number">3.3. </span>Directory Tree<a class="headerlink" href="#directory-tree" title="Permalink to this headline">#</a></h2>
 <img align="right" width="200" src="../images/359px-ENC_SYSTEME_FIGURE.jpeg"> 
 <!-- ![enctree](../images/359px-ENC_SYSTEME_FIGURE.jpeg) -->
 <p>While files serve as a great building block for managing information they are not enough.  People, like librarians, who have managed and curated large bodies of information, know that you need a consistent and yet flexibly way to group, organize and index information.  This <a class="reference external" href="https://commons.wikimedia.org/wiki/File:ENC_SYSTEME_FIGURE.jpeg">image</a> illustrates how an 18th century encyclopedia used a hierarchical tree diagram to order its subjects.</p>
 <p>Early operating systems developers adopted a <a class="reference external" href="https://en.wikipedia.org/wiki/Tree_structure">tree structure</a> of nested “directories to allow users to organize their files.</p>
-<div class="section" id="directories">
-<h3><span class="section-number">3.3.1. </span>Directories<a class="headerlink" href="#directories" title="Permalink to this headline">¶</a></h3>
+<section id="directories">
+<h3><span class="section-number">3.3.1. </span>Directories<a class="headerlink" href="#directories" title="Permalink to this headline">#</a></h3>
 <p>A “directory” contains a list of names each name identifies either a single file or another directory.</p>
 <p>These entries are said to be within the directory.  A directory that is within a directory is said to be a sub-directory.  Like a file a directory also has the same kind of meta-data associated with it (owner, permissions, etc).  The contents of a directory is, however, the list of its entries.  This structure results in the directories and files forming a tree. As such the name of any file or directory is actually a path along the tree.</p>
 <p>While this might sound confusing it is really quite intuitive and you have likely been using such a directory hierarchy for most of your digital life.</p>
 <p>Perhaps the most important thing to realize is that a UNIX user is allowed to create directories and files and name them as they see fit.  This ability allows a user to flexibility organize their information in an way they like and makes sense to them. To get a better handle on this let’s walk through a simple abstract example.  Later we will repeat this example but using UNIX commands to get a more exact understanding.</p>
 <p><a id='dir_example'></a></p>
-<div class="section" id="directory-tree-example">
-<h4><span class="section-number">3.3.1.1. </span>Directory Tree Example<a class="headerlink" href="#directory-tree-example" title="Permalink to this headline">¶</a></h4>
+<section id="directory-tree-example">
+<h4><span class="section-number">3.3.1.1. </span>Directory Tree Example<a class="headerlink" href="#directory-tree-example" title="Permalink to this headline">#</a></h4>
 <p>Lets assume that you are a CS student and like poetry and want to organize yourself.  To this end you might choose to create the following directory and file structure.
 <img alt="dirtree" src="../_images/dirtree.png" /></p>
 <p>In this diagram we use circles to represent directories and rectangles to represent files.  The name of a directory or file is its label.  Arrows are used to show the entries of a particular directory (A file cannot have any arrows starting from it).</p>
-</div>
-<div class="section" id="home-directory">
-<h4><span class="section-number">3.3.1.2. </span>HOME Directory<a class="headerlink" href="#home-directory" title="Permalink to this headline">¶</a></h4>
+<p><a id='home_dir'></a></p>
+</section>
+<section id="home-directory">
+<h4><span class="section-number">3.3.1.2. </span>HOME Directory<a class="headerlink" href="#home-directory" title="Permalink to this headline">#</a></h4>
 <p>The above diagram assumes that we are the user “jonathan” who has a directory that they own.  By creating files and sub-directories within the “jonathan” directory we can organize our information. This personal user directory in UNIX is called the users <strong>HOME</strong> directory and its name matches the users UNIX user name.   We will say more about this when we revisit this example.</p>
 <p>Here the user, “jonathan”, has created two sub-directories - Poetry and Classes. Inside the Poetry directory the user has created one sub-directory (“Vogon” – to store their favorite Vogon poetry and two files (“ToBitOrToByte” and “OdeToASemicolon”, two poems they have written).</p>
 <p>Similarly we see that the user has created a more complex directory structure to organize their class work.  One thing to note, to keep things sensible, names of entries in a single directory must be unique.  However, in different directories entries can have the same name – as we can see with the three “Problem1” files at the bottom of the figure.  Each of these are in different directories.</p>
-</div>
-<div class="section" id="paths-and-the-root">
-<h4><span class="section-number">3.3.1.3. </span>PATHS and the ROOT<a class="headerlink" href="#paths-and-the-root" title="Permalink to this headline">¶</a></h4>
+<p><a id='pathname'></a></p>
+</section>
+<section id="paths-and-the-root">
+<h4><span class="section-number">3.3.1.3. </span>PATHS and the ROOT<a class="headerlink" href="#paths-and-the-root" title="Permalink to this headline">#</a></h4>
 <p>As a matter of fact from the above diagram we can see that the unique name of a file or directory is really a composition of the directories that traces a <strong>path</strong> though the tree.</p>
 <p>In UNIX the very top of the tree is the one directory that always exists and is not a sub-directory of any other directory.  This directory is called the <strong>ROOT</strong> directory. In UNIX the <strong>ROOT</strong> directory’s name <code class="docutils literal notranslate"><span class="pre">/</span></code>.  This might seem odd at first but as we will see in a minute it is consistent with the UNIX way of naming a full pathway in the tree.</p>
 <p>With this in mind the names of the three <code class="docutils literal notranslate"><span class="pre">Problem1</span></code> files at the bottom of the diagram are composed by joining the name of the directories leading to them along with their name at the end.</p>
@@ -557,13 +804,13 @@ Using computers and managing information has become synonymous.   You probably t
 <li><p><code class="docutils literal notranslate"><span class="pre">/home/jonathan/Classes/CS/210/Assignment3/Problem1</span></code></p></li>
 </ul>
 <p>Remember <code class="docutils literal notranslate"><span class="pre">/</span></code> by itself is the name of the root directory and the full name of any other directory or file begins with <code class="docutils literal notranslate"><span class="pre">/</span></code> and then is composed of all the parent directories separated by an additional <code class="docutils literal notranslate"><span class="pre">/</span></code> and ends with the final name of the file or directory being identified.</p>
-</div>
-</div>
-</div>
-<div class="section" id="exercises">
-<h2><span class="section-number">3.4. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="a-unix-file-is-a-physical-object-that-exists-on-the-computer-s-hard-drive-true-or-false">
-<h3><span class="section-number">3.4.1. </span>A UNIX file is a physical object that exists on the computer’s hard-drive:  True or False?<a class="headerlink" href="#a-unix-file-is-a-physical-object-that-exists-on-the-computer-s-hard-drive-true-or-false" title="Permalink to this headline">¶</a></h3>
+</section>
+</section>
+</section>
+<section id="exercises">
+<h2><span class="section-number">3.4. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">#</a></h2>
+<section id="a-unix-file-is-a-physical-object-that-exists-on-the-computer-s-hard-drive-true-or-false">
+<h3><span class="section-number">3.4.1. </span>A UNIX file is a physical object that exists on the computer’s hard-drive:  True or False?<a class="headerlink" href="#a-unix-file-is-a-physical-object-that-exists-on-the-computer-s-hard-drive-true-or-false" title="Permalink to this headline">#</a></h3>
 <div class="cell tag_remove-input tag_hide-output docutils container">
 <div class="cell_output docutils container">
 <blockquote>
@@ -571,9 +818,9 @@ Using computers and managing information has become synonymous.   You probably t
 </div></blockquote>
 </div>
 </div>
-</div>
-<div class="section" id="what-is-meta-data-versus-data-with-respect-to-files">
-<h3><span class="section-number">3.4.2. </span>What is meta-data versus data with respect to files?<a class="headerlink" href="#what-is-meta-data-versus-data-with-respect-to-files" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="what-is-meta-data-versus-data-with-respect-to-files">
+<h3><span class="section-number">3.4.2. </span>What is meta-data versus data with respect to files?<a class="headerlink" href="#what-is-meta-data-versus-data-with-respect-to-files" title="Permalink to this headline">#</a></h3>
 <div class="cell tag_remove-input tag_hide-output docutils container">
 <div class="cell_output docutils container">
 <blockquote>
@@ -584,9 +831,9 @@ the user that owns the file, who is allowed to read the file, etc.</p>
 </div></blockquote>
 </div>
 </div>
-</div>
-<div class="section" id="the-directory-structure-and-name-of-the-directories-is-fixed-true-or-false">
-<h3><span class="section-number">3.4.3. </span>The directory structure and name of the directories is fixed: True or False?<a class="headerlink" href="#the-directory-structure-and-name-of-the-directories-is-fixed-true-or-false" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="the-directory-structure-and-name-of-the-directories-is-fixed-true-or-false">
+<h3><span class="section-number">3.4.3. </span>The directory structure and name of the directories is fixed: True or False?<a class="headerlink" href="#the-directory-structure-and-name-of-the-directories-is-fixed-true-or-false" title="Permalink to this headline">#</a></h3>
 <div class="cell tag_remove-input tag_hide-output docutils container">
 <div class="cell_output docutils container">
 <blockquote>
@@ -595,9 +842,9 @@ created by the user and can be changed.</p>
 </div></blockquote>
 </div>
 </div>
-</div>
-<div class="section" id="in-the-directory-tree-example-what-is-the-full-path-name-of-jonathan-s-vogon-poetry-directory">
-<h3><span class="section-number">3.4.4. </span>In the directory tree <a class="reference external" href="#dir_example">example</a> what is the full  path name of jonathan’s vogon poetry directory?<a class="headerlink" href="#in-the-directory-tree-example-what-is-the-full-path-name-of-jonathan-s-vogon-poetry-directory" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="in-the-directory-tree-example-what-is-the-full-path-name-of-jonathan-s-vogon-poetry-directory">
+<h3><span class="section-number">3.4.4. </span>In the directory tree <a class="reference external" href="#dir_example">example</a> what is the full  path name of jonathan’s vogon poetry directory?<a class="headerlink" href="#in-the-directory-tree-example-what-is-the-full-path-name-of-jonathan-s-vogon-poetry-directory" title="Permalink to this headline">#</a></h3>
 <div class="cell tag_remove-input tag_hide-output docutils container">
 <div class="cell_output docutils container">
 <blockquote>
@@ -605,9 +852,9 @@ created by the user and can be changed.</p>
 </div></blockquote>
 </div>
 </div>
-</div>
-<div class="section" id="in-the-directry-tree-example-what-is-the-full-path-name-of-jonathan-s-poem-celebrating-semicolons">
-<h3><span class="section-number">3.4.5. </span>In the directry tree <a class="reference external" href="#dir_example">example</a> what is the full path name of jonathan’s poem celebrating semicolons?<a class="headerlink" href="#in-the-directry-tree-example-what-is-the-full-path-name-of-jonathan-s-poem-celebrating-semicolons" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="in-the-directry-tree-example-what-is-the-full-path-name-of-jonathan-s-poem-celebrating-semicolons">
+<h3><span class="section-number">3.4.5. </span>In the directry tree <a class="reference external" href="#dir_example">example</a> what is the full path name of jonathan’s poem celebrating semicolons?<a class="headerlink" href="#in-the-directry-tree-example-what-is-the-full-path-name-of-jonathan-s-poem-celebrating-semicolons" title="Permalink to this headline">#</a></h3>
 <div class="cell tag_remove-input tag_hide-output docutils container">
 <div class="cell_output docutils container">
 <blockquote>
@@ -615,9 +862,9 @@ created by the user and can be changed.</p>
 </div></blockquote>
 </div>
 </div>
-</div>
-<div class="section" id="a-directory-can-contain-both-files-and-directories-true-or-false">
-<h3><span class="section-number">3.4.6. </span>A directory can contain both files and directories: True or False?<a class="headerlink" href="#a-directory-can-contain-both-files-and-directories-true-or-false" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="a-directory-can-contain-both-files-and-directories-true-or-false">
+<h3><span class="section-number">3.4.6. </span>A directory can contain both files and directories: True or False?<a class="headerlink" href="#a-directory-can-contain-both-files-and-directories-true-or-false" title="Permalink to this headline">#</a></h3>
 <div class="cell tag_remove-input tag_hide-output docutils container">
 <div class="cell_output docutils container">
 <blockquote>
@@ -625,9 +872,9 @@ created by the user and can be changed.</p>
 </div></blockquote>
 </div>
 </div>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -651,9 +898,11 @@ created by the user and can be changed.</p>
 
               </div>
               
-        
-            <!-- Previous / next buttons -->
-<div class='prev-next-area'> 
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
     <a class='left-prev' id="prev-link" href="terminal.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
@@ -669,26 +918,28 @@ created by the user and can be changed.</p>
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-        
+            </footer>
         </div>
     </div>
-    <footer class="footer">
-    <div class="container">
-      <p>
-        
-          By Jonathan Appavoo<br/>
-        
-            &copy; Copyright 2021.<br/>
-      </p>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Jonathan Appavoo<br/>
+  
+      &copy; Copyright 2021.<br/>
+</p>
+        </footer>
     </div>
-  </footer>
-</main>
+    
+</div>
 
 
       </div>
     </div>
   
-  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
 
   </body>
 </html>

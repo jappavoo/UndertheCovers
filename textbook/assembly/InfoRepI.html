@@ -4,11 +4,13 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>18. Representing information - Preliminaries: Bits, Bytes and Notation &#8212; UndertheCovers</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>17. Representing information - Preliminaries: Bits, Bytes and Notation &#8212; UndertheCovers</title>
     
-  <link href="../_static/css/theme.css" rel="stylesheet">
-  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -18,46 +20,45 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin
     href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    
-      
-
-    
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
-    <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
     <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script>
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="19. Information Representation - Native Types" href="nativetypes.html" />
-    <link rel="prev" title="17. Lets write some assembly code" href="assembly.html" />
+    <link rel="next" title="18. Information Representation - Native Types" href="nativetypes.html" />
+    <link rel="prev" title="16. Lets write some assembly code" href="assembly.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -65,7 +66,21 @@
     <!-- Google Analytics -->
     
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
     
     <div class="container-fluid" id="banner"></div>
 
@@ -74,9 +89,10 @@
     <div class="container-xl">
       <div class="row">
           
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../index.html">
       
         <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
@@ -94,14 +110,15 @@
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
-        <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../intro_tb.html">
-   Under the Covers : The Secret Life of Software
-  </a>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro_tb.html">
+                    Under the Covers : The Secret Life of Software
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   How to read this book
  </span>
@@ -140,38 +157,38 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../unix/shell.html">
-   6. The Shell – Progammable User Interface to the computer
+  <a class="reference internal" href="../unix/shelldetails.html">
+   5. The Shell - Part II: Some UNIX details
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../unix/editors.html">
-   7. Editors
+   6. Editors
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../unix/processes.html">
-   8. Processes
+   7. Processes
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../unix/ides.html">
-   9. IDEs
+   8. IDEs
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../unix/make.html">
-   10. Make
+   9. Make
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../unix/gitintro.html">
-   11. Intro to Git
+   10. Intro to Git
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../unix/git.html">
-   12. Git
+   11. Git
   </a>
  </li>
 </ul>
@@ -183,62 +200,62 @@
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="intro.html">
-   13. Introduction: Assembly Programming
+   12. Introduction: Assembly Programming
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="vonNeumannArchitecture.html">
-   14. The von Neumann Architecture
+   13. The von Neumann Architecture
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="UnixAssemblyProgramming.html">
-   15. Executables and Processes
+   14. Executables and Processes
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Debuggers.html">
-   16. Machine Debuggers &amp; Open Process Surgery
+   15. Machine Debuggers &amp; Open Process Surgery
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="assembly.html">
-   17. Lets write some assembly code
+   16. Lets write some assembly code
   </a>
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   18. Representing information - Preliminaries: Bits, Bytes and Notation
+   17. Representing information - Preliminaries: Bits, Bytes and Notation
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="nativetypes.html">
-   19. Information Representation - Native Types
+   18. Information Representation - Native Types
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="anatomyI.html">
-   20. Assembly : Program Anatomy I
+   19. Assembly : Program Anatomy I
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="anatomyII.html">
-   21. Program Anatomy II : Functions
+   20. Program Anatomy II : Functions
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="anatomyIII.html">
-   22. Program Anatomy III : Code as Data
+   21. Program Anatomy III : Code as Data
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="anatomyIV.html">
-   23. Program Anatomy IV: The Tree of Bytes and Data Structures
+   22. Program Anatomy IV: The Tree of Bytes and Data Structures
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="assemblyOS.html">
-   24. Assembly using the OS
+   23. Assembly using the OS
   </a>
  </li>
 </ul>
@@ -250,7 +267,7 @@
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../C/intro.html">
-   25. Introduction
+   24. Introduction
   </a>
  </li>
 </ul>
@@ -268,127 +285,244 @@
 </ul>
 
     </div>
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-</div>
-
-</div>
-
-
-          
-
-
-          
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
             
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
-        
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/assembly/InfoRepI.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
-    </div>
-</div>
-
-            <!-- Source interaction buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
-    <div class="dropdown-buttons sourcebuttons">
-        <a class="repository-button"
-            href="https://github.com/jappavoo/UndertheCovers"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="Source repository"><i
-                    class="fab fa-github"></i>repository</button></a>
-        <a class="issues-button"
-            href="https://github.com/jappavoo/UndertheCovers/issues/new?title=Issue%20on%20page%20%2Fassembly/InfoRepI.html&body=Your%20issue%20content%20here."><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
-        <a class="edit-button" href="https://github.com/jappavoo/UndertheCovers/edit/main/underthecovers/assembly/InfoRepI.ipynb"><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
-    </div>
-</div>
-
-            <!-- Full screen (wrap in <a> to have style consistency -->
-
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
-
-            <!-- Launch buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        
-        <a class="jupyterhub-button" href="https://jupyterhub-opf-jupyterhub.apps.smaug.na.operate-first.cloud/hub/user-redirect/git-pull?repo=https://github.com/jappavoo/UndertheCovers&urlpath=lab/tree/UndertheCovers/underthecovers/assembly/InfoRepI.ipynb&branch=main"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch JupyterHub" data-toggle="tooltip"
-                data-placement="left"><img class="jupyterhub-button-logo"
-                    src="../_static/images/logo_jupyterhub.svg"
-                    alt="Interact on JupyterHub">JupyterHub</button></a>
-        
-        
-        
-    </div>
-</div>
-
-        </div>
-
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
-            
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
             </div>
-            <nav id="bd-toc-nav" aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://jupyterhub-opf-jupyterhub.apps.smaug.na.operate-first.cloud/hub/user-redirect/git-pull?repo=https%3A//github.com/jappavoo/UndertheCovers&urlpath=lab/tree/UndertheCovers/underthecovers/assembly/InfoRepI.ipynb&branch=main"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on JupyterHub"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_jupyterhub.svg">
+  </span>
+<span class="headerbtn__text-container">JupyterHub</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/jappavoo/UndertheCovers"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/jappavoo/UndertheCovers/issues/new?title=Issue%20on%20page%20%2Fassembly/InfoRepI.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/jappavoo/UndertheCovers/edit/main/underthecovers/assembly/InfoRepI.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Edit this page"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="headerbtn__text-container">suggest edit</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/assembly/InfoRepI.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#bits-and-bytes">
-   18.1. Bits and Bytes
+   17.1. Bits and Bytes
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#the-byte">
-     18.1.1. The Byte
+     17.1.1. The Byte
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#notation">
-       18.1.1.1. Notation
+       17.1.1.1. Notation
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#hexadecimal">
-       18.1.1.2. Hexadecimal
+       17.1.1.2. Hexadecimal
       </a>
      </li>
     </ul>
@@ -397,101 +531,101 @@
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#registers-and-memory">
-   18.2. Registers and Memory
+   17.2. Registers and Memory
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#registers">
-     18.2.1. Registers
+     17.2.1. Registers
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#id1">
-       18.2.1.1. Notation
+       17.2.1.1. Notation
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#gdb-display-and-set-registers">
-       18.2.1.2. GDB Display and Set Registers
+       17.2.1.2. GDB Display and Set Registers
       </a>
      </li>
     </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#memory-addresses-and-address-expressions">
-     18.2.2. Memory, addresses and address expressions
+     17.2.2. Memory, addresses and address expressions
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#id2">
-       18.2.2.1. Notation
+       17.2.2.1. Notation
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#byte-geometry">
-       18.2.2.2. Byte Geometry
+       17.2.2.2. Byte Geometry
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#multi-byte-quantities">
-       18.2.2.3. Multi-byte quantities
+       17.2.2.3. Multi-byte quantities
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#endianness">
-       18.2.2.4. “Endianness”
+       17.2.2.4. “Endianness”
       </a>
       <ul class="nav section-nav flex-column">
        <li class="toc-h5 nav-item toc-entry">
         <a class="reference internal nav-link" href="#most-and-least-significant-bytes">
-         18.2.2.4.1. Most and Least Significant Bytes
+         17.2.2.4.1. Most and Least Significant Bytes
         </a>
        </li>
        <li class="toc-h5 nav-item toc-entry">
         <a class="reference internal nav-link" href="#little-endian">
-         18.2.2.4.2. Little Endian
+         17.2.2.4.2. Little Endian
         </a>
        </li>
        <li class="toc-h5 nav-item toc-entry">
         <a class="reference internal nav-link" href="#big-endian">
-         18.2.2.4.3. Big Endian
+         17.2.2.4.3. Big Endian
         </a>
        </li>
        <li class="toc-h5 nav-item toc-entry">
         <a class="reference internal nav-link" href="#why-endianness-matters-to-us">
-         18.2.2.4.4. Why Endianness matters to us
+         17.2.2.4.4. Why Endianness matters to us
         </a>
        </li>
       </ul>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#alignment">
-       18.2.2.5. Alignment
+       17.2.2.5. Alignment
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#gdb-and-memory">
-       18.2.2.6. GDB and Memory
+       17.2.2.6. GDB and Memory
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#fixed-widths-and-their-implications">
-       18.2.2.7. Fixed widths and their implications
+       17.2.2.7. Fixed widths and their implications
       </a>
       <ul class="nav section-nav flex-column">
        <li class="toc-h5 nav-item toc-entry">
         <a class="reference internal nav-link" href="#truncation">
-         18.2.2.7.1. Truncation
+         17.2.2.7.1. Truncation
         </a>
        </li>
        <li class="toc-h5 nav-item toc-entry">
         <a class="reference internal nav-link" href="#trunction-and-modulus">
-         18.2.2.7.2. Trunction and Modulus
+         17.2.2.7.2. Trunction and Modulus
         </a>
        </li>
        <li class="toc-h5 nav-item toc-entry">
         <a class="reference internal nav-link" href="#extension">
-         18.2.2.7.3. Extension
+         17.2.2.7.3. Extension
         </a>
        </li>
       </ul>
@@ -502,34 +636,198 @@
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#representing-text-opcodes-and-data">
-   18.3. Representing Text (Opcodes) and Data
+   17.3. Representing Text (Opcodes) and Data
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#text">
-     18.3.1. Text
+     17.3.1. Text
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#data">
-     18.3.2. Data
+     17.3.2. Data
     </a>
    </li>
   </ul>
  </li>
 </ul>
 
-            </nav>
-        </div>
-    </div>
+    </nav>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Representing information - Preliminaries: Bits, Bytes and Notation</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bits-and-bytes">
+   17.1. Bits and Bytes
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-byte">
+     17.1.1. The Byte
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#notation">
+       17.1.1.1. Notation
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#hexadecimal">
+       17.1.1.2. Hexadecimal
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#registers-and-memory">
+   17.2. Registers and Memory
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#registers">
+     17.2.1. Registers
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id1">
+       17.2.1.1. Notation
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#gdb-display-and-set-registers">
+       17.2.1.2. GDB Display and Set Registers
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#memory-addresses-and-address-expressions">
+     17.2.2. Memory, addresses and address expressions
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id2">
+       17.2.2.1. Notation
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#byte-geometry">
+       17.2.2.2. Byte Geometry
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#multi-byte-quantities">
+       17.2.2.3. Multi-byte quantities
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#endianness">
+       17.2.2.4. “Endianness”
+      </a>
+      <ul class="nav section-nav flex-column">
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#most-and-least-significant-bytes">
+         17.2.2.4.1. Most and Least Significant Bytes
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#little-endian">
+         17.2.2.4.2. Little Endian
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#big-endian">
+         17.2.2.4.3. Big Endian
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#why-endianness-matters-to-us">
+         17.2.2.4.4. Why Endianness matters to us
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#alignment">
+       17.2.2.5. Alignment
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#gdb-and-memory">
+       17.2.2.6. GDB and Memory
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#fixed-widths-and-their-implications">
+       17.2.2.7. Fixed widths and their implications
+      </a>
+      <ul class="nav section-nav flex-column">
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#truncation">
+         17.2.2.7.1. Truncation
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#trunction-and-modulus">
+         17.2.2.7.2. Trunction and Modulus
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#extension">
+         17.2.2.7.3. Extension
+        </a>
+       </li>
+      </ul>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#representing-text-opcodes-and-data">
+   17.3. Representing Text (Opcodes) and Data
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#text">
+     17.3.1. Text
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#data">
+     17.3.2. Data
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="representing-information-preliminaries-bits-bytes-and-notation">
-<h1><span class="section-number">18. </span>Representing information - Preliminaries: Bits, Bytes and Notation<a class="headerlink" href="#representing-information-preliminaries-bits-bytes-and-notation" title="Permalink to this headline">¶</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="representing-information-preliminaries-bits-bytes-and-notation">
+<h1><span class="section-number">17. </span>Representing information - Preliminaries: Bits, Bytes and Notation<a class="headerlink" href="#representing-information-preliminaries-bits-bytes-and-notation" title="Permalink to this headline">#</a></h1>
 <p>In general most physical components of a computer store, transmit, or operate on a pattern of binary values. The pattern is a fixed size collection of bi-stable physical units. Bi-stable means that each unit within the collection can reliably be in one of two distinct states. Depending on the device, various different physical mechanisms can be used to represent the values. Some devices, such as older hard drives, use magnetic polarity — north vs south magnetic force. In these devices a surface is coated with a magnetic material. By dividing the surface into non-overlapping regions, we form units that individually and independently can have their magnetic polarity changed and detected. Integrated into these devices is one or more electro-magnetic heads that can “write” or “read” a region, when the region is below them. Writing means setting the regions polarity to north or south and reading means detecting the regions current polarity. The head is an electrical device. When reading, it generates either a high or low voltage on a wire depending on the polarity of the region. Similarly an electrical signal can be used to direct it to set the polarity if desired.</p>
 <p>Modern Solid State Drives (SSDs) and things like “USB sticks” contain electrical cells that serve as their units. No head is required for these devices as the cells can be directly accessed. Depending on the technology used, the cells might represent states using electrical charge or changes in their electrical resistance.</p>
 <p>Other devices such as memory “chips” use cells that actively consume electricity to maintain their values. If electricity is lost, eg your battery dies, then their values are lost. However, unlike Hard drives, SSDs, and USB sticks, devices composed of these chips can be written and read very fast using electrical voltages on wires that are directly connected to them. These components are often called the Memory or RAM (Random Access Memory) of our computers. The CPUs have direct electrical connectivity to RAM which serve as the working memory for the active programs running on our computers.</p>
@@ -544,13 +842,13 @@ the following Intel instruction sequence directs the components of the computer 
 </div>
 <p>Even our I/O device, such a touch screen, is really just a device in which electrical charges can be used to control the individual picture element (pixels).  Pixels are controlled by turning on or off specific light emitting components or translating pressure on the screen into electrical signals on wires for the particular location touched.</p>
 <p>While the physical part of the computers can store (eg RAM), transmit (eg Busses) and operate on (eg CPUs) binary patterns via electrical voltages, they do not enforce a particular “meaning” on the patterns. In some sense the components of the computer form a blank sheet of “paper” which a programmer can use to represent and manipulate information using patterns of electrical signals and the capabilities of the CPU, memory and I/O devices.</p>
-<div class="section" id="bits-and-bytes">
-<h2><span class="section-number">18.1. </span>Bits and Bytes<a class="headerlink" href="#bits-and-bytes" title="Permalink to this headline">¶</a></h2>
+<section id="bits-and-bytes">
+<h2><span class="section-number">17.1. </span>Bits and Bytes<a class="headerlink" href="#bits-and-bytes" title="Permalink to this headline">#</a></h2>
 <p>Given that the components of a computer are built to work with discrete binary, two valued, patterns, it is natural for us to use arrays of binary digits (bits) to represent what values we want the components to store, or the operations we want done.</p>
 <p>As such, the world of software is really a world in which we translate our ideas into arrays of bits. Remember, however, as we continue our discussion of information representation that the components of the computer are simply working on patterns of electrical signals, charges, resistance, magnetic polarity, etc. They do not store or operate explicitly on strings, integers, floats, functions, instructions, hexadecimal values or even ones and zeros. All these notions are how we as programmers use the values within the components to represent information (including the instructions of our programs that implement algorithms).</p>
 <p><a id="THEBYTE_sec"></a></p>
-<div class="section" id="the-byte">
-<h3><span class="section-number">18.1.1. </span>The Byte<a class="headerlink" href="#the-byte" title="Permalink to this headline">¶</a></h3>
+<section id="the-byte">
+<h3><span class="section-number">17.1.1. </span>The Byte<a class="headerlink" href="#the-byte" title="Permalink to this headline">#</a></h3>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <!-- produced by: 
@@ -3200,8 +3498,8 @@ htmlFig("[{'src': '../images/8switches.png'}]",
 </div>
 </div>
 </div>
-<div class="section" id="notation">
-<h4><span class="section-number">18.1.1.1. </span>Notation<a class="headerlink" href="#notation" title="Permalink to this headline">¶</a></h4>
+<section id="notation">
+<h4><span class="section-number">17.1.1.1. </span>Notation<a class="headerlink" href="#notation" title="Permalink to this headline">#</a></h4>
 <p>The obvious precise mathematical notation for us to represent the value of a particular byte is that of a vector of binary digits:</p>
 <div class="math notranslate nohighlight">
 \[
@@ -3235,9 +3533,9 @@ X_{16} \leftarrow Y_{16}
 \]</div>
 <p>means we are assigning to the bits of <span class="math notranslate nohighlight">\(X\)</span> the corresponding current values of the bits of <span class="math notranslate nohighlight">\(Y\)</span>.  It is important to remember that in such an assignment all prior values of the bits of <span class="math notranslate nohighlight">\(X\)</span> are overwritten and the bits of <span class="math notranslate nohighlight">\(Y\)</span> are unchanged.</p>
 <p>If there is ambiguity we will use <code class="docutils literal notranslate"><span class="pre">0b</span></code> as a prefix to a value to indicate that it is in binary notation eg. <code class="docutils literal notranslate"><span class="pre">0b10</span></code>.</p>
-</div>
-<div class="section" id="hexadecimal">
-<h4><span class="section-number">18.1.1.2. </span>Hexadecimal<a class="headerlink" href="#hexadecimal" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="hexadecimal">
+<h4><span class="section-number">17.1.1.2. </span>Hexadecimal<a class="headerlink" href="#hexadecimal" title="Permalink to this headline">#</a></h4>
 <p>As you can see, it is unwieldy to constantly use the notation of binary, base two, digits to refer to particular patterns. Instead we tend to use hexadecimal (base 16) to refer to a specific binary value.   You will often see the short form <strong>hex</strong> to refer to hexadecimal notation where the digits corresponded to the following 16 characters <span class="math notranslate nohighlight">\(0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F\)</span>.</p>
 <p>Part of the reason we use hex is due to the following <em>nice</em> relationship –   A single hex digit can be used
 to represent the value of four bits.  We call four bits a nibble.  The following table shows the mapping of the 16 hex digits to their corresponding 4 bit nibble value.</p>
@@ -3603,14 +3901,14 @@ Further, to avoid ambiguity  <code class="docutils literal notranslate"><span cl
 \sum_{i=0}^{n-1}h_i \times 16^{i}
 \]</div>
 <p>Despite the heavy use we will make of hex notation, remember, the hardware in reality does not store or operate on “Hex”. Rather, hex is just a convenient generic notation for us to express a particular binary value.</p>
-</div>
-</div>
-</div>
-<div class="section" id="registers-and-memory">
-<h2><span class="section-number">18.2. </span>Registers and Memory<a class="headerlink" href="#registers-and-memory" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+</section>
+<section id="registers-and-memory">
+<h2><span class="section-number">17.2. </span>Registers and Memory<a class="headerlink" href="#registers-and-memory" title="Permalink to this headline">#</a></h2>
 <p>In the von <a href="">Neumann computer architecture</a> there are two regions in the computer that we as general programmers must concern ourselves with.  The CPU and Memory.</p>
-<div class="section" id="registers">
-<h3><span class="section-number">18.2.1. </span>Registers<a class="headerlink" href="#registers" title="Permalink to this headline">¶</a></h3>
+<section id="registers">
+<h3><span class="section-number">17.2.1. </span>Registers<a class="headerlink" href="#registers" title="Permalink to this headline">#</a></h3>
 <p>The CPU contains a set of byte locations, called <strong>Registers</strong>, which the operations of the CPU can refer to.  As discussed in the <a href="">introduction</a>, CPU operations themselves are encoded as binary patterns. Part of the code for an operation specifies which registers the operation works with.  There are three categories of operations that 1) assign the value of a particular register, 2) peform some logical or mathematical operation of values, and 3) direct what location in memory the next operation code should be loaded from.    The Registers serve as the core locations in the computer that we use to do work.</p>
 <p>Generically, the entire set of registers in the CPU are called the Register File.  The subset that we use for general operations are called the <strong>General Purpose Registers</strong> (<strong>GPRS</strong>). The other registers of the Register File either are reserved for special use by the CPU or by the operating system software and, unsurprisingly, are often called <strong>Special Purpose Registers</strong> (<strong>SPRS</strong>). Each CPU vendor specifies a set of symbolic names that they use to indentify a particular register.</p>
 <p>For example, on Intel 64Bit Processors, sixteen 64 bit GPRS are; <code class="docutils literal notranslate"><span class="pre">RAX</span></code>, <code class="docutils literal notranslate"><span class="pre">RBX</span></code>, <code class="docutils literal notranslate"><span class="pre">RCX</span></code>, <code class="docutils literal notranslate"><span class="pre">RDX</span></code>, <code class="docutils literal notranslate"><span class="pre">RDI</span></code>, <code class="docutils literal notranslate"><span class="pre">RSI</span></code>, <code class="docutils literal notranslate"><span class="pre">RBP</span></code>, <code class="docutils literal notranslate"><span class="pre">RSP</span></code>, <code class="docutils literal notranslate"><span class="pre">R8</span></code>, <code class="docutils literal notranslate"><span class="pre">R9</span></code>, <code class="docutils literal notranslate"><span class="pre">R10</span></code>, <code class="docutils literal notranslate"><span class="pre">R11</span></code>, <code class="docutils literal notranslate"><span class="pre">R12</span></code>, <code class="docutils literal notranslate"><span class="pre">R13</span></code>, <code class="docutils literal notranslate"><span class="pre">R14</span></code>, <code class="docutils literal notranslate"><span class="pre">R15</span></code> (see 3.4.1.1 of the Intel 64 and IA-32 Architectures Software Developer’s Manual, Volume 1).  On ARM Arch64 Bit Processors there are thirty-one 64 bit GPRS that are uniformly named <code class="docutils literal notranslate"><span class="pre">X0..X30</span></code> (see <a href="https://developer.arm.com/documentation/102374/0101/Registers-in-AArch64---general-purpose-registers">Register in AArch64</a>).  An on the old 8 bit 6502 processor there are only 3 GPRS; <code class="docutils literal notranslate"><span class="pre">X</span></code>, <code class="docutils literal notranslate"><span class="pre">Y</span></code>, and <code class="docutils literal notranslate"><span class="pre">A</span></code>.</p>
@@ -3642,12 +3940,12 @@ htmlFig("[{'src': '../images/ASSEMBLY-PGMI/ASSEMBLY-PGMI.034.png'}]",
 </table>
 </div>
 </div>
-<div class="section" id="id1">
-<h4><span class="section-number">18.2.1.1. </span>Notation<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h4>
+<section id="id1">
+<h4><span class="section-number">17.2.1.1. </span>Notation<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h4>
 <p>When we want to name a register location we will extend our notation as follows.  If we are referring to a particular processor vendor register, we will use the name subscripted with the length to avoid confusion.  For example, to note that we are assigning the value in the Intel 64 bit <code class="docutils literal notranslate"><span class="pre">RAX</span></code> register to <code class="docutils literal notranslate"><span class="pre">RBX</span></code> we would write <span class="math notranslate nohighlight">\(\text{RBX}_{64} \leftarrow \text{RAX}_{64}\)</span>.  Similarly, in the case of ARM we would write <span class="math notranslate nohighlight">\(\text{X2}_{64} \leftarrow \text{X1}_{64}\)</span>.  If we are generically referring to registers we will use capital scripts notation subscripted by a specific length as follows <span class="math notranslate nohighlight">\(R4_{32} \leftarrow R5_{32}\)</span>.</p>
-</div>
-<div class="section" id="gdb-display-and-set-registers">
-<h4><span class="section-number">18.2.1.2. </span>GDB Display and Set Registers<a class="headerlink" href="#gdb-display-and-set-registers" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="gdb-display-and-set-registers">
+<h4><span class="section-number">17.2.1.2. </span>GDB Display and Set Registers<a class="headerlink" href="#gdb-display-and-set-registers" title="Permalink to this headline">#</a></h4>
 <div style="background-color:LimeGreen;">
 <img style="display: inline; margin: auto auto auto auto;" align="left" width="40px" src="../images/do.svg">
 <p><strong>GDB:</strong> The following are some basic gdb commands for working with registers.  We will learn more advanced syntax later but this will get us going.</p>
@@ -3689,12 +3987,12 @@ register.  Similarly, gdb will ignore all lead values that are beyond the size o
 </ol>
 <p><b>CODE: Source to create an <code class="docutils literal notranslate"><span class="pre">empty</span></code> process with 256 bytes of zeros to play with in gdb</b></p>
 <div style="width:100%; height:10em; font-size:inherit; overflow: auto;" >
-<div class="highlight-gas notranslate"><div class="highlight"><pre><span></span>	<span class="na">.intel_syntax</span> <span class="no">noprefix</span>        <span class="c1"># syntax directive</span>
-	<span class="na">.text</span>                         <span class="c1"># linker section &lt;directive&gt;</span>
+<div class="highlight-gas notranslate"><div class="highlight"><pre><span></span><span class="w">	</span><span class="na">.intel_syntax</span><span class="w"> </span><span class="no">noprefix</span><span class="w">        </span><span class="c1"># syntax directive</span>
+<span class="w">	</span><span class="na">.text</span><span class="w">                         </span><span class="c1"># linker section &lt;directive&gt;</span>
 
-	<span class="na">.global</span> <span class="no">_start</span>                <span class="c1"># export symbol _start to linker</span>
-<span class="nl">_start:</span>                           <span class="c1"># start symbol</span>
-	<span class="na">.fill</span> <span class="mi">256</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0x00</span>            <span class="c1"># https://sourceware.org/binutils/docs/as/Fill.html</span>
+<span class="w">	</span><span class="na">.global</span><span class="w"> </span><span class="no">_start</span><span class="w">                </span><span class="c1"># export symbol _start to linker</span>
+<span class="nl">_start:</span><span class="w">                           </span><span class="c1"># start symbol</span>
+<span class="w">	</span><span class="na">.fill</span><span class="w"> </span><span class="mi">256</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">0x00</span><span class="w">            </span><span class="c1"># https://sourceware.org/binutils/docs/as/Fill.html</span>
 </pre></div>
 </div>
 </div>
@@ -3706,13 +4004,13 @@ register.  Similarly, gdb will ignore all lead values that are beyond the size o
 {"model_id": "7662da7e2c484a7cbff25e9367ab3550", "version_major": 2, "version_minor": 0}
 </script></div>
 </div>
-</div>
-</div>
-<div class="section" id="memory-addresses-and-address-expressions">
-<h3><span class="section-number">18.2.2. </span>Memory, addresses and address expressions<a class="headerlink" href="#memory-addresses-and-address-expressions" title="Permalink to this headline">¶</a></h3>
+</section>
+</section>
+<section id="memory-addresses-and-address-expressions">
+<h3><span class="section-number">17.2.2. </span>Memory, addresses and address expressions<a class="headerlink" href="#memory-addresses-and-address-expressions" title="Permalink to this headline">#</a></h3>
 <p>In a von Neumann architecture, the Memory of the computer forms a large, fixed-size array of bytes which is directly connected to the CPU.  Critically, the CPU can transfer values from and to its registers and locations in memory.  Unlike registers, there are no hardware-specific symbolic names for these locations.  Rather, we identify which byte of memory by specifying its array index, which we call its <strong>address</strong>.</p>
-<div class="section" id="id2">
-<h4><span class="section-number">18.2.2.1. </span>Notation<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h4>
+<section id="id2">
+<h4><span class="section-number">17.2.2.1. </span>Notation<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h4>
 <p>We will use <span class="math notranslate nohighlight">\(M[\text{&lt;expr&gt;}]\)</span> to refer to a  specific byte in memory, where <span class="math notranslate nohighlight">\(\text{&lt;expr&gt;}\)</span> is an <strong>address expression</strong> whose value is the address we are referring too.  In the simplest from, this might just be a number in some base notation eg. <span class="math notranslate nohighlight">\(M[\text{0xFFF0}]\)</span> refers to the memory location of the byte at address <span class="math notranslate nohighlight">\(\text{0xFFF0}\)</span>.  We might also use symbols such as <span class="math notranslate nohighlight">\(\alpha\)</span> or <span class="math notranslate nohighlight">\(\beta\)</span>, to mean some particular address but whose exact value is not of concern eg.  <span class="math notranslate nohighlight">\(M[\alpha]\)</span>.  It is important to note that an address is just a number ranging from 0 to the  maximum number of bytes of memory minus one.  This range is often called an address space, as it defines the range of memory addresses that one can refer too. On a computer that supports a <span class="math notranslate nohighlight">\(2^{64}\)</span> address space, the address values can range from <span class="math notranslate nohighlight">\(0\)</span> to <span class="math notranslate nohighlight">\(2^{64}-1\)</span> or in hex <span class="math notranslate nohighlight">\(\text{0x0}\)</span> to <span class="math notranslate nohighlight">\(\text{0xffffffffffffffff}\)</span>.</p>
 <p>Given that an address is just a number, it is natural for an address expression to be a simple arithmetic expression eg. <span class="math notranslate nohighlight">\(M[\alpha + 16]\)</span> means the memory location whose address is <span class="math notranslate nohighlight">\(\alpha\)</span> plus 16.  Similarly <span class="math notranslate nohighlight">\(M[\beta + 8 * \alpha]\)</span> means the memory location whose address is <span class="math notranslate nohighlight">\(\beta\)</span> plus eight times <span class="math notranslate nohighlight">\(\alpha\)</span>.  It will also be common for us to use the value of registers in memory address expressions, such as <span class="math notranslate nohighlight">\(M[\text{RAX}_{64} + 4 * \text{RDI}_{64} + \text{0xdeadbeef}]\)</span> which means the location which is the current value of <span class="math notranslate nohighlight">\(\text{RAX}\)</span> plus 4 times the current value of <span class="math notranslate nohighlight">\(\text{RDI}\)</span>.</p>
 <p>Finally, we may want to work with a group of bytes of a length <span class="math notranslate nohighlight">\(w\)</span> (in bits) starting at a particular address.  Like with registers, we will use a subscript to indicate the length  eg. <span class="math notranslate nohighlight">\(M[\alpha]_{16}\)</span> or <span class="math notranslate nohighlight">\(M[\alpha]_{32}\)</span> or <span class="math notranslate nohighlight">\(M[\alpha]_{64}\)</span> respectively meaning the 2, 4 and 8 bytes starting at location <span class="math notranslate nohighlight">\(\alpha\)</span> and proceeding the the next larger locations as needed.  If no length is given, then we implicitly mean a length of 8 bits (1 byte).</p>
@@ -3722,14 +4020,14 @@ register.  Similarly, gdb will ignore all lead values that are beyond the size o
 <li><p><span class="math notranslate nohighlight">\(M[\alpha + 8 * R13_{64}]_{64} \leftarrow R5_{64}\)</span>  means set the bits of the 8 bytes at the memory address who’s value is <span class="math notranslate nohighlight">\(\alpha\)</span> plus eight times the 8 bytes value of register <span class="math notranslate nohighlight">\(R13\)</span> to the 8-byte value of register <span class="math notranslate nohighlight">\(R5\)</span>.</p></li>
 <li><p><span class="math notranslate nohighlight">\(\text{RAX}_{64} \leftarrow M[\text{RIP}_{64} + -42]_{64}\)</span> means set the 64 bit value of the <span class="math notranslate nohighlight">\(\text{RAX}\)</span> register to 64 bit value at memory whose address  is the current 64 bit value of the <span class="math notranslate nohighlight">\(\text{RIP}\)</span> register minus 42.</p></li>
 </ul>
-</div>
-<div class="section" id="byte-geometry">
-<h4><span class="section-number">18.2.2.2. </span>Byte Geometry<a class="headerlink" href="#byte-geometry" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="byte-geometry">
+<h4><span class="section-number">17.2.2.2. </span>Byte Geometry<a class="headerlink" href="#byte-geometry" title="Permalink to this headline">#</a></h4>
 <p>Given that we have settled on the byte as the standard unit of storage, we unsurprisingly measure capacity of devices in bytes.  For example, my computer has 32 GigaBytes of memory and a 1 TeraByte Solid State Drive.  Similarly, when we encode information, the encoded information has a length in bytes.  As a matter of fact, one can go further to say that information has a geometry in the form of a position (location) and size (length in bytes).</p>
 <p>We will find that it can be very useful to learn how to visualize the geometry of our software, both to understand how it is being represented, and how and why it works the way it does.</p>
-</div>
-<div class="section" id="multi-byte-quantities">
-<h4><span class="section-number">18.2.2.3. </span>Multi-byte quantities<a class="headerlink" href="#multi-byte-quantities" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="multi-byte-quantities">
+<h4><span class="section-number">17.2.2.3. </span>Multi-byte quantities<a class="headerlink" href="#multi-byte-quantities" title="Permalink to this headline">#</a></h4>
 <p>As we saw above, CPUs have evolved to contain GPRS that are bigger than a single byte.   Given this, they typically integrate instructions that work with a fixed set of multi-byte values.
 Most processors today directly support operations on one, two, four and 8-byte values.</p>
 <p>As an example, the following figure is an extract from the INTEL software development manuals explaining the support their CPUs have for working with 1,2,4,8 and 16-byte quantities.   In our coverage, we will not look at sizes greater than 64 bit as these tend to be custom and not uniformly supported across processors.</p>
@@ -3763,9 +4061,9 @@ htmlFig("[{'src': '../images/inteldatatypes.png'}]",
 <blockquote>
 <div><p><a class="reference internal" href="../_images/fyi.png"><img alt="../_images/fyi.png" class="align-left" src="../_images/fyi.png" style="width: 60px;" /></a> <p style="background-color:powderblue;"> Many processors today integrate custom support for even larger multi-byte values such as 128, 256 and even 512 bits.   Such larger quantities, and the registers that support them, are often used for a mode of operation called vector processing.   In this mode, the large group of bytes are used to hold a vector of values that are operated on as a group.  For example, one might use such registers to hold a vector of 128 four-byte quantities that can be operated on together.  One such operation could be to add one vector of values to another vector of values using a single instruction.  Internally, the processor has support for doing independent calculations concurrently.  This is actually a model of parallel processing called <a class="reference external" href="https://en.wikipedia.org/wiki/Single_instruction,_multiple_data">Single Instruction Multiple Data (SIMD)</a>.  SIMD operation is critical to achieving high performance when working on data intensive applications.  This includes linear algebra intensive Machine Learning/AI and graphics applications.  Examples of such support are <a class="reference external" href="https://en.wikipedia.org/wiki/AVX-512">INTEL’s AVX512</a> and <a class="reference external" href="https://developer.arm.com/documentation/102340/0001/Introducing-SVE2">ARM’s SVE</a>.  A hallmark of Graphics Processing Units (GPUs), and their usefulness for improving the performance of  Machine Learning tasks, is their support for vector processing and SIMD operation.</p>
 </div></blockquote>
-</div>
-<div class="section" id="endianness">
-<h4><span class="section-number">18.2.2.4. </span>“Endianness”<a class="headerlink" href="#endianness" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="endianness">
+<h4><span class="section-number">17.2.2.4. </span>“Endianness”<a class="headerlink" href="#endianness" title="Permalink to this headline">#</a></h4>
 <p>Given support for multi-byte values, a decision needed to be made regarding the order that is used to store the bytes of a multi-byte register when it is transferred to or from memory.</p>
 <p>For example if we want to do the following:
 <span class="math notranslate nohighlight">\(M[\alpha]_{64} \leftarrow R1_{64}\)</span></p>
@@ -3773,8 +4071,8 @@ htmlFig("[{'src': '../images/inteldatatypes.png'}]",
 While there are many possible order that could be
 used two standard “endiannesses” that developed; 1) little endian, and 2) big endian.</p>
 <p>Before we can present the two standard orders, we must first have a convention for referring the the bytes of multi-byte value.  We use the mathematical notion of significance.</p>
-<div class="section" id="most-and-least-significant-bytes">
-<h5><span class="section-number">18.2.2.4.1. </span>Most and Least Significant Bytes<a class="headerlink" href="#most-and-least-significant-bytes" title="Permalink to this headline">¶</a></h5>
+<section id="most-and-least-significant-bytes">
+<h5><span class="section-number">17.2.2.4.1. </span>Most and Least Significant Bytes<a class="headerlink" href="#most-and-least-significant-bytes" title="Permalink to this headline">#</a></h5>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <!-- produced by: 
@@ -3803,9 +4101,9 @@ htmlFig("[{'src': '../images/ASSEMBLY-PGMI/ASSEMBLY-PGMI.039.png'}]",
 </div>
 </div>
 <p>Given that we think of a binary value as a vector of bits, it is natural to think of them as a vector of bytes with the same notion of significance of bits.  As illustrated above.</p>
-</div>
-<div class="section" id="little-endian">
-<h5><span class="section-number">18.2.2.4.2. </span>Little Endian<a class="headerlink" href="#little-endian" title="Permalink to this headline">¶</a></h5>
+</section>
+<section id="little-endian">
+<h5><span class="section-number">17.2.2.4.2. </span>Little Endian<a class="headerlink" href="#little-endian" title="Permalink to this headline">#</a></h5>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <!-- produced by: 
@@ -3834,9 +4132,9 @@ htmlFig("[{'src': '../images/ASSEMBLY-PGMI/ASSEMBLY-PGMI.040.png'}]",
 </div>
 </div>
 <p>Little Endian byte ordering places the bytes in memory from least significant to most as illustrated in the figure above.</p>
-</div>
-<div class="section" id="big-endian">
-<h5><span class="section-number">18.2.2.4.3. </span>Big Endian<a class="headerlink" href="#big-endian" title="Permalink to this headline">¶</a></h5>
+</section>
+<section id="big-endian">
+<h5><span class="section-number">17.2.2.4.3. </span>Big Endian<a class="headerlink" href="#big-endian" title="Permalink to this headline">#</a></h5>
 <p>Unsurprisingly Big Endian byte ordering places values from most significant to least, the direct opposite of little endian ordering.</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
@@ -3865,9 +4163,9 @@ htmlFig("[{'src': '../images/ASSEMBLY-PGMI/ASSEMBLY-PGMI.041.png'}]",
 </table>
 </div>
 </div>
-</div>
-<div class="section" id="why-endianness-matters-to-us">
-<h5><span class="section-number">18.2.2.4.4. </span>Why Endianness matters to us<a class="headerlink" href="#why-endianness-matters-to-us" title="Permalink to this headline">¶</a></h5>
+</section>
+<section id="why-endianness-matters-to-us">
+<h5><span class="section-number">17.2.2.4.4. </span>Why Endianness matters to us<a class="headerlink" href="#why-endianness-matters-to-us" title="Permalink to this headline">#</a></h5>
 <p>The CPU (and computer more generally) is configured to operate either in Little Endian or Big Endian byte ordering.  For most programmers this detail is hidden from them.  But for those of us who want to look under the covers, we need to be aware of which ordering the hardware is configured to use.  When we look at the raw bytes in memory and want to interpret a group of them as a single vector, in the same way that the CPU will, then we must know the ordering.  As we can see in the prior figures, if we where to assume wrong ordering our interpretation of the value would be very different that the CPU’s.</p>
 <p>It is also worth realizing that when we want to exchange raw binary information between computers we will also have to account for endianess.  This includes files that contain binary data that we want to work with on two different computers and binary data we exchange on the internet.  Programmers over the years have carefully chosen what order to use, and developed functions to convert the ordering of the data to the ordering used by the computer that is accessing the data.
 The wikipedia page on Endianness discusses both the implications on <a class="reference external" href="https://en.wikipedia.org/wiki/Endianness#Files_and_filesystems">files</a> and <a class="reference external" href="https://en.wikipedia.org/wiki/Endianness#Networking">networking</a></p>
@@ -3898,10 +4196,10 @@ htmlFig("[{'src': '../images/intelendiannes3.png'}]",
 </table>
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="alignment">
-<h4><span class="section-number">18.2.2.5. </span>Alignment<a class="headerlink" href="#alignment" title="Permalink to this headline">¶</a></h4>
+</section>
+</section>
+<section id="alignment">
+<h4><span class="section-number">17.2.2.5. </span>Alignment<a class="headerlink" href="#alignment" title="Permalink to this headline">#</a></h4>
 <p>Like endianness there is another detail, called <strong>alignment</strong>,  that we will run into when looking at and placing values in memory.  Modern CPUs and operating systems may place restrictions on the addresses that we can place values of particular sizes at.  In some cases, these restrictions are strict, and violating them will trigger an error that the operating system will have to take care of, potentially causing it to terminate our program. In other cases, not adhering to the restrictions will only reduce the performance of our program.</p>
 <p>Alignment restrictions are typically specified in the following form: <span class="math notranslate nohighlight">\(w\)</span> byte values must be <span class="math notranslate nohighlight">\(a\)</span>-byte aligned.  Which means that the address that we place a value that is <span class="math notranslate nohighlight">\(w\)</span> bytes in length must be divisible by <span class="math notranslate nohighlight">\(a\)</span>.  For example, a common alignment we will run into is that four-byte quantities must be four byte aligned.  This means that that the addresses at which we place four-byte values in memory must be divisible by four.  In binary notation, the addresses that satisfy this alignment are those whose two least significant bits are zero.  The figure below is an example discussion of memory alignment from the INTEL software development manuals”.</p>
 <div class="cell tag_remove-input docutils container">
@@ -3964,9 +4262,9 @@ htmlFig("[{'src': '../images/alignment.png'}]",
 <p>Placement 2 starts placing the three values at address 10.  Again, given that A and B have no restrictions on where they can go, they are assigned to addresses 10 and 11.  Given these placements, the next address is 12 - which is four-byte aligned - so C can placed here with no need for padding.</p>
 <p>Notice in the first 16 bytes there are exactly four locations that we are allowed to place C, and as such there are only three possible placements for our data.  The other placement that can be used would place A and B at addresses 6 and 7 so that C aligns to address 8.   Without alignment constraints, we could have placed the data beginning at any address from 0 - 10 and not required padding bytes for any of them.</p>
 <p>When programming at the level of directly controlling memory we can see that there are various impact the choices we make can have.  Notice different placements can result in the need to waste bytes on padding while others do not.  Similarly the order that we choose for our data can affect our placement as well.  In the example had we ordered A and B after C then we could have placed the data at address zero without requiring padding.  Similarly had we ordered C in between A and B then we would have required three pad bytes to place the at address zero!  It is worth noting that when we use higher level programming languages and tools the decisions and constraints still exist but must be made and met by the languages and tools.</p>
-</div>
-<div class="section" id="gdb-and-memory">
-<h4><span class="section-number">18.2.2.6. </span>GDB and Memory<a class="headerlink" href="#gdb-and-memory" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="gdb-and-memory">
+<h4><span class="section-number">17.2.2.6. </span>GDB and Memory<a class="headerlink" href="#gdb-and-memory" title="Permalink to this headline">#</a></h4>
 <div style="background-color:LimeGreen;">
 <img style="display: inline; margin: auto auto auto auto;" align="left" width="40px" src="../images/do.svg"> 
 <p><strong>GDB:</strong> GDB have very rich support for working with memory.  We can refer to addresses and various ways, examine memory at an address in many sizes and formats, and we can also set the value at memory locations.  It will take time for us to learn all this syntax.  But lets start with some basics commands to display addresses and examine the values starting at an address.</p>
@@ -4011,12 +4309,12 @@ htmlFig("[{'src': '../images/alignment.png'}]",
 </ol>
 <p><b>CODE: Source to create an <code class="docutils literal notranslate"><span class="pre">empty</span></code> process with 256 bytes of zeros to play with in gdb</b></p>
 <div style="width:100%; height:10em; font-size:inherit; overflow: auto;" >
-<div class="highlight-gas notranslate"><div class="highlight"><pre><span></span>	<span class="na">.intel_syntax</span> <span class="no">noprefix</span>        <span class="c1"># syntax directive</span>
-	<span class="na">.text</span>                         <span class="c1"># linker section &lt;directive&gt;</span>
+<div class="highlight-gas notranslate"><div class="highlight"><pre><span></span><span class="w">	</span><span class="na">.intel_syntax</span><span class="w"> </span><span class="no">noprefix</span><span class="w">        </span><span class="c1"># syntax directive</span>
+<span class="w">	</span><span class="na">.text</span><span class="w">                         </span><span class="c1"># linker section &lt;directive&gt;</span>
 
-	<span class="na">.global</span> <span class="no">_start</span>                <span class="c1"># export symbol _start to linker</span>
-<span class="nl">_start:</span>                           <span class="c1"># start symbol</span>
-	<span class="na">.fill</span> <span class="mi">256</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0x00</span>            <span class="c1"># https://sourceware.org/binutils/docs/as/Fill.html</span>
+<span class="w">	</span><span class="na">.global</span><span class="w"> </span><span class="no">_start</span><span class="w">                </span><span class="c1"># export symbol _start to linker</span>
+<span class="nl">_start:</span><span class="w">                           </span><span class="c1"># start symbol</span>
+<span class="w">	</span><span class="na">.fill</span><span class="w"> </span><span class="mi">256</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">0x00</span><span class="w">            </span><span class="c1"># https://sourceware.org/binutils/docs/as/Fill.html</span>
 </pre></div>
 </div>
 </div>
@@ -4028,9 +4326,9 @@ htmlFig("[{'src': '../images/alignment.png'}]",
 {"model_id": "28fc7cfd2a5744598908afad7a1ad6b2", "version_major": 2, "version_minor": 0}
 </script></div>
 </div>
-</div>
-<div class="section" id="fixed-widths-and-their-implications">
-<h4><span class="section-number">18.2.2.7. </span>Fixed widths and their implications<a class="headerlink" href="#fixed-widths-and-their-implications" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="fixed-widths-and-their-implications">
+<h4><span class="section-number">17.2.2.7. </span>Fixed widths and their implications<a class="headerlink" href="#fixed-widths-and-their-implications" title="Permalink to this headline">#</a></h4>
 <p>It is very important to realize that when we refer to a register or memory location we must always keep in mind the length of the location.  As we saw each register has a fixed length specified by the CPU maker.  Eg. The INTEL registers <span class="math notranslate nohighlight">\(RAX\)</span>, <span class="math notranslate nohighlight">\(EAX\)</span>, <span class="math notranslate nohighlight">\(AX\)</span>, <span class="math notranslate nohighlight">\(AL\)</span> are <span class="math notranslate nohighlight">\(64\)</span>, <span class="math notranslate nohighlight">\(32\)</span>, <span class="math notranslate nohighlight">\(16\)</span> and <span class="math notranslate nohighlight">\(8\)</span> bits long respectively and the ARM registers, <span class="math notranslate nohighlight">\(X0\)</span> and <span class="math notranslate nohighlight">\(W0\)</span> are <span class="math notranslate nohighlight">\(64\)</span> and <span class="math notranslate nohighlight">\(32\)</span> respectively.  When dealing with memory it our responsibility to explicitly transfer the right length in bits (to or from memory).  For example generically, on modern 64 bit cpus, given an address <span class="math notranslate nohighlight">\(\alpha\)</span> and a 64 bit GPR such as <span class="math notranslate nohighlight">\(R3_{64}\)</span> the following transfers are all typically possible.</p>
 <ol class="simple">
 <li><p><span class="math notranslate nohighlight">\(R3_{64}\)</span> <span class="math notranslate nohighlight">\(\leftarrow\)</span> <span class="math notranslate nohighlight">\(M[\alpha]_{8}\)</span>, <span class="math notranslate nohighlight">\(M[\alpha]_{8}\)</span> <span class="math notranslate nohighlight">\(\leftarrow\)</span> <span class="math notranslate nohighlight">\(R3_{64}\)</span></p></li>
@@ -4039,8 +4337,8 @@ htmlFig("[{'src': '../images/alignment.png'}]",
 <li><p><span class="math notranslate nohighlight">\(R3_{64}\)</span> <span class="math notranslate nohighlight">\(\leftarrow\)</span> <span class="math notranslate nohighlight">\(M[\alpha]_{64}\)</span>, <span class="math notranslate nohighlight">\(M[\alpha]_{64}\)</span> <span class="math notranslate nohighlight">\(\leftarrow\)</span> <span class="math notranslate nohighlight">\(R3_{64}\)</span></p></li>
 </ol>
 <p>There will be separate instructions for each.  As such it will always be our responsibility to specify the length of the transfer in addition to the direction and address!  When the sizes of a transfer do not match we must also be aware of what will happen.</p>
-<div class="section" id="truncation">
-<h5><span class="section-number">18.2.2.7.1. </span>Truncation<a class="headerlink" href="#truncation" title="Permalink to this headline">¶</a></h5>
+<section id="truncation">
+<h5><span class="section-number">17.2.2.7.1. </span>Truncation<a class="headerlink" href="#truncation" title="Permalink to this headline">#</a></h5>
 <p>Most CPUs when transferring a larger vector to a smaller vector eg. <span class="math notranslate nohighlight">\(R3_{8}\)</span> <span class="math notranslate nohighlight">\(\leftarrow\)</span> <span class="math notranslate nohighlight">\(R4_{32}\)</span> or <span class="math notranslate nohighlight">\(R2_{16}\)</span> <span class="math notranslate nohighlight">\(\leftarrow\)</span> <span class="math notranslate nohighlight">\(M[\beta]_{64}\)</span> the most significant bits of the value will be truncated to fit.  For example if we were transferring the following <span class="math notranslate nohighlight">\(32\)</span> bit value:</p>
 <div class="cell tag_remove-input tag_output_scroll docutils container">
 <div class="cell_output docutils container">
@@ -4225,9 +4523,9 @@ htmlFig("[{'src': '../images/alignment.png'}]",
 </table>
 </div></div></div>
 </div>
-</div>
-<div class="section" id="trunction-and-modulus">
-<h5><span class="section-number">18.2.2.7.2. </span>Trunction and Modulus<a class="headerlink" href="#trunction-and-modulus" title="Permalink to this headline">¶</a></h5>
+</section>
+<section id="trunction-and-modulus">
+<h5><span class="section-number">17.2.2.7.2. </span>Trunction and Modulus<a class="headerlink" href="#trunction-and-modulus" title="Permalink to this headline">#</a></h5>
 <p>More generally when we truncate  an <span class="math notranslate nohighlight">\(n\)</span> bit value <span class="math notranslate nohighlight">\(X_{n}\)</span> to its least significant <span class="math notranslate nohighlight">\(k\)</span> bits (<span class="math notranslate nohighlight">\(k \leq n\)</span>) <span class="math notranslate nohighlight">\(X_k\)</span> we loose the most significant <span class="math notranslate nohighlight">\(n-k\)</span> bits.  When interpreting the values as unsigned integers, truncation is equivalent to</p>
 <div class="math notranslate nohighlight">
 \[UINT(X_k) = UINT(X_n) \text{ mod } 2^k\]</div>
@@ -4255,23 +4553,23 @@ htmlFig("[{'src': '../images/truncation.png'}]",
     </caption>
 </table>
 <p>The “fixed” width in bits of locations will often lead to us having to deal with the limit it imposes.  These limits lead to unfortunate problems, such as overflow and underflow,  when using bytes to representing and work with numbers.  We will discuss these problems in more detail later.</p>
-</div>
-<div class="section" id="extension">
-<h5><span class="section-number">18.2.2.7.3. </span>Extension<a class="headerlink" href="#extension" title="Permalink to this headline">¶</a></h5>
+</section>
+<section id="extension">
+<h5><span class="section-number">17.2.2.7.3. </span>Extension<a class="headerlink" href="#extension" title="Permalink to this headline">#</a></h5>
 <p>When transferring values from smaller locations to larger locations we must decide how to expand the value.<br />
 For example to moving a 32 bit located in memory at <span class="math notranslate nohighlight">\(\alpha\)</span> into a 64 bit register, <span class="math notranslate nohighlight">\(R5_{64} \leftarrow M[\alpha]_{32}\)</span>.
 CPUs typically support various operations that let us dictate how the unspecified bits of the destination should be set.</p>
 <p>The two most common strategies that we will encounter are zero and sign extension.  The former simply means extending the source smaller value with leading zero bits to create the larger value.  Signed extension is more subtle and we will deffer its discussion to when we discuss how we represent signed integers as binary vectors.</p>
 <p>A third option that one might also encounter is to leave the bits of destination, that the smaller value does not provide values for, unchanged.</p>
-</div>
-</div>
-</div>
-</div>
-<div class="section" id="representing-text-opcodes-and-data">
-<h2><span class="section-number">18.3. </span>Representing Text (Opcodes) and Data<a class="headerlink" href="#representing-text-opcodes-and-data" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+</section>
+</section>
+<section id="representing-text-opcodes-and-data">
+<h2><span class="section-number">17.3. </span>Representing Text (Opcodes) and Data<a class="headerlink" href="#representing-text-opcodes-and-data" title="Permalink to this headline">#</a></h2>
 <p>When discussing the von Neumann architecture we introduced the two broad, and not necessarily mutually exclusive, categories of information we want to represent: <a class="reference external" href="../assembly/vonNeumannArchitecture.html#ASCII_sec">Text and Data (opcodes)</a>. So now that we know that registers and memory are arrays of bits our job is to understand how we can use binary to represent and work with Text and Data.</p>
-<div class="section" id="text">
-<h3><span class="section-number">18.3.1. </span>Text<a class="headerlink" href="#text" title="Permalink to this headline">¶</a></h3>
+<section id="text">
+<h3><span class="section-number">17.3.1. </span>Text<a class="headerlink" href="#text" title="Permalink to this headline">#</a></h3>
 <p>As we discussed, in the introduction to this part of the book, the CPU provides us with a binary code called <a class="reference external" href="../assembly/intro.html#machinecode_sed">machine code</a> that we can use to encode the operations of our program.  In von Neumann architecture chapter saw that the CPU has a built in <a class="reference external" href="../assembly/vonNeumannArchitecture.html#exloop">Execute Loop</a> that fetches, decodes and executes encode instructions that we load into memory.   We also read in the introduction that the task of programming in machine code is simplified by a tool called an assembler.  The assembler lets us write our programs in <a class="reference external" href="../assembly/intro.html#assemblycode_sec">Assembly Language</a>.   The assembler has built into it the CPU’s encoding.<br />
 This allows us to write ASCII mnemonics, English short hands, that the CPU manual documents, into a file.   By running the assembler with our file as input it will translate our assembly code into the binary equivalent that encodes the operations.</p>
 <p>Given that we have assemblers our main job as programmers is not to memorize the binary code.  Rather our task is to learn what the operations of a CPU can do and how to use and structure them properly to create out programs using the an assembler and linker.  As we read the <a class="reference external" href="../assembly/vonNeumannArchitecture.html#operations_sec">operations</a> roughly break down into three categories:</p>
@@ -4302,17 +4600,17 @@ This allows us to write ASCII mnemonics, English short hands, that the CPU manua
 </ol>
 <p><b>CODE: simple one plus one program to test out gdb disassembler</b></p>
 <div style="width:100%; height:100%; font-size:inherit; overflow: auto;" >
-<div class="highlight-gas notranslate"><div class="highlight"><pre><span></span>	<span class="na">.intel_syntax</span> <span class="no">noprefix</span>        
+<div class="highlight-gas notranslate"><div class="highlight"><pre><span></span><span class="w">	</span><span class="na">.intel_syntax</span><span class="w"> </span><span class="no">noprefix</span><span class="w">        </span>
 
-	<span class="no">.text</span>                         
-	                              	                         
-	<span class="no">.global</span> <span class="no">_start</span>     
-<span class="no">_start</span><span class="p">:</span>                    
-	<span class="no">mov</span> <span class="no">al</span><span class="p">,</span> <span class="mi">1</span>        <span class="c1"># transfer 1 into al</span>
-	<span class="nf">add</span> <span class="no">al</span><span class="p">,</span> <span class="mi">1</span>        <span class="c1"># add 1 to the value in al</span>
-	<span class="nf">nop</span>              <span class="c1"># do nothing -- requires only one byte to encode</span>
-	<span class="nf">mov</span> <span class="no">bl</span><span class="p">,</span> <span class="no">al</span>       <span class="c1"># transfer value in al to bl</span>
-	
+<span class="w">	</span><span class="no">.text</span><span class="w">                         </span>
+<span class="w">	                              	                         </span>
+<span class="w">	</span><span class="no">.global</span><span class="w"> </span><span class="no">_start</span><span class="w">     </span>
+<span class="no">_start</span><span class="p">:</span><span class="w">                    </span>
+<span class="w">	</span><span class="no">mov</span><span class="w"> </span><span class="no">al</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">        </span><span class="c1"># transfer 1 into al</span>
+<span class="w">	</span><span class="nf">add</span><span class="w"> </span><span class="no">al</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">        </span><span class="c1"># add 1 to the value in al</span>
+<span class="w">	</span><span class="nf">nop</span><span class="w">              </span><span class="c1"># do nothing -- requires only one byte to encode</span>
+<span class="w">	</span><span class="nf">mov</span><span class="w"> </span><span class="no">bl</span><span class="p">,</span><span class="w"> </span><span class="no">al</span><span class="w">       </span><span class="c1"># transfer value in al to bl</span>
+<span class="w">	</span>
 </pre></div>
 </div>
 </div>
@@ -4324,9 +4622,9 @@ This allows us to write ASCII mnemonics, English short hands, that the CPU manua
 {"model_id": "38dbcab5ae2a4e6b90b3a8d4d3de36b7", "version_major": 2, "version_minor": 0}
 </script></div>
 </div>
-</div>
-<div class="section" id="data">
-<h3><span class="section-number">18.3.2. </span>Data<a class="headerlink" href="#data" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="data">
+<h3><span class="section-number">17.3.2. </span>Data<a class="headerlink" href="#data" title="Permalink to this headline">#</a></h3>
 <p>Given that all value in the computer are really just collections of bytes we must represent all the data of our programs in binary.  Over the years we have developed many encoding like ASCII that we use to represent and work with our data.  The encoding provide us when standard interpretations for both representing things as bytes and working on them.  The encoding roughly break down into two big categories:</p>
 <ol class="simple">
 <li><p>Native Types: The CPU provides operations that understand the encoding and provides functions that works with encoded values.  While different CPUs support various specialized encodings there are four that all modern CPUs support:</p>
@@ -4380,12 +4678,12 @@ strings are by convention encoded as a sequence of memory locations encoded in A
 </ol>
 <p><b>CODE: Source to create an <code class="docutils literal notranslate"><span class="pre">empty</span></code> process with 256 bytes of zeros to play with in gdb</b></p>
 <div style="width:100%; height:10em; font-size:inherit; overflow: auto;" >
-<div class="highlight-gas notranslate"><div class="highlight"><pre><span></span>	<span class="na">.intel_syntax</span> <span class="no">noprefix</span>        <span class="c1"># syntax directive</span>
-	<span class="na">.text</span>                         <span class="c1"># linker section &lt;directive&gt;</span>
+<div class="highlight-gas notranslate"><div class="highlight"><pre><span></span><span class="w">	</span><span class="na">.intel_syntax</span><span class="w"> </span><span class="no">noprefix</span><span class="w">        </span><span class="c1"># syntax directive</span>
+<span class="w">	</span><span class="na">.text</span><span class="w">                         </span><span class="c1"># linker section &lt;directive&gt;</span>
 
-	<span class="na">.global</span> <span class="no">_start</span>                <span class="c1"># export symbol _start to linker</span>
-<span class="nl">_start:</span>                           <span class="c1"># start symbol</span>
-	<span class="na">.fill</span> <span class="mi">256</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0x00</span>            <span class="c1"># https://sourceware.org/binutils/docs/as/Fill.html</span>
+<span class="w">	</span><span class="na">.global</span><span class="w"> </span><span class="no">_start</span><span class="w">                </span><span class="c1"># export symbol _start to linker</span>
+<span class="nl">_start:</span><span class="w">                           </span><span class="c1"># start symbol</span>
+<span class="w">	</span><span class="na">.fill</span><span class="w"> </span><span class="mi">256</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">0x00</span><span class="w">            </span><span class="c1"># https://sourceware.org/binutils/docs/as/Fill.html</span>
 </pre></div>
 </div>
 </div>
@@ -4397,9 +4695,9 @@ strings are by convention encoded as a sequence of memory locations encoded in A
 {"model_id": "a411231200ee425e88778ceefcd8a11b", "version_major": 2, "version_minor": 0}
 </script></div>
 </div>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
 
 <script type="application/vnd.jupyter.widget-state+json">
@@ -4429,44 +4727,48 @@ strings are by convention encoded as a sequence of memory locations encoded in A
 
               </div>
               
-        
-            <!-- Previous / next buttons -->
-<div class='prev-next-area'> 
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
     <a class='left-prev' id="prev-link" href="assembly.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">17. </span>Lets write some assembly code</p>
+            <p class="prev-next-title"><span class="section-number">16. </span>Lets write some assembly code</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="nativetypes.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">19. </span>Information Representation - Native Types</p>
+        <p class="prev-next-title"><span class="section-number">18. </span>Information Representation - Native Types</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-        
+            </footer>
         </div>
     </div>
-    <footer class="footer">
-    <div class="container">
-      <p>
-        
-          By Jonathan Appavoo<br/>
-        
-            &copy; Copyright 2021.<br/>
-      </p>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Jonathan Appavoo<br/>
+  
+      &copy; Copyright 2021.<br/>
+</p>
+        </footer>
     </div>
-  </footer>
-</main>
+    
+</div>
 
 
       </div>
     </div>
   
-  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
 
   </body>
 </html>

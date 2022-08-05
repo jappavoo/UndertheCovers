@@ -4,11 +4,13 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Under the Covers : The Secret Life of Software &#8212; UndertheCovers</title>
     
-  <link href="_static/css/theme.css" rel="stylesheet">
-  <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -18,40 +20,39 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin
     href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    
-      
-
-    
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
-  <link rel="preload" as="script" href="_static/js/index.be7d3bbb2ef33a8344ce.js">
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
-    <script src="_static/togglebutton.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
     <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script>
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="How to read this book" href="howto.html" />
@@ -62,7 +63,21 @@
     <!-- Google Analytics -->
     
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
     
     <div class="container-fluid" id="banner"></div>
 
@@ -71,9 +86,10 @@
     <div class="container-xl">
       <div class="row">
           
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="index.html">
       
         <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
@@ -91,14 +107,15 @@
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
-        <ul class="nav bd-sidenav">
- <li class="toctree-l1 current">
-  <a class="reference internal" href="#">
-   Under the Covers : The Secret Life of Software
-  </a>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1 current active">
+                <a class="reference internal" href="#">
+                    Under the Covers : The Secret Life of Software
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   How to read this book
  </span>
@@ -137,38 +154,38 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="unix/shell.html">
-   6. The Shell – Progammable User Interface to the computer
+  <a class="reference internal" href="unix/shelldetails.html">
+   5. The Shell - Part II: Some UNIX details
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="unix/editors.html">
-   7. Editors
+   6. Editors
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="unix/processes.html">
-   8. Processes
+   7. Processes
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="unix/ides.html">
-   9. IDEs
+   8. IDEs
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="unix/make.html">
-   10. Make
+   9. Make
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="unix/gitintro.html">
-   11. Intro to Git
+   10. Intro to Git
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="unix/git.html">
-   12. Git
+   11. Git
   </a>
  </li>
 </ul>
@@ -180,62 +197,62 @@
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="assembly/intro.html">
-   13. Introduction: Assembly Programming
+   12. Introduction: Assembly Programming
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="assembly/vonNeumannArchitecture.html">
-   14. The von Neumann Architecture
+   13. The von Neumann Architecture
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="assembly/UnixAssemblyProgramming.html">
-   15. Executables and Processes
+   14. Executables and Processes
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="assembly/Debuggers.html">
-   16. Machine Debuggers &amp; Open Process Surgery
+   15. Machine Debuggers &amp; Open Process Surgery
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="assembly/assembly.html">
-   17. Lets write some assembly code
+   16. Lets write some assembly code
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="assembly/InfoRepI.html">
-   18. Representing information - Preliminaries: Bits, Bytes and Notation
+   17. Representing information - Preliminaries: Bits, Bytes and Notation
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="assembly/nativetypes.html">
-   19. Information Representation - Native Types
+   18. Information Representation - Native Types
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="assembly/anatomyI.html">
-   20. Assembly : Program Anatomy I
+   19. Assembly : Program Anatomy I
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="assembly/anatomyII.html">
-   21. Program Anatomy II : Functions
+   20. Program Anatomy II : Functions
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="assembly/anatomyIII.html">
-   22. Program Anatomy III : Code as Data
+   21. Program Anatomy III : Code as Data
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="assembly/anatomyIV.html">
-   23. Program Anatomy IV: The Tree of Bytes and Data Structures
+   22. Program Anatomy IV: The Tree of Bytes and Data Structures
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="assembly/assemblyOS.html">
-   24. Assembly using the OS
+   23. Assembly using the OS
   </a>
  </li>
 </ul>
@@ -247,7 +264,7 @@
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="C/intro.html">
-   25. Introduction
+   24. Introduction
   </a>
  </li>
 </ul>
@@ -265,92 +282,197 @@
 </ul>
 
     </div>
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-</div>
-
-</div>
-
-
-          
-
-
-          
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
             
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
-        
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="_sources/intro_tb.md"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.md</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
-    </div>
-</div>
-
-            <!-- Source interaction buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
-    <div class="dropdown-buttons sourcebuttons">
-        <a class="repository-button"
-            href="https://github.com/jappavoo/UndertheCovers"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="Source repository"><i
-                    class="fab fa-github"></i>repository</button></a>
-        <a class="issues-button"
-            href="https://github.com/jappavoo/UndertheCovers/issues/new?title=Issue%20on%20page%20%2Fintro_tb.html&body=Your%20issue%20content%20here."><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
-        <a class="edit-button" href="https://github.com/jappavoo/UndertheCovers/edit/main/underthecovers/intro_tb.md"><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
-    </div>
-</div>
-
-            <!-- Full screen (wrap in <a> to have style consistency -->
-
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
-
-            <!-- Launch buttons -->
-
-        </div>
-
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
-            
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
             </div>
-            <nav id="bd-toc-nav" aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/jappavoo/UndertheCovers"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/jappavoo/UndertheCovers/issues/new?title=Issue%20on%20page%20%2Fintro_tb.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/jappavoo/UndertheCovers/edit/main/underthecovers/intro_tb.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Edit this page"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="headerbtn__text-container">suggest edit</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="_sources/intro_tb.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#about">
    About
@@ -358,18 +480,41 @@
  </li>
 </ul>
 
-            </nav>
-        </div>
-    </div>
+    </nav>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Under the Covers : The Secret Life of Software</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#about">
+   About
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
               <div>
                 
   <!-- #region -->
-<div class="tex2jax_ignore mathjax_ignore section" id="under-the-covers-the-secret-life-of-software">
-<h1>Under the Covers : The Secret Life of Software<a class="headerlink" href="#under-the-covers-the-secret-life-of-software" title="Permalink to this headline">¶</a></h1>
+<section class="tex2jax_ignore mathjax_ignore" id="under-the-covers-the-secret-life-of-software">
+<h1>Under the Covers : The Secret Life of Software<a class="headerlink" href="#under-the-covers-the-secret-life-of-software" title="Permalink to this headline">#</a></h1>
 <p>In this book we will look under the covers to learn exactly what software is and how it works. Our goal is to allow a reader to learn concepts and practical skills that will help them understand and participate in the digital world.   We will dissect how software and computers work so that the reader can understand the underlying ideas and mechanisms of computing technologies, revealing both beauty and ugliness.</p>
 <p>We will learn how hardware and software are broken down and organized. Learning the generic models that apply to most modern computers.   We will see how physical devices are turned into a blank canvas on which humans paint information as collections of binary bits.  Learning how different types of data are represented and how programs themselves are represented.  We will build our way to understanding how layers of software are fitted together to allow more complex information and ideas, not natively supported by the hardware, to be represented and worked with.
 Understanding this process will reveal to us how the layers make it simpler and simpler for humans to program computers and the limits and overheads that comes along with the layering.</p>
@@ -387,14 +532,14 @@ Understanding this process will reveal to us how the layers make it simpler and 
 <li><p>Into the Light: C Programming</p></li>
 </ol>
 <p>This textbook was developed for Boston University’s College of Arts and Sciences Computer Science CS210 Computer Systems class. A more detailed list of topics that the book covers can be found in <a class="reference internal" href="BUCS210_intro.html"><span class="doc std std-doc">CS210 Learning outcomes</span></a>.</p>
-<div class="section" id="about">
-<h2>About<a class="headerlink" href="#about" title="Permalink to this headline">¶</a></h2>
+<section id="about">
+<h2>About<a class="headerlink" href="#about" title="Permalink to this headline">#</a></h2>
 <p>This <a class="reference external" href="https://jappavoo.github.io/UndertheCovers/textbook/intro_tb.html">“book”</a> has associated with it <a class="reference external" href="https://jappavoo.github.io/UndertheCovers/lecturenotes/intro_ln.html">Lecture Notes</a> and a <a class="reference external" href="https://jappavoo.github.io/UndertheCovers/labmanual">Lab Manual</a>.   The book, lecture notes and lab manual websites have been generated using <a class="reference external" href="https://jupyterbook.org/intro.html">Jupyter-book</a>.  The source material is maintained in the following git repository: <a class="reference external" href="https://github.com/jappavoo/UndertheCovers">https://github.com/jappavoo/UndertheCovers</a>.</p>
 <p>Jupyter-book is a tool for converting  and exploiting <a class="reference external" href="https://jupyter-notebook-beginner-guide.readthedocs.io/en/latest/what_is_jupyter.html">Jupyter Notebooks</a> as the main document type for authoring content.  Jupyter Notebooks are an ipython document type who’s file names end in <code class="docutils literal notranslate"><span class="pre">.ipynb</span></code>. Jupyter Notebooks allow an author to design and include both static text and interactive content in a document that can be viewed and worked using a <a class="reference external" href="https://jupyter.org">Jupyter user interface app</a> such as Juypter Lab or the older Jupyter Notebook Classic Interface.</p>
 <p>Jupyter-books converts each of the Jupyter Notebooks that make up either the textbook, lecture notes, or lab manual into a website composed of web-pages (html) that can be viewed like any other website.    The websites are static version of the content that the jupyter-book tool created from the underlying source notebooks.    The notebooks however are interactive documents and may include code and content that is best used directly in the form of the notebook.    This is particularly true for the lecture notes and lab manual content.  The lecture notes are designed to used within the classic juypter user interface with the  RISE Presentation extension (<a class="reference external" href="https://rise.readthedocs.io/en/stable/">https://rise.readthedocs.io/en/stable/</a>).</p>
 <p>To get access to the source notebooks so that you can use them interactively or for you to help author new content you need to get a copy of the <a class="reference external" href="https://github.com/jappavoo/UndertheCovers">repository</a>.    This can be done by manually setting up your own environment and cloning the repository or by using short cuts built into the static websites.  For the interactive pages you will see a rocket icon which if you hover over will reveal a JupyterHub button.  Clicking on this button will redirect you to a JupyterHub service that will start a private Jupyter server for you that will contain a clone of the source material.  See the attached video for more information.   If at any point we want to quickly see the source material you can use the git icon at the top of the web pages – hovering over it will reveal a repository button that will take you the the git repository.</p>
 <!-- #endregion -->
-</div>
+</section>
 <div class="toctree-wrapper compound">
 </div>
 <div class="toctree-wrapper compound">
@@ -405,7 +550,7 @@ Understanding this process will reveal to us how the layers make it simpler and 
 </div>
 <div class="toctree-wrapper compound">
 </div>
-</div>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -429,8 +574,10 @@ Understanding this process will reveal to us how the layers make it simpler and 
 
               </div>
               
-        
-            <!-- Previous / next buttons -->
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
 <div class='prev-next-area'>
     <a class='right-next' id="next-link" href="howto.html" title="next page">
     <div class="prev-next-info">
@@ -440,26 +587,28 @@ Understanding this process will reveal to us how the layers make it simpler and 
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-        
+            </footer>
         </div>
     </div>
-    <footer class="footer">
-    <div class="container">
-      <p>
-        
-          By Jonathan Appavoo<br/>
-        
-            &copy; Copyright 2021.<br/>
-      </p>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Jonathan Appavoo<br/>
+  
+      &copy; Copyright 2021.<br/>
+</p>
+        </footer>
     </div>
-  </footer>
-</main>
+    
+</div>
 
 
       </div>
     </div>
   
-  <script src="_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
 
   </body>
 </html>

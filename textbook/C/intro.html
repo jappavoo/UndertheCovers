@@ -4,11 +4,13 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>25. Introduction &#8212; UndertheCovers</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>24. Introduction &#8212; UndertheCovers</title>
     
-  <link href="../_static/css/theme.css" rel="stylesheet">
-  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -18,44 +20,43 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin
     href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    
-      
-
-    
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
-    <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
     <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script>
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="BU CS210 Overview" href="../BUCS210_intro.html" />
-    <link rel="prev" title="24. Assembly using the OS" href="../assembly/assemblyOS.html" />
+    <link rel="prev" title="23. Assembly using the OS" href="../assembly/assemblyOS.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -63,7 +64,21 @@
     <!-- Google Analytics -->
     
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
     
     <div class="container-fluid" id="banner"></div>
 
@@ -72,9 +87,10 @@
     <div class="container-xl">
       <div class="row">
           
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../index.html">
       
         <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
@@ -92,14 +108,15 @@
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
-        <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../intro_tb.html">
-   Under the Covers : The Secret Life of Software
-  </a>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro_tb.html">
+                    Under the Covers : The Secret Life of Software
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   How to read this book
  </span>
@@ -138,38 +155,38 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../unix/shell.html">
-   6. The Shell – Progammable User Interface to the computer
+  <a class="reference internal" href="../unix/shelldetails.html">
+   5. The Shell - Part II: Some UNIX details
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../unix/editors.html">
-   7. Editors
+   6. Editors
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../unix/processes.html">
-   8. Processes
+   7. Processes
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../unix/ides.html">
-   9. IDEs
+   8. IDEs
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../unix/make.html">
-   10. Make
+   9. Make
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../unix/gitintro.html">
-   11. Intro to Git
+   10. Intro to Git
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../unix/git.html">
-   12. Git
+   11. Git
   </a>
  </li>
 </ul>
@@ -181,62 +198,62 @@
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../assembly/intro.html">
-   13. Introduction: Assembly Programming
+   12. Introduction: Assembly Programming
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../assembly/vonNeumannArchitecture.html">
-   14. The von Neumann Architecture
+   13. The von Neumann Architecture
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../assembly/UnixAssemblyProgramming.html">
-   15. Executables and Processes
+   14. Executables and Processes
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../assembly/Debuggers.html">
-   16. Machine Debuggers &amp; Open Process Surgery
+   15. Machine Debuggers &amp; Open Process Surgery
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../assembly/assembly.html">
-   17. Lets write some assembly code
+   16. Lets write some assembly code
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../assembly/InfoRepI.html">
-   18. Representing information - Preliminaries: Bits, Bytes and Notation
+   17. Representing information - Preliminaries: Bits, Bytes and Notation
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../assembly/nativetypes.html">
-   19. Information Representation - Native Types
+   18. Information Representation - Native Types
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../assembly/anatomyI.html">
-   20. Assembly : Program Anatomy I
+   19. Assembly : Program Anatomy I
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../assembly/anatomyII.html">
-   21. Program Anatomy II : Functions
+   20. Program Anatomy II : Functions
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../assembly/anatomyIII.html">
-   22. Program Anatomy III : Code as Data
+   21. Program Anatomy III : Code as Data
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../assembly/anatomyIV.html">
-   23. Program Anatomy IV: The Tree of Bytes and Data Structures
+   22. Program Anatomy IV: The Tree of Bytes and Data Structures
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../assembly/assemblyOS.html">
-   24. Assembly using the OS
+   23. Assembly using the OS
   </a>
  </li>
 </ul>
@@ -248,7 +265,7 @@
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   25. Introduction
+   24. Introduction
   </a>
  </li>
 </ul>
@@ -266,228 +283,473 @@
 </ul>
 
     </div>
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-</div>
-
-</div>
-
-
-          
-
-
-          
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
             
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
-        
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/C/intro.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
-    </div>
-</div>
-
-            <!-- Source interaction buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
-    <div class="dropdown-buttons sourcebuttons">
-        <a class="repository-button"
-            href="https://github.com/jappavoo/UndertheCovers"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="Source repository"><i
-                    class="fab fa-github"></i>repository</button></a>
-        <a class="issues-button"
-            href="https://github.com/jappavoo/UndertheCovers/issues/new?title=Issue%20on%20page%20%2FC/intro.html&body=Your%20issue%20content%20here."><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
-        <a class="edit-button" href="https://github.com/jappavoo/UndertheCovers/edit/main/underthecovers/C/intro.ipynb"><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
-    </div>
-</div>
-
-            <!-- Full screen (wrap in <a> to have style consistency -->
-
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
-
-            <!-- Launch buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        
-        <a class="jupyterhub-button" href="https://jupyterhub-opf-jupyterhub.apps.smaug.na.operate-first.cloud/hub/user-redirect/git-pull?repo=https://github.com/jappavoo/UndertheCovers&urlpath=lab/tree/UndertheCovers/underthecovers/C/intro.ipynb&branch=main"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch JupyterHub" data-toggle="tooltip"
-                data-placement="left"><img class="jupyterhub-button-logo"
-                    src="../_static/images/logo_jupyterhub.svg"
-                    alt="Interact on JupyterHub">JupyterHub</button></a>
-        
-        
-        
-    </div>
-</div>
-
-        </div>
-
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
-            
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
             </div>
-            <nav id="bd-toc-nav" aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://jupyterhub-opf-jupyterhub.apps.smaug.na.operate-first.cloud/hub/user-redirect/git-pull?repo=https%3A//github.com/jappavoo/UndertheCovers&urlpath=lab/tree/UndertheCovers/underthecovers/C/intro.ipynb&branch=main"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on JupyterHub"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_jupyterhub.svg">
+  </span>
+<span class="headerbtn__text-container">JupyterHub</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/jappavoo/UndertheCovers"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/jappavoo/UndertheCovers/issues/new?title=Issue%20on%20page%20%2FC/intro.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/jappavoo/UndertheCovers/edit/main/underthecovers/C/intro.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Edit this page"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="headerbtn__text-container">suggest edit</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/C/intro.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#downside-the-human-burden-of-assembly-programming-and-programmer-lock-in">
-   25.1. Downside: The human burden of assembly programming and programmer lock in.
+   24.1. Downside: The human burden of assembly programming and programmer lock in.
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#downside-the-code-we-write-is-locked-to-a-specific-cpu">
-   25.2. Downside: The code we write is locked to a specific CPU
+   24.2. Downside: The code we write is locked to a specific CPU
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#downside-the-code-we-write-is-locked-to-a-specific-os">
-   25.3. Downside: The code we write is locked to a specific OS
+   24.3. Downside: The code we write is locked to a specific OS
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#high-level-langauges">
-   25.4. High level Langauges
+   24.4. High level Langauges
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#but">
-     25.4.1. But …
+     24.4.1. But …
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#the-birth-of-c">
-   25.5. The birth of “C”
+   24.5. The birth of “C”
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#c-as-an-alternative-to-assembly-programming">
-   25.6. C as an alternative to Assembly programming
+   24.6. C as an alternative to Assembly programming
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#c-a-life-beyond-unix-os-development">
-   25.7. “C” a life beyond UNIX OS development.
+   24.7. “C” a life beyond UNIX OS development.
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#our-approach-to-c">
-   25.8. Our approach to “C”
+   24.8. Our approach to “C”
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#preliminaries-the-c-compiler-our-very-onw-personal-assembly-programmer">
-   25.9. Preliminaries:  The C Compiler : Our very onw personal assembly programmer
+   24.9. Preliminaries:  The C Compiler : Our very onw personal assembly programmer
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#the-toolchain">
-     25.9.1. The ToolChain
+     24.9.1. The ToolChain
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#cc1-as-ld">
-   25.10. cc1, as, ld
+   24.10. cc1, as, ld
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#compiler-driver-gcc-cc">
-     25.10.1. Compiler driver: gcc/cc
+     24.10.1. Compiler driver: gcc/cc
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#controlling-directing-the-compiler">
-   25.11. Controlling / Directing the compiler
+   24.11. Controlling / Directing the compiler
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#options">
-     25.11.1. Options
+     24.11.1. Options
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#optimization-options">
-       25.11.1.1. Optimization options
+       24.11.1.1. Optimization options
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#language-options">
-       25.11.1.2. Language options
+       24.11.1.2. Language options
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#debugger-options">
-       25.11.1.3. Debugger options
+       24.11.1.3. Debugger options
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#machine-specific-options">
-       25.11.1.4. Machine Specific options
+       24.11.1.4. Machine Specific options
       </a>
      </li>
     </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#our-focus">
-     25.11.2. Our focus
+     24.11.2. Our focus
     </a>
    </li>
   </ul>
  </li>
 </ul>
 
-            </nav>
-        </div>
-    </div>
+    </nav>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Introduction</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#downside-the-human-burden-of-assembly-programming-and-programmer-lock-in">
+   24.1. Downside: The human burden of assembly programming and programmer lock in.
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#downside-the-code-we-write-is-locked-to-a-specific-cpu">
+   24.2. Downside: The code we write is locked to a specific CPU
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#downside-the-code-we-write-is-locked-to-a-specific-os">
+   24.3. Downside: The code we write is locked to a specific OS
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#high-level-langauges">
+   24.4. High level Langauges
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#but">
+     24.4.1. But …
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-birth-of-c">
+   24.5. The birth of “C”
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#c-as-an-alternative-to-assembly-programming">
+   24.6. C as an alternative to Assembly programming
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#c-a-life-beyond-unix-os-development">
+   24.7. “C” a life beyond UNIX OS development.
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#our-approach-to-c">
+   24.8. Our approach to “C”
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#preliminaries-the-c-compiler-our-very-onw-personal-assembly-programmer">
+   24.9. Preliminaries:  The C Compiler : Our very onw personal assembly programmer
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-toolchain">
+     24.9.1. The ToolChain
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#cc1-as-ld">
+   24.10. cc1, as, ld
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#compiler-driver-gcc-cc">
+     24.10.1. Compiler driver: gcc/cc
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#controlling-directing-the-compiler">
+   24.11. Controlling / Directing the compiler
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#options">
+     24.11.1. Options
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#optimization-options">
+       24.11.1.1. Optimization options
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#language-options">
+       24.11.1.2. Language options
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#debugger-options">
+       24.11.1.3. Debugger options
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#machine-specific-options">
+       24.11.1.4. Machine Specific options
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#our-focus">
+     24.11.2. Our focus
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
               <div>
                 
   <div class="cell docutils container">
@@ -498,27 +760,27 @@
 </div>
 </div>
 </div>
-<div class="tex2jax_ignore mathjax_ignore section" id="introduction">
-<h1><span class="section-number">25. </span>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
+<section class="tex2jax_ignore mathjax_ignore" id="introduction">
+<h1><span class="section-number">24. </span>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">#</a></h1>
 <p>So now that we have a sense for how programs work and we know how to write assembly code, that is very close to the native language of the computer, let us try and figure out how to ensure that most humans never have to do that!</p>
 <p>Understanding how the relationship between the cpu and the values in memory give us the ability to construct computer programs is very powerful.  However, there are many disadvantages to trying to write and develop all our software with tools that only provide a raw binary view of programming.  In particular, the assembler and linker are very powerful but they require us to write a lot of carefully constructed code and to know a lot about the specific cpu and operating system that we what our program to run on.</p>
-<div class="section" id="downside-the-human-burden-of-assembly-programming-and-programmer-lock-in">
-<h2><span class="section-number">25.1. </span>Downside: The human burden of assembly programming and programmer lock in.<a class="headerlink" href="#downside-the-human-burden-of-assembly-programming-and-programmer-lock-in" title="Permalink to this headline">¶</a></h2>
+<section id="downside-the-human-burden-of-assembly-programming-and-programmer-lock-in">
+<h2><span class="section-number">24.1. </span>Downside: The human burden of assembly programming and programmer lock in.<a class="headerlink" href="#downside-the-human-burden-of-assembly-programming-and-programmer-lock-in" title="Permalink to this headline">#</a></h2>
 <p>Consider how when writing assembly code we can demark any area of memory with a symbolic label and place any byte values we want in that area memory.  While this give us a great deal of freedom and power it also means that we have to make lots of decisions and write lots of carefully constructed assembly just to write a function or layout a data stucture.   For example we are responsible for knowing that one label represents the start of a function while another represents an else condition of an if construct.  Or that another label demarks a single byte that we want to use as a byte sized unsigned integer followed by an area of memory that we want to use as an eight byte signed integer.   Think of all the trouble we might create if we accidentally get confused and use our areas of memory inconsistently in different parts of our program.  For example we accidentally treat the label of the else clause as function by calling it or we directly jump to the function label instead of calling it.  Or perhaps we move a four byte value to the area that we intended to use as a single byte unsigned integer followed an eight byte signed value.  This would likely “corrupt” both the single byte value and the 8 byte value all in one fell swoop.  We could spend days and days trying to figure out why our program seems to do strange things once in a while.  Or worse we never realize it and our code simply one day causes an airplane to crash.</p>
 <p>If focsed all ones effort in learning all the nuances of the assembly language of a particular CPU then you have locked yourself into what CPU’s and OS’s you can be productive in.</p>
-</div>
-<div class="section" id="downside-the-code-we-write-is-locked-to-a-specific-cpu">
-<h2><span class="section-number">25.2. </span>Downside: The code we write is locked to a specific CPU<a class="headerlink" href="#downside-the-code-we-write-is-locked-to-a-specific-cpu" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="downside-the-code-we-write-is-locked-to-a-specific-cpu">
+<h2><span class="section-number">24.2. </span>Downside: The code we write is locked to a specific CPU<a class="headerlink" href="#downside-the-code-we-write-is-locked-to-a-specific-cpu" title="Permalink to this headline">#</a></h2>
 <p>Futher when we write assembly code we end up with a program that can only work on a computer that has a cpu that is compatible with the instruction set we wrote our code in.  For example we might write a program to sort numbers in 6502 assembly language.  Unsurprisingly the executable we create cannot be executed on a computer with an Intel X86 processor or one with an ARM AArch64 processor.  But worse the source code, the ascii ‘.S’ files,  of our program cannot be assembled using and X86 or ARM assembler to produce a binary for systems using those processors.  After all the code we wrote specifically identifies 6502 instructions which translate direclty into binary opcodes for the 6502.  The other processor likely don’t have these particular instructions and even if they did they need not translate to the apprropriate opcodes.  However, it is obvious that
 not only should it be possible to write a program to sort numbers on all of these computers
 the general structure of our program should be the same.  After all, all of these computers are von Neumann computers where they implement a basic processing loop and their instructions and data are represented by bytes in memory.  It would be really nice if we could write our code in a common assembly language and the assemblers for each processor could convert.  Of course this unfortunately might also mean that we could not use instructions that don’t easly have a counter part on each processor.  For example it is easy to see that all of the systems will have instructions for moving values to and from memory to either specific registers and have instructions for conducting addition.  However it is unlikely that they all would have an equivalent of the X86 <code class="docutils literal notranslate"><span class="pre">popcnt</span></code> instruction that calculates the number of one bits in a 64 bit vector and stores the result to a memory location.   So we would need to restrict our genric assembly language to avoid the use of such instructions and of course loose the power of their use.</p>
-</div>
-<div class="section" id="downside-the-code-we-write-is-locked-to-a-specific-os">
-<h2><span class="section-number">25.3. </span>Downside: The code we write is locked to a specific OS<a class="headerlink" href="#downside-the-code-we-write-is-locked-to-a-specific-os" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="downside-the-code-we-write-is-locked-to-a-specific-os">
+<h2><span class="section-number">24.3. </span>Downside: The code we write is locked to a specific OS<a class="headerlink" href="#downside-the-code-we-write-is-locked-to-a-specific-os" title="Permalink to this headline">#</a></h2>
 <p>Lastly consider what we had to do in an assembly program to use facilities of the operating system.  We had to explictly know what functions the specific operating system has, what they do, what argument they require, what registers to use to pass the arguments, what they calls return, the cpu specific instructions for call the operating system functions.  Knowing all this we then had to write the CPU specific assembly.  As such our program became speific to both the CPU and OS.  However, again it seems reasonable that most Operating systems will support ways for connecting to a webserver on the internet and sending and receiving bytes from it.  It would be really nice to write code that can run or at least be translated by a tool to run on the particular OS we are using.</p>
-</div>
-<div class="section" id="high-level-langauges">
-<h2><span class="section-number">25.4. </span>High level Langauges<a class="headerlink" href="#high-level-langauges" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="high-level-langauges">
+<h2><span class="section-number">24.4. </span>High level Langauges<a class="headerlink" href="#high-level-langauges" title="Permalink to this headline">#</a></h2>
 <p>Now many of us likely have written programs in languages like Python, Java, etc. and have never had any of the issues assocaited with writing assembly code.    So how is this possible if in the end the hardware only can execute instructions and interpret data that are represented as bytes in memory?</p>
 <p>These languages do not run natively.  Rather the languages are implememented by software that “translate” or interpret programs written in the language they support.  For example in order to run a Python program you must run an Python executable, A Python Interpreter, that then process your python program.  There is nothing particularly special about the Python Interpreter executable.  It is a binary has been built to execute on your OS and cpu. Just like the executables we built in the prior portion of this book.</p>
 <p>As a matter of fact, using our knowledge of UNIX and assembly we can validate this fact for ourselves.</p>
@@ -542,8 +804,8 @@ the general structure of our program should be the same.  After all, all of thes
 </div>
 <p>From here, like the programs we wrote, we could single step it and examine how it uses the CPU, memory and the calls it makes to the OS.</p>
 <p>The Python interpreter is a native program that reads in python programs as ASCII lines of text and then interprets them according to the Python language definition.</p>
-<div class="section" id="but">
-<h3><span class="section-number">25.4.1. </span>But …<a class="headerlink" href="#but" title="Permalink to this headline">¶</a></h3>
+<section id="but">
+<h3><span class="section-number">24.4.1. </span>But …<a class="headerlink" href="#but" title="Permalink to this headline">#</a></h3>
 <p>Take a look again at how big the python binary is</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -557,10 +819,10 @@ the general structure of our program should be the same.  After all, all of thes
 </script></div>
 </div>
 <p>That’s a lot bigger than the programs we wrote in assembly code! Could you imagine writing something that big? Futher could you imagine writing a new version for every computer type and OS pair?  As a matter of fact, it is likely if we did have to do that then we would not even have languages like Python in the first place!</p>
-</div>
-</div>
-<div class="section" id="the-birth-of-c">
-<h2><span class="section-number">25.5. </span>The birth of “C”<a class="headerlink" href="#the-birth-of-c" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="the-birth-of-c">
+<h2><span class="section-number">24.5. </span>The birth of “C”<a class="headerlink" href="#the-birth-of-c" title="Permalink to this headline">#</a></h2>
 <p>Well as a matter of fact this is precisely the kind of problem that the early inventors of the UNIX operating system were facing. The UNIX kernel is also a very complex program that one would like to have operate on many different types of computers.  For the most part operating system kernels had been largely written in Assembly language for the particular computer the OS was going to run on.  Further to support a new computer the OS had to be carefully rewritten for the new computer’s CPU features, memory organization and devices.  Borrowing from the idea of using high-level languages to implement applications the developers of UNIX choose to evolve the UNIX kernel in a way that would allow much of the system to be portable.  That is to say the work to be done to get the system running on a new computer would not require writing new assembly code for all but a small part of the code.   However, the nature of operating systems code is that it needs to often  manipulate the CPU and memory directly and easily inter-operates with assembly code.  This is in contrast to the high-level languages that were being developed for applications. Those languages largely went out of their way to hide as much of the machine details as possible from the programmer and restrict what could be done in the language. Doing so avoids the need to understand the details of how data and code is represented as binary values in memory and to keep programmers from making various kinds of errors.</p>
 <p>What was needed was a programming language that was in-between assembly language and the high-level languages.  Where the new language would not hide the nature of memory from the programmer nor excessively restrict what can be done while still helping to avoid common pitfalls of assembly programming.  Rather the language should precisely let the programmer work with memory but in a way that is more generic and portable than writing code for a particular CPU assembly language.</p>
 <p>So the approach taken with the UNIX operating system was to develop a program, that we call a compiler, that could translate source code in this generic machine oriented language to assembly code for the particular computer that was being targeted.   The assembly code the compiler produced can then be treated as input in the the systems assembler and linker.   If much of the OS could be written in this generic language then getting the OS to run on a new computer really meant writing a new compiler for the system and then “re-compile” the OS source with it.  In addition to portability the language would help a programmer  avoid common errors and the need to know the details of every CPU.  I</p>
@@ -568,18 +830,18 @@ the general structure of our program should be the same.  After all, all of thes
 <blockquote>
 <div><p><a class="reference internal" href="../_images/history.svg"><img alt="../_images/history.svg" class="align-left" src="../_images/history.svg" width="60" /></a> <p style="background-color:powderblue;">  In the above we have liberally shortened and potentially distorted history for the sake of comprehensibility. For a more complete and historically accurate discussion of how the “C” programming language came into being see <a class="reference external" href="https://www.bell-labs.com/usr/dmr/www/chist.html">The Development of the C Language*</a>.</p></p>
 </div></blockquote>
-</div>
-<div class="section" id="c-as-an-alternative-to-assembly-programming">
-<h2><span class="section-number">25.6. </span>C as an alternative to Assembly programming<a class="headerlink" href="#c-as-an-alternative-to-assembly-programming" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="c-as-an-alternative-to-assembly-programming">
+<h2><span class="section-number">24.6. </span>C as an alternative to Assembly programming<a class="headerlink" href="#c-as-an-alternative-to-assembly-programming" title="Permalink to this headline">#</a></h2>
 <p>So how do we maintain the power of assembly programming while also avoiding the downsides?</p>
 <p>Almost by definition we must make some trade-offs</p>
-</div>
-<div class="section" id="c-a-life-beyond-unix-os-development">
-<h2><span class="section-number">25.7. </span>“C” a life beyond UNIX OS development.<a class="headerlink" href="#c-a-life-beyond-unix-os-development" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="c-a-life-beyond-unix-os-development">
+<h2><span class="section-number">24.7. </span>“C” a life beyond UNIX OS development.<a class="headerlink" href="#c-a-life-beyond-unix-os-development" title="Permalink to this headline">#</a></h2>
 <p>This language proved to be so useful its ability to enable expert programmers to write new tools that many of the programs that traditionaly had to be written in assembly language like the high-level application language translators and interpreters were rewritten to C.</p>
-</div>
-<div class="section" id="our-approach-to-c">
-<h2><span class="section-number">25.8. </span>Our approach to “C”<a class="headerlink" href="#our-approach-to-c" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="our-approach-to-c">
+<h2><span class="section-number">24.8. </span>Our approach to “C”<a class="headerlink" href="#our-approach-to-c" title="Permalink to this headline">#</a></h2>
 <p>We will take an unconventional approach to exploring and learning the “C” programming lanaguge.  Rather than just considering it as a programming language and its attendant syntax we will develop our understanding as we explore how it b</p>
 <p>Constructing C from the ground up:</p>
 <ul class="simple">
@@ -632,42 +894,42 @@ the general structure of our program should be the same.  After all, all of thes
 </ul>
 <p>Remember all of what we learnt about assembling and linking still happens “C” is just a step added before these two stages.  Instead of writing <code class="docutils literal notranslate"><span class="pre">.S</span></code> files directly we are writting <code class="docutils literal notranslate"><span class="pre">.C</span></code> that each get translated into an associated <code class="docutils literal notranslate"><span class="pre">.S</span></code> by the compiler which then gets translated into a relocatable object module <code class="docutils literal notranslate"><span class="pre">.o</span></code> which all then get linked into an executable via the linker.  This means our ‘C’ code naturally fits into and extends what we can do the our binary oriented tools versus restricting what we can do.</p>
 <p>Compilers also can codify best practices for a particular machine and OS.  After all it has to translate the ‘C’ code into machine and OS specific assembly code.  For the most part however, OS specific differences are handled by use of libraries written to support common functions that are implemented for each OS that is supported.</p>
-</div>
-<div class="section" id="preliminaries-the-c-compiler-our-very-onw-personal-assembly-programmer">
-<h2><span class="section-number">25.9. </span>Preliminaries:  The C Compiler : Our very onw personal assembly programmer<a class="headerlink" href="#preliminaries-the-c-compiler-our-very-onw-personal-assembly-programmer" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="the-toolchain">
-<h3><span class="section-number">25.9.1. </span>The ToolChain<a class="headerlink" href="#the-toolchain" title="Permalink to this headline">¶</a></h3>
-</div>
-</div>
-<div class="section" id="cc1-as-ld">
-<h2><span class="section-number">25.10. </span>cc1, as, ld<a class="headerlink" href="#cc1-as-ld" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="compiler-driver-gcc-cc">
-<h3><span class="section-number">25.10.1. </span>Compiler driver: gcc/cc<a class="headerlink" href="#compiler-driver-gcc-cc" title="Permalink to this headline">¶</a></h3>
-</div>
-</div>
-<div class="section" id="controlling-directing-the-compiler">
-<h2><span class="section-number">25.11. </span>Controlling / Directing the compiler<a class="headerlink" href="#controlling-directing-the-compiler" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="options">
-<h3><span class="section-number">25.11.1. </span>Options<a class="headerlink" href="#options" title="Permalink to this headline">¶</a></h3>
-<div class="section" id="optimization-options">
-<h4><span class="section-number">25.11.1.1. </span>Optimization options<a class="headerlink" href="#optimization-options" title="Permalink to this headline">¶</a></h4>
-</div>
-<div class="section" id="language-options">
-<h4><span class="section-number">25.11.1.2. </span>Language options<a class="headerlink" href="#language-options" title="Permalink to this headline">¶</a></h4>
-</div>
-<div class="section" id="debugger-options">
-<h4><span class="section-number">25.11.1.3. </span>Debugger options<a class="headerlink" href="#debugger-options" title="Permalink to this headline">¶</a></h4>
-</div>
-<div class="section" id="machine-specific-options">
-<h4><span class="section-number">25.11.1.4. </span>Machine Specific options<a class="headerlink" href="#machine-specific-options" title="Permalink to this headline">¶</a></h4>
-</div>
-</div>
-<div class="section" id="our-focus">
-<h3><span class="section-number">25.11.2. </span>Our focus<a class="headerlink" href="#our-focus" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="preliminaries-the-c-compiler-our-very-onw-personal-assembly-programmer">
+<h2><span class="section-number">24.9. </span>Preliminaries:  The C Compiler : Our very onw personal assembly programmer<a class="headerlink" href="#preliminaries-the-c-compiler-our-very-onw-personal-assembly-programmer" title="Permalink to this headline">#</a></h2>
+<section id="the-toolchain">
+<h3><span class="section-number">24.9.1. </span>The ToolChain<a class="headerlink" href="#the-toolchain" title="Permalink to this headline">#</a></h3>
+</section>
+</section>
+<section id="cc1-as-ld">
+<h2><span class="section-number">24.10. </span>cc1, as, ld<a class="headerlink" href="#cc1-as-ld" title="Permalink to this headline">#</a></h2>
+<section id="compiler-driver-gcc-cc">
+<h3><span class="section-number">24.10.1. </span>Compiler driver: gcc/cc<a class="headerlink" href="#compiler-driver-gcc-cc" title="Permalink to this headline">#</a></h3>
+</section>
+</section>
+<section id="controlling-directing-the-compiler">
+<h2><span class="section-number">24.11. </span>Controlling / Directing the compiler<a class="headerlink" href="#controlling-directing-the-compiler" title="Permalink to this headline">#</a></h2>
+<section id="options">
+<h3><span class="section-number">24.11.1. </span>Options<a class="headerlink" href="#options" title="Permalink to this headline">#</a></h3>
+<section id="optimization-options">
+<h4><span class="section-number">24.11.1.1. </span>Optimization options<a class="headerlink" href="#optimization-options" title="Permalink to this headline">#</a></h4>
+</section>
+<section id="language-options">
+<h4><span class="section-number">24.11.1.2. </span>Language options<a class="headerlink" href="#language-options" title="Permalink to this headline">#</a></h4>
+</section>
+<section id="debugger-options">
+<h4><span class="section-number">24.11.1.3. </span>Debugger options<a class="headerlink" href="#debugger-options" title="Permalink to this headline">#</a></h4>
+</section>
+<section id="machine-specific-options">
+<h4><span class="section-number">24.11.1.4. </span>Machine Specific options<a class="headerlink" href="#machine-specific-options" title="Permalink to this headline">#</a></h4>
+</section>
+</section>
+<section id="our-focus">
+<h3><span class="section-number">24.11.2. </span>Our focus<a class="headerlink" href="#our-focus" title="Permalink to this headline">#</a></h3>
 <p>We will use a set of options that let us focus on understanding the core ability of the compiler to generate assembly code for us.  Specifically we will be focusing on how it translates “C” syntax into assembly code.  We will use a set of options that make it easier to see this relationship by having the compiler avoid adding extra assembly syntax needed for the debugging, or to improve the security of the code it generates.</p>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
 
 <script type="application/vnd.jupyter.widget-state+json">
@@ -697,14 +959,16 @@ the general structure of our program should be the same.  After all, all of thes
 
               </div>
               
-        
-            <!-- Previous / next buttons -->
-<div class='prev-next-area'> 
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
     <a class='left-prev' id="prev-link" href="../assembly/assemblyOS.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">24. </span>Assembly using the OS</p>
+            <p class="prev-next-title"><span class="section-number">23. </span>Assembly using the OS</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="../BUCS210_intro.html" title="next page">
@@ -715,26 +979,28 @@ the general structure of our program should be the same.  After all, all of thes
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-        
+            </footer>
         </div>
     </div>
-    <footer class="footer">
-    <div class="container">
-      <p>
-        
-          By Jonathan Appavoo<br/>
-        
-            &copy; Copyright 2021.<br/>
-      </p>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Jonathan Appavoo<br/>
+  
+      &copy; Copyright 2021.<br/>
+</p>
+        </footer>
     </div>
-  </footer>
-</main>
+    
+</div>
 
 
       </div>
     </div>
   
-  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
 
   </body>
 </html>
