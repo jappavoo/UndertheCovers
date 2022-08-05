@@ -4,8 +4,11 @@ SN=ope-startup.sh
 [[ -z $MOUNT_DIR ]] && export MOUNT_DIR=/opt/app-root/src
 
 # this script is designed to be run by the jupyter stack /usr/local/bin/start.sh
-echo "$0: $SN: BEGIN: $(id -a)"
+echo "$0: $SN: BEGIN: $(id -a) : $HOME "
 
+if [[ ! -w $HOME ]] ; then
+   echo "$SN: home directory $HOME is not writeable: skipping customizations"
+else
 if [[ -d $MOUNT_DIR ]]; then
     echo "$SN: Found $MOUNT_DIR"
     if [[ ! -w $MOUNT_DIR ]]; then
@@ -65,6 +68,8 @@ if [[ -d $MOUNT_DIR ]]; then
 	  . $MOUNT_DIR/.myjupyter_start.sh
       fi
    fi   
+fi
+
 fi
 
 # force classic notebook interface when run from start-singleuser.sh (aka we are on jupyter hub)
