@@ -264,7 +264,7 @@ ruamel.yaml.clib          0.2.6           py310h5764c6d_1    conda-forge
 ruamel_yaml               0.15.80         py310h5764c6d_1007    conda-forge
 send2trash                1.8.0              pyhd8ed1ab_0    conda-forge
 setuptools                63.1.0          py310hff52083_0    conda-forge
-shellingham               1.4.0              pyh44b312d_0    conda-forge
+shellingham               1.5.0              pyhd8ed1ab_0    conda-forge
 sip                       6.6.2           py310hd8f1fbe_0    conda-forge
 six                       1.16.0             pyh6c4a22f_0    conda-forge
 smmap                     3.0.5              pyh44b312d_0    conda-forge
