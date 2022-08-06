@@ -1,5 +1,5 @@
 # this was seeded from https://github.com/umsi-mads/education-notebook/blob/master/Makefile
-.PHONEY: help build ope root push publish lab nb python-versions distro-versions clean
+.PHONEY: help build ope root push publish lab nb python-versions distro-versions image-sha clean
 .IGNORE: ope root
 
 # see if there is a specified customization in the base settting
@@ -97,22 +97,28 @@ help:
 	@grep -E '^[a-zA-Z0-9_%/-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
 
 python-versions: ## gather version of python packages
-python-versions: base/mamba_versions.stable
+python-versions: base/private_mamba_versions.$(VERSION)
 
 distro-versions: ## gather version of distro packages
-distro-versions: base/distro_versions.stable
+distro-versions: base/private_distro_versions.$(VERSION)
 
-base/mamba_versions.stable: IMAGE = $(PRIVATE_IMAGE)
-base/mamba_versions.stable: ARGS ?= /bin/bash
-base/mamba_versions.stable: DARGS ?=
-base/mamba_versions.stable:
+image-info: ## gather sha of image
+image-info: base/private_image_sha.$(VERSION)
+
+base/private_mamba_versions.$(VERSION): IMAGE = $(PRIVATE_IMAGE)
+base/private_mamba_versions.$(VERSION): DARGS ?=
+base/private_mamba_versions.$(VERSION):
 	docker run -it --rm $(DARGS) $(PRIVATE_REG)$(IMAGE)$(PRIVATE_TAG) mamba list | tr -d '\r' > $@
 
-base/distro_versions.stable: IMAGE = $(PRIVATE_IMAGE)
-base/distro_versions.stable: ARGS ?= /bin/bash
-base/distro_versions.stable: DARGS ?=
-base/distro_versions.stable:
+base/private_distro_versions.$(VERSION): IMAGE = $(PRIVATE_IMAGE)
+base/private_distro_versions.$(VERSION): DARGS ?=
+base/private_distro_versions.$(VERSION):
 	docker run -it --rm $(DARGS) $(PRIVATE_REG)$(IMAGE)$(PRIVATE_TAG) apt list > $@
+
+base/private_image_info.$(VERSION): IMAGE = $(PRIVATE_IMAGE)
+base/private_image_info.$(VERSION): DARGS ?=
+base/private_image_info.$(VERSION):
+	docker inspect $(DARGS) $(PRIVATE_REG)$(IMAGE)$(PRIVATE_TAG)  > $@
 
 base/aarch64vm/README.md:
 	cd base && wget -O - ${ARCH64VMTGZ} | tar -zxf -
@@ -132,13 +138,14 @@ build: DARGS ?= --build-arg FROM_REG=$(BASE_REG) \
                    --build-arg JUPYTER_DISABLE_EXTENSIONS="$(JUPYTER_DISABLE_EXTENSIONS)" \
                    --build-arg GDB_BUILD_SRC=$(GDB_BUILD_SRC) \
                    --build-arg UNMIN=$(UNMIN)
-
 build: ## Make the image customized appropriately
 	docker build $(DARGS) $(DCACHING) --rm --force-rm -t $(PRIVATE_REG)$(IMAGE)$(PRIVATE_TAG) base
-	-rm base/mamba_versions.stable
-	make base/mamba_versions.stable
-	-rm base/distro_versions.stable
-	make base/distro_versions.stable
+	-rm base/private_mamba_versions.$(VERSION)
+	make base/private_mamba_versions.$(VERSION)
+	-rm base/private_distro_versions.$(VERSION)
+	make base/private_distro_versions.$(VERSION)
+	-rm base/private_image_info.$(VERSION)
+	make base/private_image_info.$(VERSION)
 
 push: IMAGE = $(PRIVATE_IMAGE)
 push: DARGS ?=
@@ -161,6 +168,9 @@ publish: ## publish current private build to public published version
 	docker tag $(PUBLIC_REG)$(IMAGE)$(PUBLIC_TAG)_$(DATE_TAG) $(PUBLIC_REG)$(IMAGE)$(PUBLIC_TAG)
 # push to update tip to current version
 	docker push $(PUBLIC_REG)$(IMAGE)$(PUBLIC_TAG)
+	cp base/private_image_info.$(VERSION)  base/public_image_info.$(VERSION)
+	cp base/private_mamba_versions.$(VERSION) base/public_mamba_versions.$(VERSION)
+	cp base/private_distro_versions.$(VERSION) base/public_distro_versions.$(VERSION) 
 
 root: IMAGE = $(PRIVATE_IMAGE)
 root: REG = $(PRIVATE_REG)
