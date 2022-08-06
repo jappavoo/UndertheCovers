@@ -108,12 +108,12 @@ image-info: base/private_image_sha.$(VERSION)
 base/private_mamba_versions.$(VERSION): IMAGE = $(PRIVATE_IMAGE)
 base/private_mamba_versions.$(VERSION): DARGS ?=
 base/private_mamba_versions.$(VERSION):
-	docker run -it --rm $(DARGS) $(PRIVATE_REG)$(IMAGE)$(PRIVATE_TAG) mamba list | tr -d '\r' > $@
+	docker run -it --rm $(DARGS) $(PRIVATE_REG)$(IMAGE)$(PRIVATE_TAG) /bin/bash -c "mamba list | cat" | tr -d '\r' > $@
 
 base/private_distro_versions.$(VERSION): IMAGE = $(PRIVATE_IMAGE)
 base/private_distro_versions.$(VERSION): DARGS ?=
 base/private_distro_versions.$(VERSION):
-	docker run -it --rm $(DARGS) $(PRIVATE_REG)$(IMAGE)$(PRIVATE_TAG) apt list > $@
+	docker run -it --rm $(DARGS) $(PRIVATE_REG)$(IMAGE)$(PRIVATE_TAG)  /bin/bash -c "apt list | cat"  | tr -d '\r' > $@
 
 base/private_image_info.$(VERSION): IMAGE = $(PRIVATE_IMAGE)
 base/private_image_info.$(VERSION): DARGS ?=
