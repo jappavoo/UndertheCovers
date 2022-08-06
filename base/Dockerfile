@@ -157,18 +157,25 @@ RUN nbstripout --install --system
 # FIXME: Add support for swinging home directory if you want to point to a mounted volume
 ARG DEFAULT_NB_UID=${NB_UID}
 ARG OPE_UID
+ARG OPE_GID
+ARG OPE_GROUP
 ARG CHOWN_HOME=yes
 ARG CHOWN_HOME_OPTS="-R"
 ARG CHOWN_EXTRA_OPTS='-R'
 ARG CHOWN_EXTRA="/home/aarch64vm /home/RISE ${CONDA_DIR}"
 ENV OPE_UID=${OPE_UID}
-
 ARG NB_UID=${OPE_UID}
 ENV NB_UID=${NB_UID}
+ENV OPE_GID=${OPE_GID}
+ARG NB_GID=${OPE_GID}
+ENV NB_GID=${NB_GID}
+ENV OPE_GROUP=${OPE_GROUP}
+ARG NB_GROUP=${OPE_GROUP}
+ENV NB_GROUP=${NB_GROUP}
 
 # # use built in startup script to setup new user home
 RUN /usr/local/bin/start.sh true; \
-    echo "hardcoding $NB_USER shell to /bin/bash" ; \
+    echo "hardcoding $NB_USER to uid=$NB_UID and group name $NB_GROUP with gid=$NB_GID shell to /bin/bash" ; \
     usermod -s /bin/bash $NB_USER ; \
     [[ -w /etc/passwd ]] && echo "Removing write access to /etc/passwd" && chmod go-w /etc/passwd
 

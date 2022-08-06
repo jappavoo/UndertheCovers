@@ -16,6 +16,10 @@ BASE := jupyter
 OPE_BOOK := $(shell cat base/ope_book)
 # USER id
 OPE_UID := $(shell cat base/ope_uid)
+# GROUP id
+OPE_GID := $(shell cat base/ope_gid)
+# GROUP name
+OPE_GROUP := $(shell cat base/ope_group)
 
 # we use this to choose between a build from the blessed known stable version or a test version
 VERSION := stable
@@ -119,6 +123,8 @@ build: DARGS ?= --build-arg FROM_REG=$(BASE_REG) \
                    --build-arg FROM_IMAGE=$(BASE_IMAGE) \
                    --build-arg FROM_TAG=$(BASE_TAG) \
                    --build-arg OPE_UID=$(OPE_UID) \
+                   --build-arg OPE_GID=$(OPE_GID) \
+                   --build-arg OPE_GROUP=$(OPE_GROUP) \
                    --build-arg ADDITIONAL_DISTRO_PACKAGES="$(BASE_DISTRO_PACKAGES)" \
                    --build-arg PYTHON_PREREQ_VERSIONS="$(PYTHON_PREREQ_VERSIONS)" \
                    --build-arg PYTHON_INSTALL_PACKAGES="$(PYTHON_INSTALL_PACKAGES)" \
@@ -176,7 +182,7 @@ nb: IMAGE = $(PUBLIC_IMAGE)
 nb: REG = $(PUBLIC_REG)
 nb: TAG = $(PUBLIC_TAG)
 nb: ARGS ?=
-nb: DARGS ?= -e DOCKER_STACKS_JUPYTER_CMD=notebook -v "${HOST_DIR}":"${MOUNT_DIR}" -v "${SSH_AUTH_SOCK}":"${SSH_AUTH_SOCK}" -e SSH_AUTH_SOCK=${SSH_AUTH_SOCK} -p ${SSH_PORT}:22
+nb: DARGS ?= -e DOCKER_STACKS_JUPYTER_CMD=notebook -u $(OPE_UID):$(OPE_GID) -v "${HOST_DIR}":"${MOUNT_DIR}" -v "${SSH_AUTH_SOCK}":"${SSH_AUTH_SOCK}" -e SSH_AUTH_SOCK=${SSH_AUTH_SOCK} -p ${SSH_PORT}:22
 nb: PORT ?= 8888
 nb: ## start published version with jupyter classic notebook interface
 	docker run -it --rm -p $(PORT):$(PORT) $(DARGS) $(REG)$(IMAGE)$(TAG) $(ARGS) 
@@ -185,7 +191,7 @@ lab: IMAGE = $(PUBLIC_IMAGE)
 lab: REG = $(PUBLIC_REG)
 lab: TAG = $(PUBLIC_TAG)
 lab: ARGS ?=
-lab: DARGS ?= -u $(OPE_UID) -v "${HOST_DIR}":"${MOUNT_DIR}" -v "${SSH_AUTH_SOCK}":"${SSH_AUTH_SOCK}" -v "${SSH_AUTH_SOCK}":"${SSH_AUTH_SOCK}" -e SSH_AUTH_SOCK=${SSH_AUTH_SOCK} -p ${SSH_PORT}:22
+lab: DARGS ?= -u $(OPE_UID):$(OPE_GID) -v "${HOST_DIR}":"${MOUNT_DIR}" -v "${SSH_AUTH_SOCK}":"${SSH_AUTH_SOCK}" -v "${SSH_AUTH_SOCK}":"${SSH_AUTH_SOCK}" -e SSH_AUTH_SOCK=${SSH_AUTH_SOCK} -p ${SSH_PORT}:22
 lab: PORT ?= 8888
 lab: ## start published version with jupyter lab interface
 	docker run -it --rm -p $(PORT):$(PORT) $(DARGS) $(REG)$(IMAGE)$(TAG) $(ARGS) 
