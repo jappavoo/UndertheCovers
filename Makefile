@@ -1,5 +1,5 @@
 # this was seeded from https://github.com/umsi-mads/education-notebook/blob/master/Makefile
-.PHONEY: help build ope root push publish lab nb python-versions clean
+.PHONEY: help build ope root push publish lab nb python-versions distro-versions clean
 .IGNORE: ope root
 
 # see if there is a specified customization in the base settting
@@ -92,9 +92,11 @@ help:
 # http://marmelab.com/blog/2016/02/29/auto-documented-makefile.html
 	@grep -E '^[a-zA-Z0-9_%/-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
 
-
 python-versions: ## gather version of python packages
 python-versions: base/mamba_versions.stable
+
+distro-versions: ## gather version of distro packages
+distro-versions: base/distro_versions.stable
 
 base/mamba_versions.stable: IMAGE = $(PRIVATE_IMAGE)
 base/mamba_versions.stable: ARGS ?= /bin/bash
@@ -102,7 +104,10 @@ base/mamba_versions.stable: DARGS ?=
 base/mamba_versions.stable:
 	docker run -it --rm $(DARGS) $(PRIVATE_REG)$(IMAGE)$(PRIVATE_TAG) mamba list | tr -d '\r' > $@
 
-base/apt.versions:
+base/distro_versions.stable: IMAGE = $(PRIVATE_IMAGE)
+base/distro_versions.stable: ARGS ?= /bin/bash
+base/distro_versions.stable: DARGS ?=
+base/distro_versions.stable:
 	docker run -it --rm $(DARGS) $(PRIVATE_REG)$(IMAGE)$(PRIVATE_TAG) apt list > $@
 
 base/aarch64vm/README.md:
@@ -121,10 +126,13 @@ build: DARGS ?= --build-arg FROM_REG=$(BASE_REG) \
                    --build-arg JUPYTER_DISABLE_EXTENSIONS="$(JUPYTER_DISABLE_EXTENSIONS)" \
                    --build-arg GDB_BUILD_SRC=$(GDB_BUILD_SRC) \
                    --build-arg UNMIN=$(UNMIN)
+
 build: ## Make the image customized appropriately
 	docker build $(DARGS) $(DCACHING) --rm --force-rm -t $(PRIVATE_REG)$(IMAGE)$(PRIVATE_TAG) base
-	rm base/mamba_versions.stable
+	-rm base/mamba_versions.stable
 	make base/mamba_versions.stable
+	-rm base/distro_versions.stable
+	make base/distro_versions.stable
 
 push: IMAGE = $(PRIVATE_IMAGE)
 push: DARGS ?=
