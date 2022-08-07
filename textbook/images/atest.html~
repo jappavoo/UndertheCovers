@@ -1,9 +1,0 @@
-<html>
-<head>
-  <link rel="stylesheet" type="text/css" href="/asciinema-player.css" />
-</head>
-<body>
-  <asciinema-player src="inforep.cast"></asciinema-player>
-  <script src="../asciinema/asciinema-player.js"></script>
-  </body>
-</html>
