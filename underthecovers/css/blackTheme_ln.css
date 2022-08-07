@@ -1,0 +1,66 @@
+/*
+ * this is loaded together with README.ipynb
+ * because it's named the same with css extension
+ */
+
+/* not very useful, but an OBVIOUS setting that you cannot miss */
+div.cell.code_cell.rendered {
+    border-radius: 0px 0px 30px 0px;
+}
+
+div.input_area,
+div.jp-InputArea {
+    border-radius: 0px 0px 25px 0px;
+}
+
+/* ---------- slides background black----------*/
+body.rise-enabled.theme-black
+  div.jp-RenderedHTMLCommon
+  tbody
+  tr:nth-child(even), 
+  body.rise-enabled.theme-black div.jp-RenderedHTMLCommon thead th, 
+  body.rise-enabled.theme-black div.jp-RenderedText > pre, 
+  body.rise-enabled.theme-black div.jp-RenderedHTMLCommon, 
+  body.rise-enabled.theme-black div.jp-MarkdownCell.jp-mod-rendered {
+    color: white;
+    background-color: #191919;
+}
+/* ---------- background of code block in markdown black----------*/
+body.rise-enabled.theme-black div.jp-RenderedHTMLCommon pre, 
+body.rise-enabled.theme-black div.jp-RenderedHTMLCommon code {
+    color: white;
+    background-color: #191919;
+}
+
+/* ---------- slides margin background black----------*/
+body.rise-enabled.theme-black div.slide-background, 
+body.rise-enabled.theme-black div.slide-backgournd-content, 
+body.rise-enabled.theme-black div.jp-Notebook{
+    background-color: #191919;
+}
+
+/* ---------- hide output cell number ----------*/
+div.jp-OutputPrompt, div.jp-OutputArea-prompt{
+    color: rgba(0, 0, 0, 0);
+}
+div.jp-Notebook .jp-Cell:not(.jp-mod-active) .jp-OutputPrompt {
+    color: rgba(0, 0, 0, 0);
+}
+
+/* ---------- hide input cell number----------*/
+div.jp-InputPrompt{
+   display: none;
+}
+div.jp-Notebook .jp-Cell:not(.jp-mod-active) .jp-InputPrompt {
+   display: none;
+}
+div.jp-InputArea-editor {
+   display: none;
+}
+
+/* ---------- hide the three dots after folding the cells
+*/
+div.f1m36mmi svg{
+    display: none;
+    visibility: hidden;
+}
