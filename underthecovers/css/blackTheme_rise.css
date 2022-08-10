@@ -1,13 +1,13 @@
 /* this goes with my global default setting
- * that has rise use reveal's theme sky
+ * that has rise use reveal's theme black
  */
 /*.reveal {
     font-family: "Quicksand", sans-serif;
 }*/
 
 .reveal h1, .reveal h2, .reveal h3, .reveal h4, .reveal h5, .reveal h6 {
-    text-transform: initial;   /* sky.css says uppercase */
-    letter-spacing: initial ;  /* sky.css says -0.08em */
+    text-transform: initial;   /* black.css says uppercase */
+    letter-spacing: initial ;  /* black.css says -0.08em */
 }
 
 body.rise-enabled .reveal ol, body.rise-enabled .reveal dl, body.rise-enabled .reveal ul {
@@ -53,7 +53,7 @@ div.plan-container {
    that this file is actually loaded */
 
 div.cell.code_cell.rendered, div.input_area {
-    border-width: 10px;
+    border-width: 0px;
 }
 
 /* this is only to check that rise.css properly gets
@@ -73,3 +73,81 @@ div.text_cell_render.rendered_html {
 }
 
 
+/*
+ * This is for BLACK THEME setting
+ */
+
+/* not very useful, but an OBVIOUS setting that you cannot miss */
+div.cell.code_cell.rendered {
+    border-radius: 0px 0px 0px 0px;
+}
+
+div.input_area,
+div.jp-InputArea {
+    border-radius: 0px 0px 0px 0px;
+}
+
+/* ---------- slides background black----------*/
+body.rise-enabled.theme-black
+  div.jp-RenderedHTMLCommon
+  tbody
+  tr:nth-child(even), 
+  body.rise-enabled.theme-black div.jp-RenderedHTMLCommon thead th, 
+  body.rise-enabled.theme-black div.jp-RenderedText > pre, 
+  body.rise-enabled.theme-black div.jp-RenderedHTMLCommon, 
+  body.rise-enabled.theme-black div.jp-MarkdownCell.jp-mod-rendered {
+    color: white;
+    background-color: black;
+}
+/* ---------- background of code block in markdown black----------*/
+body.rise-enabled.theme-black div.jp-RenderedHTMLCommon pre, 
+body.rise-enabled.theme-black div.jp-RenderedHTMLCommon code {
+    color: white;
+    background-color: black;
+}
+
+/* ---------- slides margin background black----------*/
+body.rise-enabled.theme-black div.slide-background, 
+body.rise-enabled.theme-black div.slide-backgournd-content, 
+body.rise-enabled.theme-black div.jp-Notebook{
+    background-color: black;
+}
+
+/* ---------- hide output cell number ----------*/
+div.jp-OutputPrompt, div.jp-OutputArea-prompt{
+    display: none;
+}
+
+div.jp-Notebook .jp-Cell:not(.jp-mod-active) .jp-OutputPrompt {
+    color: rgba(0, 0, 0, 0);
+}
+
+/* ---------- hide input cell number----------*/
+div.jp-InputPrompt, div.jp-InputArea-editor{
+    display: none;
+}
+div.jp-Notebook .jp-Cell:not(.jp-mod-active) .jp-InputPrompt {
+    display: none;
+}
+
+/* ---------- hide the three dots after folding the cells-----*/
+div.f1m36mmi svg{
+    display: none;
+}
+
+/* ---- ja hack to hid code inputs after collapse */
+.jp-Placeholder-content {
+    display: none;
+}
+
+.jp-Collapser {
+    display: none;
+}
+
+/* ----------disply header & footer----------*/
+div#rise-header, div#rise-footer{
+    z-index: 1;
+    font-size: 0.5em;
+    background-color: #191919;
+    width: 100%;
+}
