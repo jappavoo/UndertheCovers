@@ -40,3 +40,7 @@ cm-super
 dvipng
 ffmpeg
 info
+ispell
+default-jre
+default-jdk
+asciinema
