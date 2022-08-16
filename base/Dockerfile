@@ -130,7 +130,6 @@ USER $NB_USER
 # main place the work for lab support is going switched over to using his fork
 RUN  git clone https://github.com/fcollonval/RISE.git -b ft/jlab3  /home/RISE  && \
  cd /home/RISE && \
- git checkout dev && \
  yarn install && \
  yarn run build && \
  pip install -e . && \
