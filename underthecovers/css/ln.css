@@ -85,3 +85,32 @@ div.input_area {
 }
 
 
+div.jp-OutputPrompt, div.jp-OutputArea-prompt{
+    display: none;
+}
+
+/* ---------- hide the three dots after folding the cells-----*/
+div.f1m36mmi svg{
+    display: none;
+}
+
+/* ---- ja hack to hid code inputs after collapse */
+.jp-Placeholder-content {
+    display: none;
+}
+
+.jp-Collapser {
+    display: none;
+}
+
+/* ----------disply header & footer----------*/
+div#rise-header, div#rise-footer{
+    z-index: 1;
+    font-size: 0.5em;
+    width: 100%;
+}
+
+.reveal img, .reveal video, .reveal iframe {
+    max-height: 100%;
+    max-width: 100%;
+}
