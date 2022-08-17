@@ -1,0 +1,47 @@
+#!/bin/bash
+# cd underthecovers/unix
+# ../python/mkln myln ../images/ASSEMBLY-PGMI ../images/turing_slide.png
+# ln -s ../css/ln.css myln.css
+# now open the notebook
+
+MYDIR=$(readlink -f $0)
+MYDIR=$(dirname $MYDIR)
+
+declare files
+declare -i i=0
+
+USAGE="$0 name <list of directories and files>"
+if (( $# < 1 )); then
+    echo "$USAGE" > /dev/stderr
+    exit -1
+fi
+
+name=$1
+shift 
+
+if [[ -a $name ]]; then
+    echo "ERROR: $name exits ... exiting"
+    exit -1
+fi
+
+for arg in $@ ; do
+    echo "Processing: $arg" > /dev/stderr
+    if [[ ! -a $arg ]]; then
+	echo "WARNING: $arg does not exits. Skipping" > /dev/stderr
+	continue
+    else
+	if [[ -d $arg ]]; then
+	    echo "$arg is a directory" > /dev/stderr
+	    files="$files $(find $arg -name '*.png' -type f -print | sort -n)"
+        else
+	    files="$files $arg"
+	fi
+    fi    
+done
+
+echo "files to include: $files" > /dev/stderr
+
+if [[ -n $files ]]; then
+    ${MYDIR}/mkln.py $name $files
+fi
+    
