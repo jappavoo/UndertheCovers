@@ -1,0 +1,16 @@
+// Lecture 01 questions
+::The Kernel can only be accessed by running programs. (True vs False?)
+:: Question {
+=True
+#The only way to access the kernel is via a system call.  Only running program, processes, can make system calls.
+~False
+#A The only way to access the kernel is as a program that make "system calls".  A program like the shell is designed to allow humans to make use of the kernel.  Any program, however can, make calls to the kernel via system calls.
+}
+
+::Programs called the shell are started for each terminal connection (True vs False?)
+:: Question {
+=A True
+#The UNIX system, starts a shell process, every time you create a terminal session.  The shell, accepts ascii "commands lines" and processes them.   For an interactive shell, these command line come from a terminnal.  This means that a running shell can provide a way for a human, who is typing at a terminal, to access run UNIX commands.
+-False
+#No, the anser is TRUE, a shell is started for each terminal sesssion.
+}
