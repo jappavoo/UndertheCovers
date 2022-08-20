@@ -1,4 +1,4 @@
-	# packages in environment at /opt/conda:
+# packages in environment at /opt/conda:
 #
 # Name                    Version                   Build  Channel
 _libgcc_mutex             0.1                 conda_forge    conda-forge
@@ -11,7 +11,7 @@ argon2-cffi               21.3.0             pyhd8ed1ab_0    conda-forge
 argon2-cffi-bindings      21.2.0          py310h5764c6d_2    conda-forge
 asttokens                 2.0.5              pyhd8ed1ab_0    conda-forge
 async_generator           1.10                       py_0    conda-forge
-attr                      2.5.1                h166bdaf_0    conda-forge
+attr                      2.5.1                h166bdaf_1    conda-forge
 attrs                     21.4.0             pyhd8ed1ab_0    conda-forge
 babel                     2.10.3             pyhd8ed1ab_0    conda-forge
 backcall                  0.2.0              pyh9f0ad1d_0    conda-forge
@@ -48,7 +48,7 @@ docutils                  0.17.1          py310hff52083_2    conda-forge
 entrypoints               0.4                pyhd8ed1ab_0    conda-forge
 executing                 0.8.3              pyhd8ed1ab_0    conda-forge
 expat                     2.4.8                h27087fc_0    conda-forge
-fftw                      3.3.10          nompi_h77c792f_102    conda-forge
+fftw                      3.3.10          nompi_ha7695d1_103    conda-forge
 flit-core                 3.7.1              pyhd8ed1ab_0    conda-forge
 font-ttf-dejavu-sans-mono 2.37                 hab24e00_0    conda-forge
 font-ttf-inconsolata      3.000                h77eed37_0    conda-forge
@@ -57,11 +57,10 @@ font-ttf-ubuntu           0.83                 hab24e00_0    conda-forge
 fontconfig                2.14.0               h8e229c2_0    conda-forge
 fonts-conda-ecosystem     1                             0    conda-forge
 fonts-conda-forge         1                             0    conda-forge
-fonttools                 4.34.4          py310h5764c6d_0    conda-forge
-freetype                  2.10.4               h0708190_1    conda-forge
+fonttools                 4.35.0          py310h5764c6d_0    conda-forge
+freetype                  2.12.1               hca18f0e_0    conda-forge
 gettext                   0.19.8.1          h73d1719_1008    conda-forge
 ghp-import                2.1.0              pyhd8ed1ab_0    conda-forge
-giflib                    5.2.1                h36c2ea0_2    conda-forge
 gitdb                     4.0.9              pyhd8ed1ab_0    conda-forge
 gitpython                 3.1.27             pyhd8ed1ab_0    conda-forge
 glib                      2.72.1               h6239696_0    conda-forge
@@ -119,18 +118,18 @@ lcms2                     2.12                 hddcbb42_0    conda-forge
 ld_impl_linux-64          2.36.1               hea4e1c9_2    conda-forge
 lerc                      4.0.0                h27087fc_0    conda-forge
 libarchive                3.5.2                hb890918_3    conda-forge
-libblas                   3.9.0           15_linux64_openblas    conda-forge
+libblas                   3.9.0           16_linux64_openblas    conda-forge
 libbrotlicommon           1.0.9                h166bdaf_7    conda-forge
 libbrotlidec              1.0.9                h166bdaf_7    conda-forge
 libbrotlienc              1.0.9                h166bdaf_7    conda-forge
 libcap                    2.64                 ha37c62d_0    conda-forge
-libcblas                  3.9.0           15_linux64_openblas    conda-forge
+libcblas                  3.9.0           16_linux64_openblas    conda-forge
 libclang                  14.0.6          default_h2e3cab8_0    conda-forge
 libclang13                14.0.6          default_h3a83d3e_0    conda-forge
-libcups                   2.3.3                hf5a7f15_1    conda-forge
+libcups                   2.3.3                h3e49a29_2    conda-forge
 libcurl                   7.83.1               h7bff187_0    conda-forge
 libdb                     6.2.32               h9c3ff4c_0    conda-forge
-libdeflate                1.12                 h166bdaf_0    conda-forge
+libdeflate                1.13                 h166bdaf_0    conda-forge
 libedit                   3.1.20191231         he28a2e2_2    conda-forge
 libev                     4.33                 h516909a_1    conda-forge
 libevent                  2.1.10               h9b69904_4    conda-forge
@@ -142,30 +141,29 @@ libgfortran5              12.1.0              hdcd56e2_16    conda-forge
 libglib                   2.72.1               h2d90d5f_0    conda-forge
 libgomp                   12.1.0              h8d9b700_16    conda-forge
 libiconv                  1.16                 h516909a_0    conda-forge
-liblapack                 3.9.0           15_linux64_openblas    conda-forge
+liblapack                 3.9.0           16_linux64_openblas    conda-forge
 libllvm14                 14.0.6               he0ac6c6_0    conda-forge
 libmamba                  0.24.0               hd8a31e3_1    conda-forge
 libmambapy                0.24.0          py310hab0e683_1    conda-forge
 libnghttp2                1.47.0               h727a467_0    conda-forge
 libnsl                    2.0.0                h7f98852_0    conda-forge
 libogg                    1.3.4                h7f98852_1    conda-forge
-libopenblas               0.3.20          pthreads_h78a6416_1    conda-forge
+libopenblas               0.3.21          pthreads_h78a6416_0    conda-forge
 libopus                   1.3.1                h7f98852_1    conda-forge
-libpng                    1.6.37               h753d276_3    conda-forge
-libpq                     14.4                 hd77ab85_0    conda-forge
+libpng                    1.6.37               h753d276_4    conda-forge
+libpq                     14.5                 hd77ab85_0    conda-forge
 libsndfile                1.0.31               h9c3ff4c_1    conda-forge
 libsodium                 1.0.18               h36c2ea0_1    conda-forge
 libsolv                   0.7.22               h6239696_0    conda-forge
 libssh2                   1.10.0               ha56f1ee_2    conda-forge
 libstdcxx-ng              12.1.0              ha89aaad_16    conda-forge
-libtiff                   4.4.0                h0d92c0b_2    conda-forge
+libtiff                   4.4.0                h0e0dad5_3    conda-forge
 libtool                   2.4.6             h9c3ff4c_1008    conda-forge
 libudev1                  249                  h166bdaf_4    conda-forge
 libuuid                   2.32.1            h7f98852_1000    conda-forge
 libuv                     1.43.0               h7f98852_0    conda-forge
 libvorbis                 1.3.7                h9c3ff4c_0    conda-forge
-libwebp                   1.2.3                h522a892_1    conda-forge
-libwebp-base              1.2.3                h166bdaf_2    conda-forge
+libwebp-base              1.2.4                h166bdaf_0    conda-forge
 libxcb                    1.13              h7f98852_1004    conda-forge
 libxkbcommon              1.0.3                he3ba5ed_0    conda-forge
 libxml2                   2.9.14               h22db469_3    conda-forge
@@ -206,7 +204,7 @@ nspr                      4.32                 h9c3ff4c_1    conda-forge
 nss                       3.78                 h2350873_0    conda-forge
 numpy                     1.23.1          py310h53a5b5f_0    conda-forge
 oauthlib                  3.2.0              pyhd8ed1ab_0    conda-forge
-openjpeg                  2.4.0                hb52868f_1    conda-forge
+openjpeg                  2.5.0                h7d73246_1    conda-forge
 openssl                   1.1.1q               h166bdaf_0    conda-forge
 packaging                 21.3               pyhd8ed1ab_0    conda-forge
 pamela                    1.0.0                      py_0    conda-forge
@@ -217,7 +215,7 @@ parso                     0.8.3              pyhd8ed1ab_0    conda-forge
 pcre                      8.45                 h9c3ff4c_0    conda-forge
 pexpect                   4.8.0              pyh9f0ad1d_2    conda-forge
 pickleshare               0.7.5                   py_1003    conda-forge
-pillow                    9.2.0           py310he619898_0    conda-forge
+pillow                    9.2.0           py310hbd86126_2    conda-forge
 pip                       22.1.2             pyhd8ed1ab_0    conda-forge
 ply                       3.11                       py_1    conda-forge
 portaudio                 19.6.0               h57a0ea0_5    conda-forge
