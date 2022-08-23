@@ -157,6 +157,20 @@ push: ## push private build
 # push to update tip to current version
 	docker push $(PRIVATE_REG)$(IMAGE)$(PRIVATE_TAG)
 
+pull: IMAGE = $(PUBLIC_IMAGE)
+pull: REG = $(PUBLIC_REG)
+pull: TAG = $(PUBLIC_TAG)
+pull: DARGS ?=
+pull: ## pull most recent public version
+	docker pull $(REG)$(IMAGE)$(TAG)
+
+pull-priv: IMAGE = $(PRIVATE_IMAGE)
+pull-priv: REG = $(PRIVATE_REG)
+pull-priv: TAG = $(PRIVATE_TAG)
+pull-priv: DARGS ?=
+pull-priv: ## pull most recent private version
+	docker pull $(REG)$(IMAGE)$(TAG)
+
 publish: IMAGE = $(PUBLIC_IMAGE)
 publish: DARGS ?=
 publish: ## publish current private build to public published version
@@ -180,30 +194,29 @@ root: DARGS ?= -u 0
 root: ## start private version  with root shell to do admin and poke around
 	-docker run -it --rm $(DARGS) $(REG)$(IMAGE)$(TAG) $(ARGS)
 
-ope: IMAGE = $(PRIVATE_IMAGE)
-ope: REG = $(PRIVATE_REG)
-ope: TAG = $(PRIVATE_TAG)
-ope: ARGS ?= /bin/bash
-ope: DARGS ?=
-ope: ## start privae version with root shell to do admin and poke around
+user: IMAGE = $(PRIVATE_IMAGE)
+user: REG = $(PRIVATE_REG)
+user: TAG = $(PRIVATE_TAG)
+user: ARGS ?= /bin/bash
+user: DARGS ?=
+user: ## start private version with usershell to poke around
 	-docker run -it --rm $(DARGS) $(REG)$(IMAGE)$(TAG) $(ARGS)
 
-nb: IMAGE = $(PUBLIC_IMAGE)
-nb: REG = $(PUBLIC_REG)
-nb: TAG = $(PUBLIC_TAG)
-nb: ARGS ?=
-nb: DARGS ?= -e DOCKER_STACKS_JUPYTER_CMD=notebook -u $(OPE_UID):$(OPE_GID) -v "${HOST_DIR}":"${MOUNT_DIR}" -v "${SSH_AUTH_SOCK}":"${SSH_AUTH_SOCK}" -e SSH_AUTH_SOCK=${SSH_AUTH_SOCK} -p ${SSH_PORT}:22
-nb: PORT ?= 8888
-nb: ## start published version with jupyter classic notebook interface
-	docker run -it --rm -p $(PORT):$(PORT) $(DARGS) $(REG)$(IMAGE)$(TAG) $(ARGS) 
-
-lab: IMAGE = $(PUBLIC_IMAGE)
-lab: REG = $(PUBLIC_REG)
-lab: TAG = $(PUBLIC_TAG)
-lab: ARGS ?=
-lab: DARGS ?= -u $(OPE_UID):$(OPE_GID) -v "${HOST_DIR}":"${MOUNT_DIR}" -v "${SSH_AUTH_SOCK}":"${SSH_AUTH_SOCK}" -v "${SSH_AUTH_SOCK}":"${SSH_AUTH_SOCK}" -e SSH_AUTH_SOCK=${SSH_AUTH_SOCK} -p ${SSH_PORT}:22
-lab: PORT ?= 8888
-lab: ## start published version with jupyter lab interface
+run: IMAGE = $(PUBLIC_IMAGE)
+run: REG = $(PUBLIC_REG)
+run: TAG = $(PUBLIC_TAG)
+run: ARGS ?=
+run: DARGS ?= -u $(OPE_UID):$(OPE_GID) -v "${HOST_DIR}":"${MOUNT_DIR}" -v "${SSH_AUTH_SOCK}":"${SSH_AUTH_SOCK}" -v "${SSH_AUTH_SOCK}":"${SSH_AUTH_SOCK}" -e SSH_AUTH_SOCK=${SSH_AUTH_SOCK} -p ${SSH_PORT}:22
+run: PORT ?= 8888
+run: ## start published version with jupyter lab interface
 	docker run -it --rm -p $(PORT):$(PORT) $(DARGS) $(REG)$(IMAGE)$(TAG) $(ARGS) 
 
 
+run-priv: IMAGE = $(PRIVATE_IMAGE)
+run-priv: REG = $(PRIVATE_REG)
+run-priv: TAG = $(PRIVATE_TAG)
+run-priv: ARGS ?=
+run-priv: DARGS ?= -u $(OPE_UID):$(OPE_GID) -v "${HOST_DIR}":"${MOUNT_DIR}" -v "${SSH_AUTH_SOCK}":"${SSH_AUTH_SOCK}" -v "${SSH_AUTH_SOCK}":"${SSH_AUTH_SOCK}" -e SSH_AUTH_SOCK=${SSH_AUTH_SOCK} -p ${SSH_PORT}:22
+run-priv: PORT ?= 8888
+run-priv: ## start published version with jupyter lab interface
+	docker run -it --rm -p $(PORT):$(PORT) $(DARGS) $(REG)$(IMAGE)$(TAG) $(ARGS)
