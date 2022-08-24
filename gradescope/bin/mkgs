@@ -1,0 +1,53 @@
+#!/bin/bash
+set -x
+#set -n
+set -e
+set -v
+
+name=$1
+autograder=$2
+DATE_TAG=$(date +"%m.%d.%y_%H.%M.%S")
+BASE_DISTRO_PACKAGES=$(cat ../base/distro_pkgs)
+GDB_BUILD_SRC=gdb-12.1
+
+image=${IMAGE:-quay.io/jappavoo/$1:$DATE_TAG}
+
+USAGE="mkgs <image> <autograderzip>"
+
+if [[ -z $name || -z $autograder ]]; then
+    echo  "$USAGE" > /dev/stderr
+    exit -1
+fi
+
+
+if [[ -d source ]]; then
+    echo "cleaning old autograder source"
+    rm -rf source
+fi
+
+mkdir source
+
+if ! (cd source; unzip $autograder); then
+    echo "ERROR: bad autograder: $autograder" > /dev/stderr
+    echo "ERROR: failed to extract autograder" > /dev/stderr
+    exit -1
+fi
+
+if [[ ! -a source/setup.sh ]]; then
+    echo "ERROR: bad autograder: $autograder" > /dev/stderr
+    echo "ERROR: no setup.sh" > /dev/stderr
+    exit -1
+fi
+
+if [[ ! -a source/run_autograder ]]; then
+    echo "ERROR: bad autograder: $autograder" > /dev/stderr
+    echo "ERROR: run_autograder" > /dev/stderr
+    exit -1
+fi
+
+# get rid of newlines 
+BASE_DISTRO_PACKAGES=$BASE_DISTRO_PACKAGES
+docker build \
+      --build-arg ADDITIONAL_DISTRO_PACKAGES="${BASE_DISTRO_PACKAGES}"  \
+      --build-arg GDB_BUILD_SRC="${GDB_BUILD_SRC}" \
+      -t $image $(pwd)

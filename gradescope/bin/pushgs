@@ -1,0 +1,10 @@
+#!/bin/bash
+image=${IMAGE:-quay.io/jappavoo/$1}
+
+if [[ -z $1 ]]; then
+  echo "rungs <image>"
+  exit -1
+fi
+
+docker push $image
+

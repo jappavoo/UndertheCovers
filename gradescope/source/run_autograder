@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+set -x
+
+gcc --version
+/autograder/source/test.sh
