@@ -126,10 +126,10 @@ RUN  wget -O - https://dl.yarnpkg.com/debian/pubkey.gpg 2> /dev/null | sudo apt-
  fix-permissions /home/RISE
 
 USER $NB_USER
-# last work by Yiqin has been merged into Fcollnval's fork that seems to be the
-# main place the work for lab support is going switched over to using his fork
-RUN  git clone https://github.com/fcollonval/RISE.git -b ft/jlab3  /home/RISE  && \
+# swtiched back to Yiqin's branch to pickup fixes for toggling controls and notes
+RUN  git clone https://github.com/OPEFFORT/RISE.git /home/RISE  && \
  cd /home/RISE && \
+ git checkout dev && \
  yarn install && \
  yarn run build && \
  pip install -e . && \

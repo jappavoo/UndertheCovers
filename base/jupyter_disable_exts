@@ -15,3 +15,4 @@
 @jupyterlab/inspector-extension:consoles
 @jupyterlab/inspector-extension:inspector
 @jupyterlab/inspector-extension:notebooks
+@jupyterlab/shortcuts-extension:shortcuts
