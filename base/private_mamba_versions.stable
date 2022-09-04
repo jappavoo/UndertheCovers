@@ -48,7 +48,7 @@ docutils                  0.17.1          py310hff52083_2    conda-forge
 entrypoints               0.4                pyhd8ed1ab_0    conda-forge
 executing                 0.8.3              pyhd8ed1ab_0    conda-forge
 expat                     2.4.8                h27087fc_0    conda-forge
-fftw                      3.3.10          nompi_hf0379b8_4    conda-forge
+fftw                      3.3.10          nompi_hf0379b8_105    conda-forge
 flit-core                 3.7.1              pyhd8ed1ab_0    conda-forge
 font-ttf-dejavu-sans-mono 2.37                 hab24e00_0    conda-forge
 font-ttf-inconsolata      3.000                h77eed37_0    conda-forge
@@ -67,7 +67,7 @@ glib                      2.72.1               h6239696_0    conda-forge
 glib-tools                2.72.1               h6239696_0    conda-forge
 greenlet                  1.1.2           py310hd8f1fbe_2    conda-forge
 gst-plugins-base          1.20.3               hf6a322e_0    conda-forge
-gstreamer                 1.20.3               hd4edc92_0    conda-forge
+gstreamer                 1.20.3               hd4edc92_1    conda-forge
 icu                       70.1                 h27087fc_0    conda-forge
 idna                      3.3                pyhd8ed1ab_0    conda-forge
 imagesize                 1.4.1              pyhd8ed1ab_0    conda-forge
@@ -148,7 +148,7 @@ libmambapy                0.24.0          py310hab0e683_1    conda-forge
 libnghttp2                1.47.0               h727a467_0    conda-forge
 libnsl                    2.0.0                h7f98852_0    conda-forge
 libogg                    1.3.4                h7f98852_1    conda-forge
-libopenblas               0.3.21          pthreads_h78a6416_2    conda-forge
+libopenblas               0.3.21          pthreads_h78a6416_3    conda-forge
 libopus                   1.3.1                h7f98852_1    conda-forge
 libpng                    1.6.37               h753d276_4    conda-forge
 libpq                     14.5                 hd77ab85_0    conda-forge
