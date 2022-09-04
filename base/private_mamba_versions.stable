@@ -26,13 +26,13 @@ brotlipy                  0.7.0           py310h5764c6d_1004    conda-forge
 bzip2                     1.0.8                h7f98852_4    conda-forge
 c-ares                    1.18.1               h7f98852_0    conda-forge
 ca-certificates           2022.6.15            ha878542_0    conda-forge
-certifi                   2022.6.15       py310hff52083_0    conda-forge
+certifi                   2022.6.15          pyhd8ed1ab_1    conda-forge
 certipy                   0.1.3                      py_0    conda-forge
 cffi                      1.15.1          py310h255011f_0    conda-forge
 charset-normalizer        2.1.0              pyhd8ed1ab_0    conda-forge
 click                     8.1.3           py310hff52083_0    conda-forge
 click-completion          0.5.2           py310hff52083_4    conda-forge
-click-log                 0.3.2              pyh9f0ad1d_0    conda-forge
+click-log                 0.4.0              pyhd8ed1ab_0    conda-forge
 colorama                  0.4.5              pyhd8ed1ab_0    conda-forge
 conda                     4.13.0          py310hff52083_1    conda-forge
 conda-package-handling    1.8.1           py310h5764c6d_1    conda-forge
@@ -48,7 +48,7 @@ docutils                  0.17.1          py310hff52083_2    conda-forge
 entrypoints               0.4                pyhd8ed1ab_0    conda-forge
 executing                 0.8.3              pyhd8ed1ab_0    conda-forge
 expat                     2.4.8                h27087fc_0    conda-forge
-fftw                      3.3.10          nompi_ha7695d1_103    conda-forge
+fftw                      3.3.10          nompi_hf0379b8_105    conda-forge
 flit-core                 3.7.1              pyhd8ed1ab_0    conda-forge
 font-ttf-dejavu-sans-mono 2.37                 hab24e00_0    conda-forge
 font-ttf-inconsolata      3.000                h77eed37_0    conda-forge
@@ -57,7 +57,7 @@ font-ttf-ubuntu           0.83                 hab24e00_0    conda-forge
 fontconfig                2.14.0               h8e229c2_0    conda-forge
 fonts-conda-ecosystem     1                             0    conda-forge
 fonts-conda-forge         1                             0    conda-forge
-fonttools                 4.35.0          py310h5764c6d_0    conda-forge
+fonttools                 4.37.1          py310h5764c6d_0    conda-forge
 freetype                  2.12.1               hca18f0e_0    conda-forge
 gettext                   0.19.8.1          h73d1719_1008    conda-forge
 ghp-import                2.1.0              pyhd8ed1ab_0    conda-forge
@@ -67,7 +67,7 @@ glib                      2.72.1               h6239696_0    conda-forge
 glib-tools                2.72.1               h6239696_0    conda-forge
 greenlet                  1.1.2           py310hd8f1fbe_2    conda-forge
 gst-plugins-base          1.20.3               hf6a322e_0    conda-forge
-gstreamer                 1.20.3               hd4edc92_0    conda-forge
+gstreamer                 1.20.3               hd4edc92_1    conda-forge
 icu                       70.1                 h27087fc_0    conda-forge
 idna                      3.3                pyhd8ed1ab_0    conda-forge
 imagesize                 1.4.1              pyhd8ed1ab_0    conda-forge
@@ -80,7 +80,7 @@ ipydrawio-widgets         1.2.0              pyhd8ed1ab_0    conda-forge
 ipykernel                 6.15.0             pyh210e3f2_0    conda-forge
 ipython                   8.4.0           py310hff52083_0    conda-forge
 ipython_genutils          0.2.0                      py_1    conda-forge
-ipywidgets                7.7.1              pyhd8ed1ab_0    conda-forge
+ipywidgets                7.7.2              pyhd8ed1ab_0    conda-forge
 jack                      1.9.18            h8c3723f_1002    conda-forge
 jedi                      0.18.1          py310hff52083_1    conda-forge
 jinja2                    3.1.2              pyhd8ed1ab_1    conda-forge
@@ -148,7 +148,7 @@ libmambapy                0.24.0          py310hab0e683_1    conda-forge
 libnghttp2                1.47.0               h727a467_0    conda-forge
 libnsl                    2.0.0                h7f98852_0    conda-forge
 libogg                    1.3.4                h7f98852_1    conda-forge
-libopenblas               0.3.21          pthreads_h78a6416_0    conda-forge
+libopenblas               0.3.21          pthreads_h78a6416_3    conda-forge
 libopus                   1.3.1                h7f98852_1    conda-forge
 libpng                    1.6.37               h753d276_4    conda-forge
 libpq                     14.5                 hd77ab85_0    conda-forge
@@ -183,8 +183,8 @@ matplotlib-inline         0.1.3              pyhd8ed1ab_0    conda-forge
 mdit-py-plugins           0.2.8              pyhd8ed1ab_0    conda-forge
 mistune                   0.8.4           py310h6acc77f_1005    conda-forge
 munkres                   1.1.4              pyh9f0ad1d_0    conda-forge
-mysql-common              8.0.30               haf5c9bc_0    conda-forge
-mysql-libs                8.0.30               h28c427c_0    conda-forge
+mysql-common              8.0.30               haf5c9bc_1    conda-forge
+mysql-libs                8.0.30               h28c427c_1    conda-forge
 myst-nb                   0.13.2             pyhd8ed1ab_0    conda-forge
 myst-parser               0.15.2             pyhd8ed1ab_0    conda-forge
 nbclassic                 0.3.7              pyhd8ed1ab_0    conda-forge
@@ -202,7 +202,7 @@ notebook                  6.4.12             pyha770c72_0    conda-forge
 notebook-shim             0.1.0              pyhd8ed1ab_0    conda-forge
 nspr                      4.32                 h9c3ff4c_1    conda-forge
 nss                       3.78                 h2350873_0    conda-forge
-numpy                     1.23.1          py310h53a5b5f_0    conda-forge
+numpy                     1.23.2          py310h53a5b5f_0    conda-forge
 oauthlib                  3.2.0              pyhd8ed1ab_0    conda-forge
 openjpeg                  2.5.0                h7d73246_1    conda-forge
 openssl                   1.1.1q               h166bdaf_0    conda-forge
@@ -237,7 +237,7 @@ pygments                  2.12.0             pyhd8ed1ab_0    conda-forge
 pyjwt                     2.4.0              pyhd8ed1ab_0    conda-forge
 pyopenssl                 22.0.0             pyhd8ed1ab_0    conda-forge
 pyparsing                 3.0.9              pyhd8ed1ab_0    conda-forge
-pypdf2                    2.9.0              pyhd8ed1ab_0    conda-forge
+pypdf2                    2.10.4             pyhd8ed1ab_0    conda-forge
 pyqt                      5.15.7          py310h29803b5_0    conda-forge
 pyqt5-sip                 12.11.0         py310hd8f1fbe_0    conda-forge
 pyrsistent                0.18.1          py310h5764c6d_1    conda-forge
@@ -280,7 +280,7 @@ sphinx-multitoc-numbering 0.1.3              pyhd8ed1ab_0    conda-forge
 sphinx-thebe              0.1.2              pyhd8ed1ab_0    conda-forge
 sphinx-togglebutton       0.3.1              pyhd8ed1ab_0    conda-forge
 sphinxcontrib-applehelp   1.0.2                      py_0    conda-forge
-sphinxcontrib-bibtex      2.4.2              pyhd8ed1ab_0    conda-forge
+sphinxcontrib-bibtex      2.5.0              pyhd8ed1ab_0    conda-forge
 sphinxcontrib-devhelp     1.0.2                      py_0    conda-forge
 sphinxcontrib-htmlhelp    2.0.0              pyhd8ed1ab_0    conda-forge
 sphinxcontrib-jsmath      1.0.1                      py_0    conda-forge
