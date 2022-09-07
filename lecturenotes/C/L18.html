@@ -4,11 +4,13 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>18. UC-SLS Lecture 18 : Using C to write and organize opcode bytes - Functions &#8212; UndertheCovers</title>
     
-  <link href="../_static/css/theme.css" rel="stylesheet">
-  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -18,41 +20,40 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin
     href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    
-      
-
-    
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
-    <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script>
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="19. UC-SLS Lecture 19 : Using C to map and organize our data bytes - Data Types" href="L19.html" />
@@ -64,7 +65,21 @@
     <!-- Google Analytics -->
     
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
     
     <div class="container-fluid" id="banner"></div>
 
@@ -73,9 +88,10 @@
     <div class="container-xl">
       <div class="row">
           
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../index.html">
       
         <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
@@ -93,14 +109,15 @@
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
-        <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../intro_ln.html">
-   Under the Covers : The Secret Life of Software
-  </a>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro_ln.html">
+                    Under the Covers : The Secret Life of Software
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Course Specfic Introductions
  </span>
@@ -282,104 +299,177 @@
 </ul>
 
     </div>
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-</div>
-
-</div>
-
-
-          
-
-
-          
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
             
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
-        
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/C/L18.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
-    </div>
-</div>
-
-            <!-- Source interaction buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
-    <div class="dropdown-buttons sourcebuttons">
-        <a class="repository-button"
-            href="https://github.com/jappavoo/UndertheCovers"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="Source repository"><i
-                    class="fab fa-github"></i>repository</button></a>
-        
-        
-    </div>
-</div>
-
-            <!-- Full screen (wrap in <a> to have style consistency -->
-
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
-
-            <!-- Launch buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        
-        <a class="jupyterhub-button" href="https://jupyterhub-opf-jupyterhub.apps.smaug.na.operate-first.cloud/hub/user-redirect/git-pull?repo=https://github.com/jappavoo/UndertheCovers&urlpath=tree/UndertheCovers/underthecovers/C/L18.ipynb&branch=main"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch JupyterHub" data-toggle="tooltip"
-                data-placement="left"><img class="jupyterhub-button-logo"
-                    src="../_static/images/logo_jupyterhub.svg"
-                    alt="Interact on JupyterHub">JupyterHub</button></a>
-        
-        
-        
-    </div>
-</div>
-
-        </div>
-
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
-            
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
             </div>
-            <nav id="bd-toc-nav" aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://jupyterhub-opf-jupyterhub.apps.smaug.na.operate-first.cloud/hub/user-redirect/git-pull?repo=https%3A//github.com/jappavoo/UndertheCovers&urlpath=tree/UndertheCovers/underthecovers/C/L18.ipynb&branch=main"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on JupyterHub"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_jupyterhub.svg">
+  </span>
+<span class="headerbtn__text-container">JupyterHub</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+<a href="https://github.com/jappavoo/UndertheCovers"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="bottom"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/C/L18.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#opcodes-and-c">
    18.1. Opcodes and C
@@ -452,17 +542,105 @@
  </li>
 </ul>
 
-            </nav>
-        </div>
-    </div>
+    </nav>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>UC-SLS Lecture 18 : Using C to write and organize opcode bytes - Functions</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#opcodes-and-c">
+   18.1. Opcodes and C
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#c-standardizes-how-to-organize-and-write-opcodes">
+     18.1.1. C Standardizes how to organize and write opcodes
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     18.1.2. C Standardizes how to organize and write opcodes
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#let-s-start-at-the-beginning">
+     18.1.3. Let’s start at the beginning
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#function-name-rightarrow-global-label-for-its-entry-point-start-of-its-opcode">
+       18.1.3.1. Function Name
+       <span class="math notranslate nohighlight">
+        \(\rightarrow\)
+       </span>
+       global label for its Entry point (start of its opcode)
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#calling-a-function">
+       18.1.3.2. Calling a function
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#interlude-start-vs-main">
+     18.1.4. Interlude : _start vs main()
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#function-declarations-vs-definitions">
+       18.1.4.1. Function Declarations vs Definitions
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#variables-declared-in-body-of-function-are-function-local">
+     18.1.5. Variables declared in body of function are function local
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#lea">
+     18.1.6. LEA
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#passing-arguments-and-simple-return-value">
+     18.1.7. Passing arguments and simple return value
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#an-example-trace-this-code-and-visualize-the-stack">
+   18.2. An example: Trace this code and visualize the stack
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="uc-sls-lecture-18-using-c-to-write-and-organize-opcode-bytes-functions">
-<h1><span class="section-number">18. </span>UC-SLS Lecture 18 : Using C to write and organize opcode bytes - Functions<a class="headerlink" href="#uc-sls-lecture-18-using-c-to-write-and-organize-opcode-bytes-functions" title="Permalink to this headline">¶</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="uc-sls-lecture-18-using-c-to-write-and-organize-opcode-bytes-functions">
+<h1><span class="section-number">18. </span>UC-SLS Lecture 18 : Using C to write and organize opcode bytes - Functions<a class="headerlink" href="#uc-sls-lecture-18-using-c-to-write-and-organize-opcode-bytes-functions" title="Permalink to this headline">#</a></h1>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <ul class="simple">
@@ -476,16 +654,12 @@
 <li><p>add our <code class="docutils literal notranslate"><span class="pre">setup.gdb</span></code> to make working in gdb easier</p></li>
 <li><p>normally you would want to track everything in git</p></li>
 </ul>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>$ ls /home/jovyan/cfuncs
-callmyadd.c  main0e.c  myadd.c  myfunc0.c  myfunc2.c  setup.gdb
-main0.c      Makefile  myadd.h  myfunc1.c  myfunc3.c
-$ 
-</pre></div>
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "a2a9af1b22f64eb1856bc487a1c803fa", "version_major": 2, "version_minor": 0}
+</script></div>
 </div>
-</div>
-</div>
-<div class="section" id="opcodes-and-c">
-<h2><span class="section-number">18.1. </span>Opcodes and C<a class="headerlink" href="#opcodes-and-c" title="Permalink to this headline">¶</a></h2>
+<section id="opcodes-and-c">
+<h2><span class="section-number">18.1. </span>Opcodes and C<a class="headerlink" href="#opcodes-and-c" title="Permalink to this headline">#</a></h2>
 <p>When we write assembly code we are free to layout our opcodes and use registers in any way we like.</p>
 <ul class="simple">
 <li><p>We can place labels anywhere in our opcodes</p></li>
@@ -493,8 +667,8 @@ $
 <li><p>While we can use processor support for passing return address via instructions, like <code class="docutils literal notranslate"><span class="pre">call</span></code> and `ret, we are not required too</p></li>
 <li><p>We are not forced to use the registers in any particular way</p></li>
 </ul>
-<div class="section" id="c-standardizes-how-to-organize-and-write-opcodes">
-<h3><span class="section-number">18.1.1. </span>C Standardizes how to organize and write opcodes<a class="headerlink" href="#c-standardizes-how-to-organize-and-write-opcodes" title="Permalink to this headline">¶</a></h3>
+<section id="c-standardizes-how-to-organize-and-write-opcodes">
+<h3><span class="section-number">18.1.1. </span>C Standardizes how to organize and write opcodes<a class="headerlink" href="#c-standardizes-how-to-organize-and-write-opcodes" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>Its all about standardizing how things are done</p>
 <ul>
@@ -524,9 +698,9 @@ $
 </ul>
 </li>
 </ul>
-</div>
-<div class="section" id="id1">
-<h3><span class="section-number">18.1.2. </span>C Standardizes how to organize and write opcodes<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="id1">
+<h3><span class="section-number">18.1.2. </span>C Standardizes how to organize and write opcodes<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h3>
 <p>Overall summary</p>
 <ul class="simple">
 <li><p>“C” forces us to decompose and organize opcodes into “functions”</p></li>
@@ -635,42 +809,41 @@ $
 </ul>
 </li>
 </ul>
-</div>
-<div class="section" id="let-s-start-at-the-beginning">
-<h3><span class="section-number">18.1.3. </span>Let’s start at the beginning<a class="headerlink" href="#let-s-start-at-the-beginning" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="let-s-start-at-the-beginning">
+<h3><span class="section-number">18.1.3. </span>Let’s start at the beginning<a class="headerlink" href="#let-s-start-at-the-beginning" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>we will use the compiler and our ability to read assembly code to learn how “C” works</p></li>
 </ul>
-<div class="section" id="function-name-rightarrow-global-label-for-its-entry-point-start-of-its-opcode">
-<h4><span class="section-number">18.1.3.1. </span>Function Name <span class="math notranslate nohighlight">\(\rightarrow\)</span> global label for its Entry point (start of its opcode)<a class="headerlink" href="#function-name-rightarrow-global-label-for-its-entry-point-start-of-its-opcode" title="Permalink to this headline">¶</a></h4>
+<section id="function-name-rightarrow-global-label-for-its-entry-point-start-of-its-opcode">
+<h4><span class="section-number">18.1.3.1. </span>Function Name <span class="math notranslate nohighlight">\(\rightarrow\)</span> global label for its Entry point (start of its opcode)<a class="headerlink" href="#function-name-rightarrow-global-label-for-its-entry-point-start-of-its-opcode" title="Permalink to this headline">#</a></h4>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <p><b>C:</p>
 <div style="width:107em; height:100%; font-size:inherit; overflow: auto;" >
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">myfunc</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="p">{}</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">myfunc</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span><span class="w"></span>
 
 </pre></div>
 </div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>gcc -fno-stack-protector -fno-pic  -static -Werror -fcf-protection=none -fno-asynchronous-unwind-tables -Os -S -masm=intel myfunc0.c -o myfunc0.s
-</pre></div>
-</div>
-</div>
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "f0aad3b475594fc69a30155ac7eb02c4", "version_major": 2, "version_minor": 0}
+</script></div>
 </div>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <p><b>Assembly:</p>
 <div style="width:107em; height:100%; font-size:inherit; overflow: auto;" >
-<div class="highlight-gas notranslate"><div class="highlight"><pre><span></span>	<span class="na">.file</span>	<span class="s">&quot;myfunc0.c&quot;</span>
-	<span class="na">.intel_syntax</span> <span class="no">noprefix</span>
-	<span class="na">.text</span>
-	<span class="na">.globl</span>	<span class="no">myfunc</span>
-	<span class="na">.type</span>	<span class="no">myfunc</span><span class="p">,</span> <span class="na">@function</span>
-<span class="nl">myfunc:</span>
-	<span class="nf">ret</span>
-	<span class="na">.size</span>	<span class="no">myfunc</span><span class="p">,</span> <span class="no">.-myfunc</span>
-	<span class="na">.ident</span>	<span class="s">&quot;GCC: (Ubuntu 9.3.0-17ubuntu1~20.04) 9.3.0&quot;</span>
-	<span class="na">.section</span>	<span class="no">.note.GNU-stack</span><span class="p">,</span><span class="s">&quot;&quot;</span><span class="p">,</span><span class="na">@progbits</span>
+<div class="highlight-gas notranslate"><div class="highlight"><pre><span></span><span class="w">	</span><span class="na">.file</span><span class="w">	</span><span class="s">&quot;myfunc0.c&quot;</span><span class="w"></span>
+<span class="w">	</span><span class="na">.intel_syntax</span><span class="w"> </span><span class="no">noprefix</span><span class="w"></span>
+<span class="w">	</span><span class="na">.text</span><span class="w"></span>
+<span class="w">	</span><span class="na">.globl</span><span class="w">	</span><span class="no">myfunc</span><span class="w"></span>
+<span class="w">	</span><span class="na">.type</span><span class="w">	</span><span class="no">myfunc</span><span class="p">,</span><span class="w"> </span><span class="na">@function</span><span class="w"></span>
+<span class="nl">myfunc:</span><span class="w"></span>
+<span class="w">	</span><span class="nf">ret</span><span class="w"></span>
+<span class="w">	</span><span class="na">.size</span><span class="w">	</span><span class="no">myfunc</span><span class="p">,</span><span class="w"> </span><span class="no">.-myfunc</span><span class="w"></span>
+<span class="w">	</span><span class="na">.ident</span><span class="w">	</span><span class="s">&quot;GCC: (Ubuntu 9.4.0-1ubuntu1~20.04.1) 9.4.0&quot;</span><span class="w"></span>
+<span class="w">	</span><span class="na">.section</span><span class="w">	</span><span class="no">.note.GNU-stack</span><span class="p">,</span><span class="s">&quot;&quot;</span><span class="p">,</span><span class="na">@progbits</span><span class="w"></span>
 </pre></div>
 </div>
 </div>
@@ -708,53 +881,52 @@ $
 </ul>
 </li>
 </ul>
-</div>
-<div class="section" id="calling-a-function">
-<h4><span class="section-number">18.1.3.2. </span>Calling a function<a class="headerlink" href="#calling-a-function" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="calling-a-function">
+<h4><span class="section-number">18.1.3.2. </span>Calling a function<a class="headerlink" href="#calling-a-function" title="Permalink to this headline">#</a></h4>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <p><b>C:</p>
 <div style="width:107em; height:100%; font-size:inherit; overflow: auto;" >
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">__attribute__</span> <span class="p">((</span><span class="n">noinline</span><span class="p">))</span>
-<span class="kt">int</span> <span class="n">funcA</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">return</span> <span class="mi">7</span><span class="p">;</span>
-<span class="p">}</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">__attribute__</span><span class="w"> </span><span class="p">((</span><span class="n">noinline</span><span class="p">))</span><span class="w"></span>
+<span class="kt">int</span><span class="w"> </span><span class="n">funcA</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">7</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 
-<span class="kt">int</span> <span class="n">funcB</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">return</span> <span class="mi">3</span> <span class="o">+</span> <span class="n">funcA</span><span class="p">();</span>
-<span class="p">}</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">funcB</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">funcA</span><span class="p">();</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 
 
 </pre></div>
 </div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>gcc -fno-stack-protector -fno-pic  -static -Werror -fcf-protection=none -fno-asynchronous-unwind-tables -Os -S -masm=intel myfunc1.c -o myfunc1.s
-</pre></div>
-</div>
-</div>
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "fd311c03910845dd9c81a528909bd8e5", "version_major": 2, "version_minor": 0}
+</script></div>
 </div>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <p><b>Assembly</p>
 <div style="width:107em; height:100%; font-size:inherit; overflow: auto;" >
-<div class="highlight-gas notranslate"><div class="highlight"><pre><span></span>	<span class="na">.file</span>	<span class="s">&quot;myfunc1.c&quot;</span>
-	<span class="na">.intel_syntax</span> <span class="no">noprefix</span>
-	<span class="na">.text</span>
-	<span class="na">.globl</span>	<span class="no">funcA</span>
-	<span class="na">.type</span>	<span class="no">funcA</span><span class="p">,</span> <span class="na">@function</span>
-<span class="nl">funcA:</span>
-	<span class="nf">mov</span>	<span class="no">eax</span><span class="p">,</span> <span class="mi">7</span>
-	<span class="nf">ret</span>
-	<span class="na">.size</span>	<span class="no">funcA</span><span class="p">,</span> <span class="no">.-funcA</span>
-	<span class="na">.globl</span>	<span class="no">funcB</span>
-	<span class="na">.type</span>	<span class="no">funcB</span><span class="p">,</span> <span class="na">@function</span>
-<span class="nl">funcB:</span>
-	<span class="nf">call</span>	<span class="no">funcA</span>
-	<span class="nf">add</span>	<span class="no">eax</span><span class="p">,</span> <span class="mi">3</span>
-	<span class="nf">ret</span>
-	<span class="na">.size</span>	<span class="no">funcB</span><span class="p">,</span> <span class="no">.-funcB</span>
-	<span class="na">.ident</span>	<span class="s">&quot;GCC: (Ubuntu 9.3.0-17ubuntu1~20.04) 9.3.0&quot;</span>
-	<span class="na">.section</span>	<span class="no">.note.GNU-stack</span><span class="p">,</span><span class="s">&quot;&quot;</span><span class="p">,</span><span class="na">@progbits</span>
+<div class="highlight-gas notranslate"><div class="highlight"><pre><span></span><span class="w">	</span><span class="na">.file</span><span class="w">	</span><span class="s">&quot;myfunc1.c&quot;</span><span class="w"></span>
+<span class="w">	</span><span class="na">.intel_syntax</span><span class="w"> </span><span class="no">noprefix</span><span class="w"></span>
+<span class="w">	</span><span class="na">.text</span><span class="w"></span>
+<span class="w">	</span><span class="na">.globl</span><span class="w">	</span><span class="no">funcA</span><span class="w"></span>
+<span class="w">	</span><span class="na">.type</span><span class="w">	</span><span class="no">funcA</span><span class="p">,</span><span class="w"> </span><span class="na">@function</span><span class="w"></span>
+<span class="nl">funcA:</span><span class="w"></span>
+<span class="w">	</span><span class="nf">mov</span><span class="w">	</span><span class="no">eax</span><span class="p">,</span><span class="w"> </span><span class="mi">7</span><span class="w"></span>
+<span class="w">	</span><span class="nf">ret</span><span class="w"></span>
+<span class="w">	</span><span class="na">.size</span><span class="w">	</span><span class="no">funcA</span><span class="p">,</span><span class="w"> </span><span class="no">.-funcA</span><span class="w"></span>
+<span class="w">	</span><span class="na">.globl</span><span class="w">	</span><span class="no">funcB</span><span class="w"></span>
+<span class="w">	</span><span class="na">.type</span><span class="w">	</span><span class="no">funcB</span><span class="p">,</span><span class="w"> </span><span class="na">@function</span><span class="w"></span>
+<span class="nl">funcB:</span><span class="w"></span>
+<span class="w">	</span><span class="nf">call</span><span class="w">	</span><span class="no">funcA</span><span class="w"></span>
+<span class="w">	</span><span class="nf">add</span><span class="w">	</span><span class="no">eax</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="w"></span>
+<span class="w">	</span><span class="nf">ret</span><span class="w"></span>
+<span class="w">	</span><span class="na">.size</span><span class="w">	</span><span class="no">funcB</span><span class="p">,</span><span class="w"> </span><span class="no">.-funcB</span><span class="w"></span>
+<span class="w">	</span><span class="na">.ident</span><span class="w">	</span><span class="s">&quot;GCC: (Ubuntu 9.4.0-1ubuntu1~20.04.1) 9.4.0&quot;</span><span class="w"></span>
+<span class="w">	</span><span class="na">.section</span><span class="w">	</span><span class="no">.note.GNU-stack</span><span class="p">,</span><span class="s">&quot;&quot;</span><span class="p">,</span><span class="na">@progbits</span><span class="w"></span>
 </pre></div>
 </div>
 </div>
@@ -764,10 +936,10 @@ $
 <li><p>avoid compiler for optimizing away noinline and use of return value</p></li>
 <li><p>exactly what we expected in assembly right?</p></li>
 </ul>
-</div>
-</div>
-<div class="section" id="interlude-start-vs-main">
-<h3><span class="section-number">18.1.4. </span>Interlude : _start vs main()<a class="headerlink" href="#interlude-start-vs-main" title="Permalink to this headline">¶</a></h3>
+</section>
+</section>
+<section id="interlude-start-vs-main">
+<h3><span class="section-number">18.1.4. </span>Interlude : _start vs main()<a class="headerlink" href="#interlude-start-vs-main" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>As we have seen the linker marks where execution should begin in our binary via the <code class="docutils literal notranslate"><span class="pre">_start</span></code> symbol</p></li>
 <li><p>However when we are writing ‘C’ we normally do not write raw assembly</p>
@@ -806,28 +978,21 @@ $
 <div class="cell_output docutils container">
 <p><b>C:</p>
 <div style="width:107em; height:100%; font-size:inherit; overflow: auto;" >
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
-  <span class="n">myfunc</span><span class="p">();</span>
-  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-<span class="p">}</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">myfunc</span><span class="p">();</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 
 </pre></div>
 </div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>gcc -fno-stack-protector -fno-pic  -static -Werror -fcf-protection=none -fno-asynchronous-unwind-tables -Os -S -masm=intel main0e.c -o main0e.s
-<span class=" -Color -Color-Bold">main0e.c:</span> In function ‘<span class=" -Color -Color-Bold">main</span>’:
-<span class=" -Color -Color-Bold">main0e.c:2:3:</span> <span class=" -Color -Color-Bold -Color-Bold-Red">error: </span>implicit declaration of function ‘<span class=" -Color -Color-Bold">myfunc</span>’ [<span class=" -Color -Color-Bold -Color-Bold-Red">-Werror=implicit-function-declaration</span>]
-    2 |   <span class=" -Color -Color-Bold -Color-Bold-Red">myfunc</span>();
-      |   <span class=" -Color -Color-Bold -Color-Bold-Red">^~~~~~</span>
-cc1: all warnings being treated as errors
-make[2]: *** [Makefile:35: main0e.s] Error 1
-</pre></div>
-</div>
-</div>
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "218947d30f1047239be1fac431d4e4d8", "version_major": 2, "version_minor": 0}
+</script></div>
 </div>
 <p><strong>What’s the fix?</strong></p>
-<div class="section" id="function-declarations-vs-definitions">
-<h4><span class="section-number">18.1.4.1. </span>Function Declarations vs Definitions<a class="headerlink" href="#function-declarations-vs-definitions" title="Permalink to this headline">¶</a></h4>
+<section id="function-declarations-vs-definitions">
+<h4><span class="section-number">18.1.4.1. </span>Function Declarations vs Definitions<a class="headerlink" href="#function-declarations-vs-definitions" title="Permalink to this headline">#</a></h4>
 <ul class="simple">
 <li><p>When C encounters code that calls another function</p>
 <ul>
@@ -861,40 +1026,39 @@ make[2]: *** [Makefile:35: main0e.s] Error 1
 <div class="cell_output docutils container">
 <p><b>C:</p>
 <div style="width:107em; height:100%; font-size:inherit; overflow: auto;" >
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">myfunc</span><span class="p">(</span><span class="kt">void</span><span class="p">);</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">myfunc</span><span class="p">(</span><span class="kt">void</span><span class="p">);</span><span class="w"></span>
 
-<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
-  <span class="n">myfunc</span><span class="p">();</span>
-  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-<span class="p">}</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">myfunc</span><span class="p">();</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 
 </pre></div>
 </div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>gcc -fno-stack-protector -fno-pic  -static -Werror -fcf-protection=none -fno-asynchronous-unwind-tables -Os -S -masm=intel main0.c -o main0.s
-</pre></div>
-</div>
-</div>
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "ac487a93c7ea4f80bf7481a11830f83a", "version_major": 2, "version_minor": 0}
+</script></div>
 </div>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <p><b>Assembly</p>
 <div style="width:107em; height:100%; font-size:inherit; overflow: auto;" >
-<div class="highlight-gas notranslate"><div class="highlight"><pre><span></span>	<span class="na">.file</span>	<span class="s">&quot;main0.c&quot;</span>
-	<span class="na">.intel_syntax</span> <span class="no">noprefix</span>
-	<span class="na">.text</span>
-	<span class="na">.section</span>	<span class="no">.text.startup</span><span class="p">,</span><span class="s">&quot;ax&quot;</span><span class="p">,</span><span class="na">@progbits</span>
-	<span class="na">.globl</span>	<span class="no">main</span>
-	<span class="na">.type</span>	<span class="no">main</span><span class="p">,</span> <span class="na">@function</span>
-<span class="nl">main:</span>
-	<span class="nf">push</span>	<span class="no">rax</span>
-	<span class="nf">call</span>	<span class="no">myfunc</span>
-	<span class="nf">xor</span>	<span class="no">eax</span><span class="p">,</span> <span class="no">eax</span>
-	<span class="nf">pop</span>	<span class="no">rdx</span>
-	<span class="nf">ret</span>
-	<span class="na">.size</span>	<span class="no">main</span><span class="p">,</span> <span class="no">.-main</span>
-	<span class="na">.ident</span>	<span class="s">&quot;GCC: (Ubuntu 9.3.0-17ubuntu1~20.04) 9.3.0&quot;</span>
-	<span class="na">.section</span>	<span class="no">.note.GNU-stack</span><span class="p">,</span><span class="s">&quot;&quot;</span><span class="p">,</span><span class="na">@progbits</span>
+<div class="highlight-gas notranslate"><div class="highlight"><pre><span></span><span class="w">	</span><span class="na">.file</span><span class="w">	</span><span class="s">&quot;main0.c&quot;</span><span class="w"></span>
+<span class="w">	</span><span class="na">.intel_syntax</span><span class="w"> </span><span class="no">noprefix</span><span class="w"></span>
+<span class="w">	</span><span class="na">.text</span><span class="w"></span>
+<span class="w">	</span><span class="na">.section</span><span class="w">	</span><span class="no">.text.startup</span><span class="p">,</span><span class="s">&quot;ax&quot;</span><span class="p">,</span><span class="na">@progbits</span><span class="w"></span>
+<span class="w">	</span><span class="na">.globl</span><span class="w">	</span><span class="no">main</span><span class="w"></span>
+<span class="w">	</span><span class="na">.type</span><span class="w">	</span><span class="no">main</span><span class="p">,</span><span class="w"> </span><span class="na">@function</span><span class="w"></span>
+<span class="nl">main:</span><span class="w"></span>
+<span class="w">	</span><span class="nf">push</span><span class="w">	</span><span class="no">rax</span><span class="w"></span>
+<span class="w">	</span><span class="nf">call</span><span class="w">	</span><span class="no">myfunc</span><span class="w"></span>
+<span class="w">	</span><span class="nf">xor</span><span class="w">	</span><span class="no">eax</span><span class="p">,</span><span class="w"> </span><span class="no">eax</span><span class="w"></span>
+<span class="w">	</span><span class="nf">pop</span><span class="w">	</span><span class="no">rdx</span><span class="w"></span>
+<span class="w">	</span><span class="nf">ret</span><span class="w"></span>
+<span class="w">	</span><span class="na">.size</span><span class="w">	</span><span class="no">main</span><span class="p">,</span><span class="w"> </span><span class="no">.-main</span><span class="w"></span>
+<span class="w">	</span><span class="na">.ident</span><span class="w">	</span><span class="s">&quot;GCC: (Ubuntu 9.4.0-1ubuntu1~20.04.1) 9.4.0&quot;</span><span class="w"></span>
+<span class="w">	</span><span class="na">.section</span><span class="w">	</span><span class="no">.note.GNU-stack</span><span class="p">,</span><span class="s">&quot;&quot;</span><span class="p">,</span><span class="na">@progbits</span><span class="w"></span>
 </pre></div>
 </div>
 </div>
@@ -902,46 +1066,23 @@ make[2]: *** [Makefile:35: main0e.s] Error 1
 </div>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>gcc  -fno-pic -static -Os -g main0.s myfunc0.s -o main0
-</pre></div>
-</div>
-</div>
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "66d29bbd8d3b41d6937276ccf0739fe4", "version_major": 2, "version_minor": 0}
+</script></div>
 </div>
 <p><strong>Lets add the verbose flag so that we can see what is really going on</strong></p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>gcc -v -fno-pic -static -Os -g main0.s myfunc0.s -o main0
-Using built-in specs.
-COLLECT_GCC=gcc
-COLLECT_LTO_WRAPPER=/usr/lib/gcc/x86_64-linux-gnu/9/lto-wrapper
-OFFLOAD_TARGET_NAMES=nvptx-none:hsa
-OFFLOAD_TARGET_DEFAULT=1
-Target: x86_64-linux-gnu
-Configured with: ../src/configure -v --with-pkgversion=&#39;Ubuntu 9.3.0-17ubuntu1~20.04&#39; --with-bugurl=file:///usr/share/doc/gcc-9/README.Bugs --enable-languages=c,ada,c++,go,brig,d,fortran,objc,obj-c++,gm2 --prefix=/usr --with-gcc-major-version-only --program-suffix=-9 --program-prefix=x86_64-linux-gnu- --enable-shared --enable-linker-build-id --libexecdir=/usr/lib --without-included-gettext --enable-threads=posix --libdir=/usr/lib --enable-nls --enable-clocale=gnu --enable-libstdcxx-debug --enable-libstdcxx-time=yes --with-default-libstdcxx-abi=new --enable-gnu-unique-object --disable-vtable-verify --enable-plugin --enable-default-pie --with-system-zlib --with-target-system-zlib=auto --enable-objc-gc=auto --enable-multiarch --disable-werror --with-arch-32=i686 --with-abi=m64 --with-multilib-list=m32,m64,mx32 --enable-multilib --with-tune=generic --enable-offload-targets=nvptx-none=/build/gcc-9-HskZEa/gcc-9-9.3.0/debian/tmp-nvptx/usr,hsa --without-cuda-driver --enable-checking=release --build=x86_64-linux-gnu --host=x86_64-linux-gnu --target=x86_64-linux-gnu
-Thread model: posix
-gcc version 9.3.0 (Ubuntu 9.3.0-17ubuntu1~20.04) 
-COLLECT_GCC_OPTIONS=&#39;-v&#39; &#39;-fno-pic&#39; &#39;-static&#39; &#39;-Os&#39; &#39;-g&#39; &#39;-o&#39; &#39;main0&#39; &#39;-mtune=generic&#39; &#39;-march=x86-64&#39;
- as --gdwarf2 -v --64 -o /tmp/ccSHFPm0.o main0.s
-GNU assembler version 2.34 (x86_64-linux-gnu) using BFD version (GNU Binutils for Ubuntu) 2.34
-COLLECT_GCC_OPTIONS=&#39;-v&#39; &#39;-fno-pic&#39; &#39;-static&#39; &#39;-Os&#39; &#39;-g&#39; &#39;-o&#39; &#39;main0&#39; &#39;-mtune=generic&#39; &#39;-march=x86-64&#39;
- as --gdwarf2 -v --64 -o /tmp/ccMAEvC1.o myfunc0.s
-GNU assembler version 2.34 (x86_64-linux-gnu) using BFD version (GNU Binutils for Ubuntu) 2.34
-COMPILER_PATH=/usr/lib/gcc/x86_64-linux-gnu/9/:/usr/lib/gcc/x86_64-linux-gnu/9/:/usr/lib/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/9/:/usr/lib/gcc/x86_64-linux-gnu/
-LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/9/:/usr/lib/gcc/x86_64-linux-gnu/9/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/9/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/9/../../../:/lib/:/usr/lib/
-COLLECT_GCC_OPTIONS=&#39;-v&#39; &#39;-fno-pic&#39; &#39;-static&#39; &#39;-Os&#39; &#39;-g&#39; &#39;-o&#39; &#39;main0&#39; &#39;-mtune=generic&#39; &#39;-march=x86-64&#39;
- /usr/lib/gcc/x86_64-linux-gnu/9/collect2 -plugin /usr/lib/gcc/x86_64-linux-gnu/9/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/9/lto-wrapper -plugin-opt=-fresolution=/tmp/ccZUheX1.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_eh -plugin-opt=-pass-through=-lc --build-id -m elf_x86_64 --hash-style=gnu --as-needed -static -z relro -o main0 /usr/lib/gcc/x86_64-linux-gnu/9/../../../x86_64-linux-gnu/crt1.o /usr/lib/gcc/x86_64-linux-gnu/9/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/9/crtbeginT.o -L/usr/lib/gcc/x86_64-linux-gnu/9 -L/usr/lib/gcc/x86_64-linux-gnu/9/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/9/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/9/../../.. /tmp/ccSHFPm0.o /tmp/ccMAEvC1.o --start-group -lgcc -lgcc_eh -lc --end-group /usr/lib/gcc/x86_64-linux-gnu/9/crtend.o /usr/lib/gcc/x86_64-linux-gnu/9/../../../x86_64-linux-gnu/crtn.o
-COLLECT_GCC_OPTIONS=&#39;-v&#39; &#39;-fno-pic&#39; &#39;-static&#39; &#39;-Os&#39; &#39;-g&#39; &#39;-o&#39; &#39;main0&#39; &#39;-mtune=generic&#39; &#39;-march=x86-64&#39;
-</pre></div>
-</div>
-</div>
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "d87d14d9aed140caa53942584870daff", "version_major": 2, "version_minor": 0}
+</script></div>
 </div>
 <p><strong>Much bigger than we might have expected</strong></p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-rwxr-xr-x 1 jovyan root 853K Dec  9 12:54 <span class=" -Color -Color-Bold -Color-Bold-Green">main0</span>
-</pre></div>
-</div>
-</div>
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "515d8e9355564b14badd11f406df1dfa", "version_major": 2, "version_minor": 0}
+</script></div>
 </div>
 <p><strong>Why so big?</strong></p>
 <ol class="simple">
@@ -951,20 +1092,19 @@ COLLECT_GCC_OPTIONS=&#39;-v&#39; &#39;-fno-pic&#39; &#39;-static&#39; &#39;-Os&#
 <p><strong>Normally we just take all this on faith … but since we know how now let’s look at it at least just this once at what all this stuff is</strong></p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>objdump -d main0 &gt; main0.dis
-</pre></div>
-</div>
-</div>
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "58bfe9a15f4b4aa1abd63275d1244591", "version_major": 2, "version_minor": 0}
+</script></div>
 </div>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <p><b>Edit</b></p>
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="variables-declared-in-body-of-function-are-function-local">
-<h3><span class="section-number">18.1.5. </span>Variables declared in body of function are function local<a class="headerlink" href="#variables-declared-in-body-of-function-are-function-local" title="Permalink to this headline">¶</a></h3>
+</section>
+</section>
+<section id="variables-declared-in-body-of-function-are-function-local">
+<h3><span class="section-number">18.1.5. </span>Variables declared in body of function are function local<a class="headerlink" href="#variables-declared-in-body-of-function-are-function-local" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>If the compiler needs memory for a local variable then it adds it to stack frame for call</p></li>
 </ul>
@@ -972,25 +1112,24 @@ COLLECT_GCC_OPTIONS=&#39;-v&#39; &#39;-fno-pic&#39; &#39;-static&#39; &#39;-Os&#
 <div class="cell_output docutils container">
 <p><b>C:</p>
 <div style="width:107em; height:100%; font-size:inherit; overflow: auto;" >
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">__attribute__</span> <span class="p">((</span><span class="n">noinline</span><span class="p">))</span>
-<span class="kt">void</span> <span class="n">myfunc2</span><span class="p">(</span><span class="kt">long</span> <span class="kt">long</span> <span class="o">*</span><span class="n">i</span><span class="p">)</span>
-<span class="p">{</span>
-  <span class="o">*</span><span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
-<span class="p">}</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">__attribute__</span><span class="w"> </span><span class="p">((</span><span class="n">noinline</span><span class="p">))</span><span class="w"></span>
+<span class="kt">void</span><span class="w"> </span><span class="n">myfunc2</span><span class="p">(</span><span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="o">*</span><span class="n">i</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="o">*</span><span class="n">i</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 
-<span class="kt">long</span> <span class="kt">long</span> <span class="n">myfunc</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="p">{</span>
-  <span class="kt">long</span> <span class="kt">long</span> <span class="n">i</span><span class="o">=</span><span class="p">(</span><span class="kt">long</span> <span class="kt">long</span><span class="p">)</span><span class="o">&amp;</span><span class="n">myfunc</span><span class="p">;</span>
-  <span class="n">myfunc2</span><span class="p">(</span><span class="o">&amp;</span><span class="n">i</span><span class="p">);</span>
-  <span class="k">return</span> <span class="n">i</span><span class="p">;</span>
-<span class="p">}</span>
+<span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">myfunc</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">i</span><span class="o">=</span><span class="p">(</span><span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="p">)</span><span class="o">&amp;</span><span class="n">myfunc</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">myfunc2</span><span class="p">(</span><span class="o">&amp;</span><span class="n">i</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">i</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 
 </pre></div>
 </div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>gcc -fno-stack-protector -fno-pic  -static -Werror -fcf-protection=none -fno-asynchronous-unwind-tables -Os -S -masm=intel myfunc2.c -o myfunc2.s
-</pre></div>
-</div>
-</div>
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "efd3cbd5773f4dc5b5c18f0265a2caa1", "version_major": 2, "version_minor": 0}
+</script></div>
 </div>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
@@ -1016,7 +1155,7 @@ myfunc:
 	add	rsp, 16
 	ret
 	.size	myfunc, .-myfunc
-	.ident	&quot;GCC: (Ubuntu 9.3.0-17ubuntu1~20.04) 9.3.0&quot;
+	.ident	&quot;GCC: (Ubuntu 9.4.0-1ubuntu1~20.04.1) 9.4.0&quot;
 	.section	.note.GNU-stack,&quot;&quot;,@progbits
 
 </pre></div>
@@ -1036,36 +1175,35 @@ myfunc:
 </ul>
 </li>
 </ul>
-</div>
-<div class="section" id="lea">
-<h3><span class="section-number">18.1.6. </span>LEA<a class="headerlink" href="#lea" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="lea">
+<h3><span class="section-number">18.1.6. </span>LEA<a class="headerlink" href="#lea" title="Permalink to this headline">#</a></h3>
 <center>
 <img src="../images/C-001/C-001.031.png" >
-</center></div>
-<div class="section" id="passing-arguments-and-simple-return-value">
-<h3><span class="section-number">18.1.7. </span>Passing arguments and simple return value<a class="headerlink" href="#passing-arguments-and-simple-return-value" title="Permalink to this headline">¶</a></h3>
+</center></section>
+<section id="passing-arguments-and-simple-return-value">
+<h3><span class="section-number">18.1.7. </span>Passing arguments and simple return value<a class="headerlink" href="#passing-arguments-and-simple-return-value" title="Permalink to this headline">#</a></h3>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <p><b>C:</p>
 <div style="width:107em; height:100%; font-size:inherit; overflow: auto;" >
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">__attribute__</span> <span class="p">((</span><span class="n">noinline</span><span class="p">))</span>
-<span class="kt">int</span> <span class="n">func2</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">,</span> <span class="kt">int</span> <span class="n">y</span><span class="p">)</span>
-<span class="p">{</span>
-  <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span><span class="p">;</span>
-<span class="p">}</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">__attribute__</span><span class="w"> </span><span class="p">((</span><span class="n">noinline</span><span class="p">))</span><span class="w"></span>
+<span class="kt">int</span><span class="w"> </span><span class="n">func2</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">y</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">y</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 
-<span class="kt">int</span> <span class="n">func1</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">)</span>
-<span class="p">{</span>
-  <span class="k">return</span> <span class="n">func2</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="mi">2</span><span class="p">);</span>
-<span class="p">}</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">func1</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">func2</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="mi">2</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 
 </pre></div>
 </div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>gcc -fno-stack-protector -fno-pic  -static -Werror -fcf-protection=none -fno-asynchronous-unwind-tables -Os -S -masm=intel myfunc3.c -o myfunc3.s
-</pre></div>
-</div>
-</div>
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "2af434d046de445b88c8b58cb92107a0", "version_major": 2, "version_minor": 0}
+</script></div>
 </div>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
@@ -1086,7 +1224,7 @@ func1:
 	mov	esi, 2
 	jmp	func2
 	.size	func1, .-func1
-	.ident	&quot;GCC: (Ubuntu 9.3.0-17ubuntu1~20.04) 9.3.0&quot;
+	.ident	&quot;GCC: (Ubuntu 9.4.0-1ubuntu1~20.04.1) 9.4.0&quot;
 	.section	.note.GNU-stack,&quot;&quot;,@progbits
 
 </pre></div>
@@ -1145,48 +1283,47 @@ func1:
 <img src="../images/C-001/C-001.049.png" >
 </center><center>
 <img src="../images/C-001/C-001.050.png" >
-</center></div>
-</div>
-<div class="section" id="an-example-trace-this-code-and-visualize-the-stack">
-<h2><span class="section-number">18.2. </span>An example: Trace this code and visualize the stack<a class="headerlink" href="#an-example-trace-this-code-and-visualize-the-stack" title="Permalink to this headline">¶</a></h2>
+</center></section>
+</section>
+<section id="an-example-trace-this-code-and-visualize-the-stack">
+<h2><span class="section-number">18.2. </span>An example: Trace this code and visualize the stack<a class="headerlink" href="#an-example-trace-this-code-and-visualize-the-stack" title="Permalink to this headline">#</a></h2>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <p><b>C: myadd.c</p>
 <div style="width:107em; height:100%; font-size:inherit; overflow: auto;" >
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">long</span> <span class="nf">myadd</span><span class="p">(</span><span class="kt">long</span> <span class="o">*</span><span class="n">x_ptr</span><span class="p">,</span> <span class="kt">long</span> <span class="n">val</span><span class="p">)</span>
-<span class="p">{</span>
-  <span class="kt">long</span> <span class="n">x</span> <span class="o">=</span> <span class="o">*</span><span class="n">x_ptr</span><span class="p">;</span>
-  <span class="kt">long</span> <span class="n">y</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">val</span><span class="p">;</span>
-  <span class="o">*</span><span class="n">x_ptr</span> <span class="o">=</span> <span class="n">y</span><span class="p">;</span>
-  <span class="k">return</span> <span class="n">x</span><span class="p">;</span>
-<span class="p">}</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">long</span><span class="w"> </span><span class="nf">myadd</span><span class="p">(</span><span class="kt">long</span><span class="w"> </span><span class="o">*</span><span class="n">x_ptr</span><span class="p">,</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">val</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kt">long</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">*</span><span class="n">x_ptr</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="kt">long</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">val</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="o">*</span><span class="n">x_ptr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">y</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">x</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 
 
 </pre></div>
 </div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>gcc -fno-stack-protector -fno-pic  -static -Werror -fcf-protection=none -fno-asynchronous-unwind-tables -Os -S -masm=intel myadd.c -o myadd.s
-</pre></div>
-</div>
-</div>
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "c19c0a2d57d140b2a8118c21b8201a45", "version_major": 2, "version_minor": 0}
+</script></div>
 </div>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <p><b>Assembly</p>
 <div style="width:107em; height:100%; font-size:inherit; overflow: auto;" >
-<div class="highlight-gas notranslate"><div class="highlight"><pre><span></span>	<span class="na">.file</span>	<span class="s">&quot;myadd.c&quot;</span>
-	<span class="na">.intel_syntax</span> <span class="no">noprefix</span>
-	<span class="na">.text</span>
-	<span class="na">.globl</span>	<span class="no">myadd</span>
-	<span class="na">.type</span>	<span class="no">myadd</span><span class="p">,</span> <span class="na">@function</span>
-<span class="nl">myadd:</span>
-	<span class="nf">mov</span>	<span class="no">rax</span><span class="p">,</span> <span class="no">QWORD</span> <span class="no">PTR</span> <span class="p">[</span><span class="no">rdi</span><span class="p">]</span>
-	<span class="nf">add</span>	<span class="no">rsi</span><span class="p">,</span> <span class="no">rax</span>
-	<span class="nf">mov</span>	<span class="no">QWORD</span> <span class="no">PTR</span> <span class="p">[</span><span class="no">rdi</span><span class="p">],</span> <span class="no">rsi</span>
-	<span class="nf">ret</span>
-	<span class="na">.size</span>	<span class="no">myadd</span><span class="p">,</span> <span class="no">.-myadd</span>
-	<span class="na">.ident</span>	<span class="s">&quot;GCC: (Ubuntu 9.3.0-17ubuntu1~20.04) 9.3.0&quot;</span>
-	<span class="na">.section</span>	<span class="no">.note.GNU-stack</span><span class="p">,</span><span class="s">&quot;&quot;</span><span class="p">,</span><span class="na">@progbits</span>
+<div class="highlight-gas notranslate"><div class="highlight"><pre><span></span><span class="w">	</span><span class="na">.file</span><span class="w">	</span><span class="s">&quot;myadd.c&quot;</span><span class="w"></span>
+<span class="w">	</span><span class="na">.intel_syntax</span><span class="w"> </span><span class="no">noprefix</span><span class="w"></span>
+<span class="w">	</span><span class="na">.text</span><span class="w"></span>
+<span class="w">	</span><span class="na">.globl</span><span class="w">	</span><span class="no">myadd</span><span class="w"></span>
+<span class="w">	</span><span class="na">.type</span><span class="w">	</span><span class="no">myadd</span><span class="p">,</span><span class="w"> </span><span class="na">@function</span><span class="w"></span>
+<span class="nl">myadd:</span><span class="w"></span>
+<span class="w">	</span><span class="nf">mov</span><span class="w">	</span><span class="no">rax</span><span class="p">,</span><span class="w"> </span><span class="no">QWORD</span><span class="w"> </span><span class="no">PTR</span><span class="w"> </span><span class="p">[</span><span class="no">rdi</span><span class="p">]</span><span class="w"></span>
+<span class="w">	</span><span class="nf">add</span><span class="w">	</span><span class="no">rsi</span><span class="p">,</span><span class="w"> </span><span class="no">rax</span><span class="w"></span>
+<span class="w">	</span><span class="nf">mov</span><span class="w">	</span><span class="no">QWORD</span><span class="w"> </span><span class="no">PTR</span><span class="w"> </span><span class="p">[</span><span class="no">rdi</span><span class="p">],</span><span class="w"> </span><span class="no">rsi</span><span class="w"></span>
+<span class="w">	</span><span class="nf">ret</span><span class="w"></span>
+<span class="w">	</span><span class="na">.size</span><span class="w">	</span><span class="no">myadd</span><span class="p">,</span><span class="w"> </span><span class="no">.-myadd</span><span class="w"></span>
+<span class="w">	</span><span class="na">.ident</span><span class="w">	</span><span class="s">&quot;GCC: (Ubuntu 9.4.0-1ubuntu1~20.04.1) 9.4.0&quot;</span><span class="w"></span>
+<span class="w">	</span><span class="na">.section</span><span class="w">	</span><span class="no">.note.GNU-stack</span><span class="p">,</span><span class="s">&quot;&quot;</span><span class="p">,</span><span class="na">@progbits</span><span class="w"></span>
 </pre></div>
 </div>
 </div>
@@ -1199,7 +1336,7 @@ func1:
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#ifndef __MY_ADD_H__</span>
 <span class="cp">#define __MY_ADD_H__</span>
 
-<span class="kt">long</span> <span class="nf">myadd</span><span class="p">(</span><span class="kt">long</span> <span class="o">*</span><span class="n">x_ptr</span><span class="p">,</span> <span class="kt">long</span> <span class="n">val</span><span class="p">);</span>
+<span class="kt">long</span><span class="w"> </span><span class="nf">myadd</span><span class="p">(</span><span class="kt">long</span><span class="w"> </span><span class="o">*</span><span class="n">x_ptr</span><span class="p">,</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">val</span><span class="p">);</span><span class="w"></span>
 
 <span class="cp">#endif </span><span class="c1">// __MY_ADD_H__</span>
 
@@ -1212,27 +1349,26 @@ func1:
 <div class="cell_output docutils container">
 <p><b>C: callmyadd.c</p>
 <div style="width:107em; height:100%; font-size:inherit; overflow: auto;" >
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&quot;myadd.h&quot;</span><span class="cp"></span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;myadd.h&quot;</span><span class="cp"></span>
 
-<span class="kt">long</span> <span class="nf">call_myadd</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="p">{</span>
-  <span class="kt">long</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">15214</span><span class="p">;</span>
-  <span class="kt">long</span> <span class="n">b</span> <span class="o">=</span> <span class="n">myadd</span><span class="p">(</span><span class="o">&amp;</span><span class="n">a</span><span class="p">,</span> <span class="mi">5001</span><span class="p">);</span>
-  <span class="k">return</span> <span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="p">;</span>
-<span class="p">}</span>
+<span class="kt">long</span><span class="w"> </span><span class="nf">call_myadd</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kt">long</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">15214</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="kt">long</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">myadd</span><span class="p">(</span><span class="o">&amp;</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="mi">5001</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 
-<span class="kt">long</span>
-<span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
-  <span class="k">return</span> <span class="n">call_myadd</span><span class="p">();</span>
-<span class="p">}</span>
-  
+<span class="kt">long</span><span class="w"></span>
+<span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">call_myadd</span><span class="p">();</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+<span class="w">  </span>
 
 </pre></div>
 </div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>gcc -fno-stack-protector -fno-pic  -static -Werror -fcf-protection=none -fno-asynchronous-unwind-tables -Os -S -masm=intel callmyadd.c -o callmyadd.s
-</pre></div>
-</div>
-</div>
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "9eca966e74ca458f815178ac5faf3109", "version_major": 2, "version_minor": 0}
+</script></div>
 </div>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
@@ -1259,7 +1395,7 @@ call_myadd:
 main:
 	jmp	call_myadd
 	.size	main, .-main
-	.ident	&quot;GCC: (Ubuntu 9.3.0-17ubuntu1~20.04) 9.3.0&quot;
+	.ident	&quot;GCC: (Ubuntu 9.4.0-1ubuntu1~20.04.1) 9.4.0&quot;
 	.section	.note.GNU-stack,&quot;&quot;,@progbits
 
 </pre></div>
@@ -1267,8 +1403,14 @@ main:
 </div>
 </div>
 </div>
-</div>
-</div>
+</section>
+</section>
+
+
+<script type="application/vnd.jupyter.widget-state+json">
+{"state": {"068437d80a8d46488fe2b70b04f4e640": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": "1px solid black", "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "100%", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": "scroll", "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "218947d30f1047239be1fac431d4e4d8": {"model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "model_name": "OutputModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_5ff80d73a5074598875023d51c52bbbc", "msg_id": "", "outputs": [{"name": "stdout", "output_type": "stream", "text": "\ngcc -fno-inline -fno-stack-protector -fno-pic  -static -Werror -fcf-protection=none -fno-asynchronous-unwind-tables -Os -S -masm=intel main0e.c -o main0e.s\r\n\u001b[01m\u001b[Kmain0e.c:\u001b[m\u001b[K In function \u2018\u001b[01m\u001b[Kmain\u001b[m\u001b[K\u2019:\r\n\u001b[01m\u001b[Kmain0e.c:2:3:\u001b[m\u001b[K \u001b[01;31m\u001b[Kerror: \u001b[m\u001b[Kimplicit declaration of function \u2018\u001b[01m\u001b[Kmyfunc\u001b[m\u001b[K\u2019 [\u001b[01;31m\u001b[K-Werror=implicit-function-declaration\u001b[m\u001b[K]\r\n    2 |   \u001b[01;31m\u001b[Kmyfunc\u001b[m\u001b[K();\r\n      |   \u001b[01;31m\u001b[K^~~~~~\u001b[m\u001b[K\r\ncc1: all warnings being treated as errors\r\nmake[2]: *** [Makefile:34: main0e.s] Error 1\r\n"}]}}, "2af434d046de445b88c8b58cb92107a0": {"model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "model_name": "OutputModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_068437d80a8d46488fe2b70b04f4e640", "msg_id": "", "outputs": [{"name": "stdout", "output_type": "stream", "text": "\ngcc -fno-inline -fno-stack-protector -fno-pic  -static -Werror -fcf-protection=none -fno-asynchronous-unwind-tables -Os -S -masm=intel myfunc3.c -o myfunc3.s\r\n"}]}}, "40f8679f0c1d4e45b29902be2efcef5c": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": "1px solid black", "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "100%", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": "scroll", "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "515d8e9355564b14badd11f406df1dfa": {"model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "model_name": "OutputModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_65ff3cd5c2cb44ea8e4339c3414d25f4", "msg_id": "", "outputs": [{"name": "stdout", "output_type": "stream", "text": "\n-rwxr-xr-x. 1 jovyan root 853K Sep  7 22:39 \u001b[0m\u001b[01;32mmain0\u001b[0m\r\n"}]}}, "5547687496ed47fe814cc70b28a9d44c": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": "1px solid black", "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "100%", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": "scroll", "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "55c9038aa3c34487bab510f03c105ddd": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": "1px solid black", "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "100%", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": "scroll", "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "58bfe9a15f4b4aa1abd63275d1244591": {"model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "model_name": "OutputModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_ecad587505014fc69bd74683dd92af23", "msg_id": "", "outputs": [{"name": "stdout", "output_type": "stream", "text": "\nobjdump -d main0 > main0.dis\r\n"}]}}, "5ff80d73a5074598875023d51c52bbbc": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": "1px solid black", "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "100%", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": "scroll", "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "65ff3cd5c2cb44ea8e4339c3414d25f4": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": "1px solid black", "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "100%", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": "scroll", "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "66d29bbd8d3b41d6937276ccf0739fe4": {"model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "model_name": "OutputModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_987a21c190784a20a3bbfe19e39c0f16", "msg_id": "", "outputs": [{"name": "stdout", "output_type": "stream", "text": "\ngcc  -fno-pic -static -Os -g main0.s myfunc0.s -o main0\r\n"}]}}, "718396bbfdf144038ae609a61a1134e2": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": "1px solid black", "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "100%", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": "scroll", "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "987a21c190784a20a3bbfe19e39c0f16": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": "1px solid black", "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "100%", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": "scroll", "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "9b5ea3cbcb5c46ce9cc7853c91db7ab3": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": "1px solid black", "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "100%", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": "scroll", "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "9eca966e74ca458f815178ac5faf3109": {"model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "model_name": "OutputModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_9b5ea3cbcb5c46ce9cc7853c91db7ab3", "msg_id": "", "outputs": [{"name": "stdout", "output_type": "stream", "text": "\ngcc -fno-inline -fno-stack-protector -fno-pic  -static -Werror -fcf-protection=none -fno-asynchronous-unwind-tables -Os -S -masm=intel callmyadd.c -o callmyadd.s\r\n"}]}}, "a2a9af1b22f64eb1856bc487a1c803fa": {"model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "model_name": "OutputModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_5547687496ed47fe814cc70b28a9d44c", "msg_id": "", "outputs": [{"name": "stdout", "output_type": "stream", "text": "$ ls /home/jovyan/cfuncs\ncallmyadd.c  main0e.c  myadd.c  myfunc0.c  myfunc2.c  setup.gdb\r\nmain0.c      Makefile  myadd.h  myfunc1.c  myfunc3.c\r\n$ "}]}}, "aaaf46ab5d1d46ca8c222f5799571da2": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": "1px solid black", "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "100%", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": "scroll", "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "ac487a93c7ea4f80bf7481a11830f83a": {"model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "model_name": "OutputModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_718396bbfdf144038ae609a61a1134e2", "msg_id": "", "outputs": [{"name": "stdout", "output_type": "stream", "text": "\ngcc -fno-inline -fno-stack-protector -fno-pic  -static -Werror -fcf-protection=none -fno-asynchronous-unwind-tables -Os -S -masm=intel main0.c -o main0.s\r\n"}]}}, "c19c0a2d57d140b2a8118c21b8201a45": {"model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "model_name": "OutputModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_fdb835b8ba614ad79fe079848431cb33", "msg_id": "", "outputs": [{"name": "stdout", "output_type": "stream", "text": "\ngcc -fno-inline -fno-stack-protector -fno-pic  -static -Werror -fcf-protection=none -fno-asynchronous-unwind-tables -Os -S -masm=intel myadd.c -o myadd.s\r\n"}]}}, "d87d14d9aed140caa53942584870daff": {"model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "model_name": "OutputModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_55c9038aa3c34487bab510f03c105ddd", "msg_id": "", "outputs": [{"name": "stdout", "output_type": "stream", "text": "\ngcc -v -fno-pic -static -Os -g main0.s myfunc0.s -o main0\r\nUsing built-in specs.\r\nCOLLECT_GCC=gcc\r\nCOLLECT_LTO_WRAPPER=/usr/lib/gcc/x86_64-linux-gnu/9/lto-wrapper\r\nOFFLOAD_TARGET_NAMES=nvptx-none:hsa\r\nOFFLOAD_TARGET_DEFAULT=1\r\nTarget: x86_64-linux-gnu\r\nConfigured with: ../src/configure -v --with-pkgversion='Ubuntu 9.4.0-1ubuntu1~20.04.1' --with-bugurl=file:///usr/share/doc/gcc-9/README.Bugs --enable-languages=c,ada,c++,go,brig,d,fortran,objc,obj-c++,gm2 --prefix=/usr --with-gcc-major-version-only --program-suffix=-9 --program-prefix=x86_64-linux-gnu- --enable-shared --enable-linker-build-id --libexecdir=/usr/lib --without-included-gettext --enable-threads=posix --libdir=/usr/lib --enable-nls --enable-clocale=gnu --enable-libstdcxx-debug --enable-libstdcxx-time=yes --with-default-libstdcxx-abi=new --enable-gnu-unique-object --disable-vtable-verify --enable-plugin --enable-default-pie --with-system-zlib --with-target-system-zlib=auto --enable-objc-gc=auto --enable-multiarch --disable-werror --with-arch-32=i686 --with-abi=m64 --with-multilib-list=m32,m64,mx32 --enable-multilib --with-tune=generic --enable-offload-targets=nvptx-none=/build/gcc-9-Av3uEd/gcc-9-9.4.0/debian/tmp-nvptx/usr,hsa --without-cuda-driver --enable-checking=release --build=x86_64-linux-gnu --host=x86_64-linux-gnu --target=x86_64-linux-gnu\r\nThread model: posix\r\ngcc version 9.4.0 (Ubuntu 9.4.0-1ubuntu1~20.04.1) \r\nCOLLECT_GCC_OPTIONS='-v' '-fno-pic' '-static' '-Os' '-g' '-o' 'main0' '-mtune=generic' '-march=x86-64'\r\n as --gdwarf2 -v --64 -o /tmp/ccflgrKx.o main0.s\r\nGNU assembler version 2.34 (x86_64-linux-gnu) using BFD version (GNU Binutils for Ubuntu) 2.34\r\nCOLLECT_GCC_OPTIONS='-v' '-fno-pic' '-static' '-Os' '-g' '-o' 'main0' '-mtune=generic' '-march=x86-64'\r\n as --gdwarf2 -v --64 -o /tmp/cch0TWuA.o myfunc0.s\r\nGNU assembler version 2.34 (x86_64-linux-gnu) using BFD version (GNU Binutils for Ubuntu) 2.34\r\nCOMPILER_PATH=/usr/lib/gcc/x86_64-linux-gnu/9/:/usr/lib/gcc/x86_64-linux-gnu/9/:/usr/lib/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/9/:/usr/lib/gcc/x86_64-linux-gnu/\r\nLIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/9/:/usr/lib/gcc/x86_64-linux-gnu/9/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/9/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/9/../../../:/lib/:/usr/lib/\r\nCOLLECT_GCC_OPTIONS='-v' '-fno-pic' '-static' '-Os' '-g' '-o' 'main0' '-mtune=generic' '-march=x86-64'\r\n /usr/lib/gcc/x86_64-linux-gnu/9/collect2 -plugin /usr/lib/gcc/x86_64-linux-gnu/9/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/9/lto-wrapper -plugin-opt=-fresolution=/tmp/cc8slpty.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_eh -plugin-opt=-pass-through=-lc --build-id -m elf_x86_64 --hash-style=gnu --as-needed -static -z relro -o main0 /usr/lib/gcc/x86_64-linux-gnu/9/../../../x86_64-linux-gnu/crt1.o /usr/lib/gcc/x86_64-linux-gnu/9/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/9/crtbeginT.o -L/usr/lib/gcc/x86_64-linux-gnu/9 -L/usr/lib/gcc/x86_64-linux-gnu/9/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/9/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/9/../../.. /tmp/ccflgrKx.o /tmp/cch0TWuA.o --start-group -lgcc -lgcc_eh -lc --end-group /usr/lib/gcc/x86_64-linux-gnu/9/crtend.o /usr/lib/gcc/x86_64-linux-gnu/9/../../../x86_64-linux-gnu/crtn.o\r\nCOLLECT_GCC_OPTIONS='-v' '-fno-pic' '-static' '-Os' '-g' '-o' 'main0' '-mtune=generic' '-march=x86-64'\r\n"}]}}, "ecad587505014fc69bd74683dd92af23": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": "1px solid black", "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "100%", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": "scroll", "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "efd3cbd5773f4dc5b5c18f0265a2caa1": {"model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "model_name": "OutputModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_aaaf46ab5d1d46ca8c222f5799571da2", "msg_id": "", "outputs": [{"name": "stdout", "output_type": "stream", "text": "\ngcc -fno-inline -fno-stack-protector -fno-pic  -static -Werror -fcf-protection=none -fno-asynchronous-unwind-tables -Os -S -masm=intel myfunc2.c -o myfunc2.s\r\n"}]}}, "f0aad3b475594fc69a30155ac7eb02c4": {"model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "model_name": "OutputModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_40f8679f0c1d4e45b29902be2efcef5c", "msg_id": "", "outputs": [{"name": "stdout", "output_type": "stream", "text": "\ngcc -fno-inline -fno-stack-protector -fno-pic  -static -Werror -fcf-protection=none -fno-asynchronous-unwind-tables -Os -S -masm=intel myfunc0.c -o myfunc0.s\r\n"}]}}, "fd16c7024a2c492a818c1182622d6795": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": "1px solid black", "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "100%", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": "scroll", "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "fd311c03910845dd9c81a528909bd8e5": {"model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "model_name": "OutputModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_fd16c7024a2c492a818c1182622d6795", "msg_id": "", "outputs": [{"name": "stdout", "output_type": "stream", "text": "\ngcc -fno-inline -fno-stack-protector -fno-pic  -static -Werror -fcf-protection=none -fno-asynchronous-unwind-tables -Os -S -masm=intel myfunc1.c -o myfunc1.s\r\n"}]}}, "fdb835b8ba614ad79fe079848431cb33": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": "1px solid black", "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "100%", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": "scroll", "padding": null, "right": null, "top": null, "visibility": null, "width": null}}}, "version_major": 2, "version_minor": 0}
+</script>
+
 
     <script type="text/x-thebe-config">
     {
@@ -1292,9 +1434,11 @@ main:
 
               </div>
               
-        
-            <!-- Previous / next buttons -->
-<div class='prev-next-area'> 
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
     <a class='left-prev' id="prev-link" href="L17.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
@@ -1310,26 +1454,28 @@ main:
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-        
+            </footer>
         </div>
     </div>
-    <footer class="footer">
-    <div class="container">
-      <p>
-        
-          By Jonathan Appavoo<br/>
-        
-            &copy; Copyright 2021.<br/>
-      </p>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Jonathan Appavoo<br/>
+  
+      &copy; Copyright 2021.<br/>
+</p>
+        </footer>
     </div>
-  </footer>
-</main>
+    
+</div>
 
 
       </div>
     </div>
   
-  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
 
   </body>
 </html>

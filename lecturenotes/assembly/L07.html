@@ -4,11 +4,13 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>7. SLS Lecture 7 : Assembly Programming Introduction &#8212; UndertheCovers</title>
     
-  <link href="../_static/css/theme.css" rel="stylesheet">
-  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -18,39 +20,38 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin
     href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    
-      
-
-    
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
-    <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script>
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="8. SLS Lecture 8 : Writing some simple assembly programs" href="L08.html" />
@@ -62,7 +63,21 @@
     <!-- Google Analytics -->
     
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
     
     <div class="container-fluid" id="banner"></div>
 
@@ -71,9 +86,10 @@
     <div class="container-xl">
       <div class="row">
           
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../index.html">
       
         <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
@@ -91,14 +107,15 @@
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
-        <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../intro_ln.html">
-   Under the Covers : The Secret Life of Software
-  </a>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro_ln.html">
+                    Under the Covers : The Secret Life of Software
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Course Specfic Introductions
  </span>
@@ -280,104 +297,177 @@
 </ul>
 
     </div>
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-</div>
-
-</div>
-
-
-          
-
-
-          
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
             
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
-        
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/assembly/L07.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
-    </div>
-</div>
-
-            <!-- Source interaction buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
-    <div class="dropdown-buttons sourcebuttons">
-        <a class="repository-button"
-            href="https://github.com/jappavoo/UndertheCovers"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="Source repository"><i
-                    class="fab fa-github"></i>repository</button></a>
-        
-        
-    </div>
-</div>
-
-            <!-- Full screen (wrap in <a> to have style consistency -->
-
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
-
-            <!-- Launch buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        
-        <a class="jupyterhub-button" href="https://jupyterhub-opf-jupyterhub.apps.smaug.na.operate-first.cloud/hub/user-redirect/git-pull?repo=https://github.com/jappavoo/UndertheCovers&urlpath=tree/UndertheCovers/underthecovers/assembly/L07.ipynb&branch=main"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch JupyterHub" data-toggle="tooltip"
-                data-placement="left"><img class="jupyterhub-button-logo"
-                    src="../_static/images/logo_jupyterhub.svg"
-                    alt="Interact on JupyterHub">JupyterHub</button></a>
-        
-        
-        
-    </div>
-</div>
-
-        </div>
-
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
-            
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
             </div>
-            <nav id="bd-toc-nav" aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://jupyterhub-opf-jupyterhub.apps.smaug.na.operate-first.cloud/hub/user-redirect/git-pull?repo=https%3A//github.com/jappavoo/UndertheCovers&urlpath=tree/UndertheCovers/underthecovers/assembly/L07.ipynb&branch=main"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on JupyterHub"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_jupyterhub.svg">
+  </span>
+<span class="headerbtn__text-container">JupyterHub</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+<a href="https://github.com/jappavoo/UndertheCovers"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="bottom"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/assembly/L07.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#revisit-processes">
    7.1. Revisit Processes
@@ -448,32 +538,118 @@
  </li>
 </ul>
 
-            </nav>
-        </div>
-    </div>
+    </nav>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>SLS Lecture 7 : Assembly Programming Introduction</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#revisit-processes">
+   7.1. Revisit Processes
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#a-process-is-a-running-executable-but-what-really-is-an-executable">
+     7.1.1. A Process is a Running executable but what really is an executable???
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#lets-use-xdd-to-look-at-the-first-80-bytes-of-the-bin-ls">
+       7.1.1.1. Lets use xdd to look at the first 80 bytes of the /bin/ls
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#executables-as-process-images">
+   7.2. Executables as “Process Images”
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#processes-as-cpu-and-memory-context">
+     7.2.1. Processes As CPU and Memory context
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#process-as-a-context-for-using-the-cpu-and-memory">
+     7.2.2. Process as a Context for using the CPU and Memory
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-tools-and-how-to-use-them">
+   7.3. The Tools and how to use them
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#assembler-and-linker">
+     7.3.1. Assembler and Linker
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#debugger">
+     7.3.2. Debugger
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#gdb-manual">
+     7.3.3. GDB Manual
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#intel-manuals">
+   7.4. Intel Manuals
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#extra-info-about-intel">
+   7.5. Extra info about Intel
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="sls-lecture-7-assembly-programming-introduction">
-<h1><span class="section-number">7. </span>SLS Lecture 7 : Assembly Programming Introduction<a class="headerlink" href="#sls-lecture-7-assembly-programming-introduction" title="Permalink to this headline">¶</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="sls-lecture-7-assembly-programming-introduction">
+<h1><span class="section-number">7. </span>SLS Lecture 7 : Assembly Programming Introduction<a class="headerlink" href="#sls-lecture-7-assembly-programming-introduction" title="Permalink to this headline">#</a></h1>
 <p>Processes and Binaries</p>
 <p>UC: SLS Chapters 1,2,3</p>
-<div class="section" id="revisit-processes">
-<h2><span class="section-number">7.1. </span>Revisit Processes<a class="headerlink" href="#revisit-processes" title="Permalink to this headline">¶</a></h2>
+<section id="revisit-processes">
+<h2><span class="section-number">7.1. </span>Revisit Processes<a class="headerlink" href="#revisit-processes" title="Permalink to this headline">#</a></h2>
 <center>
 <img src="../images/Processes/Processes.004.png">
 </center><center>
 <img src="../images/Processes/Processes.005.png">
-</center><div class="section" id="a-process-is-a-running-executable-but-what-really-is-an-executable">
-<h3><span class="section-number">7.1.1. </span>A Process is a Running executable but what really is an executable???<a class="headerlink" href="#a-process-is-a-running-executable-but-what-really-is-an-executable" title="Permalink to this headline">¶</a></h3>
+</center><section id="a-process-is-a-running-executable-but-what-really-is-an-executable">
+<h3><span class="section-number">7.1.1. </span>A Process is a Running executable but what really is an executable???<a class="headerlink" href="#a-process-is-a-running-executable-but-what-really-is-an-executable" title="Permalink to this headline">#</a></h3>
 <p>Let’s see what we can figure out poking at the file a little</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "b407c5af9d94467aaad8e9c42e2402b6", "version_major": 2, "version_minor": 0}
+{"model_id": "832af88f8d93441e93ec0ffa720e1282", "version_major": 2, "version_minor": 0}
 </script></div>
 </div>
 <ul class="simple">
@@ -504,11 +680,11 @@
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "bf85756186cb40c8b70d30c557899a2c", "version_major": 2, "version_minor": 0}
+{"model_id": "f571801f679a494f983a6b7a539958ab", "version_major": 2, "version_minor": 0}
 </script></div>
 </div>
-<div class="section" id="lets-use-xdd-to-look-at-the-first-80-bytes-of-the-bin-ls">
-<h4><span class="section-number">7.1.1.1. </span>Lets use xdd to look at the first 80 bytes of the /bin/ls<a class="headerlink" href="#lets-use-xdd-to-look-at-the-first-80-bytes-of-the-bin-ls" title="Permalink to this headline">¶</a></h4>
+<section id="lets-use-xdd-to-look-at-the-first-80-bytes-of-the-bin-ls">
+<h4><span class="section-number">7.1.1.1. </span>Lets use xdd to look at the first 80 bytes of the /bin/ls<a class="headerlink" href="#lets-use-xdd-to-look-at-the-first-80-bytes-of-the-bin-ls" title="Permalink to this headline">#</a></h4>
 <p>First in hexadecimal notation and then in binary (base 2)</p>
 <p>xdd command to display first 80 bytes (-l 80) of the file in units/groups of 1 byte (-g 1) values with 8 units per line (-c 8):</p>
 <p><code class="docutils literal notranslate"><span class="pre">xxd</span> <span class="pre">-l</span> <span class="pre">80</span> <span class="pre">-g</span> <span class="pre">1</span> <span class="pre">-c</span> <span class="pre">8</span> <span class="pre">/bin/ls</span></code></p>
@@ -518,7 +694,7 @@
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "3457c67b1c6842ff90fd803906e90d1d", "version_major": 2, "version_minor": 0}
+{"model_id": "30080a644a1d43859a60bb76b43e7456", "version_major": 2, "version_minor": 0}
 </script></div>
 </div>
 <p>Ok so while that’s a cool party trick … so what do they mean?
@@ -529,20 +705,20 @@ What else can we do?</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "30d1ab85a2b14ecfb04d35f3ccb81503", "version_major": 2, "version_minor": 0}
+{"model_id": "cf2eb2de929448569fda1c2c78d86543", "version_major": 2, "version_minor": 0}
 </script></div>
 </div>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "8c0ecf1a19684992866bc6f9e74af60a", "version_major": 2, "version_minor": 0}
+{"model_id": "94cdd9053b5945a493f428f3fd6c2784", "version_major": 2, "version_minor": 0}
 </script></div>
 </div>
 <p>Ok it is an ELF file let’s see what, if anything, the manual has to say about <code class="docutils literal notranslate"><span class="pre">elf</span></code>.</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "8b4d8a88a6c24ccca3c1d282ec3a886b", "version_major": 2, "version_minor": 0}
+{"model_id": "96efea2236c4499b81af9bc61b12fa4f", "version_major": 2, "version_minor": 0}
 </script></div>
 </div>
 <p>We could keep going down this road to poke at its contents using command designed to decode the elf file and dump information about it</p>
@@ -553,32 +729,32 @@ What else can we do?</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "ae287d6e92c9474e823c55640b32e3ab", "version_major": 2, "version_minor": 0}
+{"model_id": "cd6c5e080af944859149dd16e9325a09", "version_major": 2, "version_minor": 0}
 </script></div>
 </div>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "984272f6189f4f00b3ba427e0ce7051b", "version_major": 2, "version_minor": 0}
+{"model_id": "fed6f73520c440a59912d8c64585e6e7", "version_major": 2, "version_minor": 0}
 </script></div>
 </div>
-</div>
-</div>
-</div>
-<div class="section" id="executables-as-process-images">
-<h2><span class="section-number">7.2. </span>Executables as “Process Images”<a class="headerlink" href="#executables-as-process-images" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+</section>
+<section id="executables-as-process-images">
+<h2><span class="section-number">7.2. </span>Executables as “Process Images”<a class="headerlink" href="#executables-as-process-images" title="Permalink to this headline">#</a></h2>
 <p>Remember what the Hardware looks like.</p>
 <img alt="../_images/HW.png" src="../_images/HW.png" />
 <p>Remember that the OS Kernel is designed to make it easier to use the hardware to run programs.</p>
 <p>Now we need to dig into this idea more carefully.</p>
-<div class="section" id="processes-as-cpu-and-memory-context">
-<h3><span class="section-number">7.2.1. </span>Processes As CPU and Memory context<a class="headerlink" href="#processes-as-cpu-and-memory-context" title="Permalink to this headline">¶</a></h3>
+<section id="processes-as-cpu-and-memory-context">
+<h3><span class="section-number">7.2.1. </span>Processes As CPU and Memory context<a class="headerlink" href="#processes-as-cpu-and-memory-context" title="Permalink to this headline">#</a></h3>
 <p>A process is the way that the Operating System let our programs use the CPU and Memory in a controlled way.</p>
 <p>Each Process is independent “Context” to execute a program.  Where a context provides a program with its own view of Memory and the CPU</p>
 <img alt="../_images/ProcessContexts.png" src="../_images/ProcessContexts.png" />
-</div>
-<div class="section" id="process-as-a-context-for-using-the-cpu-and-memory">
-<h3><span class="section-number">7.2.2. </span>Process as a Context for using the CPU and Memory<a class="headerlink" href="#process-as-a-context-for-using-the-cpu-and-memory" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="process-as-a-context-for-using-the-cpu-and-memory">
+<h3><span class="section-number">7.2.2. </span>Process as a Context for using the CPU and Memory<a class="headerlink" href="#process-as-a-context-for-using-the-cpu-and-memory" title="Permalink to this headline">#</a></h3>
 <p>A process is a way for us to use the CPU and memory through the programs we write</p>
 <ul class="simple">
 <li><p>But not the I/O devices – Only the OS can directly access the I/O devices</p>
@@ -641,10 +817,10 @@ What else can we do?</p>
 </li>
 <li><p>A process’s memory is called the process’s address space.</p></li>
 </ul>
-</div>
-</div>
-<div class="section" id="the-tools-and-how-to-use-them">
-<h2><span class="section-number">7.3. </span>The Tools and how to use them<a class="headerlink" href="#the-tools-and-how-to-use-them" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="the-tools-and-how-to-use-them">
+<h2><span class="section-number">7.3. </span>The Tools and how to use them<a class="headerlink" href="#the-tools-and-how-to-use-them" title="Permalink to this headline">#</a></h2>
 <ol class="simple">
 <li><p>Preparing / creating binaries</p></li>
 <li><p>Assembler: Tool that translates a programmer’s description of what to put into memory into fragments of an executable file</p></li>
@@ -652,8 +828,8 @@ What else can we do?</p>
 <li><p>Process inspection and manipulation</p></li>
 <li><p>A Debugger that allows us to look at and control a Process</p></li>
 </ol>
-<div class="section" id="assembler-and-linker">
-<h3><span class="section-number">7.3.1. </span>Assembler and Linker<a class="headerlink" href="#assembler-and-linker" title="Permalink to this headline">¶</a></h3>
+<section id="assembler-and-linker">
+<h3><span class="section-number">7.3.1. </span>Assembler and Linker<a class="headerlink" href="#assembler-and-linker" title="Permalink to this headline">#</a></h3>
 <center>
 <img src="../images/ASSEMBLY-VNA-SOFTWARE/ASSEMBLY-VNA-SOFTWARE.026.png" width="100%">
 </center><center>
@@ -664,16 +840,16 @@ What else can we do?</p>
 <img src="../images/ASSEMBLY-VNA-SOFTWARE/ASSEMBLY-VNA-SOFTWARE.029.png" width="100%">
 </center><center>
 <img src="../images/ASSEMBLY-VNA-SOFTWARE/ASSEMBLY-VNA-SOFTWARE.030.png" width="100%">
-</center>    </div>
-<div class="section" id="debugger">
-<h3><span class="section-number">7.3.2. </span>Debugger<a class="headerlink" href="#debugger" title="Permalink to this headline">¶</a></h3>
+</center>    </section>
+<section id="debugger">
+<h3><span class="section-number">7.3.2. </span>Debugger<a class="headerlink" href="#debugger" title="Permalink to this headline">#</a></h3>
 <p>Provides us a way of looking inside a process, freezing its execution, examining and modify the cpu registers and memory.</p>
 <img alt="../_images/gdbsurgery.001.png" src="../_images/gdbsurgery.001.png" />
 <img alt="../_images/gdbsurgery.002.png" src="../_images/gdbsurgery.002.png" />
 <img alt="../_images/gdbProcess.png" src="../_images/gdbProcess.png" />
-</div>
-<div class="section" id="gdb-manual">
-<h3><span class="section-number">7.3.3. </span>GDB Manual<a class="headerlink" href="#gdb-manual" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="gdb-manual">
+<h3><span class="section-number">7.3.3. </span>GDB Manual<a class="headerlink" href="#gdb-manual" title="Permalink to this headline">#</a></h3>
 <p><a class="reference external" href="https://www.gnu.org/software/gdb/documentation/">https://www.gnu.org/software/gdb/documentation/</a></p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
@@ -681,28 +857,28 @@ What else can we do?</p>
 <div style="width:60em; height:100%; font-size:inherit; overflow: auto;" >
 <div class="highlight-gas notranslate"><div class="highlight"><pre><span></span><span class="cm">/*  General antomy of a assembly program line</span>
 <span class="cm">[lablel]:   &lt;directive or opcode&gt; [operands]  // comment</span>
-<span class="cm">*/</span>
-	<span class="na">.intel_syntax</span> <span class="no">noprefix</span>        <span class="c1"># assembler syntax to use &lt;directive&gt;</span>
-	                              <span class="c1"># set assembly language format to intel  </span>
+<span class="cm">*/</span><span class="w"></span>
+<span class="w">	</span><span class="na">.intel_syntax</span><span class="w"> </span><span class="no">noprefix</span><span class="w">        </span><span class="c1"># assembler syntax to use &lt;directive&gt;</span>
+<span class="w">	                              </span><span class="c1"># set assembly language format to intel  </span>
 
-	<span class="na">.text</span>                         <span class="c1"># linker section &lt;directive&gt;</span>
-	                              <span class="c1"># let the linker know that what follows are cpu instructions to</span>
-	                              <span class="c1"># to be executed -- uposed to values that represent data.</span>
-	                              <span class="c1"># For historical reasons cpu instructions are called &quot;text&quot;</span>
-	                         
-	<span class="na">.global</span> <span class="no">_start</span>                <span class="c1"># linker symbol type &lt;directive&gt; </span>
-	                              <span class="c1"># makes the symbol _start in this case visible to the linker</span>
-	                              <span class="c1"># The linker looks for an _start symbol so that it knows address</span>
-	                              <span class="c1"># of the first instruction of our program</span>
+<span class="w">	</span><span class="na">.text</span><span class="w">                         </span><span class="c1"># linker section &lt;directive&gt;</span>
+<span class="w">	                              </span><span class="c1"># let the linker know that what follows are cpu instructions to</span>
+<span class="w">	                              </span><span class="c1"># to be executed -- uposed to values that represent data.</span>
+<span class="w">	                              </span><span class="c1"># For historical reasons cpu instructions are called &quot;text&quot;</span>
+<span class="w">	                         </span>
+<span class="w">	</span><span class="na">.global</span><span class="w"> </span><span class="no">_start</span><span class="w">                </span><span class="c1"># linker symbol type &lt;directive&gt; </span>
+<span class="w">	                              </span><span class="c1"># makes the symbol _start in this case visible to the linker</span>
+<span class="w">	                              </span><span class="c1"># The linker looks for an _start symbol so that it knows address</span>
+<span class="w">	                              </span><span class="c1"># of the first instruction of our program</span>
 
-<span class="nl">_start:</span>                               <span class="c1"># introduce a symbolic (human readable) label for &quot;this&quot; address</span>
-	                              <span class="c1"># associates the address of this point in our program with the</span>
-	                              <span class="c1"># name following the &#39;:&#39; -- in our case _start</span>
-	                              <span class="c1"># In our program or in the debugger we can use this name to</span>
-	                              <span class="c1"># to refer to this location -- address.  And thus the values</span>
-	                              <span class="c1"># that end up here.</span>
-	<span class="na">.byte</span> <span class="mi">0x00</span><span class="p">,</span> <span class="mi">0x00</span><span class="p">,</span> <span class="mi">0x00</span><span class="p">,</span> <span class="mi">0x00</span>  <span class="c1"># .byte directive place value at successive locations in memory</span>
-	<span class="na">.byte</span> <span class="mi">0x00</span><span class="p">,</span> <span class="mi">0x00</span><span class="p">,</span> <span class="mi">0x00</span><span class="p">,</span> <span class="mi">0x00</span>  <span class="c1"># (https://sourceware.org/binutils/docs/as/Byte.html#Byte)</span>
+<span class="nl">_start:</span><span class="w">                               </span><span class="c1"># introduce a symbolic (human readable) label for &quot;this&quot; address</span>
+<span class="w">	                              </span><span class="c1"># associates the address of this point in our program with the</span>
+<span class="w">	                              </span><span class="c1"># name following the &#39;:&#39; -- in our case _start</span>
+<span class="w">	                              </span><span class="c1"># In our program or in the debugger we can use this name to</span>
+<span class="w">	                              </span><span class="c1"># to refer to this location -- address.  And thus the values</span>
+<span class="w">	                              </span><span class="c1"># that end up here.</span>
+<span class="w">	</span><span class="na">.byte</span><span class="w"> </span><span class="mi">0x00</span><span class="p">,</span><span class="w"> </span><span class="mi">0x00</span><span class="p">,</span><span class="w"> </span><span class="mi">0x00</span><span class="p">,</span><span class="w"> </span><span class="mi">0x00</span><span class="w">  </span><span class="c1"># .byte directive place value at successive locations in memory</span>
+<span class="w">	</span><span class="na">.byte</span><span class="w"> </span><span class="mi">0x00</span><span class="p">,</span><span class="w"> </span><span class="mi">0x00</span><span class="p">,</span><span class="w"> </span><span class="mi">0x00</span><span class="p">,</span><span class="w"> </span><span class="mi">0x00</span><span class="w">  </span><span class="c1"># (https://sourceware.org/binutils/docs/as/Byte.html#Byte)</span>
 </pre></div>
 </div>
 </div>
@@ -764,8 +940,8 @@ objdump -t empty
 </div>
 <p>lets write some code!!!!</p>
 <p><code class="docutils literal notranslate"><span class="pre">.fill</span></code> can be used to fill memory ;-) <code class="docutils literal notranslate"><span class="pre">repeat,</span> <span class="pre">size,</span> <span class="pre">value</span></code></p>
-<div class="highlight-gas notranslate"><div class="highlight"><pre><span></span>      <span class="na">.fill</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0x00</span>             <span class="c1">// .fill directive fills memory with n copies of values</span>
-                                    <span class="c1">// (https://sourceware.org/binutils/docs/as/Fill.html#Fill)</span>
+<div class="highlight-gas notranslate"><div class="highlight"><pre><span></span><span class="w">      </span><span class="na">.fill</span><span class="w"> </span><span class="mi">16</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">0x00</span><span class="w">             </span><span class="c1">// .fill directive fills memory with n copies of values</span>
+<span class="w">                                    </span><span class="c1">// (https://sourceware.org/binutils/docs/as/Fill.html#Fill)</span>
 </pre></div>
 </div>
 <div class="cell tag_remove-input docutils container">
@@ -871,10 +1047,10 @@ stepi
 </center><img alt="../_images/ASSEMBLY-VNA-THECPU.041.png" src="../_images/ASSEMBLY-VNA-THECPU.041.png" />
 <img alt="../_images/ASSEMBLY-VNA-THECPU.042.png" src="../_images/ASSEMBLY-VNA-THECPU.042.png" />
 <img alt="../_images/ASSEMBLY-VNA-THECPU.043.png" src="../_images/ASSEMBLY-VNA-THECPU.043.png" />
-</div>
-</div>
-<div class="section" id="intel-manuals">
-<h2><span class="section-number">7.4. </span>Intel Manuals<a class="headerlink" href="#intel-manuals" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="intel-manuals">
+<h2><span class="section-number">7.4. </span>Intel Manuals<a class="headerlink" href="#intel-manuals" title="Permalink to this headline">#</a></h2>
 <p>Freely available online:
 <a class="reference external" href="https://software.intel.com/content/www/us/en/develop/articles/intel-sdm.html">https://software.intel.com/content/www/us/en/develop/articles/intel-sdm.html</a></p>
 <ol class="simple">
@@ -889,18 +1065,18 @@ stepi
 <p>I usually grab the very large manual that combines volumes 1,2,3,4
 <a class="reference external" href="https://software.intel.com/content/www/us/en/develop/articles/intel-sdm.html#combined">https://software.intel.com/content/www/us/en/develop/articles/intel-sdm.html#combined</a></p>
 <p>Which include Volumes 3 and 4.  These focus on the systems programming features necessary to write operating systems kernels.  But these are not necessary for normal user application programming.</p>
-</div>
-<div class="section" id="extra-info-about-intel">
-<h2><span class="section-number">7.5. </span>Extra info about Intel<a class="headerlink" href="#extra-info-about-intel" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="extra-info-about-intel">
+<h2><span class="section-number">7.5. </span>Extra info about Intel<a class="headerlink" href="#extra-info-about-intel" title="Permalink to this headline">#</a></h2>
 <img alt="../_images/ASSEMBLY-VNA-THECPU.045.png" src="../_images/ASSEMBLY-VNA-THECPU.045.png" />
 <img alt="../_images/ASSEMBLY-VNA-THECPU.046.png" src="../_images/ASSEMBLY-VNA-THECPU.046.png" />
 <img alt="../_images/ASSEMBLY-VNA-THECPU.047.png" src="../_images/ASSEMBLY-VNA-THECPU.047.png" />
-</div>
-</div>
+</section>
+</section>
 
 
 <script type="application/vnd.jupyter.widget-state+json">
-{"state": {"094ec0408eca4272bd1f15caaf767755": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": "1px solid black", "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "100%", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": "auto", "overflow_y": "scroll", "padding": null, "right": null, "top": null, "visibility": null, "width": "52em"}}, "0b33611c765c4c6eaf389b3f12d96077": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": "1px solid black", "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "40em", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": "auto", "overflow_y": "scroll", "padding": null, "right": null, "top": null, "visibility": null, "width": "52em"}}, "2134adfdf929456b9b47f22c7764b99e": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": "1px solid black", "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "40em", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": "auto", "overflow_y": "scroll", "padding": null, "right": null, "top": null, "visibility": null, "width": "52em"}}, "2d38df878b7a4eaa8c5d323538a68ba9": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": "1px solid black", "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "40em", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": "auto", "overflow_y": "scroll", "padding": null, "right": null, "top": null, "visibility": null, "width": "52em"}}, "30d1ab85a2b14ecfb04d35f3ccb81503": {"model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "model_name": "OutputModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_2d38df878b7a4eaa8c5d323538a68ba9", "msg_id": "", "outputs": [{"name": "stdout", "output_type": "stream", "text": "$ man file | head -20\nFILE(1)                   BSD General Commands Manual                  FILE(1)\r\n\r\nNAME\r\n     file \u2014 determine file type\r\n\r\nSYNOPSIS\r\n     file [-bcdEhiklLNnprsSvzZ0] [--apple] [--extension] [--mime-encoding]\r\n          [--mime-type] [-e testname] [-F separator] [-f namefile]\r\n          [-m magicfiles] [-P name=value] file ...\r\n     file -C [-m magicfiles]\r\n     file [--help]\r\n\r\nDESCRIPTION\r\n     This manual page documents version 5.38 of the file command.\r\n\r\n     file tests each argument in an attempt to classify it.  There are three\r\n     sets of tests, performed in this order: filesystem tests, magic tests,\r\n     and language tests.  The first test that succeeds causes the file type to\r\n     be printed.\r\n\r\n$ "}]}}, "3457c67b1c6842ff90fd803906e90d1d": {"model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "model_name": "OutputModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_094ec0408eca4272bd1f15caaf767755", "msg_id": "", "outputs": [{"name": "stdout", "output_type": "stream", "text": "$ xxd -l 80 -g 1 -c 8 /bin/ls;xxd -l 80 -g 1 -c 8 -b /bin/ls\n00000000: 7f 45 4c 46 02 01 01 00  .ELF....\r\n00000008: 00 00 00 00 00 00 00 00  ........\r\n00000010: 03 00 3e 00 01 00 00 00  ..>.....\r\n00000018: d0 67 00 00 00 00 00 00  .g......\r\n00000020: 40 00 00 00 00 00 00 00  @.......\r\n00000028: c0 23 02 00 00 00 00 00  .#......\r\n00000030: 00 00 00 00 40 00 38 00  ....@.8.\r\n00000038: 0d 00 40 00 1e 00 1d 00  ..@.....\r\n00000040: 06 00 00 00 04 00 00 00  ........\r\n00000048: 40 00 00 00 00 00 00 00  @.......\r\n00000000: 01111111 01000101 01001100 01000110 00000010 00000001 00000001 00000000  .ELF....\r\n00000008: 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000  ........\r\n00000010: 00000011 00000000 00111110 00000000 00000001 00000000 00000000 00000000  ..>.....\r\n00000018: 11010000 01100111 00000000 00000000 00000000 00000000 00000000 00000000  .g......\r\n00000020: 01000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000  @.......\r\n00000028: 11000000 00100011 00000010 00000000 00000000 00000000 00000000 00000000  .#......\r\n00000030: 00000000 00000000 00000000 00000000 01000000 00000000 00111000 00000000  ....@.8.\r\n00000038: 00001101 00000000 01000000 00000000 00011110 00000000 00011101 00000000  ..@.....\r\n00000040: 00000110 00000000 00000000 00000000 00000100 00000000 00000000 00000000  ........\r\n00000048: 01000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000  @.......\r\n$ "}]}}, "8498d56ab0b74e2d98867709e2ff1ec3": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": "1px solid black", "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "40em", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": "auto", "overflow_y": "scroll", "padding": null, "right": null, "top": null, "visibility": null, "width": "52em"}}, "8b4d8a88a6c24ccca3c1d282ec3a886b": {"model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "model_name": "OutputModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_8498d56ab0b74e2d98867709e2ff1ec3", "msg_id": "", "outputs": [{"name": "stdout", "output_type": "stream", "text": "$ man elf | head -20\nELF(5)                     Linux Programmer's Manual                    ELF(5)\r\n\r\nNAME\r\n       elf - format of Executable and Linking Format (ELF) files\r\n\r\nSYNOPSIS\r\n       #include <elf.h>\r\n\r\nDESCRIPTION\r\n       The  header  file  <elf.h>  defines the format of ELF executable binary\r\n       files.  Amongst these files are normal  executable  files,  relocatable\r\n       object files, core files, and shared objects.\r\n\r\n       An executable file using the ELF file format consists of an ELF header,\r\n       followed by a program header table or a section header table, or  both.\r\n       The  ELF  header  is  always  at  offset zero of the file.  The program\r\n       header table and the section header table's offset in the file are  de\u2010\r\n       fined  in the ELF header.  The two tables describe the rest of the par\u2010\r\n       ticularities of the file.\r\n\r\n$ "}]}}, "8c0ecf1a19684992866bc6f9e74af60a": {"model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "model_name": "OutputModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_2134adfdf929456b9b47f22c7764b99e", "msg_id": "", "outputs": [{"name": "stdout", "output_type": "stream", "text": "$ file /bin/ls\n/bin/ls: ELF 64-bit LSB shared object, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, BuildID[sha1]=2f15ad836be3339dec0e2e6a3c637e08e48aacbd, for GNU/Linux 3.2.0, stripped\r\n$ "}]}}, "984272f6189f4f00b3ba427e0ce7051b": {"model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "model_name": "OutputModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_0b33611c765c4c6eaf389b3f12d96077", "msg_id": "", "outputs": [{"name": "stdout", "output_type": "stream", "text": "$ man 2 execve | head -21\nEXECVE(2)                  Linux Programmer's Manual                 EXECVE(2)\r\n\r\nNAME\r\n       execve - execute program\r\n\r\nSYNOPSIS\r\n       #include <unistd.h>\r\n\r\n       int execve(const char *pathname, char *const argv[],\r\n                  char *const envp[]);\r\n\r\nDESCRIPTION\r\n       execve() executes the program referred to by pathname.  This causes the\r\n       program that is currently being run by the calling process  to  be  re\u2010\r\n       placed  with  a  new  program,  with newly initialized stack, heap, and\r\n       (initialized and uninitialized) data segments.\r\n\r\n       pathname must be either a binary executable, or a script starting  with\r\n       a line of the form:\r\n\r\n           #!interpreter [optional-arg]\r\n$ "}]}}, "ae287d6e92c9474e823c55640b32e3ab": {"model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "model_name": "OutputModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_e46999215aa64dffb2fe880cf13305a6", "msg_id": "", "outputs": [{"name": "stdout", "output_type": "stream", "text": "$ man 3 exec | head -30\nEXEC(3)                    Linux Programmer's Manual                   EXEC(3)\r\n\r\nNAME\r\n       execl, execlp, execle, execv, execvp, execvpe - execute a file\r\n\r\nSYNOPSIS\r\n       #include <unistd.h>\r\n\r\n       extern char **environ;\r\n\r\n       int execl(const char *pathname, const char *arg, ...\r\n                       /* (char  *) NULL */);\r\n       int execlp(const char *file, const char *arg, ...\r\n                       /* (char  *) NULL */);\r\n       int execle(const char *pathname, const char *arg, ...\r\n                       /*, (char *) NULL, char *const envp[] */);\r\n       int execv(const char *pathname, char *const argv[]);\r\n       int execvp(const char *file, char *const argv[]);\r\n       int execvpe(const char *file, char *const argv[],\r\n                       char *const envp[]);\r\n\r\n   Feature Test Macro Requirements for glibc (see feature_test_macros(7)):\r\n\r\n       execvpe(): _GNU_SOURCE\r\n\r\nDESCRIPTION\r\n       The  exec() family of functions replaces the current process image with\r\n       a new process image.  The functions described in this manual  page  are\r\n       front-ends  for execve(2).  (See the manual page for execve(2) for fur\u2010\r\n       ther details about the replacement of the current process image.)\r\n$ "}]}}, "b407c5af9d94467aaad8e9c42e2402b6": {"model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "model_name": "OutputModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_d9ac822b60074bc6bbc990fb666c26e8", "msg_id": "", "outputs": [{"name": "stdout", "output_type": "stream", "text": "$ ls -l /bin/ls\n-rwxr-xr-x 1 root root 142144 Sep  5  2019 \u001b[0m\u001b[01;32m/bin/ls\u001b[0m\r\n$ "}]}}, "bf85756186cb40c8b70d30c557899a2c": {"model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "model_name": "OutputModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_dad810d9ea694019ac4f7f44c159c663", "msg_id": "", "outputs": [{"name": "stdout", "output_type": "stream", "text": "$ man xxd | head -20\nXXD(1)                      General Commands Manual                     XXD(1)\r\n\r\nNAME\r\n       xxd - make a hexdump or do the reverse.\r\n\r\nSYNOPSIS\r\n       xxd -h[elp]\r\n       xxd [options] [infile [outfile]]\r\n       xxd -r[evert] [options] [infile [outfile]]\r\n\r\nDESCRIPTION\r\n       xxd  creates a hex dump of a given file or standard input.  It can also\r\n       convert a hex dump back to its original binary form.  Like  uuencode(1)\r\n       and  uudecode(1)  it allows the transmission of binary data in a `mail-\r\n       safe' ASCII representation, but has the advantage of decoding to  stan\u2010\r\n       dard output.  Moreover, it can be used to perform binary file patching.\r\n\r\nOPTIONS\r\n       If  no infile is given, standard input is read.  If infile is specified\r\n       as a `-' character, then input is taken from  standard  input.   If  no\r\n$ "}]}}, "d9ac822b60074bc6bbc990fb666c26e8": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": "1px solid black", "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "100%", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": "auto", "overflow_y": "scroll", "padding": null, "right": null, "top": null, "visibility": null, "width": "50em"}}, "dad810d9ea694019ac4f7f44c159c663": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": "1px solid black", "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "100%", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": "auto", "overflow_y": "scroll", "padding": null, "right": null, "top": null, "visibility": null, "width": "50em"}}, "e46999215aa64dffb2fe880cf13305a6": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": "1px solid black", "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "100%", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": "auto", "overflow_y": "scroll", "padding": null, "right": null, "top": null, "visibility": null, "width": "52em"}}}, "version_major": 2, "version_minor": 0}
+{"state": {"1033f7d81a6141a28aa2d35bbe35403d": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": "1px solid black", "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "100%", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": "auto", "overflow_y": "scroll", "padding": null, "right": null, "top": null, "visibility": null, "width": "50em"}}, "2d5e1570bb1e45b285affe37d9f0ac40": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": "1px solid black", "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "40em", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": "auto", "overflow_y": "scroll", "padding": null, "right": null, "top": null, "visibility": null, "width": "52em"}}, "30080a644a1d43859a60bb76b43e7456": {"model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "model_name": "OutputModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_d7c2e02056f64131a32b0858910b45fd", "msg_id": "", "outputs": [{"name": "stdout", "output_type": "stream", "text": "$ xxd -l 80 -g 1 -c 8 /bin/ls;xxd -l 80 -g 1 -c 8 -b /bin/ls\n00000000: 7f 45 4c 46 02 01 01 00  .ELF....\r\n00000008: 00 00 00 00 00 00 00 00  ........\r\n00000010: 03 00 3e 00 01 00 00 00  ..>.....\r\n00000018: d0 67 00 00 00 00 00 00  .g......\r\n00000020: 40 00 00 00 00 00 00 00  @.......\r\n00000028: c0 23 02 00 00 00 00 00  .#......\r\n00000030: 00 00 00 00 40 00 38 00  ....@.8.\r\n00000038: 0d 00 40 00 1e 00 1d 00  ..@.....\r\n00000040: 06 00 00 00 04 00 00 00  ........\r\n00000048: 40 00 00 00 00 00 00 00  @.......\r\n00000000: 01111111 01000101 01001100 01000110 00000010 00000001 00000001 00000000  .ELF....\r\n00000008: 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000  ........\r\n00000010: 00000011 00000000 00111110 00000000 00000001 00000000 00000000 00000000  ..>.....\r\n00000018: 11010000 01100111 00000000 00000000 00000000 00000000 00000000 00000000  .g......\r\n00000020: 01000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000  @.......\r\n00000028: 11000000 00100011 00000010 00000000 00000000 00000000 00000000 00000000  .#......\r\n00000030: 00000000 00000000 00000000 00000000 01000000 00000000 00111000 00000000  ....@.8.\r\n00000038: 00001101 00000000 01000000 00000000 00011110 00000000 00011101 00000000  ..@.....\r\n00000040: 00000110 00000000 00000000 00000000 00000100 00000000 00000000 00000000  ........\r\n00000048: 01000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000  @.......\r\n$ "}]}}, "396ae5d6922444dda7cfa13d72ec2473": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": "1px solid black", "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "100%", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": "auto", "overflow_y": "scroll", "padding": null, "right": null, "top": null, "visibility": null, "width": "50em"}}, "832af88f8d93441e93ec0ffa720e1282": {"model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "model_name": "OutputModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_1033f7d81a6141a28aa2d35bbe35403d", "msg_id": "", "outputs": [{"name": "stdout", "output_type": "stream", "text": "$ ls -l /bin/ls\n-rwxr-xr-x. 1 root root 142144 Sep  5  2019 \u001b[0m\u001b[01;32m/bin/ls\u001b[0m\r\n$ "}]}}, "94cdd9053b5945a493f428f3fd6c2784": {"model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "model_name": "OutputModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_a63549043ddf42ea9dddc499f5dd1865", "msg_id": "", "outputs": [{"name": "stdout", "output_type": "stream", "text": "$ file /bin/ls\n/bin/ls: ELF 64-bit LSB shared object, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, BuildID[sha1]=2f15ad836be3339dec0e2e6a3c637e08e48aacbd, for GNU/Linux 3.2.0, stripped\r\n$ "}]}}, "96efea2236c4499b81af9bc61b12fa4f": {"model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "model_name": "OutputModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_e124a856411b487dbf58f6babf14822b", "msg_id": "", "outputs": [{"name": "stdout", "output_type": "stream", "text": "$ man elf | head -20\nELF(5)                     Linux Programmer's Manual                    ELF(5)\r\n\r\nNAME\r\n       elf - format of Executable and Linking Format (ELF) files\r\n\r\nSYNOPSIS\r\n       #include <elf.h>\r\n\r\nDESCRIPTION\r\n       The  header  file  <elf.h>  defines the format of ELF executable binary\r\n       files.  Amongst these files are normal  executable  files,  relocatable\r\n       object files, core files, and shared objects.\r\n\r\n       An executable file using the ELF file format consists of an ELF header,\r\n       followed by a program header table or a section header table, or  both.\r\n       The  ELF  header  is  always  at  offset zero of the file.  The program\r\n       header table and the section header table's offset in the file are  de\u2010\r\n       fined  in the ELF header.  The two tables describe the rest of the par\u2010\r\n       ticularities of the file.\r\n\r\n$ "}]}}, "9cb69af44c27482097352424700e10b0": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": "1px solid black", "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "100%", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": "auto", "overflow_y": "scroll", "padding": null, "right": null, "top": null, "visibility": null, "width": "52em"}}, "9da16d79c6bb42ee8348e9f1c3391fa7": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": "1px solid black", "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "40em", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": "auto", "overflow_y": "scroll", "padding": null, "right": null, "top": null, "visibility": null, "width": "52em"}}, "a63549043ddf42ea9dddc499f5dd1865": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": "1px solid black", "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "40em", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": "auto", "overflow_y": "scroll", "padding": null, "right": null, "top": null, "visibility": null, "width": "52em"}}, "cd6c5e080af944859149dd16e9325a09": {"model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "model_name": "OutputModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_9cb69af44c27482097352424700e10b0", "msg_id": "", "outputs": [{"name": "stdout", "output_type": "stream", "text": "$ man 3 exec | head -30\nEXEC(3)                    Linux Programmer's Manual                   EXEC(3)\r\n\r\nNAME\r\n       execl, execlp, execle, execv, execvp, execvpe - execute a file\r\n\r\nSYNOPSIS\r\n       #include <unistd.h>\r\n\r\n       extern char **environ;\r\n\r\n       int execl(const char *pathname, const char *arg, ...\r\n                       /* (char  *) NULL */);\r\n       int execlp(const char *file, const char *arg, ...\r\n                       /* (char  *) NULL */);\r\n       int execle(const char *pathname, const char *arg, ...\r\n                       /*, (char *) NULL, char *const envp[] */);\r\n       int execv(const char *pathname, char *const argv[]);\r\n       int execvp(const char *file, char *const argv[]);\r\n       int execvpe(const char *file, char *const argv[],\r\n                       char *const envp[]);\r\n\r\n   Feature Test Macro Requirements for glibc (see feature_test_macros(7)):\r\n\r\n       execvpe(): _GNU_SOURCE\r\n\r\nDESCRIPTION\r\n       The  exec() family of functions replaces the current process image with\r\n       a new process image.  The functions described in this manual  page  are\r\n       front-ends  for execve(2).  (See the manual page for execve(2) for fur\u2010\r\n       ther details about the replacement of the current process image.)\r\n$ "}]}}, "cf2eb2de929448569fda1c2c78d86543": {"model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "model_name": "OutputModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_2d5e1570bb1e45b285affe37d9f0ac40", "msg_id": "", "outputs": [{"name": "stdout", "output_type": "stream", "text": "$ man file | head -20\nFILE(1)                   BSD General Commands Manual                  FILE(1)\r\n\r\nNAME\r\n     file \u2014 determine file type\r\n\r\nSYNOPSIS\r\n     file [-bcdEhiklLNnprsSvzZ0] [--apple] [--extension] [--mime-encoding]\r\n          [--mime-type] [-e testname] [-F separator] [-f namefile]\r\n          [-m magicfiles] [-P name=value] file ...\r\n     file -C [-m magicfiles]\r\n     file [--help]\r\n\r\nDESCRIPTION\r\n     This manual page documents version 5.38 of the file command.\r\n\r\n     file tests each argument in an attempt to classify it.  There are three\r\n     sets of tests, performed in this order: filesystem tests, magic tests,\r\n     and language tests.  The first test that succeeds causes the file type to\r\n     be printed.\r\n\r\n$ "}]}}, "d7c2e02056f64131a32b0858910b45fd": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": "1px solid black", "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "100%", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": "auto", "overflow_y": "scroll", "padding": null, "right": null, "top": null, "visibility": null, "width": "52em"}}, "e124a856411b487dbf58f6babf14822b": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": "1px solid black", "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "40em", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": "auto", "overflow_y": "scroll", "padding": null, "right": null, "top": null, "visibility": null, "width": "52em"}}, "f571801f679a494f983a6b7a539958ab": {"model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "model_name": "OutputModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_396ae5d6922444dda7cfa13d72ec2473", "msg_id": "", "outputs": [{"name": "stdout", "output_type": "stream", "text": "$ man xxd | head -20\nXXD(1)                      General Commands Manual                     XXD(1)\r\n\r\nNAME\r\n       xxd - make a hexdump or do the reverse.\r\n\r\nSYNOPSIS\r\n       xxd -h[elp]\r\n       xxd [options] [infile [outfile]]\r\n       xxd -r[evert] [options] [infile [outfile]]\r\n\r\nDESCRIPTION\r\n       xxd  creates a hex dump of a given file or standard input.  It can also\r\n       convert a hex dump back to its original binary form.  Like  uuencode(1)\r\n       and  uudecode(1)  it allows the transmission of binary data in a `mail-\r\n       safe' ASCII representation, but has the advantage of decoding to  stan\u2010\r\n       dard output.  Moreover, it can be used to perform binary file patching.\r\n\r\nOPTIONS\r\n       If  no infile is given, standard input is read.  If infile is specified\r\n       as a `-' character, then input is taken from  standard  input.   If  no\r\n$ "}]}}, "fed6f73520c440a59912d8c64585e6e7": {"model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "model_name": "OutputModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_9da16d79c6bb42ee8348e9f1c3391fa7", "msg_id": "", "outputs": [{"name": "stdout", "output_type": "stream", "text": "$ man 2 execve | head -21\nEXECVE(2)                  Linux Programmer's Manual                 EXECVE(2)\r\n\r\nNAME\r\n       execve - execute program\r\n\r\nSYNOPSIS\r\n       #include <unistd.h>\r\n\r\n       int execve(const char *pathname, char *const argv[],\r\n                  char *const envp[]);\r\n\r\nDESCRIPTION\r\n       execve() executes the program referred to by pathname.  This causes the\r\n       program that is currently being run by the calling process  to  be  re\u2010\r\n       placed  with  a  new  program,  with newly initialized stack, heap, and\r\n       (initialized and uninitialized) data segments.\r\n\r\n       pathname must be either a binary executable, or a script starting  with\r\n       a line of the form:\r\n\r\n           #!interpreter [optional-arg]\r\n$ "}]}}}, "version_major": 2, "version_minor": 0}
 </script>
 
 
@@ -926,9 +1102,11 @@ stepi
 
               </div>
               
-        
-            <!-- Previous / next buttons -->
-<div class='prev-next-area'> 
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
     <a class='left-prev' id="prev-link" href="../unix/L06.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
@@ -944,26 +1122,28 @@ stepi
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-        
+            </footer>
         </div>
     </div>
-    <footer class="footer">
-    <div class="container">
-      <p>
-        
-          By Jonathan Appavoo<br/>
-        
-            &copy; Copyright 2021.<br/>
-      </p>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Jonathan Appavoo<br/>
+  
+      &copy; Copyright 2021.<br/>
+</p>
+        </footer>
     </div>
-  </footer>
-</main>
+    
+</div>
 
 
       </div>
     </div>
   
-  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
 
   </body>
 </html>

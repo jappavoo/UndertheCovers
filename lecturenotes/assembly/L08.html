@@ -4,11 +4,13 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>8. SLS Lecture 8 : Writing some simple assembly programs &#8212; UndertheCovers</title>
     
-  <link href="../_static/css/theme.css" rel="stylesheet">
-  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -18,39 +20,38 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin
     href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    
-      
-
-    
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
-    <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script>
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="9. UC-SLS Lecture 9 : Assembly : Operations and Data Types" href="L09.html" />
@@ -62,7 +63,21 @@
     <!-- Google Analytics -->
     
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
     
     <div class="container-fluid" id="banner"></div>
 
@@ -71,9 +86,10 @@
     <div class="container-xl">
       <div class="row">
           
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../index.html">
       
         <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
@@ -91,14 +107,15 @@
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
-        <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../intro_ln.html">
-   Under the Covers : The Secret Life of Software
-  </a>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro_ln.html">
+                    Under the Covers : The Secret Life of Software
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Course Specfic Introductions
  </span>
@@ -280,104 +297,177 @@
 </ul>
 
     </div>
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-</div>
-
-</div>
-
-
-          
-
-
-          
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
             
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
-        
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/assembly/L08.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
-    </div>
-</div>
-
-            <!-- Source interaction buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
-    <div class="dropdown-buttons sourcebuttons">
-        <a class="repository-button"
-            href="https://github.com/jappavoo/UndertheCovers"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="Source repository"><i
-                    class="fab fa-github"></i>repository</button></a>
-        
-        
-    </div>
-</div>
-
-            <!-- Full screen (wrap in <a> to have style consistency -->
-
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
-
-            <!-- Launch buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        
-        <a class="jupyterhub-button" href="https://jupyterhub-opf-jupyterhub.apps.smaug.na.operate-first.cloud/hub/user-redirect/git-pull?repo=https://github.com/jappavoo/UndertheCovers&urlpath=tree/UndertheCovers/underthecovers/assembly/L08.ipynb&branch=main"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch JupyterHub" data-toggle="tooltip"
-                data-placement="left"><img class="jupyterhub-button-logo"
-                    src="../_static/images/logo_jupyterhub.svg"
-                    alt="Interact on JupyterHub">JupyterHub</button></a>
-        
-        
-        
-    </div>
-</div>
-
-        </div>
-
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
-            
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
             </div>
-            <nav id="bd-toc-nav" aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://jupyterhub-opf-jupyterhub.apps.smaug.na.operate-first.cloud/hub/user-redirect/git-pull?repo=https%3A//github.com/jappavoo/UndertheCovers&urlpath=tree/UndertheCovers/underthecovers/assembly/L08.ipynb&branch=main"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on JupyterHub"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_jupyterhub.svg">
+  </span>
+<span class="headerbtn__text-container">JupyterHub</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+<a href="https://github.com/jappavoo/UndertheCovers"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="bottom"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/assembly/L08.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#writing-a-popcnt-assembly-program">
    8.1. Writing a
@@ -473,17 +563,128 @@
  </li>
 </ul>
 
-            </nav>
-        </div>
-    </div>
+    </nav>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>SLS Lecture 8 :  Writing some simple assembly programs</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#writing-a-popcnt-assembly-program">
+   8.1. Writing a
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     popcnt
+    </span>
+   </code>
+   assembly program
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#setup">
+     8.1.1. Setup
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#writing-an-add-assembly-program">
+   8.2. Writing an
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     add
+    </span>
+   </code>
+   assembly program
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercises">
+     8.2.1. Exercises
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ending-exiting-our-program-process">
+   8.3. Ending / Exiting our Program/Process
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#how-can-we-avoid-this">
+     8.3.1. How can we avoid this
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#interrupt-3-int3-trap-to-debugger">
+     8.3.2. Interrupt 3
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       int3
+      </span>
+     </code>
+     – trap to debugger
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exit-an-os-service-to-terminate-a-process">
+     8.3.3. Exit – An OS service to terminate a process
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-os-system-calls">
+     8.3.4. The OS System Calls
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#avoiding-hard-coding-system-call-numbers">
+       8.3.4.1. Avoiding Hard coding system call numbers
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercises-and-extra-materials">
+   8.4. Exercises  and extra materials
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#makefile-for-all-the-lecture-examples">
+     8.4.1. Makefile for all the lecture examples
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#here-is-a-fully-documented-fancy-version-of-exit">
+     8.4.2. Here is a fully documented fancy version of exit
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="sls-lecture-8-writing-some-simple-assembly-programs">
-<h1><span class="section-number">8. </span>SLS Lecture 8 :  Writing some simple assembly programs<a class="headerlink" href="#sls-lecture-8-writing-some-simple-assembly-programs" title="Permalink to this headline">¶</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="sls-lecture-8-writing-some-simple-assembly-programs">
+<h1><span class="section-number">8. </span>SLS Lecture 8 :  Writing some simple assembly programs<a class="headerlink" href="#sls-lecture-8-writing-some-simple-assembly-programs" title="Permalink to this headline">#</a></h1>
 <p>Spend some time writing some very simple assembly programs and learn to use the debugger so that we have enough skills to explore how things work.    We will be repeat various things in more detail in future lectures.</p>
 <ul class="simple">
 <li><p>Write <code class="docutils literal notranslate"><span class="pre">popcnt</span></code> in assemble code</p>
@@ -526,8 +727,8 @@
 </li>
 <li><p>Implicitly use our shell, editor, Make and Git knowledge to do the above</p></li>
 </ul>
-<div class="section" id="writing-a-popcnt-assembly-program">
-<h2><span class="section-number">8.1. </span>Writing a <code class="docutils literal notranslate"><span class="pre">popcnt</span></code> assembly program<a class="headerlink" href="#writing-a-popcnt-assembly-program" title="Permalink to this headline">¶</a></h2>
+<section id="writing-a-popcnt-assembly-program">
+<h2><span class="section-number">8.1. </span>Writing a <code class="docutils literal notranslate"><span class="pre">popcnt</span></code> assembly program<a class="headerlink" href="#writing-a-popcnt-assembly-program" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>Write a one instruction assembly program</p>
 <ol class="simple">
@@ -542,8 +743,8 @@
 </ul>
 </li>
 </ul>
-<div class="section" id="setup">
-<h3><span class="section-number">8.1.1. </span>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">¶</a></h3>
+<section id="setup">
+<h3><span class="section-number">8.1.1. </span>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">#</a></h3>
 <ol class="simple">
 <li><p>make directory</p></li>
 <li><p>create git database</p></li>
@@ -608,13 +809,13 @@
 <div class="cell_output docutils container">
 <p><b>CODE: asm - The 'popcnt' assembly program</p>
 <div style="width:107em; height:100%; font-size:inherit; overflow: auto;" >
-<div class="highlight-gas notranslate"><div class="highlight"><pre><span></span>	<span class="na">.intel_syntax</span> <span class="no">noprefix</span>
-	
-	<span class="na">.text</span>
-        
-	<span class="na">.global</span> <span class="no">_start</span> 	
-<span class="no">_start</span><span class="p">:</span>
-	<span class="nf">popcnt</span> <span class="no">rax</span><span class="p">,</span> <span class="no">rbx</span>   <span class="c1">// same as  .byte 0xF3, 0x48, 0x0F, 0xB8, 0xD8  </span>
+<div class="highlight-gas notranslate"><div class="highlight"><pre><span></span><span class="w">	</span><span class="na">.intel_syntax</span><span class="w"> </span><span class="no">noprefix</span><span class="w"></span>
+<span class="w">	</span>
+<span class="w">	</span><span class="na">.text</span><span class="w"></span>
+<span class="w">        </span>
+<span class="w">	</span><span class="na">.global</span><span class="w"> </span><span class="no">_start</span><span class="w"> 	</span>
+<span class="no">_start</span><span class="p">:</span><span class="w"></span>
+<span class="w">	</span><span class="nf">popcnt</span><span class="w"> </span><span class="no">rax</span><span class="p">,</span><span class="w"> </span><span class="no">rbx</span><span class="w">   </span><span class="c1">// same as  .byte 0xF3, 0x48, 0x0F, 0xB8, 0xD8  </span>
 </pre></div>
 </div>
 </div>
@@ -627,36 +828,36 @@
 <div style="width:107em; height:100%; font-size:inherit; overflow: auto;" >
 <div class="highlight-gas notranslate"><div class="highlight"><pre><span></span><span class="cm">/*  General antomy of a assembly program line</span>
 <span class="cm">[lablel]:   &lt;directive or opcode&gt; [operands]  // comment</span>
-<span class="cm">*/</span>
-	<span class="na">.intel_syntax</span> <span class="no">noprefix</span>   <span class="c1"># assembler syntax to use &lt;directive&gt;</span>
-	                         <span class="c1"># set assembly language format to intel  </span>
+<span class="cm">*/</span><span class="w"></span>
+<span class="w">	</span><span class="na">.intel_syntax</span><span class="w"> </span><span class="no">noprefix</span><span class="w">   </span><span class="c1"># assembler syntax to use &lt;directive&gt;</span>
+<span class="w">	                         </span><span class="c1"># set assembly language format to intel  </span>
 
-	<span class="na">.text</span>                    <span class="c1"># linker section &lt;directive&gt;</span>
-	                         <span class="c1"># let the linker know that what follows are cpu instructions to</span>
-	                         <span class="c1"># to be executed -- uposed to values that represent data.</span>
-	                         <span class="c1"># For historical reasons cpu instructions are called &quot;text&quot;</span>
-	                         
-	<span class="na">.global</span> <span class="no">_start</span>           <span class="c1"># linker symbol type &lt;directive&gt; </span>
-	                         <span class="c1"># makes the symbol _start in this case visible to the linker</span>
-	                         <span class="c1"># The linker looks for an _start symbol so that it knows address</span>
-	                         <span class="c1"># of the first instruction of our program</span>
-	
-<span class="nl">_start:</span>                          <span class="c1"># introduce a symbolic (human readable) label for &quot;this&quot; address</span>
-	                         <span class="c1"># associates the address of this point in our program with the</span>
-      	                         <span class="c1"># name following the &#39;:&#39; -- in our case _start</span>
-	                         <span class="c1"># In our program or in the debugger we can use this name to</span>
-	                         <span class="c1"># to refer to this location -- address.  And thus the values</span>
-	                         <span class="c1"># that end up here.</span>
+<span class="w">	</span><span class="na">.text</span><span class="w">                    </span><span class="c1"># linker section &lt;directive&gt;</span>
+<span class="w">	                         </span><span class="c1"># let the linker know that what follows are cpu instructions to</span>
+<span class="w">	                         </span><span class="c1"># to be executed -- uposed to values that represent data.</span>
+<span class="w">	                         </span><span class="c1"># For historical reasons cpu instructions are called &quot;text&quot;</span>
+<span class="w">	                         </span>
+<span class="w">	</span><span class="na">.global</span><span class="w"> </span><span class="no">_start</span><span class="w">           </span><span class="c1"># linker symbol type &lt;directive&gt; </span>
+<span class="w">	                         </span><span class="c1"># makes the symbol _start in this case visible to the linker</span>
+<span class="w">	                         </span><span class="c1"># The linker looks for an _start symbol so that it knows address</span>
+<span class="w">	                         </span><span class="c1"># of the first instruction of our program</span>
+<span class="w">	</span>
+<span class="nl">_start:</span><span class="w">                          </span><span class="c1"># introduce a symbolic (human readable) label for &quot;this&quot; address</span>
+<span class="w">	                         </span><span class="c1"># associates the address of this point in our program with the</span>
+<span class="w">      	                         </span><span class="c1"># name following the &#39;:&#39; -- in our case _start</span>
+<span class="w">	                         </span><span class="c1"># In our program or in the debugger we can use this name to</span>
+<span class="w">	                         </span><span class="c1"># to refer to this location -- address.  And thus the values</span>
+<span class="w">	                         </span><span class="c1"># that end up here.</span>
 <span class="c1">#	.byte 0xF3, 0x48, 0x0F, 0xB8, 0xD8  # popcnt rax,rbx	</span>
-	<span class="nf">popcnt</span> <span class="no">rax</span><span class="p">,</span> <span class="no">rbx</span>          <span class="c1"># ok the single intel opcode (instruction) that makes up</span>
-	                         <span class="c1"># our program</span>
+<span class="w">	</span><span class="nf">popcnt</span><span class="w"> </span><span class="no">rax</span><span class="p">,</span><span class="w"> </span><span class="no">rbx</span><span class="w">          </span><span class="c1"># ok the single intel opcode (instruction) that makes up</span>
+<span class="w">	                         </span><span class="c1"># our program</span>
 <span class="cm">/*</span>
 <span class="cm">     Details about the assembler directives and general syntax that we will be using</span>
 <span class="cm">     https://sourceware.org/binutils/docs/as/</span>
 <span class="cm">     Intel instruction set reference -- documents the cpu memonics/instructions of</span>
 <span class="cm">                                    the computer&#39;s processor that we are writing for</span>
 <span class="cm">	 https://software.intel.com/content/www/us/en/develop/download/intel-64-and-ia-32-architectures-sdm-combined-volumes-2a-2b-2c-and-2d-instruction-set-reference-a-z.html</span>
-<span class="cm">*/</span>
+<span class="cm">*/</span><span class="w"></span>
 </pre></div>
 </div>
 </div>
@@ -664,11 +865,11 @@
 </div>
 <p>We can use the <code class="docutils literal notranslate"><span class="pre">.byte</span></code> directive to set the values in memory to anything we like
 eg.</p>
-<div class="highlight-gas notranslate"><div class="highlight"><pre><span></span>     <span class="na">.byte</span> <span class="mi">0xF3</span><span class="p">,</span> <span class="mi">0x48</span><span class="p">,</span> <span class="mi">0x0F</span><span class="p">,</span> <span class="mi">0xB8</span><span class="p">,</span> <span class="mi">0xD8</span>  
+<div class="highlight-gas notranslate"><div class="highlight"><pre><span></span><span class="w">     </span><span class="na">.byte</span><span class="w"> </span><span class="mi">0xF3</span><span class="p">,</span><span class="w"> </span><span class="mi">0x48</span><span class="p">,</span><span class="w"> </span><span class="mi">0x0F</span><span class="p">,</span><span class="w"> </span><span class="mi">0xB8</span><span class="p">,</span><span class="w"> </span><span class="mi">0xD8</span><span class="w">  </span>
 </pre></div>
 </div>
 <p>But of course the real value is that we could have also simply written</p>
-<div class="highlight-gas notranslate"><div class="highlight"><pre><span></span>       <span class="nf">popcnt</span> <span class="no">rax</span><span class="p">,</span> <span class="no">rbx</span>          
+<div class="highlight-gas notranslate"><div class="highlight"><pre><span></span><span class="w">       </span><span class="nf">popcnt</span><span class="w"> </span><span class="no">rax</span><span class="p">,</span><span class="w"> </span><span class="no">rbx</span><span class="w">          </span>
 </pre></div>
 </div>
 <div class="cell tag_remove-input docutils container">
@@ -715,10 +916,10 @@ make popcnt
 </div>
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="writing-an-add-assembly-program">
-<h2><span class="section-number">8.2. </span>Writing an <code class="docutils literal notranslate"><span class="pre">add</span></code> assembly program<a class="headerlink" href="#writing-an-add-assembly-program" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="writing-an-add-assembly-program">
+<h2><span class="section-number">8.2. </span>Writing an <code class="docutils literal notranslate"><span class="pre">add</span></code> assembly program<a class="headerlink" href="#writing-an-add-assembly-program" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>re-enforce the steps to creating and debugging an assembly program</p>
 <ul>
@@ -739,46 +940,46 @@ make popcnt
 <li><p>explore overflow</p></li>
 <li><p>then make the program a little more complex:</p></li>
 </ul>
-<div class="highlight-gas notranslate"><div class="highlight"><pre><span></span>  <span class="nf">movabs</span> <span class="no">rbx</span><span class="p">,</span> <span class="mi">0xdeadbeefdeadbeef</span>
-  <span class="nf">mov</span>    <span class="no">rax</span><span class="p">,</span> <span class="mi">1</span>
-  <span class="nf">add</span>    <span class="no">rax</span><span class="p">,</span> <span class="no">rbx</span>
+<div class="highlight-gas notranslate"><div class="highlight"><pre><span></span><span class="w">  </span><span class="nf">movabs</span><span class="w"> </span><span class="no">rbx</span><span class="p">,</span><span class="w"> </span><span class="mi">0xdeadbeefdeadbeef</span><span class="w"></span>
+<span class="w">  </span><span class="nf">mov</span><span class="w">    </span><span class="no">rax</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w"></span>
+<span class="w">  </span><span class="nf">add</span><span class="w">    </span><span class="no">rax</span><span class="p">,</span><span class="w"> </span><span class="no">rbx</span><span class="w"></span>
 </pre></div>
 </div>
 <ul class="simple">
 <li><p>lets use some more cool features of the intel instruction set</p></li>
 </ul>
-<div class="highlight-gas notranslate"><div class="highlight"><pre><span></span>  <span class="nf">rdrand</span> <span class="no">rbx</span>                
-  <span class="no">mov</span>    <span class="no">rax</span><span class="p">,</span> <span class="mi">1</span>
-  <span class="nf">add</span>    <span class="no">rax</span><span class="p">,</span> <span class="no">rbx</span>
-  <span class="nf">popcnt</span> <span class="no">rbx</span><span class="p">,</span> <span class="no">rax</span>
+<div class="highlight-gas notranslate"><div class="highlight"><pre><span></span><span class="w">  </span><span class="nf">rdrand</span><span class="w"> </span><span class="no">rbx</span><span class="w">                </span>
+<span class="w">  </span><span class="no">mov</span><span class="w">    </span><span class="no">rax</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w"></span>
+<span class="w">  </span><span class="nf">add</span><span class="w">    </span><span class="no">rax</span><span class="p">,</span><span class="w"> </span><span class="no">rbx</span><span class="w"></span>
+<span class="w">  </span><span class="nf">popcnt</span><span class="w"> </span><span class="no">rbx</span><span class="p">,</span><span class="w"> </span><span class="no">rax</span><span class="w"></span>
 </pre></div>
 </div>
 <ul class="simple">
 <li><p>lets get a brief glimpse at how to use memory locations for the value</p></li>
 </ul>
-<div class="highlight-gas notranslate"><div class="highlight"><pre><span></span>        <span class="na">.intel_syntax</span> <span class="no">noprefix</span>
-        <span class="na">.data</span>
-<span class="nl">x:</span>       <span class="na">.quad</span> <span class="mi">142</span>
-<span class="nl">y:</span>       <span class="na">.quad</span> <span class="mi">4200</span>
-<span class="nl">sum:</span>     <span class="na">.quad</span>
+<div class="highlight-gas notranslate"><div class="highlight"><pre><span></span><span class="w">        </span><span class="na">.intel_syntax</span><span class="w"> </span><span class="no">noprefix</span><span class="w"></span>
+<span class="w">        </span><span class="na">.data</span><span class="w"></span>
+<span class="nl">x:</span><span class="w">       </span><span class="na">.quad</span><span class="w"> </span><span class="mi">142</span><span class="w"></span>
+<span class="nl">y:</span><span class="w">       </span><span class="na">.quad</span><span class="w"> </span><span class="mi">4200</span><span class="w"></span>
+<span class="nl">sum:</span><span class="w">     </span><span class="na">.quad</span><span class="w"></span>
 
-        <span class="na">.text</span>
-        <span class="na">.global</span> <span class="no">_start</span>
-<span class="nl">_start:</span>
-        <span class="nf">mov</span> <span class="no">rax</span><span class="p">,</span> <span class="no">QWORD</span> <span class="no">PTR</span> <span class="no">x</span>
-        <span class="nf">add</span> <span class="no">rax</span><span class="p">,</span> <span class="no">QWORD</span> <span class="no">PTR</span> <span class="no">y</span>
-        <span class="nf">mov</span> <span class="no">QWORD</span> <span class="no">PTR</span> <span class="no">sum</span><span class="p">,</span> <span class="no">rax</span>
+<span class="w">        </span><span class="na">.text</span><span class="w"></span>
+<span class="w">        </span><span class="na">.global</span><span class="w"> </span><span class="no">_start</span><span class="w"></span>
+<span class="nl">_start:</span><span class="w"></span>
+<span class="w">        </span><span class="nf">mov</span><span class="w"> </span><span class="no">rax</span><span class="p">,</span><span class="w"> </span><span class="no">QWORD</span><span class="w"> </span><span class="no">PTR</span><span class="w"> </span><span class="no">x</span><span class="w"></span>
+<span class="w">        </span><span class="nf">add</span><span class="w"> </span><span class="no">rax</span><span class="p">,</span><span class="w"> </span><span class="no">QWORD</span><span class="w"> </span><span class="no">PTR</span><span class="w"> </span><span class="no">y</span><span class="w"></span>
+<span class="w">        </span><span class="nf">mov</span><span class="w"> </span><span class="no">QWORD</span><span class="w"> </span><span class="no">PTR</span><span class="w"> </span><span class="no">sum</span><span class="p">,</span><span class="w"> </span><span class="no">rax</span><span class="w"></span>
 </pre></div>
 </div>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <div style="width:100%; height:100%; font-size:inherit; overflow: auto;" >
-<div class="highlight-gas notranslate"><div class="highlight"><pre><span></span>	<span class="na">.intel_syntax</span> <span class="no">noprefix</span>
+<div class="highlight-gas notranslate"><div class="highlight"><pre><span></span><span class="w">	</span><span class="na">.intel_syntax</span><span class="w"> </span><span class="no">noprefix</span><span class="w"></span>
 
-	<span class="na">.text</span> 	
-	<span class="no">.global</span> <span class="no">_start</span>
-<span class="nl">_start:</span>
-	<span class="nf">add</span> <span class="no">rax</span><span class="p">,</span> <span class="no">rbx</span>
+<span class="w">	</span><span class="na">.text</span><span class="w"> 	</span>
+<span class="w">	</span><span class="no">.global</span><span class="w"> </span><span class="no">_start</span><span class="w"></span>
+<span class="nl">_start:</span><span class="w"></span>
+<span class="w">	</span><span class="nf">add</span><span class="w"> </span><span class="no">rax</span><span class="p">,</span><span class="w"> </span><span class="no">rbx</span><span class="w"></span>
 </pre></div>
 </div>
 </div>
@@ -813,8 +1014,8 @@ run
 </div>
 </div>
 </div>
-<div class="section" id="exercises">
-<h3><span class="section-number">8.2.1. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h3>
+<section id="exercises">
+<h3><span class="section-number">8.2.1. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>try repeating what we did with <code class="docutils literal notranslate"><span class="pre">add</span></code> with <code class="docutils literal notranslate"><span class="pre">imul</span></code>, <code class="docutils literal notranslate"><span class="pre">and</span></code>, <code class="docutils literal notranslate"><span class="pre">or</span></code>, <code class="docutils literal notranslate"><span class="pre">xor</span></code>: for each</p>
 <ul>
@@ -824,10 +1025,10 @@ run
 </ul>
 </li>
 </ul>
-</div>
-</div>
-<div class="section" id="ending-exiting-our-program-process">
-<h2><span class="section-number">8.3. </span>Ending / Exiting our Program/Process<a class="headerlink" href="#ending-exiting-our-program-process" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="ending-exiting-our-program-process">
+<h2><span class="section-number">8.3. </span>Ending / Exiting our Program/Process<a class="headerlink" href="#ending-exiting-our-program-process" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>What happens if we run our programs outside of the debugger?</p>
 <ul>
@@ -835,8 +1036,8 @@ run
 </ul>
 </li>
 </ul>
-<div class="section" id="how-can-we-avoid-this">
-<h3><span class="section-number">8.3.1. </span>How can we avoid this<a class="headerlink" href="#how-can-we-avoid-this" title="Permalink to this headline">¶</a></h3>
+<section id="how-can-we-avoid-this">
+<h3><span class="section-number">8.3.1. </span>How can we avoid this<a class="headerlink" href="#how-can-we-avoid-this" title="Permalink to this headline">#</a></h3>
 <ol class="simple">
 <li><p>TRAP: Use an instruction that tells the OS to</p>
 <ul class="simple">
@@ -862,37 +1063,37 @@ run
 </ul>
 </li>
 </ol>
-</div>
-<div class="section" id="interrupt-3-int3-trap-to-debugger">
-<h3><span class="section-number">8.3.2. </span>Interrupt 3 <code class="docutils literal notranslate"><span class="pre">int3</span></code> – trap to debugger<a class="headerlink" href="#interrupt-3-int3-trap-to-debugger" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="interrupt-3-int3-trap-to-debugger">
+<h3><span class="section-number">8.3.2. </span>Interrupt 3 <code class="docutils literal notranslate"><span class="pre">int3</span></code> – trap to debugger<a class="headerlink" href="#interrupt-3-int3-trap-to-debugger" title="Permalink to this headline">#</a></h3>
 <img alt="../_images/int3mp.png" src="../_images/int3mp.png" />
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <div style="width:100%; height:100%; font-size:inherit; overflow: auto;" >
-<div class="highlight-gas notranslate"><div class="highlight"><pre><span></span>	<span class="na">.intel_syntax</span> <span class="no">noprefix</span>
+<div class="highlight-gas notranslate"><div class="highlight"><pre><span></span><span class="w">	</span><span class="na">.intel_syntax</span><span class="w"> </span><span class="no">noprefix</span><span class="w"></span>
 
-	<span class="na">.text</span> 	
-	<span class="no">.global</span> <span class="no">_start</span>
-<span class="nl">_start:</span>
-	<span class="nf">int3</span>
-	
+<span class="w">	</span><span class="na">.text</span><span class="w"> 	</span>
+<span class="w">	</span><span class="no">.global</span><span class="w"> </span><span class="no">_start</span><span class="w"></span>
+<span class="nl">_start:</span><span class="w"></span>
+<span class="w">	</span><span class="nf">int3</span><span class="w"></span>
+<span class="w">	</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="exit-an-os-service-to-terminate-a-process">
-<h3><span class="section-number">8.3.3. </span>Exit – An OS service to terminate a process<a class="headerlink" href="#exit-an-os-service-to-terminate-a-process" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="exit-an-os-service-to-terminate-a-process">
+<h3><span class="section-number">8.3.3. </span>Exit – An OS service to terminate a process<a class="headerlink" href="#exit-an-os-service-to-terminate-a-process" title="Permalink to this headline">#</a></h3>
 <p>To exit your process and return an exit value</p>
 <ul class="simple">
 <li><p>requires a call to the OS!</p></li>
 </ul>
 <p>On Intel the instruction is <code class="docutils literal notranslate"><span class="pre">syscall</span></code></p>
 <img alt="../_images/syscallmp.png" src="../_images/syscallmp.png" />
-</div>
-<div class="section" id="the-os-system-calls">
-<h3><span class="section-number">8.3.4. </span>The OS System Calls<a class="headerlink" href="#the-os-system-calls" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="the-os-system-calls">
+<h3><span class="section-number">8.3.4. </span>The OS System Calls<a class="headerlink" href="#the-os-system-calls" title="Permalink to this headline">#</a></h3>
 <p>Each OS Kernel provides a set of calls that an a process can invoke using the <code class="docutils literal notranslate"><span class="pre">syscall</span></code> instruction on an Intel based computer</p>
 <p>The Linux Kernel supports a very large number of system calls each is identified by a unique number that must be placed in <code class="docutils literal notranslate"><span class="pre">RAX</span></code> prior to executing the <code class="docutils literal notranslate"><span class="pre">syscall</span></code> instruction.  Additional arguments are passed in by setting other registers.</p>
 <p>With each version of the Kernel the table of calls changes.  Here is one site that provides a list</p>
@@ -910,6 +1111,7 @@ run
     src="https://filippo.io/linux-syscall-table/"
     frameborder="0"
     allowfullscreen
+
 ></iframe>
 </div></div>
 </div>
@@ -925,15 +1127,15 @@ run
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <div style="width:100%; height:100%; font-size:inherit; overflow: auto;" >
-<div class="highlight-gas notranslate"><div class="highlight"><pre><span></span>	<span class="na">.intel_syntax</span> <span class="no">noprefix</span>
-	
-	<span class="na">.text</span>
-	<span class="na">.global</span> <span class="no">_start</span>
-<span class="nl">_start:</span>      	
-	<span class="nf">mov</span>     <span class="no">rax</span><span class="p">,</span> <span class="mi">60</span>    <span class="c1"># Linux exit system call number is 60       </span>
-	<span class="nf">mov</span>     <span class="no">rdi</span><span class="p">,</span> <span class="mi">0</span>     <span class="c1"># rdi is return value 0 success</span>
+<div class="highlight-gas notranslate"><div class="highlight"><pre><span></span><span class="w">	</span><span class="na">.intel_syntax</span><span class="w"> </span><span class="no">noprefix</span><span class="w"></span>
+<span class="w">	</span>
+<span class="w">	</span><span class="na">.text</span><span class="w"></span>
+<span class="w">	</span><span class="na">.global</span><span class="w"> </span><span class="no">_start</span><span class="w"></span>
+<span class="nl">_start:</span><span class="w">      	</span>
+<span class="w">	</span><span class="nf">mov</span><span class="w">     </span><span class="no">rax</span><span class="p">,</span><span class="w"> </span><span class="mi">60</span><span class="w">    </span><span class="c1"># Linux exit system call number is 60       </span>
+<span class="w">	</span><span class="nf">mov</span><span class="w">     </span><span class="no">rdi</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="w">     </span><span class="c1"># rdi is return value 0 success</span>
 
-	<span class="nf">syscall</span>                         	
+<span class="w">	</span><span class="nf">syscall</span><span class="w">                         	</span>
 </pre></div>
 </div>
 </div>
@@ -943,19 +1145,19 @@ run
 <ul class="simple">
 <li><p>this is good enough for the moment</p></li>
 </ul>
-<div class="section" id="avoiding-hard-coding-system-call-numbers">
-<h4><span class="section-number">8.3.4.1. </span>Avoiding Hard coding system call numbers<a class="headerlink" href="#avoiding-hard-coding-system-call-numbers" title="Permalink to this headline">¶</a></h4>
+<section id="avoiding-hard-coding-system-call-numbers">
+<h4><span class="section-number">8.3.4.1. </span>Avoiding Hard coding system call numbers<a class="headerlink" href="#avoiding-hard-coding-system-call-numbers" title="Permalink to this headline">#</a></h4>
 <p>Operating system code usually provides files that you can include in your code so that you don’t have to hardcode magic numbers like <code class="docutils literal notranslate"><span class="pre">60</span></code> for exit.  In Linux you can add the following file <code class="docutils literal notranslate"><span class="pre">#include</span> <span class="pre">&lt;asm/unistd_64.h&gt;</span></code> to get all the system call numbers.  You can then use <code class="docutils literal notranslate"><span class="pre">__NR_exit</span></code> to mean the number for the exit system call.</p>
 <p>eg.
 exitfancy.S</p>
 <div class="highlight-gas notranslate"><div class="highlight"><pre><span></span><span class="c1">#include &lt;asm/unistd_64.h&gt;</span>
-    <span class="na">.intel_syntax</span> <span class="no">noprefix</span>
-    <span class="na">.text</span>
-    <span class="na">.global</span> <span class="no">_start</span>
-<span class="nl">_start:</span>
-    <span class="nf">mov</span> <span class="no">rax</span><span class="p">,</span><span class="no">__NR_exit</span> <span class="c1"># exit system call number</span>
-    <span class="nf">mov</span> <span class="no">rdi</span><span class="p">,</span><span class="mi">0</span>         <span class="c1"># UNIX success value is 0</span>
-    <span class="nf">syscall</span>           <span class="c1"># call OS. This will not return</span>
+<span class="w">    </span><span class="na">.intel_syntax</span><span class="w"> </span><span class="no">noprefix</span><span class="w"></span>
+<span class="w">    </span><span class="na">.text</span><span class="w"></span>
+<span class="w">    </span><span class="na">.global</span><span class="w"> </span><span class="no">_start</span><span class="w"></span>
+<span class="nl">_start:</span><span class="w"></span>
+<span class="w">    </span><span class="nf">mov</span><span class="w"> </span><span class="no">rax</span><span class="p">,</span><span class="no">__NR_exit</span><span class="w"> </span><span class="c1"># exit system call number</span>
+<span class="w">    </span><span class="nf">mov</span><span class="w"> </span><span class="no">rdi</span><span class="p">,</span><span class="mi">0</span><span class="w">         </span><span class="c1"># UNIX success value is 0</span>
+<span class="w">    </span><span class="nf">syscall</span><span class="w">           </span><span class="c1"># call OS. This will not return</span>
 </pre></div>
 </div>
 <p>But the assemble does not support have support for including files.
@@ -966,11 +1168,11 @@ We must first use another tool called a preprocessor eg.</p>
 </pre></div>
 </div>
 <p>In general we will just skip this and we will just use hardcoded numbers.</p>
-</div>
-</div>
-</div>
-<div class="section" id="exercises-and-extra-materials">
-<h2><span class="section-number">8.4. </span>Exercises  and extra materials<a class="headerlink" href="#exercises-and-extra-materials" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+</section>
+<section id="exercises-and-extra-materials">
+<h2><span class="section-number">8.4. </span>Exercises  and extra materials<a class="headerlink" href="#exercises-and-extra-materials" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>rewrite all the examples to use int3 at the end</p></li>
 <li><p>rewrite all the examples to call OS exit call</p></li>
@@ -981,8 +1183,8 @@ We must first use another tool called a preprocessor eg.</p>
 </ul>
 </li>
 </ul>
-<div class="section" id="makefile-for-all-the-lecture-examples">
-<h3><span class="section-number">8.4.1. </span>Makefile for all the lecture examples<a class="headerlink" href="#makefile-for-all-the-lecture-examples" title="Permalink to this headline">¶</a></h3>
+<section id="makefile-for-all-the-lecture-examples">
+<h3><span class="section-number">8.4.1. </span>Makefile for all the lecture examples<a class="headerlink" href="#makefile-for-all-the-lecture-examples" title="Permalink to this headline">#</a></h3>
 <div class="highlight-make notranslate"><div class="highlight"><pre><span></span><span class="nf">popcnt</span><span class="o">:</span> <span class="n">popcnt</span>.<span class="n">o</span>
         ld -g popcnt.o -o popcnt
 
@@ -1020,9 +1222,9 @@ We must first use another tool called a preprocessor eg.</p>
         -rm -f <span class="k">$(</span>wildcard *.o  popcnt  add int3 <span class="nb">exit</span> exitfancy exitfancy.s<span class="k">)</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="here-is-a-fully-documented-fancy-version-of-exit">
-<h3><span class="section-number">8.4.2. </span>Here is a fully documented fancy version of exit<a class="headerlink" href="#here-is-a-fully-documented-fancy-version-of-exit" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="here-is-a-fully-documented-fancy-version-of-exit">
+<h3><span class="section-number">8.4.2. </span>Here is a fully documented fancy version of exit<a class="headerlink" href="#here-is-a-fully-documented-fancy-version-of-exit" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>We use the the preprocessor to include the OS system call numbers</p></li>
 <li><p>and we use the <code class="docutils literal notranslate"><span class="pre">.equ</span></code> directive of the assembler to make our code more readable</p></li>
@@ -1031,87 +1233,87 @@ We must first use another tool called a preprocessor eg.</p>
 <div class="cell_output docutils container">
 <p>A commented version that avoids &quot;magic&quot; numbers.</p>
 <div style="width:200%; height:100%; font-size:inherit; overflow: auto;" >
-<div class="highlight-gas notranslate"><div class="highlight"><pre><span></span>	<span class="c1"># Pull in a file that contains all the OS system call numbers</span>
-	<span class="c1"># for this to work we must preprocess this file via gcc -E before</span>
-	<span class="c1"># we can assemble it with as so that the contents of the header file</span>
-	<span class="c1"># will be included </span>
-	
+<div class="highlight-gas notranslate"><div class="highlight"><pre><span></span><span class="w">	</span><span class="c1"># Pull in a file that contains all the OS system call numbers</span>
+<span class="w">	</span><span class="c1"># for this to work we must preprocess this file via gcc -E before</span>
+<span class="w">	</span><span class="c1"># we can assemble it with as so that the contents of the header file</span>
+<span class="w">	</span><span class="c1"># will be included </span>
+<span class="w">	</span>
 <span class="c1">#include &lt;asm/unistd_64.h&gt;</span>
 
-	<span class="c1"># See discussion bellow to understand what is in this file</span>
-	
-	<span class="na">.intel_syntax</span> <span class="no">noprefix</span>   <span class="c1"># set assembly language format to intel</span>
+<span class="w">	</span><span class="c1"># See discussion bellow to understand what is in this file</span>
+<span class="w">	</span>
+<span class="w">	</span><span class="na">.intel_syntax</span><span class="w"> </span><span class="no">noprefix</span><span class="w">   </span><span class="c1"># set assembly language format to intel</span>
 
-	<span class="c1"># Define some constants so that we don&#39;t have magic numbers</span>
-	<span class="c1"># in our code.  We use the .equ (equal) assembly directive</span>
-	<span class="c1"># &quot;This directive sets the value of symbol to expression.&quot;</span>
-	<span class="c1"># (https:#sourceware.org/binutils/docs/as/Equ.html#Equ)</span>
-	<span class="c1"># FORMAT:	</span>
-	<span class="c1"># .equ &lt;SYMBOL&gt;, &lt;EXPRESSION&gt;</span>
-	
-	<span class="na">.equ</span> <span class="no">UNIX_SUCCESS_VALUE</span><span class="p">,</span> <span class="mi">0</span>      
-	<span class="no">.equ</span> <span class="no">LINUX_SYSCALL_EXIT</span><span class="p">,</span> <span class="no">__NR_exit</span>
+<span class="w">	</span><span class="c1"># Define some constants so that we don&#39;t have magic numbers</span>
+<span class="w">	</span><span class="c1"># in our code.  We use the .equ (equal) assembly directive</span>
+<span class="w">	</span><span class="c1"># &quot;This directive sets the value of symbol to expression.&quot;</span>
+<span class="w">	</span><span class="c1"># (https:#sourceware.org/binutils/docs/as/Equ.html#Equ)</span>
+<span class="w">	</span><span class="c1"># FORMAT:	</span>
+<span class="w">	</span><span class="c1"># .equ &lt;SYMBOL&gt;, &lt;EXPRESSION&gt;</span>
+<span class="w">	</span>
+<span class="w">	</span><span class="na">.equ</span><span class="w"> </span><span class="no">UNIX_SUCCESS_VALUE</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="w">      </span>
+<span class="w">	</span><span class="no">.equ</span><span class="w"> </span><span class="no">LINUX_SYSCALL_EXIT</span><span class="p">,</span><span class="w"> </span><span class="no">__NR_exit</span><span class="w"></span>
 
-	<span class="na">.text</span>                    <span class="c1"># Place the following in the area that</span>
-	                         <span class="c1"># instruction should be encoded and stored</span>
-	                         <span class="c1"># for historical reasons it is called text</span>
-	<span class="na">.global</span> <span class="no">_start</span>
-<span class="nl">_start:</span>                          <span class="c1"># The linker knows to mark the _start address</span>
-                              	 <span class="c1"># as location where execution should begin.</span>
-	                         <span class="c1"># The OS will be sure to setup the CPU so that the</span>
-	                         <span class="c1"># program counter is initialized with this address</span>
+<span class="w">	</span><span class="na">.text</span><span class="w">                    </span><span class="c1"># Place the following in the area that</span>
+<span class="w">	                         </span><span class="c1"># instruction should be encoded and stored</span>
+<span class="w">	                         </span><span class="c1"># for historical reasons it is called text</span>
+<span class="w">	</span><span class="na">.global</span><span class="w"> </span><span class="no">_start</span><span class="w"></span>
+<span class="nl">_start:</span><span class="w">                          </span><span class="c1"># The linker knows to mark the _start address</span>
+<span class="w">                              	 </span><span class="c1"># as location where execution should begin.</span>
+<span class="w">	                         </span><span class="c1"># The OS will be sure to setup the CPU so that the</span>
+<span class="w">	                         </span><span class="c1"># program counter is initialized with this address</span>
 
-	<span class="c1"># To voluntarily hand control of the cpu back to the Operating system so it can</span>
-	<span class="c1"># do somthing for us we use a special instruction</span>
-	<span class="c1">#  -- on x86_64 this instruction is syscall (man syscall - table 1)</span>
-	<span class="c1">#</span>
-	<span class="c1"># Operating systems provide many functions that a program can call to</span>
-	<span class="c1"># get things done.  eg.  open a stream, read or write bytes to or from a stream</span>
-	<span class="c1"># or simply terminate and exit our program.</span>
-	<span class="c1">#</span>
-	<span class="c1"># Each call is identifed by a number we call a system call number.</span>
-	<span class="c1"># On LINUX it expects us to load rax register with the system call number</span>
-	<span class="c1"># prior to executing the syscall.  Once control is handed over to the OS</span>
-	<span class="c1"># It will then look the number up and invoke the approriate function inside itself.</span>
-	<span class="c1"># Other registers can be used to pass parmeters to the particular OS system call function</span>
-	<span class="c1"># that we want to invoke.  The following is the conventions on X86_64 Linux</span>
-	<span class="c1"># </span>
-	<span class="c1">#       Arch/ABI      arg1  arg2  arg3  arg4  arg5  arg6  arg7 </span>
-        <span class="c1"># ────────────────────────────────────────────────────────────</span>
-        <span class="c1">#       x86-64        rdi   rsi   rdx   r10   r8    r9    -</span>
-	<span class="c1"># (see man syscall -- table 2)</span>
-	<span class="c1"># The list of all Linux system call numbers can be found in a file so that programers</span>
-	<span class="c1"># can know what number to use to invoke a particular call</span>
-	<span class="c1"># On our installation of linux you can find it here</span>
-	<span class="c1">#  /usr/include/x86_64-linux-gnu/asm/unistd_64.h</span>
-	<span class="c1"># For an explanation of all the systems calls see man syscalls (note the s)</span>
-	<span class="c1"># -- When we switch to understanding C we it will be easier to understand</span>
-	<span class="c1">#    the above manual pages</span>
-	<span class="c1">#</span>
-	<span class="c1"># On LINUX </span>
-	<span class="c1">#   One of these calls is the EXIT system call that tells OS our program is done </span>
-	<span class="c1">#   (see man 2 exit)</span>
-	
-	<span class="nf">mov</span>     <span class="no">rax</span><span class="p">,</span> <span class="no">LINUX_SYSCALL_EXIT</span>        <span class="c1"># load rax with the Linux system call number for</span>
-	                                       <span class="c1"># exit</span>
-	
-	<span class="nf">mov</span>     <span class="no">rdi</span><span class="p">,</span> <span class="no">UNIX_SUCCESS_VALUE</span>        <span class="c1"># load rdi with the exit status value we want</span>
-	                                       <span class="c1"># to pass back to the program that launched us</span>
-	                                       <span class="c1"># eg. the shell in which we ran our program from</span>
-	
-	<span class="nf">syscall</span>                                <span class="c1"># use the syscall instruction to hand control over</span>
-	                                       <span class="c1"># to the OS.  Note since we will be terminated</span>
-	                                       <span class="c1"># this instruction will be our last and nothing else</span>
-	                                       <span class="c1"># need follow it</span>
-	
+<span class="w">	</span><span class="c1"># To voluntarily hand control of the cpu back to the Operating system so it can</span>
+<span class="w">	</span><span class="c1"># do somthing for us we use a special instruction</span>
+<span class="w">	</span><span class="c1">#  -- on x86_64 this instruction is syscall (man syscall - table 1)</span>
+<span class="w">	</span><span class="c1">#</span>
+<span class="w">	</span><span class="c1"># Operating systems provide many functions that a program can call to</span>
+<span class="w">	</span><span class="c1"># get things done.  eg.  open a stream, read or write bytes to or from a stream</span>
+<span class="w">	</span><span class="c1"># or simply terminate and exit our program.</span>
+<span class="w">	</span><span class="c1">#</span>
+<span class="w">	</span><span class="c1"># Each call is identifed by a number we call a system call number.</span>
+<span class="w">	</span><span class="c1"># On LINUX it expects us to load rax register with the system call number</span>
+<span class="w">	</span><span class="c1"># prior to executing the syscall.  Once control is handed over to the OS</span>
+<span class="w">	</span><span class="c1"># It will then look the number up and invoke the approriate function inside itself.</span>
+<span class="w">	</span><span class="c1"># Other registers can be used to pass parmeters to the particular OS system call function</span>
+<span class="w">	</span><span class="c1"># that we want to invoke.  The following is the conventions on X86_64 Linux</span>
+<span class="w">	</span><span class="c1"># </span>
+<span class="w">	</span><span class="c1">#       Arch/ABI      arg1  arg2  arg3  arg4  arg5  arg6  arg7 </span>
+<span class="w">        </span><span class="c1"># ────────────────────────────────────────────────────────────</span>
+<span class="w">        </span><span class="c1">#       x86-64        rdi   rsi   rdx   r10   r8    r9    -</span>
+<span class="w">	</span><span class="c1"># (see man syscall -- table 2)</span>
+<span class="w">	</span><span class="c1"># The list of all Linux system call numbers can be found in a file so that programers</span>
+<span class="w">	</span><span class="c1"># can know what number to use to invoke a particular call</span>
+<span class="w">	</span><span class="c1"># On our installation of linux you can find it here</span>
+<span class="w">	</span><span class="c1">#  /usr/include/x86_64-linux-gnu/asm/unistd_64.h</span>
+<span class="w">	</span><span class="c1"># For an explanation of all the systems calls see man syscalls (note the s)</span>
+<span class="w">	</span><span class="c1"># -- When we switch to understanding C we it will be easier to understand</span>
+<span class="w">	</span><span class="c1">#    the above manual pages</span>
+<span class="w">	</span><span class="c1">#</span>
+<span class="w">	</span><span class="c1"># On LINUX </span>
+<span class="w">	</span><span class="c1">#   One of these calls is the EXIT system call that tells OS our program is done </span>
+<span class="w">	</span><span class="c1">#   (see man 2 exit)</span>
+<span class="w">	</span>
+<span class="w">	</span><span class="nf">mov</span><span class="w">     </span><span class="no">rax</span><span class="p">,</span><span class="w"> </span><span class="no">LINUX_SYSCALL_EXIT</span><span class="w">        </span><span class="c1"># load rax with the Linux system call number for</span>
+<span class="w">	                                       </span><span class="c1"># exit</span>
+<span class="w">	</span>
+<span class="w">	</span><span class="nf">mov</span><span class="w">     </span><span class="no">rdi</span><span class="p">,</span><span class="w"> </span><span class="no">UNIX_SUCCESS_VALUE</span><span class="w">        </span><span class="c1"># load rdi with the exit status value we want</span>
+<span class="w">	                                       </span><span class="c1"># to pass back to the program that launched us</span>
+<span class="w">	                                       </span><span class="c1"># eg. the shell in which we ran our program from</span>
+<span class="w">	</span>
+<span class="w">	</span><span class="nf">syscall</span><span class="w">                                </span><span class="c1"># use the syscall instruction to hand control over</span>
+<span class="w">	                                       </span><span class="c1"># to the OS.  Note since we will be terminated</span>
+<span class="w">	                                       </span><span class="c1"># this instruction will be our last and nothing else</span>
+<span class="w">	                                       </span><span class="c1"># need follow it</span>
+<span class="w">	</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -1135,9 +1337,11 @@ We must first use another tool called a preprocessor eg.</p>
 
               </div>
               
-        
-            <!-- Previous / next buttons -->
-<div class='prev-next-area'> 
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
     <a class='left-prev' id="prev-link" href="L07.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
@@ -1153,26 +1357,28 @@ We must first use another tool called a preprocessor eg.</p>
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-        
+            </footer>
         </div>
     </div>
-    <footer class="footer">
-    <div class="container">
-      <p>
-        
-          By Jonathan Appavoo<br/>
-        
-            &copy; Copyright 2021.<br/>
-      </p>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Jonathan Appavoo<br/>
+  
+      &copy; Copyright 2021.<br/>
+</p>
+        </footer>
     </div>
-  </footer>
-</main>
+    
+</div>
 
 
       </div>
     </div>
   
-  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
 
   </body>
 </html>

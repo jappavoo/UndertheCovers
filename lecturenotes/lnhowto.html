@@ -4,11 +4,13 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>How to “view” lecture notes &#8212; UndertheCovers</title>
     
-  <link href="_static/css/theme.css" rel="stylesheet">
-  <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -18,39 +20,38 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin
     href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    
-      
-
-    
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
-  <link rel="preload" as="script" href="_static/js/index.be7d3bbb2ef33a8344ce.js">
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
-    <script src="_static/togglebutton.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script>
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="How to read this book" href="howto.html" />
@@ -62,7 +63,21 @@
     <!-- Google Analytics -->
     
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
     
     <div class="container-fluid" id="banner"></div>
 
@@ -71,9 +86,10 @@
     <div class="container-xl">
       <div class="row">
           
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="index.html">
       
         <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
@@ -91,14 +107,15 @@
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
-        <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="intro_ln.html">
-   Under the Covers : The Secret Life of Software
-  </a>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro_ln.html">
+                    Under the Covers : The Secret Life of Software
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Course Specfic Introductions
  </span>
@@ -280,379 +297,239 @@
 </ul>
 
     </div>
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-</div>
-
-</div>
-
-
-          
-
-
-          
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
             
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
-        
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="_sources/lnhowto.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
-    </div>
-</div>
-
-            <!-- Source interaction buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
-    <div class="dropdown-buttons sourcebuttons">
-        <a class="repository-button"
-            href="https://github.com/jappavoo/UndertheCovers"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="Source repository"><i
-                    class="fab fa-github"></i>repository</button></a>
-        
-        
-    </div>
-</div>
-
-            <!-- Full screen (wrap in <a> to have style consistency -->
-
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
-
-            <!-- Launch buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        
-        <a class="jupyterhub-button" href="https://jupyterhub-opf-jupyterhub.apps.smaug.na.operate-first.cloud/hub/user-redirect/git-pull?repo=https://github.com/jappavoo/UndertheCovers&urlpath=tree/UndertheCovers/underthecovers/lnhowto.ipynb&branch=main"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch JupyterHub" data-toggle="tooltip"
-                data-placement="left"><img class="jupyterhub-button-logo"
-                    src="_static/images/logo_jupyterhub.svg"
-                    alt="Interact on JupyterHub">JupyterHub</button></a>
-        
-        
-        
-    </div>
-</div>
-
-        </div>
-
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
-            
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
             </div>
-            <nav id="bd-toc-nav" aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://jupyterhub-opf-jupyterhub.apps.smaug.na.operate-first.cloud/hub/user-redirect/git-pull?repo=https%3A//github.com/jappavoo/UndertheCovers&urlpath=tree/UndertheCovers/underthecovers/lnhowto.ipynb&branch=main"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on JupyterHub"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="_static/images/logo_jupyterhub.svg">
+  </span>
+<span class="headerbtn__text-container">JupyterHub</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+<a href="https://github.com/jappavoo/UndertheCovers"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="bottom"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="_sources/lnhowto.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#prerequistes">
-   Prerequistes
+  <a class="reference internal nav-link" href="#students">
+   Students
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#step-1-navigate-to-a-static-lecture-page">
-   Step 1: Navigate to a static lecture page
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#step-2-use-the-rocket-icon">
-   Step 2: Use the “Rocket” icon
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#step-3-launch-your-server">
-   Step 3: Launch your server
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#step-4-server-is-booted-into-jupyter-classic">
-   Step 4: Server is booted into Jupyter Classic
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#step-5-go-back-to-the-lecture-note-and-relaunch">
-   Step 5: Go back to the lecture note and relaunch
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#step-6-lecture-and-textbook-content-will-be-cloned-to-your-server">
-   Step 6: Lecture and textbook content will be cloned to your server
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#step-7-lecture-jupyter-notebook-should-open-automatically">
-   Step 7: Lecture Jupyter Notebook should open automatically
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#step-8-run-all-cells-of-the-notebook">
-   Step 8: Run “All” cells of the notebook
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#step-9-cells-will-execute">
-   Step 9: Cells will execute
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#step-10-scroll-back-to-the-top-of-the-notebook">
-   Step 10: Scroll back to the top of the Notebook
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#step-11-click-on-the-first-content-cell-to-select-it">
-   Step 11:  Click on the first content cell to select it
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#step-12-start-rise-mode-presentation-mode">
-   Step 12: Start RISE mode (presentation mode)
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#step-13-view-and-navigate-the-lecture">
-   Step 13: View and navigate the lecture
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#step-14-opening-another-connection-to-your-server">
-   Step 14: Opening another connection to your server
+  <a class="reference internal nav-link" href="#instructors">
+   Instructors
   </a>
  </li>
 </ul>
 
-            </nav>
-        </div>
-    </div>
+    </nav>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>How to “view” lecture notes</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#students">
+   Students
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#instructors">
+   Instructors
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="how-to-view-lecture-notes">
-<h1>How to “view” lecture notes<a class="headerlink" href="#how-to-view-lecture-notes" title="Permalink to this headline">¶</a></h1>
-<p>The lecture notes on this site are static web pages that have been generated from a set of Jupyter Notebooks that are a part of the “Under the Covers: The Secret Life of Software” textbook materials.<br />
-The following are instructions on how to get access to the Jupyter Notebooks from the webpages and how to “launch” them so you can view them as one might in a lecture.</p>
-<div class="section" id="prerequistes">
-<h2>Prerequistes<a class="headerlink" href="#prerequistes" title="Permalink to this headline">¶</a></h2>
-<p>If you have a running <a class="reference internal" href="howto.html"><span class="doc std std-doc">UC online server</span></a> you should save your work and shut it down (<a class="reference internal" href="howto.html"><span class="doc std std-doc">“Shutting Down Your Server”</span></a>).  Then follow the instructions below to restart your server in a way that will allow you to view lectures.  After you have launched a lecture you can then open a new web browser window and access your server via the lab interface if you want o concurrently work on examples (the final step of these instructions).</p>
-</div>
-<div class="section" id="step-1-navigate-to-a-static-lecture-page">
-<h2>Step 1: Navigate to a static lecture page<a class="headerlink" href="#step-1-navigate-to-a-static-lecture-page" title="Permalink to this headline">¶</a></h2>
-<p>In the following we will use the following page as our example <a class="reference internal" href="assembly/L10.html"><span class="doc std std-doc">Lecture</span></a>.</p>
-<center>
-<img src="images/lnhowto/lnhowto-001.png" >
-</center></div>
-<div class="section" id="step-2-use-the-rocket-icon">
-<h2>Step 2: Use the “Rocket” icon<a class="headerlink" href="#step-2-use-the-rocket-icon" title="Permalink to this headline">¶</a></h2>
-<p>As illustrated below each launchable page such as a lecture has a rocket icon on it.  Hovering over the rocket will reveal a “JupyterHub” menu selection which you should click on.</p>
-<center>
-<img src="images/lnhowto/lnhowto-002.png" >
-</center></div>
-<div class="section" id="step-3-launch-your-server">
-<h2>Step 3: Launch your server<a class="headerlink" href="#step-3-launch-your-server" title="Permalink to this headline">¶</a></h2>
-<p>The above step should lead you to a set of pages that will let you launch your server.  This process is illustrated below.  <strong>On the last page be sure to select the correct image as illustrate.</strong></p>
-<div class="cell tag_remove-input docutils container">
-<div class="cell_output docutils container">
-<!-- produced by: 
-htmlFig("[['images/lnhowto/lnhowto-003.png', 'images/lnhowto/lnhowto-004.png', 'images/lnhowto/lnhowto-005.png']]", 
-        id="", 
-        align="center", 
-        width="100%",
-        margin="auto auto auto auto",
-        caption="", 
-        captionalign="left")
--->
-<table align="center" width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse: collapse; margin: auto auto auto auto">
-    <tr style="padding: 0; margin: 0;"> 
-        <td colspan="1" width="100%" style="padding: 0; margin: 0 0 0 0; background-color:inherit;">
-            <div style="padding: 0; margin: 0 0 0 0;">
-              <figure style="padding: 0; margin: 0 0 0 0; width:100%;">
-                   <img src="images/lnhowto/lnhowto-003.png" width="100%" style="padding: 0; margin: 0;">
-                </figure>
-            </div>
-        </td>
-        <td colspan="1" width="100%" style="padding: 0; margin: 0 0 0 0; background-color:inherit;">
-            <div style="padding: 0; margin: 0 0 0 0;">
-              <figure style="padding: 0; margin: 0 0 0 0; width:100%;">
-                   <img src="images/lnhowto/lnhowto-004.png" width="100%" style="padding: 0; margin: 0;">
-                </figure>
-            </div>
-        </td>
-        <td colspan="1" width="100%" style="padding: 0; margin: 0 0 0 0; background-color:inherit;">
-            <div style="padding: 0; margin: 0 0 0 0;">
-              <figure style="padding: 0; margin: 0 0 0 0; width:100%;">
-                   <img src="images/lnhowto/lnhowto-005.png" width="100%" style="padding: 0; margin: 0;">
-                </figure>
-            </div>
-        </td>
-    </tr>
-</table>
-</div>
-</div>
-<p>This should then trigger the booting of you server which will take a few minutes.  You should see something like the following</p>
-<div class="cell tag_remove-input docutils container">
-<div class="cell_output docutils container">
-<!-- produced by: 
-htmlFig("[['images/lnhowto/lnhowto-006.png', 'images/lnhowto/lnhowto-007.png']]", 
-        id="", 
-        align="center", 
-        width="100%",
-        margin="auto auto auto auto",
-        caption="", 
-        captionalign="left")
--->
-<table align="center" width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse: collapse; margin: auto auto auto auto">
-    <tr style="padding: 0; margin: 0;"> 
-        <td colspan="1" width="100%" style="padding: 0; margin: 0 0 0 0; background-color:inherit;">
-            <div style="padding: 0; margin: 0 0 0 0;">
-              <figure style="padding: 0; margin: 0 0 0 0; width:100%;">
-                   <img src="images/lnhowto/lnhowto-006.png" width="100%" style="padding: 0; margin: 0;">
-                </figure>
-            </div>
-        </td>
-        <td colspan="1" width="100%" style="padding: 0; margin: 0 0 0 0; background-color:inherit;">
-            <div style="padding: 0; margin: 0 0 0 0;">
-              <figure style="padding: 0; margin: 0 0 0 0; width:100%;">
-                   <img src="images/lnhowto/lnhowto-007.png" width="100%" style="padding: 0; margin: 0;">
-                </figure>
-            </div>
-        </td>
-    </tr>
-</table>
-</div>
-</div>
-</div>
-<div class="section" id="step-4-server-is-booted-into-jupyter-classic">
-<h2>Step 4: Server is booted into Jupyter Classic<a class="headerlink" href="#step-4-server-is-booted-into-jupyter-classic" title="Permalink to this headline">¶</a></h2>
-<p>After the server is booted you should be displayed the classic jupyter notebook interface to the server as shown below.</p>
-<center>
-<img src="images/lnhowto/lnhowto-008.png" >
-</center></div>
-<div class="section" id="step-5-go-back-to-the-lecture-note-and-relaunch">
-<h2>Step 5: Go back to the lecture note and relaunch<a class="headerlink" href="#step-5-go-back-to-the-lecture-note-and-relaunch" title="Permalink to this headline">¶</a></h2>
-<p>At this point you want to redo the steps to launch the lecture on to your newly booted server running the classic Jupyter Notebook interface.  So go back to the original lecture note webpage and relaunch as illustated below.</p>
-<div class="cell tag_remove-input docutils container">
-<div class="cell_output docutils container">
-<!-- produced by: 
-htmlFig("[['images/lnhowto/lnhowto-001.png', 'images/lnhowto/lnhowto-002.png']]", 
-        id="", 
-        align="center", 
-        width="100%",
-        margin="auto auto auto auto",
-        caption="", 
-        captionalign="left")
--->
-<table align="center" width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse: collapse; margin: auto auto auto auto">
-    <tr style="padding: 0; margin: 0;"> 
-        <td colspan="1" width="100%" style="padding: 0; margin: 0 0 0 0; background-color:inherit;">
-            <div style="padding: 0; margin: 0 0 0 0;">
-              <figure style="padding: 0; margin: 0 0 0 0; width:100%;">
-                   <img src="images/lnhowto/lnhowto-001.png" width="100%" style="padding: 0; margin: 0;">
-                </figure>
-            </div>
-        </td>
-        <td colspan="1" width="100%" style="padding: 0; margin: 0 0 0 0; background-color:inherit;">
-            <div style="padding: 0; margin: 0 0 0 0;">
-              <figure style="padding: 0; margin: 0 0 0 0; width:100%;">
-                   <img src="images/lnhowto/lnhowto-002.png" width="100%" style="padding: 0; margin: 0;">
-                </figure>
-            </div>
-        </td>
-    </tr>
-</table>
-</div>
-</div>
-<p>This time however the steps below should happen.</p>
-</div>
-<div class="section" id="step-6-lecture-and-textbook-content-will-be-cloned-to-your-server">
-<h2>Step 6: Lecture and textbook content will be cloned to your server<a class="headerlink" href="#step-6-lecture-and-textbook-content-will-be-cloned-to-your-server" title="Permalink to this headline">¶</a></h2>
-<p>This should happen automatically this time when you launch via the rocket icon.</p>
-<center>
-<img src="images/lnhowto/lnhowto-009.png" >
-</center></div>
-<div class="section" id="step-7-lecture-jupyter-notebook-should-open-automatically">
-<h2>Step 7: Lecture Jupyter Notebook should open automatically<a class="headerlink" href="#step-7-lecture-jupyter-notebook-should-open-automatically" title="Permalink to this headline">¶</a></h2>
-<p>After the content autmatically clones on to your server it should also automatically open the Jupyter Notebook of the static lecture you launched from.</p>
-<center>
-<img src="images/lnhowto/lnhowto-010.png" >
-</center></div>
-<div class="section" id="step-8-run-all-cells-of-the-notebook">
-<h2>Step 8: Run “All” cells of the notebook<a class="headerlink" href="#step-8-run-all-cells-of-the-notebook" title="Permalink to this headline">¶</a></h2>
-<p>To setup the lecture you need to run all the cells of the Notebook.  To do this use the “Cell” menu and specfically select “Run All”.  See below.</p>
-<center>
-<img src="images/lnhowto/lnhowto-011.png" >
-</center></div>
-<div class="section" id="step-9-cells-will-execute">
-<h2>Step 9: Cells will execute<a class="headerlink" href="#step-9-cells-will-execute" title="Permalink to this headline">¶</a></h2>
-<p>As the cells execute the notebook might scroll to various locations.</p>
-<center>
-<img src="images/lnhowto/lnhowto-012.png" >
-</center></div>
-<div class="section" id="step-10-scroll-back-to-the-top-of-the-notebook">
-<h2>Step 10: Scroll back to the top of the Notebook<a class="headerlink" href="#step-10-scroll-back-to-the-top-of-the-notebook" title="Permalink to this headline">¶</a></h2>
-<center>
-<img src="images/lnhowto/lnhowto-013.png" >
-</center></div>
-<div class="section" id="step-11-click-on-the-first-content-cell-to-select-it">
-<h2>Step 11:  Click on the first content cell to select it<a class="headerlink" href="#step-11-click-on-the-first-content-cell-to-select-it" title="Permalink to this headline">¶</a></h2>
-<center>
-<img src="images/lnhowto/lnhowto-014.png" >
-</center></div>
-<div class="section" id="step-12-start-rise-mode-presentation-mode">
-<h2>Step 12: Start RISE mode (presentation mode)<a class="headerlink" href="#step-12-start-rise-mode-presentation-mode" title="Permalink to this headline">¶</a></h2>
-<center>
-<img src="images/lnhowto/lnhowto-015.png" >
-</center></div>
-<div class="section" id="step-13-view-and-navigate-the-lecture">
-<h2>Step 13: View and navigate the lecture<a class="headerlink" href="#step-13-view-and-navigate-the-lecture" title="Permalink to this headline">¶</a></h2>
-<p>At this point you should see the lecture in presentation mode.  Use the space bar to advance slides, shift space bar to go back a slide.  The “?” in the lower left has an explantion of the controls.
-You can also press “t” to open the speaker notes window that as addtional details.</p>
-<center>
-<img src="images/lnhowto/lnhowto-016.png" >
-</center></div>
-<div class="section" id="step-14-opening-another-connection-to-your-server">
-<h2>Step 14: Opening another connection to your server<a class="headerlink" href="#step-14-opening-another-connection-to-your-server" title="Permalink to this headline">¶</a></h2>
-<p>At this point you probably want to open another browser window so that you cannot work on your server while you view the lecture material.  To do this follow this link in the new window
-<a class="reference external" href="https://jupyterhub-redhat-ods-applications.apps.bu-rosa.8pmt.p1.openshiftapps.com/hub/user-redirect/lab">https://jupyterhub-redhat-ods-applications.apps.bu-rosa.8pmt.p1.openshiftapps.com/hub/user-redirect/lab</a>
-The above assumes you are on the BU service.</p>
-</div>
-</div>
+  <section class="tex2jax_ignore mathjax_ignore" id="how-to-view-lecture-notes">
+<h1>How to “view” lecture notes<a class="headerlink" href="#how-to-view-lecture-notes" title="Permalink to this headline">#</a></h1>
+<p>The lecture notes on this site are static web pages that have been generated from a set of Jupyter Notebooks that are a part of the “Under the Covers: The Secret Life of Software” textbook materials.</p>
+<section id="students">
+<h2>Students<a class="headerlink" href="#students" title="Permalink to this headline">#</a></h2>
+<p>If you are a student the lectures are  converted so that the static version reflects all the material presented in the class room setting along with additional notes.</p>
+</section>
+<section id="instructors">
+<h2>Instructors<a class="headerlink" href="#instructors" title="Permalink to this headline">#</a></h2>
+<p>In a classroom setting we use the source lecture specific jupyter notebooks to present.  These notebooks are designed to be view with the <a class="reference external" href="https://rise.readthedocs.io/en/stable/">RISE</a> jupyter extension.  Unfortunately the default version of RISE is not compatible with the Jupyter Lab interface yet.  “The Under the Covers the Secret Life of Software”,  textbook, as part of the Open Education Effort is using a customized prototype version of the RISE extension for Jupyter Lab.  This work allows us to present the lecture notebooks using RISE in Jupyter Lab.    This allows us to present the “slides” beside terminals all within the same Jupyter Lab instance.</p>
+<p>This, however, is a work in progress and we recommend you reach out to the author for details if you are interested in replicating the lecture environment.</p>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -676,9 +553,11 @@ The above assumes you are on the BU service.</p>
 
               </div>
               
-        
-            <!-- Previous / next buttons -->
-<div class='prev-next-area'> 
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
     <a class='left-prev' id="prev-link" href="L00_400_F21_JA.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
@@ -694,26 +573,28 @@ The above assumes you are on the BU service.</p>
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-        
+            </footer>
         </div>
     </div>
-    <footer class="footer">
-    <div class="container">
-      <p>
-        
-          By Jonathan Appavoo<br/>
-        
-            &copy; Copyright 2021.<br/>
-      </p>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Jonathan Appavoo<br/>
+  
+      &copy; Copyright 2021.<br/>
+</p>
+        </footer>
     </div>
-  </footer>
-</main>
+    
+</div>
 
 
       </div>
     </div>
   
-  <script src="_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
 
   </body>
 </html>

@@ -4,11 +4,13 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>14. SLS Lecture 14 : Assembly using the OS &#8212; UndertheCovers</title>
     
-  <link href="../_static/css/theme.css" rel="stylesheet">
-  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -18,39 +20,38 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin
     href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    
-      
-
-    
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
-    <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script>
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="15. SLS Lecture 15 : Topics" href="L15.html" />
@@ -62,7 +63,21 @@
     <!-- Google Analytics -->
     
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
     
     <div class="container-fluid" id="banner"></div>
 
@@ -71,9 +86,10 @@
     <div class="container-xl">
       <div class="row">
           
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../index.html">
       
         <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
@@ -91,14 +107,15 @@
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
-        <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../intro_ln.html">
-   Under the Covers : The Secret Life of Software
-  </a>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro_ln.html">
+                    Under the Covers : The Secret Life of Software
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Course Specfic Introductions
  </span>
@@ -280,104 +297,177 @@
 </ul>
 
     </div>
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-</div>
-
-</div>
-
-
-          
-
-
-          
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
             
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
-        
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/assembly/L14.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
-    </div>
-</div>
-
-            <!-- Source interaction buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
-    <div class="dropdown-buttons sourcebuttons">
-        <a class="repository-button"
-            href="https://github.com/jappavoo/UndertheCovers"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="Source repository"><i
-                    class="fab fa-github"></i>repository</button></a>
-        
-        
-    </div>
-</div>
-
-            <!-- Full screen (wrap in <a> to have style consistency -->
-
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
-
-            <!-- Launch buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        
-        <a class="jupyterhub-button" href="https://jupyterhub-opf-jupyterhub.apps.smaug.na.operate-first.cloud/hub/user-redirect/git-pull?repo=https://github.com/jappavoo/UndertheCovers&urlpath=tree/UndertheCovers/underthecovers/assembly/L14.ipynb&branch=main"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch JupyterHub" data-toggle="tooltip"
-                data-placement="left"><img class="jupyterhub-button-logo"
-                    src="../_static/images/logo_jupyterhub.svg"
-                    alt="Interact on JupyterHub">JupyterHub</button></a>
-        
-        
-        
-    </div>
-</div>
-
-        </div>
-
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
-            
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
             </div>
-            <nav id="bd-toc-nav" aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://jupyterhub-opf-jupyterhub.apps.smaug.na.operate-first.cloud/hub/user-redirect/git-pull?repo=https%3A//github.com/jappavoo/UndertheCovers&urlpath=tree/UndertheCovers/underthecovers/assembly/L14.ipynb&branch=main"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on JupyterHub"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_jupyterhub.svg">
+  </span>
+<span class="headerbtn__text-container">JupyterHub</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+<a href="https://github.com/jappavoo/UndertheCovers"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="bottom"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/assembly/L14.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#review-of-processes">
    14.1. Review of Processes
@@ -497,17 +587,152 @@
  </li>
 </ul>
 
-            </nav>
-        </div>
-    </div>
+    </nav>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>SLS Lecture 14 : Assembly using the OS</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#review-of-processes">
+   14.1. Review of Processes
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#processes-and-the-kernel">
+     14.1.1. Processes and the Kernel
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#review-of-system-calls-from-lecture-08">
+   14.2. Review of System Calls - From Lecture 08
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#intel-syscall">
+     14.2.1. Intel
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       syscall
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-os-system-calls">
+     14.2.2. The OS System Calls
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#linux-system-calls">
+     14.2.3. LINUX SYSTEM CALLS
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#process-address-spaces">
+   14.3. Process Address Spaces
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#address-space-organizes-memory-of-a-process">
+     14.3.1. Address Space organizes Memory of a Process
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#assembly-programming-as-process-address-space-image-creation">
+     14.3.2. Assembly Programming as Process Address Space Image creation
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-details">
+     14.3.3. The Details
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#process-address-space">
+     14.3.4. Process Address Space
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exploring-the-address-space">
+     14.3.5. Exploring the Address Space
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#add-another-section-to-control-how-region-is-mapped">
+       14.3.5.1. Add another section to control how region is mapped
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ok-lets-get-some-more-memory-and-and-grow-our-heap">
+   14.4. Ok lets get some more memory – And and Grow our Heap
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#i-o">
+   14.5. I/O
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#review-from-lecture-3">
+     14.5.1. Review from Lecture 3
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#finally-hello-world-in-assembly">
+     14.5.2. Finally “Hello World in Assembly”
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#at-long-last-we-have-a-program-that-we-don-t-need-the-debugger-for">
+       14.5.2.1. At long last we have a program that we don’t need the debugger for!
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#there-are-many-more-calls-for-doing-i-o">
+     14.5.3. There are many more calls for doing I/O
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercises">
+     14.5.4. Exercises
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="sls-lecture-14-assembly-using-the-os">
-<h1><span class="section-number">14. </span>SLS Lecture 14 : Assembly using the OS<a class="headerlink" href="#sls-lecture-14-assembly-using-the-os" title="Permalink to this headline">¶</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="sls-lecture-14-assembly-using-the-os">
+<h1><span class="section-number">14. </span>SLS Lecture 14 : Assembly using the OS<a class="headerlink" href="#sls-lecture-14-assembly-using-the-os" title="Permalink to this headline">#</a></h1>
 <ul class="simple">
 <li><p>Review of Processes</p></li>
 <li><p>Review of Systems Calls</p></li>
@@ -532,23 +757,23 @@
 <li><p>normally you would want to track everything in git</p></li>
 </ul>
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "ba8a62cc7a14433d8c9042176471f316", "version_major": 2, "version_minor": 0}
+{"model_id": "5b09ba28014845c2b4fa28c22a02b8cb", "version_major": 2, "version_minor": 0}
 </script></div>
 </div>
-<div class="section" id="review-of-processes">
-<h2><span class="section-number">14.1. </span>Review of Processes<a class="headerlink" href="#review-of-processes" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="processes-and-the-kernel">
-<h3><span class="section-number">14.1.1. </span>Processes and the Kernel<a class="headerlink" href="#processes-and-the-kernel" title="Permalink to this headline">¶</a></h3>
+<section id="review-of-processes">
+<h2><span class="section-number">14.1. </span>Review of Processes<a class="headerlink" href="#review-of-processes" title="Permalink to this headline">#</a></h2>
+<section id="processes-and-the-kernel">
+<h3><span class="section-number">14.1.1. </span>Processes and the Kernel<a class="headerlink" href="#processes-and-the-kernel" title="Permalink to this headline">#</a></h3>
 <center>
 <img src="../images/UnixRunning.png">
     </center><center>
     <img src="../images/Processes/Processes.004.png">
 </center><center>
     <img src="../images/Processes/Processes.005.png">
-</center></div>
-</div>
-<div class="section" id="review-of-system-calls-from-lecture-08">
-<h2><span class="section-number">14.2. </span>Review of System Calls - From Lecture 08<a class="headerlink" href="#review-of-system-calls-from-lecture-08" title="Permalink to this headline">¶</a></h2>
+</center></section>
+</section>
+<section id="review-of-system-calls-from-lecture-08">
+<h2><span class="section-number">14.2. </span>Review of System Calls - From Lecture 08<a class="headerlink" href="#review-of-system-calls-from-lecture-08" title="Permalink to this headline">#</a></h2>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <!-- produced by: 
@@ -583,19 +808,19 @@ htmlFig("[{'src': '../images/kerneldef.png'}]",
 <p>Not useful on its own only useful and accessed by running other programs.</p>
 <center>
 <img src="../images/Processes/Processes.051.png">
-</center><div class="section" id="intel-syscall">
-<h3><span class="section-number">14.2.1. </span>Intel <code class="docutils literal notranslate"><span class="pre">syscall</span></code><a class="headerlink" href="#intel-syscall" title="Permalink to this headline">¶</a></h3>
+</center><section id="intel-syscall">
+<h3><span class="section-number">14.2.1. </span>Intel <code class="docutils literal notranslate"><span class="pre">syscall</span></code><a class="headerlink" href="#intel-syscall" title="Permalink to this headline">#</a></h3>
 <p>On Intel the instruction is <code class="docutils literal notranslate"><span class="pre">syscall</span></code></p>
 <img alt="../_images/syscallmp.png" src="../_images/syscallmp.png" />
-</div>
-<div class="section" id="the-os-system-calls">
-<h3><span class="section-number">14.2.2. </span>The OS System Calls<a class="headerlink" href="#the-os-system-calls" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="the-os-system-calls">
+<h3><span class="section-number">14.2.2. </span>The OS System Calls<a class="headerlink" href="#the-os-system-calls" title="Permalink to this headline">#</a></h3>
 <p>Each OS Kernel provides a set of calls that a process can invoke using the <code class="docutils literal notranslate"><span class="pre">syscall</span></code> instruction on an Intel based computer</p>
 <p>The Linux Kernel supports a very large number of system calls each is identified by a unique number that must be placed in <code class="docutils literal notranslate"><span class="pre">RAX</span></code> prior to executing the <code class="docutils literal notranslate"><span class="pre">syscall</span></code> instruction.  Additional arguments are passed in by setting other registers.</p>
 <p>With each version of the Kernel the table of calls changes.  Here is one site that provides a list</p>
-</div>
-<div class="section" id="linux-system-calls">
-<h3><span class="section-number">14.2.3. </span>LINUX SYSTEM CALLS<a class="headerlink" href="#linux-system-calls" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="linux-system-calls">
+<h3><span class="section-number">14.2.3. </span>LINUX SYSTEM CALLS<a class="headerlink" href="#linux-system-calls" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>reading some man pages <code class="docutils literal notranslate"><span class="pre">man</span> <span class="pre">syscalls</span></code> and <code class="docutils literal notranslate"><span class="pre">man</span> <span class="pre">syscall</span></code> we find that</p>
 <ul>
@@ -607,7 +832,7 @@ htmlFig("[{'src': '../images/kerneldef.png'}]",
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "50d07ab8951740069fbe3941a2266fd4", "version_major": 2, "version_minor": 0}
+{"model_id": "e7426d62c327439bb411b0a080175606", "version_major": 2, "version_minor": 0}
 </script></div>
 </div>
 <div class="cell tag_remove-input docutils container">
@@ -619,32 +844,33 @@ htmlFig("[{'src': '../images/kerneldef.png'}]",
     src="https://filippo.io/linux-syscall-table/"
     frameborder="0"
     allowfullscreen
+
 ></iframe>
 </div></div>
 </div>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <div style="width:100%; height:100%; font-size:inherit; overflow: auto;" >
-<div class="highlight-gas notranslate"><div class="highlight"><pre><span></span>	<span class="na">.intel_syntax</span> <span class="no">noprefix</span>
-	
-	<span class="na">.text</span>
-	<span class="na">.global</span> <span class="no">_start</span>
-<span class="nl">_start:</span>      	
-	<span class="nf">mov</span>     <span class="no">rax</span><span class="p">,</span> <span class="mi">60</span>    <span class="c1"># Linux exit system call number is 60       </span>
-	<span class="nf">mov</span>     <span class="no">rdi</span><span class="p">,</span> <span class="mi">0</span>     <span class="c1"># rdi is return value 0 success</span>
+<div class="highlight-gas notranslate"><div class="highlight"><pre><span></span><span class="w">	</span><span class="na">.intel_syntax</span><span class="w"> </span><span class="no">noprefix</span><span class="w"></span>
+<span class="w">	</span>
+<span class="w">	</span><span class="na">.text</span><span class="w"></span>
+<span class="w">	</span><span class="na">.global</span><span class="w"> </span><span class="no">_start</span><span class="w"></span>
+<span class="nl">_start:</span><span class="w">      	</span>
+<span class="w">	</span><span class="nf">mov</span><span class="w">     </span><span class="no">rax</span><span class="p">,</span><span class="w"> </span><span class="mi">60</span><span class="w">    </span><span class="c1"># Linux exit system call number is 60       </span>
+<span class="w">	</span><span class="nf">mov</span><span class="w">     </span><span class="no">rdi</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="w">     </span><span class="c1"># rdi is return value 0 success</span>
 
-	<span class="nf">syscall</span>                         	
+<span class="w">	</span><span class="nf">syscall</span><span class="w">                         	</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="process-address-spaces">
-<h2><span class="section-number">14.3. </span>Process Address Spaces<a class="headerlink" href="#process-address-spaces" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="address-space-organizes-memory-of-a-process">
-<h3><span class="section-number">14.3.1. </span>Address Space organizes Memory of a Process<a class="headerlink" href="#address-space-organizes-memory-of-a-process" title="Permalink to this headline">¶</a></h3>
+</section>
+</section>
+<section id="process-address-spaces">
+<h2><span class="section-number">14.3. </span>Process Address Spaces<a class="headerlink" href="#process-address-spaces" title="Permalink to this headline">#</a></h2>
+<section id="address-space-organizes-memory-of-a-process">
+<h3><span class="section-number">14.3.1. </span>Address Space organizes Memory of a Process<a class="headerlink" href="#address-space-organizes-memory-of-a-process" title="Permalink to this headline">#</a></h3>
 <center>
     <img src="../images/ProcessContexts.png">
 </center><p><strong>Remember</strong></p>
@@ -653,21 +879,21 @@ htmlFig("[{'src': '../images/kerneldef.png'}]",
 <li><p>When we “run” our executables via the shell it creates a new process context and our binary is loaded as the initial memory “image”.</p></li>
 <li><p>The memory and register values of the process are unique to each process and change as the instructions of our binary “execute”</p></li>
 </ol>
-</div>
-<div class="section" id="assembly-programming-as-process-address-space-image-creation">
-<h3><span class="section-number">14.3.2. </span>Assembly Programming as Process Address Space Image creation<a class="headerlink" href="#assembly-programming-as-process-address-space-image-creation" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="assembly-programming-as-process-address-space-image-creation">
+<h3><span class="section-number">14.3.2. </span>Assembly Programming as Process Address Space Image creation<a class="headerlink" href="#assembly-programming-as-process-address-space-image-creation" title="Permalink to this headline">#</a></h3>
 <center>
     <img src="../images/ASSEMBLY-AddressSpaceandIO/ASSEMBLY-AddressSpaceandIO.003.png">
 </center><center>
     <img src="../images/ASSEMBLY-AddressSpaceandIO/ASSEMBLY-AddressSpaceandIO.004.png">
 </center><center>
     <img src="../images/ASSEMBLY-AddressSpaceandIO/ASSEMBLY-AddressSpaceandIO.005.png">
-</center></div>
-<div class="section" id="the-details">
-<h3><span class="section-number">14.3.3. </span>The Details<a class="headerlink" href="#the-details" title="Permalink to this headline">¶</a></h3>
-</div>
-<div class="section" id="process-address-space">
-<h3><span class="section-number">14.3.4. </span>Process Address Space<a class="headerlink" href="#process-address-space" title="Permalink to this headline">¶</a></h3>
+</center></section>
+<section id="the-details">
+<h3><span class="section-number">14.3.3. </span>The Details<a class="headerlink" href="#the-details" title="Permalink to this headline">#</a></h3>
+</section>
+<section id="process-address-space">
+<h3><span class="section-number">14.3.4. </span>Process Address Space<a class="headerlink" href="#process-address-space" title="Permalink to this headline">#</a></h3>
 <p>The Memory of a Process is organized as an (Virtual) Address Space</p>
 <ol class="simple">
 <li><p>Each possible location of a byte is identified by a unique address (number)</p></li>
@@ -706,9 +932,9 @@ htmlFig("[{'src': '../images/kerneldef.png'}]",
     <img src="../images/ExecAddrSpace/ExecAddrSpace-010.png">
 </center><center>
     <img src="../images/ExecAddrSpace/ExecAddrSpace-011.png">
-</center></div>
-<div class="section" id="exploring-the-address-space">
-<h3><span class="section-number">14.3.5. </span>Exploring the Address Space<a class="headerlink" href="#exploring-the-address-space" title="Permalink to this headline">¶</a></h3>
+</center></section>
+<section id="exploring-the-address-space">
+<h3><span class="section-number">14.3.5. </span>Exploring the Address Space<a class="headerlink" href="#exploring-the-address-space" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>Let’s explore the address space of a running program</p></li>
 </ul>
@@ -716,38 +942,38 @@ htmlFig("[{'src': '../images/kerneldef.png'}]",
 <div class="cell_output docutils container">
 <p><b>CODE: asm - usesum5.S</p>
 <div style="width:107em; height:100%; font-size:inherit; overflow: auto;" >
-<div class="highlight-gas notranslate"><div class="highlight"><pre><span></span>	<span class="na">.intel_syntax</span> <span class="no">noprefix</span>
-	<span class="na">.data</span>	
-	<span class="no">.comm</span> <span class="no">A_SUM</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">8</span>
-	<span class="na">.comm</span> <span class="no">A_LEN</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">8</span>
-	<span class="na">.comm</span> <span class="no">A</span><span class="p">,</span> <span class="mi">8</span><span class="p">*</span><span class="mi">1024</span><span class="p">,</span> <span class="mi">8</span>	
+<div class="highlight-gas notranslate"><div class="highlight"><pre><span></span><span class="w">	</span><span class="na">.intel_syntax</span><span class="w"> </span><span class="no">noprefix</span><span class="w"></span>
+<span class="w">	</span><span class="na">.data</span><span class="w">	</span>
+<span class="w">	</span><span class="no">.comm</span><span class="w"> </span><span class="no">A_SUM</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="w"></span>
+<span class="w">	</span><span class="na">.comm</span><span class="w"> </span><span class="no">A_LEN</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="w"></span>
+<span class="w">	</span><span class="na">.comm</span><span class="w"> </span><span class="no">A</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">*</span><span class="mi">1024</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="w">	</span>
 
-	<span class="no">.comm</span> <span class="no">B_SUM</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">8</span>
-	<span class="na">.comm</span> <span class="no">B_LEN</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">8</span>
-	<span class="na">.comm</span> <span class="no">B</span><span class="p">,</span> <span class="mi">8</span><span class="p">*</span><span class="mi">1024</span><span class="p">,</span> <span class="mi">8</span>	
+<span class="w">	</span><span class="no">.comm</span><span class="w"> </span><span class="no">B_SUM</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="w"></span>
+<span class="w">	</span><span class="na">.comm</span><span class="w"> </span><span class="no">B_LEN</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="w"></span>
+<span class="w">	</span><span class="na">.comm</span><span class="w"> </span><span class="no">B</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">*</span><span class="mi">1024</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="w">	</span>
 
-	<span class="no">.comm</span> <span class="no">C_SUM</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">8</span>
-	<span class="na">.comm</span> <span class="no">C_LEN</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">8</span>
-	<span class="na">.comm</span> <span class="no">C</span><span class="p">,</span> <span class="mi">8</span><span class="p">*</span><span class="mi">1024</span><span class="p">,</span> <span class="mi">8</span>	
+<span class="w">	</span><span class="no">.comm</span><span class="w"> </span><span class="no">C_SUM</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="w"></span>
+<span class="w">	</span><span class="na">.comm</span><span class="w"> </span><span class="no">C_LEN</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="w"></span>
+<span class="w">	</span><span class="na">.comm</span><span class="w"> </span><span class="no">C</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">*</span><span class="mi">1024</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="w">	</span>
 
-	<span class="no">.text</span>
-	<span class="na">.global</span> <span class="no">_start</span> 
-<span class="no">_start</span><span class="p">:</span>
-	<span class="nf">mov</span> <span class="no">rbx</span><span class="p">,</span> <span class="no">QWORD</span> <span class="no">PTR</span> <span class="p">[</span><span class="no">A_LEN</span><span class="p">]</span>
-	<span class="nf">mov</span> <span class="no">rcx</span><span class="p">,</span> <span class="no">OFFSET</span> <span class="no">A</span>
-	<span class="nf">call</span> <span class="no">sumIt</span>
-	<span class="nf">mov</span> <span class="no">QWORD</span> <span class="no">PTR</span> <span class="p">[</span><span class="no">A_SUM</span><span class="p">],</span> <span class="no">rax</span>
+<span class="w">	</span><span class="no">.text</span><span class="w"></span>
+<span class="w">	</span><span class="na">.global</span><span class="w"> </span><span class="no">_start</span><span class="w"> </span>
+<span class="no">_start</span><span class="p">:</span><span class="w"></span>
+<span class="w">	</span><span class="nf">mov</span><span class="w"> </span><span class="no">rbx</span><span class="p">,</span><span class="w"> </span><span class="no">QWORD</span><span class="w"> </span><span class="no">PTR</span><span class="w"> </span><span class="p">[</span><span class="no">A_LEN</span><span class="p">]</span><span class="w"></span>
+<span class="w">	</span><span class="nf">mov</span><span class="w"> </span><span class="no">rcx</span><span class="p">,</span><span class="w"> </span><span class="no">OFFSET</span><span class="w"> </span><span class="no">A</span><span class="w"></span>
+<span class="w">	</span><span class="nf">call</span><span class="w"> </span><span class="no">sumIt</span><span class="w"></span>
+<span class="w">	</span><span class="nf">mov</span><span class="w"> </span><span class="no">QWORD</span><span class="w"> </span><span class="no">PTR</span><span class="w"> </span><span class="p">[</span><span class="no">A_SUM</span><span class="p">],</span><span class="w"> </span><span class="no">rax</span><span class="w"></span>
 
-	<span class="nf">mov</span> <span class="no">rbx</span><span class="p">,</span> <span class="no">QWORD</span> <span class="no">PTR</span> <span class="p">[</span><span class="no">B_LEN</span><span class="p">]</span>
-	<span class="nf">mov</span> <span class="no">rcx</span><span class="p">,</span> <span class="no">OFFSET</span> <span class="no">B</span>
-	<span class="nf">call</span> <span class="no">sumIt</span>
-	<span class="nf">mov</span> <span class="no">QWORD</span> <span class="no">PTR</span> <span class="p">[</span><span class="no">B_SUM</span><span class="p">],</span> <span class="no">rax</span>
+<span class="w">	</span><span class="nf">mov</span><span class="w"> </span><span class="no">rbx</span><span class="p">,</span><span class="w"> </span><span class="no">QWORD</span><span class="w"> </span><span class="no">PTR</span><span class="w"> </span><span class="p">[</span><span class="no">B_LEN</span><span class="p">]</span><span class="w"></span>
+<span class="w">	</span><span class="nf">mov</span><span class="w"> </span><span class="no">rcx</span><span class="p">,</span><span class="w"> </span><span class="no">OFFSET</span><span class="w"> </span><span class="no">B</span><span class="w"></span>
+<span class="w">	</span><span class="nf">call</span><span class="w"> </span><span class="no">sumIt</span><span class="w"></span>
+<span class="w">	</span><span class="nf">mov</span><span class="w"> </span><span class="no">QWORD</span><span class="w"> </span><span class="no">PTR</span><span class="w"> </span><span class="p">[</span><span class="no">B_SUM</span><span class="p">],</span><span class="w"> </span><span class="no">rax</span><span class="w"></span>
 
-	<span class="nf">mov</span> <span class="no">rbx</span><span class="p">,</span> <span class="no">QWORD</span> <span class="no">PTR</span> <span class="p">[</span><span class="no">C_LEN</span><span class="p">]</span>
-	<span class="nf">mov</span> <span class="no">rcx</span><span class="p">,</span> <span class="no">OFFSET</span> <span class="no">C</span>
-	<span class="nf">call</span> <span class="no">sumIt</span>
-	<span class="nf">mov</span> <span class="no">QWORD</span> <span class="no">PTR</span> <span class="p">[</span><span class="no">C_SUM</span><span class="p">],</span> <span class="no">rax</span>
-	<span class="nf">int3</span>
+<span class="w">	</span><span class="nf">mov</span><span class="w"> </span><span class="no">rbx</span><span class="p">,</span><span class="w"> </span><span class="no">QWORD</span><span class="w"> </span><span class="no">PTR</span><span class="w"> </span><span class="p">[</span><span class="no">C_LEN</span><span class="p">]</span><span class="w"></span>
+<span class="w">	</span><span class="nf">mov</span><span class="w"> </span><span class="no">rcx</span><span class="p">,</span><span class="w"> </span><span class="no">OFFSET</span><span class="w"> </span><span class="no">C</span><span class="w"></span>
+<span class="w">	</span><span class="nf">call</span><span class="w"> </span><span class="no">sumIt</span><span class="w"></span>
+<span class="w">	</span><span class="nf">mov</span><span class="w"> </span><span class="no">QWORD</span><span class="w"> </span><span class="no">PTR</span><span class="w"> </span><span class="p">[</span><span class="no">C_SUM</span><span class="p">],</span><span class="w"> </span><span class="no">rax</span><span class="w"></span>
+<span class="w">	</span><span class="nf">int3</span><span class="w"></span>
 </pre></div>
 </div>
 </div>
@@ -792,7 +1018,7 @@ loop_done:
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "090d518d37e148088788e2b03f89be5f", "version_major": 2, "version_minor": 0}
+{"model_id": "66812d223c7a4f799383b156b3471f3c", "version_major": 2, "version_minor": 0}
 </script></div>
 </div>
 <div class="cell tag_remove-input docutils container">
@@ -812,35 +1038,35 @@ loop_done:
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "72ff637716194ae88a4be9af6c56a77b", "version_major": 2, "version_minor": 0}
+{"model_id": "5ae6d82949814fb09e353749e19cf77a", "version_major": 2, "version_minor": 0}
 </script></div>
 </div>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "1b21a14a14f14b48aa36f9d40f60b356", "version_major": 2, "version_minor": 0}
+{"model_id": "5d2b937863b8450eb4cd1c4787fadda6", "version_major": 2, "version_minor": 0}
 </script></div>
 </div>
-<div class="section" id="add-another-section-to-control-how-region-is-mapped">
-<h4><span class="section-number">14.3.5.1. </span>Add another section to control how region is mapped<a class="headerlink" href="#add-another-section-to-control-how-region-is-mapped" title="Permalink to this headline">¶</a></h4>
+<section id="add-another-section-to-control-how-region-is-mapped">
+<h4><span class="section-number">14.3.5.1. </span>Add another section to control how region is mapped<a class="headerlink" href="#add-another-section-to-control-how-region-is-mapped" title="Permalink to this headline">#</a></h4>
 <p>Readonly data section <code class="docutils literal notranslate"><span class="pre">.rodata</span></code></p>
-<div class="highlight-gas notranslate"><div class="highlight"><pre><span></span>         <span class="na">.section</span> <span class="no">.rodata</span>
+<div class="highlight-gas notranslate"><div class="highlight"><pre><span></span><span class="w">         </span><span class="na">.section</span><span class="w"> </span><span class="no">.rodata</span><span class="w"></span>
 
- <span class="nl">str1:</span>
-         <span class="na">.string</span> <span class="s">&quot;Hello World\n&quot;</span>
+<span class="w"> </span><span class="nl">str1:</span><span class="w"></span>
+<span class="w">         </span><span class="na">.string</span><span class="w"> </span><span class="s">&quot;Hello World\n&quot;</span><span class="w"></span>
 </pre></div>
 </div>
 <p>What would happen if we put all out data in the <code class="docutils literal notranslate"><span class="pre">.rodata</span></code> section… try it and find out</p>
-</div>
-</div>
-</div>
-<div class="section" id="ok-lets-get-some-more-memory-and-and-grow-our-heap">
-<h2><span class="section-number">14.4. </span>Ok lets get some more memory – And and Grow our Heap<a class="headerlink" href="#ok-lets-get-some-more-memory-and-and-grow-our-heap" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+</section>
+<section id="ok-lets-get-some-more-memory-and-and-grow-our-heap">
+<h2><span class="section-number">14.4. </span>Ok lets get some more memory – And and Grow our Heap<a class="headerlink" href="#ok-lets-get-some-more-memory-and-and-grow-our-heap" title="Permalink to this headline">#</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">brk</span></code> system call</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "20b4b98165d4443ba8393429ee8eccb7", "version_major": 2, "version_minor": 0}
+{"model_id": "02eaa819e45644739b656bc86821e586", "version_major": 2, "version_minor": 0}
 </script></div>
 </div>
 <div class="cell tag_remove-input docutils container">
@@ -852,93 +1078,94 @@ loop_done:
     src="https://filippo.io/linux-syscall-table/"
     frameborder="0"
     allowfullscreen
+
 ></iframe>
 </div></div>
 </div>
 <p><strong>Lets add this code</strong></p>
 <p>What does it do?</p>
-<div class="highlight-gas notranslate"><div class="highlight"><pre><span></span>    <span class="na">.data</span>
-<span class="nl">NEW_MEM_PTR:</span>
-    <span class="na">.quad</span> <span class="mi">0</span>
+<div class="highlight-gas notranslate"><div class="highlight"><pre><span></span><span class="w">    </span><span class="na">.data</span><span class="w"></span>
+<span class="nl">NEW_MEM_PTR:</span><span class="w"></span>
+<span class="w">    </span><span class="na">.quad</span><span class="w"> </span><span class="mi">0</span><span class="w"></span>
 
-    <span class="na">.text</span>
-    
-    <span class="nf">mov</span> <span class="no">rdi</span><span class="p">,</span> <span class="mi">0</span>
-    <span class="nf">mov</span> <span class="no">rax</span><span class="p">,</span> <span class="mi">12</span>
-    <span class="nf">syscall</span> 
-    <span class="no">mov</span> <span class="no">QWORD</span> <span class="no">PTR</span> <span class="p">[</span><span class="no">NEW_MEM_PTR</span><span class="p">],</span> <span class="no">rdi</span>
-    
-    <span class="nf">mov</span> <span class="no">rdi</span><span class="p">,</span> <span class="no">rax</span>
-    <span class="nf">add</span> <span class="no">rdi</span><span class="p">,</span> <span class="mi">1024</span> <span class="p">*</span> <span class="mi">8</span>
-    <span class="nf">mov</span> <span class="no">rax</span><span class="p">,</span> <span class="mi">12</span>
-    <span class="nf">syscall</span>
+<span class="w">    </span><span class="na">.text</span><span class="w"></span>
+<span class="w">    </span>
+<span class="w">    </span><span class="nf">mov</span><span class="w"> </span><span class="no">rdi</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="w"></span>
+<span class="w">    </span><span class="nf">mov</span><span class="w"> </span><span class="no">rax</span><span class="p">,</span><span class="w"> </span><span class="mi">12</span><span class="w"></span>
+<span class="w">    </span><span class="nf">syscall</span><span class="w"> </span>
+<span class="w">    </span><span class="no">mov</span><span class="w"> </span><span class="no">QWORD</span><span class="w"> </span><span class="no">PTR</span><span class="w"> </span><span class="p">[</span><span class="no">NEW_MEM_PTR</span><span class="p">],</span><span class="w"> </span><span class="no">rax</span><span class="w"></span>
+<span class="w">    </span>
+<span class="w">    </span><span class="nf">mov</span><span class="w"> </span><span class="no">rdi</span><span class="p">,</span><span class="w"> </span><span class="no">rax</span><span class="w"></span>
+<span class="w">    </span><span class="nf">add</span><span class="w"> </span><span class="no">rdi</span><span class="p">,</span><span class="w"> </span><span class="mi">1024</span><span class="w"> </span><span class="p">*</span><span class="w"> </span><span class="mi">8</span><span class="w"></span>
+<span class="w">    </span><span class="nf">mov</span><span class="w"> </span><span class="no">rax</span><span class="p">,</span><span class="w"> </span><span class="mi">12</span><span class="w"></span>
+<span class="w">    </span><span class="nf">syscall</span><span class="w"></span>
 </pre></div>
 </div>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <p><b>CODE: asm - usesumheap.S</p>
 <div style="width:107em; height:100%; font-size:inherit; overflow: auto;" >
-<div class="highlight-gas notranslate"><div class="highlight"><pre><span></span>	<span class="na">.intel_syntax</span> <span class="no">noprefix</span>
-	<span class="na">.section</span> <span class="no">.data</span>	
-	<span class="no">.comm</span> <span class="no">A_SUM</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">8</span>
-	<span class="na">.comm</span> <span class="no">A_LEN</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">8</span>
-	<span class="na">.comm</span> <span class="no">A</span><span class="p">,</span> <span class="mi">8</span><span class="p">*</span><span class="mi">1024</span><span class="p">,</span> <span class="mi">8</span>	
+<div class="highlight-gas notranslate"><div class="highlight"><pre><span></span><span class="w">	</span><span class="na">.intel_syntax</span><span class="w"> </span><span class="no">noprefix</span><span class="w"></span>
+<span class="w">	</span><span class="na">.section</span><span class="w"> </span><span class="no">.data</span><span class="w">	</span>
+<span class="w">	</span><span class="no">.comm</span><span class="w"> </span><span class="no">A_SUM</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="w"></span>
+<span class="w">	</span><span class="na">.comm</span><span class="w"> </span><span class="no">A_LEN</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="w"></span>
+<span class="w">	</span><span class="na">.comm</span><span class="w"> </span><span class="no">A</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">*</span><span class="mi">1024</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="w">	</span>
 
-	<span class="no">.comm</span> <span class="no">B_SUM</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">8</span>
-	<span class="na">.comm</span> <span class="no">B_LEN</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">8</span>
-	<span class="na">.comm</span> <span class="no">B</span><span class="p">,</span> <span class="mi">8</span><span class="p">*</span><span class="mi">1024</span><span class="p">,</span> <span class="mi">8</span>	
+<span class="w">	</span><span class="no">.comm</span><span class="w"> </span><span class="no">B_SUM</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="w"></span>
+<span class="w">	</span><span class="na">.comm</span><span class="w"> </span><span class="no">B_LEN</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="w"></span>
+<span class="w">	</span><span class="na">.comm</span><span class="w"> </span><span class="no">B</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">*</span><span class="mi">1024</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="w">	</span>
 
-	<span class="no">.comm</span> <span class="no">C_SUM</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">8</span>
-	<span class="na">.comm</span> <span class="no">C_LEN</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">8</span>
-	<span class="na">.comm</span> <span class="no">C</span><span class="p">,</span> <span class="mi">8</span><span class="p">*</span><span class="mi">1024</span><span class="p">,</span> <span class="mi">8</span>	
+<span class="w">	</span><span class="no">.comm</span><span class="w"> </span><span class="no">C_SUM</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="w"></span>
+<span class="w">	</span><span class="na">.comm</span><span class="w"> </span><span class="no">C_LEN</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="w"></span>
+<span class="w">	</span><span class="na">.comm</span><span class="w"> </span><span class="no">C</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">*</span><span class="mi">1024</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="w">	</span>
 
-	<span class="c1"># Added space heap memory array</span>
-	<span class="na">.comm</span> <span class="no">D_SUM</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">8</span>
-	<span class="na">.comm</span> <span class="no">D_LEN</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">8</span>
-	<span class="na">.comm</span> <span class="no">D_PTR</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">8</span>
+<span class="w">	</span><span class="c1"># Added space heap memory array</span>
+<span class="w">	</span><span class="na">.comm</span><span class="w"> </span><span class="no">D_SUM</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="w"></span>
+<span class="w">	</span><span class="na">.comm</span><span class="w"> </span><span class="no">D_LEN</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="w"></span>
+<span class="w">	</span><span class="na">.comm</span><span class="w"> </span><span class="no">D_PTR</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="w"></span>
 
-	<span class="na">.section</span> <span class="no">.rodata</span>
-<span class="nl">mystr:</span>	
-	<span class="na">.string</span> <span class="s">&quot;Hello World!!!\n&quot;</span>
-	
-	<span class="na">.section</span> <span class="no">.text</span>
-	<span class="na">.global</span> <span class="no">_start</span> 
-<span class="no">_start</span><span class="p">:</span>
-	<span class="c1"># get current break pointer</span>
-	<span class="nf">mov</span> <span class="no">rdi</span><span class="p">,</span> <span class="mi">0</span>                 <span class="c1"># pass 0 to brk (invalid request)</span>
-	<span class="nf">mov</span> <span class="no">rax</span><span class="p">,</span> <span class="mi">12</span>                <span class="c1"># brk syscall number 12</span>
-	<span class="nf">syscall</span>                    <span class="c1"># call brk with 0</span>
-	<span class="nf">mov</span> <span class="no">QWORD</span> <span class="no">PTR</span> <span class="p">[</span><span class="no">D_PTR</span><span class="p">],</span> <span class="no">rax</span> <span class="c1"># set D_PTR to start of end of break memory</span>
-	<span class="nf">mov</span> <span class="no">rdi</span><span class="p">,</span> <span class="no">rax</span>               <span class="c1"># mov current end of break into rax</span>
-	
-	<span class="nf">add</span> <span class="no">rdi</span><span class="p">,</span> <span class="mi">1024</span> <span class="p">*</span> <span class="mi">8</span>          <span class="c1"># add request num bytes to end break</span>
-	<span class="nf">mov</span> <span class="no">rax</span><span class="p">,</span> <span class="mi">12</span>                <span class="c1"># brk syscall number 12</span>
-	<span class="nf">syscall</span>                    <span class="c1"># call brk with break end + request</span>
+<span class="w">	</span><span class="na">.section</span><span class="w"> </span><span class="no">.rodata</span><span class="w"></span>
+<span class="nl">mystr:</span><span class="w">	</span>
+<span class="w">	</span><span class="na">.string</span><span class="w"> </span><span class="s">&quot;Hello World!!!\n&quot;</span><span class="w"></span>
+<span class="w">	</span>
+<span class="w">	</span><span class="na">.section</span><span class="w"> </span><span class="no">.text</span><span class="w"></span>
+<span class="w">	</span><span class="na">.global</span><span class="w"> </span><span class="no">_start</span><span class="w"> </span>
+<span class="no">_start</span><span class="p">:</span><span class="w"></span>
+<span class="w">	</span><span class="c1"># get current break pointer</span>
+<span class="w">	</span><span class="nf">mov</span><span class="w"> </span><span class="no">rdi</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="w">                 </span><span class="c1"># pass 0 to brk (invalid request)</span>
+<span class="w">	</span><span class="nf">mov</span><span class="w"> </span><span class="no">rax</span><span class="p">,</span><span class="w"> </span><span class="mi">12</span><span class="w">                </span><span class="c1"># brk syscall number 12</span>
+<span class="w">	</span><span class="nf">syscall</span><span class="w">                    </span><span class="c1"># call brk with 0</span>
+<span class="w">	</span><span class="nf">mov</span><span class="w"> </span><span class="no">QWORD</span><span class="w"> </span><span class="no">PTR</span><span class="w"> </span><span class="p">[</span><span class="no">D_PTR</span><span class="p">],</span><span class="w"> </span><span class="no">rax</span><span class="w"> </span><span class="c1"># set D_PTR to start of end of break memory</span>
+<span class="w">	</span><span class="nf">mov</span><span class="w"> </span><span class="no">rdi</span><span class="p">,</span><span class="w"> </span><span class="no">rax</span><span class="w">               </span><span class="c1"># mov current end of break into rax</span>
+<span class="w">	</span>
+<span class="w">	</span><span class="nf">add</span><span class="w"> </span><span class="no">rdi</span><span class="p">,</span><span class="w"> </span><span class="mi">1024</span><span class="w"> </span><span class="p">*</span><span class="w"> </span><span class="mi">8</span><span class="w">          </span><span class="c1"># add request num bytes to end break</span>
+<span class="w">	</span><span class="nf">mov</span><span class="w"> </span><span class="no">rax</span><span class="p">,</span><span class="w"> </span><span class="mi">12</span><span class="w">                </span><span class="c1"># brk syscall number 12</span>
+<span class="w">	</span><span class="nf">syscall</span><span class="w">                    </span><span class="c1"># call brk with break end + request</span>
 
-	<span class="nf">mov</span> <span class="no">rbx</span><span class="p">,</span> <span class="no">QWORD</span> <span class="no">PTR</span> <span class="p">[</span><span class="no">D_LEN</span><span class="p">]</span> 
-	<span class="no">mov</span> <span class="no">rcx</span><span class="p">,</span> <span class="no">QWORD</span> <span class="no">PTR</span> <span class="p">[</span><span class="no">D_PTR</span><span class="p">]</span>
-	<span class="nf">call</span> <span class="no">sumIt</span>
-	<span class="nf">mov</span> <span class="no">QWORD</span> <span class="no">PTR</span> <span class="p">[</span><span class="no">D_SUM</span><span class="p">],</span> <span class="no">rax</span>
+<span class="w">	</span><span class="nf">mov</span><span class="w"> </span><span class="no">rbx</span><span class="p">,</span><span class="w"> </span><span class="no">QWORD</span><span class="w"> </span><span class="no">PTR</span><span class="w"> </span><span class="p">[</span><span class="no">D_LEN</span><span class="p">]</span><span class="w"> </span>
+<span class="w">	</span><span class="no">mov</span><span class="w"> </span><span class="no">rcx</span><span class="p">,</span><span class="w"> </span><span class="no">QWORD</span><span class="w"> </span><span class="no">PTR</span><span class="w"> </span><span class="p">[</span><span class="no">D_PTR</span><span class="p">]</span><span class="w"></span>
+<span class="w">	</span><span class="nf">call</span><span class="w"> </span><span class="no">sumIt</span><span class="w"></span>
+<span class="w">	</span><span class="nf">mov</span><span class="w"> </span><span class="no">QWORD</span><span class="w"> </span><span class="no">PTR</span><span class="w"> </span><span class="p">[</span><span class="no">D_SUM</span><span class="p">],</span><span class="w"> </span><span class="no">rax</span><span class="w"></span>
 
-	<span class="nf">mov</span> <span class="no">rbx</span><span class="p">,</span> <span class="no">QWORD</span> <span class="no">PTR</span> <span class="p">[</span><span class="no">A_LEN</span><span class="p">]</span>
-	<span class="nf">mov</span> <span class="no">rcx</span><span class="p">,</span> <span class="no">OFFSET</span> <span class="no">A</span>
-	<span class="nf">call</span> <span class="no">sumIt</span>
-	<span class="nf">mov</span> <span class="no">QWORD</span> <span class="no">PTR</span> <span class="p">[</span><span class="no">A_SUM</span><span class="p">],</span> <span class="no">rax</span>
+<span class="w">	</span><span class="nf">mov</span><span class="w"> </span><span class="no">rbx</span><span class="p">,</span><span class="w"> </span><span class="no">QWORD</span><span class="w"> </span><span class="no">PTR</span><span class="w"> </span><span class="p">[</span><span class="no">A_LEN</span><span class="p">]</span><span class="w"></span>
+<span class="w">	</span><span class="nf">mov</span><span class="w"> </span><span class="no">rcx</span><span class="p">,</span><span class="w"> </span><span class="no">OFFSET</span><span class="w"> </span><span class="no">A</span><span class="w"></span>
+<span class="w">	</span><span class="nf">call</span><span class="w"> </span><span class="no">sumIt</span><span class="w"></span>
+<span class="w">	</span><span class="nf">mov</span><span class="w"> </span><span class="no">QWORD</span><span class="w"> </span><span class="no">PTR</span><span class="w"> </span><span class="p">[</span><span class="no">A_SUM</span><span class="p">],</span><span class="w"> </span><span class="no">rax</span><span class="w"></span>
 
-	<span class="nf">mov</span> <span class="no">rbx</span><span class="p">,</span> <span class="no">QWORD</span> <span class="no">PTR</span> <span class="p">[</span><span class="no">B_LEN</span><span class="p">]</span>
-	<span class="nf">mov</span> <span class="no">rcx</span><span class="p">,</span> <span class="no">OFFSET</span> <span class="no">B</span>
-	<span class="nf">call</span> <span class="no">sumIt</span>
-	<span class="nf">mov</span> <span class="no">QWORD</span> <span class="no">PTR</span> <span class="p">[</span><span class="no">B_SUM</span><span class="p">],</span> <span class="no">rax</span>
+<span class="w">	</span><span class="nf">mov</span><span class="w"> </span><span class="no">rbx</span><span class="p">,</span><span class="w"> </span><span class="no">QWORD</span><span class="w"> </span><span class="no">PTR</span><span class="w"> </span><span class="p">[</span><span class="no">B_LEN</span><span class="p">]</span><span class="w"></span>
+<span class="w">	</span><span class="nf">mov</span><span class="w"> </span><span class="no">rcx</span><span class="p">,</span><span class="w"> </span><span class="no">OFFSET</span><span class="w"> </span><span class="no">B</span><span class="w"></span>
+<span class="w">	</span><span class="nf">call</span><span class="w"> </span><span class="no">sumIt</span><span class="w"></span>
+<span class="w">	</span><span class="nf">mov</span><span class="w"> </span><span class="no">QWORD</span><span class="w"> </span><span class="no">PTR</span><span class="w"> </span><span class="p">[</span><span class="no">B_SUM</span><span class="p">],</span><span class="w"> </span><span class="no">rax</span><span class="w"></span>
 
-	<span class="nf">mov</span> <span class="no">rbx</span><span class="p">,</span> <span class="no">QWORD</span> <span class="no">PTR</span> <span class="p">[</span><span class="no">C_LEN</span><span class="p">]</span>
-	<span class="nf">mov</span> <span class="no">rcx</span><span class="p">,</span> <span class="no">OFFSET</span> <span class="no">C</span>
-	<span class="nf">call</span> <span class="no">sumIt</span>
-	<span class="nf">mov</span> <span class="no">QWORD</span> <span class="no">PTR</span> <span class="p">[</span><span class="no">C_SUM</span><span class="p">],</span> <span class="no">rax</span>
+<span class="w">	</span><span class="nf">mov</span><span class="w"> </span><span class="no">rbx</span><span class="p">,</span><span class="w"> </span><span class="no">QWORD</span><span class="w"> </span><span class="no">PTR</span><span class="w"> </span><span class="p">[</span><span class="no">C_LEN</span><span class="p">]</span><span class="w"></span>
+<span class="w">	</span><span class="nf">mov</span><span class="w"> </span><span class="no">rcx</span><span class="p">,</span><span class="w"> </span><span class="no">OFFSET</span><span class="w"> </span><span class="no">C</span><span class="w"></span>
+<span class="w">	</span><span class="nf">call</span><span class="w"> </span><span class="no">sumIt</span><span class="w"></span>
+<span class="w">	</span><span class="nf">mov</span><span class="w"> </span><span class="no">QWORD</span><span class="w"> </span><span class="no">PTR</span><span class="w"> </span><span class="p">[</span><span class="no">C_SUM</span><span class="p">],</span><span class="w"> </span><span class="no">rax</span><span class="w"></span>
 
-	<span class="nf">mov</span> <span class="no">rdi</span><span class="p">,</span> <span class="no">rax</span>
-	<span class="nf">mov</span> <span class="no">rax</span><span class="p">,</span> <span class="mi">60</span>
-	<span class="nf">syscall</span>
-	
+<span class="w">	</span><span class="nf">mov</span><span class="w"> </span><span class="no">rdi</span><span class="p">,</span><span class="w"> </span><span class="no">rax</span><span class="w"></span>
+<span class="w">	</span><span class="nf">mov</span><span class="w"> </span><span class="no">rax</span><span class="p">,</span><span class="w"> </span><span class="mi">60</span><span class="w"></span>
+<span class="w">	</span><span class="nf">syscall</span><span class="w"></span>
+<span class="w">	</span>
 </pre></div>
 </div>
 </div>
@@ -983,15 +1210,15 @@ display /1gd D_SUM
     <img src="../images/ASSEMBLY-AddressSpaceandIO/ASSEMBLY-AddressSpaceandIO.012.png">
 </center><center>
     <img src="../images/ASSEMBLY-AddressSpaceandIO/ASSEMBLY-AddressSpaceandIO.016.png">
-</center></div>
-<div class="section" id="i-o">
-<h2><span class="section-number">14.5. </span>I/O<a class="headerlink" href="#i-o" title="Permalink to this headline">¶</a></h2>
+</center></section>
+<section id="i-o">
+<h2><span class="section-number">14.5. </span>I/O<a class="headerlink" href="#i-o" title="Permalink to this headline">#</a></h2>
 <center>
     <img src="../images/ASSEMBLY-AddressSpaceandIO/ASSEMBLY-AddressSpaceandIO.017.png">
 </center><center>
     <img src="../images/ASSEMBLY-AddressSpaceandIO/ASSEMBLY-AddressSpaceandIO.018.png">
-</center><div class="section" id="review-from-lecture-3">
-<h3><span class="section-number">14.5.1. </span>Review from Lecture 3<a class="headerlink" href="#review-from-lecture-3" title="Permalink to this headline">¶</a></h3>
+</center><section id="review-from-lecture-3">
+<h3><span class="section-number">14.5.1. </span>Review from Lecture 3<a class="headerlink" href="#review-from-lecture-3" title="Permalink to this headline">#</a></h3>
 <center>
     <img src="../images/Processes/Processes.006.png">
 </center><center>
@@ -1010,31 +1237,31 @@ display /1gd D_SUM
     <img src="../images/Processes/Processes.013.png">
 </center><center>
     <img src="../images/Processes/Processes.015.png">
-</center></div>
-<div class="section" id="finally-hello-world-in-assembly">
-<h3><span class="section-number">14.5.2. </span>Finally “Hello World in Assembly”<a class="headerlink" href="#finally-hello-world-in-assembly" title="Permalink to this headline">¶</a></h3>
+</center></section>
+<section id="finally-hello-world-in-assembly">
+<h3><span class="section-number">14.5.2. </span>Finally “Hello World in Assembly”<a class="headerlink" href="#finally-hello-world-in-assembly" title="Permalink to this headline">#</a></h3>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <p><b>CODE: asm - hello.S</p>
 <div style="width:107em; height:100%; font-size:inherit; overflow: auto;" >
-<div class="highlight-gas notranslate"><div class="highlight"><pre><span></span>	<span class="na">.intel_syntax</span> <span class="no">noprefix</span>
-	<span class="na">.section</span> <span class="no">.rodata</span>
-<span class="nl">str:</span>
-	<span class="na">.string</span> <span class="s">&quot;Hello World\n&quot;</span>
+<div class="highlight-gas notranslate"><div class="highlight"><pre><span></span><span class="w">	</span><span class="na">.intel_syntax</span><span class="w"> </span><span class="no">noprefix</span><span class="w"></span>
+<span class="w">	</span><span class="na">.section</span><span class="w"> </span><span class="no">.rodata</span><span class="w"></span>
+<span class="nl">str:</span><span class="w"></span>
+<span class="w">	</span><span class="na">.string</span><span class="w"> </span><span class="s">&quot;Hello World\n&quot;</span><span class="w"></span>
 
-	<span class="na">.section</span> <span class="no">.text</span>
-	<span class="na">.global</span> <span class="no">_start</span>
-<span class="nl">_start:</span>
-	<span class="nf">mov</span> <span class="no">rax</span><span class="p">,</span> <span class="mi">1</span>
-	<span class="nf">mov</span> <span class="no">rdi</span><span class="p">,</span> <span class="mi">1</span>
-	<span class="nf">mov</span> <span class="no">rsi</span><span class="p">,</span> <span class="no">OFFSET</span> <span class="no">str</span>
-	<span class="nf">mov</span> <span class="no">rdx</span><span class="p">,</span> <span class="mi">12</span>
-	<span class="nf">syscall</span>
+<span class="w">	</span><span class="na">.section</span><span class="w"> </span><span class="no">.text</span><span class="w"></span>
+<span class="w">	</span><span class="na">.global</span><span class="w"> </span><span class="no">_start</span><span class="w"></span>
+<span class="nl">_start:</span><span class="w"></span>
+<span class="w">	</span><span class="nf">mov</span><span class="w"> </span><span class="no">rax</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w"></span>
+<span class="w">	</span><span class="nf">mov</span><span class="w"> </span><span class="no">rdi</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w"></span>
+<span class="w">	</span><span class="nf">mov</span><span class="w"> </span><span class="no">rsi</span><span class="p">,</span><span class="w"> </span><span class="no">OFFSET</span><span class="w"> </span><span class="no">str</span><span class="w"></span>
+<span class="w">	</span><span class="nf">mov</span><span class="w"> </span><span class="no">rdx</span><span class="p">,</span><span class="w"> </span><span class="mi">12</span><span class="w"></span>
+<span class="w">	</span><span class="nf">syscall</span><span class="w"></span>
 
-	<span class="nf">mov</span> <span class="no">rax</span><span class="p">,</span> <span class="mi">60</span>
-	<span class="nf">mov</span> <span class="no">rdi</span><span class="p">,</span> <span class="mi">3</span>
-	<span class="nf">syscall</span>
-	
+<span class="w">	</span><span class="nf">mov</span><span class="w"> </span><span class="no">rax</span><span class="p">,</span><span class="w"> </span><span class="mi">60</span><span class="w"></span>
+<span class="w">	</span><span class="nf">mov</span><span class="w"> </span><span class="no">rdi</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="w"></span>
+<span class="w">	</span><span class="nf">syscall</span><span class="w"></span>
+<span class="w">	</span>
 </pre></div>
 </div>
 </div>
@@ -1043,21 +1270,21 @@ display /1gd D_SUM
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "ee052610f34143d8b71c4adfa331226a", "version_major": 2, "version_minor": 0}
+{"model_id": "72fa5eb60d454ca5a54376ead2d07e15", "version_major": 2, "version_minor": 0}
 </script></div>
 </div>
-<div class="section" id="at-long-last-we-have-a-program-that-we-don-t-need-the-debugger-for">
-<h4><span class="section-number">14.5.2.1. </span>At long last we have a program that we don’t need the debugger for!<a class="headerlink" href="#at-long-last-we-have-a-program-that-we-don-t-need-the-debugger-for" title="Permalink to this headline">¶</a></h4>
+<section id="at-long-last-we-have-a-program-that-we-don-t-need-the-debugger-for">
+<h4><span class="section-number">14.5.2.1. </span>At long last we have a program that we don’t need the debugger for!<a class="headerlink" href="#at-long-last-we-have-a-program-that-we-don-t-need-the-debugger-for" title="Permalink to this headline">#</a></h4>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "7383bf469f0b428ab4e409d5b82d3bd0", "version_major": 2, "version_minor": 0}
+{"model_id": "3c5cdd5ad88e4fb69b2759ca48bce5bd", "version_major": 2, "version_minor": 0}
 </script></div>
 </div>
-</div>
-</div>
-<div class="section" id="there-are-many-more-calls-for-doing-i-o">
-<h3><span class="section-number">14.5.3. </span>There are many more calls for doing I/O<a class="headerlink" href="#there-are-many-more-calls-for-doing-i-o" title="Permalink to this headline">¶</a></h3>
+</section>
+</section>
+<section id="there-are-many-more-calls-for-doing-i-o">
+<h3><span class="section-number">14.5.3. </span>There are many more calls for doing I/O<a class="headerlink" href="#there-are-many-more-calls-for-doing-i-o" title="Permalink to this headline">#</a></h3>
 <p>But we can now</p>
 <ol class="simple">
 <li><p>transfer bytes from our address space to a “file” - write system call</p></li>
@@ -1074,12 +1301,13 @@ display /1gd D_SUM
     src="https://filippo.io/linux-syscall-table/"
     frameborder="0"
     allowfullscreen
+
 ></iframe>
 </div></div>
 </div>
-</div>
-<div class="section" id="exercises">
-<h3><span class="section-number">14.5.4. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="exercises">
+<h3><span class="section-number">14.5.4. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">#</a></h3>
 <p>Change the <code class="docutils literal notranslate"><span class="pre">usesum</span></code> program to:</p>
 <ul class="simple">
 <li><p>exit properly</p></li>
@@ -1094,13 +1322,13 @@ display /1gd D_SUM
 <li><p>can you figure out how to get the command line arguments?</p></li>
 <li><p>Write a new program that uses the random instruction to create a data file</p></li>
 </ul>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
 
 <script type="application/vnd.jupyter.widget-state+json">
-{"state": {"090d518d37e148088788e2b03f89be5f": {"model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "model_name": "OutputModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_7202c0602e9c44659ee1117b0f8ca2dc", "msg_id": "", "outputs": [{"name": "stdout", "output_type": "stream", "text": "\nas -g -a=usesum5.o.lst usesum5.S -o usesum5.o\r\nas -g -a=sumit6.o.lst sumit6.S -o sumit6.o\r\nld -g -Map=usesum6.map usesum5.o sumit6.o -o usesum6\r\n"}]}}, "1b21a14a14f14b48aa36f9d40f60b356": {"model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "model_name": "OutputModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_f51fc543f8444db8a64121109a322b2c", "msg_id": "", "outputs": [{"name": "stdout", "output_type": "stream", "text": "$ man proc | grep -A40 /maps | head -41\n       /proc/[pid]/maps\r\n              A  file containing the currently mapped memory regions and their\r\n              access permissions.  See mmap(2) for  some  further  information\r\n              about memory mappings.\r\n\r\n              Permission  to  access  this file is governed by a ptrace access\r\n              mode PTRACE_MODE_READ_FSCREDS check; see ptrace(2).\r\n\r\n              The format of the file is:\r\n\r\n    address           perms offset  dev   inode       pathname\r\n    00400000-00452000 r-xp 00000000 08:02 173521      /usr/bin/dbus-daemon\r\n    00651000-00652000 r--p 00051000 08:02 173521      /usr/bin/dbus-daemon\r\n    00652000-00655000 rw-p 00052000 08:02 173521      /usr/bin/dbus-daemon\r\n    00e03000-00e24000 rw-p 00000000 00:00 0           [heap]\r\n    00e24000-011f7000 rw-p 00000000 00:00 0           [heap]\r\n    ...\r\n    35b1800000-35b1820000 r-xp 00000000 08:02 135522  /usr/lib64/ld-2.15.so\r\n    35b1a1f000-35b1a20000 r--p 0001f000 08:02 135522  /usr/lib64/ld-2.15.so\r\n    35b1a20000-35b1a21000 rw-p 00020000 08:02 135522  /usr/lib64/ld-2.15.so\r\n    35b1a21000-35b1a22000 rw-p 00000000 00:00 0\r\n    35b1c00000-35b1dac000 r-xp 00000000 08:02 135870  /usr/lib64/libc-2.15.so\r\n    35b1dac000-35b1fac000 ---p 001ac000 08:02 135870  /usr/lib64/libc-2.15.so\r\n    35b1fac000-35b1fb0000 r--p 001ac000 08:02 135870  /usr/lib64/libc-2.15.so\r\n    35b1fb0000-35b1fb2000 rw-p 001b0000 08:02 135870  /usr/lib64/libc-2.15.so\r\n    ...\r\n    f2c6ff8c000-7f2c7078c000 rw-p 00000000 00:00 0    [stack:986]\r\n    ...\r\n    7fffb2c0d000-7fffb2c2e000 rw-p 00000000 00:00 0   [stack]\r\n    7fffb2d48000-7fffb2d49000 r-xp 00000000 00:00 0   [vdso]\r\n\r\n              The address field is the address space in the process  that  the\r\n              mapping occupies.  The perms field is a set of permissions:\r\n\r\n                  r = read\r\n                  w = write\r\n                  x = execute\r\n                  s = shared\r\n                  p = private (copy on write)\r\n\r\n              The  offset  field  is the offset into the file/whatever; dev is\r\n$ "}]}}, "20b4b98165d4443ba8393429ee8eccb7": {"model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "model_name": "OutputModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_b03930e9c5114c65ac1dbfd2631db565", "msg_id": "", "outputs": [{"name": "stdout", "output_type": "stream", "text": "$ man brk | head -37\nBRK(2)                     Linux Programmer's Manual                    BRK(2)\r\n\r\nNAME\r\n       brk, sbrk - change data segment size\r\n\r\nSYNOPSIS\r\n       #include <unistd.h>\r\n\r\n       int brk(void *addr);\r\n\r\n       void *sbrk(intptr_t increment);\r\n\r\n   Feature Test Macro Requirements for glibc (see feature_test_macros(7)):\r\n\r\n       brk(), sbrk():\r\n           Since glibc 2.19:\r\n               _DEFAULT_SOURCE ||\r\n                   (_XOPEN_SOURCE >= 500) &&\r\n                   ! (_POSIX_C_SOURCE >= 200112L)\r\n           From glibc 2.12 to 2.19:\r\n               _BSD_SOURCE || _SVID_SOURCE ||\r\n                   (_XOPEN_SOURCE >= 500) &&\r\n                   ! (_POSIX_C_SOURCE >= 200112L)\r\n           Before glibc 2.12:\r\n               _BSD_SOURCE || _SVID_SOURCE || _XOPEN_SOURCE >= 500\r\n\r\nDESCRIPTION\r\n       brk()  and  sbrk()  change the location of the program break, which de\u2010\r\n       fines the end of the process's data segment (i.e., the program break is\r\n       the  first  location  after the end of the uninitialized data segment).\r\n       Increasing the program break has the effect of allocating memory to the\r\n       process; decreasing the break deallocates memory.\r\n\r\n       brk()  sets the end of the data segment to the value specified by addr,\r\n       when that value is reasonable, the system has enough  memory,  and  the\r\n       process does not exceed its maximum data size (see setrlimit(2)).\r\n\r\n$ "}]}}, "372ef2094ee34095af24e9399f7f7929": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": "1px solid black", "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "100%", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": "scroll", "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "3f5e693bd5814448b4952c7b3783c909": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": "1px solid black", "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "100%", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": "scroll", "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "4835628d6e73408d8d628375338641fc": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": "1px solid black", "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "100%", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": "scroll", "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "50d07ab8951740069fbe3941a2266fd4": {"model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "model_name": "OutputModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_cf239f6c579641739968951907b8fe6b", "msg_id": "", "outputs": [{"name": "stdout", "output_type": "stream", "text": "$ man syscall | head -20\nSYSCALL(2)                 Linux Programmer's Manual                SYSCALL(2)\r\n\r\nNAME\r\n       syscall - indirect system call\r\n\r\nSYNOPSIS\r\n       #include <unistd.h>\r\n       #include <sys/syscall.h>   /* For SYS_xxx definitions */\r\n\r\n       long syscall(long number, ...);\r\n\r\n   Feature Test Macro Requirements for glibc (see feature_test_macros(7)):\r\n       syscall():\r\n           Since glibc 2.19:\r\n               _DEFAULT_SOURCE\r\n           Before glibc 2.19:\r\n               _BSD_SOURCE || _SVID_SOURCE\r\n\r\nDESCRIPTION\r\n       syscall()  is  a  small  library  function that invokes the system call\r\n$ "}]}}, "7202c0602e9c44659ee1117b0f8ca2dc": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": "1px solid black", "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "100%", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": "scroll", "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "72ff637716194ae88a4be9af6c56a77b": {"model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "model_name": "OutputModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_7a04505acd524e8d8ff6ec663b57da00", "msg_id": "", "outputs": [{"name": "stdout", "output_type": "stream", "text": "$ man proc | head -30\nPROC(5)                    Linux Programmer's Manual                   PROC(5)\r\n\r\nNAME\r\n       proc - process information pseudo-filesystem\r\n\r\nDESCRIPTION\r\n       The  proc filesystem is a pseudo-filesystem which provides an interface\r\n       to kernel data structures.  It is commonly  mounted  at  /proc.   Typi\u2010\r\n       cally,  it  is  mounted automatically by the system, but it can also be\r\n       mounted manually using a command such as:\r\n\r\n           mount -t proc proc /proc\r\n\r\n       Most of the files in the proc filesystem are read-only, but some  files\r\n       are writable, allowing kernel variables to be changed.\r\n\r\n   Mount options\r\n       The proc filesystem supports the following mount options:\r\n\r\n       hidepid=n (since Linux 3.3)\r\n              This   option   controls  who  can  access  the  information  in\r\n              /proc/[pid] directories.  The argument, n, is one of the follow\u2010\r\n              ing values:\r\n\r\n              0   Everybody  may  access all /proc/[pid] directories.  This is\r\n                  the traditional behavior, and the default if this mount  op\u2010\r\n                  tion is not specified.\r\n\r\n              1   Users  may  not  access  files and subdirectories inside any\r\n                  /proc/[pid] directories but their own (the  /proc/[pid]  di\u2010\r\n$ "}]}}, "7383bf469f0b428ab4e409d5b82d3bd0": {"model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "model_name": "OutputModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_4835628d6e73408d8d628375338641fc", "msg_id": "", "outputs": [{"name": "stdout", "output_type": "stream", "text": "$ ./hello; echo $?\nHello World\r\n3\r\n$ "}]}}, "7a04505acd524e8d8ff6ec663b57da00": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": "1px solid black", "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "100%", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": "scroll", "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "8eff54fe9220415c847b2ffe72ad3b6c": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": "1px solid black", "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "100%", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": "scroll", "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "b03930e9c5114c65ac1dbfd2631db565": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": "1px solid black", "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "100%", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": "scroll", "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "ba8a62cc7a14433d8c9042176471f316": {"model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "model_name": "OutputModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_372ef2094ee34095af24e9399f7f7929", "msg_id": "", "outputs": [{"name": "stdout", "output_type": "stream", "text": "$ ls /home/jovyan/syscalls\n100.nums  hello.S   setup.gdb  usesum5.S\r\nbrk.S     Makefile  sumit6.S   usesumheap.S\r\n$ "}]}}, "cd21396cd212495ab7e325354788b4b0": {"model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "model_name": "OutputModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_3f5e693bd5814448b4952c7b3783c909", "msg_id": "", "outputs": [{"name": "stdout", "output_type": "stream", "text": "$ man syscalls | head -20\nSYSCALLS(2)                Linux Programmer's Manual               SYSCALLS(2)\r\n\r\nNAME\r\n       syscalls - Linux system calls\r\n\r\nSYNOPSIS\r\n       Linux system calls.\r\n\r\nDESCRIPTION\r\n       The system call is the fundamental interface between an application and\r\n       the Linux kernel.\r\n\r\n   System calls and library wrapper functions\r\n       System calls are generally not invoked directly, but rather via wrapper\r\n       functions in glibc (or perhaps some other library).  For details of di\u2010\r\n       rect invocation of a system call, see intro(2).  Often, but not always,\r\n       the  name of the wrapper function is the same as the name of the system\r\n       call that it invokes.  For example, glibc contains a  function  chdir()\r\n       which invokes the underlying \"chdir\" system call.\r\n\r\n$ "}]}}, "cf239f6c579641739968951907b8fe6b": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": "1px solid black", "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "100%", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": "scroll", "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "ee052610f34143d8b71c4adfa331226a": {"model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "model_name": "OutputModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_8eff54fe9220415c847b2ffe72ad3b6c", "msg_id": "", "outputs": [{"name": "stdout", "output_type": "stream", "text": "\nas -g -a=hello.o.lst hello.S -o hello.o\r\nld -g -Map=hello.map hello.o -o hello\r\n"}]}}, "f51fc543f8444db8a64121109a322b2c": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": "1px solid black", "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "100%", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": "scroll", "padding": null, "right": null, "top": null, "visibility": null, "width": null}}}, "version_major": 2, "version_minor": 0}
+{"state": {"02eaa819e45644739b656bc86821e586": {"model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "model_name": "OutputModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_d4f99893a85540f28705f1d3aabbde97", "msg_id": "", "outputs": [{"name": "stdout", "output_type": "stream", "text": "$ man brk | head -37\nBRK(2)                     Linux Programmer's Manual                    BRK(2)\r\n\r\nNAME\r\n       brk, sbrk - change data segment size\r\n\r\nSYNOPSIS\r\n       #include <unistd.h>\r\n\r\n       int brk(void *addr);\r\n\r\n       void *sbrk(intptr_t increment);\r\n\r\n   Feature Test Macro Requirements for glibc (see feature_test_macros(7)):\r\n\r\n       brk(), sbrk():\r\n           Since glibc 2.19:\r\n               _DEFAULT_SOURCE ||\r\n                   (_XOPEN_SOURCE >= 500) &&\r\n                   ! (_POSIX_C_SOURCE >= 200112L)\r\n           From glibc 2.12 to 2.19:\r\n               _BSD_SOURCE || _SVID_SOURCE ||\r\n                   (_XOPEN_SOURCE >= 500) &&\r\n                   ! (_POSIX_C_SOURCE >= 200112L)\r\n           Before glibc 2.12:\r\n               _BSD_SOURCE || _SVID_SOURCE || _XOPEN_SOURCE >= 500\r\n\r\nDESCRIPTION\r\n       brk()  and  sbrk()  change the location of the program break, which de\u2010\r\n       fines the end of the process's data segment (i.e., the program break is\r\n       the  first  location  after the end of the uninitialized data segment).\r\n       Increasing the program break has the effect of allocating memory to the\r\n       process; decreasing the break deallocates memory.\r\n\r\n       brk()  sets the end of the data segment to the value specified by addr,\r\n       when that value is reasonable, the system has enough  memory,  and  the\r\n       process does not exceed its maximum data size (see setrlimit(2)).\r\n\r\n$ "}]}}, "1a21cd34ecaa448285250654c4568859": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": "1px solid black", "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "100%", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": "scroll", "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "3c5cdd5ad88e4fb69b2759ca48bce5bd": {"model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "model_name": "OutputModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_fe5af6610f96409a9203648c832152b5", "msg_id": "", "outputs": [{"name": "stdout", "output_type": "stream", "text": "$ ./hello; echo $?\nHello World\r\n3\r\n$ "}]}}, "5ae6d82949814fb09e353749e19cf77a": {"model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "model_name": "OutputModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_697c8a341ffd4ec8a1d4c5555007b5d8", "msg_id": "", "outputs": [{"name": "stdout", "output_type": "stream", "text": "$ man proc | head -30\nPROC(5)                    Linux Programmer's Manual                   PROC(5)\r\n\r\nNAME\r\n       proc - process information pseudo-filesystem\r\n\r\nDESCRIPTION\r\n       The  proc filesystem is a pseudo-filesystem which provides an interface\r\n       to kernel data structures.  It is commonly  mounted  at  /proc.   Typi\u2010\r\n       cally,  it  is  mounted automatically by the system, but it can also be\r\n       mounted manually using a command such as:\r\n\r\n           mount -t proc proc /proc\r\n\r\n       Most of the files in the proc filesystem are read-only, but some  files\r\n       are writable, allowing kernel variables to be changed.\r\n\r\n   Mount options\r\n       The proc filesystem supports the following mount options:\r\n\r\n       hidepid=n (since Linux 3.3)\r\n              This   option   controls  who  can  access  the  information  in\r\n              /proc/[pid] directories.  The argument, n, is one of the follow\u2010\r\n              ing values:\r\n\r\n              0   Everybody  may  access all /proc/[pid] directories.  This is\r\n                  the traditional behavior, and the default if this mount  op\u2010\r\n                  tion is not specified.\r\n\r\n              1   Users  may  not  access  files and subdirectories inside any\r\n                  /proc/[pid] directories but their own (the  /proc/[pid]  di\u2010\r\n$ "}]}}, "5b09ba28014845c2b4fa28c22a02b8cb": {"model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "model_name": "OutputModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_64d5872128404a12a6001af32781c42e", "msg_id": "", "outputs": [{"name": "stdout", "output_type": "stream", "text": "$ ls /home/jovyan/syscalls\n100.nums  hello.S   setup.gdb  usesum5.S\r\nbrk.S     Makefile  sumit6.S   usesumheap.S\r\n$ "}]}}, "5d2b937863b8450eb4cd1c4787fadda6": {"model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "model_name": "OutputModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_640dcc6ef46a417f9cfd914e15be1b44", "msg_id": "", "outputs": [{"name": "stdout", "output_type": "stream", "text": "$ man proc | grep -A40 /maps | head -41\n       /proc/[pid]/maps\r\n              A  file containing the currently mapped memory regions and their\r\n              access permissions.  See mmap(2) for  some  further  information\r\n              about memory mappings.\r\n\r\n              Permission  to  access  this file is governed by a ptrace access\r\n              mode PTRACE_MODE_READ_FSCREDS check; see ptrace(2).\r\n\r\n              The format of the file is:\r\n\r\n    address           perms offset  dev   inode       pathname\r\n    00400000-00452000 r-xp 00000000 08:02 173521      /usr/bin/dbus-daemon\r\n    00651000-00652000 r--p 00051000 08:02 173521      /usr/bin/dbus-daemon\r\n    00652000-00655000 rw-p 00052000 08:02 173521      /usr/bin/dbus-daemon\r\n    00e03000-00e24000 rw-p 00000000 00:00 0           [heap]\r\n    00e24000-011f7000 rw-p 00000000 00:00 0           [heap]\r\n    ...\r\n    35b1800000-35b1820000 r-xp 00000000 08:02 135522  /usr/lib64/ld-2.15.so\r\n    35b1a1f000-35b1a20000 r--p 0001f000 08:02 135522  /usr/lib64/ld-2.15.so\r\n    35b1a20000-35b1a21000 rw-p 00020000 08:02 135522  /usr/lib64/ld-2.15.so\r\n    35b1a21000-35b1a22000 rw-p 00000000 00:00 0\r\n    35b1c00000-35b1dac000 r-xp 00000000 08:02 135870  /usr/lib64/libc-2.15.so\r\n    35b1dac000-35b1fac000 ---p 001ac000 08:02 135870  /usr/lib64/libc-2.15.so\r\n    35b1fac000-35b1fb0000 r--p 001ac000 08:02 135870  /usr/lib64/libc-2.15.so\r\n    35b1fb0000-35b1fb2000 rw-p 001b0000 08:02 135870  /usr/lib64/libc-2.15.so\r\n    ...\r\n    f2c6ff8c000-7f2c7078c000 rw-p 00000000 00:00 0    [stack:986]\r\n    ...\r\n    7fffb2c0d000-7fffb2c2e000 rw-p 00000000 00:00 0   [stack]\r\n    7fffb2d48000-7fffb2d49000 r-xp 00000000 00:00 0   [vdso]\r\n\r\n              The address field is the address space in the process  that  the\r\n              mapping occupies.  The perms field is a set of permissions:\r\n\r\n                  r = read\r\n                  w = write\r\n                  x = execute\r\n                  s = shared\r\n                  p = private (copy on write)\r\n\r\n              The  offset  field  is the offset into the file/whatever; dev is\r\n$ "}]}}, "640dcc6ef46a417f9cfd914e15be1b44": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": "1px solid black", "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "100%", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": "scroll", "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "64d5872128404a12a6001af32781c42e": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": "1px solid black", "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "100%", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": "scroll", "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "66812d223c7a4f799383b156b3471f3c": {"model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "model_name": "OutputModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_1a21cd34ecaa448285250654c4568859", "msg_id": "", "outputs": [{"name": "stdout", "output_type": "stream", "text": "\nas -g -a=usesum5.o.lst usesum5.S -o usesum5.o\r\nas -g -a=sumit6.o.lst sumit6.S -o sumit6.o\r\nld -g -Map=usesum6.map usesum5.o sumit6.o -o usesum6\r\n"}]}}, "697c8a341ffd4ec8a1d4c5555007b5d8": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": "1px solid black", "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "100%", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": "scroll", "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "705bb3d2781d40f2bce648854321ce0b": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": "1px solid black", "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "100%", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": "scroll", "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "71cfc66ac93245e2b7023d6a5fc32a94": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": "1px solid black", "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "100%", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": "scroll", "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "72fa5eb60d454ca5a54376ead2d07e15": {"model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "model_name": "OutputModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_705bb3d2781d40f2bce648854321ce0b", "msg_id": "", "outputs": [{"name": "stdout", "output_type": "stream", "text": "\nas -g -a=hello.o.lst hello.S -o hello.o\r\nld -g -Map=hello.map hello.o -o hello\r\n"}]}}, "d4f99893a85540f28705f1d3aabbde97": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": "1px solid black", "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "100%", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": "scroll", "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "e7426d62c327439bb411b0a080175606": {"model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "model_name": "OutputModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_71cfc66ac93245e2b7023d6a5fc32a94", "msg_id": "", "outputs": [{"name": "stdout", "output_type": "stream", "text": "$ man syscall | head -20\nSYSCALL(2)                 Linux Programmer's Manual                SYSCALL(2)\r\n\r\nNAME\r\n       syscall - indirect system call\r\n\r\nSYNOPSIS\r\n       #include <unistd.h>\r\n       #include <sys/syscall.h>   /* For SYS_xxx definitions */\r\n\r\n       long syscall(long number, ...);\r\n\r\n   Feature Test Macro Requirements for glibc (see feature_test_macros(7)):\r\n       syscall():\r\n           Since glibc 2.19:\r\n               _DEFAULT_SOURCE\r\n           Before glibc 2.19:\r\n               _BSD_SOURCE || _SVID_SOURCE\r\n\r\nDESCRIPTION\r\n       syscall()  is  a  small  library  function that invokes the system call\r\n$ "}]}}, "f1d3856a1dbd4da9b7385ecd27e53a48": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": "1px solid black", "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "100%", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": "scroll", "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "fe5af6610f96409a9203648c832152b5": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": "1px solid black", "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "100%", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": "scroll", "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "fed8ca08622a44e18b173ae014e2a7d1": {"model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "model_name": "OutputModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_f1d3856a1dbd4da9b7385ecd27e53a48", "msg_id": "", "outputs": [{"name": "stdout", "output_type": "stream", "text": "$ man syscalls | head -20\nSYSCALLS(2)                Linux Programmer's Manual               SYSCALLS(2)\r\n\r\nNAME\r\n       syscalls - Linux system calls\r\n\r\nSYNOPSIS\r\n       Linux system calls.\r\n\r\nDESCRIPTION\r\n       The system call is the fundamental interface between an application and\r\n       the Linux kernel.\r\n\r\n   System calls and library wrapper functions\r\n       System calls are generally not invoked directly, but rather via wrapper\r\n       functions in glibc (or perhaps some other library).  For details of di\u2010\r\n       rect invocation of a system call, see intro(2).  Often, but not always,\r\n       the  name of the wrapper function is the same as the name of the system\r\n       call that it invokes.  For example, glibc contains a  function  chdir()\r\n       which invokes the underlying \"chdir\" system call.\r\n\r\n$ "}]}}}, "version_major": 2, "version_minor": 0}
 </script>
 
 
@@ -1126,9 +1354,11 @@ display /1gd D_SUM
 
               </div>
               
-        
-            <!-- Previous / next buttons -->
-<div class='prev-next-area'> 
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
     <a class='left-prev' id="prev-link" href="L13.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
@@ -1144,26 +1374,28 @@ display /1gd D_SUM
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-        
+            </footer>
         </div>
     </div>
-    <footer class="footer">
-    <div class="container">
-      <p>
-        
-          By Jonathan Appavoo<br/>
-        
-            &copy; Copyright 2021.<br/>
-      </p>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Jonathan Appavoo<br/>
+  
+      &copy; Copyright 2021.<br/>
+</p>
+        </footer>
     </div>
-  </footer>
-</main>
+    
+</div>
 
 
       </div>
     </div>
   
-  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
 
   </body>
 </html>

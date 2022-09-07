@@ -4,11 +4,13 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>4. SLS Lecture 4 : Editors, Make and Terminal IDEs &#8212; UndertheCovers</title>
     
-  <link href="../_static/css/theme.css" rel="stylesheet">
-  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -18,39 +20,38 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin
     href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    
-      
-
-    
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
-    <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script>
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="5. SLS Lecture 5 : Version Control and GIT: The Basics" href="L05.html" />
@@ -62,7 +63,21 @@
     <!-- Google Analytics -->
     
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
     
     <div class="container-fluid" id="banner"></div>
 
@@ -71,9 +86,10 @@
     <div class="container-xl">
       <div class="row">
           
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../index.html">
       
         <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
@@ -91,14 +107,15 @@
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
-        <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../intro_ln.html">
-   Under the Covers : The Secret Life of Software
-  </a>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro_ln.html">
+                    Under the Covers : The Secret Life of Software
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Course Specfic Introductions
  </span>
@@ -280,104 +297,177 @@
 </ul>
 
     </div>
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-</div>
-
-</div>
-
-
-          
-
-
-          
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
             
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
-        
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/unix/L04.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
-    </div>
-</div>
-
-            <!-- Source interaction buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
-    <div class="dropdown-buttons sourcebuttons">
-        <a class="repository-button"
-            href="https://github.com/jappavoo/UndertheCovers"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="Source repository"><i
-                    class="fab fa-github"></i>repository</button></a>
-        
-        
-    </div>
-</div>
-
-            <!-- Full screen (wrap in <a> to have style consistency -->
-
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
-
-            <!-- Launch buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        
-        <a class="jupyterhub-button" href="https://jupyterhub-opf-jupyterhub.apps.smaug.na.operate-first.cloud/hub/user-redirect/git-pull?repo=https://github.com/jappavoo/UndertheCovers&urlpath=tree/UndertheCovers/underthecovers/unix/L04.ipynb&branch=main"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch JupyterHub" data-toggle="tooltip"
-                data-placement="left"><img class="jupyterhub-button-logo"
-                    src="../_static/images/logo_jupyterhub.svg"
-                    alt="Interact on JupyterHub">JupyterHub</button></a>
-        
-        
-        
-    </div>
-</div>
-
-        </div>
-
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
-            
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
             </div>
-            <nav id="bd-toc-nav" aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://jupyterhub-opf-jupyterhub.apps.smaug.na.operate-first.cloud/hub/user-redirect/git-pull?repo=https%3A//github.com/jappavoo/UndertheCovers&urlpath=tree/UndertheCovers/underthecovers/unix/L04.ipynb&branch=main"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on JupyterHub"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_jupyterhub.svg">
+  </span>
+<span class="headerbtn__text-container">JupyterHub</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+<a href="https://github.com/jappavoo/UndertheCovers"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="bottom"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/unix/L04.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#ascii-editors-and-programming">
    4.1. ASCII Editors and Programming
@@ -434,23 +524,95 @@
  </li>
 </ul>
 
-            </nav>
-        </div>
-    </div>
+    </nav>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>SLS Lecture 4 : Editors, Make and Terminal IDEs</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ascii-editors-and-programming">
+   4.1. ASCII Editors and Programming
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#practical-side-of-files">
+   4.2. Practical side of files
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#editors">
+   4.3. EDITORS
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#beyond-vi-and-emacs">
+     4.3.1. Beyond VI and Emacs
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#but">
+     4.3.2. BUT…
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vi-and-vim">
+     4.3.3. VI and VIM
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#emacs">
+     4.3.4. EMACS
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#make">
+   4.4. Make
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#make-preliminaries">
+     4.4.1. Make preliminaries
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#make-basic-syntax">
+     4.4.2. Make Basic Syntax
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="sls-lecture-4-editors-make-and-terminal-ides">
-<h1><span class="section-number">4. </span>SLS Lecture 4 : Editors, Make and Terminal IDEs<a class="headerlink" href="#sls-lecture-4-editors-make-and-terminal-ides" title="Permalink to this headline">¶</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="sls-lecture-4-editors-make-and-terminal-ides">
+<h1><span class="section-number">4. </span>SLS Lecture 4 : Editors, Make and Terminal IDEs<a class="headerlink" href="#sls-lecture-4-editors-make-and-terminal-ides" title="Permalink to this headline">#</a></h1>
 <p>and some shell script programming to boot</p>
 <center>
 <img src="https://web.archive.org/web/20110408073350im_/http://jtnimoy-public.s3-website-us-east-1.amazonaws.com/178/TRON_GFX_BR_07.JPG" width="70%">
 https://web.archive.org/web/20110407224426/http://jtnimoy.net/workviewer.php?q=178
-</center><div class="section" id="ascii-editors-and-programming">
-<h2><span class="section-number">4.1. </span>ASCII Editors and Programming<a class="headerlink" href="#ascii-editors-and-programming" title="Permalink to this headline">¶</a></h2>
+</center><section id="ascii-editors-and-programming">
+<h2><span class="section-number">4.1. </span>ASCII Editors and Programming<a class="headerlink" href="#ascii-editors-and-programming" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>We now know what a regular File is right?</p></li>
 <li><p>ASCII file: is simply a file who’s data is encode in ASCII</p></li>
@@ -493,9 +655,9 @@ Types of Paths
 </li>
 <li><p>UNIX has many man tools for working with ASCII files</p></li>
 </ul>
-</div>
-<div class="section" id="practical-side-of-files">
-<h2><span class="section-number">4.2. </span>Practical side of files<a class="headerlink" href="#practical-side-of-files" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="practical-side-of-files">
+<h2><span class="section-number">4.2. </span>Practical side of files<a class="headerlink" href="#practical-side-of-files" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>We should know how to use our OS to “manage” files</p>
 <ul>
@@ -551,9 +713,9 @@ findfuncs
 findfuncs
 </pre></div>
 </div>
-</div>
-<div class="section" id="editors">
-<h2><span class="section-number">4.3. </span>EDITORS<a class="headerlink" href="#editors" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="editors">
+<h2><span class="section-number">4.3. </span>EDITORS<a class="headerlink" href="#editors" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>Our program has a lot to be desired of it</p></li>
 <li><p>Pretty painful to keep going this way</p>
@@ -576,8 +738,8 @@ findfuncs
 </ul>
 </li>
 </ul>
-<div class="section" id="beyond-vi-and-emacs">
-<h3><span class="section-number">4.3.1. </span>Beyond VI and Emacs<a class="headerlink" href="#beyond-vi-and-emacs" title="Permalink to this headline">¶</a></h3>
+<section id="beyond-vi-and-emacs">
+<h3><span class="section-number">4.3.1. </span>Beyond VI and Emacs<a class="headerlink" href="#beyond-vi-and-emacs" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>there are more modern editors that only have a GUI</p>
 <ul>
@@ -586,9 +748,9 @@ findfuncs
 </ul>
 </li>
 </ul>
-</div>
-<div class="section" id="but">
-<h3><span class="section-number">4.3.2. </span>BUT…<a class="headerlink" href="#but" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="but">
+<h3><span class="section-number">4.3.2. </span>BUT…<a class="headerlink" href="#but" title="Permalink to this headline">#</a></h3>
 <p>It really pays to know how to be functional in VIM and EMACS at least a little</p>
 <ul class="simple">
 <li><p>it means that you can be highly productive even when with just tty access.</p>
@@ -600,9 +762,9 @@ findfuncs
 <li><p>understanding how things actually work and fit together</p></li>
 <li><p>lowest common denominator is still the terminal</p></li>
 </ul>
-</div>
-<div class="section" id="vi-and-vim">
-<h3><span class="section-number">4.3.3. </span>VI and VIM<a class="headerlink" href="#vi-and-vim" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="vi-and-vim">
+<h3><span class="section-number">4.3.3. </span>VI and VIM<a class="headerlink" href="#vi-and-vim" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>VI 1976 by Bill Joy: <a class="reference external" href="https://en.wikipedia.org/wiki/Vi">https://en.wikipedia.org/wiki/Vi</a></p></li>
 <li><p>VIM 1991 by Bram Moolenaar: <a class="reference external" href="https://en.wikipedia.org/wiki/Vim_(text_editor)">https://en.wikipedia.org/wiki/Vim_(text_editor)</a></p>
@@ -675,9 +837,9 @@ find ~/kornia -name <span class="s2">&quot;*.py&quot;</span> <span class="p">|</
 <li><p>now lets get fancier</p></li>
 <li><p>I grew up on emacs</p></li>
 </ul>
-</div>
-<div class="section" id="emacs">
-<h3><span class="section-number">4.3.4. </span>EMACS<a class="headerlink" href="#emacs" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="emacs">
+<h3><span class="section-number">4.3.4. </span>EMACS<a class="headerlink" href="#emacs" title="Permalink to this headline">#</a></h3>
 <p><a class="reference external" href="https://en.wikipedia.org/wiki/Emacs">https://en.wikipedia.org/wiki/Emacs</a></p>
 <ul class="simple">
 <li><p>EMACS 1976 David A. Moon and Guy L. Steele Jr</p></li>
@@ -742,10 +904,10 @@ find ~/kornia -name <span class="s2">&quot;*.py&quot;</span> <span class="p">|</
 <span class="k">done</span> <span class="p">|</span> sort
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="make">
-<h2><span class="section-number">4.4. </span>Make<a class="headerlink" href="#make" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="make">
+<h2><span class="section-number">4.4. </span>Make<a class="headerlink" href="#make" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>Two things go into any programming development process:</p>
 <ul>
@@ -809,8 +971,8 @@ find ~/kornia -name <span class="s2">&quot;*.py&quot;</span> <span class="p">|</
 </ul>
 </li>
 </ul>
-<div class="section" id="make-preliminaries">
-<h3><span class="section-number">4.4.1. </span>Make preliminaries<a class="headerlink" href="#make-preliminaries" title="Permalink to this headline">¶</a></h3>
+<section id="make-preliminaries">
+<h3><span class="section-number">4.4.1. </span>Make preliminaries<a class="headerlink" href="#make-preliminaries" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>Lets revisit the file meta data so we can understand how make detects that something has changed</p></li>
 <li><p>Every time a file is modified UNIX updates a field in the meta data of the file called <code class="docutils literal notranslate"><span class="pre">mtime</span></code></p>
@@ -842,9 +1004,9 @@ find ~/kornia -name <span class="s2">&quot;*.py&quot;</span> <span class="p">|</
 </ul>
 </li>
 </ul>
-</div>
-<div class="section" id="make-basic-syntax">
-<h3><span class="section-number">4.4.2. </span>Make Basic Syntax<a class="headerlink" href="#make-basic-syntax" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="make-basic-syntax">
+<h3><span class="section-number">4.4.2. </span>Make Basic Syntax<a class="headerlink" href="#make-basic-syntax" title="Permalink to this headline">#</a></h3>
 <div class="highlight-make notranslate"><div class="highlight"><pre><span></span><span class="nf">target</span><span class="o">:</span> <span class="n">dependencies</span>
     rules
 </pre></div>
@@ -854,90 +1016,10 @@ find ~/kornia -name <span class="s2">&quot;*.py&quot;</span> <span class="p">|</
 <li><p>lets assume every time that the <code class="docutils literal notranslate"><span class="pre">CHANGELOG.md</span></code> is modified we would like to rebuild our report</p></li>
 </ul>
 <div class="cell tag_remove-input docutils container">
-<div class="cell_output docutils container">
-<ul class="simple">
-<li><p>BT lets create a project directory : findfunc</p></li>
-<li><p>lets put script and makefile in it</p></li>
-<li><p>start with</p></li>
-</ul>
-<div class="highlight-make notranslate"><div class="highlight"><pre><span></span><span class="nf">funcs.txt</span><span class="o">:</span> ~/<span class="n">kornia</span>/<span class="n">CHANGELOG</span>.<span class="n">md</span>
-    ./findfuncs &gt; <span class="nv">$@</span>
-</pre></div>
 </div>
-<ul class="simple">
-<li><p>lets move towards the following</p>
-<ol class="simple">
-<li><p>add target <code class="docutils literal notranslate"><span class="pre">kornia/CHANGELOG.md:</span></code> no dep rule: git clone <code class="docutils literal notranslate"><span class="pre">https://github.com/kornia/kornia.git</span></code></p></li>
-<li><p>modify our findfuncs to take directory as a paramter and a usage if empty</p></li>
-<li><p>progressively add Make variables</p></li>
-<li><p>add a clean target and .PHONEY</p></li>
-<li><p>add a funccount.txt target dep: <code class="docutils literal notranslate"><span class="pre">funcs.txt</span></code>  rule: <code class="docutils literal notranslate"><span class="pre">wc</span> <span class="pre">-l</span> <span class="pre">$&lt;</span> <span class="pre">&gt;</span> <span class="pre">$&#64;</span></code></p></li>
-<li><p>add <code class="docutils literal notranslate"><span class="pre">all</span></code> target with <code class="docutils literal notranslate"><span class="pre">funccount.txt</span></code> as dependency</p></li>
-<li><p>add <code class="docutils literal notranslate"><span class="pre">torchfuncs.txt</span></code> target dep: <code class="docutils literal notranslate"><span class="pre">funcs.txt</span></code> rule: <code class="docutils literal notranslate"><span class="pre">grep</span> <span class="pre">'torch'</span> <span class="pre">$&lt;</span> <span class="pre">&gt;</span> <span class="pre">$&#64;</span></code></p></li>
-</ol>
-</li>
-<li><p>makefile</p></li>
-</ul>
-<div style="width:100%; height:100%; font-size:inherit; overflow: auto;" >
-<div class="highlight-make notranslate"><div class="highlight"><pre><span></span><span class="nv">DIR</span><span class="o">=</span>kornia
-<span class="nv">REPO</span><span class="o">=</span>https://github.com/kornia/kornia.git
-
-<span class="nf">.PHONEY</span><span class="o">:</span> <span class="n">clean</span> <span class="n">all</span>
-
-<span class="nf">all</span><span class="o">:</span> <span class="n">funcscount</span>.<span class="n">txt</span> <span class="n">torchfuncs</span>.<span class="n">txt</span>
-
-<span class="nf">funcs.txt</span><span class="o">:</span> ${<span class="n">DIR</span>}/<span class="n">CHANGELOG</span>.<span class="n">md</span>
-	./findfuncs <span class="si">${</span><span class="nv">DIR</span><span class="si">}</span> &gt; <span class="nv">$@</span>
-
-<span class="nf">funcscount.txt</span><span class="o">:</span> <span class="n">funcs</span>.<span class="n">txt</span>
-	wc -l $&lt; &gt; <span class="nv">$@</span>
-
-<span class="c"># add this after so that we can see incremental running of rules</span>
-<span class="nf">torchfuncs.txt</span><span class="o">:</span> <span class="n">funcs</span>.<span class="n">txt</span>
-	grep <span class="s1">&#39;torch&#39;</span> $&lt; &gt; <span class="nv">$@</span>
-
-<span class="nf">kornia/CHANGELOG.md</span><span class="o">:</span>
-	git clone <span class="si">${</span><span class="nv">REPO</span><span class="si">}</span>
-
-<span class="nf">clean</span><span class="o">:</span>
-	-rm funcs.txt funcscount.txt torchfuncs.txt
-
-<span class="nf">distclean</span><span class="o">:</span>
-	-rm -rf <span class="si">${</span><span class="nv">DIR</span><span class="si">}</span>
-</pre></div>
-</div>
-</div>
-<ul class="simple">
-<li><p>findfuncs will need to be modified to add an argument</p></li>
-</ul>
-<div style="width:100%; height:100%; font-size:inherit; overflow: auto;" >
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
-<span class="c1"># this is our crude bash script to try and find all python functions</span>
-<span class="c1"># in all the .py files within a directory tree</span>
-
-<span class="c1">#set -n  # -n dry run  good for syntax checking (without running any commands)</span>
-<span class="c1">#set -x  # tracing of simple commands on </span>
-<span class="c1">#set -e  # exit script on any fail return code</span>
-<span class="c1">#set -u  # error if expanding unset variable ... goood for catching typeos</span>
-
-<span class="nv">DIR</span><span class="o">=</span><span class="nv">$1</span>
-<span class="o">[[</span> -z <span class="nv">$DIR</span> <span class="o">]]</span> <span class="o">&amp;&amp;</span> <span class="nb">echo</span> <span class="s2">&quot;USAGE: </span><span class="nv">$0</span><span class="s2"> &lt;directory&gt;&quot;</span> <span class="o">&amp;&amp;</span> <span class="nb">exit</span> -1
-
-find <span class="nv">$DIR</span> -name <span class="s2">&quot;*.py&quot;</span> <span class="p">|</span> <span class="k">while</span> <span class="nb">read</span> file
-<span class="k">do</span>
-    cat -n <span class="nv">$file</span> <span class="p">|</span> grep <span class="s1">&#39;def &#39;</span><span class="p">|</span> <span class="k">while</span> <span class="nb">read</span> line def func rest<span class="p">;</span> <span class="k">do</span>
-	<span class="nv">func</span><span class="o">=</span><span class="si">${</span><span class="nv">func</span><span class="p">%%(*</span><span class="si">}</span>
-	<span class="nb">echo</span> <span class="nv">$func</span> <span class="nv">$file</span>: <span class="nv">$line</span>
-    <span class="k">done</span>	
-<span class="k">done</span> <span class="p">|</span> sort 
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -961,9 +1043,11 @@ find <span class="nv">$DIR</span> -name <span class="s2">&quot;*.py&quot;</span>
 
               </div>
               
-        
-            <!-- Previous / next buttons -->
-<div class='prev-next-area'> 
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
     <a class='left-prev' id="prev-link" href="L03.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
@@ -979,26 +1063,28 @@ find <span class="nv">$DIR</span> -name <span class="s2">&quot;*.py&quot;</span>
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-        
+            </footer>
         </div>
     </div>
-    <footer class="footer">
-    <div class="container">
-      <p>
-        
-          By Jonathan Appavoo<br/>
-        
-            &copy; Copyright 2021.<br/>
-      </p>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Jonathan Appavoo<br/>
+  
+      &copy; Copyright 2021.<br/>
+</p>
+        </footer>
     </div>
-  </footer>
-</main>
+    
+</div>
 
 
       </div>
     </div>
   
-  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
 
   </body>
 </html>
