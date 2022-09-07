@@ -7,8 +7,8 @@ nb = nbf.v4.new_notebook()
 nb.metadata.rise =  {
             "autolaunch": False,
             "enable_chalkboard": True,
-            "footer": "SLS -- Lecture 2",
-            "header": "Unix and Shell Part 2",
+            "footer": "UCSLS-Footer",
+            "header": "Header",
             "height": "100%",
             "scroll": True,
             "start_slideshow_at": "selected",
@@ -17,18 +17,10 @@ nb.metadata.rise =  {
         }
 layouts = {
     "imageonly" : { "prefix" :  '''<img src="''',
-                    "suffix" : '''">''' }
+                    "suffix" : '''" width="100%">''' }
     }
 
 layout_default='imageonly'
-
-text = """\
-# My first automatic Jupyter Notebook
-This is an auto-generated notebook."""
-
-code = """\
-%pylab inline
-hist(normal(size=2000), bins=50);"""
 
 if (len(sys.argv) < 2):
     print("USAGE: name [files]", file=sys.stderr)
@@ -54,7 +46,20 @@ for png in sys.argv[2:]:
                 layout=flayout
     layout_prefix = layouts[layout]['prefix']
     layout_suffix = layouts[layout]['suffix']
+
+    # seperator
     nb['cells'].append(nbf.v4.new_markdown_cell(
+        '''<hr>''',
+        metadata={
+            "slideshow": {
+                "slide_type": "skip"
+            },
+            "tags": []
+        }))
+    # body
+    nb['cells'].append(nbf.v4.new_markdown_cell(
+        '''% BODY
+''' + 
         layout_prefix +
         png +
         layout_suffix,
@@ -64,10 +69,17 @@ for png in sys.argv[2:]:
             },
             "tags": []
         }))
+    # body
+    nb['cells'].append(nbf.v4.new_markdown_cell(
+        '% NOTES',
+        metadata={
+            "slideshow": {
+                "slide_type": "notes"
+            },
+            "tags": []
+        }))
     i=i+1
     
-#nb['cells'] = [nbf.v4.new_markdown_cell(text),
-#               nbf.v4.new_code_cell(code) ]
 
 nbf.write(nb, nbfile)
 
