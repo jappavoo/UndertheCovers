@@ -4,11 +4,15 @@
 #    2) we customize css to improve layout of cells in the browser window
 #    3) standarize how to display code blocks from a source file
 #
+
 servers=list(list_running_servers())
 if os.environ.get('JUPYTER_ENABLE_LAB') == 'yes' or len(servers) == 0 or 'UC_SKIPTERMS' in globals():
     # skip using embedded terminals in jupyterlab
     def mkTerm():
         pass
+    EDITORTERM=mkTerm()
+    BUILDTERM=mkTerm()
+    DEBUGGERTERM=mkTerm()
     def showTerm(TERMNAME, title, w, h):
         return Markdown("<b>Use Terminal</b>")
     def showET(title="TERMINAL Window for Editor"):

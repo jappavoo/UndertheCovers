@@ -29,7 +29,7 @@ launch_buttons:
   notebook_interface: "classic"
   binderhub_url: "" # trying to remove binder
   # launch on the public RedHat Operate First Service
-  jupyterhub_url: "https://jupyterhub-opf-jupyterhub.apps.smaug.na.operate-first.cloud"
+  #jupyterhub_url: "https://jupyterhub-opf-jupyterhub.apps.smaug.na.operate-first.cloud"
   # launch on the private BU service -- use this for BU courses -- students must be authorized  
   #jupyterhub_url: "https://jupyterhub-redhat-ods-applications.apps.bu-rosa.8pmt.p1.openshiftapps.com"
 
