@@ -998,6 +998,86 @@ find ~/kornia -name <span class="s2">&quot;*.py&quot;</span> <span class="p">|</
 <li><p>lets assume every time that the <code class="docutils literal notranslate"><span class="pre">CHANGELOG.md</span></code> is modified we would like to rebuild our report</p></li>
 </ul>
 <div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<ul class="simple">
+<li><p>BT lets create a project directory : findfunc</p></li>
+<li><p>lets put script and makefile in it</p></li>
+<li><p>start with</p></li>
+</ul>
+<div class="highlight-make notranslate"><div class="highlight"><pre><span></span><span class="nf">funcs.txt</span><span class="o">:</span> ~/<span class="n">kornia</span>/<span class="n">CHANGELOG</span>.<span class="n">md</span>
+    ./findfuncs &gt; <span class="nv">$@</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>lets move towards the following</p>
+<ol class="simple">
+<li><p>add target <code class="docutils literal notranslate"><span class="pre">kornia/CHANGELOG.md:</span></code> no dep rule: git clone <code class="docutils literal notranslate"><span class="pre">https://github.com/kornia/kornia.git</span></code></p></li>
+<li><p>modify our findfuncs to take directory as a paramter and a usage if empty</p></li>
+<li><p>progressively add Make variables</p></li>
+<li><p>add a clean target and .PHONEY</p></li>
+<li><p>add a funccount.txt target dep: <code class="docutils literal notranslate"><span class="pre">funcs.txt</span></code>  rule: <code class="docutils literal notranslate"><span class="pre">wc</span> <span class="pre">-l</span> <span class="pre">$&lt;</span> <span class="pre">&gt;</span> <span class="pre">$&#64;</span></code></p></li>
+<li><p>add <code class="docutils literal notranslate"><span class="pre">all</span></code> target with <code class="docutils literal notranslate"><span class="pre">funccount.txt</span></code> as dependency</p></li>
+<li><p>add <code class="docutils literal notranslate"><span class="pre">torchfuncs.txt</span></code> target dep: <code class="docutils literal notranslate"><span class="pre">funcs.txt</span></code> rule: <code class="docutils literal notranslate"><span class="pre">grep</span> <span class="pre">'torch'</span> <span class="pre">$&lt;</span> <span class="pre">&gt;</span> <span class="pre">$&#64;</span></code></p></li>
+</ol>
+</li>
+<li><p>makefile</p></li>
+</ul>
+<div style="width:100%; height:100%; font-size:inherit; overflow: auto;" >
+<div class="highlight-make notranslate"><div class="highlight"><pre><span></span><span class="nv">DIR</span><span class="o">=</span>kornia
+<span class="nv">REPO</span><span class="o">=</span>https://github.com/kornia/kornia.git
+
+<span class="nf">.PHONEY</span><span class="o">:</span> <span class="n">clean</span> <span class="n">all</span>
+
+<span class="nf">all</span><span class="o">:</span> <span class="n">funcscount</span>.<span class="n">txt</span> <span class="n">torchfuncs</span>.<span class="n">txt</span>
+
+<span class="nf">funcs.txt</span><span class="o">:</span> ${<span class="n">DIR</span>}/<span class="n">CHANGELOG</span>.<span class="n">md</span>
+	./findfuncs <span class="si">${</span><span class="nv">DIR</span><span class="si">}</span> &gt; <span class="nv">$@</span>
+
+<span class="nf">funcscount.txt</span><span class="o">:</span> <span class="n">funcs</span>.<span class="n">txt</span>
+	wc -l $&lt; &gt; <span class="nv">$@</span>
+
+<span class="c"># add this after so that we can see incremental running of rules</span>
+<span class="nf">torchfuncs.txt</span><span class="o">:</span> <span class="n">funcs</span>.<span class="n">txt</span>
+	grep <span class="s1">&#39;torch&#39;</span> $&lt; &gt; <span class="nv">$@</span>
+
+<span class="nf">kornia/CHANGELOG.md</span><span class="o">:</span>
+	git clone <span class="si">${</span><span class="nv">REPO</span><span class="si">}</span>
+
+<span class="nf">clean</span><span class="o">:</span>
+	-rm funcs.txt funcscount.txt torchfuncs.txt
+
+<span class="nf">distclean</span><span class="o">:</span>
+	-rm -rf <span class="si">${</span><span class="nv">DIR</span><span class="si">}</span>
+</pre></div>
+</div>
+</div>
+<ul class="simple">
+<li><p>findfuncs will need to be modified to add an argument</p></li>
+</ul>
+<div style="width:100%; height:100%; font-size:inherit; overflow: auto;" >
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1"># this is our crude bash script to try and find all python functions</span>
+<span class="c1"># in all the .py files within a directory tree</span>
+
+<span class="c1">#set -n  # -n dry run  good for syntax checking (without running any commands)</span>
+<span class="c1">#set -x  # tracing of simple commands on </span>
+<span class="c1">#set -e  # exit script on any fail return code</span>
+<span class="c1">#set -u  # error if expanding unset variable ... goood for catching typeos</span>
+
+<span class="nv">DIR</span><span class="o">=</span><span class="nv">$1</span>
+<span class="o">[[</span> -z <span class="nv">$DIR</span> <span class="o">]]</span> <span class="o">&amp;&amp;</span> <span class="nb">echo</span> <span class="s2">&quot;USAGE: </span><span class="nv">$0</span><span class="s2"> &lt;directory&gt;&quot;</span> <span class="o">&amp;&amp;</span> <span class="nb">exit</span> -1
+
+find <span class="nv">$DIR</span> -name <span class="s2">&quot;*.py&quot;</span> <span class="p">|</span> <span class="k">while</span> <span class="nb">read</span> file
+<span class="k">do</span>
+    cat -n <span class="nv">$file</span> <span class="p">|</span> grep <span class="s1">&#39;def &#39;</span><span class="p">|</span> <span class="k">while</span> <span class="nb">read</span> line def func rest<span class="p">;</span> <span class="k">do</span>
+	<span class="nv">func</span><span class="o">=</span><span class="si">${</span><span class="nv">func</span><span class="p">%%(*</span><span class="si">}</span>
+	<span class="nb">echo</span> <span class="nv">$func</span> <span class="nv">$file</span>: <span class="nv">$line</span>
+    <span class="k">done</span>	
+<span class="k">done</span> <span class="p">|</span> sort 
+</pre></div>
+</div>
+</div>
+</div>
 </div>
 </section>
 </section>
