@@ -458,40 +458,50 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#anatomy-of-shell-command-lines">
+   2.2. Anatomy of shell command lines
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#the-shell-as-a-programming-language">
-   2.2. The Shell as a Programming Language
+   2.3. The Shell as a Programming Language
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#shell-programming-by-example">
-   2.3. Shell Programming by example
+   2.4. Shell Programming by example
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#shell-programming">
+   2.5. Shell Programming
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#navigating-and-working-with-the-file-system">
-   2.4. Navigating and working with the “File System”
+   2.6. Navigating and working with the “File System”
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#file-and-directories">
-     2.4.1. File and Directories
+     2.6.1. File and Directories
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#variables-in-detail">
-   2.5. Variables in detail
+   2.7. Variables in detail
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#shell-commands">
-   2.6. Shell Commands
+   2.8. Shell Commands
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#exercise">
-   2.7. Exercise
+   2.9. Exercise
   </a>
  </li>
 </ul>
@@ -519,40 +529,50 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#anatomy-of-shell-command-lines">
+   2.2. Anatomy of shell command lines
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#the-shell-as-a-programming-language">
-   2.2. The Shell as a Programming Language
+   2.3. The Shell as a Programming Language
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#shell-programming-by-example">
-   2.3. Shell Programming by example
+   2.4. Shell Programming by example
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#shell-programming">
+   2.5. Shell Programming
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#navigating-and-working-with-the-file-system">
-   2.4. Navigating and working with the “File System”
+   2.6. Navigating and working with the “File System”
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#file-and-directories">
-     2.4.1. File and Directories
+     2.6.1. File and Directories
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#variables-in-detail">
-   2.5. Variables in detail
+   2.7. Variables in detail
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#shell-commands">
-   2.6. Shell Commands
+   2.8. Shell Commands
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#exercise">
-   2.7. Exercise
+   2.9. Exercise
   </a>
  </li>
 </ul>
@@ -638,8 +658,66 @@ title="Print to PDF"
 </li>
 </ol>
 </section>
+<section id="anatomy-of-shell-command-lines">
+<h2><span class="section-number">2.2. </span>Anatomy of shell command lines<a class="headerlink" href="#anatomy-of-shell-command-lines" title="Permalink to this headline">#</a></h2>
+<p><strong>How to have a conversation with the shell</strong></p>
+<ul class="simple">
+<li><p>“prompt” indicates the shell is ready</p></li>
+<li><p>Think of command lines like “sentences”</p>
+<ul>
+<li><p>sequences of “word” – tokens</p>
+<ul>
+<li><p>various characters can be used to split word – easiest are “white space” characters</p>
+<ul>
+<li><p>quotes can be use to suppress splitting</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>newline : 0xa – ‘\n’ terminates our sentences – like our period</p>
+<ul>
+<li><p>command processing starts</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>simple command lines</p>
+<ul>
+<li><p>first word is command</p></li>
+<li><p>rest are arguments to the command</p></li>
+</ul>
+</li>
+<li><p>“syntax” will let us compose more complicated “sentences”</p>
+<ul>
+<li><p>combine multiple commands into a single command line</p></li>
+</ul>
+</li>
+</ul>
+<p><strong>NOTES</strong></p>
+<p>See book for details</p>
+<ul class="simple">
+<li><p>some “special” characters (“meta-characters”) have special meaning</p>
+<ul>
+<li><p>|  &amp; ; ( ) &lt; &gt; newline</p>
+<ul>
+<li><p>note these will also cause things to be split into words</p>
+<ul>
+<li><p>eg things on the right will be treated as a new word</p>
+<ul>
+<li><p>sometimes they will also terminate a simple command (thing on the right will be a new command)</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>some special words (“reserved”) have special meaning depending on where they occur on the line</p></li>
+</ul>
+</section>
 <section id="the-shell-as-a-programming-language">
-<h2><span class="section-number">2.2. </span>The Shell as a Programming Language<a class="headerlink" href="#the-shell-as-a-programming-language" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">2.3. </span>The Shell as a Programming Language<a class="headerlink" href="#the-shell-as-a-programming-language" title="Permalink to this headline">#</a></h2>
 <p><strong>The Glue that holds the UNIX Universe together</strong></p>
 <p>Basic Syntax : Notes</p>
 <ul class="simple">
@@ -677,26 +755,31 @@ title="Print to PDF"
 </ul>
 <hr></section>
 <section id="shell-programming-by-example">
-<h2><span class="section-number">2.3. </span>Shell Programming by example<a class="headerlink" href="#shell-programming-by-example" title="Permalink to this headline">#</a></h2>
-<div class="cell tag_remove-input docutils container">
-<div class="cell_output docutils container">
-<p><b>Use Terminal</b></p>
-</div>
-</div>
+<h2><span class="section-number">2.4. </span>Shell Programming by example<a class="headerlink" href="#shell-programming-by-example" title="Permalink to this headline">#</a></h2>
+<p><strong>USE TERMINAL and ILLUSTRATE</strong></p>
 <ul class="simple">
-<li><p>What is “echo” really - my old friend</p></li>
-<li><p>quoting … tricky but really useful</p></li>
-<li><p>a programmers UI</p>
+<li><p>Much of the built in capabilities of the shell is to provide us a programming interface</p>
 <ul>
-<li><p>loops</p></li>
-<li><p>Under the covers : exit code/status</p></li>
-<li><p>conditionals</p></li>
+<li><p>comments</p></li>
+<li><p>set and use variables</p></li>
+<li><p>loops: repeat commands</p></li>
+<li><p>support for basic math</p></li>
+<li><p>exit status – a way to support conditional constructs</p>
+<ul>
+<li><p>(( stmt )) : can do math statement  and return an exit status</p></li>
+<li><p>[[ test ]] : can do a bunch of tests and return an exit status</p></li>
+<li><p>the exit status of external commands</p></li>
 </ul>
 </li>
 </ul>
-<p><strong>Notes</strong></p>
+</li>
+</ul>
+</section>
+<section id="shell-programming">
+<h2><span class="section-number">2.5. </span>Shell Programming<a class="headerlink" href="#shell-programming" title="Permalink to this headline">#</a></h2>
+<div style="width:100%; height:500px; font-size:inherit; overflow: auto;" >
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Comments</span>
-<span class="c1"># a word that starts with # and everthing else till end end of the line is ignored</span>
+<span class="c1"># a word that starts with # and everything else till end end of the line is ignored</span>
 
 <span class="c1"># echo - basic built in for outputting</span>
 <span class="nb">echo</span> hello
@@ -713,7 +796,7 @@ title="Print to PDF"
 
 <span class="nv">x</span><span class="o">=</span>goodbye and farewell
 
-<span class="c1"># single quotes supresses all expansion and splitting - literal value of each character</span>
+<span class="c1"># single quotes suppresses all expansion and splitting - literal value of each character</span>
 <span class="c1"># single quotes cannot contain single quotes</span>
 <span class="nv">x</span><span class="o">=</span><span class="s1">&#39;goodbye and farewell&#39;</span>
 <span class="nb">echo</span> <span class="nv">$x</span>
@@ -746,7 +829,7 @@ title="Print to PDF"
 <span class="c1"># actually (()) tells the shell to do arithmetic in general</span>
 <span class="o">((</span> j++ <span class="o">))</span><span class="p">;</span> <span class="nb">echo</span> <span class="nv">$j</span>
 
-<span class="c1"># shell arithemetic supports comparisons as well</span>
+<span class="c1"># shell arithmetic supports comparisons as well</span>
 <span class="o">((</span> j&lt;<span class="m">0</span> <span class="o">))</span>
 
 <span class="c1"># special parameter ? is exit code of last command/pipe</span>
@@ -755,15 +838,15 @@ title="Print to PDF"
 <span class="o">((</span> j&gt;0 <span class="o">))</span><span class="p">;</span> <span class="nb">echo</span> <span class="nv">$?</span>
 
 <span class="c1"># shell convention is exit value of 0 is success and non-zero if failure</span>
-<span class="c1"># becare oposite to what you might be used to </span>
+<span class="c1"># be careful might opposite to what you might be used to </span>
 
 <span class="k">if</span> <span class="o">((</span> <span class="nv">j</span> <span class="o">==</span> <span class="m">0</span> <span class="o">))</span><span class="p">;</span> <span class="k">then</span> <span class="nb">echo</span> <span class="s2">&quot;j is zero&quot;</span><span class="p">;</span> <span class="k">elif</span> <span class="o">((</span>j&lt;<span class="m">10</span><span class="o">))</span><span class="p">;</span> <span class="k">then</span> <span class="nb">echo</span> <span class="s2">&quot;j is under 10&quot;</span><span class="p">;</span> <span class="k">else</span> <span class="s2">&quot;j is something else </span><span class="nv">$j</span><span class="s2">&quot;</span><span class="p">;</span> <span class="k">fi</span>
 
 <span class="c1"># beyond arithmetic expressions bash support a more general [[]] expression</span>
-<span class="c1"># return code will still indicate success vs failure bue allow non-integer logic</span>
+<span class="c1"># return code will still indicate success vs failure but allow non-integer logic</span>
 <span class="o">[[</span> <span class="nv">$i</span> <span class="o">==</span> <span class="s2">&quot;hello&quot;</span> <span class="o">]]</span><span class="p">;</span> <span class="nb">echo</span> <span class="nv">$?</span>
 
-<span class="c1"># special case of logical and and or to conditional commbine commands </span>
+<span class="c1"># special case of logical and and or to conditional combine commands </span>
 <span class="o">((</span> j&lt;<span class="m">0</span> <span class="o">))</span> <span class="o">&amp;&amp;</span> <span class="nb">echo</span> <span class="s2">&quot;j is &lt; 0&quot;</span>
 <span class="o">((</span> j&lt;<span class="m">0</span> <span class="o">))</span> <span class="o">||</span> <span class="nb">echo</span> <span class="s2">&quot;j is &gt;= 0&quot;</span>
 <span class="c1"># could have written using if</span>
@@ -775,9 +858,10 @@ title="Print to PDF"
 <span class="c1"># shell also has case and select statements</span>
 </pre></div>
 </div>
-<hr></section>
+  </div><hr></section>
 <section id="navigating-and-working-with-the-file-system">
-<h2><span class="section-number">2.4. </span>Navigating and working with the “File System”<a class="headerlink" href="#navigating-and-working-with-the-file-system" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">2.6. </span>Navigating and working with the “File System”<a class="headerlink" href="#navigating-and-working-with-the-file-system" title="Permalink to this headline">#</a></h2>
+<p><strong>USE TERMINAL and ILLUSTRATE</strong></p>
 <ul class="simple">
 <li><p>Current Working Directory</p>
 <ul>
@@ -804,10 +888,10 @@ title="Print to PDF"
 <li><p>Removing directories: <code class="docutils literal notranslate"><span class="pre">rmdir</span></code></p></li>
 <li><p>Creating files : <code class="docutils literal notranslate"><span class="pre">touch</span></code></p></li>
 <li><p>Removing files : <code class="docutils literal notranslate"><span class="pre">rm</span></code></p></li>
-<li><p>Creating links: <code class="docutils literal notranslate"><span class="pre">ln</span> <span class="pre">-s</span></code></p></li>
 </ul>
 <section id="file-and-directories">
-<h3><span class="section-number">2.4.1. </span>File and Directories<a class="headerlink" href="#file-and-directories" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">2.6.1. </span>File and Directories<a class="headerlink" href="#file-and-directories" title="Permalink to this headline">#</a></h3>
+<div style="width:100%; height:500px; font-size:inherit; overflow: auto;" >
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Current working directory</span>
 <span class="nb">pwd</span>
 
@@ -887,10 +971,10 @@ rm -rf Classes
 <span class="c1"># find is also a powerfull command</span>
 </pre></div>
 </div>
-</section>
+</div>    </section>
 </section>
 <section id="variables-in-detail">
-<h2><span class="section-number">2.5. </span>Variables in detail<a class="headerlink" href="#variables-in-detail" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">2.7. </span>Variables in detail<a class="headerlink" href="#variables-in-detail" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>has a name and stores a value</p></li>
 <li><p>variables are assigned a value with <code class="docutils literal notranslate"><span class="pre">name=[value]</span></code></p>
@@ -1010,7 +1094,7 @@ a new program.  Programs can inspect these values and customize their behavior. 
 </ul>
 </section>
 <section id="shell-commands">
-<h2><span class="section-number">2.6. </span>Shell Commands<a class="headerlink" href="#shell-commands" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">2.8. </span>Shell Commands<a class="headerlink" href="#shell-commands" title="Permalink to this headline">#</a></h2>
 <p>See. <a class="reference external" href="https://www.gnu.org/software/bash/manual/bash.html#Shell-Commands">https://www.gnu.org/software/bash/manual/bash.html#Shell-Commands</a>
 2. Breakdown complex commands into simple commands</p>
 <ul class="simple">
@@ -1055,7 +1139,7 @@ a new program.  Programs can inspect these values and customize their behavior. 
 </ul>
 </section>
 <section id="exercise">
-<h2><span class="section-number">2.7. </span>Exercise<a class="headerlink" href="#exercise" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">2.9. </span>Exercise<a class="headerlink" href="#exercise" title="Permalink to this headline">#</a></h2>
 <p>Try and recreate the following</p>
 <a class="reference internal image-reference" href="../_images/dirtree.png"><img alt="../_images/dirtree.png" class="align-left" src="../_images/dirtree.png" style="width: 100%;" /></a>
 </section>
