@@ -26,8 +26,8 @@ display(Markdown(FileCodeBox(
 )))
 ------------------
 
-[0;31m---------------------------------------------------------[0m
-[0;31mFileNotFoundError[0m       Traceback (most recent call last)
+[0;31m---------------------------------[0m
+[0;31mFileNotFoundError[0mTraceback (most recent call last)
 Input [0;32mIn [15][0m, in [0;36m<cell line: 1>[0;34m()[0m
 [0;32m----> 1[0m display(Markdown([43mFileCodeBox[49m[43m([49m
 [1;32m      2[0m [43m    [49m[43mfile[49m[38;5;241;43m=[39;49m[38;5;124;43m"[39;49m[38;5;124;43m../src/usesum.s[39;49m[38;5;124;43m"[39;49m[43m,[49m[43m [49m
