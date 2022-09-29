@@ -1,5 +1,5 @@
 /*  General antomy of a assembly program line
-[lablel]:   <directive or opcode> [operands]  // comment
+[lablel]:   <directive or opcode> [operands]  # comment
 */
 	.intel_syntax noprefix        # assembler syntax to use <directive>
 	                              # set assembly language format to intel  

@@ -1,6 +1,6 @@
 # Let use gdb command to poke around empty
 # To get the debugger going:
-gdb -tui empty
+gdb -x setup.gdb empty
 
 # To setup the assembly syntax to intel: 
 set disassembly-flavor intel
