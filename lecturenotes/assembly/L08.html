@@ -729,63 +729,17 @@ title="Print to PDF"
 <h3><span class="section-number">8.1.1. </span>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">#</a></h3>
 <ol class="simple">
 <li><p>make directory</p></li>
-<li><p>create git database</p></li>
-<li><p>seed with a file</p></li>
-<li><p>create a remote copy of the database</p></li>
-<li><p>push contents to remote</p></li>
-<li><p>next time we start by cloning</p></li>
+<li><p>open emacs and write <code class="docutils literal notranslate"><span class="pre">popcnt.s</span></code></p></li>
 </ol>
+<p>Skipping <code class="docutils literal notranslate"><span class="pre">git</span></code> for time.</p>
 <ol class="simple">
 <li><p>make a directory for our work :</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">mkdir</span> <span class="pre">firstasm</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">popcnt</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">mkdir</span> <span class="pre">simpleasm</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">simpleasm</span></code></p></li>
 </ul>
 </li>
-<li><p>create a git database to track our record our changes</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">init</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">ls</span> <span class="pre">-la</span></code></p></li>
-</ul>
-</li>
-<li><p>add <a class="reference external" href="http://readme.md">readme.md</a>:</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">emacs</span>&#160; <span class="pre">README.md</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">add</span> <span class="pre">README.md</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">commit</span> <span class="pre">-m</span> <span class="pre">&quot;add</span> <span class="pre">readme&quot;</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">branch</span> <span class="pre">-m</span> <span class="pre">master</span> <span class="pre">main</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">status</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">log</span> <span class="pre">--oneline</span> <span class="pre">--graph</span> <span class="pre">--all</span></code></p></li>
-</ul>
-</li>
-<li><p>replicate the repository on gitlab so we have a back remote repo</p>
-<ul class="simple">
-<li><p>There are three main protocols to choose from</p>
-<ol class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">https</span></code> – requires that you use a password every time you push :-(</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">ssh</span></code> – requires you create an ssh key and install it on the gitlab server</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">api</span> <span class="pre">token</span></code> - requires you to setup a token on the gitlab server and remember it</p></li>
-</ol>
-</li>
-<li><p>going to use ssh</p>
-<ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">remote</span> <span class="pre">add</span> <span class="pre">origin</span> <span class="pre">git&#64;cs210-gitlab.bu.edu:jappavoo/firstasm.git</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">remote</span> <span class="pre">show</span></code></p></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>push to remote</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">push</span> <span class="pre">origin</span> <span class="pre">main</span></code></p></li>
-<li><p>do this constantly while we are working to be sure we remote us up to date</p></li>
-</ul>
-</li>
-<li><p>Once the remote is created we would start our work session by “cloning” a fresh copy from the server.  Lets test this out by deleting and cloning a new copy:</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">clone</span> <span class="pre">git&#64;cs210-gitlab.bu.edu:jappavoo/firstasm.git</span></code></p></li>
-</ul>
-</li>
+<li><p>emacs popcnt.s</p></li>
 </ol>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
@@ -797,7 +751,7 @@ title="Print to PDF"
 <span class="w">        </span>
 <span class="w">	</span><span class="na">.global</span><span class="w"> </span><span class="no">_start</span><span class="w"> 	</span>
 <span class="no">_start</span><span class="p">:</span><span class="w"></span>
-<span class="w">	</span><span class="nf">popcnt</span><span class="w"> </span><span class="no">rax</span><span class="p">,</span><span class="w"> </span><span class="no">rbx</span><span class="w">   </span><span class="c1">// same as  .byte 0xF3, 0x48, 0x0F, 0xB8, 0xD8  </span>
+<span class="w">	</span><span class="nf">popcnt</span><span class="w"> </span><span class="no">rax</span><span class="p">,</span><span class="w"> </span><span class="no">rbx</span><span class="w">   </span><span class="c1"># same as  .byte 0xF3, 0x48, 0x0F, 0xB8, 0xD8  </span>
 </pre></div>
 </div>
 </div>
@@ -809,7 +763,7 @@ title="Print to PDF"
 <p><b>CODE: asm - The commented 'popcnt' assembly program</p>
 <div style="width:107em; height:100%; font-size:inherit; overflow: auto;" >
 <div class="highlight-gas notranslate"><div class="highlight"><pre><span></span><span class="cm">/*  General antomy of a assembly program line</span>
-<span class="cm">[lablel]:   &lt;directive or opcode&gt; [operands]  // comment</span>
+<span class="cm">[lablel]:   &lt;directive or opcode&gt; [operands]  # comment</span>
 <span class="cm">*/</span><span class="w"></span>
 <span class="w">	</span><span class="na">.intel_syntax</span><span class="w"> </span><span class="no">noprefix</span><span class="w">   </span><span class="c1"># assembler syntax to use &lt;directive&gt;</span>
 <span class="w">	                         </span><span class="c1"># set assembly language format to intel  </span>
@@ -872,18 +826,11 @@ make popcnt
 <div class="cell_output docutils container">
 <div style="width:100%; height:100%; font-size:inherit; overflow: auto;" >
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># To get the debugger going:</span>
-  gdb -tui popcnt
+  gdb -x setup.gdb popcnt
+
+<span class="c1"># setup.gdb set intel assembly syntax and configures tui</span>
+
 <span class="c1"># Now we want use gdb command to poke around popcnt</span>
-<span class="c1"># To setup the assembly syntax to intel: </span>
-  <span class="nb">set</span> disassembly-flavor intel
-<span class="c1"># Configure a layout that is more friendly to assembly code:</span>
-  tui new-layout mylayout regs <span class="m">3</span> <span class="o">{</span>src <span class="m">1</span> asm <span class="m">1</span><span class="o">}</span> <span class="m">2</span> cmd <span class="m">1</span> status <span class="m">0</span>
-<span class="c1"># Switch to the new layout:   </span>
-  layout mylayout
-<span class="c1"># force small command window to be sure lots of room for regs</span>
-  winh cmd <span class="m">4</span>
-<span class="c1"># make command window in focus so that arrows work as history  </span>
-  focus cmd
   
 <span class="c1"># Set a breakpoint at the start symbol so exection will stop their: </span>
   <span class="nb">break</span> _start
@@ -983,12 +930,7 @@ ld -g add.o -o add
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <div style="width:100%; height:100%; font-size:inherit; overflow: auto;" >
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>gdb -tui add
-<span class="nb">set</span> disassembly-flavor intel
-tui new-layout mylayout regs <span class="m">3</span> <span class="o">{</span>src <span class="m">1</span> asm <span class="m">1</span><span class="o">}</span> <span class="m">2</span> cmd <span class="m">1</span> status <span class="m">0</span>
-layout mylayout
-winh cmd <span class="m">4</span>
-focus cmd
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>gdb -x setup.gdb add
 <span class="nb">break</span> _start
 run
 </pre></div>
@@ -1296,6 +1238,12 @@ We must first use another tool called a preprocessor eg.</p>
 </section>
 </section>
 </section>
+
+
+<script type="application/vnd.jupyter.widget-state+json">
+{"state": {"96e2053a72294aad89a378efb2f84c67": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": "1px solid black", "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "100%", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": "scroll", "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "a3e25af3945d4bc486b0b6ff14c0c973": {"model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "model_name": "OutputModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_96e2053a72294aad89a378efb2f84c67", "msg_id": "", "outputs": [{"name": "stdout", "output_type": "stream", "text": "$ [[ -d ~/simpleasm ]] && rm -rf ~/simpleasm \r\n$ mkdir ~/simpleasm\r\n$ cp ../src/setup.gdb ../src/add.s ../src/int3.s ~/simpleasm\r\n$ cp ../src/simpleasm.mk ~/simpleasm/Makefile\r\n$ cp ../src/popcnt_bb.s ~/simpleasm/popcnt.s\r\n$ cp ../src/exit.S ~/simpleasm/exitfancy.S\r\n$ cp ../src/exit_bb_bb.s ~/simpleasm/exit.s\r\n$ "}]}}}, "version_major": 2, "version_minor": 0}
+</script>
+
 
     <script type="text/x-thebe-config">
     {

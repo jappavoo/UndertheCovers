@@ -1,4 +1,15 @@
 Traceback (most recent call last):
+  File "/opt/conda/lib/python3.10/site-packages/nbclient/client.py", line 730, in _async_poll_for_reply
+    msg = await ensure_async(self.kc.shell_channel.get_msg(timeout=new_timeout))
+  File "/opt/conda/lib/python3.10/site-packages/nbclient/util.py", line 96, in ensure_async
+    result = await obj
+  File "/opt/conda/lib/python3.10/site-packages/jupyter_client/channels.py", line 230, in get_msg
+    raise Empty
+_queue.Empty
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
   File "/opt/conda/lib/python3.10/site-packages/jupyter_cache/executors/utils.py", line 51, in single_nb_execution
     executenb(
   File "/opt/conda/lib/python3.10/site-packages/nbclient/client.py", line 1204, in execute
@@ -11,39 +22,16 @@ Traceback (most recent call last):
     return future.result()
   File "/opt/conda/lib/python3.10/site-packages/nbclient/client.py", line 663, in async_execute
     await self.async_execute_cell(
-  File "/opt/conda/lib/python3.10/site-packages/nbclient/client.py", line 965, in async_execute_cell
-    await self._check_raise_for_error(cell, cell_index, exec_reply)
-  File "/opt/conda/lib/python3.10/site-packages/nbclient/client.py", line 862, in _check_raise_for_error
-    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
-nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
-------------------
-display(Markdown(FileCodeBox(
-    file="../src/usesum.s", 
-    lang="gas", 
-    title="<b>CODE: asm - usesum.s",
-    h="100%", 
-    w="107em"
-)))
-------------------
-
-[0;31m---------------------------------[0m
-[0;31mFileNotFoundError[0mTraceback (most recent call last)
-Input [0;32mIn [15][0m, in [0;36m<cell line: 1>[0;34m()[0m
-[0;32m----> 1[0m display(Markdown([43mFileCodeBox[49m[43m([49m
-[1;32m      2[0m [43m    [49m[43mfile[49m[38;5;241;43m=[39;49m[38;5;124;43m"[39;49m[38;5;124;43m../src/usesum.s[39;49m[38;5;124;43m"[39;49m[43m,[49m[43m [49m
-[1;32m      3[0m [43m    [49m[43mlang[49m[38;5;241;43m=[39;49m[38;5;124;43m"[39;49m[38;5;124;43mgas[39;49m[38;5;124;43m"[39;49m[43m,[49m[43m [49m
-[1;32m      4[0m [43m    [49m[43mtitle[49m[38;5;241;43m=[39;49m[38;5;124;43m"[39;49m[38;5;124;43m<b>CODE: asm - usesum.s[39;49m[38;5;124;43m"[39;49m[43m,[49m
-[1;32m      5[0m [43m    [49m[43mh[49m[38;5;241;43m=[39;49m[38;5;124;43m"[39;49m[38;5;124;43m100[39;49m[38;5;124;43m%[39;49m[38;5;124;43m"[39;49m[43m,[49m[43m [49m
-[1;32m      6[0m [43m    [49m[43mw[49m[38;5;241;43m=[39;49m[38;5;124;43m"[39;49m[38;5;124;43m107em[39;49m[38;5;124;43m"[39;49m
-[1;32m      7[0m [43m)[49m))
-
-File [0;32m/opt/app-root/src/UndertheCovers/underthecovers/python/common.py:66[0m, in [0;36mFileCodeBox[0;34m(file, lang, number, **kwargs)[0m
-[1;32m     64[0m [38;5;28;01mdef[39;00m [38;5;21mFileCodeBox[39m(file, lang, number[38;5;241m=[39m[38;5;28;01mFalse[39;00m, [38;5;241m*[39m[38;5;241m*[39mkwargs):
-[1;32m     65[0m     [38;5;66;03m#open text file in read mode[39;00m
-[0;32m---> 66[0m     text_file [38;5;241m=[39m [38;5;28;43mopen[39;49m[43m([49m[43mfile[49m[43m,[49m[43m [49m[38;5;124;43m"[39;49m[38;5;124;43mr[39;49m[38;5;124;43m"[39;49m[43m)[49m
-[1;32m     67[0m     [38;5;66;03m#read whole file to a string[39;00m
-[1;32m     68[0m     data [38;5;241m=[39m text_file[38;5;241m.[39mread()
-
-[0;31mFileNotFoundError[0m: [Errno 2] No such file or directory: '../src/usesum.s'
-FileNotFoundError: [Errno 2] No such file or directory: '../src/usesum.s'
+  File "/opt/conda/lib/python3.10/site-packages/nbclient/client.py", line 949, in async_execute_cell
+    exec_reply = await self.task_poll_for_reply
+  File "/opt/conda/lib/python3.10/site-packages/nbclient/client.py", line 754, in _async_poll_for_reply
+    await self._async_handle_timeout(timeout, cell)
+  File "/opt/conda/lib/python3.10/site-packages/nbclient/client.py", line 801, in _async_handle_timeout
+    raise CellTimeoutError.error_from_timeout_and_cell(
+nbclient.exceptions.CellTimeoutError: A cell timed out while it was being executed, after 30 seconds.
+The message was: Cell execution timed out.
+Here is a preview of the cell contents:
+-------------------
+TermShellCmd("[[ -a 100randomnum.bin ]] && rm 100randomnum.bin; make 100randomnum.bin", cwd=appdir, prompt='')
+-------------------
 
