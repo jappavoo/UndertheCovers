@@ -608,13 +608,14 @@ title="Print to PDF"
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#mov">
-     9.9.1.
+    <a class="reference internal nav-link" href="#the-intel-mov-instruction">
+     9.9.1. The INTEL
      <code class="docutils literal notranslate">
       <span class="pre">
        mov
       </span>
      </code>
+     instruction
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
@@ -831,13 +832,14 @@ title="Print to PDF"
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#mov">
-     9.9.1.
+    <a class="reference internal nav-link" href="#the-intel-mov-instruction">
+     9.9.1. The INTEL
      <code class="docutils literal notranslate">
       <span class="pre">
        mov
       </span>
      </code>
+     instruction
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
@@ -897,7 +899,7 @@ title="Print to PDF"
 </section>
 <section id="we-need-some-notation">
 <h2><span class="section-number">9.2. </span>We need some notation<a class="headerlink" href="#we-need-some-notation" title="Permalink to this headline">#</a></h2>
-<p><a class="reference external" href="https://appavooteaching.github.io/UndertheCovers/textbook/assembly/InfoRepI.html">UC-SLS:Representing information - Preliminaries: Bits, Bytes and Notation</a></p>
+<p><a class="reference external" href="https://jappavoo.github.io/UndertheCovers/textbook/assembly/InfoRepI.html">UC-SLS:Representing information - Preliminaries: Bits, Bytes and Notation</a></p>
 <section id="vectors-of-bits">
 <h3><span class="section-number">9.2.1. </span>Vectors of bits<a class="headerlink" href="#vectors-of-bits" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
@@ -1198,7 +1200,6 @@ X_{n} \equiv [ x_{n-1} x_{n-2} \ldots x_{0} ]
 <section id="assemble-mov-s-into-mov-o-directly-with-assembler-as">
 <h3><span class="section-number">9.6.2. </span>Assemble <code class="docutils literal notranslate"><span class="pre">mov.S</span> </code> into <code class="docutils literal notranslate"><span class="pre">mov.o</span></code>  directly with assembler (as)<a class="headerlink" href="#assemble-mov-s-into-mov-o-directly-with-assembler-as" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">-a</span></code> produce listing to standard out</p></li>
 <li><p>we could add <code class="docutils literal notranslate"><span class="pre">-g</span></code> flag to add extra debugger information but lets skip it for now</p></li>
 </ul>
 <div class="cell tag_remove-input docutils container">
@@ -1288,10 +1289,10 @@ It will be the linker’s job to assign the symbols, that are labels,  their loc
 </script></div>
 </div>
 <p>Notice that the symbol table of the final binary executable, <code class="docutils literal notranslate"><span class="pre">mov</span></code>, has a value assigned for <code class="docutils literal notranslate"><span class="pre">_start</span></code>.  This tells us that the data that we placed after the label will be located at the address that is the symbol’s value.  In our case the address is <code class="docutils literal notranslate"><span class="pre">0x401000</span></code>.  When we use <code class="docutils literal notranslate"><span class="pre">gdb</span></code>, we should find at that address, is the bytes that encode the <code class="docutils literal notranslate"><span class="pre">mov</span></code> instruction we wrote (<code class="docutils literal notranslate"><span class="pre">mov</span> <span class="pre">rax,</span> <span class="pre">0b1000</span></code>).  This can be tricky at first to keep straight.  A label is assigned a memory address by the linker but the byte values at the location in memory will be generated from the assembly statements we place after the label.  In this way labels are just human names for location’s in memory.  However, at those locations are values that give the location meaning.</p>
-<p>Next when you use <code class="docutils literal notranslate"><span class="pre">gdb</span></code> poke around and try to draw a picture to clarify what is going on with difference between the address of <code class="docutils literal notranslate"><span class="pre">_start</span></code> versus the values of the bytes at that address.</p>
+<p>Next when you use <code class="docutils literal notranslate"><span class="pre">gdb</span></code> poke around and try to draw a picture to clarify what is going on.  Try to make sure you can understand the difference between the address of <code class="docutils literal notranslate"><span class="pre">_start</span></code> versus the values of the bytes at that address.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p><strong>Running out binary:</strong> Since we added the proper exit code we can certainly run out binary but it’s not that interesting.</p>
+<p><strong>Running our binary:</strong> Since we added the proper exit code we can certainly run out binary but it’s not that interesting.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ ./mov
 $ <span class="nb">echo</span> <span class="nv">$?</span>
 <span class="m">2</span>
@@ -1315,6 +1316,7 @@ $ <span class="nb">echo</span> <span class="nv">$?</span>
 <section id="start-gdb-and-poke-around">
 <h3><span class="section-number">9.6.5. </span>start gdb and poke around<a class="headerlink" href="#start-gdb-and-poke-around" title="Permalink to this headline">#</a></h3>
 <p>gdb -tui mov -x setup.gdb</p>
+<p>Don’t just run the following command blindly.  You are trying to use GDB commands to learn about how things work.</p>
 <ol class="simple">
 <li><p>set a break point at <code class="docutils literal notranslate"><span class="pre">_start</span></code></p></li>
 <li><p>start a process from the binary <code class="docutils literal notranslate"><span class="pre">run</span></code></p></li>
@@ -1323,14 +1325,14 @@ $ <span class="nb">echo</span> <span class="nv">$?</span>
 <li><p>What is the address of the <code class="docutils literal notranslate"><span class="pre">rip</span></code>?</p></li>
 <li><p>What is the address of <code class="docutils literal notranslate"><span class="pre">_start</span></code>?</p></li>
 <li><p>What does <code class="docutils literal notranslate"><span class="pre">disass</span> <span class="pre">_start</span></code> do?</p></li>
-<li><p>What are the values of the bytes at <code class="docutils literal notranslate"><span class="pre">_start</span></code> (use the examine (x/7xb _start))?</p></li>
+<li><p>What are the values of the bytes at <code class="docutils literal notranslate"><span class="pre">_start</span></code> (use the examine (<code class="docutils literal notranslate"><span class="pre">x/7xb</span> <span class="pre">_start</span></code>))?</p></li>
 </ul>
 </li>
 <li><p>single step on instruction (<code class="docutils literal notranslate"><span class="pre">stepi</span></code>)</p></li>
 <li><p>examine <code class="docutils literal notranslate"><span class="pre">rax</span></code></p></li>
 <li><p>quit the debugger</p></li>
 </ol>
-<p>Now try modifying the code to load a different value, rebuild and use gdb again to explore you new binary.  <strong>Remember to create a binary from your code you must always rerun the assembler and linker to translate it.</strong>  Writing a <code class="docutils literal notranslate"><span class="pre">Makefile</span></code> to automate this step will save you a lot of headaches.  All of use change our code and forget to rebuild and wonder why things aren’t working ;-)</p>
+<p>Now try modifying the code to load a different value, rebuild and use gdb again to explore your new binary.  <strong>Remember to create a binary from your code you must always rerun the assembler and linker to translate it.</strong>  Writing a <code class="docutils literal notranslate"><span class="pre">Makefile</span></code> to automate this step will save you a lot of headaches.  All of us change our code and forget to rebuild and wonder why things aren’t working ;-)</p>
 <hr></section>
 </section>
 <section id="formally-getting-started-with-assembly-programming-syntax">
@@ -1377,20 +1379,20 @@ loops, conditional logic, functions etc.</p>
 <hr></section>
 <section id="sources-and-destinations-operand-addressing">
 <h3><span class="section-number">9.8.2. </span>Sources and destinations (Operand Addressing)<a class="headerlink" href="#sources-and-destinations-operand-addressing" title="Permalink to this headline">#</a></h3>
-<p>When we write assembly code the operations like <code class="docutils literal notranslate"><span class="pre">mov</span></code> or <code class="docutils literal notranslate"><span class="pre">add</span></code> will need arguments.  Generically we call the argument <strong>operands</strong>.
-Some operands specify specify where the input values for the operation should come from.  Similarly an other operands specifies where the output value should go.
+<p>When we write assembly code the operations like <code class="docutils literal notranslate"><span class="pre">mov</span></code> or <code class="docutils literal notranslate"><span class="pre">add</span></code> will need arguments.  Generically we call the arguments <strong>operands</strong>.
+Some operands specify where the input values for the operation should come from.  Similarly other operands specify where the output value should go.
 We call the inputs <code class="docutils literal notranslate"><span class="pre">sources</span></code> and the output <code class="docutils literal notranslate"><span class="pre">destinations</span></code>.</p>
 <p>Sources and destinations must name both a location of a value and its length.</p>
 <p>-Eg. <code class="docutils literal notranslate"><span class="pre">2</span></code> bytes at Address <code class="docutils literal notranslate"><span class="pre">0x10000</span></code> is the operand for the instruction</p>
-<p>Lets look at these details a little more closely.</p>
+<p>Lets look at this a little more closely.</p>
 <hr></section>
 </section>
 <section id="addressing-modes-for-sources-and-destinations">
 <h2><span class="section-number">9.9. </span>Addressing Modes for sources and destinations<a class="headerlink" href="#addressing-modes-for-sources-and-destinations" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
-<li><p>lets look more closely now at the address mode by carefully studying the <code class="docutils literal notranslate"><span class="pre">mov</span></code> instruction</p>
+<li><p>lets look more closely now at the “address modes” by carefully studying the various ways we can use the <code class="docutils literal notranslate"><span class="pre">mov</span></code> instruction</p>
 <ul>
-<li><p>add all the ways that we can specify its <code class="docutils literal notranslate"><span class="pre">operands</span></code></p></li>
+<li><p>by looking at the ways that we can specify its <code class="docutils literal notranslate"><span class="pre">operands</span></code></p></li>
 </ul>
 </li>
 </ul>
@@ -1398,8 +1400,8 @@ We call the inputs <code class="docutils literal notranslate"><span class="pre">
 </pre></div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">&lt;destination&gt;</span></code> and <code class="docutils literal notranslate"><span class="pre">&lt;source&gt;</span></code> are the operands and the <code class="docutils literal notranslate"><span class="pre">mov</span></code> is the mnemonic of instruction we want to encode.</p>
-<section id="mov">
-<h3><span class="section-number">9.9.1. </span><code class="docutils literal notranslate"><span class="pre">mov</span></code><a class="headerlink" href="#mov" title="Permalink to this headline">#</a></h3>
+<section id="the-intel-mov-instruction">
+<h3><span class="section-number">9.9.1. </span>The INTEL <code class="docutils literal notranslate"><span class="pre">mov</span></code> instruction<a class="headerlink" href="#the-intel-mov-instruction" title="Permalink to this headline">#</a></h3>
 <p>Overwrite the <code class="docutils literal notranslate"><span class="pre">&lt;destination&gt;</span></code> with a copy of what is in the <code class="docutils literal notranslate"><span class="pre">&lt;source&gt;</span></code></p>
 <ul class="simple">
 <li><p>note the value that was in <code class="docutils literal notranslate"><span class="pre">&lt;destination&gt;</span></code> is <strong>over-written</strong></p>
@@ -1441,7 +1443,7 @@ We call the inputs <code class="docutils literal notranslate"><span class="pre">
 <li><p>The rules for mixing is a little subtle (eg moving from a smaller to larger register)</p></li>
 </ul>
 </li>
-<li><p>Immediate generally are 1,2,4 bytes in size</p></li>
+<li><p>Immediates generally are 1,2,4 bytes in size</p></li>
 <li><p>We will see memory syntax next</p></li>
 </ul>
 </section>
@@ -1461,7 +1463,7 @@ where</p></li>
 </section>
 <section id="specifying-and-offset-address-to-be-used-to-locate-the-operand-value">
 <h4><span class="section-number">9.9.2.3. </span>Specifying and offset/address to be used to locate the operand value<a class="headerlink" href="#specifying-and-offset-address-to-be-used-to-locate-the-operand-value" title="Permalink to this headline">#</a></h4>
-<p>They Gory details from the INTEL manuals:</p>
+<p>They Gory details from the INTEL manuals – At this point this is really just for reference sake.</p>
 <ul>
 <li><p>A lot of the subtly and confusion come from how we work with memory locations</p>
 <ul>
@@ -1517,7 +1519,7 @@ where</p></li>
 <section id="intel-syntax-examples">
 <h3><span class="section-number">9.9.3. </span>Intel Syntax examples<a class="headerlink" href="#intel-syntax-examples" title="Permalink to this headline">#</a></h3>
 <p>When we specify a memory location we must also clearly state how many bytes we want to work with at that location. Eg. the size in bytes of the value at the memory location.
-To do this in addition to the address expression we must also prefix it with the appropriate size syntax as follows:</p>
+To do this, in addition to the address expression, we must also prefix it with the appropriate size syntax as follows:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">&lt;BYTE|WORD|DWORD|QWORD&gt;</span> <span class="pre">PTR</span> <span class="pre">[displacement]</span></code> where <code class="docutils literal notranslate"><span class="pre">displacement</span></code> is either a number or symbol</p>
 <ul>
@@ -1543,7 +1545,7 @@ To do this in addition to the address expression we must also prefix it with the
 <section id="move-examples">
 <h2><span class="section-number">9.10. </span>Move examples<a class="headerlink" href="#move-examples" title="Permalink to this headline">#</a></h2>
 <p>So in reality we see that there are many different ways of using <code class="docutils literal notranslate"><span class="pre">mov</span></code> to move data.   The following demonstrates several of the different types.</p>
-<p>Over the next few lectures we will use various differ forms of <code class="docutils literal notranslate"><span class="pre">mov</span></code></p>
+<p>Over the next few lectures we will use various different forms of <code class="docutils literal notranslate"><span class="pre">mov</span></code></p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <p><b>CODE: asm - movexamples.s</p>
@@ -1669,9 +1671,9 @@ _start:
 <h2><span class="section-number">9.11. </span>Test your knowledge<a class="headerlink" href="#test-your-knowledge" title="Permalink to this headline">#</a></h2>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>We can use the <code class="docutils literal notranslate"><span class="pre">.data</span></code> directive in our assembly source code to switch sections and  add bytes to the data area of our process’s memory.  Labels in the data area work exactly the same as in the text section.  Labels, let us refer to the bytes following the label.  Eg. <code class="docutils literal notranslate"><span class="pre">x:</span> <span class="pre">.quad</span> <span class="pre">142</span></code> means reserve 8 bytes and initialize those 8 bytes with the decimal value 142.  Finally, the symbol <code class="docutils literal notranslate"><span class="pre">x</span></code> will be assigned the address where these bytes end up.</p>
+<p>We can use the <code class="docutils literal notranslate"><span class="pre">.data</span></code> directive in our assembly source code to switch sections.  Then we can add bytes to the data section of our process’s memory.  Labels in the data section work exactly the same as in the text section.  Labels let us refer to the bytes following the label.  Eg. <code class="docutils literal notranslate"><span class="pre">x:</span> <span class="pre">.quad</span> <span class="pre">142</span></code> means reserve 8 bytes and initialize those 8 bytes with the decimal value 142.  Finally, the symbol <code class="docutils literal notranslate"><span class="pre">x</span></code> will be assigned the address where these bytes end up.</p>
 </div>
-<p>With the above knowledge can you figure out what this code is doing and explain how it work?</p>
+<p>With the above knowledge can you figure out what this code is doing and explain how it works?</p>
 <div class="highlight-gas notranslate"><div class="highlight"><pre><span></span><span class="w">        </span><span class="na">.intel_syntax</span><span class="w"> </span><span class="no">noprefix</span><span class="w"></span>
 <span class="w">        </span><span class="na">.data</span><span class="w"></span>
 <span class="nl">x:</span><span class="w">      </span><span class="na">.quad</span><span class="w"> </span><span class="mi">142</span><span class="w"></span>
@@ -1690,7 +1692,7 @@ _start:
 <span class="w">        </span><span class="nf">syscall</span><span class="w"></span>
 </pre></div>
 </div>
-<p>To figure this out you will want to assemble, link and explore the resulting binary in <code class="docutils literal notranslate"><span class="pre">gdb</span></code>.  In <code class="docutils literal notranslate"><span class="pre">gdb</span></code> to examine the bytes at a label in the data area you will need to add an <code class="docutils literal notranslate"><span class="pre">&amp;</span></code> infront of the symbol.  Eg To examine the bytes at x you could use the following gdb commands:</p>
+<p>To figure this out you will want to assemble, link and explore the resulting binary in <code class="docutils literal notranslate"><span class="pre">gdb</span></code>.  In <code class="docutils literal notranslate"><span class="pre">gdb</span></code> to examine the bytes at a label in the data area you will need to add an <code class="docutils literal notranslate"><span class="pre">&amp;</span></code> in front of the symbol.  Eg To examine the bytes at x you could use the following gdb commands:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">x/8xb</span> <span class="pre">&amp;</span> <span class="pre">x</span></code> print 8 bytes starting at the address of x in hexadecimal format</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">x/1gd</span> <span class="pre">&amp;</span> <span class="pre">x</span></code> print the 8 bytes at the address of x as a single 8 byte integer</p></li>
