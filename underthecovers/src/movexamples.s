@@ -61,7 +61,7 @@ _start:
 	mov rbx, QWORD PTR [rax]
 	mov ecx, DWORD PTR [rax]
 	mov dx,  WORD  PTR [rax]
-        mov sil, BYTE  PTR [rax]
+	mov sil, BYTE  PTR [rax]
 
 	# example of using another register to act as a index
 	# Effective Address = rax + r9 * 1
