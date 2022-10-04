@@ -1,15 +1,17 @@
-	# example code that illustrates various ways of
+	# Example code that illustrates various ways of
 	# working with data in memory.
-	# assemble this code eg. as -g mov.s -o mov.o
-	# link into an executable eg. ld -g mov.o -o mov
-	# The I suggest you use gdb to single step the instructions
-	# one by one but before you step and instruction
-	# 1) display the destination register
-	# 2) examine the value in memory you think it will be loaded with
-	# 3) write down on a paper your guess
-	# 4) step the instruction
-	# 5) display the destination register and see if you were right
-	#    if not try and figure out why not
+	# 1) Assemble this code eg. as -g mov.s -o mov.o
+	# 2) Link into an executable eg. ld -g mov.o -o mov
+	#
+	# I suggest you then use gdb to single step the instructions --
+	# executing the instructions one by one. But before you go on
+	# to then next instruction do the following
+	#   1) display the destination register
+	#   2) examine the value in memory you think it will be loaded with
+	#   3) write down on a paper your guess
+	#   4) step the instruction
+	#   5) display the destination register and see if you were right
+	#      if not try and figure out why not
 
 	.intel_syntax noprefix
 
