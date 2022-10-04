@@ -581,8 +581,8 @@ title="Print to PDF"
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#getting-started-with-assembly-programming-syntax">
-   9.7. Getting started with Assembly Programming Syntax
+  <a class="reference internal nav-link" href="#formally-getting-started-with-assembly-programming-syntax">
+   9.7. Formally getting started with Assembly Programming Syntax
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -649,6 +649,11 @@ title="Print to PDF"
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#move-examples">
    9.10. Move examples
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#test-your-knowledge">
+   9.11. Test your knowledge
   </a>
  </li>
 </ul>
@@ -799,8 +804,8 @@ title="Print to PDF"
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#getting-started-with-assembly-programming-syntax">
-   9.7. Getting started with Assembly Programming Syntax
+  <a class="reference internal nav-link" href="#formally-getting-started-with-assembly-programming-syntax">
+   9.7. Formally getting started with Assembly Programming Syntax
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -867,6 +872,11 @@ title="Print to PDF"
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#move-examples">
    9.10. Move examples
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#test-your-knowledge">
+   9.11. Test your knowledge
   </a>
  </li>
 </ul>
@@ -1133,11 +1143,12 @@ X_{n} \equiv [ x_{n-1} x_{n-2} \ldots x_{0} ]
 <hr></section>
 <section id="programming-homework">
 <h2><span class="section-number">9.5. </span>Programming Homework<a class="headerlink" href="#programming-homework" title="Permalink to this headline">#</a></h2>
-<p>The following will get us started apply the ideas we have explored by:</p>
+<p>The following will get us started applying the ideas we have explored by:</p>
 <ol class="simple">
-<li><p>get us started write some assembly code</p></li>
-<li><p>introduce the basic INTEL syntax we will need to write code composed of INTEL cpu instructions</p></li>
-<li><p>introduce the “Addressing Mode” syntax that we use to specify “operands” for our operations</p></li>
+<li><p>introducing the basic INTEL syntax we will need to write code composed of INTEL cpu instructions</p></li>
+<li><p>introducing the “Addressing Mode” syntax that we use to specify “operands” for our operations</p></li>
+<li><p>learn how to use the <code class="docutils literal notranslate"><span class="pre">mov</span></code> INTEL instruction</p></li>
+<li><p>use gdb to explore binaries created from our code</p></li>
 </ol>
 <hr></section>
 <section id="a-simple-mov-s-program">
@@ -1322,8 +1333,8 @@ $ <span class="nb">echo</span> <span class="nv">$?</span>
 <p>Now try modifying the code to load a different value, rebuild and use gdb again to explore you new binary.  <strong>Remember to create a binary from your code you must always rerun the assembler and linker to translate it.</strong>  Writing a <code class="docutils literal notranslate"><span class="pre">Makefile</span></code> to automate this step will save you a lot of headaches.  All of use change our code and forget to rebuild and wonder why things aren’t working ;-)</p>
 <hr></section>
 </section>
-<section id="getting-started-with-assembly-programming-syntax">
-<h2><span class="section-number">9.7. </span>Getting started with Assembly Programming Syntax<a class="headerlink" href="#getting-started-with-assembly-programming-syntax" title="Permalink to this headline">#</a></h2>
+<section id="formally-getting-started-with-assembly-programming-syntax">
+<h2><span class="section-number">9.7. </span>Formally getting started with Assembly Programming Syntax<a class="headerlink" href="#formally-getting-started-with-assembly-programming-syntax" title="Permalink to this headline">#</a></h2>
 <hr></section>
 <section id="assembly-instruction-statement-syntax">
 <h2><span class="section-number">9.8. </span>Assembly Instruction Statement Syntax<a class="headerlink" href="#assembly-instruction-statement-syntax" title="Permalink to this headline">#</a></h2>
@@ -1653,6 +1664,38 @@ _start:
 </div>
 </div>
 </div>
+</section>
+<section id="test-your-knowledge">
+<h2><span class="section-number">9.11. </span>Test your knowledge<a class="headerlink" href="#test-your-knowledge" title="Permalink to this headline">#</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>We can use the <code class="docutils literal notranslate"><span class="pre">.data</span></code> directive in our assembly source code to switch sections and  add bytes to the data area of our process’s memory.  Labels in the data area work exactly the same as in the text section.  Labels, let us refer to the bytes following the label.  Eg. <code class="docutils literal notranslate"><span class="pre">x:</span> <span class="pre">.quad</span> <span class="pre">142</span></code> means reserve 8 bytes and initialize those 8 bytes with the decimal value 142.  Finally, the symbol <code class="docutils literal notranslate"><span class="pre">x</span></code> will be assigned the address where these bytes end up.</p>
+</div>
+<p>With the above knowledge can you figure out what this code is doing and explain how it work?</p>
+<div class="highlight-gas notranslate"><div class="highlight"><pre><span></span><span class="w">        </span><span class="na">.intel_syntax</span><span class="w"> </span><span class="no">noprefix</span><span class="w"></span>
+<span class="w">        </span><span class="na">.data</span><span class="w"></span>
+<span class="nl">x:</span><span class="w">      </span><span class="na">.quad</span><span class="w"> </span><span class="mi">142</span><span class="w"></span>
+<span class="nl">y:</span><span class="w">      </span><span class="na">.quad</span><span class="w"> </span><span class="mi">4200</span><span class="w"></span>
+<span class="nl">sum:</span><span class="w">    </span><span class="na">.quad</span><span class="w"></span>
+
+<span class="w">        </span><span class="na">.text</span><span class="w"></span>
+<span class="w">        </span><span class="na">.global</span><span class="w"> </span><span class="no">_start</span><span class="w"></span>
+<span class="nl">_start:</span><span class="w"></span>
+<span class="w">        </span><span class="nf">mov</span><span class="w"> </span><span class="no">rax</span><span class="p">,</span><span class="w"> </span><span class="no">QWORD</span><span class="w"> </span><span class="no">PTR</span><span class="w"> </span><span class="p">[</span><span class="no">x</span><span class="p">]</span><span class="w"></span>
+<span class="w">        </span><span class="nf">add</span><span class="w"> </span><span class="no">rax</span><span class="p">,</span><span class="w"> </span><span class="no">QWORD</span><span class="w"> </span><span class="no">PTR</span><span class="w"> </span><span class="p">[</span><span class="no">y</span><span class="p">]</span><span class="w"></span>
+<span class="w">        </span><span class="nf">mov</span><span class="w"> </span><span class="no">QWORD</span><span class="w"> </span><span class="no">PTR</span><span class="w"> </span><span class="p">[</span><span class="no">sum</span><span class="p">],</span><span class="w"> </span><span class="no">rax</span><span class="w"></span>
+<span class="w">        </span>
+<span class="w">        </span><span class="nf">mov</span><span class="w"> </span><span class="no">rax</span><span class="p">,</span><span class="w"> </span><span class="mi">60</span><span class="w"></span>
+<span class="w">        </span><span class="nf">mov</span><span class="w"> </span><span class="no">rdi</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="w"></span>
+<span class="w">        </span><span class="nf">syscall</span><span class="w"></span>
+</pre></div>
+</div>
+<p>To figure this out you will want to assemble, link and explore the resulting binary in <code class="docutils literal notranslate"><span class="pre">gdb</span></code>.  In <code class="docutils literal notranslate"><span class="pre">gdb</span></code> to examine the bytes at a label in the data area you will need to add an <code class="docutils literal notranslate"><span class="pre">&amp;</span></code> infront of the symbol.  Eg To examine the bytes at x you could use the following gdb commands:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">x/8xb</span> <span class="pre">&amp;</span> <span class="pre">x</span></code> print 8 bytes starting at the address of x in hexadecimal format</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">x/1gd</span> <span class="pre">&amp;</span> <span class="pre">x</span></code> print the 8 bytes at the address of x as a single 8 byte integer</p></li>
+</ul>
+<p>Finally, can you extend the code to calculate the number of 1’s in the sum and save the result somewhere in the data section?</p>
 </section>
 </section>
 
