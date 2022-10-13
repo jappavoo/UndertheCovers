@@ -1,8 +1,9 @@
 	.intel_syntax noprefix
 
 	.section .text
-	
-	.global sumIt	      	      #	 directive to let the linker
+
+	# tell linker that sumIt symbol can be referenced in other files
+	.global sumIt  
 
 	# code to sum data at XARRAY
 	# we assume rbx has length  rbx -> len
