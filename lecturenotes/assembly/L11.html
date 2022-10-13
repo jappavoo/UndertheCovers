@@ -801,13 +801,14 @@ title="Print to PDF"
 <p>Hardcode <code class="docutils literal notranslate"><span class="pre">int3</span></code> stops us from saving our sum as we would like</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<p><b>CODE: asm - sumit.S : Version 1</p>
+<p><b>CODE: asm - sumit.s : Version 1</p>
 <div style="width:107em; height:100%; font-size:inherit; overflow: auto;" >
 <div class="highlight-gas notranslate"><div class="highlight"><pre><span></span>	.intel_syntax noprefix
 
 	.section .text
-	
-	.global sumIt	      	      #	 directive to let the linker
+
+	# tell linker that sumIt symbol can be referenced in other files
+	.global sumIt  
 
 	# code to sum data at XARRAY
 	# we assume rbx has length  rbx -&gt; len
@@ -832,7 +833,7 @@ loop_done:
 </div>
 </div>
 <p><strong>Corresponding: usesum</strong></p>
-<p><b>CODE: asm - sumit.S : Version 1</p>
+<p><b>CODE: asm - sumit.s : Version 1</p>
 <div style="width:107em; height:100%; font-size:inherit; overflow: auto;" >
 <div class="highlight-gas notranslate"><div class="highlight"><pre><span></span><span class="w">	</span><span class="na">.intel_syntax</span><span class="w"> </span><span class="no">noprefix</span><span class="w"></span>
 <span class="w">	</span>
@@ -865,7 +866,7 @@ loop_done:
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "0a28c6e9fffb4ebebb52210a24670729", "version_major": 2, "version_minor": 0}
+{"model_id": "e95eaa4c8aad4857afa2774690024ce6", "version_major": 2, "version_minor": 0}
 </script></div>
 </div>
 <p>see last lecture notes to in terms of how to use <code class="docutils literal notranslate"><span class="pre">gdb</span></code> to run and play with <code class="docutils literal notranslate"><span class="pre">usesum</span></code></p>
@@ -885,7 +886,7 @@ jump.</p></li>
 </ul>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<p><b>CODE: asm - sumit2.S : Version 2</p>
+<p><b>CODE: asm - sumit2.s : Version 2</p>
 <div style="width:107em; height:100%; font-size:inherit; overflow: auto;" >
 <div class="highlight-gas notranslate"><div class="highlight"><pre><span></span>	.intel_syntax noprefix
 	
@@ -915,7 +916,7 @@ loop_done:
 </div>
 </div>
 <p><strong>Corresponding: usesum</strong></p>
-<p><b>CODE: asm - sumit2.S : Version 2</p>
+<p><b>CODE: asm - usesum2.s : Version 2</p>
 <div style="width:107em; height:100%; font-size:inherit; overflow: auto;" >
 <div class="highlight-gas notranslate"><div class="highlight"><pre><span></span><span class="w">	</span><span class="na">.intel_syntax</span><span class="w"> </span><span class="no">noprefix</span><span class="w"></span>
 <span class="w">	</span><span class="na">.data</span><span class="w">	</span>
@@ -964,7 +965,7 @@ loop_done:
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "7c00cd26f21744218eaf3ec42c382045", "version_major": 2, "version_minor": 0}
+{"model_id": "da1e9b87ff2e46aeb81eca7f586aa905", "version_major": 2, "version_minor": 0}
 </script></div>
 </div>
 <div class="cell tag_remove-input docutils container">
@@ -995,7 +996,7 @@ display /d { (long long)A_SUM, (long long)B_SUM, (long long)C_SUM }
 <p>Note this approach requires one register for each call to hold the return address.  This has problems if we were to nest calls.</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<p><b>CODE: asm - sumit3.S : Version 3</p>
+<p><b>CODE: asm - sumit3.s : Version 3</p>
 <div style="width:107em; height:100%; font-size:inherit; overflow: auto;" >
 <div class="highlight-gas notranslate"><div class="highlight"><pre><span></span>	.intel_syntax noprefix
 	
@@ -1026,7 +1027,7 @@ loop_done:
 </div>
 </div>
 <p><strong>Corresponding: usesum</strong></p>
-<p><b>CODE: asm - usesum3.S : Version 3</p>
+<p><b>CODE: asm - usesum3.s : Version 3</p>
 <div style="width:107em; height:100%; font-size:inherit; overflow: auto;" >
 <div class="highlight-gas notranslate"><div class="highlight"><pre><span></span><span class="w">	</span><span class="na">.intel_syntax</span><span class="w"> </span><span class="no">noprefix</span><span class="w"></span>
 <span class="w">	</span><span class="na">.data</span><span class="w">	</span>
@@ -1078,7 +1079,7 @@ loop_done:
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "826201043c0b431ab80eb13baeb12bed", "version_major": 2, "version_minor": 0}
+{"model_id": "516d461a44754b6d808a1daf21cd964f", "version_major": 2, "version_minor": 0}
 </script></div>
 </div>
 </section>
@@ -1087,7 +1088,7 @@ loop_done:
 <p>Although we don’t use it this would allow us to make nested calls assuming we always used the same register to pass the return address in.  In our case <code class="docutils literal notranslate"><span class="pre">rdx</span></code>.  This approach effectively uses the stack to spill <code class="docutils literal notranslate"><span class="pre">rdx</span></code> before we use it to make a call.  In this way the caller is using the stack to hang on to where it needs to return before making a new call.</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<p><b>CODE: asm - sumit3.S : Version 4 no change use version 3</p>
+<p><b>CODE: asm - sumit3.s : Version 4 no change use version 3</p>
 <div style="width:107em; height:100%; font-size:inherit; overflow: auto;" >
 <div class="highlight-gas notranslate"><div class="highlight"><pre><span></span>	.intel_syntax noprefix
 	
@@ -1118,7 +1119,7 @@ loop_done:
 </div>
 </div>
 <p><strong>Corresponding: usesum</strong></p>
-<p><b>CODE: asm - usesum4.S : Version 4</p>
+<p><b>CODE: asm - usesum4.s : Version 4</p>
 <div style="width:107em; height:100%; font-size:inherit; overflow: auto;" >
 <div class="highlight-gas notranslate"><div class="highlight"><pre><span></span><span class="w">	</span><span class="na">.intel_syntax</span><span class="w"> </span><span class="no">noprefix</span><span class="w"></span>
 <span class="w">	</span><span class="na">.data</span><span class="w">	</span>
@@ -1176,7 +1177,7 @@ loop_done:
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "e9542b3a07bc484ba0b13c71491c3fd3", "version_major": 2, "version_minor": 0}
+{"model_id": "7b9dfadda96f4c3e838b6908d4fc3970", "version_major": 2, "version_minor": 0}
 </script></div>
 </div>
 </section>
@@ -1184,7 +1185,7 @@ loop_done:
 <h3><span class="section-number">11.1.5. </span>Version 5: Use <code class="docutils literal notranslate"><span class="pre">call</span></code> and <code class="docutils literal notranslate"><span class="pre">ret</span></code> instructions to turn our code into an “real” X86 function<a class="headerlink" href="#version-5-use-call-and-ret-instructions-to-turn-our-code-into-an-real-x86-function" title="Permalink to this headline">#</a></h3>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<p><b>CODE: asm - sumit5.S : Version 5</p>
+<p><b>CODE: asm - sumit5.s : Version 5</p>
 <div style="width:107em; height:100%; font-size:inherit; overflow: auto;" >
 <div class="highlight-gas notranslate"><div class="highlight"><pre><span></span>	.intel_syntax noprefix
 	
@@ -1215,7 +1216,7 @@ loop_done:
 </div>
 </div>
 <p><strong>Corresponding: usesum</strong></p>
-<p><b>CODE: asm - usesum5.S : Version 5</p>
+<p><b>CODE: asm - usesum5.s : Version 5</p>
 <div style="width:107em; height:100%; font-size:inherit; overflow: auto;" >
 <div class="highlight-gas notranslate"><div class="highlight"><pre><span></span><span class="w">	</span><span class="na">.intel_syntax</span><span class="w"> </span><span class="no">noprefix</span><span class="w"></span>
 <span class="w">	</span><span class="na">.data</span><span class="w">	</span>
@@ -1257,7 +1258,7 @@ loop_done:
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "0f51de0954a842579a678b572b839117", "version_major": 2, "version_minor": 0}
+{"model_id": "e8072e008de743ccad90591a890204fa", "version_major": 2, "version_minor": 0}
 </script></div>
 </div>
 </section>
@@ -1265,7 +1266,7 @@ loop_done:
 <h3><span class="section-number">11.1.6. </span>Version 6 improving code by “spilling” <code class="docutils literal notranslate"><span class="pre">rdi</span></code> in <code class="docutils literal notranslate"><span class="pre">sumIt</span></code><a class="headerlink" href="#version-6-improving-code-by-spilling-rdi-in-sumit" title="Permalink to this headline">#</a></h3>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<p><b>CODE: asm - sumit6.S : Version 6</p>
+<p><b>CODE: asm - sumit6.s : Version 6</p>
 <div style="width:107em; height:100%; font-size:inherit; overflow: auto;" >
 <div class="highlight-gas notranslate"><div class="highlight"><pre><span></span>	.intel_syntax noprefix
 	
@@ -1298,7 +1299,7 @@ loop_done:
 </div>
 </div>
 <p><strong>Corresponding: usesum</strong></p>
-<p><b>CODE: asm - usesum5.S : Version 6 no change to usesum use Version 5</p>
+<p><b>CODE: asm - usesum5.s : Version 6 no change to usesum use Version 5</p>
 <div style="width:107em; height:100%; font-size:inherit; overflow: auto;" >
 <div class="highlight-gas notranslate"><div class="highlight"><pre><span></span><span class="w">	</span><span class="na">.intel_syntax</span><span class="w"> </span><span class="no">noprefix</span><span class="w"></span>
 <span class="w">	</span><span class="na">.data</span><span class="w">	</span>
@@ -1340,7 +1341,7 @@ loop_done:
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "1dad898a4f7a491abb6d1efd29a833a5", "version_major": 2, "version_minor": 0}
+{"model_id": "c0f278ab9b1d425880385f82850c8e0a", "version_major": 2, "version_minor": 0}
 </script></div>
 </div>
 </section>
@@ -1349,7 +1350,7 @@ loop_done:
 
 
 <script type="application/vnd.jupyter.widget-state+json">
-{"state": {"0a28c6e9fffb4ebebb52210a24670729": {"model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "model_name": "OutputModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_1f520a9ef1504161908532a6e7d02afa", "msg_id": "", "outputs": [{"name": "stdout", "output_type": "stream", "text": "\nas -g -a=usesum.o.lst usesum.S -o usesum.o\r\nas -g -a=sumit.o.lst sumit.S -o sumit.o\r\nld -g -Map=usesum.map usesum.o sumit.o -o usesum\r\n"}]}}, "0f51de0954a842579a678b572b839117": {"model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "model_name": "OutputModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_cdfcb282ff6d461ba9eb824335f2a2a3", "msg_id": "", "outputs": [{"name": "stdout", "output_type": "stream", "text": "\nas -g -a=usesum5.o.lst usesum5.S -o usesum5.o\r\nas -g -a=sumit5.o.lst sumit5.S -o sumit5.o\r\nld -g -Map=usesum5.map usesum5.o sumit5.o -o usesum5\r\n"}]}}, "16c5c14981764e67b721b58dc6607030": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": "1px solid black", "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "100%", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": "scroll", "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "1dad898a4f7a491abb6d1efd29a833a5": {"model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "model_name": "OutputModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_16c5c14981764e67b721b58dc6607030", "msg_id": "", "outputs": [{"name": "stdout", "output_type": "stream", "text": "\nas -g -a=sumit6.o.lst sumit6.S -o sumit6.o\r\nld -g -Map=usesum6.map usesum5.o sumit6.o -o usesum6\r\n"}]}}, "1f520a9ef1504161908532a6e7d02afa": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": "1px solid black", "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "100%", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": "scroll", "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "3e11765ee7c14352849bec725d6cbf53": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": "1px solid black", "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "100%", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": "scroll", "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "65beffdc3a2a4d59a374a013353329a3": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": "1px solid black", "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "100%", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": "scroll", "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "7ade82534e644e84a615eef7588b10ad": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": "1px solid black", "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "100%", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": "scroll", "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "7c00cd26f21744218eaf3ec42c382045": {"model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "model_name": "OutputModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_65beffdc3a2a4d59a374a013353329a3", "msg_id": "", "outputs": [{"name": "stdout", "output_type": "stream", "text": "\nas -g -a=usesum2.o.lst usesum2.S -o usesum2.o\r\nas -g -a=sumit2.o.lst sumit2.S -o sumit2.o\r\nld -g -Map=usesum2.map usesum2.o sumit2.o -o usesum2\r\n"}]}}, "826201043c0b431ab80eb13baeb12bed": {"model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "model_name": "OutputModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_7ade82534e644e84a615eef7588b10ad", "msg_id": "", "outputs": [{"name": "stdout", "output_type": "stream", "text": "\nas -g -a=usesum3.o.lst usesum3.S -o usesum3.o\r\nas -g -a=sumit3.o.lst sumit3.S -o sumit3.o\r\nld -g -Map=usesum3.map usesum3.o sumit3.o -o usesum3\r\n"}]}}, "cdfcb282ff6d461ba9eb824335f2a2a3": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": "1px solid black", "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "100%", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": "scroll", "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "e9542b3a07bc484ba0b13c71491c3fd3": {"model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "model_name": "OutputModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_3e11765ee7c14352849bec725d6cbf53", "msg_id": "", "outputs": [{"name": "stdout", "output_type": "stream", "text": "\nas -g -a=usesum4.o.lst usesum4.S -o usesum4.o\r\nld -g -Map=usesum4.map usesum4.o sumit3.o -o usesum4\r\n"}]}}}, "version_major": 2, "version_minor": 0}
+{"state": {"03842f6cdd094048b91d36f72ec52f1b": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": "1px solid black", "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "100%", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": "scroll", "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "35df24086c3b4a64bf6e7123c9cf7758": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": "1px solid black", "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "100%", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": "scroll", "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "516d461a44754b6d808a1daf21cd964f": {"model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "model_name": "OutputModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_faeb67eb175040f9afd3b6121ee7ccd1", "msg_id": "", "outputs": [{"name": "stdout", "output_type": "stream", "text": "\nas -g  usesum3.s -o usesum3.o\r\nas -g  sumit3.s -o sumit3.o\r\nld -g  usesum3.o sumit3.o -o usesum3\r\n"}]}}, "5b9ca3191e484606a48f83a212ab2c7e": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": "1px solid black", "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "100%", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": "scroll", "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "7b9dfadda96f4c3e838b6908d4fc3970": {"model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "model_name": "OutputModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_35df24086c3b4a64bf6e7123c9cf7758", "msg_id": "", "outputs": [{"name": "stdout", "output_type": "stream", "text": "\nas -g  usesum4.s -o usesum4.o\r\nld -g  usesum4.o sumit3.o -o usesum4\r\n"}]}}, "c0f278ab9b1d425880385f82850c8e0a": {"model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "model_name": "OutputModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_d5789e7b2bcc4cac8c1822112b388722", "msg_id": "", "outputs": [{"name": "stdout", "output_type": "stream", "text": "\nas -g  sumit6.s -o sumit6.o\r\nld -g  usesum5.o sumit6.o -o usesum6\r\n"}]}}, "c4f39d593c674246b49650a1a6e624e0": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": "1px solid black", "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "100%", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": "scroll", "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "d5789e7b2bcc4cac8c1822112b388722": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": "1px solid black", "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "100%", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": "scroll", "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "da1e9b87ff2e46aeb81eca7f586aa905": {"model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "model_name": "OutputModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_03842f6cdd094048b91d36f72ec52f1b", "msg_id": "", "outputs": [{"name": "stdout", "output_type": "stream", "text": "\nas -g  usesum2.s -o usesum2.o\r\nas -g  sumit2.s -o sumit2.o\r\nld -g  usesum2.o sumit2.o -o usesum2\r\n"}]}}, "e8072e008de743ccad90591a890204fa": {"model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "model_name": "OutputModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_c4f39d593c674246b49650a1a6e624e0", "msg_id": "", "outputs": [{"name": "stdout", "output_type": "stream", "text": "\nas -g  usesum5.s -o usesum5.o\r\nas -g  sumit5.s -o sumit5.o\r\nld -g  usesum5.o sumit5.o -o usesum5\r\n"}]}}, "e95eaa4c8aad4857afa2774690024ce6": {"model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "model_name": "OutputModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_5b9ca3191e484606a48f83a212ab2c7e", "msg_id": "", "outputs": [{"name": "stdout", "output_type": "stream", "text": "\nas -g  usesum.s -o usesum.o\r\nas -g  sumit.s -o sumit.o\r\nld -g  usesum.o sumit.o -o usesum\r\n"}]}}, "faeb67eb175040f9afd3b6121ee7ccd1": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": "1px solid black", "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "100%", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": "scroll", "padding": null, "right": null, "top": null, "visibility": null, "width": null}}}, "version_major": 2, "version_minor": 0}
 </script>
 
 
