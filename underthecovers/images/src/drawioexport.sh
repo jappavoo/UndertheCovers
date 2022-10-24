@@ -9,7 +9,7 @@ DIOPAGE=${DIOPAGE:-0}
 #default border width
 DIOBORDER=${DIOBORDER:-1}
 # scale ??? 6 = 600dpi?
-DIOSCALE=6
+DIOSCALE=1
 
 DIO=$(type -p draw.io)
 [[ -z $DIO &&  -x "/Applications/draw.io.app/Contents/MacOS/draw.io" ]] && DDRAWIO="/Applications/draw.io.app/Contents/MacOS/draw.io"
