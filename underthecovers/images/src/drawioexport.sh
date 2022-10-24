@@ -33,7 +33,7 @@ fi
 
 echo $pages
 for page in $pages; do
-    ofile=$(printf "$output/%03d" $page)
+    ofile=$(printf "$output/%03d.$DIOFORMAT" $page)
     echo $DIO -x  -f $DIOFORMAT $DIOTRANSPARENT -b $DIOBORDER -s $DIOSCALE -p $page $input -o $ofile
     $DIO -x  -f $DIOFORMAT $DIOTRANSPARENT -b $DIOBORDER -s $DIOSCALE -p $page $input -o $ofile 2>/dev/null
     
