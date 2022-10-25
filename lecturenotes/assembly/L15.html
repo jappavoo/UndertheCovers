@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>15. SLS Lecture 15 : Topics &#8212; UndertheCovers</title>
+    <title>15. SLS Lecture 15 : Processes and Virtual Memory &#8212; UndertheCovers</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -52,6 +52,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="16. SLS Lecture 16 : Topics" href="L16.html" />
@@ -234,7 +236,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   15. SLS Lecture 15 : Topics
+   15. SLS Lecture 15 : Processes and Virtual Memory
   </a>
  </li>
  <li class="toctree-l1">
@@ -428,23 +430,140 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#virtual-memory-the-idea">
+   15.1. Virtual Memory: The Idea
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#virtual-memory-hw-sw">
+   15.2. Virtual Memory: HW + SW
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-road-from-physical-to-virtual-memory">
+   15.3. The Road from Physical to Virtual Memory
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#closing-the-loop">
+   15.4. Closing the loop
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#virtual-memory-party-trick-1-paging">
+   15.5. Virtual Memory: Party Trick 1: Paging
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
+   15.6. Virtual Memory: Party Trick 1: Paging
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#virtual-memory-trick-2-memory-mapping-files">
+   15.7. Virtual Memory Trick 2: Memory Mapping Files
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#virtual-memory-trick-3-sharing">
+   15.8. Virtual Memory Trick 3: Sharing
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#virtual-memory-trick-3-dynamically-linked-libraries">
+   15.9. Virtual Memory Trick 3: Dynamically Linked Libraries
+  </a>
+ </li>
+</ul>
+
+    </nav>
 </div>
     </div>
     <div class="article row">
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>SLS Lecture 15 : Topics</h1>
+                <h1>SLS Lecture 15 : Processes and Virtual Memory</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#virtual-memory-the-idea">
+   15.1. Virtual Memory: The Idea
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#virtual-memory-hw-sw">
+   15.2. Virtual Memory: HW + SW
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-road-from-physical-to-virtual-memory">
+   15.3. The Road from Physical to Virtual Memory
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#closing-the-loop">
+   15.4. Closing the loop
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#virtual-memory-party-trick-1-paging">
+   15.5. Virtual Memory: Party Trick 1: Paging
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
+   15.6. Virtual Memory: Party Trick 1: Paging
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#virtual-memory-trick-2-memory-mapping-files">
+   15.7. Virtual Memory Trick 2: Memory Mapping Files
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#virtual-memory-trick-3-sharing">
+   15.8. Virtual Memory Trick 3: Sharing
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#virtual-memory-trick-3-dynamically-linked-libraries">
+   15.9. Virtual Memory Trick 3: Dynamically Linked Libraries
+  </a>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -452,8 +571,188 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="sls-lecture-15-topics">
-<h1><span class="section-number">15. </span>SLS Lecture 15 : Topics<a class="headerlink" href="#sls-lecture-15-topics" title="Permalink to this headline">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="sls-lecture-15-processes-and-virtual-memory">
+<h1><span class="section-number">15. </span>SLS Lecture 15 : Processes and Virtual Memory<a class="headerlink" href="#sls-lecture-15-processes-and-virtual-memory" title="Permalink to this headline">#</a></h1>
+<hr><section id="virtual-memory-the-idea">
+<h2><span class="section-number">15.1. </span>Virtual Memory: The Idea<a class="headerlink" href="#virtual-memory-the-idea" title="Permalink to this headline">#</a></h2>
+<p>Enable several instances of programs to be running at the same time</p>
+<ol class="simple">
+<li><p>Allow each to have their own view of memory – <strong>Virtual Memory</strong></p>
+<ul class="simple">
+<li><p>Fool programs into thinking they have the entire memory of a very large “virtual” computer to themselves</p></li>
+<li><p>Where the virtual computer has the same CPU as the real hardware but whose memory can seem much bigger than the main memory of the real hardware</p>
+<ul>
+<li><p>Eg. The your laptop might have 8 GB (<span class="math notranslate nohighlight">\(1024^3 * 8\)</span> byte) of real main memory but each running program thinks it has 17179869184 GB</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<ol class="simple">
+<li><p>Ensure that each running program’s view of memory can be private and independent</p>
+<ul class="simple">
+<li><p>Each program has own “Virtual Address Space”</p></li>
+<li><p><strong>Virtual Address Space</strong> is an array of memory <span class="math notranslate nohighlight">\(0\)</span> to <span class="math notranslate nohighlight">\(2^w\)</span></p>
+<ul>
+<li><p>where <span class="math notranslate nohighlight">\(w\)</span> is size in bits of the Virtual Address Space supported by the CPU: Eg. 64 bits on most modern CPU’s</p></li>
+</ul>
+</li>
+<li><p>Each view has its own version of each address</p>
+<ul>
+<li><p>Eg. Each view has its own address 0 that are independent: changing the value at address 0 in one view does not affecting any of the other views.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<ol class="simple">
+<li><p>Allow the views to be independent but also permit controlled sharing if desired</p>
+<ul class="simple">
+<li><p>Let two or more views of memory have some addresses that are “shared”.</p>
+<ul>
+<li><p>Eg. Address 42 in one view and address 42 in another view share the same “underlying” memory so that changes made in one view are visible in the other.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<hr></section>
+<section id="virtual-memory-hw-sw">
+<h2><span class="section-number">15.2. </span>Virtual Memory: HW + SW<a class="headerlink" href="#virtual-memory-hw-sw" title="Permalink to this headline">#</a></h2>
+<p>The Hardware provides the mechanism for Virtual Memory and the Software of the OS uses them to implement Processes</p>
+<p>The OS then can start Processes from the executables we create</p>
+<hr><hr></section>
+<section id="the-road-from-physical-to-virtual-memory">
+<h2><span class="section-number">15.3. </span>The Road from Physical to Virtual Memory<a class="headerlink" href="#the-road-from-physical-to-virtual-memory" title="Permalink to this headline">#</a></h2>
+<hr><img alt="../_images/000.png" src="../_images/000.png" />
+<hr><a class="reference internal image-reference" href="../_images/001.png"><img alt="../_images/001.png" src="../_images/001.png" style="width: 100%;" /></a>
+<hr><a class="reference internal image-reference" href="../_images/002.png"><img alt="../_images/002.png" src="../_images/002.png" style="width: 100%;" /></a>
+<hr><a class="reference internal image-reference" href="../_images/003.png"><img alt="../_images/003.png" src="../_images/003.png" style="width: 100%;" /></a>
+<hr><a class="reference internal image-reference" href="../_images/004.png"><img alt="../_images/004.png" src="../_images/004.png" style="width: 100%;" /></a>
+<hr><a class="reference internal image-reference" href="../_images/005.png"><img alt="../_images/005.png" src="../_images/005.png" style="width: 100%;" /></a>
+<hr><a class="reference internal image-reference" href="../_images/006.png"><img alt="../_images/006.png" src="../_images/006.png" style="width: 100%;" /></a>
+<hr><a class="reference internal image-reference" href="../_images/007.png"><img alt="../_images/007.png" src="../_images/007.png" style="width: 100%;" /></a>
+<hr><a class="reference internal image-reference" href="../_images/008.png"><img alt="../_images/008.png" src="../_images/008.png" style="width: 100%;" /></a>
+<hr></section>
+<section id="closing-the-loop">
+<h2><span class="section-number">15.4. </span>Closing the loop<a class="headerlink" href="#closing-the-loop" title="Permalink to this headline">#</a></h2>
+<p>Kernel maintains a page table for each process.</p>
+<ul class="simple">
+<li><p>It initializes the page table with mappings to the content from the executable along with any additional needed</p>
+<ul>
+<li><p>Eg. bss and stack</p></li>
+</ul>
+</li>
+<li><p>As process runs additional mappings can get created:</p>
+<ul>
+<li><p>Eg. heap, dynamically linked libraries, addition program requested mappings</p></li>
+</ul>
+</li>
+</ul>
+<hr><a class="reference internal image-reference" href="../_images/009.png"><img alt="../_images/009.png" src="../_images/009.png" style="width: 100%;" /></a>
+<hr></section>
+<section id="virtual-memory-party-trick-1-paging">
+<h2><span class="section-number">15.5. </span>Virtual Memory: Party Trick 1: Paging<a class="headerlink" href="#virtual-memory-party-trick-1-paging" title="Permalink to this headline">#</a></h2>
+<table>
+    <tr>
+        <td width="40%">
+<img src="../images/VMM/010.png" width="100%">
+        </td>
+        <td>
+<p>How can we possibly allow one process to run let, alone hundreds of them?</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(2^{64}\)</span> bytes (17179869184 GigaBytes) of virtual memory for one process</p></li>
+<li><p>most computers have at most 10’s of Gigabytes of RAM.</p></li>
+<li><p>Even large servers only have 100’s of Gigabytes of RAM.</p></li>
+<li><p>How and why can we make things fit?</p></li>
+</ul>
+</td>
+</tr>
+</table><hr></section>
+<section id="id1">
+<h2><span class="section-number">15.6. </span>Virtual Memory: Party Trick 1: Paging<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h2>
+<table>
+    <tr>
+        <td width="40%">
+<img src="../images/VMM/011.png" width="100%">
+        </td>
+        <td>
+<p>To solve this problem we need to introduce our “External” Storage devices</p>
+<ul class="simple">
+<li><p>Hard drives and Solid State Drives (SSDs)</p>
+<ul>
+<li><p>typically 100 times larger then ram</p></li>
+</ul>
+</li>
+<li><p>CPU cannot directly use them as memory</p></li>
+<li><p>Complex OS code can however, move data between them and memory</p></li>
+<li><p>Part of our tick involves “swapping” memory pages in and out of external storage “behind the backs” of the running processes</p></li>
+<li><p>Giving the illusion of a much large main memory</p></li>
+</ul>
+</td>
+</tr>
+</table><hr><a class="reference internal image-reference" href="../_images/012.png"><img alt="../_images/012.png" src="../_images/012.png" style="width: 100%;" /></a>
+<p>Lets add some more details to our process picture form earlier</p>
+<ul class="simple">
+<li><p>First lets introduce the idea that all “regular” files are stored on an external storage device</p></li>
+<li><p>we can think of the files as pages of data that reside on “disk”</p></li>
+<li><p>thus any byte of a file is on a particular page of the file</p></li>
+<li><p>We will also reserve a portion of the drive or maybe even another drive to act like a large pool of “swap” pages for data that does not below to a file but is only associated with a running program</p></li>
+<li><p>Now when a binary is “loaded” by the OS we are really just mapping part of the new processes address space to pages of the binary file on disk</p>
+<ul>
+<li><p>this mean that the OS will allocate free page of memory and load it with the correct data from the corresponding disk page before mapping it</p>
+<ul>
+<li><p>text pages will be loaded with the byte value from the appropriate text data from the binary and marked read and execute</p></li>
+<li><p>read-only data will be loaded with the byte values from the appropriate ro data from the binary and marked read</p></li>
+<li><p>data will be loaded from load with bytes from the the appropriate data from the binary and marked read and write</p></li>
+<li><p>for bss it will allocate free pages and fill them with zeros</p></li>
+<li><p>for the stack it will allocate free pages as needed</p></li>
+<li><p>similarly for heap and other dynamic pages</p></li>
+</ul>
+</li>
+<li><p>pages of a process that are not associated with a specific file will be associated as needed to a page in the swap storage</p></li>
+</ul>
+</li>
+<li><p>As we can see process 21 running the binary /home/jovyan/mypgm has accessed pages</p>
+<ul>
+<li><p>/home/jovyan/mypgm: 1 r-x – probably an text page</p></li>
+<li><p>/home/jovyan/mypgm: 5 r– – probably ro data</p></li>
+<li><p>finally it has a swap page mapped r-w – probably its stack</p></li>
+</ul>
+</li>
+</ul>
+<hr><ul class="simple">
+<li><p>First lets think about what happens if bash while it is running requests a heap page via the <code class="docutils literal notranslate"><span class="pre">brk</span></code> system call.</p></li>
+</ul>
+<hr><a class="reference internal image-reference" href="../_images/013.png"><img alt="../_images/013.png" src="../_images/013.png" style="width: 100%;" /></a>
+<hr><ul class="simple">
+<li><p>Now lets assume we are running pid 21 again</p>
+<ul>
+<li><p>it now accesses the static data for a large array at address 0x406000</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">mov</span> <span class="pre">rax,</span> <span class="pre">QWORD</span> <span class="pre">PTR</span> <span class="pre">[0x406000]</span></code></p></li>
+</ul>
+</li>
+<li><p>0x406000 happens to land on VPN4 that has not been accessed yet</p></li>
+</ul>
+</li>
+<li><p>Remember we are out of free pages!</p></li>
+</ul>
+<hr><a class="reference internal image-reference" href="../_images/014.png"><img alt="../_images/014.png" src="../_images/014.png" style="width: 100%;" /></a>
+<hr><a class="reference internal image-reference" href="../_images/015.png"><img alt="../_images/015.png" src="../_images/015.png" style="width: 100%;" /></a>
+<hr><a class="reference internal image-reference" href="../_images/016.png"><img alt="../_images/016.png" src="../_images/016.png" style="width: 100%;" /></a>
+<hr><a class="reference internal image-reference" href="../_images/017.png"><img alt="../_images/017.png" src="../_images/017.png" style="width: 100%;" /></a>
+<hr><a class="reference internal image-reference" href="../_images/018.png"><img alt="../_images/018.png" src="../_images/018.png" style="width: 100%;" /></a>
+</section>
+<section id="virtual-memory-trick-2-memory-mapping-files">
+<h2><span class="section-number">15.7. </span>Virtual Memory Trick 2: Memory Mapping Files<a class="headerlink" href="#virtual-memory-trick-2-memory-mapping-files" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="virtual-memory-trick-3-sharing">
+<h2><span class="section-number">15.8. </span>Virtual Memory Trick 3: Sharing<a class="headerlink" href="#virtual-memory-trick-3-sharing" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="virtual-memory-trick-3-dynamically-linked-libraries">
+<h2><span class="section-number">15.9. </span>Virtual Memory Trick 3: Dynamically Linked Libraries<a class="headerlink" href="#virtual-memory-trick-3-dynamically-linked-libraries" title="Permalink to this headline">#</a></h2>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
