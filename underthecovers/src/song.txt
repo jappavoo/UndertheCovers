@@ -1,0 +1,4 @@
+Type, type, your Byte
+Gently down the standard IO
+Bash bash, bash, bash
+Life is but a command-line 
