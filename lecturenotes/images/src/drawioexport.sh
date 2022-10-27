@@ -12,7 +12,7 @@ DIOBORDER=${DIOBORDER:-1}
 DIOSCALE=1
 
 DIO=$(type -p draw.io)
-[[ -z $DIO &&  -x "/Applications/draw.io.app/Contents/MacOS/draw.io" ]] && DDRAWIO="/Applications/draw.io.app/Contents/MacOS/draw.io"
+[[ -z $DIO &&  -x "/Applications/draw.io.app/Contents/MacOS/draw.io" ]] && DIO="/Applications/draw.io.app/Contents/MacOS/draw.io"
 
 if [[ -z $DIO ]]; then
    echo "ERROR: failed to find draw.io executable"

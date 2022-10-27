@@ -486,16 +486,107 @@ title="Print to PDF"
   <a class="reference internal nav-link" href="#virtual-memory-trick-2-memory-mapping-files">
    15.7. Virtual Memory Trick 2: Memory Mapping Files
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#see-example-in-mmap-s-example-in-the-notes-to-see-how-this-can-be-done">
+     15.7.1. See example in
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       mmap.s
+      </span>
+     </code>
+     example in the notes to see how this can be done…
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-main-point-is-to-understand-the-idea-you-do-not-need-to-know-the-details-of-the-linux-calls">
+   15.8.
+   <strong>
+    The main point is to understand the idea you do not need to know the details of the Linux calls
+   </strong>
+  </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#virtual-memory-trick-3-sharing">
-   15.8. Virtual Memory Trick 3: Sharing
+   15.9. Virtual Memory Trick 3: Sharing
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#virtual-memory-trick-3-dynamically-linked-libraries">
-   15.9. Virtual Memory Trick 3: Dynamically Linked Libraries
+  <a class="reference internal nav-link" href="#virtual-memory-trick-3-shared-dynamically-linked-libraries">
+   15.10. Virtual Memory Trick 3: Shared Dynamically Linked Libraries
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#see-example-in-sumitshared-s-usesumshared1-s-and-usesumshared2-s-example-in-the-notes">
+     15.10.1. See example in
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       sumitshared.s
+      </span>
+     </code>
+     ,
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       usesumshared1.s
+      </span>
+     </code>
+     and
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       usesumshared2.s
+      </span>
+     </code>
+     example in the notes
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#build-a-static-binary-of-version-1">
+     15.10.2. build a static binary of version 1
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#build-a-static-binary-of-version-2">
+     15.10.3. build a static binary of version 2
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#build-a-shared-object-from-sumshared-o">
+     15.10.4. build a shared object from
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       sumshared.o
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#build-a-dynamic-binary-of-version-1">
+     15.10.5. build a dynamic binary of version 1
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#build-a-dynamic-binary-of-version-2">
+     15.10.6. build a dynamic binary of version 2
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#make-some-data">
+     15.10.7. make some data
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#test-out-the-binaries">
+     15.10.8. Test out the binaries
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#things-to-try">
+     15.10.9. Things to try
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -550,16 +641,107 @@ title="Print to PDF"
   <a class="reference internal nav-link" href="#virtual-memory-trick-2-memory-mapping-files">
    15.7. Virtual Memory Trick 2: Memory Mapping Files
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#see-example-in-mmap-s-example-in-the-notes-to-see-how-this-can-be-done">
+     15.7.1. See example in
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       mmap.s
+      </span>
+     </code>
+     example in the notes to see how this can be done…
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-main-point-is-to-understand-the-idea-you-do-not-need-to-know-the-details-of-the-linux-calls">
+   15.8.
+   <strong>
+    The main point is to understand the idea you do not need to know the details of the Linux calls
+   </strong>
+  </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#virtual-memory-trick-3-sharing">
-   15.8. Virtual Memory Trick 3: Sharing
+   15.9. Virtual Memory Trick 3: Sharing
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#virtual-memory-trick-3-dynamically-linked-libraries">
-   15.9. Virtual Memory Trick 3: Dynamically Linked Libraries
+  <a class="reference internal nav-link" href="#virtual-memory-trick-3-shared-dynamically-linked-libraries">
+   15.10. Virtual Memory Trick 3: Shared Dynamically Linked Libraries
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#see-example-in-sumitshared-s-usesumshared1-s-and-usesumshared2-s-example-in-the-notes">
+     15.10.1. See example in
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       sumitshared.s
+      </span>
+     </code>
+     ,
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       usesumshared1.s
+      </span>
+     </code>
+     and
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       usesumshared2.s
+      </span>
+     </code>
+     example in the notes
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#build-a-static-binary-of-version-1">
+     15.10.2. build a static binary of version 1
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#build-a-static-binary-of-version-2">
+     15.10.3. build a static binary of version 2
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#build-a-shared-object-from-sumshared-o">
+     15.10.4. build a shared object from
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       sumshared.o
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#build-a-dynamic-binary-of-version-1">
+     15.10.5. build a dynamic binary of version 1
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#build-a-dynamic-binary-of-version-2">
+     15.10.6. build a dynamic binary of version 2
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#make-some-data">
+     15.10.7. make some data
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#test-out-the-binaries">
+     15.10.8. Test out the binaries
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#things-to-try">
+     15.10.9. Things to try
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -573,6 +755,44 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="sls-lecture-15-processes-and-virtual-memory">
 <h1><span class="section-number">15. </span>SLS Lecture 15 : Processes and Virtual Memory<a class="headerlink" href="#sls-lecture-15-processes-and-virtual-memory" title="Permalink to this headline">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># setup for sumit examples</span>
+<span class="n">appdir</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s1">&#39;HOME&#39;</span><span class="p">)</span>
+<span class="n">appdir</span><span class="o">=</span><span class="n">appdir</span> <span class="o">+</span> <span class="s2">&quot;/vmm&quot;</span>
+<span class="c1">#print(movdir)</span>
+<span class="n">output</span><span class="o">=</span><span class="n">runTermCmd</span><span class="p">(</span><span class="s2">&quot;[[ -d &quot;</span> <span class="o">+</span> <span class="n">appdir</span> <span class="o">+</span> <span class="s2">&quot; ]] &amp;&amp;  rm -rf &quot;</span><span class="o">+</span> <span class="n">appdir</span> <span class="o">+</span> 
+             <span class="s2">&quot;;mkdir &quot;</span> <span class="o">+</span> <span class="n">appdir</span> <span class="o">+</span> 
+             <span class="s2">&quot;;cp ../src/Makefile ../src/setup.gdb ../src/mmap.s ../src/sumitshared.s ../src/usesumshared1.s ../src/usesumshared2.s ../src/song.txt ../src/10num.txt &quot;</span> <span class="o">+</span> <span class="n">appdir</span><span class="p">)</span>
+
+<span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">- create a directory `mkdir vmm; cd vmm`</span>
+<span class="s1">- copy examples</span>
+<span class="s1">- add a `Makefile` to automate assembling and linking</span>
+<span class="s1">    - we are going run the commands by hand this time to highlight the details</span>
+<span class="s1">- add our `setup.gdb` to make working in gdb easier</span>
+<span class="s1">- normally you would want to track everything in git</span>
+<span class="s1">&#39;&#39;&#39;</span><span class="p">))</span>
+<span class="n">TermShellCmd</span><span class="p">(</span><span class="s2">&quot;ls &quot;</span> <span class="o">+</span> <span class="n">appdir</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<ul class="simple">
+<li><p>create a directory <code class="docutils literal notranslate"><span class="pre">mkdir</span> <span class="pre">vmm;</span> <span class="pre">cd</span> <span class="pre">vmm</span></code></p></li>
+<li><p>copy examples</p></li>
+<li><p>add a <code class="docutils literal notranslate"><span class="pre">Makefile</span></code> to automate assembling and linking</p>
+<ul>
+<li><p>we are going run the commands by hand this time to highlight the details</p></li>
+</ul>
+</li>
+<li><p>add our <code class="docutils literal notranslate"><span class="pre">setup.gdb</span></code> to make working in gdb easier</p></li>
+<li><p>normally you would want to track everything in git</p></li>
+</ul>
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "c560093f01c8407cadbc4b18dba63dee", "version_major": 2, "version_minor": 0}
+</script></div>
+</div>
 <hr><section id="virtual-memory-the-idea">
 <h2><span class="section-number">15.1. </span>Virtual Memory: The Idea<a class="headerlink" href="#virtual-memory-the-idea" title="Permalink to this headline">#</a></h2>
 <p>Enable several instances of programs to be running at the same time</p>
@@ -621,7 +841,8 @@ title="Print to PDF"
 <h2><span class="section-number">15.2. </span>Virtual Memory: HW + SW<a class="headerlink" href="#virtual-memory-hw-sw" title="Permalink to this headline">#</a></h2>
 <p>The Hardware provides the mechanism for Virtual Memory and the Software of the OS uses them to implement Processes</p>
 <p>The OS then can start Processes from the executables we create</p>
-<hr><hr></section>
+<hr><img alt="../_images/contexts2.png" src="../_images/contexts2.png" />
+<hr></section>
 <section id="the-road-from-physical-to-virtual-memory">
 <h2><span class="section-number">15.3. </span>The Road from Physical to Virtual Memory<a class="headerlink" href="#the-road-from-physical-to-virtual-memory" title="Permalink to this headline">#</a></h2>
 <hr><img alt="../_images/000.png" src="../_images/000.png" />
@@ -700,7 +921,7 @@ title="Print to PDF"
 <li><p>We will also reserve a portion of the drive or maybe even another drive to act like a large pool of “swap” pages for data that does not below to a file but is only associated with a running program</p></li>
 <li><p>Now when a binary is “loaded” by the OS we are really just mapping part of the new processes address space to pages of the binary file on disk</p>
 <ul>
-<li><p>this mean that the OS will allocate free page of memory and load it with the correct data from the corresponding disk page before mapping it</p>
+<li><p>this mean that the OS will allocate free page of memory and load it with the correct data from the corresponding disk page when it is needed</p>
 <ul>
 <li><p>text pages will be loaded with the byte value from the appropriate text data from the binary and marked read and execute</p></li>
 <li><p>read-only data will be loaded with the byte values from the appropriate ro data from the binary and marked read</p></li>
@@ -743,17 +964,628 @@ title="Print to PDF"
 <hr><a class="reference internal image-reference" href="../_images/016.png"><img alt="../_images/016.png" src="../_images/016.png" style="width: 100%;" /></a>
 <hr><a class="reference internal image-reference" href="../_images/017.png"><img alt="../_images/017.png" src="../_images/017.png" style="width: 100%;" /></a>
 <hr><a class="reference internal image-reference" href="../_images/018.png"><img alt="../_images/018.png" src="../_images/018.png" style="width: 100%;" /></a>
-</section>
+<hr></section>
 <section id="virtual-memory-trick-2-memory-mapping-files">
 <h2><span class="section-number">15.7. </span>Virtual Memory Trick 2: Memory Mapping Files<a class="headerlink" href="#virtual-memory-trick-2-memory-mapping-files" title="Permalink to this headline">#</a></h2>
+<p>We can use OS memory mapping calls to make files magically appear in our process’s address space</p>
+<hr><a class="reference internal image-reference" href="../_images/019.png"><img alt="../_images/019.png" src="../_images/019.png" style="width: 100%;" /></a>
+<hr><a class="reference internal image-reference" href="../_images/020.png"><img alt="../_images/020.png" src="../_images/020.png" style="width: 100%;" /></a>
+<hr><a class="reference internal image-reference" href="../_images/021.png"><img alt="../_images/021.png" src="../_images/021.png" style="width: 100%;" /></a>
+<hr><section id="see-example-in-mmap-s-example-in-the-notes-to-see-how-this-can-be-done">
+<h3><span class="section-number">15.7.1. </span>See example in <code class="docutils literal notranslate"><span class="pre">mmap.s</span></code> example in the notes to see how this can be done…<a class="headerlink" href="#see-example-in-mmap-s-example-in-the-notes-to-see-how-this-can-be-done" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>This program maps a “song.txt” file into the process, for both read and write permission.</p></li>
+<li><p>It then scans the data of the file changing all occurrences of ‘a’ to ‘A’.</p></li>
+<li><p>It then uses the write system call to write the memory to the standard output</p></li>
+<li><p>Because the options given to the <code class="docutils literal notranslate"><span class="pre">mmap</span></code> system call changes are reflected back to the file when the process exits.</p></li>
+</ul>
+<p>Note we have to make several system on Linux.  Further more there are a lot of options to the mmap call itself</p>
 </section>
+</section>
+<section id="the-main-point-is-to-understand-the-idea-you-do-not-need-to-know-the-details-of-the-linux-calls">
+<h2><span class="section-number">15.8. </span><strong>The main point is to understand the idea you do not need to know the details of the Linux calls</strong><a class="headerlink" href="#the-main-point-is-to-understand-the-idea-you-do-not-need-to-know-the-details-of-the-linux-calls" title="Permalink to this headline">#</a></h2>
+<p>Of course we could have imagined doing the same sort of thing with our <code class="docutils literal notranslate"><span class="pre">sumit</span></code> example.  Where we could use  <code class="docutils literal notranslate"><span class="pre">mmap</span></code> to map the data files into our address space.</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<p><b>CODE: asm - mmap.s</p>
+<div style="width:107em; height:100%; font-size:inherit; overflow: auto;" >
+<div class="highlight-gas notranslate"><div class="highlight"><pre><span></span>	.intel_syntax  noprefix
+	.section .rodata
+filepath:
+	.asciz &quot;song.txt&quot;
+	
+	.section .data
+ptr:
+	.quad 0
+fd:
+	.quad 0
+	
+	.section .text
+	.global _start
+	
+_start:
+	# open
+	mov rax, 2
+	mov rdi, OFFSET filepath
+	mov rsi, 0x2            # O_RDWR
+	xor rdx, rdx             # 0 for the mode flags
+	syscall
+
+	cmp rax, -1             # open returns -1 on errors
+	je error
+	mov QWORD PTR [fd], rax
+	
+	# mmap file associated with the fd opened above
+	mov rax, 9              # mmap system call number
+	mov rdi, 0              # NULL address let OS pick
+	mov rsi, 100            # 100 bytes of the file
+	mov rdx, 0x3            # PROT_READ | PROT_WRITE
+	mov r10, 0x1            # MAP_SHARED
+	mov r8, QWORD PTR [fd]
+	mov r9, 0               # offset in file
+	syscall
+
+	cmp rax, -1            # check if mmap work (returns -1 on failure)
+	je done        
+	
+	mov QWORD PTR [ptr], rax
+
+	# capitalize all lower case &#39;a&#39; that are in the data
+	xor rbx,rbx                   # rbx=0
+	# rax points to the data, rbx is index
+loop:
+	cmp BYTE PTR [rax + rbx], &#39;a   # check ith byte to see if it is an lower case a
+	jne next                      
+	mov BYTE PTR [rax + rbx], &#39;A   # it is so replace it with upper case A
+next:
+	inc rbx                        # increment index
+	cmp rbx, 100                   # compare index to 100
+	jl loop                        # less than the keep looping
+	
+	# write data of file to stdout 
+	mov rax, 1                     # write system call number
+	mov rdi, 1                     # fd = 1
+	mov rsi, QWORD PTR [ptr]       # address of where data was mapped
+	mov rdx, 100                   # 100 bytes
+	syscall
+	
+	mov rdi, 0                     # success if we got here
+	jmp done
+	
+error:
+	mov rdi, -1
+done:
+	mov rax, 60
+	syscall
+
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "d45444f2dd1c4ff49c54415bee4e8db3", "version_major": 2, "version_minor": 0}
+</script></div>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "1f1ffa8c197a46b9a884152e8cc320f8", "version_major": 2, "version_minor": 0}
+</script></div>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "c2c8f76f36354af2a4b7f76ba18937a5", "version_major": 2, "version_minor": 0}
+</script></div>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "f9467c3b029d40f4b5ae925372026e10", "version_major": 2, "version_minor": 0}
+</script></div>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "8ec1598adb334ecba4ad553b861549c6", "version_major": 2, "version_minor": 0}
+</script></div>
+</div>
+<hr></section>
 <section id="virtual-memory-trick-3-sharing">
-<h2><span class="section-number">15.8. </span>Virtual Memory Trick 3: Sharing<a class="headerlink" href="#virtual-memory-trick-3-sharing" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">15.9. </span>Virtual Memory Trick 3: Sharing<a class="headerlink" href="#virtual-memory-trick-3-sharing" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>At first the obvious value of virtual memory is to “isolate” processes from each other</p></li>
+<li><p>Each processes Virtual Address Space by default is distinct and separate</p></li>
+<li><p>However, noting stops us from creating mappings via the page tables of different processes that allow “sharing”</p></li>
+<li><p><strong>Lets us directly share bytes of memory between different running programs!</strong></p></li>
+</ul>
+<a class="reference internal image-reference" href="../_images/022.png"><img alt="../_images/022.png" src="../_images/022.png" style="width: 100%;" /></a>
+<hr></section>
+<section id="virtual-memory-trick-3-shared-dynamically-linked-libraries">
+<h2><span class="section-number">15.10. </span>Virtual Memory Trick 3: Shared Dynamically Linked Libraries<a class="headerlink" href="#virtual-memory-trick-3-shared-dynamically-linked-libraries" title="Permalink to this headline">#</a></h2>
+<p>One of the most common uses of shared mappings is to facilitate “Shared Objects/Libraries”</p>
+<ul class="simple">
+<li><p>This Feature is used on all modern commercial operating systems: Window, MacOS, Linux, …</p></li>
+<li><p>A specialized use of Virtual Memory Shared mappings</p>
+<ul>
+<li><p>where we map in object files to our process after we start running</p>
+<ul>
+<li><p>Eg. code that is not present in the binary is mapped it after the process is created</p></li>
+</ul>
+</li>
+<li><p>Library code and data can then be shared and updated in independently</p></li>
+<li><p>Many processes that use the same libraries share the same pages of memory</p>
+<ul>
+<li><p>Avoids duplication of memory for common libraries</p></li>
+<li><p>Reduces size of binaries</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>But it comes with complication</p></li>
+</ul>
+<hr><a class="reference internal image-reference" href="../_images/023.png"><img alt="../_images/023.png" src="../_images/023.png" style="width: 100%;" /></a>
+<hr><table>
+    <tr>
+        <td width="70%">
+<img src="../images/VMM/024.png" width="100%">
+        </td>
+        <td>
+<p>Let’s reviewing how we build “statically” linked binaries</p>
+<ul class="simple">
+<li><p>this is what we have been doing</p></li>
+<li><p>much easier to write static linked assembly code</p></li>
+<li><p>each binary contains a copy of all the bytes</p>
+<ul>
+<li><p>so the location of everything is known</p></li>
+<li><p>and code can use fixed addresses</p></li>
+</ul>
+</li>
+</ul>
+</td>
+</tr>
+</table>
+<hr><table>
+    <tr>
+        <td width="70%">
+<img src="../images/VMM/025.png" width="100%">
+        </td>
+        <td>
+<ul class="simple">
+<li><p>Linker can defer part of its job to runtime!</p>
+<ul>
+<li><p>create a shared object file that has extra information in it</p>
+<ul>
+<li><p>and has been written carefully to be “Position Independent”</p></li>
+</ul>
+</li>
+<li><p>When we link the don’t put the shared object into the binary</p></li>
+<li><p>rather we mark that the os should use a dynamic version of the link/loader (<a class="reference external" href="http://ld.so">ld.so</a>) when it executes the binary</p></li>
+<li><p>this code create mappings to the shared object file and then finishes the job of linking</p></li>
+</ul>
+</li>
+</ul>
+</td>
+</tr>
+</table>
+<hr><a class="reference internal image-reference" href="../_images/026.png"><img alt="../_images/026.png" src="../_images/026.png" style="width: 100%;" /></a>
+<hr><section id="see-example-in-sumitshared-s-usesumshared1-s-and-usesumshared2-s-example-in-the-notes">
+<h3><span class="section-number">15.10.1. </span>See example in <code class="docutils literal notranslate"><span class="pre">sumitshared.s</span></code>, <code class="docutils literal notranslate"><span class="pre">usesumshared1.s</span></code> and <code class="docutils literal notranslate"><span class="pre">usesumshared2.s</span></code> example in the notes<a class="headerlink" href="#see-example-in-sumitshared-s-usesumshared1-s-and-usesumshared2-s-example-in-the-notes" title="Permalink to this headline">#</a></h3>
+<p>In these examples you will find several things:</p>
+<ol class="simple">
+<li><p>We illustrate a 2  more advanced version of our running  the <code class="docutils literal notranslate"><span class="pre">sumit</span></code> example</p>
+<ul class="simple">
+<li><p>In addition to the <code class="docutils literal notranslate"><span class="pre">sumIt</span></code> function we add to supporting function for input and output</p>
+<ul>
+<li><p>Using the <code class="docutils literal notranslate"><span class="pre">open</span></code>, <code class="docutils literal notranslate"><span class="pre">lseek</span></code> and <code class="docutils literal notranslate"><span class="pre">read</span></code> system calls we add a <code class="docutils literal notranslate"><span class="pre">sumReadData</span></code> functions for reading the data from a file into an area of memory</p></li>
+<li><p>Using the <code class="docutils literal notranslate"><span class="pre">write</span></code> system call we add a <code class="docutils literal notranslate"><span class="pre">sumPrint</span></code> function that writes the value in <code class="docutils literal notranslate"><span class="pre">rax</span></code> to standard output</p></li>
+</ul>
+</li>
+<li><p>We provide two example programs that use the above routines</p>
+<ul>
+<li><p>both program demonstrate how we can get access the the command line parameters</p>
+<ul>
+<li><p>turns out the kernel places these values on the stack before we get started so we can easily get access to them</p></li>
+</ul>
+</li>
+<li><p>the first example read’s the data from a file passed in as a command line argument into space pre-allocated in the bss of the binary</p></li>
+<li><p>the send again read’s the data from a file passed in as a command line argument but places into dynamically heap allocated memory</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>It illustrates building both static and dynamic version of the the program so you can see how it it is done</p>
+<ul class="simple">
+<li><p>This is mainly to let you see this in action</p></li>
+<li><p>you don’t need to know the details</p></li>
+</ul>
+</li>
+</ol>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<p><b>CODE: asm - sumitshared.s</p>
+<div style="width:107em; height:100%; font-size:inherit; overflow: auto;" >
+<div class="highlight-gas notranslate"><div class="highlight"><pre><span></span>	.intel_syntax noprefix
+
+	.section .text
+
+	# tell linker that sumIt symbol can be referenced in other files	
+	.global sumIt	  
+
+	# code to sum data in array who&#39;s address is in rcx
+	# we assume we were started with call so return address on stack
+	# we assume rbx has length  rbx -&gt; len
+	# and that we will leave final sum in rax
+sumIt:	                         # label that marks where this code begins
+	xor  rax, rax            # rax -&gt; sum : sum = 0
+	push rdi                 # spill current value of rdi before we use it
+	xor  rdi, rdi            # rdi -&gt; i : i = 0
+	
+	# code to sum data in array who&#39;s address is in rcx
+	# we assume we were started with call so return address on stack
+	# we assume rbx has length  rbx -&gt; len
+	# and that we will leave final sum in rax
+loop_start:                                 
+	cmp  rbx, rdi                       # rbx - rdi
+	jz   loop_done                      # if above is zero (they are equal) jump
+	add  rax, QWORD PTR [rcx + rdi * 8] # add the i&#39;th value to the sum
+	inc  rdi                            # i=i+1
+	jmp  loop_start                     # go back to the start of the loop
+loop_done:
+	pop  rdi                            # restore rdi back to its original value
+	ret                                 # use return to pop value off the stack
+	                                    # and jump to that location
+
+	# send value in rax to standard out
+	.global sumPrint
+sumPrint:
+	push rcx
+	push rdi
+	push rsi
+	push rdx
+	push rax
+
+	mov rax, 1      # write syscall = 1
+	mov rdi, 1      # fd = 1
+	mov rsi, rsp    # rax was last thing we pushed on the stack
+	mov rdx, 8      # rax value is 8 bytes
+	syscall
+
+	pop rax
+	pop rdx
+	pop rsi
+	pop rdi
+	pop rcx
+
+	ret
+
+	# BAD CODE NO ERROR CHECKING :-(
+	# rdi points to string path of file
+	# rsi pointer to where to store data
+	# rax returns length
+	.global sumReadData
+sumReadData:
+	push rcx
+	push rdx
+	push r8
+	push rsi
+	
+	# open
+	mov rax, 2              # open syscall number 2
+	# rdi already has string of path
+	mov rsi, 0x0            # O_RDONLY
+	xor rdx, rdx            # 0 for the mode flags
+	syscall
+
+	mov r8, rax             # save fd in r8
+	
+	# calculate length
+	# use lseek
+	mov rdi, r8             # mov fd into rdi
+	xor rsi, rsi            # offset = 0
+	mov rdx, 2              # SEEK_END = 2
+	mov rax, 8   
+	syscall
+
+	push rax                      # save length in bytes to top of stack
+
+	# reset file postion to the beginning lseek(fd, 0, SEEK_SET)
+	mov rdi, r8                   # fd = rdi = r8  
+	xor rsi, rsi                  # offset = rsi = 0 
+	xor rdx, rdx                  # whence = rdx = SEEK_SET = 0
+	mov rax, 8                    # lseek syscall number is 8
+	syscall
+	
+	# read data
+	mov rdi, r8                   # fd = rdi = r8
+	mov rsi, QWORD PTR [rsp+8]    # buf = rsi = pointer to data memory is
+	                              # second last thing pushed on to the stack so is at rsp + 8
+	mov rdx, QWORD PTR [rsp]      # len = rdx =length in bytes is top of stack
+	xor rax, rax                  # read syscall number is 0
+	syscall
+
+	# calculate return value
+	pop rax
+	shr rax, 3        # divide by 8 to get number of quads
+
+	# cleanup
+	# restore register values from stack
+	pop rsi
+	pop r8
+	pop rdx
+	pop rcx
+
+	ret
+
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<p><b>CODE: asm - usesumshared1.s</p>
+<div style="width:107em; height:100%; font-size:inherit; overflow: auto;" >
+<div class="highlight-gas notranslate"><div class="highlight"><pre><span></span>	.intel_syntax noprefix
+	.data	
+	.comm A_SUM, 8, 8
+	.comm A_LEN, 8, 8
+	.comm A, 8*1024, 8	
+	.section .rodata
+	
+	.section .text
+	.global _start
+_start:
+	# something new os places number of command line arguments on 
+	# the stack and a array of string pointers as well
+        # lets use this to get the name of the file that has our data
+	pop rax      # we now have the count of command line arguments in rax
+	cmp rax, 2   # in unix first command line argument is name of executable so
+	jne error
+
+	pop rax      # we now have a pointer to the command name
+	pop rax      # we now have a pointer to the first argument!
+
+	mov rdi, rax        # pass pointer to path string in rdi
+	lea rsi, [rip + A]  # pass pointer to data memory in rsi
+	call sumReadData    # call sumReadData
+	mov QWORD PTR [rip + A_LEN], rax    # save length in A_LEN for good measure
+	
+	mov rbx, QWORD PTR [rip + A_LEN]    # pass length in rbx
+	lea rcx, [rip + A]             # pass pointer to data in rcx
+	call sumIt                    # sumit!!!
+	mov QWORD PTR [rip + A_SUM], rax    # save result in A_SUM
+
+	call sumPrint                 # call sumPrint with value in rax
+
+	# exit normally 
+exit:
+	mov rdi, 0		
+	mov rax, 60
+	syscall 
+
+	# exit with error
+error:
+	mov rdi, 1
+	mov rax, 60
+	syscall
+	
+
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<p><b>CODE: asm - usesumshared2.s</p>
+<div style="width:107em; height:100%; font-size:inherit; overflow: auto;" >
+<div class="highlight-gas notranslate"><div class="highlight"><pre><span></span>	.intel_syntax noprefix
+	.section .data	
+
+	
+	.comm A_SUM, 8, 8
+	.comm A_LEN, 8, 8
+	# pointer to heap memory for our array
+	.comm A_PTR, 8, 8
+	# pointer to break 
+	.comm brk_ptr, 8, 8
+	
+	.section .text
+	.global _start 
+_start:	
+	# get current break pointer
+	xor rdi, rdi                         # pass 0 to brk (invalid request)
+	mov rax, 12                          # brk syscall number 12
+	syscall                              # call brk with 0
+	mov QWORD PTR [rip + A_PTR], rax     # set A_PTR to start of end of break memory
+	mov rdi, rax                         # mov current end of break into rax
+	
+	add rdi, 4096 * 8                    # add request num bytes to end break
+	mov rax, 12                          # brk syscall number 12
+	syscall                              # call brk with break end + request
+	mov QWORD PTR [rip + brk_ptr], rax   # save current break pointer incase
+	                                     # want to add more memory later
+
+	# os places number of command line arguments on 
+	# the stack and a array of string pointers as well
+        # lets use this to get the name of the file that has our data
+	pop rax      # we now have the count of command line arguments in rax
+	cmp rax, 2   # in unix first command line argument is name of executable so
+	jne error
+
+	pop rax      # we now have a pointer to the command name
+	pop rax      # we now have a pointer to the first argument!
+
+	mov rdi, rax                       # pass pointer to path string in rdi
+	mov rsi, QWORD PTR [rip + A_PTR]             # pass pointer to data memory in rsi
+	call sumReadData                   # call sumReadData
+	mov QWORD PTR [rip + A_LEN], rax   # save length in A_LEN for good measure
+
+	
+	mov rbx, QWORD PTR [rip + A_LEN]   # pass length in rbx
+	mov rcx, QWORD PTR [rip + A_PTR]   # pass pointer to data in rcx
+	call sumIt                   # sumit!!!
+	mov QWORD PTR [rip + A_SUM], rax   # save result in A_SUM
+
+	call sumPrint
+
+	# exit normally 
+exit:
+	mov rdi, 0		
+	mov rax, 60
+	syscall 
+
+	# exit with error
+error:
+	mov rdi, 1
+	mov rax, 60
+	syscall
+
+
+</pre></div>
+</div>
+</div>
+</div>
+</div>
 </section>
-<section id="virtual-memory-trick-3-dynamically-linked-libraries">
-<h2><span class="section-number">15.9. </span>Virtual Memory Trick 3: Dynamically Linked Libraries<a class="headerlink" href="#virtual-memory-trick-3-dynamically-linked-libraries" title="Permalink to this headline">#</a></h2>
+<section id="build-a-static-binary-of-version-1">
+<h3><span class="section-number">15.10.2. </span>build a static binary of version 1<a class="headerlink" href="#build-a-static-binary-of-version-1" title="Permalink to this headline">#</a></h3>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "9a940c4e0b2e4bd79f90e1ac1155eaae", "version_major": 2, "version_minor": 0}
+</script></div>
+</div>
+</section>
+<section id="build-a-static-binary-of-version-2">
+<h3><span class="section-number">15.10.3. </span>build a static binary of version 2<a class="headerlink" href="#build-a-static-binary-of-version-2" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">TermShellCmd</span><span class="p">(</span><span class="s2">&quot;make LDFLAGS= ASFLAGS= usesumshared2static&quot;</span><span class="p">,</span> <span class="n">cwd</span><span class="o">=</span><span class="n">appdir</span><span class="p">,</span> <span class="n">prompt</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "164267b194cd4a9faed4ea94e43734f3", "version_major": 2, "version_minor": 0}
+</script></div>
+</div>
+</section>
+<section id="build-a-shared-object-from-sumshared-o">
+<h3><span class="section-number">15.10.4. </span>build a shared object from <code class="docutils literal notranslate"><span class="pre">sumshared.o</span></code><a class="headerlink" href="#build-a-shared-object-from-sumshared-o" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">TermShellCmd</span><span class="p">(</span><span class="s2">&quot;make LDFLAGS= ASFLAGS= sumitshared.so&quot;</span><span class="p">,</span> <span class="n">cwd</span><span class="o">=</span><span class="n">appdir</span><span class="p">,</span> <span class="n">prompt</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "c23b5e3ac37b474594a97646cec09ed8", "version_major": 2, "version_minor": 0}
+</script></div>
+</div>
+</section>
+<section id="build-a-dynamic-binary-of-version-1">
+<h3><span class="section-number">15.10.5. </span>build a dynamic binary of version 1<a class="headerlink" href="#build-a-dynamic-binary-of-version-1" title="Permalink to this headline">#</a></h3>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "ee4ece858de040bea3cc37c593cb366f", "version_major": 2, "version_minor": 0}
+</script></div>
+</div>
+</section>
+<section id="build-a-dynamic-binary-of-version-2">
+<h3><span class="section-number">15.10.6. </span>build a dynamic binary of version 2<a class="headerlink" href="#build-a-dynamic-binary-of-version-2" title="Permalink to this headline">#</a></h3>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "c6263bd272e04938b3e352ae6a96cad6", "version_major": 2, "version_minor": 0}
+</script></div>
+</div>
+</section>
+<section id="make-some-data">
+<h3><span class="section-number">15.10.7. </span>make some data<a class="headerlink" href="#make-some-data" title="Permalink to this headline">#</a></h3>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "29b99e936b5d4deca264a8d1cfcb18a2", "version_major": 2, "version_minor": 0}
+</script></div>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "977b4cd182a24459ac4713557bad8821", "version_major": 2, "version_minor": 0}
+</script></div>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "acf45170ce1b4318ad2380cd149c0846", "version_major": 2, "version_minor": 0}
+</script></div>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "96826a176bff4e4e89e497972ccf12b0", "version_major": 2, "version_minor": 0}
+</script></div>
+</div>
+</section>
+<section id="test-out-the-binaries">
+<h3><span class="section-number">15.10.8. </span>Test out the binaries<a class="headerlink" href="#test-out-the-binaries" title="Permalink to this headline">#</a></h3>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "f2129a8211554549b9f459b53506eae7", "version_major": 2, "version_minor": 0}
+</script></div>
+</div>
+<ul class="simple">
+<li><p>of course the output is not ascii so we need to translate it</p></li>
+</ul>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "1bbd011cd34b48ea906cbe6c255a92ea", "version_major": 2, "version_minor": 0}
+</script></div>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "3ede7a9fcbe54804a5faff1fc2a05552", "version_major": 2, "version_minor": 0}
+</script></div>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "e2cb2e0ccaea4155ae4daaa0297e5b8b", "version_major": 2, "version_minor": 0}
+</script></div>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "11411e3c3ca34482b5c7bed7535a0430", "version_major": 2, "version_minor": 0}
+</script></div>
+</div>
+</section>
+<section id="things-to-try">
+<h3><span class="section-number">15.10.9. </span>Things to try<a class="headerlink" href="#things-to-try" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>Try it binaries with the larger data files</p></li>
+<li><p>use <code class="docutils literal notranslate"><span class="pre">gdb</span></code> and get both static version started and look at the their mappings</p></li>
+<li><p>now do the same for the dynamic version and compare to the above</p></li>
+</ul>
 </section>
 </section>
+</section>
+
+
+<script type="application/vnd.jupyter.widget-state+json">
+{"state": {"0b1c91d5ea024e3c921eacd311bf2c09": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": "1px solid black", "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "100%", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": "scroll", "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "11411e3c3ca34482b5c7bed7535a0430": {"model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "model_name": "OutputModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_e2da3cb069b64f9b9f2a05651db34177", "msg_id": "", "outputs": [{"name": "stdout", "output_type": "stream", "text": "$ ./usesumshared2dynamic 10num.bin | od -t d8 -Ad\n0000000                   -1\r\n0000008\r\n$ "}]}}, "164267b194cd4a9faed4ea94e43734f3": {"model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "model_name": "OutputModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_64580f3bd2674791b599dc72600ff462", "msg_id": "", "outputs": [{"name": "stdout", "output_type": "stream", "text": "\nas -g  usesumshared2.s -o usesumshared2.o\r\nld -g  usesumshared2.o sumitshared.o -o usesumshared2static\r\n"}]}}, "19e6ecfc512b4331b832291e3f530e4b": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": "1px solid black", "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "100%", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": "scroll", "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "1bbd011cd34b48ea906cbe6c255a92ea": {"model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "model_name": "OutputModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_bc9278af903445cebef358cb14b5d983", "msg_id": "", "outputs": [{"name": "stdout", "output_type": "stream", "text": "$ ./usesumshared1static 10num.bin | od -t d8 -Ad\n0000000                   -1\r\n0000008\r\n$ "}]}}, "1f1ffa8c197a46b9a884152e8cc320f8": {"model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "model_name": "OutputModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_9b5063c8403f443bad51c918dbb55568", "msg_id": "", "outputs": [{"name": "stdout", "output_type": "stream", "text": "$ ls\n10num.txt  \u001b[0m\u001b[01;32mmmap\u001b[0m    mmap.s     song.txt       usesumshared1.s\r\nMakefile   mmap.o  setup.gdb  sumitshared.s  usesumshared2.s\r\n$ "}]}}, "29b99e936b5d4deca264a8d1cfcb18a2": {"model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "model_name": "OutputModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_eb2c82c5de8d49aba3a94531b75adc8c", "msg_id": "", "outputs": [{"name": "stdout", "output_type": "stream", "text": "$ cat 10num.txt\n1 1 1 1 1 1 1 1 8 -17 \r\n$ "}]}}, "2d3238819c3b44edb759eec2facb8ad1": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": "1px solid black", "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "100%", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": "scroll", "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "377d828b32dd459aa123a6f2ce561fad": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": "1px solid black", "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "100%", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": "scroll", "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "3a6f7862ba1e4615913c3bbaccbf3c4b": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": "1px solid black", "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "100%", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": "scroll", "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "3ede7a9fcbe54804a5faff1fc2a05552": {"model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "model_name": "OutputModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_66e5e88fae0f4a01aea6d4aec966162c", "msg_id": "", "outputs": [{"name": "stdout", "output_type": "stream", "text": "$ ./usesumshared1dynamic 10num.bin | od -t d8 -Ad\n0000000                   -1\r\n0000008\r\n$ "}]}}, "4b2d9ed58fc74484881069cb11e5ea8c": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": "1px solid black", "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "100%", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": "scroll", "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "615fce94825c43d5b54a76a60baff40f": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": "1px solid black", "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "100%", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": "scroll", "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "64580f3bd2674791b599dc72600ff462": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": "1px solid black", "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "100%", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": "scroll", "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "66e5e88fae0f4a01aea6d4aec966162c": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": "1px solid black", "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "100%", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": "scroll", "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "6f5be4b554ab4b8ebb0b85134dc6640c": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": "1px solid black", "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "100%", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": "scroll", "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "7929a3ddf5ce43fba1088effe0e28941": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": "1px solid black", "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "100%", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": "scroll", "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "848e0a3d02b94741ac15f6069dccff00": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": "1px solid black", "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "100%", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": "scroll", "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "8ec1598adb334ecba4ad553b861549c6": {"model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "model_name": "OutputModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_6f5be4b554ab4b8ebb0b85134dc6640c", "msg_id": "", "outputs": [{"name": "stdout", "output_type": "stream", "text": "$ cat song.txt\nType, type, your Byte\r\nGently down the stAndArd IO\r\nBAsh bAsh, bAsh, bAsh\r\nLife is but A commAnd-line \r\n$ "}]}}, "90101a9809364eb2a0f61df3d5510a43": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": "1px solid black", "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "100%", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": "scroll", "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "96826a176bff4e4e89e497972ccf12b0": {"model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "model_name": "OutputModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_9fff391e18ea4fa48451aaacff2e42f0", "msg_id": "", "outputs": [{"name": "stdout", "output_type": "stream", "text": "$ ls\n100randomnum.bin  mmap.o         sumitshared.s         \u001b[0m\u001b[01;32musesumshared1static\u001b[0m\r\n10num.bin         mmap.s         \u001b[01;32msumitshared.so\u001b[0m        \u001b[01;32musesumshared2dynamic\u001b[0m\r\n10num.txt         setup.gdb      \u001b[01;32musesumshared1dynamic\u001b[0m  usesumshared2.o\r\nMakefile          song.txt       usesumshared1.o       usesumshared2.s\r\n\u001b[01;32mmmap\u001b[0m              sumitshared.o  usesumshared1.s       \u001b[01;32musesumshared2static\u001b[0m\r\n$ "}]}}, "977b4cd182a24459ac4713557bad8821": {"model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "model_name": "OutputModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_19e6ecfc512b4331b832291e3f530e4b", "msg_id": "", "outputs": [{"name": "stdout", "output_type": "stream", "text": "\nascii2binary -t sq < 10num.txt > 10num.bin\r\n"}]}}, "9a940c4e0b2e4bd79f90e1ac1155eaae": {"model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "model_name": "OutputModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_377d828b32dd459aa123a6f2ce561fad", "msg_id": "", "outputs": [{"name": "stdout", "output_type": "stream", "text": "\nas -g  usesumshared1.s -o usesumshared1.o\r\nas -g  sumitshared.s -o sumitshared.o\r\nld -g  usesumshared1.o sumitshared.o -o usesumshared1static\r\n"}]}}, "9b5063c8403f443bad51c918dbb55568": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": "1px solid black", "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "100%", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": "scroll", "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "9fff391e18ea4fa48451aaacff2e42f0": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": "1px solid black", "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "100%", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": "scroll", "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "a378bc0f4c564de1b39d89e34acadb64": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": "1px solid black", "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "100%", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": "scroll", "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "a50621392cea498ca02741e28832cb90": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": "1px solid black", "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "100%", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": "scroll", "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "acf45170ce1b4318ad2380cd149c0846": {"model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "model_name": "OutputModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_3a6f7862ba1e4615913c3bbaccbf3c4b", "msg_id": "", "outputs": [{"name": "stdout", "output_type": "stream", "text": "\ndd if=/dev/urandom of=100randomnum.bin bs=1 count=800\r\n800+0 records in\r\n800+0 records out\r\n800 bytes copied, 0.00223623 s, 358 kB/s\r\n"}]}}, "bc9278af903445cebef358cb14b5d983": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": "1px solid black", "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "100%", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": "scroll", "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "c23b5e3ac37b474594a97646cec09ed8": {"model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "model_name": "OutputModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_0b1c91d5ea024e3c921eacd311bf2c09", "msg_id": "", "outputs": [{"name": "stdout", "output_type": "stream", "text": "\nld -g  -shared sumitshared.o -o sumitshared.so\r\n"}]}}, "c2c8f76f36354af2a4b7f76ba18937a5": {"model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "model_name": "OutputModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_7929a3ddf5ce43fba1088effe0e28941", "msg_id": "", "outputs": [{"name": "stdout", "output_type": "stream", "text": "$ cat song.txt\nType, type, your Byte\r\nGently down the standard IO\r\nBash bash, bash, bash\r\nLife is but a command-line \r\n$ "}]}}, "c560093f01c8407cadbc4b18dba63dee": {"model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "model_name": "OutputModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_615fce94825c43d5b54a76a60baff40f", "msg_id": "", "outputs": [{"name": "stdout", "output_type": "stream", "text": "$ ls /home/jovyan/vmm\n10num.txt  mmap.s     song.txt       usesumshared1.s\r\nMakefile   setup.gdb  sumitshared.s  usesumshared2.s\r\n$ "}]}}, "c6263bd272e04938b3e352ae6a96cad6": {"model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "model_name": "OutputModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_4b2d9ed58fc74484881069cb11e5ea8c", "msg_id": "", "outputs": [{"name": "stdout", "output_type": "stream", "text": "\nld -g   usesumshared2.o /home/jovyan/vmm/sumitshared.so -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -z now -z relro -o usesumshared2dynamic\r\n"}]}}, "d45444f2dd1c4ff49c54415bee4e8db3": {"model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "model_name": "OutputModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_a378bc0f4c564de1b39d89e34acadb64", "msg_id": "", "outputs": [{"name": "stdout", "output_type": "stream", "text": "\nas -g  mmap.s -o mmap.o\r\nld -g  mmap.o -o mmap\r\n"}]}}, "e2cb2e0ccaea4155ae4daaa0297e5b8b": {"model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "model_name": "OutputModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_a50621392cea498ca02741e28832cb90", "msg_id": "", "outputs": [{"name": "stdout", "output_type": "stream", "text": "$ ./usesumshared2static 10num.bin | od -t d8 -Ad\n0000000                   -1\r\n0000008\r\n$ "}]}}, "e2da3cb069b64f9b9f2a05651db34177": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": "1px solid black", "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "100%", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": "scroll", "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "eb2c82c5de8d49aba3a94531b75adc8c": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": "1px solid black", "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "100%", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": "scroll", "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "ee4ece858de040bea3cc37c593cb366f": {"model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "model_name": "OutputModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_848e0a3d02b94741ac15f6069dccff00", "msg_id": "", "outputs": [{"name": "stdout", "output_type": "stream", "text": "\nld -g   usesumshared1.o /home/jovyan/vmm/sumitshared.so -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -z now -z relro -o usesumshared1dynamic\r\n"}]}}, "f2129a8211554549b9f459b53506eae7": {"model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "model_name": "OutputModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_2d3238819c3b44edb759eec2facb8ad1", "msg_id": "", "outputs": [{"name": "stdout", "output_type": "stream", "text": "$ ./usesumshared1static 10num.bin\n\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd$ "}]}}, "f9467c3b029d40f4b5ae925372026e10": {"model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "model_name": "OutputModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_90101a9809364eb2a0f61df3d5510a43", "msg_id": "", "outputs": [{"name": "stdout", "output_type": "stream", "text": "$ ./mmap\nType, type, your Byte\r\nGently down the stAndArd IO\r\nBAsh bAsh, bAsh, bAsh\r\nLife is but A commAnd-line \r\n$ "}]}}}, "version_major": 2, "version_minor": 0}
+</script>
+
 
     <script type="text/x-thebe-config">
     {
