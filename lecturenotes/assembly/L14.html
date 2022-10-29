@@ -1175,7 +1175,13 @@ This waiting on a system call is called “blocking”</p>
 <li><p>How we control the mappings based on the sections we add</p></li>
 <li><p>How we can add and shrink heap memory using the <code class="docutils literal notranslate"><span class="pre">brk</span></code> system call</p></li>
 </ol>
-<p>To do the exploration we use a special file that the OS provides that describes the address space of a running process call the <code class="docutils literal notranslate"><span class="pre">maps</span></code> file. Detail are provide in the notes.  Don’t forget you can also use gdb to probe the various mappings you discover.</p>
+<p>To do the exploration we use :</p>
+<ol class="simple">
+<li><p>The <code class="docutils literal notranslate"><span class="pre">nm</span></code> command that print’s the symbol table of a binary.  As such we can use it to see what addresses the linker placed our bytes at.</p></li>
+<li><p>A special file that the OS provides that describes the address space of a running process call the <code class="docutils literal notranslate"><span class="pre">maps</span></code> file.</p></li>
+</ol>
+<p>Detail are provide in the notes.  Don’t forget you can also use gdb to probe the various mappings you discover.<br />
+Eg. You can use the <code class="docutils literal notranslate"><span class="pre">x</span></code> command to examine the bytes at the addresses of the memory areas you find in the maps file.</p>
 <section id="exploring-the-address-space-of-a-process-with-code">
 <h3><span class="section-number">14.6.1. </span>Exploring the Address Space of a process with Code<a class="headerlink" href="#exploring-the-address-space-of-a-process-with-code" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
