@@ -490,85 +490,117 @@ title="Print to PDF"
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#i-o">
+   14.3. I/O
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#review-from-lecture-3">
+     14.3.1. Review from Lecture 3
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#finally-hello-world-in-assembly">
+     14.3.2. Finally “Hello World in Assembly”
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#at-long-last-we-have-a-program-that-we-don-t-need-the-debugger-for">
+       14.3.2.1. At long last we have a program that we don’t need the debugger for!
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#how-about-input-remember-standard-input">
+     14.3.3. How about input – remember standard input
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#blocking-system-calls-can-block-your-program">
+     14.3.4. Blocking: System calls can “block” your program
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#there-are-many-more-calls-for-doing-i-o">
+     14.3.5. There are many more calls for doing I/O
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercises">
+     14.3.6. Exercises
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#process-address-spaces">
-   14.3. Process Address Spaces
+   14.4. Process Address Spaces
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#address-space-organizes-memory-of-a-process">
-     14.3.1. Address Space organizes Memory of a Process
+     14.4.1. Address Space organizes Memory of a Process
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#assembly-programming-as-process-address-space-image-creation">
-     14.3.2. Assembly Programming as Process Address Space Image creation
+     14.4.2. Assembly Programming as Process Address Space Image creation
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#the-details">
-     14.3.3. The Details
+     14.4.3. The Details
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#process-address-space">
-     14.3.4. Process Address Space
+     14.4.4. Process Address Space
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#summary-of-how-we-loading-a-process-address-from-a-binary">
-   14.4. Summary of how we “loading” a process address from a binary
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#exploring-the-address-space-of-a-process-with-an-example">
-     14.4.1. Exploring the Address Space of a process with an example
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#let-s-another-section-to-control-how-region-is-mapped">
-     14.4.2. Let’s another section to control how region is mapped
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#ok-lets-get-some-more-memory-and-and-grow-our-heap">
-   14.5. Ok lets get some more memory – And and Grow our Heap
+   14.5. Summary of how we “loading” a process address from a binary
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#i-o">
-   14.6. I/O
+  <a class="reference internal nav-link" href="#code-and-instructions-for-exploring-the-process-address-space-layout">
+   14.6. Code and instructions for exploring the Process Address Space layout
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#review-from-lecture-3">
-     14.6.1. Review from Lecture 3
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#finally-hello-world-in-assembly">
-     14.6.2. Finally “Hello World in Assembly”
+    <a class="reference internal nav-link" href="#exploring-the-address-space-of-a-process-with-code">
+     14.6.1. Exploring the Address Space of a process with Code
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#at-long-last-we-have-a-program-that-we-don-t-need-the-debugger-for">
-       14.6.2.1. At long last we have a program that we don’t need the debugger for!
+      <a class="reference internal nav-link" href="#version-1-text-and-data">
+       14.6.1.1. Version 1: text and data
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#version-2-adding-rodata">
+       14.6.1.2. Version 2:  adding rodata
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#version-3-adding-bss">
+       14.6.1.3. Version 3:  adding bss
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#version-4-and-and-grow-our-heap">
+       14.6.1.4. Version 4: And and Grow our Heap
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#version-5-giving-memory-back-shrink-the-heap-back-down">
+       14.6.1.5. Version 5: giving memory back – shrink the heap back down
       </a>
      </li>
     </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#there-are-many-more-calls-for-doing-i-o">
-     14.6.3. There are many more calls for doing I/O
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#exercises">
-     14.6.4. Exercises
-    </a>
    </li>
   </ul>
  </li>
@@ -631,85 +663,117 @@ title="Print to PDF"
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#i-o">
+   14.3. I/O
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#review-from-lecture-3">
+     14.3.1. Review from Lecture 3
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#finally-hello-world-in-assembly">
+     14.3.2. Finally “Hello World in Assembly”
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#at-long-last-we-have-a-program-that-we-don-t-need-the-debugger-for">
+       14.3.2.1. At long last we have a program that we don’t need the debugger for!
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#how-about-input-remember-standard-input">
+     14.3.3. How about input – remember standard input
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#blocking-system-calls-can-block-your-program">
+     14.3.4. Blocking: System calls can “block” your program
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#there-are-many-more-calls-for-doing-i-o">
+     14.3.5. There are many more calls for doing I/O
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercises">
+     14.3.6. Exercises
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#process-address-spaces">
-   14.3. Process Address Spaces
+   14.4. Process Address Spaces
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#address-space-organizes-memory-of-a-process">
-     14.3.1. Address Space organizes Memory of a Process
+     14.4.1. Address Space organizes Memory of a Process
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#assembly-programming-as-process-address-space-image-creation">
-     14.3.2. Assembly Programming as Process Address Space Image creation
+     14.4.2. Assembly Programming as Process Address Space Image creation
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#the-details">
-     14.3.3. The Details
+     14.4.3. The Details
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#process-address-space">
-     14.3.4. Process Address Space
+     14.4.4. Process Address Space
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#summary-of-how-we-loading-a-process-address-from-a-binary">
-   14.4. Summary of how we “loading” a process address from a binary
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#exploring-the-address-space-of-a-process-with-an-example">
-     14.4.1. Exploring the Address Space of a process with an example
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#let-s-another-section-to-control-how-region-is-mapped">
-     14.4.2. Let’s another section to control how region is mapped
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#ok-lets-get-some-more-memory-and-and-grow-our-heap">
-   14.5. Ok lets get some more memory – And and Grow our Heap
+   14.5. Summary of how we “loading” a process address from a binary
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#i-o">
-   14.6. I/O
+  <a class="reference internal nav-link" href="#code-and-instructions-for-exploring-the-process-address-space-layout">
+   14.6. Code and instructions for exploring the Process Address Space layout
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#review-from-lecture-3">
-     14.6.1. Review from Lecture 3
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#finally-hello-world-in-assembly">
-     14.6.2. Finally “Hello World in Assembly”
+    <a class="reference internal nav-link" href="#exploring-the-address-space-of-a-process-with-code">
+     14.6.1. Exploring the Address Space of a process with Code
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#at-long-last-we-have-a-program-that-we-don-t-need-the-debugger-for">
-       14.6.2.1. At long last we have a program that we don’t need the debugger for!
+      <a class="reference internal nav-link" href="#version-1-text-and-data">
+       14.6.1.1. Version 1: text and data
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#version-2-adding-rodata">
+       14.6.1.2. Version 2:  adding rodata
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#version-3-adding-bss">
+       14.6.1.3. Version 3:  adding bss
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#version-4-and-and-grow-our-heap">
+       14.6.1.4. Version 4: And and Grow our Heap
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#version-5-giving-memory-back-shrink-the-heap-back-down">
+       14.6.1.5. Version 5: giving memory back – shrink the heap back down
       </a>
      </li>
     </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#there-are-many-more-calls-for-doing-i-o">
-     14.6.3. There are many more calls for doing I/O
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#exercises">
-     14.6.4. Exercises
-    </a>
    </li>
   </ul>
  </li>
@@ -728,12 +792,12 @@ title="Print to PDF"
 <ul class="simple">
 <li><p>Review of Processes</p></li>
 <li><p>Review of Systems Calls</p></li>
+<li><p>I/O - Assembly “Hello World” and read</p></li>
 <li><p>Process Address Spaces</p>
 <ul>
 <li><p>Dynamic Memory : Adding and Growing our heap</p></li>
 </ul>
 </li>
-<li><p>I/O - Assembly “Hello World”</p></li>
 </ul>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
@@ -749,7 +813,7 @@ title="Print to PDF"
 <li><p>normally you would want to track everything in git</p></li>
 </ul>
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "895836a419f2403d8f246d4f17c491ca", "version_major": 2, "version_minor": 0}
+{"model_id": "5f2083632c9a47c7917f07c9dadd8541", "version_major": 2, "version_minor": 0}
 </script></div>
 </div>
 <section id="review-of-processes">
@@ -831,7 +895,7 @@ htmlFig("[{'src': '../images/kerneldef.png'}]",
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "d007721b2a674f6dbba139ba4377f93a", "version_major": 2, "version_minor": 0}
+{"model_id": "a767c0b4ce0f48efa42c0e37ac0920ca", "version_major": 2, "version_minor": 0}
 </script></div>
 </div>
 <div class="cell tag_remove-input docutils container">
@@ -866,10 +930,174 @@ htmlFig("[{'src': '../images/kerneldef.png'}]",
 </div>
 </section>
 </section>
+<section id="i-o">
+<h2><span class="section-number">14.3. </span>I/O<a class="headerlink" href="#i-o" title="Permalink to this headline">#</a></h2>
+<center>
+    <img src="../images/ASSEMBLY-AddressSpaceandIO/ASSEMBLY-AddressSpaceandIO.017.png">
+</center><center>
+    <img src="../images/ASSEMBLY-AddressSpaceandIO/ASSEMBLY-AddressSpaceandIO.018.png">
+</center><section id="review-from-lecture-3">
+<h3><span class="section-number">14.3.1. </span>Review from Lecture 3<a class="headerlink" href="#review-from-lecture-3" title="Permalink to this headline">#</a></h3>
+<center>
+    <img src="../images/Processes/Processes.006.png">
+</center><center>
+    <img src="../images/Processes/Processes.007.png">
+</center><center>
+    <img src="../images/Processes/Processes.008.png">
+</center><center>
+    <img src="../images/Processes/Processes.009.png">
+</center><center>
+    <img src="../images/Processes/Processes.010.png">
+</center><center>
+    <img src="../images/Processes/Processes.011.png">
+</center><center>
+    <img src="../images/Processes/Processes.012.png">
+</center><center>
+    <img src="../images/Processes/Processes.013.png">
+</center><center>
+    <img src="../images/Processes/Processes.015.png">
+</center></section>
+<section id="finally-hello-world-in-assembly">
+<h3><span class="section-number">14.3.2. </span>Finally “Hello World in Assembly”<a class="headerlink" href="#finally-hello-world-in-assembly" title="Permalink to this headline">#</a></h3>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<p><b>CODE: asm - hello.s</p>
+<div style="width:107em; height:100%; font-size:inherit; overflow: auto;" >
+<div class="highlight-gas notranslate"><div class="highlight"><pre><span></span><span class="w">	</span><span class="na">.intel_syntax</span><span class="w"> </span><span class="no">noprefix</span><span class="w"></span>
+<span class="w">	</span><span class="na">.section</span><span class="w"> </span><span class="no">.rodata</span><span class="w">       </span><span class="c1"># readonly data</span>
+<span class="nl">str:</span><span class="w"></span>
+<span class="w">	</span><span class="na">.string</span><span class="w"> </span><span class="s">&quot;Hello World\n&quot;</span><span class="w">  </span><span class="c1"># the string</span>
+
+<span class="w">	</span><span class="na">.section</span><span class="w"> </span><span class="no">.text</span><span class="w"></span>
+<span class="w">	</span><span class="na">.global</span><span class="w"> </span><span class="no">_start</span><span class="w"></span>
+<span class="nl">_start:</span><span class="w"></span>
+<span class="w">	</span><span class="nf">mov</span><span class="w"> </span><span class="no">rax</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">          </span><span class="c1"># write syscall number 1</span>
+<span class="w">	</span><span class="nf">mov</span><span class="w"> </span><span class="no">rdi</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">          </span><span class="c1"># fd = rdi = stdout = 1</span>
+<span class="w">	</span><span class="nf">mov</span><span class="w"> </span><span class="no">rsi</span><span class="p">,</span><span class="w"> </span><span class="no">OFFSET</span><span class="w"> </span><span class="no">str</span><span class="w"> </span><span class="c1"># address of data to send</span>
+<span class="w">	</span><span class="nf">mov</span><span class="w"> </span><span class="no">rdx</span><span class="p">,</span><span class="w"> </span><span class="mi">12</span><span class="w">         </span><span class="c1"># length of data</span>
+<span class="w">	</span><span class="nf">syscall</span><span class="w">   </span>
+
+<span class="w">	</span><span class="no">mov</span><span class="w"> </span><span class="no">rax</span><span class="p">,</span><span class="w"> </span><span class="mi">60</span><span class="w">         </span><span class="c1"># exit syscall number 60</span>
+<span class="w">	</span><span class="nf">mov</span><span class="w"> </span><span class="no">rdi</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="w">          </span><span class="c1"># rdi = exit status code = 3</span>
+<span class="w">	</span><span class="nf">syscall</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "cba8894038c54cf29fd5b3627dac48d6", "version_major": 2, "version_minor": 0}
+</script></div>
+</div>
+<section id="at-long-last-we-have-a-program-that-we-don-t-need-the-debugger-for">
+<h4><span class="section-number">14.3.2.1. </span>At long last we have a program that we don’t need the debugger for!<a class="headerlink" href="#at-long-last-we-have-a-program-that-we-don-t-need-the-debugger-for" title="Permalink to this headline">#</a></h4>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "8ef1a9768d7343de956c5f08ae53ce1f", "version_major": 2, "version_minor": 0}
+</script></div>
+</div>
+</section>
+</section>
+<section id="how-about-input-remember-standard-input">
+<h3><span class="section-number">14.3.3. </span>How about input – remember standard input<a class="headerlink" href="#how-about-input-remember-standard-input" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="n">FileCodeBox</span><span class="p">(</span>
+    <span class="n">file</span><span class="o">=</span><span class="s2">&quot;../src/read.s&quot;</span><span class="p">,</span> 
+    <span class="n">lang</span><span class="o">=</span><span class="s2">&quot;gas&quot;</span><span class="p">,</span> 
+    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;&lt;b&gt;CODE: asm - read.s&quot;</span><span class="p">,</span>
+    <span class="n">h</span><span class="o">=</span><span class="s2">&quot;100%&quot;</span><span class="p">,</span> 
+    <span class="n">w</span><span class="o">=</span><span class="s2">&quot;107em&quot;</span>
+<span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<p><b>CODE: asm - read.s</p>
+<div style="width:107em; height:100%; font-size:inherit; overflow: auto;" >
+<div class="highlight-gas notranslate"><div class="highlight"><pre><span></span><span class="w">	</span><span class="na">.intel_syntax</span><span class="w"> </span><span class="no">noprefix</span><span class="w"></span>
+
+<span class="w">	</span><span class="na">.section</span><span class="w"> </span><span class="no">.data</span><span class="w"></span>
+<span class="nl">buffer:</span><span class="w"></span>
+<span class="w">	</span><span class="na">.byte</span><span class="w"> </span><span class="mi">0x0</span><span class="w">         </span><span class="c1"># space to read one byte</span>
+<span class="w">	                  </span><span class="c1"># from standard input</span>
+<span class="w">	</span><span class="na">.section</span><span class="w"> </span><span class="no">.text</span><span class="w"></span>
+<span class="w">	</span><span class="na">.global</span><span class="w"> </span><span class="no">_start</span><span class="w"></span>
+<span class="nl">_start:</span><span class="w"></span>
+<span class="w">	</span><span class="nf">mov</span><span class="w"> </span><span class="no">rax</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="w">        </span><span class="c1"># read syscall number 0</span>
+<span class="w">	</span><span class="nf">mov</span><span class="w"> </span><span class="no">rdi</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="w">        </span><span class="c1"># rdi = fd = stdin = 0</span>
+<span class="w">	</span><span class="c1"># rsi address of memory to place data read</span>
+<span class="w">	</span><span class="nf">mov</span><span class="w"> </span><span class="no">rsi</span><span class="p">,</span><span class="w"> </span><span class="no">OFFSET</span><span class="w"> </span><span class="no">buffer</span><span class="w"></span>
+<span class="w">	</span><span class="nf">mov</span><span class="w"> </span><span class="no">rdx</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">        </span><span class="c1"># maximum bytes to read</span>
+<span class="w">	</span><span class="nf">syscall</span><span class="w">          </span>
+<span class="w">	</span><span class="c1"># will &quot;block&quot; until data is received on</span>
+<span class="w">	</span><span class="c1"># standard input -- this means we will</span>
+<span class="w">	</span><span class="c1"># hang here until some presses enter</span>
+
+<span class="w">	</span><span class="c1"># now exit</span>
+<span class="w">	</span><span class="nf">mov</span><span class="w"> </span><span class="no">rax</span><span class="p">,</span><span class="w"> </span><span class="mi">60</span><span class="w"></span>
+<span class="w">	</span><span class="nf">mov</span><span class="w"> </span><span class="no">rdi</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="w"></span>
+<span class="w">	</span><span class="nf">syscall</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="blocking-system-calls-can-block-your-program">
+<h3><span class="section-number">14.3.4. </span>Blocking: System calls can “block” your program<a class="headerlink" href="#blocking-system-calls-can-block-your-program" title="Permalink to this headline">#</a></h3>
+<p>By default the read system call will not return until some data is read or an error occurs.
+So when we run the read example it will wait for the read to return before it goes on to exit.
+This waiting on a system call is called “blocking”</p>
+</section>
+<section id="there-are-many-more-calls-for-doing-i-o">
+<h3><span class="section-number">14.3.5. </span>There are many more calls for doing I/O<a class="headerlink" href="#there-are-many-more-calls-for-doing-i-o" title="Permalink to this headline">#</a></h3>
+<p>But we can now</p>
+<ol class="simple">
+<li><p>transfer bytes from our address space to a “file” - write system call</p></li>
+<li><p>transfer bytes from a “file” to our address space  - read system call</p></li>
+<li><p>connect (and possibly create) files to our address space for reading and writing - open system call</p></li>
+<li><p>disconnect a file from our address space - close system call</p></li>
+</ol>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output text_html">
+<iframe
+    width="100%"
+    height="600"
+    src="https://filippo.io/linux-syscall-table/"
+    frameborder="0"
+    allowfullscreen
+
+></iframe>
+</div></div>
+</div>
+</section>
+<section id="exercises">
+<h3><span class="section-number">14.3.6. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">#</a></h3>
+<p>Change the <code class="docutils literal notranslate"><span class="pre">usesum</span></code> program to:</p>
+<ul class="simple">
+<li><p>exit properly</p></li>
+<li><p>allocate memory for the data</p></li>
+<li><p>read the data in from standard in</p></li>
+<li><p>write the binary result to standard out</p>
+<ul>
+<li><p>use a shell command like <code class="docutils literal notranslate"><span class="pre">od</span> <span class="pre">-l</span> <span class="pre">-A10</span></code> to convert the output to ascii</p></li>
+</ul>
+</li>
+<li><p>open the binary file of numbers and read them in</p></li>
+<li><p>can you figure out how to get the command line arguments?</p></li>
+<li><p>Write a new program that uses the random instruction to create a data file</p></li>
+</ul>
+</section>
+</section>
 <section id="process-address-spaces">
-<h2><span class="section-number">14.3. </span>Process Address Spaces<a class="headerlink" href="#process-address-spaces" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">14.4. </span>Process Address Spaces<a class="headerlink" href="#process-address-spaces" title="Permalink to this headline">#</a></h2>
 <section id="address-space-organizes-memory-of-a-process">
-<h3><span class="section-number">14.3.1. </span>Address Space organizes Memory of a Process<a class="headerlink" href="#address-space-organizes-memory-of-a-process" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">14.4.1. </span>Address Space organizes Memory of a Process<a class="headerlink" href="#address-space-organizes-memory-of-a-process" title="Permalink to this headline">#</a></h3>
 <center>
     <img src="../images/ProcessContexts.png">
 </center><p><strong>Remember</strong></p>
@@ -880,7 +1108,7 @@ htmlFig("[{'src': '../images/kerneldef.png'}]",
 </ol>
 </section>
 <section id="assembly-programming-as-process-address-space-image-creation">
-<h3><span class="section-number">14.3.2. </span>Assembly Programming as Process Address Space Image creation<a class="headerlink" href="#assembly-programming-as-process-address-space-image-creation" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">14.4.2. </span>Assembly Programming as Process Address Space Image creation<a class="headerlink" href="#assembly-programming-as-process-address-space-image-creation" title="Permalink to this headline">#</a></h3>
 <center>
     <img src="../images/ASSEMBLY-AddressSpaceandIO/ASSEMBLY-AddressSpaceandIO.003.png">
 </center><center>
@@ -889,10 +1117,10 @@ htmlFig("[{'src': '../images/kerneldef.png'}]",
     <img src="../images/ASSEMBLY-AddressSpaceandIO/ASSEMBLY-AddressSpaceandIO.005.png">
 </center></section>
 <section id="the-details">
-<h3><span class="section-number">14.3.3. </span>The Details<a class="headerlink" href="#the-details" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">14.4.3. </span>The Details<a class="headerlink" href="#the-details" title="Permalink to this headline">#</a></h3>
 </section>
 <section id="process-address-space">
-<h3><span class="section-number">14.3.4. </span>Process Address Space<a class="headerlink" href="#process-address-space" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">14.4.4. </span>Process Address Space<a class="headerlink" href="#process-address-space" title="Permalink to this headline">#</a></h3>
 <p>The Memory of a Process is organized as an (Virtual) Address Space</p>
 <ol class="simple">
 <li><p>Each possible location of a byte is identified by a unique address (number)</p></li>
@@ -934,93 +1162,116 @@ htmlFig("[{'src': '../images/kerneldef.png'}]",
 </center><hr></section>
 </section>
 <section id="summary-of-how-we-loading-a-process-address-from-a-binary">
-<h2><span class="section-number">14.4. </span>Summary of how we “loading” a process address from a binary<a class="headerlink" href="#summary-of-how-we-loading-a-process-address-from-a-binary" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">14.5. </span>Summary of how we “loading” a process address from a binary<a class="headerlink" href="#summary-of-how-we-loading-a-process-address-from-a-binary" title="Permalink to this headline">#</a></h2>
 <hr><center>
     <img src="../images/ASSEMBLY-AddressSpaceandIO/ASSEMBLY-AddressSpaceandIO.012.png">
 </center><center>
     <img src="../images/ASSEMBLY-AddressSpaceandIO/ASSEMBLY-AddressSpaceandIO.016.png">
-</center><section id="exploring-the-address-space-of-a-process-with-an-example">
-<h3><span class="section-number">14.4.1. </span>Exploring the Address Space of a process with an example<a class="headerlink" href="#exploring-the-address-space-of-a-process-with-an-example" title="Permalink to this headline">#</a></h3>
+</center></section>
+<section id="code-and-instructions-for-exploring-the-process-address-space-layout">
+<h2><span class="section-number">14.6. </span>Code and instructions for exploring the Process Address Space layout<a class="headerlink" href="#code-and-instructions-for-exploring-the-process-address-space-layout" title="Permalink to this headline">#</a></h2>
+<p>In the lecture notes at this point you will find code and instructions for exploring the address space layout</p>
+<ol class="simple">
+<li><p>How we control the mappings based on the sections we add</p></li>
+<li><p>How we can add and shrink heap memory using the <code class="docutils literal notranslate"><span class="pre">brk</span></code> system call</p></li>
+</ol>
+<p>To do the exploration we use a special file that the OS provides that describes the address space of a running process call the <code class="docutils literal notranslate"><span class="pre">maps</span></code> file. Detail are provide in the notes.  Don’t forget you can also use gdb to probe the various mappings you discover.</p>
+<section id="exploring-the-address-space-of-a-process-with-code">
+<h3><span class="section-number">14.6.1. </span>Exploring the Address Space of a process with Code<a class="headerlink" href="#exploring-the-address-space-of-a-process-with-code" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>Let’s explore the address space of a running program</p></li>
+<li><p>We will use 5 versions of a program the progressively adds more regions to the address space</p></li>
+<li><p>The programs will wait for input before exiting so that we can use the OS provided file for check what the process address space looks like</p></li>
 </ul>
+<section id="version-1-text-and-data">
+<h4><span class="section-number">14.6.1.1. </span>Version 1: text and data<a class="headerlink" href="#version-1-text-and-data" title="Permalink to this headline">#</a></h4>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<p><b>CODE: asm - usesum5.s</p>
+<p><b>CODE: asm - exploringASlayout1.s</p>
 <div style="width:107em; height:100%; font-size:inherit; overflow: auto;" >
-<div class="highlight-gas notranslate"><div class="highlight"><pre><span></span><span class="w">	</span><span class="na">.intel_syntax</span><span class="w"> </span><span class="no">noprefix</span><span class="w"></span>
-<span class="w">	</span><span class="na">.data</span><span class="w">	</span>
-<span class="w">	</span><span class="no">.comm</span><span class="w"> </span><span class="no">A_SUM</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="w"></span>
-<span class="w">	</span><span class="na">.comm</span><span class="w"> </span><span class="no">A_LEN</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="w"></span>
-<span class="w">	</span><span class="na">.comm</span><span class="w"> </span><span class="no">A</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">*</span><span class="mi">1024</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="w">	</span>
+<div class="highlight-gas notranslate"><div class="highlight"><pre><span></span><span class="w">	</span><span class="c1"># To use this assemble and link it:</span>
+<span class="w">	</span><span class="c1"># as -g exploringASlayout1.s -o exploringASlayout1.o</span>
+<span class="w">        </span><span class="c1"># ld -g exploringASlayout1.o -o exploringASlayout1</span>
+<span class="w">        </span><span class="c1"># Then using two terminals:</span>
+<span class="w">	</span><span class="c1">#   1. use the nm command on the binary to see what addresses the linker</span>
+<span class="w">	</span><span class="c1">#      placed all the symbols at Eg.</span>
+<span class="w">	</span><span class="c1">#        $ nm exploringASlayout1</span>
+<span class="w">	</span><span class="c1">#        0000000000403000 D __bss_start</span>
+<span class="w">	</span><span class="c1">#        0000000000403000 D _edata</span>
+<span class="w">	</span><span class="c1">#        0000000000403000 D _end</span>
+<span class="w">	</span><span class="c1">#        0000000000402000 d rwdata</span>
+<span class="w">	</span><span class="c1">#        0000000000401000 T _start</span>
+<span class="w">        </span><span class="c1">#      (if you like you can also run: &quot;readelf -S &lt;binary&gt;&quot; to </span>
+<span class="w">	</span><span class="c1">#       see more information about the sections in the binary)</span>
+<span class="w">	</span><span class="c1">#   2. then run the binary -- its should stop on the read</span>
+<span class="w">	</span><span class="c1">#      Eg.</span>
+<span class="w">	</span><span class="c1">#      $ ./exploringASlayout1 </span>
+<span class="w">        </span><span class="c1">#       </span>
+<span class="w">	</span><span class="c1">#   3. in another terminal use ps and grep to find the process started from the binary</span>
+<span class="w">	</span><span class="c1">#      Eg.</span>
+<span class="w">	</span><span class="c1">#       $ ps auxgww | grep exploring</span>
+<span class="w">	</span><span class="c1">#       jovyan      1697  0.0  0.0    168     4 pts/29   S+   13:41   0:00 ./exploringASlayout1</span>
+<span class="w">	</span><span class="c1">#       jovyan      1699  0.0  0.0   6440   720 pts/30   S+   13:42   0:00 grep exploring</span>
+<span class="w">	</span><span class="c1">#       $</span>
+<span class="w">	</span><span class="c1">#      We see the process id (pid) is 1697</span>
+<span class="w">	</span><span class="c1">#   4. using the process id you can now examine the file &quot;/proc/&lt;pid&gt;/maps&quot; to</span>
+<span class="w">	</span><span class="c1">#      see the layout of the running processes address space</span>
+<span class="w">	</span><span class="c1">#      Eg.</span>
+<span class="w">	</span><span class="c1">#      $ cat /proc/1697/maps</span>
+<span class="w">	</span><span class="c1">#      00400000-00401000 r--p 00000000 103:05 1189363                           /home/jovyan/exploringASlayout1</span>
+<span class="w">	</span><span class="c1">#      00401000-00402000 r-xp 00001000 103:05 1189363                           /home/jovyan/exploringASlayout1</span>
+<span class="w">	</span><span class="c1">#      00402000-00403000 rw-p 00002000 103:05 1189363                           /home/jovyan/exploringASlayout1</span>
+<span class="w">	</span><span class="c1">#      7ffd13044000-7ffd13065000 rw-p 00000000 00:00 0                          [stack]</span>
+<span class="w">	</span><span class="c1">#      7ffd13069000-7ffd1306d000 r--p 00000000 00:00 0                          [vvar]</span>
+<span class="w">	</span><span class="c1">#      7ffd1306d000-7ffd1306f000 r-xp 00000000 00:00 0                          [vdso]</span>
+<span class="w">	</span><span class="c1">#      ffffffffff600000-ffffffffff601000 r-xp 00000000 00:00 0                  [vsyscall]</span>
+<span class="w">	</span><span class="c1">#      $</span>
+<span class="w">	</span><span class="c1">#     What we see is that there are three mappings to the binary file, a mapping for the stack and then some</span>
+<span class="w">	</span><span class="c1">#     extra&#39;s used by the OS.</span>
+<span class="w">	</span><span class="c1">#     5. you can now press enter in the terminal that the binary is running in</span>
+<span class="w">        </span><span class="c1">#        this will cause the read to finish and the binary will then continue to execute</span>
 
-<span class="w">	</span><span class="no">.comm</span><span class="w"> </span><span class="no">B_SUM</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="w"></span>
-<span class="w">	</span><span class="na">.comm</span><span class="w"> </span><span class="no">B_LEN</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="w"></span>
-<span class="w">	</span><span class="na">.comm</span><span class="w"> </span><span class="no">B</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">*</span><span class="mi">1024</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="w">	</span>
+<span class="w">	</span><span class="c1"># CODE to explore how we control the address space mappings	</span>
+<span class="w">	</span><span class="c1"># The smallest size of an address space mapping is called the page size</span>
+<span class="w">	</span><span class="c1"># on Linux the default is 4096 (4Kb). To make it easier to identify</span>
+<span class="w">	</span><span class="c1"># the mappings we will fill each section we add to a full page (4Kb)</span>
+<span class="w">	</span><span class="c1"># worth of bytes.</span>
+<span class="w">	</span><span class="c1"># This version 1 starts with just two sections</span>
+<span class="w">	</span><span class="c1"># One page&#39; of &quot;text&quot; and one page of &quot;data&quot; </span>
+<span class="w">	</span><span class="c1">#  - text should get mapped to a region that is readable and executable (r-x)</span>
+<span class="w">	</span><span class="c1">#  - data should get mapped to a region that is readable and writable (rw-)</span>
+<span class="w">	</span>
+<span class="w">	</span><span class="na">.intel_syntax</span><span class="w"> </span><span class="no">noprefix</span><span class="w">        </span><span class="c1"># assembler syntax to use &lt;directive&gt;</span>
+<span class="w">	</span><span class="na">.section</span><span class="w"> </span><span class="no">.text</span><span class="w">                </span><span class="c1"># linker section &lt;directive&gt;</span>
 
-<span class="w">	</span><span class="no">.comm</span><span class="w"> </span><span class="no">C_SUM</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="w"></span>
-<span class="w">	</span><span class="na">.comm</span><span class="w"> </span><span class="no">C_LEN</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="w"></span>
-<span class="w">	</span><span class="na">.comm</span><span class="w"> </span><span class="no">C</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">*</span><span class="mi">1024</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="w">	</span>
+<span class="w">	</span><span class="na">.global</span><span class="w"> </span><span class="no">_start</span><span class="w">                </span><span class="c1"># linker symbol type &lt;directive&gt; </span>
+<span class="nl">_start:</span><span class="w"></span>
+<span class="w">	</span><span class="c1"># use a read system call to stop the program until user presses enter</span>
+<span class="w">	</span><span class="c1"># so that we can examine things before and after the code runs</span>
+<span class="w">	</span><span class="nf">mov</span><span class="w"> </span><span class="no">rax</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="w">                 </span><span class="c1"># read syscall = 0 -- read(fd, buf, len)</span>
+<span class="w">	</span><span class="nf">mov</span><span class="w"> </span><span class="no">rdi</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="w">                 </span><span class="c1"># fd = rdi = 0 = stdin</span>
+<span class="w">	</span><span class="nf">mov</span><span class="w"> </span><span class="no">rsi</span><span class="p">,</span><span class="w"> </span><span class="no">OFFSET</span><span class="w"> </span><span class="no">rwdata</span><span class="w">     </span><span class="c1"># buf = rsi = rwdata memory</span>
+<span class="w">	</span><span class="nf">mov</span><span class="w"> </span><span class="no">rdx</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">                 </span><span class="c1"># len = rdx = 1 wait for one byte &quot;enter&quot;</span>
+<span class="w">	</span><span class="nf">syscall</span><span class="w"></span>
+<span class="w">	</span>
+<span class="w">	</span><span class="nf">mov</span><span class="w"> </span><span class="no">rax</span><span class="p">,</span><span class="w"> </span><span class="mi">60</span><span class="w">                </span><span class="c1"># exit system call</span>
+<span class="w">	</span><span class="nf">mov</span><span class="w"> </span><span class="no">rdi</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="w">                 </span><span class="c1"># exit status 0</span>
+<span class="w">	</span><span class="nf">syscall</span><span class="w"></span>
 
-<span class="w">	</span><span class="no">.text</span><span class="w"></span>
-<span class="w">	</span><span class="na">.global</span><span class="w"> </span><span class="no">_start</span><span class="w"> </span>
-<span class="no">_start</span><span class="p">:</span><span class="w"></span>
-<span class="w">	</span><span class="nf">mov</span><span class="w"> </span><span class="no">rbx</span><span class="p">,</span><span class="w"> </span><span class="no">QWORD</span><span class="w"> </span><span class="no">PTR</span><span class="w"> </span><span class="p">[</span><span class="no">A_LEN</span><span class="p">]</span><span class="w"></span>
-<span class="w">	</span><span class="nf">mov</span><span class="w"> </span><span class="no">rcx</span><span class="p">,</span><span class="w"> </span><span class="no">OFFSET</span><span class="w"> </span><span class="no">A</span><span class="w"></span>
-<span class="w">	</span><span class="nf">call</span><span class="w"> </span><span class="no">sumIt</span><span class="w"></span>
-<span class="w">	</span><span class="nf">mov</span><span class="w"> </span><span class="no">QWORD</span><span class="w"> </span><span class="no">PTR</span><span class="w"> </span><span class="p">[</span><span class="no">A_SUM</span><span class="p">],</span><span class="w"> </span><span class="no">rax</span><span class="w"></span>
+<span class="w">	</span><span class="c1"># fill the text section up with zeros so that it is one page in size.	</span>
+<span class="w">	</span><span class="na">.org</span><span class="w"> </span><span class="mi">4095</span><span class="w">                  </span><span class="c1"># force the next byte to be at the end of the page (4095</span>
+<span class="w">	</span><span class="na">.byte</span><span class="w"> </span><span class="mi">0x00</span><span class="w">                 </span><span class="c1"># put a byte of zero here</span>
 
-<span class="w">	</span><span class="nf">mov</span><span class="w"> </span><span class="no">rbx</span><span class="p">,</span><span class="w"> </span><span class="no">QWORD</span><span class="w"> </span><span class="no">PTR</span><span class="w"> </span><span class="p">[</span><span class="no">B_LEN</span><span class="p">]</span><span class="w"></span>
-<span class="w">	</span><span class="nf">mov</span><span class="w"> </span><span class="no">rcx</span><span class="p">,</span><span class="w"> </span><span class="no">OFFSET</span><span class="w"> </span><span class="no">B</span><span class="w"></span>
-<span class="w">	</span><span class="nf">call</span><span class="w"> </span><span class="no">sumIt</span><span class="w"></span>
-<span class="w">	</span><span class="nf">mov</span><span class="w"> </span><span class="no">QWORD</span><span class="w"> </span><span class="no">PTR</span><span class="w"> </span><span class="p">[</span><span class="no">B_SUM</span><span class="p">],</span><span class="w"> </span><span class="no">rax</span><span class="w"></span>
+<span class="w">	</span><span class="c1">##### DATA SECTION : read and writable memory s</span>
+<span class="w">	</span><span class="na">.section</span><span class="w"> </span><span class="no">.data</span><span class="w"></span>
+<span class="w">	</span><span class="na">.global</span><span class="w"> </span><span class="no">rwdata</span><span class="w"></span>
+<span class="nl">rwdata:</span><span class="w">	</span><span class="na">.fill</span><span class="w"> </span><span class="mi">4096</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0xff</span><span class="w"></span>
 
-<span class="w">	</span><span class="nf">mov</span><span class="w"> </span><span class="no">rbx</span><span class="p">,</span><span class="w"> </span><span class="no">QWORD</span><span class="w"> </span><span class="no">PTR</span><span class="w"> </span><span class="p">[</span><span class="no">C_LEN</span><span class="p">]</span><span class="w"></span>
-<span class="w">	</span><span class="nf">mov</span><span class="w"> </span><span class="no">rcx</span><span class="p">,</span><span class="w"> </span><span class="no">OFFSET</span><span class="w"> </span><span class="no">C</span><span class="w"></span>
-<span class="w">	</span><span class="nf">call</span><span class="w"> </span><span class="no">sumIt</span><span class="w"></span>
-<span class="w">	</span><span class="nf">mov</span><span class="w"> </span><span class="no">QWORD</span><span class="w"> </span><span class="no">PTR</span><span class="w"> </span><span class="p">[</span><span class="no">C_SUM</span><span class="p">],</span><span class="w"> </span><span class="no">rax</span><span class="w"></span>
-<span class="w">	</span><span class="nf">int3</span><span class="w"></span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="cell tag_remove-input docutils container">
-<div class="cell_output docutils container">
-<p><b>CODE: asm - sumit6.s</p>
-<div style="width:107em; height:100%; font-size:inherit; overflow: auto;" >
-<div class="highlight-gas notranslate"><div class="highlight"><pre><span></span>	.intel_syntax noprefix
-
-	.section .text
-
-	# tell linker that sumIt symbol can be referenced in other files	
-	.global sumIt	  
-
-	# code to sum data in array who&#39;s address is in rcx
-	# we assume we were started with call so return address on stack
-	# we assume rbx has length  rbx -&gt; len
-	# and that we will leave final sum in rax
-sumIt:	                         # label that marks where this code begins
-	xor  rax, rax            # rax -&gt; sum : sum = 0
-	push rdi                 # spill current value of rdi before we use it
-	xor  rdi, rdi            # rdi -&gt; i : i = 0
-	
-	# code to sum data in array who&#39;s address is in rcx
-	# we assume we were started with call so return address on stack
-	# we assume rbx has length  rbx -&gt; len
-	# and that we will leave final sum in rax
-loop_start:                                 
-	cmp  rbx, rdi                       # rbx - rdi
-	jz   loop_done                      # if above is zero (they are equal) jump
-	add  rax, QWORD PTR [rcx + rdi * 8] # add the i&#39;th value to the sum
-	inc  rdi                            # i=i+1
-	jmp  loop_start                     # go back to the start of the loop
-loop_done:
-	pop  rdi                            # restore rdi back to its original value
-	ret                                 # use return to pop value off the stack
-	                                    # and jump to that location
-
-
+<span class="w">	                     </span>
+<span class="w">	</span><span class="c1"># the following tells the linux kernel to set permissions the way we expect</span>
+<span class="w">	</span><span class="c1"># rather than the defaults which map all sections as executable</span>
+<span class="w">	</span><span class="c1"># When using a compiler it will add this for us</span>
+<span class="w">	</span><span class="na">.section</span><span class="w">	</span><span class="no">.note.GNU-stack</span><span class="p">,</span><span class="s">&quot;&quot;</span><span class="p">,</span><span class="na">@progbits</span><span class="w"></span>
 </pre></div>
 </div>
 </div>
@@ -1029,50 +1280,286 @@ loop_done:
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "0ef1bc6a0aad4129973e4563b9b78cdb", "version_major": 2, "version_minor": 0}
+{"model_id": "474736121281481aaf073c908eba09c1", "version_major": 2, "version_minor": 0}
 </script></div>
 </div>
+<p>Use the nm command to see where the linker placed things:</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<p><b>Debug</b></p>
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "fdd2ea58a0b24d8c8614885a4a8c6934", "version_major": 2, "version_minor": 0}
+</script></div>
 </div>
-</div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">b</span> <span class="n">_start</span>
-<span class="n">run</span> 
-<span class="n">info</span> <span class="n">proc</span>
+<ul class="simple">
+<li><p>Now in one terminal run the binary – start a process from it</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">exploringASlayout1</span>
 </pre></div>
 </div>
+<ul class="simple">
+<li><p>It will hang on the read so that we have time to explore what the process’s address space looks like.</p></li>
+<li><p>In another terminal use ps and grep to find the process id of the new process</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ps</span> <span class="n">auxgww</span> <span class="o">|</span> <span class="n">grep</span> <span class="n">exploring</span>
+</pre></div>
+</div>
+<p>Now we can use the process id to find the special file that the OS provides for us to examine the address space of a process.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span> <span class="n">cat</span> <span class="o">/</span><span class="n">proc</span><span class="o">/&lt;</span><span class="n">pid</span><span class="o">&gt;/</span><span class="n">maps</span>
 </pre></div>
 </div>
-<p>Use gdb to explore what’s there and compare with binary binary file</p>
+<p>You can also use gdb to to explore the regions of memory that the maps file tells us are present.  You can also compare what is in memory to what you find in the file.</p>
+<p>When you are done you can press return in the terminal that the program in running.  This will send a newline to the standard input of the program.  This will cause the read to return and the program will go on to exit.</p>
+<p>You can find lots of information ab out the OS provided <code class="docutils literal notranslate"><span class="pre">proc</span></code> directory in the manual <code class="docutils literal notranslate"><span class="pre">man</span> <span class="pre">proc</span></code></p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "019df5fa81f44b3181b4b82c8ae9398b", "version_major": 2, "version_minor": 0}
+{"model_id": "464807b361aa4b36905b7ab43995d0b9", "version_major": 2, "version_minor": 0}
 </script></div>
 </div>
+<p>In the manual page there is a section on the <code class="docutils literal notranslate"><span class="pre">maps</span></code> file specifically that tells us the details of what information it presents regarding the mappings for a running process.</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "8239c6c65cdc49c9adbe065938dddda7", "version_major": 2, "version_minor": 0}
+{"model_id": "9207d4c32e7a4b07b3e7be8aed91eda6", "version_major": 2, "version_minor": 0}
 </script></div>
 </div>
 </section>
-<section id="let-s-another-section-to-control-how-region-is-mapped">
-<h3><span class="section-number">14.4.2. </span>Let’s another section to control how region is mapped<a class="headerlink" href="#let-s-another-section-to-control-how-region-is-mapped" title="Permalink to this headline">#</a></h3>
+<section id="version-2-adding-rodata">
+<h4><span class="section-number">14.6.1.2. </span>Version 2:  adding rodata<a class="headerlink" href="#version-2-adding-rodata" title="Permalink to this headline">#</a></h4>
 <p>Read-only data section <code class="docutils literal notranslate"><span class="pre">.rodata</span></code></p>
-<div class="highlight-nasm notranslate"><div class="highlight"><pre><span></span><span class="w">         </span><span class="nf">.section</span><span class="w"> </span><span class="nv">.rodata</span><span class="w"></span>
-
-<span class="w"> </span><span class="nl">str1:</span><span class="w"></span>
-<span class="w">         </span><span class="nf">.string</span><span class="w"> </span><span class="s">&quot;Hello World\n&quot;</span><span class="w"></span>
+<div class="highlight-nasm notranslate"><div class="highlight"><pre><span></span><span class="w">  </span><span class="c1">##### DATA SECTION : read and writable memory s</span><span class="w"></span>
+<span class="w">    </span><span class="nf">.section</span><span class="w"> </span><span class="nv">.data</span><span class="w"></span>
+<span class="w">    </span><span class="nf">.global</span><span class="w"> </span><span class="nv">rwdata</span><span class="w"></span>
+<span class="nl">rwdata:</span><span class="w"> </span><span class="nf">.fill</span><span class="w"> </span><span class="mi">4096</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mh">0xff</span><span class="w">           </span><span class="c1"># 4096 bytes each initialized with a value of 0xff</span><span class="w"></span>
 </pre></div>
 </div>
-<p>What would happen if we put all our data in the <code class="docutils literal notranslate"><span class="pre">.rodata</span></code> section… try it and find out</p>
+<p>What would happen if we put all our data in the <code class="docutils literal notranslate"><span class="pre">.rodata</span></code> section?… try it and find out</p>
+<p>Here is the code</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<p><b>CODE: asm - exploringASlayout2.s</p>
+<div style="width:107em; height:100%; font-size:inherit; overflow: auto;" >
+<div class="highlight-gas notranslate"><div class="highlight"><pre><span></span>	# To use this assemble and link it:
+	# as -g exploringASlayout1.s -o exploringASlayout1.o
+        # ld -g exploringASlayout1.o -o exploringASlayout1
+        # Then using two terminals:
+	#   1. use the nm command on the binary to see what addresses the linker
+	#      placed all the symbols at Eg.
+	#        $ nm exploringASlayout1
+	#        0000000000403000 D __bss_start
+	#        0000000000403000 D _edata
+	#        0000000000403000 D _end
+	#        0000000000402000 d rwdata
+	#        0000000000401000 T _start
+        #      (if you like you can also run: &quot;readelf -S &lt;binary&gt;&quot; to 
+	#       see more information about the sections in the binary)
+	#   2. then run the binary -- its should stop on the read
+	#      Eg.
+	#      $ ./exploringASlayout1 
+        #       
+	#   3. in another terminal use ps and grep to find the process started from the binary
+	#      Eg.
+	#       $ ps auxgww | grep exploring
+	#       jovyan      1697  0.0  0.0    168     4 pts/29   S+   13:41   0:00 ./exploringASlayout1
+	#       jovyan      1699  0.0  0.0   6440   720 pts/30   S+   13:42   0:00 grep exploring
+	#       $
+	#      We see the process id (pid) is 1697
+	#   4. using the process id you can now examine the file &quot;/proc/&lt;pid&gt;/maps&quot; to
+	#      see the layout of the running processes address space
+	#      Eg.
+	#      $ cat /proc/1697/maps
+	#      00400000-00401000 r--p 00000000 103:05 1189363                           /home/jovyan/exploringASlayout1
+	#      00401000-00402000 r-xp 00001000 103:05 1189363                           /home/jovyan/exploringASlayout1
+	#      00402000-00403000 rw-p 00002000 103:05 1189363                           /home/jovyan/exploringASlayout1
+	#      7ffd13044000-7ffd13065000 rw-p 00000000 00:00 0                          [stack]
+	#      7ffd13069000-7ffd1306d000 r--p 00000000 00:00 0                          [vvar]
+	#      7ffd1306d000-7ffd1306f000 r-xp 00000000 00:00 0                          [vdso]
+	#      ffffffffff600000-ffffffffff601000 r-xp 00000000 00:00 0                  [vsyscall]
+	#      $
+	#     What we see is that there are three mappings to the binary file, a mapping for the stack and then some
+	#     extra&#39;s used by the OS.
+	#     5. you can now press enter in the terminal that the binary is running in
+        #        this will cause the read to finish and the binary will then continue to execute
+
+	# CODE to explore how we control the address space mappings	
+	# The smallest size of an address space mapping is called the page size
+	# on Linux the default is 4096 (4Kb). To make it easier to identify
+	# the mappings we will fill each section we add to a full page (4Kb)
+	# worth of bytes.
+	# This version 2 adds read only data section
+	# One page&#39; of &quot;text&quot;, one page of &quot;data&quot; and one pager of &quot;readonly data&quot;
+	#  - text should get mapped to a region that is readable and executable (r-x)
+	#  - data should get mapped to a region that is readable and writable (rw-)
+	#  - rodata should get mapped to a region that is readable only       (r--)
+	
+	.intel_syntax noprefix        # assembler syntax to use &lt;directive&gt;
+	.section .text                # linker section &lt;directive&gt;
+
+	.global _start                # linker symbol type &lt;directive&gt; 
+_start:
+	# use a read system call to stop the program until user presses enter
+	# so that we can examine things before and after the code runs
+	mov rax, 0                 # read syscall = 0 -- read(fd, buf, len)
+	mov rdi, 0                 # fd = rdi = 0 = stdin
+	mov rsi, OFFSET rwdata     # buf = rsi = rwdata memory
+	mov rdx, 1                 # len = rdx = 1 wait for one byte &quot;enter&quot;
+	syscall
+	
+	mov rax, 60                # exit system call
+	mov rdi, 0                 # exit status 0
+	syscall
+
+	# fill the text section up with zeros so that it is one page in size.	
+	.org 4095                  # force the next byte to be at the end of the page (4095
+	.byte 0x00                 # put a byte of zero here
+
+	##### DATA SECTION : read and writable memory s
+	.section .data
+	.global rwdata
+rwdata:	.fill 4096,1,0xff           # 4096 bytes each initialized with a value of 0xff
+
+	##### READ ONLY DATA SECTION : read only memmory 
+	.section .rodata
+	.global rodata
+rodata:
+	.fill 4096,1,&#39;a             # 4096 bytes each initialized with a value of ASCII lower case a
+	                     
+	# the following tells the linux kernel to set permissions the way we expect
+	# rather than the defaults which map all sections as executable
+	# When using a compiler it will add this for us
+	.section	.note.GNU-stack,&quot;&quot;,@progbits
+
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<p>Repeat the steps from version 1 to see what has changed.</p>
 </section>
+<section id="version-3-adding-bss">
+<h4><span class="section-number">14.6.1.3. </span>Version 3:  adding bss<a class="headerlink" href="#version-3-adding-bss" title="Permalink to this headline">#</a></h4>
+<p>The bss section is used to create a mapping for all the data that we need memory for but don’t need to specify an initial value that is not zero.</p>
+<p>Read-Write memory  <code class="docutils literal notranslate"><span class="pre">.bss</span></code></p>
+<div class="highlight-nasm notranslate"><div class="highlight"><pre><span></span><span class="w">    </span><span class="c1">##### BSS DATA SECTION: read and write automaitically added and filled with zero values</span><span class="w"></span>
+<span class="w">    </span><span class="nf">.section</span><span class="w"> </span><span class="nv">.bss</span><span class="w"></span>
+<span class="w">    </span><span class="nf">.global</span><span class="w"> </span><span class="nv">zerodata</span><span class="w"> </span>
+<span class="nl">zerodata:</span><span class="w">   </span><span class="nf">.fill</span><span class="w"> </span><span class="mi">4096</span><span class="p">,</span><span class="mi">1</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># The above could be replaced with the single line: .comm zerodata, 4096, 1</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Note the <code class="docutils literal notranslate"><span class="pre">.comm</span></code> directive is a short cut that switch the section to .bss adds the symbol and makes it global</p>
+<p>Here is the code</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<p><b>CODE: asm - exploringASlayout3.s</p>
+<div style="width:107em; height:100%; font-size:inherit; overflow: auto;" >
+<div class="highlight-gas notranslate"><div class="highlight"><pre><span></span>	# To use this assemble and link it:
+	# as -g exploringASlayout1.s -o exploringASlayout1.o
+        # ld -g exploringASlayout1.o -o exploringASlayout1
+        # Then using two terminals:
+	#   1. use the nm command on the binary to see what addresses the linker
+	#      placed all the symbols at Eg.
+	#        $ nm exploringASlayout1
+	#        0000000000403000 D __bss_start
+	#        0000000000403000 D _edata
+	#        0000000000403000 D _end
+	#        0000000000402000 d rwdata
+	#        0000000000401000 T _start
+        #      (if you like you can also run: &quot;readelf -S &lt;binary&gt;&quot; to 
+	#       see more information about the sections in the binary)
+	#   2. then run the binary -- its should stop on the read
+	#      Eg.
+	#      $ ./exploringASlayout1 
+        #       
+	#   3. in another terminal use ps and grep to find the process started from the binary
+	#      Eg.
+	#       $ ps auxgww | grep exploring
+	#       jovyan      1697  0.0  0.0    168     4 pts/29   S+   13:41   0:00 ./exploringASlayout1
+	#       jovyan      1699  0.0  0.0   6440   720 pts/30   S+   13:42   0:00 grep exploring
+	#       $
+	#      We see the process id (pid) is 1697
+	#   4. using the process id you can now examine the file &quot;/proc/&lt;pid&gt;/maps&quot; to
+	#      see the layout of the running processes address space
+	#      Eg.
+	#      $ cat /proc/1697/maps
+	#      00400000-00401000 r--p 00000000 103:05 1189363                           /home/jovyan/exploringASlayout1
+	#      00401000-00402000 r-xp 00001000 103:05 1189363                           /home/jovyan/exploringASlayout1
+	#      00402000-00403000 rw-p 00002000 103:05 1189363                           /home/jovyan/exploringASlayout1
+	#      7ffd13044000-7ffd13065000 rw-p 00000000 00:00 0                          [stack]
+	#      7ffd13069000-7ffd1306d000 r--p 00000000 00:00 0                          [vvar]
+	#      7ffd1306d000-7ffd1306f000 r-xp 00000000 00:00 0                          [vdso]
+	#      ffffffffff600000-ffffffffff601000 r-xp 00000000 00:00 0                  [vsyscall]
+	#      $
+	#     What we see is that there are three mappings to the binary file, a mapping for the stack and then some
+	#     extra&#39;s used by the OS.
+	#     5. you can now press enter in the terminal that the binary is running in
+        #        this will cause the read to finish and the binary will then continue to execute
+
+	# CODE to explore how we control the address space mappings	
+	# The smallest size of an address space mapping is called the page size
+	# on Linux the default is 4096 (4Kb). To make it easier to identify
+	# the mappings we will fill each section we add to a full page (4Kb)
+	# worth of bytes.
+	# This version 3 adds bss section
+	# One page&#39; of &quot;text&quot;, one page of &quot;data&quot; and one pager of &quot;readonly data&quot;
+	#  - text should get mapped to a region that is readable and executable (r-x)
+	#  - data should get mapped to a region that is readable and writable (rw-)
+	#  - rodata should get mapped to a region that is readable only       (r--)
+	#  - bss    should get mapped to a region that is readable and writable (rw-)
+	
+	.intel_syntax noprefix        # assembler syntax to use &lt;directive&gt;
+	.section .text                # linker section &lt;directive&gt;
+
+	.global _start                # linker symbol type &lt;directive&gt; 
+_start:
+	# use a read system call to stop the program until user presses enter
+	# so that we can examine things before and after the code runs
+	mov rax, 0                 # read syscall = 0 -- read(fd, buf, len)
+	mov rdi, 0                 # fd = rdi = 0 = stdin
+	mov rsi, OFFSET rwdata     # buf = rsi = rwdata memory
+	mov rdx, 1                 # len = rdx = 1 wait for one byte &quot;enter&quot;
+	syscall
+	
+	mov rax, 60                # exit system call
+	mov rdi, 0                 # exit status 0
+	syscall
+
+	# fill the text section up with zeros so that it is one page in size.	
+	.org 4095                  # force the next byte to be at the end of the page (4095
+	.byte 0x00                 # put a byte of zero here
+
+	##### DATA SECTION : read and writable memory s
+	.section .data
+	.global rwdata
+rwdata:	.fill 4096,1,0xff           # 4096 bytes each initialized with a value of 0xff
+
+	##### READ ONLY DATA SECTION : read only data
+	.section .rodata
+	.global rodata
+rodata:
+	.fill 4096,1,&#39;a             # 4096 bytes each initialized with a value of ASCII lower case a
+
+	##### BSS DATA SECTION: read and write automaitically added and filled with zero values
+	.section .bss
+	.global zerodata 
+zerodata:	.fill 4096,1
+	# The above could be replaced with the single line: .comm zerodata, 4096, 1
+	
+	# the following tells the linux kernel to set permissions the way we expect
+	# rather than the defaults which map all sections as executable
+	# When using a compiler it will add this for us
+	.section	.note.GNU-stack,&quot;&quot;,@progbits
+
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<p>Repeat the steps from version 1 and see what what has changed compared to versions 1 and 2</p>
 </section>
-<section id="ok-lets-get-some-more-memory-and-and-grow-our-heap">
-<h2><span class="section-number">14.5. </span>Ok lets get some more memory – And and Grow our Heap<a class="headerlink" href="#ok-lets-get-some-more-memory-and-and-grow-our-heap" title="Permalink to this headline">#</a></h2>
+<section id="version-4-and-and-grow-our-heap">
+<h4><span class="section-number">14.6.1.4. </span>Version 4: And and Grow our Heap<a class="headerlink" href="#version-4-and-and-grow-our-heap" title="Permalink to this headline">#</a></h4>
+<p>Now let’s explore how while our program is running we can get more memory added to our process.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">brk</span></code> system call - move “break pointer”</p>
 <ul class="simple">
 <li><p>initially the data segment of your process will end at some location based on what data sections you defined</p>
@@ -1082,7 +1569,7 @@ loop_done:
 </ul>
 </li>
 <li><p>with <code class="docutils literal notranslate"><span class="pre">brk</span></code> you can set the end to a value bigger than it starting location</p></li>
-<li><p>you can also shrink it break pointer back</p></li>
+<li><p>you can also shrink the break pointer back to remove memory</p></li>
 </ul>
 <p>This area is called the HEAP</p>
 <ol class="simple">
@@ -1092,12 +1579,14 @@ loop_done:
 <ul class="simple">
 <li><p>in reality once we move to C we never directly call “brk” rather we will use a library routines called : <code class="docutils literal notranslate"><span class="pre">malloc</span></code> and <code class="docutils literal notranslate"><span class="pre">free</span></code> which will call <code class="docutils literal notranslate"><span class="pre">brk</span></code> for us.</p></li>
 </ul>
+<p>As usual you can find more info in the manual</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "1237d3d2d1054294a70c2bb01cd0c243", "version_major": 2, "version_minor": 0}
+{"model_id": "e20e45ec50ba4beeac451f2dcbccc189", "version_major": 2, "version_minor": 0}
 </script></div>
 </div>
+<p>You can find the system call number and what the arguments are here:</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <div class="output text_html">
@@ -1113,247 +1602,329 @@ loop_done:
 </div>
 <p><strong>Lets add this code</strong></p>
 <p>What does it do?</p>
-<div class="highlight-gas notranslate"><div class="highlight"><pre><span></span><span class="w">    </span><span class="na">.data</span><span class="w"></span>
-<span class="nl">NEW_MEM_PTR:</span><span class="w"></span>
-<span class="w">    </span><span class="na">.quad</span><span class="w"> </span><span class="mi">0</span><span class="w"></span>
+<div class="highlight-gas notranslate"><div class="highlight"><pre><span></span><span class="w">    </span><span class="c1"># Now add a Heap</span>
+<span class="w">    </span><span class="c1"># get current break pointer</span>
+<span class="w">    </span><span class="nf">xor</span><span class="w"> </span><span class="no">rdi</span><span class="p">,</span><span class="w"> </span><span class="no">rdi</span><span class="w">               </span><span class="c1"># pass 0 to brk (invalid request)</span>
+<span class="w">    </span><span class="nf">mov</span><span class="w"> </span><span class="no">rax</span><span class="p">,</span><span class="w"> </span><span class="mi">12</span><span class="w">                </span><span class="c1"># brk syscall number 12</span>
+<span class="w">    </span><span class="nf">syscall</span><span class="w">                    </span><span class="c1"># call brk with 0</span>
 
-<span class="w">    </span><span class="na">.text</span><span class="w"></span>
-<span class="w">    </span>
-<span class="w">    </span><span class="nf">mov</span><span class="w"> </span><span class="no">rdi</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="w"></span>
-<span class="w">    </span><span class="nf">mov</span><span class="w"> </span><span class="no">rax</span><span class="p">,</span><span class="w"> </span><span class="mi">12</span><span class="w"></span>
-<span class="w">    </span><span class="nf">syscall</span><span class="w"> </span>
-<span class="w">    </span><span class="no">mov</span><span class="w"> </span><span class="no">QWORD</span><span class="w"> </span><span class="no">PTR</span><span class="w"> </span><span class="p">[</span><span class="no">NEW_MEM_PTR</span><span class="p">],</span><span class="w"> </span><span class="no">rax</span><span class="w"></span>
-<span class="w">    </span>
-<span class="w">    </span><span class="nf">mov</span><span class="w"> </span><span class="no">rdi</span><span class="p">,</span><span class="w"> </span><span class="no">rax</span><span class="w"></span>
-<span class="w">    </span><span class="nf">add</span><span class="w"> </span><span class="no">rdi</span><span class="p">,</span><span class="w"> </span><span class="mi">1024</span><span class="w"> </span><span class="p">*</span><span class="w"> </span><span class="mi">8</span><span class="w"></span>
-<span class="w">    </span><span class="nf">mov</span><span class="w"> </span><span class="no">rax</span><span class="p">,</span><span class="w"> </span><span class="mi">12</span><span class="w"></span>
+<span class="w">    </span><span class="nf">mov</span><span class="w"> </span><span class="no">r15</span><span class="p">,</span><span class="w"> </span><span class="no">rax</span><span class="w">               </span><span class="c1"># keep a copy of where our new memory starts</span>
+<span class="w">                               </span><span class="c1"># so we can use it later</span>
+
+<span class="w">    </span><span class="c1"># now add some memory by requesting to increase the break</span>
+<span class="w">    </span><span class="c1"># address by 32 bytes</span>
+<span class="w">    </span><span class="nf">mov</span><span class="w">     </span><span class="no">rdi</span><span class="p">,</span><span class="w"> </span><span class="no">rax</span><span class="w">            </span><span class="c1"># mov current break into rdi</span>
+<span class="w">    </span><span class="nf">add</span><span class="w">     </span><span class="no">rdi</span><span class="p">,</span><span class="w"> </span><span class="mi">4096</span><span class="w">           </span><span class="c1"># ask for 4096 bytes rdi=rdi+4096</span>
+<span class="w">    </span><span class="nf">mov</span><span class="w">     </span><span class="no">rax</span><span class="p">,</span><span class="w"> </span><span class="mi">12</span><span class="w">             </span><span class="c1"># brk sycall 12</span>
 <span class="w">    </span><span class="nf">syscall</span><span class="w"></span>
 </pre></div>
 </div>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<p><b>CODE: asm - usesumheap.s</p>
+<p><b>CODE: asm - exploringASlayout4.s</p>
 <div style="width:107em; height:100%; font-size:inherit; overflow: auto;" >
-<div class="highlight-gas notranslate"><div class="highlight"><pre><span></span><span class="w">	</span><span class="na">.intel_syntax</span><span class="w"> </span><span class="no">noprefix</span><span class="w"></span>
-<span class="w">	</span><span class="na">.section</span><span class="w"> </span><span class="no">.data</span><span class="w">	</span>
-<span class="w">	</span><span class="no">.comm</span><span class="w"> </span><span class="no">A_SUM</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="w"></span>
-<span class="w">	</span><span class="na">.comm</span><span class="w"> </span><span class="no">A_LEN</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="w"></span>
-<span class="w">	</span><span class="na">.comm</span><span class="w"> </span><span class="no">A</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">*</span><span class="mi">1024</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="w">	</span>
+<div class="highlight-gas notranslate"><div class="highlight"><pre><span></span>	# To use this assemble and link it:
+	# as -g exploringASlayout1.s -o exploringASlayout1.o
+        # ld -g exploringASlayout1.o -o exploringASlayout1
+        # Then using two terminals:
+	#   1. use the nm command on the binary to see what addresses the linker
+	#      placed all the symbols at Eg.
+	#        $ nm exploringASlayout1
+	#        0000000000403000 D __bss_start
+	#        0000000000403000 D _edata
+	#        0000000000403000 D _end
+	#        0000000000402000 d rwdata
+	#        0000000000401000 T _start
+        #      (if you like you can also run: &quot;readelf -S &lt;binary&gt;&quot; to 
+	#       see more information about the sections in the binary)
+	#   2. then run the binary -- its should stop on the read
+	#      Eg.
+	#      $ ./exploringASlayout1 
+        #       
+	#   3. in another terminal use ps and grep to find the process started from the binary
+	#      Eg.
+	#       $ ps auxgww | grep exploring
+	#       jovyan      1697  0.0  0.0    168     4 pts/29   S+   13:41   0:00 ./exploringASlayout1
+	#       jovyan      1699  0.0  0.0   6440   720 pts/30   S+   13:42   0:00 grep exploring
+	#       $
+	#      We see the process id (pid) is 1697
+	#   4. using the process id you can now examine the file &quot;/proc/&lt;pid&gt;/maps&quot; to
+	#      see the layout of the running processes address space
+	#      Eg.
+	#      $ cat /proc/1697/maps
+	#      00400000-00401000 r--p 00000000 103:05 1189363                           /home/jovyan/exploringASlayout1
+	#      00401000-00402000 r-xp 00001000 103:05 1189363                           /home/jovyan/exploringASlayout1
+	#      00402000-00403000 rw-p 00002000 103:05 1189363                           /home/jovyan/exploringASlayout1
+	#      7ffd13044000-7ffd13065000 rw-p 00000000 00:00 0                          [stack]
+	#      7ffd13069000-7ffd1306d000 r--p 00000000 00:00 0                          [vvar]
+	#      7ffd1306d000-7ffd1306f000 r-xp 00000000 00:00 0                          [vdso]
+	#      ffffffffff600000-ffffffffff601000 r-xp 00000000 00:00 0                  [vsyscall]
+	#      $
+	#     What we see is that there are three mappings to the binary file, a mapping for the stack and then some
+	#     extra&#39;s used by the OS.
+	#     5. you can now press enter in the terminal that the binary is running in
+        #        this will cause the read to finish and the binary will then continue to execute
 
-<span class="w">	</span><span class="no">.comm</span><span class="w"> </span><span class="no">B_SUM</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="w"></span>
-<span class="w">	</span><span class="na">.comm</span><span class="w"> </span><span class="no">B_LEN</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="w"></span>
-<span class="w">	</span><span class="na">.comm</span><span class="w"> </span><span class="no">B</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">*</span><span class="mi">1024</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="w">	</span>
+	# CODE to explore how we control the address space mappings	
+	# The smallest size of an address space mapping is called the page size
+	# on Linux the default is 4096 (4Kb). To make it easier to identify
+	# the mappings we will fill each section we add to a full page (4Kb)
+	# worth of bytes.
+	# This version 4 dyamically adds a &quot;heap&quot; area of memory
+	# One page&#39; of &quot;text&quot;, one page of &quot;data&quot; and one pager of &quot;readonly data&quot;
+	#  - text should get mapped to a region that is readable and executable (r-x)
+	#  - data should get mapped to a region that is readable and writable (rw-)
+	#  - rodata should get mapped to a region that is readable only       (r--)
+	#  - bss    should get mapped to a region that is readable and writable (rw-)
+	#  - heap   the brk system call is used to add a heap region that is
 
-<span class="w">	</span><span class="no">.comm</span><span class="w"> </span><span class="no">C_SUM</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="w"></span>
-<span class="w">	</span><span class="na">.comm</span><span class="w"> </span><span class="no">C_LEN</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="w"></span>
-<span class="w">	</span><span class="na">.comm</span><span class="w"> </span><span class="no">C</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">*</span><span class="mi">1024</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="w">	</span>
+	.intel_syntax noprefix        # assembler syntax to use &lt;directive&gt;
+	.section .text                # linker section &lt;directive&gt;
 
-<span class="w">	</span><span class="c1"># Added space heap memory array</span>
-<span class="w">	</span><span class="na">.comm</span><span class="w"> </span><span class="no">D_SUM</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="w"></span>
-<span class="w">	</span><span class="na">.comm</span><span class="w"> </span><span class="no">D_LEN</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="w"></span>
-<span class="w">	</span><span class="na">.comm</span><span class="w"> </span><span class="no">D_PTR</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="w"></span>
+	.global _start                # linker symbol type &lt;directive&gt; 
+_start:
+	# use a read system call to stop the program until user presses enter
+	# so that we can examine things before and after the code runs
+	mov rax, 0                 # read syscall = 0 -- read(fd, buf, len)
+	mov rdi, 0                 # fd = rdi = 0 = stdin
+	mov rsi, OFFSET rwdata     # buf = rsi = rwdata memory
+	mov rdx, 1                 # len = rdx = 1 wait for one byte &quot;enter&quot;
+	syscall
 
-<span class="w">	</span><span class="na">.section</span><span class="w"> </span><span class="no">.rodata</span><span class="w"></span>
-<span class="nl">mystr:</span><span class="w">	</span>
-<span class="w">	</span><span class="na">.string</span><span class="w"> </span><span class="s">&quot;Hello World!!!\n&quot;</span><span class="w"></span>
-<span class="w">	</span>
-<span class="w">	</span><span class="na">.section</span><span class="w"> </span><span class="no">.text</span><span class="w"></span>
-<span class="w">	</span><span class="na">.global</span><span class="w"> </span><span class="no">_start</span><span class="w"> </span>
-<span class="no">_start</span><span class="p">:</span><span class="w"></span>
-<span class="w">	</span><span class="c1"># get current break pointer</span>
-<span class="w">	</span><span class="nf">mov</span><span class="w"> </span><span class="no">rdi</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="w">                 </span><span class="c1"># pass 0 to brk (invalid request)</span>
-<span class="w">	</span><span class="nf">mov</span><span class="w"> </span><span class="no">rax</span><span class="p">,</span><span class="w"> </span><span class="mi">12</span><span class="w">                </span><span class="c1"># brk syscall number 12</span>
-<span class="w">	</span><span class="nf">syscall</span><span class="w">                    </span><span class="c1"># call brk with 0</span>
-<span class="w">	</span><span class="nf">mov</span><span class="w"> </span><span class="no">QWORD</span><span class="w"> </span><span class="no">PTR</span><span class="w"> </span><span class="p">[</span><span class="no">D_PTR</span><span class="p">],</span><span class="w"> </span><span class="no">rax</span><span class="w"> </span><span class="c1"># set D_PTR to start of end of break memory</span>
-<span class="w">	</span><span class="nf">mov</span><span class="w"> </span><span class="no">rdi</span><span class="p">,</span><span class="w"> </span><span class="no">rax</span><span class="w">               </span><span class="c1"># mov current end of break into rax</span>
-<span class="w">	</span>
-<span class="w">	</span><span class="nf">add</span><span class="w"> </span><span class="no">rdi</span><span class="p">,</span><span class="w"> </span><span class="mi">1024</span><span class="w"> </span><span class="p">*</span><span class="w"> </span><span class="mi">8</span><span class="w">          </span><span class="c1"># add request num bytes to end break</span>
-<span class="w">	</span><span class="nf">mov</span><span class="w"> </span><span class="no">rax</span><span class="p">,</span><span class="w"> </span><span class="mi">12</span><span class="w">                </span><span class="c1"># brk syscall number 12</span>
-<span class="w">	</span><span class="nf">syscall</span><span class="w">                    </span><span class="c1"># call brk with break end + request</span>
+	# Now add a Heap
+	# get current break pointer
+	xor rdi, rdi               # pass 0 to brk (invalid request)
+	mov rax, 12                # brk syscall number 12
+	syscall                    # call brk with 0
 
-<span class="w">	</span><span class="nf">mov</span><span class="w"> </span><span class="no">rbx</span><span class="p">,</span><span class="w"> </span><span class="no">QWORD</span><span class="w"> </span><span class="no">PTR</span><span class="w"> </span><span class="p">[</span><span class="no">D_LEN</span><span class="p">]</span><span class="w"> </span>
-<span class="w">	</span><span class="no">mov</span><span class="w"> </span><span class="no">rcx</span><span class="p">,</span><span class="w"> </span><span class="no">QWORD</span><span class="w"> </span><span class="no">PTR</span><span class="w"> </span><span class="p">[</span><span class="no">D_PTR</span><span class="p">]</span><span class="w"></span>
-<span class="w">	</span><span class="nf">call</span><span class="w"> </span><span class="no">sumIt</span><span class="w"></span>
-<span class="w">	</span><span class="nf">mov</span><span class="w"> </span><span class="no">QWORD</span><span class="w"> </span><span class="no">PTR</span><span class="w"> </span><span class="p">[</span><span class="no">D_SUM</span><span class="p">],</span><span class="w"> </span><span class="no">rax</span><span class="w"></span>
+	mov r15, rax               # keep a copy of where our new memory starts
+	                           # so we can use it later
 
-<span class="w">	</span><span class="nf">mov</span><span class="w"> </span><span class="no">rbx</span><span class="p">,</span><span class="w"> </span><span class="no">QWORD</span><span class="w"> </span><span class="no">PTR</span><span class="w"> </span><span class="p">[</span><span class="no">A_LEN</span><span class="p">]</span><span class="w"></span>
-<span class="w">	</span><span class="nf">mov</span><span class="w"> </span><span class="no">rcx</span><span class="p">,</span><span class="w"> </span><span class="no">OFFSET</span><span class="w"> </span><span class="no">A</span><span class="w"></span>
-<span class="w">	</span><span class="nf">call</span><span class="w"> </span><span class="no">sumIt</span><span class="w"></span>
-<span class="w">	</span><span class="nf">mov</span><span class="w"> </span><span class="no">QWORD</span><span class="w"> </span><span class="no">PTR</span><span class="w"> </span><span class="p">[</span><span class="no">A_SUM</span><span class="p">],</span><span class="w"> </span><span class="no">rax</span><span class="w"></span>
+	# now add some memory by requesting to increase the break
+	# address by 32 bytes
+	mov     rdi, rax            # mov current break into rdi
+	add     rdi, 4096           # ask for 4096 bytes rdi=rdi+4096
+	mov     rax, 12             # brk sycall 12
+	syscall
 
-<span class="w">	</span><span class="nf">mov</span><span class="w"> </span><span class="no">rbx</span><span class="p">,</span><span class="w"> </span><span class="no">QWORD</span><span class="w"> </span><span class="no">PTR</span><span class="w"> </span><span class="p">[</span><span class="no">B_LEN</span><span class="p">]</span><span class="w"></span>
-<span class="w">	</span><span class="nf">mov</span><span class="w"> </span><span class="no">rcx</span><span class="p">,</span><span class="w"> </span><span class="no">OFFSET</span><span class="w"> </span><span class="no">B</span><span class="w"></span>
-<span class="w">	</span><span class="nf">call</span><span class="w"> </span><span class="no">sumIt</span><span class="w"></span>
-<span class="w">	</span><span class="nf">mov</span><span class="w"> </span><span class="no">QWORD</span><span class="w"> </span><span class="no">PTR</span><span class="w"> </span><span class="p">[</span><span class="no">B_SUM</span><span class="p">],</span><span class="w"> </span><span class="no">rax</span><span class="w"></span>
+	# use a read system call to stop the program until user presses enter
+	# so that we can examine things before and after the code runs
+	mov rax, 0                 # read syscall = 0 -- read(fd, buf, len)
+	mov rdi, 0                 # fd = rdi = 0 = stdin
+	mov rsi, OFFSET rwdata     # buf = rsi = rwdata memory
+	mov rdx, 1                 # len = rdx = 1 wait for one byte &quot;enter&quot;
+	syscall
 
-<span class="w">	</span><span class="nf">mov</span><span class="w"> </span><span class="no">rbx</span><span class="p">,</span><span class="w"> </span><span class="no">QWORD</span><span class="w"> </span><span class="no">PTR</span><span class="w"> </span><span class="p">[</span><span class="no">C_LEN</span><span class="p">]</span><span class="w"></span>
-<span class="w">	</span><span class="nf">mov</span><span class="w"> </span><span class="no">rcx</span><span class="p">,</span><span class="w"> </span><span class="no">OFFSET</span><span class="w"> </span><span class="no">C</span><span class="w"></span>
-<span class="w">	</span><span class="nf">call</span><span class="w"> </span><span class="no">sumIt</span><span class="w"></span>
-<span class="w">	</span><span class="nf">mov</span><span class="w"> </span><span class="no">QWORD</span><span class="w"> </span><span class="no">PTR</span><span class="w"> </span><span class="p">[</span><span class="no">C_SUM</span><span class="p">],</span><span class="w"> </span><span class="no">rax</span><span class="w"></span>
+	mov rax, 60                # exit system call
+	mov rdi, 0                 # exit status 0
+	syscall
 
-<span class="w">	</span><span class="nf">mov</span><span class="w"> </span><span class="no">rdi</span><span class="p">,</span><span class="w"> </span><span class="no">rax</span><span class="w"></span>
-<span class="w">	</span><span class="nf">mov</span><span class="w"> </span><span class="no">rax</span><span class="p">,</span><span class="w"> </span><span class="mi">60</span><span class="w"></span>
-<span class="w">	</span><span class="nf">syscall</span><span class="w"></span>
-<span class="w">	</span>
+	# fill the text section up with zeros so that it is one page in size.	
+	.org 4095                  # force the next byte to be at the end of the page (4095
+	.byte 0x00                 # put a byte of zero here
+
+	##### DATA SECTION : read and writable memory s
+	.section .data
+	.global rwdata
+rwdata:	.fill 4096,1,0xff           # 4096 bytes each initialized with a value of 0xff
+
+	##### READ ONLY DATA SECTION : read only data
+	.section .rodata
+	.global rodata
+rodata:
+	.fill 4096,1,&#39;a             # 4096 bytes each initialized with a value of ASCII lower case a
+
+	##### BSS DATA SECTION: read and write automaitically added and filled with zero values
+	.section .bss
+	.global zerodata 
+zerodata:	.fill 4096,1
+	# The above could be replaced with the single line: .comm zerodata, 4096, 1
+	
+	# the following tells the linux kernel to set permissions the way we expect
+	# rather than the defaults which map all sections as executable
+	# When using a compiler it will add this for us
+	.section	.note.GNU-stack,&quot;&quot;,@progbits
+
 </pre></div>
 </div>
 </div>
 </div>
 </div>
-<p><strong>What does the regions maps look like now?</strong></p>
-<div class="cell tag_remove-input docutils container">
-<div class="cell_output docutils container">
-<p><b>usesumheap gdb</p>
-<div style="width:107em; height:100%; font-size:inherit; overflow: auto;" >
-<div class="highlight-gas notranslate"><div class="highlight"><pre><span></span>b _start
-run
-display /1gx &amp;D_PTR
-x/10gd (void *)D_PTR
-si
-si
-si
-si
-x/10gd (void *)D_PTR
-si
-si
-si
-si
-x/10gd (void *)D_PTR
-restore 100.bin binary &lt;addr&gt;
-x/10gd (void *)D_PTR
-set *((long long *)&amp;D_LEN)=100
-disass
-break *addr
-c
-si
-display /1gd D_SUM
-
-
-
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-</section>
-<section id="i-o">
-<h2><span class="section-number">14.6. </span>I/O<a class="headerlink" href="#i-o" title="Permalink to this headline">#</a></h2>
-<center>
-    <img src="../images/ASSEMBLY-AddressSpaceandIO/ASSEMBLY-AddressSpaceandIO.017.png">
-</center><center>
-    <img src="../images/ASSEMBLY-AddressSpaceandIO/ASSEMBLY-AddressSpaceandIO.018.png">
-</center><section id="review-from-lecture-3">
-<h3><span class="section-number">14.6.1. </span>Review from Lecture 3<a class="headerlink" href="#review-from-lecture-3" title="Permalink to this headline">#</a></h3>
-<center>
-    <img src="../images/Processes/Processes.006.png">
-</center><center>
-    <img src="../images/Processes/Processes.007.png">
-</center><center>
-    <img src="../images/Processes/Processes.008.png">
-</center><center>
-    <img src="../images/Processes/Processes.009.png">
-</center><center>
-    <img src="../images/Processes/Processes.010.png">
-</center><center>
-    <img src="../images/Processes/Processes.011.png">
-</center><center>
-    <img src="../images/Processes/Processes.012.png">
-</center><center>
-    <img src="../images/Processes/Processes.013.png">
-</center><center>
-    <img src="../images/Processes/Processes.015.png">
-</center></section>
-<section id="finally-hello-world-in-assembly">
-<h3><span class="section-number">14.6.2. </span>Finally “Hello World in Assembly”<a class="headerlink" href="#finally-hello-world-in-assembly" title="Permalink to this headline">#</a></h3>
-<div class="cell tag_remove-input docutils container">
-<div class="cell_output docutils container">
-<p><b>CODE: asm - hello.S</p>
-<div style="width:107em; height:100%; font-size:inherit; overflow: auto;" >
-<div class="highlight-gas notranslate"><div class="highlight"><pre><span></span><span class="w">	</span><span class="na">.intel_syntax</span><span class="w"> </span><span class="no">noprefix</span><span class="w"></span>
-<span class="w">	</span><span class="na">.section</span><span class="w"> </span><span class="no">.rodata</span><span class="w"></span>
-<span class="nl">str:</span><span class="w"></span>
-<span class="w">	</span><span class="na">.string</span><span class="w"> </span><span class="s">&quot;Hello World\n&quot;</span><span class="w"></span>
-
-<span class="w">	</span><span class="na">.section</span><span class="w"> </span><span class="no">.text</span><span class="w"></span>
-<span class="w">	</span><span class="na">.global</span><span class="w"> </span><span class="no">_start</span><span class="w"></span>
-<span class="nl">_start:</span><span class="w"></span>
-<span class="w">	</span><span class="nf">mov</span><span class="w"> </span><span class="no">rax</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w"></span>
-<span class="w">	</span><span class="nf">mov</span><span class="w"> </span><span class="no">rdi</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w"></span>
-<span class="w">	</span><span class="nf">mov</span><span class="w"> </span><span class="no">rsi</span><span class="p">,</span><span class="w"> </span><span class="no">OFFSET</span><span class="w"> </span><span class="no">str</span><span class="w"></span>
-<span class="w">	</span><span class="nf">mov</span><span class="w"> </span><span class="no">rdx</span><span class="p">,</span><span class="w"> </span><span class="mi">12</span><span class="w"></span>
-<span class="w">	</span><span class="nf">syscall</span><span class="w"></span>
-
-<span class="w">	</span><span class="nf">mov</span><span class="w"> </span><span class="no">rax</span><span class="p">,</span><span class="w"> </span><span class="mi">60</span><span class="w"></span>
-<span class="w">	</span><span class="nf">mov</span><span class="w"> </span><span class="no">rdi</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="w"></span>
-<span class="w">	</span><span class="nf">syscall</span><span class="w"></span>
-<span class="w">	</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="cell tag_remove-input docutils container">
-<div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "fe09b69107374ac38e1c324584f8f771", "version_major": 2, "version_minor": 0}
-</script></div>
-</div>
-<section id="at-long-last-we-have-a-program-that-we-don-t-need-the-debugger-for">
-<h4><span class="section-number">14.6.2.1. </span>At long last we have a program that we don’t need the debugger for!<a class="headerlink" href="#at-long-last-we-have-a-program-that-we-don-t-need-the-debugger-for" title="Permalink to this headline">#</a></h4>
-<div class="cell tag_remove-input docutils container">
-<div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "b76c312b3bc54ea7b97c720289ef6ac7", "version_major": 2, "version_minor": 0}
-</script></div>
-</div>
-</section>
-</section>
-<section id="there-are-many-more-calls-for-doing-i-o">
-<h3><span class="section-number">14.6.3. </span>There are many more calls for doing I/O<a class="headerlink" href="#there-are-many-more-calls-for-doing-i-o" title="Permalink to this headline">#</a></h3>
-<p>But we can now</p>
+<p>We have added more code so that you can pause the program before and after it makes the calls to brk so that you can see that heap get added.</p>
 <ol class="simple">
-<li><p>transfer bytes from our address space to a “file” - write system call</p></li>
-<li><p>transfer bytes from a “file” to our address space  - read system call</p></li>
-<li><p>connect (and possibly create) files to our address space for reading and writing - open system call</p></li>
-<li><p>disconnect a file from our address space - close system call</p></li>
+<li><p>start the program running</p></li>
+<li><p>follow the same steps as the other versions to look at the address space layout</p></li>
+<li><p>then press enter – this will let the program continue.  It will then run the code we added to add the heap area and pause again</p></li>
+<li><p>again examine the address space layout – do you see the difference?</p></li>
+<li><p>press enter again – this will again let the program continue and it will exit</p></li>
 </ol>
+</section>
+<section id="version-5-giving-memory-back-shrink-the-heap-back-down">
+<h4><span class="section-number">14.6.1.5. </span>Version 5: giving memory back – shrink the heap back down<a class="headerlink" href="#version-5-giving-memory-back-shrink-the-heap-back-down" title="Permalink to this headline">#</a></h4>
+<p>In this final version we add a final step to the program to shrink the heap back to its original size (0).  This removes it from our process and give the memory back to the OS.</p>
+<p>Here is the code we add – remember when we first called <code class="docutils literal notranslate"><span class="pre">brk</span></code> we stored the original location in <code class="docutils literal notranslate"><span class="pre">r15</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="c1"># remove memory --  shrink heap back down to its original</span>
+    <span class="n">mov</span> <span class="n">rdi</span><span class="p">,</span> <span class="n">r15</span>               <span class="c1"># set break pointer back to the original location</span>
+    <span class="n">mov</span> <span class="n">rax</span><span class="p">,</span> <span class="mi">12</span>                <span class="c1"># brk syscall number 12</span>
+    <span class="n">syscall</span>
+</pre></div>
+</div>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<div class="output text_html">
-<iframe
-    width="100%"
-    height="600"
-    src="https://filippo.io/linux-syscall-table/"
-    frameborder="0"
-    allowfullscreen
+<p><b>CODE: asm - exploringASlayout5.s</p>
+<div style="width:107em; height:100%; font-size:inherit; overflow: auto;" >
+<div class="highlight-gas notranslate"><div class="highlight"><pre><span></span>	# To use this assemble and link it:
+	# as -g exploringASlayout1.s -o exploringASlayout1.o
+        # ld -g exploringASlayout1.o -o exploringASlayout1
+        # Then using two terminals:
+	#   1. use the nm command on the binary to see what addresses the linker
+	#      placed all the symbols at Eg.
+	#        $ nm exploringASlayout1
+	#        0000000000403000 D __bss_start
+	#        0000000000403000 D _edata
+	#        0000000000403000 D _end
+	#        0000000000402000 d rwdata
+	#        0000000000401000 T _start
+        #      (if you like you can also run: &quot;readelf -S &lt;binary&gt;&quot; to 
+	#       see more information about the sections in the binary)
+	#   2. then run the binary -- its should stop on the read
+	#      Eg.
+	#      $ ./exploringASlayout1 
+        #       
+	#   3. in another terminal use ps and grep to find the process started from the binary
+	#      Eg.
+	#       $ ps auxgww | grep exploring
+	#       jovyan      1697  0.0  0.0    168     4 pts/29   S+   13:41   0:00 ./exploringASlayout1
+	#       jovyan      1699  0.0  0.0   6440   720 pts/30   S+   13:42   0:00 grep exploring
+	#       $
+	#      We see the process id (pid) is 1697
+	#   4. using the process id you can now examine the file &quot;/proc/&lt;pid&gt;/maps&quot; to
+	#      see the layout of the running processes address space
+	#      Eg.
+	#      $ cat /proc/1697/maps
+	#      00400000-00401000 r--p 00000000 103:05 1189363                           /home/jovyan/exploringASlayout1
+	#      00401000-00402000 r-xp 00001000 103:05 1189363                           /home/jovyan/exploringASlayout1
+	#      00402000-00403000 rw-p 00002000 103:05 1189363                           /home/jovyan/exploringASlayout1
+	#      7ffd13044000-7ffd13065000 rw-p 00000000 00:00 0                          [stack]
+	#      7ffd13069000-7ffd1306d000 r--p 00000000 00:00 0                          [vvar]
+	#      7ffd1306d000-7ffd1306f000 r-xp 00000000 00:00 0                          [vdso]
+	#      ffffffffff600000-ffffffffff601000 r-xp 00000000 00:00 0                  [vsyscall]
+	#      $
+	#     What we see is that there are three mappings to the binary file, a mapping for the stack and then some
+	#     extra&#39;s used by the OS.
+	#     5. you can now press enter in the terminal that the binary is running in
+        #        this will cause the read to finish and the binary will then continue to execute
 
-></iframe>
-</div></div>
+	# CODE to explore how we control the address space mappings	
+	# The smallest size of an address space mapping is called the page size
+	# on Linux the default is 4096 (4Kb). To make it easier to identify
+	# the mappings we will fill each section we add to a full page (4Kb)
+	# worth of bytes.
+	# This version 4 dyamically adds a &quot;heap&quot; area of memory
+	# One page&#39; of &quot;text&quot;, one page of &quot;data&quot; and one pager of &quot;readonly data&quot;
+	#  - text should get mapped to a region that is readable and executable (r-x)
+	#  - data should get mapped to a region that is readable and writable (rw-)
+	#  - rodata should get mapped to a region that is readable only       (r--)
+	#  - bss    should get mapped to a region that is readable and writable (rw-)
+	#  - heap   the brk system call is used to add a heap region that is
+
+	.intel_syntax noprefix        # assembler syntax to use &lt;directive&gt;
+	.section .text                # linker section &lt;directive&gt;
+
+	.global _start                # linker symbol type &lt;directive&gt; 
+_start:
+	# use a read system call to stop the program until user presses enter
+	# so that we can examine things before and after the code runs
+	mov rax, 0                 # read syscall = 0 -- read(fd, buf, len)
+	mov rdi, 0                 # fd = rdi = 0 = stdin
+	mov rsi, OFFSET rwdata     # buf = rsi = rwdata memory
+	mov rdx, 1                 # len = rdx = 1 wait for one byte &quot;enter&quot;
+	syscall
+
+	# Now add a Heap
+	# get current break pointer
+	xor rdi, rdi               # pass 0 to brk (invalid request)
+	mov rax, 12                # brk syscall number 12
+	syscall                    # call brk with 0
+
+	mov r15, rax               # keep a copy of where our new memory starts
+	                           # so we can use it later
+
+	# now add some memory by requesting to increase the break
+	# address by 32 bytes
+	mov     rdi, rax            # mov current break into rdi
+	add     rdi, 4096           # ask for 4096 bytes rdi=rdi+4096
+	mov     rax, 12             # brk sycall 12
+	syscall
+
+	# use a read system call to stop the program until user presses enter
+	# so that we can examine things before and after the code runs
+	mov rax, 0                 # read syscall = 0 -- read(fd, buf, len)
+	mov rdi, 0                 # fd = rdi = 0 = stdin
+	mov rsi, OFFSET rwdata     # buf = rsi = rwdata memory
+	mov rdx, 1                 # len = rdx = 1 wait for one byte &quot;enter&quot;
+	syscall
+
+	# remove memory --  shrink heap back down to its original
+	mov rdi, r15               # set break pointer back to the original location
+	mov rax, 12                # brk syscall number 12
+	syscall
+
+	# one last read so that we can see what the as looks like prior to exiting
+	# use a read system call to stop the program until user presses enter
+	# so that we can examine things before and after the code runs
+	mov rax, 0                 # read syscall = 0 -- read(fd, buf, len)
+	mov rdi, 0                 # fd = rdi = 0 = stdin
+	mov rsi, OFFSET rwdata     # buf = rsi = rwdata memory
+	mov rdx, 1                 # len = rdx = 1 wait for one byte &quot;enter&quot;
+	syscall
+
+	mov rax, 60                # exit system call
+	mov rdi, 0                 # exit status 0
+	syscall
+
+	# fill the text section up with zeros so that it is one page in size.	
+	.org 4095                  # force the next byte to be at the end of the page (4095
+	.byte 0x00                 # put a byte of zero here
+
+	##### DATA SECTION : read and writable memory s
+	.section .data
+	.global rwdata
+rwdata:	.fill 4096,1,0xff           # 4096 bytes each initialized with a value of 0xff
+
+	##### READ ONLY DATA SECTION : read only data
+	.section .rodata
+	.global rodata
+rodata:
+	.fill 4096,1,&#39;a             # 4096 bytes each initialized with a value of ASCII lower case a
+
+	##### BSS DATA SECTION: read and write automaitically added and filled with zero values
+	.section .bss
+	.global zerodata 
+zerodata:	.fill 4096,1
+	# The above could be replaced with the single line: .comm zerodata, 4096, 1
+	
+	# the following tells the linux kernel to set permissions the way we expect
+	# rather than the defaults which map all sections as executable
+	# When using a compiler it will add this for us
+	.section	.note.GNU-stack,&quot;&quot;,@progbits
+
+</pre></div>
 </div>
+</div>
+</div>
+</div>
+<p>Again we added another read so that you can explore what the address space looks like after we shrink the heap but before we exit.</p>
+<p>So that’s it – we have seen how memory gets added to the process based on what sections we added in our source code and how we can make calls to the OS to  add and remove “heap” memory while our program is running.
+There is a more advanced call in UNIX called <code class="docutils literal notranslate"><span class="pre">mmap</span></code> but we will leave it’s discussion for another time.</p>
 </section>
-<section id="exercises">
-<h3><span class="section-number">14.6.4. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">#</a></h3>
-<p>Change the <code class="docutils literal notranslate"><span class="pre">usesum</span></code> program to:</p>
-<ul class="simple">
-<li><p>exit properly</p></li>
-<li><p>allocate memory for the data</p></li>
-<li><p>read the data in from standard in</p></li>
-<li><p>write the binary result to standard out</p>
-<ul>
-<li><p>use a shell command like <code class="docutils literal notranslate"><span class="pre">od</span> <span class="pre">-l</span> <span class="pre">-A10</span></code> to convert the output to ascii</p></li>
-</ul>
-</li>
-<li><p>open the binary file of numbers and read them in</p></li>
-<li><p>can you figure out how to get the command line arguments?</p></li>
-<li><p>Write a new program that uses the random instruction to create a data file</p></li>
-</ul>
 </section>
 </section>
 </section>
 
 
 <script type="application/vnd.jupyter.widget-state+json">
-{"state": {"019df5fa81f44b3181b4b82c8ae9398b": {"model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "model_name": "OutputModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_3bc7309c016b4084981f770f5d0b8b42", "msg_id": "", "outputs": [{"name": "stdout", "output_type": "stream", "text": "$ man proc | head -30\nPROC(5)                    Linux Programmer's Manual                   PROC(5)\r\n\r\nNAME\r\n       proc - process information pseudo-filesystem\r\n\r\nDESCRIPTION\r\n       The  proc filesystem is a pseudo-filesystem which provides an interface\r\n       to kernel data structures.  It is commonly  mounted  at  /proc.   Typi\u2010\r\n       cally,  it  is  mounted automatically by the system, but it can also be\r\n       mounted manually using a command such as:\r\n\r\n           mount -t proc proc /proc\r\n\r\n       Most of the files in the proc filesystem are read-only, but some  files\r\n       are writable, allowing kernel variables to be changed.\r\n\r\n   Mount options\r\n       The proc filesystem supports the following mount options:\r\n\r\n       hidepid=n (since Linux 3.3)\r\n              This   option   controls  who  can  access  the  information  in\r\n              /proc/[pid] directories.  The argument, n, is one of the follow\u2010\r\n              ing values:\r\n\r\n              0   Everybody  may  access all /proc/[pid] directories.  This is\r\n                  the traditional behavior, and the default if this mount  op\u2010\r\n                  tion is not specified.\r\n\r\n              1   Users  may  not  access  files and subdirectories inside any\r\n                  /proc/[pid] directories but their own (the  /proc/[pid]  di\u2010\r\n$ "}]}}, "0ef1bc6a0aad4129973e4563b9b78cdb": {"model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "model_name": "OutputModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_e6e0790973e84bf0b8413a9e9b35e632", "msg_id": "", "outputs": [{"name": "stdout", "output_type": "stream", "text": "\nas -g -a=usesum5.o.lst usesum5.s -o usesum5.o\r\nas -g -a=sumit6.o.lst sumit6.s -o sumit6.o\r\nld -g -Map=usesum6.map usesum5.o sumit6.o -o usesum6\r\n"}]}}, "1237d3d2d1054294a70c2bb01cd0c243": {"model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "model_name": "OutputModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_df06c7d583a4403f8f70580ab87ead22", "msg_id": "", "outputs": [{"name": "stdout", "output_type": "stream", "text": "$ man brk | head -37\nBRK(2)                     Linux Programmer's Manual                    BRK(2)\r\n\r\nNAME\r\n       brk, sbrk - change data segment size\r\n\r\nSYNOPSIS\r\n       #include <unistd.h>\r\n\r\n       int brk(void *addr);\r\n\r\n       void *sbrk(intptr_t increment);\r\n\r\n   Feature Test Macro Requirements for glibc (see feature_test_macros(7)):\r\n\r\n       brk(), sbrk():\r\n           Since glibc 2.19:\r\n               _DEFAULT_SOURCE ||\r\n                   (_XOPEN_SOURCE >= 500) &&\r\n                   ! (_POSIX_C_SOURCE >= 200112L)\r\n           From glibc 2.12 to 2.19:\r\n               _BSD_SOURCE || _SVID_SOURCE ||\r\n                   (_XOPEN_SOURCE >= 500) &&\r\n                   ! (_POSIX_C_SOURCE >= 200112L)\r\n           Before glibc 2.12:\r\n               _BSD_SOURCE || _SVID_SOURCE || _XOPEN_SOURCE >= 500\r\n\r\nDESCRIPTION\r\n       brk()  and  sbrk()  change the location of the program break, which de\u2010\r\n       fines the end of the process's data segment (i.e., the program break is\r\n       the  first  location  after the end of the uninitialized data segment).\r\n       Increasing the program break has the effect of allocating memory to the\r\n       process; decreasing the break deallocates memory.\r\n\r\n       brk()  sets the end of the data segment to the value specified by addr,\r\n       when that value is reasonable, the system has enough  memory,  and  the\r\n       process does not exceed its maximum data size (see setrlimit(2)).\r\n\r\n$ "}]}}, "2907c1cd20624d11b4b9015f8f6d925b": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": "1px solid black", "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "100%", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": "scroll", "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "3bc7309c016b4084981f770f5d0b8b42": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": "1px solid black", "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "100%", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": "scroll", "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "73daff731b0a4cf782fcf262eeb900c7": {"model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "model_name": "OutputModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_9fc8046b268e401da34f93febcac816e", "msg_id": "", "outputs": [{"name": "stdout", "output_type": "stream", "text": "$ man syscalls | head -20\nSYSCALLS(2)                Linux Programmer's Manual               SYSCALLS(2)\r\n\r\nNAME\r\n       syscalls - Linux system calls\r\n\r\nSYNOPSIS\r\n       Linux system calls.\r\n\r\nDESCRIPTION\r\n       The system call is the fundamental interface between an application and\r\n       the Linux kernel.\r\n\r\n   System calls and library wrapper functions\r\n       System calls are generally not invoked directly, but rather via wrapper\r\n       functions in glibc (or perhaps some other library).  For details of di\u2010\r\n       rect invocation of a system call, see intro(2).  Often, but not always,\r\n       the  name of the wrapper function is the same as the name of the system\r\n       call that it invokes.  For example, glibc contains a  function  chdir()\r\n       which invokes the underlying \"chdir\" system call.\r\n\r\n$ "}]}}, "808a911a6d0a4a2b8741090e719299fc": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": "1px solid black", "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "100%", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": "scroll", "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "8239c6c65cdc49c9adbe065938dddda7": {"model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "model_name": "OutputModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_8956211b9f404298a93993fff8c0c704", "msg_id": "", "outputs": [{"name": "stdout", "output_type": "stream", "text": "$ man proc | grep -A40 /maps | head -41\n       /proc/[pid]/maps\r\n              A  file containing the currently mapped memory regions and their\r\n              access permissions.  See mmap(2) for  some  further  information\r\n              about memory mappings.\r\n\r\n              Permission  to  access  this file is governed by a ptrace access\r\n              mode PTRACE_MODE_READ_FSCREDS check; see ptrace(2).\r\n\r\n              The format of the file is:\r\n\r\n    address           perms offset  dev   inode       pathname\r\n    00400000-00452000 r-xp 00000000 08:02 173521      /usr/bin/dbus-daemon\r\n    00651000-00652000 r--p 00051000 08:02 173521      /usr/bin/dbus-daemon\r\n    00652000-00655000 rw-p 00052000 08:02 173521      /usr/bin/dbus-daemon\r\n    00e03000-00e24000 rw-p 00000000 00:00 0           [heap]\r\n    00e24000-011f7000 rw-p 00000000 00:00 0           [heap]\r\n    ...\r\n    35b1800000-35b1820000 r-xp 00000000 08:02 135522  /usr/lib64/ld-2.15.so\r\n    35b1a1f000-35b1a20000 r--p 0001f000 08:02 135522  /usr/lib64/ld-2.15.so\r\n    35b1a20000-35b1a21000 rw-p 00020000 08:02 135522  /usr/lib64/ld-2.15.so\r\n    35b1a21000-35b1a22000 rw-p 00000000 00:00 0\r\n    35b1c00000-35b1dac000 r-xp 00000000 08:02 135870  /usr/lib64/libc-2.15.so\r\n    35b1dac000-35b1fac000 ---p 001ac000 08:02 135870  /usr/lib64/libc-2.15.so\r\n    35b1fac000-35b1fb0000 r--p 001ac000 08:02 135870  /usr/lib64/libc-2.15.so\r\n    35b1fb0000-35b1fb2000 rw-p 001b0000 08:02 135870  /usr/lib64/libc-2.15.so\r\n    ...\r\n    f2c6ff8c000-7f2c7078c000 rw-p 00000000 00:00 0    [stack:986]\r\n    ...\r\n    7fffb2c0d000-7fffb2c2e000 rw-p 00000000 00:00 0   [stack]\r\n    7fffb2d48000-7fffb2d49000 r-xp 00000000 00:00 0   [vdso]\r\n\r\n              The address field is the address space in the process  that  the\r\n              mapping occupies.  The perms field is a set of permissions:\r\n\r\n                  r = read\r\n                  w = write\r\n                  x = execute\r\n                  s = shared\r\n                  p = private (copy on write)\r\n\r\n              The  offset  field  is the offset into the file/whatever; dev is\r\n$ "}]}}, "8956211b9f404298a93993fff8c0c704": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": "1px solid black", "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "100%", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": "scroll", "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "895836a419f2403d8f246d4f17c491ca": {"model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "model_name": "OutputModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_d1889d767e364df887b833954d549b50", "msg_id": "", "outputs": [{"name": "stdout", "output_type": "stream", "text": "$ ls /home/jovyan/syscalls\n100.nums  hello.s   setup.gdb  usesum5.s\r\nbrk.s     Makefile  sumit6.s   usesumheap.s\r\n$ "}]}}, "9fc8046b268e401da34f93febcac816e": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": "1px solid black", "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "100%", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": "scroll", "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "b76c312b3bc54ea7b97c720289ef6ac7": {"model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "model_name": "OutputModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_2907c1cd20624d11b4b9015f8f6d925b", "msg_id": "", "outputs": [{"name": "stdout", "output_type": "stream", "text": "$ ./hello; echo $?\nHello World\r\n3\r\n$ "}]}}, "d007721b2a674f6dbba139ba4377f93a": {"model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "model_name": "OutputModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_d3c741c64f824fa8a313fe776ebac3b6", "msg_id": "", "outputs": [{"name": "stdout", "output_type": "stream", "text": "$ man syscall | head -20\nSYSCALL(2)                 Linux Programmer's Manual                SYSCALL(2)\r\n\r\nNAME\r\n       syscall - indirect system call\r\n\r\nSYNOPSIS\r\n       #include <unistd.h>\r\n       #include <sys/syscall.h>   /* For SYS_xxx definitions */\r\n\r\n       long syscall(long number, ...);\r\n\r\n   Feature Test Macro Requirements for glibc (see feature_test_macros(7)):\r\n       syscall():\r\n           Since glibc 2.19:\r\n               _DEFAULT_SOURCE\r\n           Before glibc 2.19:\r\n               _BSD_SOURCE || _SVID_SOURCE\r\n\r\nDESCRIPTION\r\n       syscall()  is  a  small  library  function that invokes the system call\r\n$ "}]}}, "d1889d767e364df887b833954d549b50": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": "1px solid black", "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "100%", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": "scroll", "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "d3c741c64f824fa8a313fe776ebac3b6": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": "1px solid black", "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "100%", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": "scroll", "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "df06c7d583a4403f8f70580ab87ead22": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": "1px solid black", "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "100%", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": "scroll", "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "e6e0790973e84bf0b8413a9e9b35e632": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": "1px solid black", "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "100%", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": "scroll", "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "fe09b69107374ac38e1c324584f8f771": {"model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "model_name": "OutputModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_808a911a6d0a4a2b8741090e719299fc", "msg_id": "", "outputs": [{"name": "stdout", "output_type": "stream", "text": "\nas -g -a=hello.o.lst hello.s -o hello.o\r\nld -g -Map=hello.map hello.o -o hello\r\n"}]}}}, "version_major": 2, "version_minor": 0}
+{"state": {"015404bfe25d456c95f7e3630e81ddf7": {"model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "model_name": "OutputModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_74da7f3ea7c34fdca4ec7da42af5b931", "msg_id": "", "outputs": [{"name": "stdout", "output_type": "stream", "text": "$ man syscalls | head -20\nSYSCALLS(2)                Linux Programmer's Manual               SYSCALLS(2)\r\n\r\nNAME\r\n       syscalls - Linux system calls\r\n\r\nSYNOPSIS\r\n       Linux system calls.\r\n\r\nDESCRIPTION\r\n       The system call is the fundamental interface between an application and\r\n       the Linux kernel.\r\n\r\n   System calls and library wrapper functions\r\n       System calls are generally not invoked directly, but rather via wrapper\r\n       functions in glibc (or perhaps some other library).  For details of di\u2010\r\n       rect invocation of a system call, see intro(2).  Often, but not always,\r\n       the  name of the wrapper function is the same as the name of the system\r\n       call that it invokes.  For example, glibc contains a  function  chdir()\r\n       which invokes the underlying \"chdir\" system call.\r\n\r\n$ "}]}}, "15f399ccb1b541a5ba48b357f6fc4c0a": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": "1px solid black", "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "100%", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": "scroll", "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "17b0a90256dd4e95b8548e2275019a01": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": "1px solid black", "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "100%", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": "scroll", "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "2477949e2e3542ad8293df89873246f1": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": "1px solid black", "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "100%", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": "scroll", "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "4363d372a83b41eab1d40bb5475ed58f": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": "1px solid black", "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "100%", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": "scroll", "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "44ee982bd89c455197880e55888b5f16": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": "1px solid black", "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "100%", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": "scroll", "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "464807b361aa4b36905b7ab43995d0b9": {"model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "model_name": "OutputModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_8ca62487b34d4028818d2d02a42fa8de", "msg_id": "", "outputs": [{"name": "stdout", "output_type": "stream", "text": "$ man proc | head -30\nPROC(5)                    Linux Programmer's Manual                   PROC(5)\r\n\r\nNAME\r\n       proc - process information pseudo-filesystem\r\n\r\nDESCRIPTION\r\n       The  proc filesystem is a pseudo-filesystem which provides an interface\r\n       to kernel data structures.  It is commonly  mounted  at  /proc.   Typi\u2010\r\n       cally,  it  is  mounted automatically by the system, but it can also be\r\n       mounted manually using a command such as:\r\n\r\n           mount -t proc proc /proc\r\n\r\n       Most of the files in the proc filesystem are read-only, but some  files\r\n       are writable, allowing kernel variables to be changed.\r\n\r\n   Mount options\r\n       The proc filesystem supports the following mount options:\r\n\r\n       hidepid=n (since Linux 3.3)\r\n              This   option   controls  who  can  access  the  information  in\r\n              /proc/[pid] directories.  The argument, n, is one of the follow\u2010\r\n              ing values:\r\n\r\n              0   Everybody  may  access all /proc/[pid] directories.  This is\r\n                  the traditional behavior, and the default if this mount  op\u2010\r\n                  tion is not specified.\r\n\r\n              1   Users  may  not  access  files and subdirectories inside any\r\n                  /proc/[pid] directories but their own (the  /proc/[pid]  di\u2010\r\n$ "}]}}, "474736121281481aaf073c908eba09c1": {"model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "model_name": "OutputModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_15f399ccb1b541a5ba48b357f6fc4c0a", "msg_id": "", "outputs": [{"name": "stdout", "output_type": "stream", "text": "\nas -g -a=exploringASlayout1.o.lst exploringASlayout1.s -o exploringASlayout1.o\r\nld -g -Map=exploringASlayout1.map exploringASlayout1.o -o exploringASlayout1\r\n"}]}}, "4f551d47d8294582b1d2a8d562975c0a": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": "1px solid black", "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "100%", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": "scroll", "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "5f2083632c9a47c7917f07c9dadd8541": {"model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "model_name": "OutputModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_2477949e2e3542ad8293df89873246f1", "msg_id": "", "outputs": [{"name": "stdout", "output_type": "stream", "text": "$ ls /home/jovyan/syscalls\nbrk.s                 exploringASlayout3.s  hello.s   setup.gdb\r\nexploringASlayout1.s  exploringASlayout4.s  Makefile\r\nexploringASlayout2.s  exploringASlayout5.s  read.s\r\n$ "}]}}, "74da7f3ea7c34fdca4ec7da42af5b931": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": "1px solid black", "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "100%", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": "scroll", "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "8ca62487b34d4028818d2d02a42fa8de": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": "1px solid black", "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "100%", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": "scroll", "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "8ef1a9768d7343de956c5f08ae53ce1f": {"model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "model_name": "OutputModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_bff826c1c6fe47e0941a1b017595b8ac", "msg_id": "", "outputs": [{"name": "stdout", "output_type": "stream", "text": "$ ./hello; echo $?\nHello World\r\n3\r\n$ "}]}}, "9207d4c32e7a4b07b3e7be8aed91eda6": {"model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "model_name": "OutputModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_44ee982bd89c455197880e55888b5f16", "msg_id": "", "outputs": [{"name": "stdout", "output_type": "stream", "text": "$ man proc | grep -A40 /maps | head -41\n       /proc/[pid]/maps\r\n              A  file containing the currently mapped memory regions and their\r\n              access permissions.  See mmap(2) for  some  further  information\r\n              about memory mappings.\r\n\r\n              Permission  to  access  this file is governed by a ptrace access\r\n              mode PTRACE_MODE_READ_FSCREDS check; see ptrace(2).\r\n\r\n              The format of the file is:\r\n\r\n    address           perms offset  dev   inode       pathname\r\n    00400000-00452000 r-xp 00000000 08:02 173521      /usr/bin/dbus-daemon\r\n    00651000-00652000 r--p 00051000 08:02 173521      /usr/bin/dbus-daemon\r\n    00652000-00655000 rw-p 00052000 08:02 173521      /usr/bin/dbus-daemon\r\n    00e03000-00e24000 rw-p 00000000 00:00 0           [heap]\r\n    00e24000-011f7000 rw-p 00000000 00:00 0           [heap]\r\n    ...\r\n    35b1800000-35b1820000 r-xp 00000000 08:02 135522  /usr/lib64/ld-2.15.so\r\n    35b1a1f000-35b1a20000 r--p 0001f000 08:02 135522  /usr/lib64/ld-2.15.so\r\n    35b1a20000-35b1a21000 rw-p 00020000 08:02 135522  /usr/lib64/ld-2.15.so\r\n    35b1a21000-35b1a22000 rw-p 00000000 00:00 0\r\n    35b1c00000-35b1dac000 r-xp 00000000 08:02 135870  /usr/lib64/libc-2.15.so\r\n    35b1dac000-35b1fac000 ---p 001ac000 08:02 135870  /usr/lib64/libc-2.15.so\r\n    35b1fac000-35b1fb0000 r--p 001ac000 08:02 135870  /usr/lib64/libc-2.15.so\r\n    35b1fb0000-35b1fb2000 rw-p 001b0000 08:02 135870  /usr/lib64/libc-2.15.so\r\n    ...\r\n    f2c6ff8c000-7f2c7078c000 rw-p 00000000 00:00 0    [stack:986]\r\n    ...\r\n    7fffb2c0d000-7fffb2c2e000 rw-p 00000000 00:00 0   [stack]\r\n    7fffb2d48000-7fffb2d49000 r-xp 00000000 00:00 0   [vdso]\r\n\r\n              The address field is the address space in the process  that  the\r\n              mapping occupies.  The perms field is a set of permissions:\r\n\r\n                  r = read\r\n                  w = write\r\n                  x = execute\r\n                  s = shared\r\n                  p = private (copy on write)\r\n\r\n              The  offset  field  is the offset into the file/whatever; dev is\r\n$ "}]}}, "a767c0b4ce0f48efa42c0e37ac0920ca": {"model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "model_name": "OutputModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_ad49eb6482e341f78244808855dce3bb", "msg_id": "", "outputs": [{"name": "stdout", "output_type": "stream", "text": "$ man syscall | head -20\nSYSCALL(2)                 Linux Programmer's Manual                SYSCALL(2)\r\n\r\nNAME\r\n       syscall - indirect system call\r\n\r\nSYNOPSIS\r\n       #include <unistd.h>\r\n       #include <sys/syscall.h>   /* For SYS_xxx definitions */\r\n\r\n       long syscall(long number, ...);\r\n\r\n   Feature Test Macro Requirements for glibc (see feature_test_macros(7)):\r\n       syscall():\r\n           Since glibc 2.19:\r\n               _DEFAULT_SOURCE\r\n           Before glibc 2.19:\r\n               _BSD_SOURCE || _SVID_SOURCE\r\n\r\nDESCRIPTION\r\n       syscall()  is  a  small  library  function that invokes the system call\r\n$ "}]}}, "ad49eb6482e341f78244808855dce3bb": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": "1px solid black", "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "100%", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": "scroll", "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "bff826c1c6fe47e0941a1b017595b8ac": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": "1px solid black", "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "100%", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": "scroll", "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "cba8894038c54cf29fd5b3627dac48d6": {"model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "model_name": "OutputModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_17b0a90256dd4e95b8548e2275019a01", "msg_id": "", "outputs": [{"name": "stdout", "output_type": "stream", "text": "\nas -g -a=hello.o.lst hello.s -o hello.o\r\nld -g -Map=hello.map hello.o -o hello\r\n"}]}}, "e20e45ec50ba4beeac451f2dcbccc189": {"model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "model_name": "OutputModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_4363d372a83b41eab1d40bb5475ed58f", "msg_id": "", "outputs": [{"name": "stdout", "output_type": "stream", "text": "$ man brk | head -37\nBRK(2)                     Linux Programmer's Manual                    BRK(2)\r\n\r\nNAME\r\n       brk, sbrk - change data segment size\r\n\r\nSYNOPSIS\r\n       #include <unistd.h>\r\n\r\n       int brk(void *addr);\r\n\r\n       void *sbrk(intptr_t increment);\r\n\r\n   Feature Test Macro Requirements for glibc (see feature_test_macros(7)):\r\n\r\n       brk(), sbrk():\r\n           Since glibc 2.19:\r\n               _DEFAULT_SOURCE ||\r\n                   (_XOPEN_SOURCE >= 500) &&\r\n                   ! (_POSIX_C_SOURCE >= 200112L)\r\n           From glibc 2.12 to 2.19:\r\n               _BSD_SOURCE || _SVID_SOURCE ||\r\n                   (_XOPEN_SOURCE >= 500) &&\r\n                   ! (_POSIX_C_SOURCE >= 200112L)\r\n           Before glibc 2.12:\r\n               _BSD_SOURCE || _SVID_SOURCE || _XOPEN_SOURCE >= 500\r\n\r\nDESCRIPTION\r\n       brk()  and  sbrk()  change the location of the program break, which de\u2010\r\n       fines the end of the process's data segment (i.e., the program break is\r\n       the  first  location  after the end of the uninitialized data segment).\r\n       Increasing the program break has the effect of allocating memory to the\r\n       process; decreasing the break deallocates memory.\r\n\r\n       brk()  sets the end of the data segment to the value specified by addr,\r\n       when that value is reasonable, the system has enough  memory,  and  the\r\n       process does not exceed its maximum data size (see setrlimit(2)).\r\n\r\n$ "}]}}, "fdd2ea58a0b24d8c8614885a4a8c6934": {"model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "model_name": "OutputModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_4f551d47d8294582b1d2a8d562975c0a", "msg_id": "", "outputs": [{"name": "stdout", "output_type": "stream", "text": "\n0000000000403000 D __bss_start\r\n0000000000403000 D _edata\r\n0000000000403000 D _end\r\n0000000000402000 D rwdata\r\n0000000000401000 T _start\r\n"}]}}}, "version_major": 2, "version_minor": 0}
 </script>
 
 
