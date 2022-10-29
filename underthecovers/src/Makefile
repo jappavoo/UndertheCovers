@@ -1,11 +1,11 @@
-ASMTARGETS=popcnt simple empty empty256 oneplusone add addwithvars hello exit exit_bb exit_bb_bb brk int3 main cbrk mov usesum usesum2 usesum3 usesum4 usesum5 usesum6 codeptrs selfmodify tree tree_bb playertest usesumheap usesumIO usecsumit usecsumit1 callmyadd cexp dynmem dynmemsyscalls
+ASMTARGETS=popcnt simple empty empty256 oneplusone add addwithvars hello exit exit_bb exit_bb_bb brk int3 main cbrk mov usesum usesum2 usesum3 usesum4 usesum5 usesum6 codeptrs selfmodify tree tree_bb playertest usesumheap usesumIO usecsumit usecsumit1 callmyadd cexp dynmem dynmemsyscalls exploringASlayout1 exploringASlayout2 exploringASlayout3 exploringASlayout4 exploringASlayout5  mmap useshared1 useshared2 usesumshared1static usesumshared2static usesumshared1dynamic usesumshared2dynamic 
 CTARGETS=hello cbrk
 
 ASFLAGS=-a=$@.lst
 LDFLAGS=-Map=$@.map
 DEBUG=-g
 
-.PHONEY: all clean
+.PHONY: all clean
 
 # override default behaviour of removing .o's as intermediate file cleanup
 .PRECIOUS: %.o %.I
@@ -17,7 +17,7 @@ DEBUG=-g
 %: %.S
 
 %.I: %.S
-	gcc -E $< -o $@	
+	gcc -E $< -o $@
 
 %.o: %.I
 	as ${DEBUG} ${ASFLAGS} $< -o $@
@@ -32,6 +32,9 @@ DEBUG=-g
 # -v
 %.s: %.c
 	gcc -fno-inline -fno-stack-protector -fno-pic  -static -Werror -fcf-protection=none -fno-asynchronous-unwind-tables -Os -S -masm=intel $^ -o $@
+
+%.so: %.o
+	ld ${DEBUG} $(LDFLAGS) -shared $^ -o $@
 
 %: %.o
 	ld ${DEBUG} $(LDFLAGS) $^ -o $@
@@ -63,7 +66,27 @@ usesum5: usesum5.o sumit5.o
 usesum6: usesum5.o sumit6.o
 	ld ${DEBUG} $(LDFLAGS) $^ -o $@
 
+usesumshared1static: usesumshared1.o sumitshared.o
+	ld ${DEBUG} $(LDFLAGS) $^ -o $@
+
+usesumshared2static: usesumshared2.o sumitshared.o
+	ld ${DEBUG} $(LDFLAGS) $^ -o $@
+
+usesumshared1dynamic: usesumshared1.o ${PWD}/sumitshared.so
+	ld ${DEBUG} $(LDFLAGS)  $^ -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -z now -z relro -o $@
+
+usesumshared2dynamic: usesumshared2.o ${PWD}/sumitshared.so
+	ld ${DEBUG} $(LDFLAGS)  $^ -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -z now -z relro -o $@
+
+useshared1: useshared1.o ${PWD}/sharedfuncs.so
+	ld ${DEBUG} $(LDFLAGS)  $^ -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -z now -z relro -o $@
+
+useshared2: useshared2.o ${PWD}/sharedfuncs.so
+	ld ${DEBUG} $(LDFLAGS)  $^ -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -z now -z relro -o $@
+
 csumit1.o: csumit1.s
+
+usecsumit: usecsumit.o csumit.o
 
 usecsumit1: usecsumit1.o csumit1.o
 
@@ -98,7 +121,6 @@ badmsgcode.o: badmsgcode.c
 # overides so that we use cpp to proces includes
 exit.o: exit.I
 exit_bb.o: exit_bb.I
-brk.o: brk.I
 
 10num.bin: 10num.txt
 	ascii2binary -t sq < $< > $@
@@ -112,4 +134,4 @@ main: main.S
 	gcc --static -g $< -o $@
 
 clean:
-	rm -f $(wildcard ${ASMTARGETS} ${CTARGETS} *.o *~ *.lst *.map *.I csumit.s myfunc0.s myfunc1.s myfunc2.s myfunc3.s main0.s myadd.s callmyadd.s csumit1.s  main0 *.dis)
+	rm -f $(wildcard ${ASMTARGETS} ${CTARGETS} *.o *~ *.lst *.map *.I csumit.s myfunc0.s myfunc1.s myfunc2.s myfunc3.s main0.s myadd.s callmyadd.s csumit1.s  main0 *.dis *.so)
