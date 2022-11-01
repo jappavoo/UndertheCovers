@@ -1,0 +1,71 @@
+Fetch:
+a) Buses : Read Addr = PC -> Value
+           IR = Value
+	   
+Decode:
+a) lookup IR and tell execute what to do
+A9 : LDA IMM    
+A2 : LDX        
+EC : CPX ABS    
+F0 : BEQ PC Rel  
+7D : ADC ABS     
+E8 : INX         
+4C : JMP ABS     
+00 : BRK         
+
+
+
+
+
+
+
+Execute
+LDA IMM :
+a) Buses : Read Addr = PC +1 -> Value	      
+b) A = Value				      
+c) PC = PC + 2
+
+LDX :                                                      
+a) Buses : Read Addr = PC +1 -> Value	      
+b) X = Value				      
+c) PC = PC + 2				      
+
+CPX ABS :
+a) Buses : Read Addr = PC + 1 -> Value	      
+b) TempAddr Low Byte = Value		      
+c) Buses : Read Addr = PC + 2 -> Value	      
+d) TempAddr High Byte = Value		      
+e) Buses : Read Addr = TempAddr -> Value      
+f) Compare : TempVal = X - Value	      
+g) Set P flags : if TempVal == 0 then P.Z = 1 else P.Z = 0  
+h) PC = PC + 3				      
+
+BEQ PC Rel :
+a) if P.Z == 1 then			      
+   b) Buses : Read Addr = PC + 1 -> Value     
+   c) PC = PC + Value			      
+d) else					      
+   e) PC = PC + 2			      
+                                              
+ADC ABS :                                                   
+a) Busses : Read Addr = PC + 1 -> Value	      
+b) TempAddr Low Byte = Value		      
+c) Buses : Read Addr = PC + 2 -> Value	      
+d) TempAddr High Byte = Value		      
+e) Buses : Read Addr = TempAddr + X -> Value  
+f) Add : A = A + Value			      
+g) PC = PC + 3				      
+
+INX :        
+a) X = X + 1				      
+b) PC = PC + 1				      
+
+JMP ABS :
+a) Busses : Read Addr = PC + 1 -> Value	      
+b) TempAddr Low Byte = Value		      
+c) Buses : Read Addr = PC + 2 -> Value	      
+d) TempAddr High Byte = Value		      
+e) PC = TempAddr			      
+                                              
+BRK:                                     
+a) STOP!!!                                    
