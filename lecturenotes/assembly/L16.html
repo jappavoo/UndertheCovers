@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>16. SLS Lecture 16 : Topics &#8212; UndertheCovers</title>
+    <title>16. SLS Lecture 16 : Caches : Constructing them from first principles &#8212; UndertheCovers</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -52,6 +52,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="17. UC-SLS Lecuture 17 : In to the Light - C Intro" href="../C/L17.html" />
@@ -239,7 +241,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   16. SLS Lecture 16 : Topics
+   16. SLS Lecture 16 : Caches : Constructing them from first principles
   </a>
  </li>
 </ul>
@@ -428,23 +430,158 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#remember-this-picture">
+   16.1. Remember this picture
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#what-is-the-physical-reality">
+     16.1.1. What is the physical Reality
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#lets-build-our-computer">
+   16.2. Lets build our Computer
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#a-nice-simple-cpu-only-6-registers-and-no-mmu">
+   16.3. A nice Simple CPU - Only 6 registers and no MMU
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#simple-main-memory">
+   16.4. Simple Main Memory
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-code">
+   16.5. The Code
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#our-old-friends-assembler-and-linker">
+   16.6. Our old friends : Assembler and linker
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-binary-a-simple-image-file">
+     16.6.1. The “binary”: A Simple Image file
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ok-now-what">
+     16.6.2. Ok Now What?
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#processor-caches">
+   16.7. Processor Caches
+  </a>
+ </li>
+</ul>
+
+    </nav>
 </div>
     </div>
     <div class="article row">
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>SLS Lecture 16 : Topics</h1>
+                <h1>SLS Lecture 16 : Caches : Constructing them from first principles</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#remember-this-picture">
+   16.1. Remember this picture
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#what-is-the-physical-reality">
+     16.1.1. What is the physical Reality
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#lets-build-our-computer">
+   16.2. Lets build our Computer
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#a-nice-simple-cpu-only-6-registers-and-no-mmu">
+   16.3. A nice Simple CPU - Only 6 registers and no MMU
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#simple-main-memory">
+   16.4. Simple Main Memory
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-code">
+   16.5. The Code
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#our-old-friends-assembler-and-linker">
+   16.6. Our old friends : Assembler and linker
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-binary-a-simple-image-file">
+     16.6.1. The “binary”: A Simple Image file
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ok-now-what">
+     16.6.2. Ok Now What?
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#processor-caches">
+   16.7. Processor Caches
+  </a>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -452,9 +589,347 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="sls-lecture-16-topics">
-<h1><span class="section-number">16. </span>SLS Lecture 16 : Topics<a class="headerlink" href="#sls-lecture-16-topics" title="Permalink to this headline">#</a></h1>
+  <div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">run</span> -i ../python/common.py
+<span class="n">UC_SKIPTERMS</span><span class="o">=</span><span class="kc">True</span>
+<span class="o">%</span><span class="k">run</span> -i ../python/ln_preamble.py
+</pre></div>
+</div>
+</div>
+</div>
+<section class="tex2jax_ignore mathjax_ignore" id="sls-lecture-16-caches-constructing-them-from-first-principles">
+<h1><span class="section-number">16. </span>SLS Lecture 16 : Caches : Constructing them from first principles<a class="headerlink" href="#sls-lecture-16-caches-constructing-them-from-first-principles" title="Permalink to this headline">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># setup for sumit examples</span>
+<span class="n">appdir</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s1">&#39;HOME&#39;</span><span class="p">)</span>
+<span class="n">appdir</span><span class="o">=</span><span class="n">appdir</span> <span class="o">+</span> <span class="s2">&quot;/caches&quot;</span>
+<span class="c1">#print(movdir)</span>
+<span class="n">output</span><span class="o">=</span><span class="n">runTermCmd</span><span class="p">(</span><span class="s2">&quot;[[ -d &quot;</span> <span class="o">+</span> <span class="n">appdir</span> <span class="o">+</span> <span class="s2">&quot; ]] &amp;&amp;  rm -rf &quot;</span><span class="o">+</span> <span class="n">appdir</span> <span class="o">+</span> 
+             <span class="s2">&quot;;mkdir &quot;</span> <span class="o">+</span> <span class="n">appdir</span> <span class="o">+</span> 
+             <span class="s2">&quot;;cp ../src/SOL6502/Makefile ../src/SOL6502/sum.s ../src/SOL6502/sum.txt ../src/SOL6502/SOL6502.cfg &quot;</span> <span class="o">+</span> <span class="n">appdir</span><span class="p">)</span>
+
+<span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">- create a directory `mkdir cache; cd cache`</span>
+<span class="s1">- copy examples</span>
+<span class="s1">- add a `Makefile` to automate assembling and linking</span>
+<span class="s1">    - we are going run the commands by hand this time to highlight the details</span>
+<span class="s1">&#39;&#39;&#39;</span><span class="p">))</span>
+<span class="n">TermShellCmd</span><span class="p">(</span><span class="s2">&quot;ls &quot;</span> <span class="o">+</span> <span class="n">appdir</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<ul class="simple">
+<li><p>create a directory <code class="docutils literal notranslate"><span class="pre">mkdir</span> <span class="pre">cache;</span> <span class="pre">cd</span> <span class="pre">cache</span></code></p></li>
+<li><p>copy examples</p></li>
+<li><p>add a <code class="docutils literal notranslate"><span class="pre">Makefile</span></code> to automate assembling and linking</p>
+<ul>
+<li><p>we are going run the commands by hand this time to highlight the details</p></li>
+</ul>
+</li>
+</ul>
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "f71844ea877e4808922b598dfd964e7a", "version_major": 2, "version_minor": 0}
+</script></div>
+</div>
+<section id="remember-this-picture">
+<h2><span class="section-number">16.1. </span>Remember this picture<a class="headerlink" href="#remember-this-picture" title="Permalink to this headline">#</a></h2>
+<img alt="../_images/ASSEMBLY-VNA-THECPU.017.png" src="../_images/ASSEMBLY-VNA-THECPU.017.png" />
+<section id="what-is-the-physical-reality">
+<h3><span class="section-number">16.1.1. </span>What is the physical Reality<a class="headerlink" href="#what-is-the-physical-reality" title="Permalink to this headline">#</a></h3>
+<img alt="../_images/motherboard.png" src="../_images/motherboard.png" />
 </section>
+</section>
+<section id="lets-build-our-computer">
+<h2><span class="section-number">16.2. </span>Lets build our Computer<a class="headerlink" href="#lets-build-our-computer" title="Permalink to this headline">#</a></h2>
+<img alt="../_images/6502mb.png" src="../_images/6502mb.png" />
+</section>
+<section id="a-nice-simple-cpu-only-6-registers-and-no-mmu">
+<h2><span class="section-number">16.3. </span>A nice Simple CPU - Only 6 registers and no MMU<a class="headerlink" href="#a-nice-simple-cpu-only-6-registers-and-no-mmu" title="Permalink to this headline">#</a></h2>
+<img alt="../_images/6502Registers.png" src="../_images/6502Registers.png" />
+</section>
+<section id="simple-main-memory">
+<h2><span class="section-number">16.4. </span>Simple Main Memory<a class="headerlink" href="#simple-main-memory" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>Physical Memory : <span class="math notranslate nohighlight">\(2^{!6} = 65536 \ \text{Bytes} = 65 \ \text{KiloBytes (Kb)} \)</span></p></li>
+<li><p>NO Virtual Memory!</p></li>
+</ul>
+</section>
+<section id="the-code">
+<h2><span class="section-number">16.5. </span>The Code<a class="headerlink" href="#the-code" title="Permalink to this headline">#</a></h2>
+<p>Code we have come to love: A 6502 version of sumit!</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="n">FileCodeBox</span><span class="p">(</span>
+    <span class="n">file</span><span class="o">=</span><span class="s2">&quot;../src/SOL6502/sum.s&quot;</span><span class="p">,</span> 
+    <span class="n">lang</span><span class="o">=</span><span class="s2">&quot;gas&quot;</span><span class="p">,</span> 
+    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;&lt;b&gt;CODE: 6502 asm - sum.s&quot;</span><span class="p">,</span>
+    <span class="n">h</span><span class="o">=</span><span class="s2">&quot;100%&quot;</span><span class="p">,</span> 
+    <span class="n">w</span><span class="o">=</span><span class="s2">&quot;107em&quot;</span>
+<span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<p><b>CODE: 6502 asm - sum.s</p>
+<div style="width:107em; height:100%; font-size:inherit; overflow: auto;" >
+<div class="highlight-gas notranslate"><div class="highlight"><pre><span></span><span class="w">	</span><span class="c1">;; We place things in memory locations by hand </span>
+<span class="w">	</span><span class="c1">;; Fill memory 0x0000 - 0xE000 with zeros</span>
+<span class="w">	</span><span class="na">.repeat</span><span class="w"> </span><span class="no">$E000</span><span class="w"></span>
+<span class="w">	</span><span class="na">.byte</span><span class="w"> </span><span class="no">$00</span><span class="w"></span>
+<span class="w">	</span><span class="na">.endrep</span><span class="w"></span>
+
+<span class="w">	</span><span class="c1">;; Put our data at 0xE000 </span>
+<span class="w">	</span><span class="na">.byte</span><span class="w"> </span><span class="mi">10</span><span class="w">      		</span><span class="c1">; 0xE000 Array length</span>
+<span class="w">	</span><span class="na">.byte</span><span class="w"> </span><span class="mi">1</span><span class="w">                 </span><span class="c1">; Array[0] = 1</span>
+<span class="w">	</span><span class="na">.byte</span><span class="w"> </span><span class="mi">2</span><span class="w">			</span><span class="c1">; Array[1] = 2</span>
+<span class="w">	</span><span class="na">.byte</span><span class="w"> </span><span class="mi">3</span><span class="w">			</span><span class="c1">; Array[2] = 3</span>
+<span class="w">	</span><span class="na">.byte</span><span class="w"> </span><span class="mi">4</span><span class="w">			</span><span class="c1">; Array[3] = 4</span>
+<span class="w">	</span><span class="na">.byte</span><span class="w"> </span><span class="mi">5</span><span class="w">			</span><span class="c1">; Array[4] = 5</span>
+<span class="w">	</span><span class="na">.byte</span><span class="w"> </span><span class="mi">6</span><span class="w">			</span><span class="c1">; Array[5] = 6</span>
+<span class="w">	</span><span class="na">.byte</span><span class="w"> </span><span class="mi">7</span><span class="w">			</span><span class="c1">; Array[6] = 7</span>
+<span class="w">	</span><span class="na">.byte</span><span class="w"> </span><span class="mi">8</span><span class="w">			</span><span class="c1">; Array[7] = 8</span>
+<span class="w">	</span><span class="na">.byte</span><span class="w"> </span><span class="mi">9</span><span class="w">			</span><span class="c1">; Array[8] = 9</span>
+<span class="w">	</span><span class="na">.byte</span><span class="w"> </span><span class="mi">10</span><span class="w">		</span><span class="c1">; Array[9] = 10</span>
+
+<span class="w">	</span><span class="c1">;; Fill memory from end of data to 0xF000 with zero</span>
+<span class="w">	</span><span class="na">.repeat</span><span class="w"> </span><span class="no">$1000-11</span><span class="w"></span>
+<span class="w">	</span><span class="na">.byte</span><span class="w"> </span><span class="no">$00</span><span class="w"></span>
+<span class="w">	</span><span class="na">.endrep</span><span class="w"></span>
+<span class="w">	</span>
+<span class="w">	</span><span class="c1">;; Put our code at 0xF000</span>
+<span class="w">	</span><span class="c1">;; Set address to F000 (this is where our code will live)</span>
+<span class="w">	</span><span class="na">.ORG</span><span class="w"> </span><span class="no">$F000</span><span class="w">    		</span>
+<span class="w">	</span><span class="no">LDA</span><span class="w"> </span><span class="mi">#0</span><span class="w">        </span><span class="c1">; load A register with 0</span>
+<span class="w">	</span><span class="nf">LDX</span><span class="w"> </span><span class="mi">#0</span><span class="w">	      </span><span class="c1">; load X register with 0</span>
+<span class="nl">LOOP:</span><span class="w"></span>
+<span class="w">	</span><span class="nf">CPX</span><span class="w"> </span><span class="no">$E000</span><span class="w">     </span><span class="c1">; compare value in X register with value at E000 (length of Array)</span>
+<span class="w">	</span><span class="nf">BEQ</span><span class="w"> </span><span class="no">DONE</span><span class="w">      </span><span class="c1">; if equal then jump to done</span>
+<span class="w">	</span><span class="nf">ADC</span><span class="w"> </span><span class="no">$E001</span><span class="p">,</span><span class="no">X</span><span class="w">   </span><span class="c1">; add value in memory  at M[0xE001 + X register] : A = A + Array[X]</span>
+<span class="w">	</span><span class="nf">INX</span><span class="w">           </span><span class="c1">; X=X+1</span>
+<span class="w">	</span><span class="nf">JMP</span><span class="w"> </span><span class="no">LOOP</span><span class="w">      </span>
+<span class="no">DONE</span><span class="p">:</span><span class="w"></span>
+<span class="w">	</span><span class="nf">BRK</span><span class="w">    </span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="our-old-friends-assembler-and-linker">
+<h2><span class="section-number">16.6. </span>Our old friends : Assembler and linker<a class="headerlink" href="#our-old-friends-assembler-and-linker" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>ca65 - assembler different syntax but same idea</p></li>
+<li><p>ld65 - linker but only using for symbol resolution we are taking care of placing things in memory</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">TermShellCmd</span><span class="p">(</span><span class="s2">&quot;make sum.img&quot;</span><span class="p">,</span> <span class="n">cwd</span><span class="o">=</span><span class="n">appdir</span><span class="p">,</span> <span class="n">prompt</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "1ea6538df3a74153a445c46a575f9279", "version_major": 2, "version_minor": 0}
+</script></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="n">FileCodeBox</span><span class="p">(</span>
+    <span class="n">file</span><span class="o">=</span> <span class="n">appdir</span> <span class="o">+</span> <span class="s2">&quot;/sum.o.lst&quot;</span><span class="p">,</span> 
+    <span class="n">lang</span><span class="o">=</span><span class="s2">&quot;gas&quot;</span><span class="p">,</span> 
+    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;&lt;b&gt;CODE: 6502 asm listing file&quot;</span><span class="p">,</span>
+    <span class="n">h</span><span class="o">=</span><span class="s2">&quot;100%&quot;</span><span class="p">,</span> 
+    <span class="n">w</span><span class="o">=</span><span class="s2">&quot;107em&quot;</span>
+<span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<p><b>CODE: 6502 asm listing file</p>
+<div style="width:107em; height:100%; font-size:inherit; overflow: auto;" >
+<div class="highlight-gas notranslate"><div class="highlight"><pre><span></span>ca65 V2.18 - Ubuntu 2.18-1
+Main file   : sum.s
+Current file: sum.s
+
+000000r 1               	;; We place things in memory locations by hand
+000000r 1               	;; Fill memory 0x0000 - 0xE000 with zeros
+000000r 1  00 00 00 00  	.repeat $E000
+000004r 1  00 00 00 00  
+000008r 1  00 00 00 00  
+00E000r 1               	.byte $00
+00E000r 1               	.endrep
+00E000r 1               
+00E000r 1               	;; Put our data at 0xE000
+00E000r 1  0A           	.byte 10      		; 0xE000 Array length
+00E001r 1  01           	.byte 1                 ; Array[0] = 1
+00E002r 1  02           	.byte 2			; Array[1] = 2
+00E003r 1  03           	.byte 3			; Array[2] = 3
+00E004r 1  04           	.byte 4			; Array[3] = 4
+00E005r 1  05           	.byte 5			; Array[4] = 5
+00E006r 1  06           	.byte 6			; Array[5] = 6
+00E007r 1  07           	.byte 7			; Array[6] = 7
+00E008r 1  08           	.byte 8			; Array[7] = 8
+00E009r 1  09           	.byte 9			; Array[8] = 9
+00E00Ar 1  0A           	.byte 10		; Array[9] = 10
+00E00Br 1               
+00E00Br 1               	;; Fill memory from end of data to 0xF000 with zero
+00E00Br 1  00 00 00 00  	.repeat $1000-11
+00E00Fr 1  00 00 00 00  
+00E013r 1  00 00 00 00  
+00F000r 1               	.byte $00
+00F000r 1               	.endrep
+00F000r 1               
+00F000r 1               	;; Put our code at 0xF000
+00F000r 1               	;; Set address to F000 (this is where our code will live)
+00F000r 1               	.ORG $F000
+00F000  1  A9 00        	LDA #0        ; load A register with 0
+00F002  1  A2 00        	LDX #0	      ; load X register with 0
+00F004  1               LOOP:
+00F004  1  EC 00 E0     	CPX $E000     ; compare value in X register with value at E000 (length of Array)
+00F007  1  F0 07        	BEQ DONE      ; if equal then jump to done
+00F009  1  7D 01 E0     	ADC $E001,X   ; add value in memory  at M[0xE001 + X register] : A = A + Array[X]
+00F00C  1  E8           	INX           ; X=X+1
+00F00D  1  4C 04 F0     	JMP LOOP
+00F010  1               DONE:
+00F010  1  00           	BRK
+00F010  1               
+
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<section id="the-binary-a-simple-image-file">
+<h3><span class="section-number">16.6.1. </span>The “binary”: A Simple Image file<a class="headerlink" href="#the-binary-a-simple-image-file" title="Permalink to this headline">#</a></h3>
+<p>The linker produce a simple binary image file that is an exact copy of memory to load</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">TermShellCmd</span><span class="p">(</span><span class="s2">&quot;od -Ax -t x1  sum.img&quot;</span><span class="p">,</span> <span class="n">cwd</span><span class="o">=</span><span class="n">appdir</span><span class="p">,</span> <span class="n">prompt</span><span class="o">=</span><span class="s1">&#39;$ &#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "8ad8a4fe572645649bdfb40f74b10fb2", "version_major": 2, "version_minor": 0}
+</script></div>
+</div>
+</section>
+<section id="ok-now-what">
+<h3><span class="section-number">16.6.2. </span>Ok Now What?<a class="headerlink" href="#ok-now-what" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="n">FileCodeBox</span><span class="p">(</span>
+    <span class="n">file</span><span class="o">=</span><span class="s2">&quot;../src/SOL6502/sum.txt&quot;</span><span class="p">,</span> 
+    <span class="n">lang</span><span class="o">=</span><span class="s2">&quot;gas&quot;</span><span class="p">,</span> 
+    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;&lt;b&gt;CODE: 6502 Loop&quot;</span><span class="p">,</span>
+    <span class="n">h</span><span class="o">=</span><span class="s2">&quot;100%&quot;</span><span class="p">,</span> 
+    <span class="n">w</span><span class="o">=</span><span class="s2">&quot;107em&quot;</span>
+<span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<p><b>CODE: 6502 Loop</p>
+<div style="width:107em; height:100%; font-size:inherit; overflow: auto;" >
+<div class="highlight-gas notranslate"><div class="highlight"><pre><span></span>Fetch:
+a) Buses : Read Addr = PC -&gt; Value
+           IR = Value
+	   
+Decode:
+a) lookup IR and tell execute what to do
+A9 : LDA IMM    
+A2 : LDX        
+EC : CPX ABS    
+F0 : BEQ PC Rel  
+7D : ADC ABS     
+E8 : INX         
+4C : JMP ABS     
+00 : BRK         
+
+
+
+
+
+
+
+Execute
+LDA IMM :
+a) Buses : Read Addr = PC +1 -&gt; Value	      
+b) A = Value				      
+c) PC = PC + 2
+
+LDX :                                                      
+a) Buses : Read Addr = PC +1 -&gt; Value	      
+b) X = Value				      
+c) PC = PC + 2				      
+
+CPX ABS :
+a) Buses : Read Addr = PC + 1 -&gt; Value	      
+b) TempAddr Low Byte = Value		      
+c) Buses : Read Addr = PC + 2 -&gt; Value	      
+d) TempAddr High Byte = Value		      
+e) Buses : Read Addr = TempAddr -&gt; Value      
+f) Compare : TempVal = X - Value	      
+g) Set P flags : if TempVal == 0 then P.Z = 1 else P.Z = 0  
+h) PC = PC + 3				      
+
+BEQ PC Rel :
+a) if P.Z == 1 then			      
+   b) Buses : Read Addr = PC + 1 -&gt; Value     
+   c) PC = PC + Value			      
+d) else					      
+   e) PC = PC + 2			      
+                                              
+ADC ABS :                                                   
+a) Buses : Read Addr = PC + 1 -&gt; Value	      
+b) TempAddr Low Byte = Value		      
+c) Buses : Read Addr = PC + 2 -&gt; Value	      
+d) TempAddr High Byte = Value		      
+e) Buses : Read Addr = TempAddr + X -&gt; Value  
+f) Add : A = A + Value			      
+g) PC = PC + 3				      
+
+INX :        
+a) X = X + 1				      
+b) PC = PC + 1				      
+
+JMP ABS :
+a) Buses : Read Addr = PC + 1 -&gt; Value	      
+b) TempAddr Low Byte = Value		      
+c) Buses : Read Addr = PC + 2 -&gt; Value	      
+d) TempAddr High Byte = Value		      
+e) PC = TempAddr			      
+                                              
+BRK:                                     
+a) STOP!!!                                    
+
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="processor-caches">
+<h2><span class="section-number">16.7. </span>Processor Caches<a class="headerlink" href="#processor-caches" title="Permalink to this headline">#</a></h2>
+<p>Modern CPU’s are very fast and memory is “far away” and relatively slow.</p>
+<ul class="simple">
+<li><p>Notice that a lot of what a program is accessing memory</p></li>
+<li><p>Since memory is “slow” most of our CPU time is spent “IDLE” waiting for memory!</p></li>
+<li><p>Caches are critical to achieving high performance on a modern CPU</p></li>
+</ul>
+<p><a class="reference external" href="https://ark.intel.com/content/www/us/en/ark/products/203908/intel-core-i710700e-processor-16m-cache-up-to-4-50-ghz.html">https://ark.intel.com/content/www/us/en/ark/products/203908/intel-core-i710700e-processor-16m-cache-up-to-4-50-ghz.html</a></p>
+</section>
+</section>
+
+
+<script type="application/vnd.jupyter.widget-state+json">
+{"state": {"1afbb9ed0df84f908edec397b70292ee": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": "1px solid black", "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "100%", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": "scroll", "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "1ea6538df3a74153a445c46a575f9279": {"model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "model_name": "OutputModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_cb9a65a1d44f4de582f616da70f55cf7", "msg_id": "", "outputs": [{"name": "stdout", "output_type": "stream", "text": "\nca65 sum.s -l sum.o.lst -o sum.o\r\nld65 -o sum.img -C SOL6502.cfg sum.o \r\nrm sum.o\r\n"}]}}, "8ad8a4fe572645649bdfb40f74b10fb2": {"model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "model_name": "OutputModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_1afbb9ed0df84f908edec397b70292ee", "msg_id": "", "outputs": [{"name": "stdout", "output_type": "stream", "text": "$ od -Ax -t x1  sum.img\n000000 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00\r\n*\r\n00e000 0a 01 02 03 04 05 06 07 08 09 0a 00 00 00 00 00\r\n00e010 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00\r\n*\r\n00f000 a9 00 a2 00 ec 00 e0 f0 07 7d 01 e0 e8 4c 04 f0\r\n00f010 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00\r\n*\r\n010000\r\n$ "}]}}, "cb9a65a1d44f4de582f616da70f55cf7": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": "1px solid black", "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "100%", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": "scroll", "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "e994f633a85b434aadc949ade85d3d64": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": "1px solid black", "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "100%", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": "scroll", "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "f71844ea877e4808922b598dfd964e7a": {"model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "model_name": "OutputModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_e994f633a85b434aadc949ade85d3d64", "msg_id": "", "outputs": [{"name": "stdout", "output_type": "stream", "text": "$ ls /home/jovyan/caches\nMakefile  SOL6502.cfg  sum.s  sum.txt\r\n$ "}]}}}, "version_major": 2, "version_minor": 0}
+</script>
+
 
     <script type="text/x-thebe-config">
     {
