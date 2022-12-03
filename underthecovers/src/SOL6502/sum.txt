@@ -48,7 +48,7 @@ d) else
    e) PC = PC + 2			      
                                               
 ADC ABS :                                                   
-a) Busses : Read Addr = PC + 1 -> Value	      
+a) Buses : Read Addr = PC + 1 -> Value	      
 b) TempAddr Low Byte = Value		      
 c) Buses : Read Addr = PC + 2 -> Value	      
 d) TempAddr High Byte = Value		      
@@ -61,7 +61,7 @@ a) X = X + 1
 b) PC = PC + 1				      
 
 JMP ABS :
-a) Busses : Read Addr = PC + 1 -> Value	      
+a) Buses : Read Addr = PC + 1 -> Value	      
 b) TempAddr Low Byte = Value		      
 c) Buses : Read Addr = PC + 2 -> Value	      
 d) TempAddr High Byte = Value		      

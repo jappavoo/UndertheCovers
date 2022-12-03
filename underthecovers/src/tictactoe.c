@@ -68,7 +68,7 @@ void NYI(const char *func_name)
 void Board_display(void)
 {
   int r, c;
-
+  printf("\n");
   for (r=BOARD_START_ROW; r<BOARD_ROWS; r++) {
     for (c=BOARD_START_COL; c<BOARD_COLS; c++) {
       printf(" %c ", Board[r][c]);
@@ -81,13 +81,22 @@ void Board_display(void)
 
 bool Player_move(int player)
 {
-  int r, c, moveResult;
+  int n, r, c, moveResult;
   bool done;
 
  retry:
   printf("Player %d please enter row,col for your move: ", player);
-  scanf("%d %d", &r, &c);
-
+  n = scanf("%d %d", &r, &c);
+  // deal with scanf failures
+  if (n == EOF) {
+    printf("Ending the Game early... bye.\n");
+    return true;
+  } else if (n != 2) {
+    printf("You must enter two numbers between 0 and 2 inclusively\n");
+    while(getchar()!='\n');  // cleanup line as scanf does not 
+    goto retry;
+  }
+  
   moveResult = Player_validate_move(player, r, c);
 
   switch (moveResult) {
