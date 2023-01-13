@@ -189,8 +189,12 @@ RUN /usr/local/bin/start.sh true; \
 # an opportunity to set things up based on dynamic facts such as user name
 COPY start-notebook.d /usr/local/bin/start-notebook.d
 
+# over ride locale environment variables that have been set before us
+ENV LC_ALL C.UTF-8
+ENV LANG C.UTF-8
+ENV LANGUAGE=
 ENV USER=$NB_USER
 USER $NB_USER
 
 
-
+CMD  ["/bin/bash", "-c", "cd /home/jovyan ; start-notebook.sh"]
