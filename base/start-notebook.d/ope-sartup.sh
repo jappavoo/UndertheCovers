@@ -45,7 +45,7 @@ if [[ -d $MOUNT_DIR ]]; then
 		  # As per the standard jupyter startup scripts we use the following test to
 		  # figure out if we have been started in a jupyterhub env or if we have started
 		  # on openshift 
-		  if [[ -n "${JUPYTERHUB_API_TOKEN}" || || ${JUPYTER_IMAGE} =~ openshift ]]; then
+		  if [[ -n "${JUPYTERHUB_API_TOKEN}" || ${JUPYTER_IMAGE} =~ openshift ]]; then
 		      # during jupyter stacks startup logic "fixes permissions" on home directories
 		      # this causes group permissions to be set.  We undo this with a hammer on .ssh
  		      echo "$SN: Fixing permissions in  $HOME/$DIR"
