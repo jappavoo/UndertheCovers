@@ -12,3 +12,4 @@ jupyterlab-myst
 jupyterlab-spellchecker
 nbconvert
 jupyterquiz
+pyppeteer
