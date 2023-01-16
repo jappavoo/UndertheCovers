@@ -16,6 +16,7 @@ LABEL maintainer="Open Education <opeffort@gmail.com>"
 ARG ADDITIONAL_DISTRO_PACKAGES
 ARG PYTHON_PREREQ_VERSIONS
 ARG PYTHON_INSTALL_PACKAGES
+ARG PIP_INSTALL_PACKAGES
 ARG JUPYTER_ENABLE_EXTENSIONS
 ARG JUPYTER_DISABLE_EXTENSIONS
 ARG GDB_BUILD_SRC
@@ -51,11 +52,14 @@ RUN mamba install --quiet --yes \
     fix-permissions "/home/${NB_USER}"
     
 # Install Python 3 packages
+# Install pip packages (things we could not get via mamba) as well
 RUN mamba install --quiet --yes \
     ${PYTHON_INSTALL_PACKAGES} && \
     mamba clean --all -f -y && \
+    pip install ${PIP_INSTALL_PACKAGES} && \
     fix-permissions "${CONDA_DIR}" && \
     fix-permissions "/home/${NB_USER}"
+
 
 # Import matplotlib the first time to build the font cache.
 ENV XDG_CACHE_HOME="/home/${NB_USER}/.cache/"

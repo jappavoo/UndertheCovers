@@ -48,9 +48,11 @@ BASE_DISTRO_PACKAGES := $(shell cat base/distro_pkgs)
 # use recursive assignment to defer execution until we have mamba versions made
 PYTHON_PREREQ_VERSIONS_STABLE =  $(shell cat base/python_prereqs | base/mkversions)
 PYTHON_INSTALL_PACKAGES_STABLE = $(shell cat base/python_pkgs | base/mkversions)
+PIP_INSTALL_PACKAGES_STABLE = $(shell cat base/pip_pkgs)
 
 PYTHON_PREREQ_VERSIONS_TEST := 
 PYTHON_INSTALL_PACKAGES_TEST := $(shell cat base/python_pkgs)
+PIP_INSTALL_PACKAGES_TEST := $(shell cat base/pip_pkgs)
 
 JUPYTER_ENABLE_EXTENSIONS := $(shell cat base/jupyter_enable_exts)
 JUPYTER_DISABLE_EXTENSIONS := $(shell if  [[ -a base/jupyter_disable_exts  ]]; then cat base/jupyter_disable_exts; fi) 
@@ -79,12 +81,14 @@ ifeq ($(BASE),jupyter)
     PUBLIC_TAG := $(PUBLIC_STABLE_TAG)
     PYTHON_PREREQ_VERSIONS = $(PYTHON_PREREQ_VERSIONS_STABLE)
     PYTHON_INSTALL_PACKAGES = $(PYTHON_INSTALL_PACKAGES_STABLE)
+    PIP_INSTALL_PACKAGES = $(PIP_INSTALL_PACKAGES_STABLE)
   else
     BASE_TAG := $(BASE_TEST_TAG)
     PRIVATE_TAG := $(PRIVATE_TEST_TAG)
     PUBLIC_TAG := $(PUBLIC_TEST_TAG)
     PYTHON_PREREQ_VERSIONS = $(PYTHON_PREREQ_VERSIONS_TEST)
     PYTHON_INSTALL_PACKAGES = $(PYTHON_INSTALL_PACKAGES_TEST)
+    PIP_INSTALL_PACKAGES = $(PIP_INSTALL_PACKAGES_TEST)
   endif
 else
   BASE_IMAGE := gradescope/auto-builds
@@ -134,6 +138,7 @@ build: DARGS ?= --build-arg FROM_REG=$(BASE_REG) \
                    --build-arg ADDITIONAL_DISTRO_PACKAGES="$(BASE_DISTRO_PACKAGES)" \
                    --build-arg PYTHON_PREREQ_VERSIONS="$(PYTHON_PREREQ_VERSIONS)" \
                    --build-arg PYTHON_INSTALL_PACKAGES="$(PYTHON_INSTALL_PACKAGES)" \
+                   --build-arg PIP_INSTALL_PACKAGES="$(PIP_INSTALL_PACKAGES)" \
                    --build-arg JUPYTER_ENABLE_EXTENSIONS="$(JUPYTER_ENABLE_EXTENSIONS)" \
                    --build-arg JUPYTER_DISABLE_EXTENSIONS="$(JUPYTER_DISABLE_EXTENSIONS)" \
                    --build-arg GDB_BUILD_SRC=$(GDB_BUILD_SRC) \
