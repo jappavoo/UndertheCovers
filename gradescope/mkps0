@@ -1,0 +1,11 @@
+#!/bin/bash
+set -x
+
+PS=ps0b
+SEM=s23
+ZIP=${SEM}-${PS}autograder.zip
+NAME=cs210-${SEM}-${PS}
+
+scp bu:tmp/autograder.zip ${ZIP}
+./bin/mkgs $NAME $(pwd)/$ZIP
+echo "run ./bin/pushgs $NAME:<tag>"

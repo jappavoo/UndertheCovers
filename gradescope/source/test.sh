@@ -27,6 +27,9 @@ submission="$subdir/hello"
 
 if [[ -n $rundir && -d $rundir ]]; then
     [[ -n $subdir && -d $subdir ]] && cp $submission $rundir
+    echo "$submission " | while read file; do
+	chmod +x $rundir/${file##*/}
+    done
     cd $rundir
 fi
 
