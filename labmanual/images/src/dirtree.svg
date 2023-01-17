@@ -1,0 +1,631 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="2338.1589"
+   height="2818.4868"
+   viewBox="0 0 618.6378 745.72462"
+   version="1.1"
+   id="svg120"
+   sodipodi:docname="dirtree.svg"
+   inkscape:export-filename="/Users/jonathan/UndertheCovers/underthecovers/images/dirtree.png"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96"
+   inkscape:version="1.1 (c4e8f9e, 2021-05-24)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview2410"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="1"
+     inkscape:pagecheckerboard="false"
+     showgrid="false"
+     inkscape:zoom="0.22175019"
+     inkscape:cx="647.12459"
+     inkscape:cy="1409.2434"
+     inkscape:window-width="1296"
+     inkscape:window-height="847"
+     inkscape:window-x="144"
+     inkscape:window-y="25"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="g19791-6-6" />
+  <defs
+     id="defs117">
+    <marker
+       style="overflow:visible"
+       id="TriangleOutL"
+       refX="0"
+       refY="0"
+       orient="auto">
+      <path
+         transform="scale(0.8)"
+         style="fill:context-stroke;fill-rule:evenodd;stroke:context-stroke;stroke-width:1pt"
+         d="M 5.77,0 -2.88,5 V -5 Z"
+         id="path20466" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="Arrow2Lend"
+       refX="0"
+       refY="0"
+       orient="auto">
+      <path
+         transform="matrix(-1.1,0,0,-1.1,-1.1,0)"
+         d="M 8.7185878,4.0337352 -2.2072895,0.01601326 8.7185884,-4.0017078 c -1.7454984,2.3720609 -1.7354408,5.6174519 -6e-7,8.035443 z"
+         style="fill:context-stroke;fill-rule:evenodd;stroke-width:0.625;stroke-linejoin:round"
+         id="path20345" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="TriangleOutL-1"
+       refX="0"
+       refY="0"
+       orient="auto">
+      <path
+         transform="scale(0.8)"
+         style="fill:context-stroke;fill-rule:evenodd;stroke:context-stroke;stroke-width:1pt"
+         d="M 5.77,0 -2.88,5 V -5 Z"
+         id="path20466-1" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="TriangleOutL-1-0"
+       refX="0"
+       refY="0"
+       orient="auto">
+      <path
+         transform="scale(0.8)"
+         style="fill:context-stroke;fill-rule:evenodd;stroke:context-stroke;stroke-width:1pt"
+         d="M 5.77,0 -2.88,5 V -5 Z"
+         id="path20466-1-8" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="TriangleOutL-7"
+       refX="0"
+       refY="0"
+       orient="auto">
+      <path
+         transform="scale(0.8)"
+         style="fill:context-stroke;fill-rule:evenodd;stroke:context-stroke;stroke-width:1pt"
+         d="M 5.77,0 -2.88,5 V -5 Z"
+         id="path20466-7" />
+    </marker>
+  </defs>
+  <g
+     id="layer1"
+     transform="translate(366.31478,-10.568011)">
+    <g
+       id="g31983-3-9-6"
+       transform="translate(28.851214,-114.33538)">
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.46667px;line-height:1.25;font-family:Orbitron;-inkscape-font-specification:'Orbitron, @wght=900';font-variant-ligatures:none;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;font-variation-settings:'wght' 900;white-space:pre;shape-inside:url(#path54704-9);stroke-width:0.264583"
+         x="140.44621"
+         y="-56.786404"
+         id="text50576-1"
+         transform="translate(7.8353863,27.867449)"><tspan
+           x="144.60703"
+           y="133.65972"
+           id="tspan1576">/</tspan></text>
+      <ellipse
+         style="font-variation-settings:'wght' 900;fill:none;stroke:#000000;stroke-width:1.743;stroke-miterlimit:10;stroke-dasharray:none"
+         id="path54704-9"
+         cx="154.67761"
+         cy="158.47917"
+         rx="40.545074"
+         ry="32.704281" />
+    </g>
+    <g
+       id="g31983-3-9-6-6"
+       transform="translate(30.026762,-11.341506)">
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.46667px;line-height:1.25;font-family:Orbitron;-inkscape-font-specification:'Orbitron, @wght=900';font-variant-ligatures:none;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;font-variation-settings:'wght' 900;white-space:pre;shape-inside:url(#path54704-9-7);stroke-width:0.264583"
+         x="140.44621"
+         y="-56.786404"
+         id="text50576-1-1"
+         transform="translate(18.330027,17.495772)"><tspan
+           x="123.68217"
+           y="144.24307"
+           id="tspan1578">home</tspan></text>
+      <ellipse
+         style="font-variation-settings:'wght' 900;fill:none;stroke:#000000;stroke-width:1.743;stroke-miterlimit:10;stroke-dasharray:none"
+         id="path54704-9-7"
+         cx="154.67761"
+         cy="158.47917"
+         rx="40.545074"
+         ry="32.704281" />
+    </g>
+    <g
+       id="g31983-3-9-6-6-2"
+       transform="translate(-163.03097,82.197176)">
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.46667px;line-height:1.25;font-family:Orbitron;-inkscape-font-specification:'Orbitron, @wght=900';font-variant-ligatures:none;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;font-variation-settings:'wght' 900;white-space:pre;shape-inside:url(#path54704-9-7-7);stroke-width:0.264583"
+         x="140.44621"
+         y="-56.786404"
+         id="text50576-1-1-3"
+         transform="translate(11.664641,16.615239)"><tspan
+           x="123.68217"
+           y="144.24307"
+           id="tspan1580">jonathan</tspan></text>
+      <ellipse
+         style="font-variation-settings:'wght' 900;fill:none;stroke:#000000;stroke-width:1.743;stroke-miterlimit:10;stroke-dasharray:none"
+         id="path54704-9-7-7"
+         cx="154.67761"
+         cy="158.47917"
+         rx="40.545074"
+         ry="32.704281" />
+    </g>
+    <g
+       id="g31983-3-9-6-6-2-7"
+       transform="translate(-53.734969,182.4296)">
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.46667px;line-height:1.25;font-family:Orbitron;-inkscape-font-specification:'Orbitron, @wght=900';font-variant-ligatures:none;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;font-variation-settings:'wght' 900;white-space:pre;shape-inside:url(#path54704-9-7-7-3);stroke-width:0.264583"
+         x="140.44621"
+         y="-56.786404"
+         id="text50576-1-1-3-0"
+         transform="translate(11.664641,16.615239)"><tspan
+           x="123.68217"
+           y="144.24307"
+           id="tspan1582">Classes</tspan></text>
+      <ellipse
+         style="font-variation-settings:'wght' 900;fill:none;stroke:#000000;stroke-width:1.743;stroke-miterlimit:10;stroke-dasharray:none"
+         id="path54704-9-7-7-3"
+         cx="154.67761"
+         cy="158.47917"
+         rx="40.545074"
+         ry="32.704281" />
+    </g>
+    <g
+       id="g31983-3-9-6-6-2-7-2"
+       transform="translate(-355.69624,182.4296)">
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.46667px;line-height:1.25;font-family:Orbitron;-inkscape-font-specification:'Orbitron, @wght=900';font-variant-ligatures:none;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;font-variation-settings:'wght' 900;white-space:pre;shape-inside:url(#path54704-9-7-7-3-6);stroke-width:0.264583"
+         x="140.44621"
+         y="-56.786404"
+         id="text50576-1-1-3-0-5"
+         transform="translate(14.709136,16.539039)"><tspan
+           x="123.68217"
+           y="144.24307"
+           id="tspan1584">Poetry</tspan></text>
+      <ellipse
+         style="font-variation-settings:'wght' 900;fill:none;stroke:#000000;stroke-width:1.743;stroke-miterlimit:10;stroke-dasharray:none"
+         id="path54704-9-7-7-3-6"
+         cx="154.67761"
+         cy="158.47917"
+         rx="40.545074"
+         ry="32.704281" />
+    </g>
+    <g
+       id="g31983-3-9-6-6-2-7-2-7"
+       transform="translate(-477.95318,279.23995)">
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.46667px;line-height:1.25;font-family:Orbitron;-inkscape-font-specification:'Orbitron, @wght=900';font-variant-ligatures:none;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;font-variation-settings:'wght' 900;white-space:pre;shape-inside:url(#path54704-9-7-7-3-6-8);stroke-width:0.264583"
+         x="140.44621"
+         y="-56.786404"
+         id="text50576-1-1-3-0-5-6"
+         transform="translate(14.709136,16.539039)"><tspan
+           x="123.68217"
+           y="144.24307"
+           id="tspan1586">Vogon</tspan></text>
+      <ellipse
+         style="font-variation-settings:'wght' 900;fill:none;stroke:#000000;stroke-width:1.743;stroke-miterlimit:10;stroke-dasharray:none"
+         id="path54704-9-7-7-3-6-8"
+         cx="154.67761"
+         cy="158.47917"
+         rx="40.545074"
+         ry="32.704281" />
+    </g>
+    <g
+       id="g31983-3-9-6-6-2-7-8"
+       transform="translate(-134.99417,279.69609)">
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.46667px;line-height:1.25;font-family:Orbitron;-inkscape-font-specification:'Orbitron, @wght=900';font-variant-ligatures:none;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;font-variation-settings:'wght' 900;white-space:pre;shape-inside:url(#path54704-9-7-7-3-8);stroke-width:0.264583"
+         x="140.44621"
+         y="-56.786404"
+         id="text50576-1-1-3-0-4"
+         transform="translate(3.0759933,27.867449)"><tspan
+           x="144.60703"
+           y="133.65972"
+           id="tspan1588">CS</tspan></text>
+      <ellipse
+         style="font-variation-settings:'wght' 900;fill:none;stroke:#000000;stroke-width:1.743;stroke-miterlimit:10;stroke-dasharray:none"
+         id="path54704-9-7-7-3-8"
+         cx="154.67761"
+         cy="158.47917"
+         rx="40.545074"
+         ry="32.704281" />
+    </g>
+    <g
+       id="g31983-3-9-6-6-2-7-8-0"
+       transform="translate(-45.656569,279.69609)">
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.46667px;line-height:1.25;font-family:Orbitron;-inkscape-font-specification:'Orbitron, @wght=900';font-variant-ligatures:none;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;font-variation-settings:'wght' 900;white-space:pre;shape-inside:url(#path54704-9-7-7-3-8-6);stroke-width:0.264583"
+         x="140.44621"
+         y="-56.786404"
+         id="text50576-1-1-3-0-4-4"
+         transform="translate(11.664641,16.615239)"><tspan
+           x="123.68217"
+           y="144.24307"
+           id="tspan1590">Physics</tspan></text>
+      <ellipse
+         style="font-variation-settings:'wght' 900;fill:none;stroke:#000000;stroke-width:1.743;stroke-miterlimit:10;stroke-dasharray:none"
+         id="path54704-9-7-7-3-8-6"
+         cx="154.67761"
+         cy="158.47917"
+         rx="40.545074"
+         ry="32.704281" />
+    </g>
+    <g
+       id="g31983-3-9-6-6-2-7-8-0-2"
+       transform="translate(45.581831,279.69609)">
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.46667px;line-height:1.25;font-family:Orbitron;-inkscape-font-specification:'Orbitron, @wght=900';font-variant-ligatures:none;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;font-variation-settings:'wght' 900;white-space:pre;shape-inside:url(#path54704-9-7-7-3-8-6-6);stroke-width:0.264583"
+         x="140.44621"
+         y="-56.786404"
+         id="text50576-1-1-3-0-4-4-6"
+         transform="translate(3.3733894,16.530572)"><tspan
+           x="123.68217"
+           y="144.24307"
+           id="tspan1592">Psychology</tspan></text>
+      <ellipse
+         style="font-variation-settings:'wght' 900;fill:none;stroke:#000000;stroke-width:1.743;stroke-miterlimit:10;stroke-dasharray:none"
+         id="path54704-9-7-7-3-8-6-6"
+         cx="154.67761"
+         cy="158.47917"
+         rx="40.545074"
+         ry="32.704281" />
+    </g>
+    <g
+       id="g31983-3-9-6-6-2-7-8-5"
+       transform="translate(-223.85657,378.83476)">
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.46667px;line-height:1.25;font-family:Orbitron;-inkscape-font-specification:'Orbitron, @wght=900';font-variant-ligatures:none;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;font-variation-settings:'wght' 900;white-space:pre;shape-inside:url(#path54704-9-7-7-3-8-2);stroke-width:0.264583"
+         x="140.44621"
+         y="-56.786404"
+         id="text50576-1-1-3-0-4-6"
+         transform="translate(5.1080602,27.867449)"><tspan
+           x="144.60703"
+           y="133.65972"
+           id="tspan1594">111</tspan></text>
+      <ellipse
+         style="font-variation-settings:'wght' 900;fill:none;stroke:#000000;stroke-width:1.743;stroke-miterlimit:10;stroke-dasharray:none"
+         id="path54704-9-7-7-3-8-2"
+         cx="154.67761"
+         cy="158.47917"
+         rx="40.545074"
+         ry="32.704281" />
+    </g>
+    <g
+       id="g31983-3-9-6-6-2-7-8-0-8"
+       transform="translate(-134.51897,378.83476)">
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.46667px;line-height:1.25;font-family:Orbitron;-inkscape-font-specification:'Orbitron, @wght=900';font-variant-ligatures:none;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;font-variation-settings:'wght' 900;white-space:pre;shape-inside:url(#path54704-9-7-7-3-8-6-9);stroke-width:0.264583"
+         x="140.44621"
+         y="-56.786404"
+         id="text50576-1-1-3-0-4-4-5"
+         transform="translate(3.5247929,27.867449)"><tspan
+           x="144.60703"
+           y="133.65972"
+           id="tspan1596">112</tspan></text>
+      <ellipse
+         style="font-variation-settings:'wght' 900;fill:none;stroke:#000000;stroke-width:1.743;stroke-miterlimit:10;stroke-dasharray:none"
+         id="path54704-9-7-7-3-8-6-9"
+         cx="154.67761"
+         cy="158.47917"
+         rx="40.545074"
+         ry="32.704281" />
+    </g>
+    <g
+       id="g1221"
+       transform="translate(3.5266426,16.019553)">
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.46667px;line-height:1.25;font-family:Orbitron;-inkscape-font-specification:'Orbitron, @wght=900';font-variant-ligatures:none;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;font-variation-settings:'wght' 900;white-space:pre;shape-inside:url(#path54704-9-7-7-3-8-6-6-9);stroke-width:0.264583"
+         x="140.44621"
+         y="-56.786404"
+         id="text50576-1-1-3-0-4-4-6-3"
+         transform="translate(1.427374,27.86745)"><tspan
+           x="97.800392"
+           y="496.47418"
+           id="tspan1598">210</tspan></text>
+      <ellipse
+         style="font-variation-settings:'wght' 900;fill:none;stroke:#000000;stroke-width:1.743;stroke-miterlimit:10;stroke-dasharray:none"
+         id="path54704-9-7-7-3-8-6-6-9"
+         cx="107.8704"
+         cy="521.29437"
+         rx="40.545074"
+         ry="32.704281" />
+    </g>
+    <g
+       id="g31983-3-9-6-6-2-7-8-8"
+       transform="translate(-131.76577,483.28078)">
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.46667px;line-height:1.25;font-family:Orbitron;-inkscape-font-specification:'Orbitron, @wght=900';font-variant-ligatures:none;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;font-variation-settings:'wght' 900;white-space:pre;shape-inside:url(#path54704-9-7-7-3-8-5);stroke-width:0.264583"
+         x="140.44621"
+         y="-56.786404"
+         id="text50576-1-1-3-0-4-62"
+         transform="translate(-0.17063916,16.526339)"><tspan
+           x="123.68217"
+           y="144.24307"
+           id="tspan1600">Assignment 1</tspan></text>
+      <ellipse
+         style="font-variation-settings:'wght' 900;fill:none;stroke:#000000;stroke-width:1.743;stroke-miterlimit:10;stroke-dasharray:none"
+         id="path54704-9-7-7-3-8-5"
+         cx="154.67761"
+         cy="158.47917"
+         rx="40.545074"
+         ry="32.704281" />
+    </g>
+    <g
+       id="g31983-3-9-6-6-2-7-8-8-2"
+       transform="translate(-42.90337,481.37998)">
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.46667px;line-height:1.25;font-family:Orbitron;-inkscape-font-specification:'Orbitron, @wght=900';font-variant-ligatures:none;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;font-variation-settings:'wght' 900;white-space:pre;shape-inside:url(#path54704-9-7-7-3-8-5-8);stroke-width:0.264583"
+         x="140.44621"
+         y="-56.786404"
+         id="text50576-1-1-3-0-4-62-6"
+         transform="translate(-0.17063916,16.526339)"><tspan
+           x="124.25238"
+           y="144.2665"
+           id="tspan1602">Assignment 2</tspan></text>
+      <ellipse
+         style="font-variation-settings:'wght' 900;fill:none;stroke:#000000;stroke-width:1.79216;stroke-miterlimit:10;stroke-dasharray:none"
+         id="path54704-9-7-7-3-8-5-8"
+         cx="157.05362"
+         cy="158.47917"
+         rx="42.896496"
+         ry="32.679703" />
+    </g>
+    <g
+       id="g31983-3-9-6-6-2-7-8-8-2-0"
+       transform="translate(52.508872,480.59593)">
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.46667px;line-height:1.25;font-family:Orbitron;-inkscape-font-specification:'Orbitron, @wght=900';font-variant-ligatures:none;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;font-variation-settings:'wght' 900;white-space:pre;shape-inside:url(#path54704-9-7-7-3-8-5-8-3);stroke-width:0.264583"
+         x="140.44621"
+         y="-56.786404"
+         id="text50576-1-1-3-0-4-62-6-9"
+         transform="translate(-0.17063916,16.526339)"><tspan
+           x="124.25238"
+           y="144.2665"
+           id="tspan1604">Assignment 3</tspan></text>
+      <ellipse
+         style="font-variation-settings:'wght' 900;fill:none;stroke:#000000;stroke-width:1.792;stroke-miterlimit:10;stroke-dasharray:none"
+         id="path54704-9-7-7-3-8-5-8-3"
+         cx="157.05362"
+         cy="158.47917"
+         rx="42.896496"
+         ry="32.679703" />
+    </g>
+    <g
+       id="g19791"
+       transform="translate(1.0526416,27.152557)">
+      <rect
+         style="font-variation-settings:'wght' 900;fill:none;stroke:#000000;stroke-width:1.792;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         id="rect1300"
+         width="75.063545"
+         height="43.370049"
+         x="-16.957079"
+         y="684.87402" />
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.5833px;line-height:1.25;font-family:Orbitron;-inkscape-font-specification:'Orbitron, @wght=900';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;font-variation-settings:'wght' 900;white-space:pre;shape-inside:url(#rect1300);fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+         x="-123.89378"
+         y="271.13489"
+         id="text12202"
+         transform="translate(-0.29309683,15.910009)"><tspan
+           x="-8.012116"
+           y="694.73038"
+           id="tspan1608"><tspan
+             style="text-align:center;text-anchor:middle"
+             id="tspan1606">Problem 1</tspan></tspan></text>
+    </g>
+    <g
+       id="g19791-6"
+       transform="translate(-347.37691,-158.25036)">
+      <rect
+         style="font-variation-settings:'wght' 900;fill:none;stroke:#000000;stroke-width:1.792;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         id="rect1300-7"
+         width="75.063545"
+         height="43.370049"
+         x="-12.723748"
+         y="673.74103" />
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.5833px;line-height:1.25;font-family:Orbitron;-inkscape-font-specification:'Orbitron, @wght=900';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;font-variation-settings:'wght' 900;white-space:pre;shape-inside:url(#rect1300-7);fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+         x="-123.89378"
+         y="271.13489"
+         id="text12202-1"
+         transform="translate(4.7070425,15.908528)"><tspan
+           x="-12.724609"
+           y="683.59562"
+           id="tspan1610">Ohfreddled</tspan></text>
+    </g>
+    <g
+       id="g19791-6-6"
+       transform="translate(-248.04314,-265.90106)">
+      <rect
+         style="font-variation-settings:'wght' 900;fill:none;stroke:#000000;stroke-width:2.05245;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         id="rect1300-7-5"
+         width="101.84069"
+         height="41.934052"
+         x="-26.231236"
+         y="682.6532" />
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.5833px;line-height:1.25;font-family:Orbitron;-inkscape-font-specification:'Orbitron, @wght=900';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;font-variation-settings:'wght' 900;white-space:pre;shape-inside:url(#rect1300-7-5);fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+         x="-123.89378"
+         y="271.13489"
+         id="text12202-1-7"
+         transform="translate(4.7070425,15.908528)"><tspan
+           x="-26.230469"
+           y="692.50773"
+           id="tspan1612">ToBitOrToByte</tspan></text>
+    </g>
+    <g
+       id="g19791-6-6-7"
+       transform="translate(-132.25171,-266.48888)">
+      <rect
+         style="font-variation-settings:'wght' 900;fill:none;stroke:#000000;stroke-width:2.19595;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         id="rect1300-7-5-9"
+         width="116.97931"
+         height="41.790554"
+         x="-26.159487"
+         y="682.72498" />
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.5833px;line-height:1.25;font-family:Orbitron;-inkscape-font-specification:'Orbitron, @wght=900';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;font-variation-settings:'wght' 900;white-space:pre;shape-inside:url(#rect1300-7-5-9);fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+         x="-123.89378"
+         y="271.13489"
+         id="text12202-1-7-5"
+         transform="translate(4.7070425,15.908528)"><tspan
+           x="-26.160156"
+           y="692.57999"
+           id="tspan1614">OdeToASemicolon</tspan></text>
+    </g>
+    <g
+       id="g19791-9"
+       transform="translate(93.330509,25.922021)">
+      <rect
+         style="font-variation-settings:'wght' 900;fill:none;stroke:#000000;stroke-width:1.792;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         id="rect1300-9"
+         width="75.063545"
+         height="43.370049"
+         x="-16.957079"
+         y="684.87402" />
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.5833px;line-height:1.25;font-family:Orbitron;-inkscape-font-specification:'Orbitron, @wght=900';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;font-variation-settings:'wght' 900;white-space:pre;shape-inside:url(#rect1300-9);fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+         x="-123.89378"
+         y="271.13489"
+         id="text12202-9"
+         transform="translate(-0.29309683,15.910009)"><tspan
+           x="-8.012116"
+           y="694.73038"
+           id="tspan1618"><tspan
+             style="text-align:center;text-anchor:middle"
+             id="tspan1616">Problem 1</tspan></tspan></text>
+    </g>
+    <g
+       id="g19791-3"
+       transform="translate(188.54986,24.746473)">
+      <rect
+         style="font-variation-settings:'wght' 900;fill:none;stroke:#000000;stroke-width:1.792;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         id="rect1300-3"
+         width="75.063545"
+         height="43.370049"
+         x="-16.957079"
+         y="684.87402" />
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.5833px;line-height:1.25;font-family:Orbitron;-inkscape-font-specification:'Orbitron, @wght=900';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;font-variation-settings:'wght' 900;white-space:pre;shape-inside:url(#rect1300-3);fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+         x="-123.89378"
+         y="271.13489"
+         id="text12202-7"
+         transform="translate(-0.29309683,15.910009)"><tspan
+           x="-8.012116"
+           y="694.73038"
+           id="tspan1622"><tspan
+             style="text-align:center;text-anchor:middle"
+             id="tspan1620">Problem 1</tspan></tspan></text>
+    </g>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1.78821;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#TriangleOutL)"
+       d="M 183.7507,76.398668 V 104.60748"
+       id="path20322" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1.78821;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#TriangleOutL-1)"
+       d="m 183.80948,179.05971 v 7.25265 l -191.3212714,0.43196 0.4123543,15.5869"
+       id="path20322-5" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1.78821;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#TriangleOutL-1-0)"
+       d="m -10.072598,274.10451 v 7.25265 l -191.321272,0.43196 0.41236,15.5869"
+       id="path20322-5-4" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1.792;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#TriangleOutL)"
+       d="m -202.78279,374.70171 v 10.00848 h -124.27187 v 10.84251"
+       id="path21830" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1.792;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#TriangleOutL-7)"
+       d="m 100.57349,373.57385 v 10.00848 H 23.307641 v 14.55351"
+       id="path21830-5" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1.792;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#TriangleOutL)"
+       d="m -10.072598,281.35716 109.212061,-0.0679 v 18.34886"
+       id="path22025" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1.792;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#TriangleOutL)"
+       d="m -230.24473,385.37916 v 23.503"
+       id="path22596" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1.792;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#TriangleOutL)"
+       d="m -202.78279,384.71019 101.18612,0.66897 v 21.029"
+       id="path22730" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1.792;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#TriangleOutL)"
+       d="m 100.57349,383.58233 98.42095,0.55983 v 16.081"
+       id="path22897" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1.792;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#TriangleOutL)"
+       d="m 109.23249,383.58233 0.69792,14.16684"
+       id="path22899" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1.792;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#TriangleOutL)"
+       d="m 18.392372,469.49518 v 33.39901"
+       id="path23147" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1.792;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#TriangleOutL)"
+       d="m 17.155372,481.86518 91.538018,1.23702 v 12.37001"
+       id="path23149" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1.792;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#TriangleOutL)"
+       d="m 17.155365,481.86516 c -86.590027,1.23704 -86.590027,1.23704 -86.590027,1.23704 v 17.31801"
+       id="path23587" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1.792;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#TriangleOutL)"
+       d="m 114.87839,570.92923 2e-5,28.45102"
+       id="path23702" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1.792;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#TriangleOutL)"
+       d="m 114.87839,584.53623 91.53808,1.237 -2e-5,16.081"
+       id="path23912" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1.792;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#TriangleOutL)"
+       d="m 114.87837,584.53622 c -91.537999,0 -91.537999,0 -91.537999,0 v 17.31801"
+       id="path24232" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1.792;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#TriangleOutL)"
+       d="m 22.103364,674.83727 v 25.97701"
+       id="path24234" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1.792;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#TriangleOutL)"
+       d="m 114.8784,673.60026 v 25.97702"
+       id="path24236" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1.792;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#TriangleOutL)"
+       d="m 210.12744,672.36326 v 28.45102"
+       id="path24238" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1.792;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#TriangleOutL)"
+       d="m -324.25676,470.73219 v 35.87302"
+       id="path24372" />
+  </g>
+</svg>
