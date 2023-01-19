@@ -527,11 +527,16 @@ title="Print to PDF"
      Creating Terminals
     </a>
    </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#closing-terminals">
+     Closing Terminals
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#terminal-environment-lifetime">
-   Terminal Environment “Lifetime”
+  <a class="reference internal nav-link" href="#unix-terminal-environment-lifetime">
+   UNIX Terminal Environment “Lifetime”
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
@@ -619,11 +624,16 @@ title="Print to PDF"
      Creating Terminals
     </a>
    </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#closing-terminals">
+     Closing Terminals
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#terminal-environment-lifetime">
-   Terminal Environment “Lifetime”
+  <a class="reference internal nav-link" href="#unix-terminal-environment-lifetime">
+   UNIX Terminal Environment “Lifetime”
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
@@ -695,19 +705,31 @@ com/notebookController/spawner</a></p></li>
 </ul>
 <section id="bu-server-startup">
 <h3>BU Server startup<a class="headerlink" href="#bu-server-startup" title="Permalink to this headline">#</a></h3>
-<p>Clicking on the above link should take you to the login page displayed below.
-If you are not able to login and you are sure you are in a class that is using the book please contact the
-teaching staff and they will add your BU user to the service.</p>
+<p>Clicking on the above link should take you to the following page:</p>
 <center>
 <img src="images/howto/howto0.png" >
 </center>
+Clicking "Login with OpenShift".  This will take you to the page displayed below.
+<center>
+<img src="images/howto/howto0.1.png">
+</center>
+Click "GoogleBU".  This will take you to the following login page.  
+<center>
+<img src="images/howto/howto0.2.png" >
+</center>
+Enter your BU username and password and then click "Continue".  This may then redirect you to BU's two factor authentication service as shown below
+<center>
+<img src="images/howto/howto0.3.png" >
+</center>
+Select your choice of authentication mechanism.  If you are not able to login try again using an <a href="https://support.google.com/chrome/answer/95464?hl=en&co=GENIE.Platform%3DDesktop">"incognito" browser window"</a>.  If you still cannot login and you are sure you are in a class that is using the book please contact the teaching staff and they will add your BU user to the service.
 </section>
 <section id="booting-your-server">
 <h3>Booting your server<a class="headerlink" href="#booting-your-server" title="Permalink to this headline">#</a></h3>
 <p>After login you should be presented with the following panel.  You will need to:</p>
 <ol class="simple">
-<li><p>Select the right “Notebook Image” (“UCSLS UNIX Environment” or “Under the Covers: The Secret Life of Software”), and then</p></li>
-<li><p>click on the “Start Server” button at the bottom of the page.</p></li>
+<li><p>Select the right “Notebook Image” (“UCSLS UNIX Environment” or “Under the Covers: The Secret Life of Software”),</p></li>
+<li><p>Select “Start server in current tab”, and then</p></li>
+<li><p>click on the “Start Server” button.</p></li>
 </ol>
 <center>
 <img src="images/howto/howto1.png" >
@@ -746,7 +768,11 @@ htmlFig("[[{'src': 'images/howto/howto2.png', 'cellwidth': '33.33%'}, {'src': 'i
             </div>
         </td>
     </tr>
-</table></section>
+</table>
+<p>At this point you may be presented again with the following login page on which you should again select “GoogleBU”.</p>
+<center>
+<img src="images/howto/howto4.1.png" >
+</center></section>
 </section>
 <section id="unix-terminal-environment">
 <h2>UNIX Terminal Environment<a class="headerlink" href="#unix-terminal-environment" title="Permalink to this headline">#</a></h2>
@@ -763,17 +789,26 @@ htmlFig("[[{'src': 'images/howto/howto2.png', 'cellwidth': '33.33%'}, {'src': 'i
 <center>
 <img src="images/howto/howto7.png" >
 </center>
+<p>Using the “File-&gt;New-&gt;Terminal” menu option again lets you create more terminals.  Each terminal will have its own tab as shown below.</p>
+<center>
+<img src="images/howto/howto7.1.png" >
+</center>
 <p>You can create and organize as many terminals as you like.  Dragging the “Terminal” tab title bar around will allow you to adjust the layout.  For example, below we have started three terminals and organized them in two rows – two on the first row and one on the second.</p>
 <center>
 <img src="images/howto/howto8.png" >
-</center></section>
+</center>
 </section>
-<section id="terminal-environment-lifetime">
-<h2>Terminal Environment “Lifetime”<a class="headerlink" href="#terminal-environment-lifetime" title="Permalink to this headline">#</a></h2>
-<p>Your terminal environment is temporary.  It will automatically be destroyed.  This will happen:</p>
+<section id="closing-terminals">
+<h3>Closing Terminals<a class="headerlink" href="#closing-terminals" title="Permalink to this headline">#</a></h3>
+<p>To close a terminal simply click the “x” in the terminal’s tab title bar.</p>
+</section>
+</section>
+<section id="unix-terminal-environment-lifetime">
+<h2>UNIX Terminal Environment “Lifetime”<a class="headerlink" href="#unix-terminal-environment-lifetime" title="Permalink to this headline">#</a></h2>
+<p>Your UNIX terminal environment is temporary.  It will automatically be destroyed.  This will happen:</p>
 <ol class="simple">
 <li><p>After a period of inactivity</p></li>
-<li><p>24 hours after you started it</p></li>
+<li><p>12 hours after you started it</p></li>
 </ol>
 <p>Rather than letting the system destroy your environment arbitrarily it is best for you to shut it down yourself when you are done your work, see below.</p>
 <section id="warning">
@@ -784,7 +819,7 @@ htmlFig("[[{'src': 'images/howto/howto2.png', 'cellwidth': '33.33%'}, {'src': 'i
 </section>
 <section id="shutting-down-your-server">
 <h2>Shutting Down Your Server<a class="headerlink" href="#shutting-down-your-server" title="Permalink to this headline">#</a></h2>
-<p>When you have finished your session of working you should shutdown all your terminals and then your server.  If you do not shutdown the server it will eventually be killed automatically but it is best you manually shut it down.  Do this by selecting the “Hub Control” feature from the “File” menu as illustrated below</p>
+<p><strong>When you have finished your session of working it is important that you shutdown your server.</strong>  To shutdown the server select the “Hub Control” feature from the “File” menu as illustrated below</p>
 <center>
 <img src="images/howto/howto10.png" >
 </center>
@@ -794,14 +829,14 @@ htmlFig("[[{'src': 'images/howto/howto2.png', 'cellwidth': '33.33%'}, {'src': 'i
 <center>
 <img src="images/howto/howto11.png" >
 </center>
+<p>This may present you with a confirmation panel.  Click “Stop server” to confirm.</p>
+<center>
+<img src="images/howto/howto11.1.png" >
+</center>
 </section>
 <section id="shutdown">
 <h3>Shutdown<a class="headerlink" href="#shutdown" title="Permalink to this headline">#</a></h3>
-<p>Selecting “Shutdown” will terminate your server.  <b>ALL PROCESSES WILL BE KILLED AND ALL FILES DELETED</b></p>
-<center>
-<img src="images/howto/howto12.png" >
-</center>
-<p>At this point the browser tab or window that you used for your Jupyter Lab session will no longer be valid, see below, and you can close it.</p>
+<p>At this point the browser tab or window that you used for your work session will no longer be valid, see below, and you can safely close it.</p>
 <center>
 <img src="images/howto/howto13.png" >
 </center></section>
