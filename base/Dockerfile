@@ -204,7 +204,7 @@ ENV USER=$NB_USER
 # so we are changing the group ownership of /var/games/moria/scores.dat
 # to users which allows jovyan to write to it .. not ideal but a
 # fix
-chgrp users /var/games/moria/scores.dat
+RUN chgrp users /var/games/moria/scores.dat
 
 USER $NB_USER
 
