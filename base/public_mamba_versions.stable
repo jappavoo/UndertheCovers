@@ -27,6 +27,7 @@ brotlipy                  0.7.0           py310h5764c6d_1004    conda-forge
 bzip2                     1.0.8                h7f98852_4    conda-forge
 c-ares                    1.18.1               h7f98852_0    conda-forge
 ca-certificates           2022.12.7            ha878542_0    conda-forge
+cairo                     1.16.0            ha61ee94_1014    conda-forge
 certifi                   2022.12.7          pyhd8ed1ab_0    conda-forge
 certipy                   0.1.3                      py_0    conda-forge
 cffi                      1.15.1          py310h255011f_0    conda-forge
@@ -68,10 +69,12 @@ gitdb                     4.0.10             pyhd8ed1ab_0    conda-forge
 gitpython                 3.1.30             pyhd8ed1ab_0    conda-forge
 glib                      2.74.1               h6239696_1    conda-forge
 glib-tools                2.74.1               h6239696_1    conda-forge
+graphite2                 1.3.13            h58526e2_1001    conda-forge
 greenlet                  1.1.2           py310hd8f1fbe_2    conda-forge
 gst-plugins-base          1.21.3               h4243ec0_1    conda-forge
 gstreamer                 1.21.3               h25f0c4b_1    conda-forge
 gstreamer-orc             0.4.33               h166bdaf_0    conda-forge
+harfbuzz                  6.0.0                h8e241bc_0    conda-forge
 icu                       70.1                 h27087fc_0    conda-forge
 idna                      3.3                pyhd8ed1ab_0    conda-forge
 imagesize                 1.4.1              pyhd8ed1ab_0    conda-forge
@@ -195,8 +198,8 @@ mdit-py-plugins           0.2.8              pyhd8ed1ab_0    conda-forge
 mistune                   0.8.4           py310h6acc77f_1005    conda-forge
 mpg123                    1.31.2               hcb278e6_0    conda-forge
 munkres                   1.1.4              pyh9f0ad1d_0    conda-forge
-mysql-common              8.0.31               h26416b9_0    conda-forge
-mysql-libs                8.0.31               hbc51c84_0    conda-forge
+mysql-common              8.0.32               ha901b37_0    conda-forge
+mysql-libs                8.0.32               hd7da12d_0    conda-forge
 myst-nb                   0.13.2             pyhd8ed1ab_0    conda-forge
 myst-parser               0.15.2             pyhd8ed1ab_0    conda-forge
 nbclassic                 0.3.7              pyhd8ed1ab_0    conda-forge
@@ -229,6 +232,7 @@ pexpect                   4.8.0              pyh9f0ad1d_2    conda-forge
 pickleshare               0.7.5                   py_1003    conda-forge
 pillow                    9.4.0           py310h4927cde_0    conda-forge
 pip                       22.1.2             pyhd8ed1ab_0    conda-forge
+pixman                    0.40.0               h36c2ea0_0    conda-forge
 ply                       3.11                       py_1    conda-forge
 prometheus_client         0.14.1             pyhd8ed1ab_0    conda-forge
 prompt-toolkit            3.0.30             pyha770c72_0    conda-forge
@@ -263,7 +267,7 @@ python_abi                3.10                    2_cp310    conda-forge
 pytz                      2022.1             pyhd8ed1ab_0    conda-forge
 pyyaml                    6.0             py310h5764c6d_5    conda-forge
 pyzmq                     23.2.0          py310h330234f_0    conda-forge
-qt-main                   5.15.6               hf6cd601_5    conda-forge
+qt-main                   5.15.6               h602db52_6    conda-forge
 readline                  8.1.2                h0f457ee_0    conda-forge
 reproc                    14.2.3               h7f98852_0    conda-forge
 reproc-cpp                14.2.3               h9c3ff4c_0    conda-forge
@@ -325,8 +329,17 @@ xcb-util-image            0.4.0                h166bdaf_0    conda-forge
 xcb-util-keysyms          0.4.0                h166bdaf_0    conda-forge
 xcb-util-renderutil       0.3.9                h166bdaf_0    conda-forge
 xcb-util-wm               0.4.1                h166bdaf_0    conda-forge
+xorg-kbproto              1.0.7             h7f98852_1002    conda-forge
+xorg-libice               1.0.10               h7f98852_0    conda-forge
+xorg-libsm                1.2.3             hd9c2040_1000    conda-forge
+xorg-libx11               1.7.2                h7f98852_0    conda-forge
 xorg-libxau               1.0.9                h7f98852_0    conda-forge
 xorg-libxdmcp             1.1.3                h7f98852_0    conda-forge
+xorg-libxext              1.3.4                h7f98852_1    conda-forge
+xorg-libxrender           0.9.10            h7f98852_1003    conda-forge
+xorg-renderproto          0.11.1            h7f98852_1002    conda-forge
+xorg-xextproto            7.3.0             h7f98852_1002    conda-forge
+xorg-xproto               7.0.31            h7f98852_1007    conda-forge
 xz                        5.2.6                h166bdaf_0    conda-forge
 yaml                      0.2.5                h7f98852_2    conda-forge
 yaml-cpp                  0.7.0                h27087fc_1    conda-forge
