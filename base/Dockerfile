@@ -198,6 +198,14 @@ ENV LC_ALL C.UTF-8
 ENV LANG C.UTF-8
 ENV LANGUAGE=
 ENV USER=$NB_USER
+
+# current rhods openshift does not honor set group execution bit
+# as such /usr/games/moria cannot write to /var/games/moria/scores.dat
+# so we are changing the group ownership of /var/games/moria/scores.dat
+# to users which allows jovyan to write to it .. not ideal but a
+# fix
+chgrp users /var/games/moria/scores.dat
+
 USER $NB_USER
 
 
