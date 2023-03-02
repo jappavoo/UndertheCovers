@@ -4,7 +4,7 @@
 	.intel_syntax noprefix   # assembler syntax to use <directive>
 	                         # set assembly language format to intel  
 
-	.text                    # linker section <directive>
+	.section .text           # linker section <directive>
 	                         # let the linker know that what follows are cpu instructions to
 	                         # to be executed -- uposed to values that represent data.
 	                         # For historical reasons cpu instructions are called "text"
@@ -20,7 +20,7 @@ _start:                          # introduce a symbolic (human readable) label f
 	                         # In our program or in the debugger we can use this name to
 	                         # to refer to this location -- address.  And thus the values
 	                         # that end up here.
-#	.byte 0xF3, 0x48, 0x0F, 0xB8, 0xD8  # popcnt rax,rbx	
+#	.byte 0xF3, 0x48, 0x0F, 0xB8, 0xC3  # popcnt rax,rbx	
 	popcnt rax, rbx          # ok the single intel opcode (instruction) that makes up
 	                         # our program
 /*
