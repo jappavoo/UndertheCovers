@@ -60,7 +60,7 @@ disas _start
 set {unsigned char}(_start+1} = 0x48
 set {unsigned char}(_start+2) = 0x0F
 set {unsigned char}(_start+3) = 0xB8
-set {unsigned char}(_start+4) = 0xD8
+set {unsigned char}(_start+4) = 0xC3
 x/5xb _start
 x/5tb _start
 x/5db _start
