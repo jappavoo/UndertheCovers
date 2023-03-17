@@ -486,18 +486,43 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#editor-terminal-to-run-our-editor">
-   16.1. EDITOR : Terminal to run our editor
+  <a class="reference internal nav-link" href="#setup">
+   16.1. Setup
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#building-terminal-to-run-our-build-commands">
-   16.2. Building: Terminal to run our build commands
+  <a class="reference internal nav-link" href="#writing-the-source-code">
+   16.2. Writing the Source Code
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#debugger-terminal-to-run-our-debugger-actually-it-is-much-more-than-just-a-debugger">
-   16.3. Debugger: Terminal to run our debugger – actually it is much more than just a debugger
+  <a class="reference internal nav-link" href="#assembling-translating-the-source-code-an-object-file">
+   16.3. Assembling - Translating the Source Code an Object File
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#linking-translating-the-object-file-into-an-executable">
+   16.4. Linking - Translating the Object file into an Executable
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#running-with-gdb">
+   16.5. Running with GDB
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#running-with-out-gdb">
+   16.6. Running with out GDB
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#automate-assembling-and-linking-with-make">
+   16.7. Automate assembling and linking with Make
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#fixing-our-code-to-exit-nicely">
+   16.8. Fixing our code to exit “nicely”
   </a>
  </li>
 </ul>
@@ -520,18 +545,43 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#editor-terminal-to-run-our-editor">
-   16.1. EDITOR : Terminal to run our editor
+  <a class="reference internal nav-link" href="#setup">
+   16.1. Setup
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#building-terminal-to-run-our-build-commands">
-   16.2. Building: Terminal to run our build commands
+  <a class="reference internal nav-link" href="#writing-the-source-code">
+   16.2. Writing the Source Code
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#debugger-terminal-to-run-our-debugger-actually-it-is-much-more-than-just-a-debugger">
-   16.3. Debugger: Terminal to run our debugger – actually it is much more than just a debugger
+  <a class="reference internal nav-link" href="#assembling-translating-the-source-code-an-object-file">
+   16.3. Assembling - Translating the Source Code an Object File
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#linking-translating-the-object-file-into-an-executable">
+   16.4. Linking - Translating the Object file into an Executable
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#running-with-gdb">
+   16.5. Running with GDB
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#running-with-out-gdb">
+   16.6. Running with out GDB
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#automate-assembling-and-linking-with-make">
+   16.7. Automate assembling and linking with Make
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#fixing-our-code-to-exit-nicely">
+   16.8. Fixing our code to exit “nicely”
   </a>
  </li>
 </ul>
@@ -544,144 +594,34 @@ title="Print to PDF"
                 
               <div>
                 
-  <div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
-<span class="kn">from</span> <span class="nn">notebook.notebookapp</span> <span class="kn">import</span> <span class="n">list_running_servers</span>
-<span class="c1"># get server info so that we can make api calls </span>
-<span class="n">servers</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="n">list_running_servers</span><span class="p">())</span>
-
-<span class="n">info</span><span class="o">=</span><span class="nb">next</span><span class="p">(</span><span class="n">list_running_servers</span><span class="p">())</span>
-<span class="n">base_url</span><span class="o">=</span><span class="n">info</span><span class="p">[</span><span class="s1">&#39;url&#39;</span><span class="p">]</span>
-<span class="n">api_url</span><span class="o">=</span><span class="n">base_url</span> <span class="o">+</span> <span class="s1">&#39;api/terminals&#39;</span>
-<span class="n">api_token</span><span class="o">=</span><span class="n">info</span><span class="p">[</span><span class="s1">&#39;token&#39;</span><span class="p">]</span>
-
-<span class="c1"># get list of current terminals so that we can reuse this if enough exist </span>
-<span class="c1"># otherwise we will create new ones as needed</span>
-<span class="n">r</span><span class="o">=</span><span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">api_url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Authorization&#39;</span><span class="p">:</span> <span class="s1">&#39;token &#39;</span> <span class="o">+</span> <span class="n">api_token</span><span class="p">})</span>
-<span class="n">TERMINALS</span><span class="o">=</span><span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
-
-<span class="k">try</span><span class="p">:</span>
-    <span class="n">EDITORTERM</span><span class="o">=</span><span class="n">TERMINALS</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;name&#39;</span><span class="p">]</span>
-<span class="k">except</span> <span class="ne">IndexError</span><span class="p">:</span>
-    <span class="c1"># create a terminal for our editor</span>
-    <span class="n">r</span><span class="o">=</span><span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">api_url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Authorization&#39;</span><span class="p">:</span> <span class="s1">&#39;token &#39;</span> <span class="o">+</span> <span class="n">api_token</span><span class="p">})</span>
-    <span class="n">c</span><span class="o">=</span><span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
-    <span class="n">EDITORTERM</span><span class="o">=</span><span class="n">c</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span>
-
-<span class="k">try</span><span class="p">:</span>
-    <span class="n">BUILDTERM</span><span class="o">=</span><span class="n">TERMINALS</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="s1">&#39;name&#39;</span><span class="p">]</span>
-<span class="k">except</span> <span class="ne">IndexError</span><span class="p">:</span>   
-    <span class="c1"># create a terminal for running out builds</span>
-    <span class="n">r</span><span class="o">=</span><span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">api_url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Authorization&#39;</span><span class="p">:</span> <span class="s1">&#39;token &#39;</span> <span class="o">+</span> <span class="n">api_token</span><span class="p">})</span>
-    <span class="n">c</span><span class="o">=</span><span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
-    <span class="n">BUILDTERM</span><span class="o">=</span><span class="n">c</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span>
-
-<span class="k">try</span><span class="p">:</span>
-    <span class="n">DEBUGGERTERM</span><span class="o">=</span><span class="n">TERMINALS</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="s1">&#39;name&#39;</span><span class="p">]</span>
-<span class="k">except</span> <span class="ne">IndexError</span><span class="p">:</span>   
-    <span class="c1"># create a terminal for running gdb</span>
-    <span class="n">r</span><span class="o">=</span><span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">api_url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Authorization&#39;</span><span class="p">:</span> <span class="s1">&#39;token &#39;</span> <span class="o">+</span> <span class="n">api_token</span><span class="p">})</span>
-    <span class="n">c</span><span class="o">=</span><span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
-    <span class="n">DEBUGGERTERM</span><span class="o">=</span><span class="n">c</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-</div>
-<section class="tex2jax_ignore mathjax_ignore" id="lets-write-some-assembly-code">
+  <section class="tex2jax_ignore mathjax_ignore" id="lets-write-some-assembly-code">
 <h1><span class="section-number">16. </span>Lets write some assembly code<a class="headerlink" href="#lets-write-some-assembly-code" title="Permalink to this headline">#</a></h1>
+<p><strong>UNDER CONSTRUCTION</strong></p>
 <p>In this chapter we will get going and write some simple assembly code,  “build” it and run it within a “debugger” so that we can get a sense of how everything fits together.</p>
-<p>To do this we will use three terminal sessions one terminal to run an ascii editor, one to run the shell on its own so that we can compile our source code, and one to run our debugger.  We use three different terminals so that we can stay organized and avoid having to constantly stop and start the different programs.   In some sense we are using multiple terminals to form our own Integrated Development Environmnt (IDE) where we are using each terminal as if it were a subwindow of our IDE.  In actuality the editor that we will be using (emacs) has support for integrating all three tasks within itself but for the moment we will keep things seperate to make sure we know what is going on and not tie ourselves to this particular editor (there are many others including the popular VIM).</p>
-<section id="editor-terminal-to-run-our-editor">
-<h2><span class="section-number">16.1. </span>EDITOR : Terminal to run our editor<a class="headerlink" href="#editor-terminal-to-run-our-editor" title="Permalink to this headline">#</a></h2>
-<p>An editor allows us to create and udpate plain text ascii files. An editor is the core tool of a programmer!  Programming is all about writing software in the form of ascii files that encode what we want the computer to do in some language or another (in our case assembly and C). So far you my have been taught to use various Integrated Development Environments (IDEs) that include an editor, build system and debugger within them.  In this class we will strip things down to there traditional bare essentials so you can get an idea of how things are really working and how IDE’s are themselves constructed.</p>
-<div class="cell tag_hide_input docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">IFrame</span>
-<span class="n">display</span><span class="p">(</span><span class="n">IFrame</span><span class="p">(</span><span class="s1">&#39;/terminals/&#39;</span> <span class="o">+</span> <span class="n">EDITORTERM</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span><span class="mi">600</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-</div>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">emacs</span> <span class="pre">popcnt.S</span></code></p></li>
-</ul>
-<p>In the above terminal we will run the <code class="docutils literal notranslate"><span class="pre">emacs</span></code> editor to create and write our first assembly program.
-To do this issue the above command.  Emacs is like many of our tools cryptic but very powerful.  In reality emacs itself contains a programming language (called elisp) that is used to write very powerful extension packages for it.  That being said we are going to stick to the basics.</p>
-<p>At the top you will see a menu bar, in the middle you will see blank area where we will type in our file contents, and at the bottom is a status line and an area for entering emacs commands in by hand (such as convert all occurrances of X to Y).  In time you can learn about the commands and how to issue them for the moment you can use the menubar for most of the things you need to do.</p>
-<p>To access the menu bar functions press F10.  By default emacs does not automatically save your file when you make changes.  However it does show you in the status bar if you have changes that have not been saved.  If this is the case you will see <code class="docutils literal notranslate"><span class="pre">:**</span></code> towards the left of the status bary.   You must explicity save changes by hand.  To do this you can use the menubar File-Save or you can press <code class="docutils literal notranslate"><span class="pre">control-x</span></code> followed by <code class="docutils literal notranslate"><span class="pre">control-s</span></code>  (note you can just keep the control key pressed then press x, release x, press s, release s).  Doing so will have the ASCII contents of the emacs to a file called <code class="docutils literal notranslate"><span class="pre">popcnt.S</span></code></p>
-<p>Remember you are running emacs in the terminal so you cannot move the cursor with your mouse you will need to navigate using the arrow keys along with page-up and down to navigate your document.  There are many hot-key sequences that you can use in time to acclerate you work.  But they too numerous to get into now but there are many tutorials and cheetsheets online to help you get going.</p>
-<p>Now enter the following code and save it.</p>
-<div class="highlight-assembly_x86 notranslate"><div class="highlight"><pre><span></span>        .intel_syntax noprefix   // set assembly language format to intel
-        .text                    // linker section &lt;directive&gt;
-        
-        .global _start           // linker symbol type &lt;directive&gt;
- _start:                         // introduce a symbolic (human readable) label for &quot;this&quot; address
-        popcnt rax, rbx          // ok the single intel opcode (instruction) that makes up our program
-</pre></div>
-</div>
-<p>The following is a version of this code that is verbosely documented: <span class="xref myst">popcnt.S</span></p>
+<p>To do this we will use three terminal sessions one terminal to run an ascii editor, one to run the shell on its own so that we can compile our source code, and one to run our debugger.  We use three different terminals so that we can stay organized and avoid having to constantly stop and start the different programs.   In some sense we are using multiple terminals to form our own Integrated Development Environment (IDE) where we are using each terminal as if it were a sub-window of our IDE.  In actuality the editor that we will be using (emacs) has support for integrating all three tasks within itself but for the moment we will keep things separate to make sure we know what is going on and not tie ourselves to this particular editor (there are many others including the popular VIM).</p>
+<section id="setup">
+<h2><span class="section-number">16.1. </span>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">#</a></h2>
 </section>
-<section id="building-terminal-to-run-our-build-commands">
-<h2><span class="section-number">16.2. </span>Building: Terminal to run our build commands<a class="headerlink" href="#building-terminal-to-run-our-build-commands" title="Permalink to this headline">#</a></h2>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">IFrame</span>
-<span class="n">display</span><span class="p">(</span><span class="n">IFrame</span><span class="p">(</span><span class="s1">&#39;/terminals/&#39;</span> <span class="o">+</span> <span class="n">BUILDTERM</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span><span class="mi">600</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-</div>
-<ul class="simple">
-<li><p>gcc –static -g -nostartfiles -nolibc popcnt.S -o popcnt</p></li>
-</ul>
-<p>To execute our code we must convert the “source” into a binary executable that can be loaded into memory and contains all the data and instructions (at the right locations).  To do this we must use programs that converts our assembly code into the “correct” raw binary values and assigns the those values to address.   The OS will load these values to the specified locations when we ask it to run our program.</p>
-<p>This process of converting human readable source code into a binary executable format is often referred to as “building”.  The tools we will use are an assembler and a linker.</p>
-<p>The assembler’s has been written to convert the human names (“memonics”) of the instructions in our source files into the binary code that our CPU understands.  There is no magic!   The manufacuter of the CPU publishes a manual that defines what instructions the CPU supports.  Each instruction has a human “memonic” (eg.  <code class="docutils literal notranslate"><span class="pre">mov</span> <span class="pre">rax,</span> <span class="pre">&lt;value&gt;</span></code>) and the binary code that the CPU understands (eg. <code class="docutils literal notranslate"><span class="pre">mov</span> <span class="pre">rax,</span> <span class="pre">0xdeadbeef</span></code> is <code class="docutils literal notranslate"><span class="pre">0x48,0xb8,0xef,0xbe,0xad,0xde,0x00,0x00,0x00,0x00</span></code>).  Given the manual a programmer writes the assemble to go over our source files and translates what we write into the cpu binary code.  The programmer extends the memonics with what are called “directives” such as <code class="docutils literal notranslate"><span class="pre">.intel_syntax,</span> <span class="pre">.text,</span> <span class="pre">.global,</span> <span class="pre">.quad,</span> <span class="pre">etc</span></code> that we can use to control and direct the assemble.   To fully understand all the syntax and what we can do one must look at both the manual for the CPU and for the assembler.  If all goes well and our program does not have any syntax errors then the assembler will generate a file with its output. This file is called an object file.</p>
-<p>We use a tool called a linker to process the object files that makes up our program to create a binary executable specific to our operating system and cpu.  It is this file that is “really” our program.  The linkers job is to prodess all our object files to create the binary with knowledge of where our OS wants things to be placed in memory (in our simple examples there is only one, later on we will have other object files from libraries of functions that we will want to use as well).  Specifically the developers of the OS provide information to the linker that tells it the rules of where instructions and data can go.  It is the linkers job to figure out what addresses each of the values that makes up our program should be given.  As such it also needs to fix up our code so that the final addresses are reflect for each of the places in our code where we reference particular symbolic names.  We will talk more about this later.  Assuming all goes well and the linker does not flag any errors then it will produce a binary executable that the OS can load and run.  One special task of the linker is to mark in the binary the address of the first instruction so that the OS can be sure to initialize the CPU correctly to start executing instructions from the right starting location – this location is called the “entry point”.   Our linker by default assumes that our code contains a symbol named <code class="docutils literal notranslate"><span class="pre">_start</span></code>.  If so the address it assigns to <code class="docutils literal notranslate"><span class="pre">_start</span></code> is what it will write into the executable as the entry point so that the OS can load and start our program correct.  If we fail to define the <code class="docutils literal notranslate"><span class="pre">_start</span></code> label the linker will produce an warning and man an assumption.  It is a bad idea to ignore warnings when programming at this level … after all we know what assuming makes of you and me.</p>
-<p>So in the shell above we will run a command (<code class="docutils literal notranslate"><span class="pre">gcc</span> <span class="pre">--static</span> <span class="pre">-g</span> <span class="pre">-nostartfiles</span> <span class="pre">-nolibc</span> <span class="pre">popcnt.S</span> <span class="pre">-o</span> <span class="pre">popcnt</span></code>) that runs both the assembler and linker for us.  We will have to pay close attention to see if there are any errors.  If so we need to go up to the editor make changes and save those changes.  Then try building again.  We repeat this untill there are no build time errors.  Remember the executable is different from the source any change we make to the program source code requires that we rerun the build process to update the binary.   Remember just because there are no build time errors does not mean that our code is “right” or free of bugs.</p>
-<p>Later on we will see how to use another tool called make to further simplify and automate the building process.</p>
+<section id="writing-the-source-code">
+<h2><span class="section-number">16.2. </span>Writing the Source Code<a class="headerlink" href="#writing-the-source-code" title="Permalink to this headline">#</a></h2>
 </section>
-<section id="debugger-terminal-to-run-our-debugger-actually-it-is-much-more-than-just-a-debugger">
-<h2><span class="section-number">16.3. </span>Debugger: Terminal to run our debugger – actually it is much more than just a debugger<a class="headerlink" href="#debugger-terminal-to-run-our-debugger-actually-it-is-much-more-than-just-a-debugger" title="Permalink to this headline">#</a></h2>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">IFrame</span>
-<span class="n">display</span><span class="p">(</span><span class="n">IFrame</span><span class="p">(</span><span class="s1">&#39;/terminals/&#39;</span> <span class="o">+</span> <span class="n">DEBUGGERTERM</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span><span class="mi">600</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-</div>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">gdb</span> <span class="pre">-tui</span> <span class="pre">popcnt</span></code></p></li>
-</ul>
-<p>The following are gdb commands and should be entered at the gdb prompt (aka they are not shell commands)</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">set</span> <span class="pre">disassembly-flavor</span> <span class="pre">intel</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">tui</span> <span class="pre">new-layout</span> <span class="pre">210</span> <span class="pre">src</span> <span class="pre">2</span> <span class="pre">regs</span> <span class="pre">5</span> <span class="pre">status</span> <span class="pre">1</span> <span class="pre">cmd</span> <span class="pre">1</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">layout</span> <span class="pre">210</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">break</span> <span class="pre">_start</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">run</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">print</span> <span class="pre">/x</span> <span class="pre">&amp;_start</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">/16xb</span> <span class="pre">_start</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">/4i</span> <span class="pre">_start</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">p</span> <span class="pre">$pc</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">p</span> <span class="pre">{$pc,</span> <span class="pre">$rax,</span> <span class="pre">$rbx}</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">p</span> <span class="pre">\t</span> <span class="pre">{$pc,</span> <span class="pre">$rax,</span> <span class="pre">$rbx}</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">step</span></code></p></li>
-</ul>
-<p>Continue stepping until you get to the end</p>
-<p><code class="docutils literal notranslate"><span class="pre">gdb</span></code> (or <code class="docutils literal notranslate"><span class="pre">gdb</span> <span class="pre">-tui</span></code>) which starts in a slightly more friendly mode) is a very powerful tool in the hands of a power user (that’s you or soon to be).  <code class="docutils literal notranslate"><span class="pre">gdb</span></code> is complicated and cryptic but allows you to not just trace your programs execution but it allows you to explore all aspects of the hardware that your program has access too.  You can peek into the CPU and examine arbitrary memory locations.  And perhaps even more cool you can change the CPU registers and any memory location on the fly while your program is running!  It is going to take us a while to full explore all the power of gdb.   But lets get started.</p>
-<p>If you type help you will get a list of the major commands that gdb support for the moment we are going to focus on the basics of following tasks:</p>
-<ul class="simple">
-<li><p>inspecting memory : examining memory, disassembling memory</p></li>
-<li><p>inspecting registers</p></li>
-<li><p>setting breakpoints</p></li>
-<li><p>starting execution</p></li>
-<li><p>stepping instructions</p></li>
-<li><p>quiting</p></li>
-</ul>
-<p>Ok lets write a new program that does something else</p>
+<section id="assembling-translating-the-source-code-an-object-file">
+<h2><span class="section-number">16.3. </span>Assembling - Translating the Source Code an Object File<a class="headerlink" href="#assembling-translating-the-source-code-an-object-file" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="linking-translating-the-object-file-into-an-executable">
+<h2><span class="section-number">16.4. </span>Linking - Translating the Object file into an Executable<a class="headerlink" href="#linking-translating-the-object-file-into-an-executable" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="running-with-gdb">
+<h2><span class="section-number">16.5. </span>Running with GDB<a class="headerlink" href="#running-with-gdb" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="running-with-out-gdb">
+<h2><span class="section-number">16.6. </span>Running with out GDB<a class="headerlink" href="#running-with-out-gdb" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="automate-assembling-and-linking-with-make">
+<h2><span class="section-number">16.7. </span>Automate assembling and linking with Make<a class="headerlink" href="#automate-assembling-and-linking-with-make" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="fixing-our-code-to-exit-nicely">
+<h2><span class="section-number">16.8. </span>Fixing our code to exit “nicely”<a class="headerlink" href="#fixing-our-code-to-exit-nicely" title="Permalink to this headline">#</a></h2>
 </section>
 </section>
 
