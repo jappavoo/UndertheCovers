@@ -1,3 +1,4 @@
+	.org $0000     ; starting at address 0x0000
 	;; We place things in memory locations by hand 
 	;; Fill memory 0x0000 - 0xE000 with zeros
 	.repeat $E000
