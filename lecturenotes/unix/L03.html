@@ -224,7 +224,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../assembly/L13.html">
-   13. SLS Lecture 13 : Program Anatomy V: The Tree of Bytes and Data Structures
+   13. SLS Lecture 13 : Program Anatomy IV: The Tree of Bytes and Data Structures
   </a>
  </li>
  <li class="toctree-l1">
@@ -598,10 +598,15 @@ title="Print to PDF"
 <ul class="simple">
 <li><p>a running program</p>
 <ul>
-<li><p>process can launch another processes</p>
+<li><p>a process can launch other processes</p>
 <ul>
-<li><p>bash is implemented to  start commands as process (when needed)</p></li>
-<li><p>passes command line arguments and environment variables</p></li>
+<li><p>bash is implemented to  start commands as processes (when needed)</p></li>
+<li><p>passes command line arguments and environment variables – a set of key value pairs Eg.</p>
+<ul>
+<li><p>x=cool</p></li>
+<li><p>HOME=/home/jovyan</p></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -654,7 +659,7 @@ title="Print to PDF"
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">echo</span> <span class="pre">'Hello</span> <span class="pre">world'</span> <span class="pre">&gt;</span> <span class="pre">hello</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">cat</span> <span class="pre">hello</span></code></p></li>
-<li><p>`cat &lt; ./hello</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cat</span> <span class="pre">&lt;</span> <span class="pre">./hello</span></code></p></li>
 </ul>
 <hr><a class="reference internal image-reference" href="../_images/Processes.019.png"><img alt="../_images/Processes.019.png" src="../_images/Processes.019.png" style="width: 100%;" /></a>
 <hr><a class="reference internal image-reference" href="../_images/Processes.020.png"><img alt="../_images/Processes.020.png" src="../_images/Processes.020.png" style="width: 100%;" /></a>
@@ -672,8 +677,8 @@ title="Print to PDF"
 <section id="id1">
 <h3><span class="section-number">3.1.6. </span>Shell Syntax:<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
-<li><p>‘ls -1 | wc -l’</p></li>
-<li><p>‘ls -1 | grep ‘^l*’ | wc -l’</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ls</span> <span class="pre">-1</span> <span class="pre">|</span> <span class="pre">wc</span> <span class="pre">-l</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ls</span> <span class="pre">-1</span> <span class="pre">|</span> <span class="pre">grep</span> <span class="pre">'^l*'</span> <span class="pre">|</span> <span class="pre">wc</span> <span class="pre">-l</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">mknod</span> <span class="pre">mypipe</span> <span class="pre">p</span></code> and <code class="docutils literal notranslate"><span class="pre">mkfifo</span> <span class="pre">mypipe</span></code></p></li>
 </ul>
 <hr><a class="reference internal image-reference" href="../_images/Processes.021.png"><img alt="../_images/Processes.021.png" src="../_images/Processes.021.png" style="width: 100%;" /></a>

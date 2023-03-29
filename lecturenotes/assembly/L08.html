@@ -224,7 +224,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="L13.html">
-   13. SLS Lecture 13 : Program Anatomy V: The Tree of Bytes and Data Structures
+   13. SLS Lecture 13 : Program Anatomy IV: The Tree of Bytes and Data Structures
   </a>
  </li>
  <li class="toctree-l1">
@@ -747,11 +747,11 @@ title="Print to PDF"
 <div style="width:107em; height:100%; font-size:inherit; overflow: auto;" >
 <div class="highlight-gas notranslate"><div class="highlight"><pre><span></span><span class="w">	</span><span class="na">.intel_syntax</span><span class="w"> </span><span class="no">noprefix</span><span class="w"></span>
 <span class="w">	</span>
-<span class="w">	</span><span class="na">.text</span><span class="w"></span>
+<span class="w">	</span><span class="na">.section</span><span class="w"> </span><span class="no">.text</span><span class="w"></span>
 <span class="w">        </span>
 <span class="w">	</span><span class="na">.global</span><span class="w"> </span><span class="no">_start</span><span class="w"> 	</span>
 <span class="no">_start</span><span class="p">:</span><span class="w"></span>
-<span class="w">	</span><span class="nf">popcnt</span><span class="w"> </span><span class="no">rax</span><span class="p">,</span><span class="w"> </span><span class="no">rbx</span><span class="w">   </span><span class="c1"># same as  .byte 0xF3, 0x48, 0x0F, 0xB8, 0xD8  </span>
+<span class="w">	</span><span class="nf">popcnt</span><span class="w"> </span><span class="no">rax</span><span class="p">,</span><span class="w"> </span><span class="no">rbx</span><span class="w">   </span><span class="c1"># same as  .byte 0xF3, 0x48, 0x0F, 0xB8, 0xC3  </span>
 </pre></div>
 </div>
 </div>
@@ -768,7 +768,7 @@ title="Print to PDF"
 <span class="w">	</span><span class="na">.intel_syntax</span><span class="w"> </span><span class="no">noprefix</span><span class="w">   </span><span class="c1"># assembler syntax to use &lt;directive&gt;</span>
 <span class="w">	                         </span><span class="c1"># set assembly language format to intel  </span>
 
-<span class="w">	</span><span class="na">.text</span><span class="w">                    </span><span class="c1"># linker section &lt;directive&gt;</span>
+<span class="w">	</span><span class="na">.section</span><span class="w"> </span><span class="no">.text</span><span class="w">           </span><span class="c1"># linker section &lt;directive&gt;</span>
 <span class="w">	                         </span><span class="c1"># let the linker know that what follows are cpu instructions to</span>
 <span class="w">	                         </span><span class="c1"># to be executed -- uposed to values that represent data.</span>
 <span class="w">	                         </span><span class="c1"># For historical reasons cpu instructions are called &quot;text&quot;</span>
@@ -784,7 +784,7 @@ title="Print to PDF"
 <span class="w">	                         </span><span class="c1"># In our program or in the debugger we can use this name to</span>
 <span class="w">	                         </span><span class="c1"># to refer to this location -- address.  And thus the values</span>
 <span class="w">	                         </span><span class="c1"># that end up here.</span>
-<span class="c1">#	.byte 0xF3, 0x48, 0x0F, 0xB8, 0xD8  # popcnt rax,rbx	</span>
+<span class="c1">#	.byte 0xF3, 0x48, 0x0F, 0xB8, 0xC3  # popcnt rax,rbx	</span>
 <span class="w">	</span><span class="nf">popcnt</span><span class="w"> </span><span class="no">rax</span><span class="p">,</span><span class="w"> </span><span class="no">rbx</span><span class="w">          </span><span class="c1"># ok the single intel opcode (instruction) that makes up</span>
 <span class="w">	                         </span><span class="c1"># our program</span>
 <span class="cm">/*</span>
@@ -801,7 +801,7 @@ title="Print to PDF"
 </div>
 <p>We can use the <code class="docutils literal notranslate"><span class="pre">.byte</span></code> directive to set the values in memory to anything we like
 eg.</p>
-<div class="highlight-gas notranslate"><div class="highlight"><pre><span></span><span class="w">     </span><span class="na">.byte</span><span class="w"> </span><span class="mi">0xF3</span><span class="p">,</span><span class="w"> </span><span class="mi">0x48</span><span class="p">,</span><span class="w"> </span><span class="mi">0x0F</span><span class="p">,</span><span class="w"> </span><span class="mi">0xB8</span><span class="p">,</span><span class="w"> </span><span class="mi">0xD8</span><span class="w">  </span>
+<div class="highlight-gas notranslate"><div class="highlight"><pre><span></span><span class="w">     </span><span class="na">.byte</span><span class="w"> </span><span class="mi">0xF3</span><span class="p">,</span><span class="w"> </span><span class="mi">0x48</span><span class="p">,</span><span class="w"> </span><span class="mi">0x0F</span><span class="p">,</span><span class="w"> </span><span class="mi">0xB8</span><span class="p">,</span><span class="w"> </span><span class="mi">0xC3</span><span class="w">  </span>
 </pre></div>
 </div>
 <p>But of course the real value is that we could have also simply written</p>
@@ -1236,7 +1236,7 @@ We must first use another tool called a preprocessor eg.</p>
 
 
 <script type="application/vnd.jupyter.widget-state+json">
-{"state": {"26fa5653391047aa8910408b776e8cbf": {"model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "model_name": "OutputModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_82db3d5d3893465ebab2bd888ccfa295", "msg_id": "", "outputs": [{"name": "stdout", "output_type": "stream", "text": "$ [[ -d ~/simpleasm ]] && rm -rf ~/simpleasm \r\n$ mkdir ~/simpleasm\r\n$ cp ../src/setup.gdb ../src/add.s ../src/int3.s ~/simpleasm\r\n$ cp ../src/simpleasm.mk ~/simpleasm/Makefile\r\n$ cp ../src/popcnt_bb.s ~/simpleasm/popcnt.s\r\n$ cp ../src/exit.S ~/simpleasm/exitfancy.S\r\n$ cp ../src/exit_bb_bb.s ~/simpleasm/exit.s\r\n$ "}]}}, "82db3d5d3893465ebab2bd888ccfa295": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": "1px solid black", "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "100%", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": "scroll", "padding": null, "right": null, "top": null, "visibility": null, "width": null}}}, "version_major": 2, "version_minor": 0}
+{"state": {"63b5dee866db497e868e40cbc8ab599e": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": "1px solid black", "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "100%", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": "scroll", "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "c781b584acab43909d21b18ddfec0040": {"model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "model_name": "OutputModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_63b5dee866db497e868e40cbc8ab599e", "msg_id": "", "outputs": [{"name": "stdout", "output_type": "stream", "text": "$ [[ -d ~/simpleasm ]] && rm -rf ~/simpleasm \r\n$ mkdir ~/simpleasm\r\n$ cp ../src/setup.gdb ../src/add.s ../src/int3.s ~/simpleasm\r\n$ cp ../src/simpleasm.mk ~/simpleasm/Makefile\r\n$ cp ../src/popcnt_bb.s ~/simpleasm/popcnt.s\r\n$ cp ../src/exit.S ~/simpleasm/exitfancy.S\r\n$ cp ../src/exit_bb_bb.s ~/simpleasm/exit.s\r\n$ "}]}}}, "version_major": 2, "version_minor": 0}
 </script>
 
 
