@@ -1,5 +1,6 @@
 FROM quay.io/ucsls/ucsls:stable-burosa-prodS23_01.23.23_12.17.33
 
+USER root
 
 # Static Customize for OPE USER ID choices
 # To avoid problems with start.sh logic we do not modify user name
