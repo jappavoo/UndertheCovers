@@ -2,24 +2,28 @@
 .PHONEY: help build ope root push publish lab nb python-versions distro-versions image-sha clean
 .IGNORE: ope root
 
-# see if there is a specified customization in the base settting
-CUST := $(shell if  [[ -a base/customization_name ]]; then cat base/customization_name;  fi)
-
-# User must specify customization suffix
-ifndef CUST
-$(error CUST is not set.  You must specify which customized version of the image you want to work with. Eg. make CUST=opf build)
-endif
 
 # We use this to choose between a jupyter or a gradescope build
 BASE := jupyter
 
-OPE_BOOK := $(shell cat base/ope_book)
+OPE_CONTAINER_NAME := $(shell cat base/ope_container_name)
+
+# DEPLOYMENT SETTINGS
+# To ensure that the container runs correctly on some particular container deployment instance
+# we provide a target that will customize the containers file  permissions and user credentials 
+# to match what may be required.  This grew out of the nature of openshift instances which
+# start all containers with a preordained user id.  The deploynment customization ensures
+# that the jovyan user has a matching user id in /etc/password and that home directory file
+# credentials and permissions match
+
+# set the depolyment name if it exists
+OPE_DEPLOYMENT_NAME := $(shell if  [[ -a base/ope_deployment_name ]]; then cat base/ope_deployment_name;  fi)
 # USER id
-OPE_UID := $(shell cat base/ope_uid)
+OPE_DEPLOYMENT_UID := $(shell cat base/ope_deployment_uid)
 # GROUP id
-OPE_GID := $(shell cat base/ope_gid)
+OPE_DEPLOYMENT_GID := $(shell cat base/ope_deployment_gid)
 # GROUP name
-OPE_GROUP := $(shell cat base/ope_group)
+OPE_DEPLOYMENT_GROUP := $(shell cat base/ope_deployment_group)
 
 # we use this to choose between a build from the blessed known stable version or a test version
 VERSION := stable
@@ -33,15 +37,15 @@ DATE_TAG := $(shell date +"%m.%d.%y_%H.%M.%S")
 
 PRIVATE_USER := $(shell if  [[ -a base/private_user ]]; then cat base/private_user; else echo ${USER}; fi)
 PRIVATE_REG := $(shell cat base/private_registry)/
-PRIVATE_IMAGE := $(PRIVATE_USER)/$(OPE_BOOK)
-PRIVATE_STABLE_TAG := :stable-$(CUST)
-PRIVATE_TEST_TAG := :test-$(CUST)
+PRIVATE_IMAGE := $(PRIVATE_USER)/$(OPE_CONTAINER_NAME)
+PRIVATE_STABLE_TAG := :stable-$(OPE_DEPLOYMENT_NAME)
+PRIVATE_TEST_TAG := :test-$(OPE_DEPLOYMENT_NAME)
 
 PUBLIC_USER := $(shell cat base/ope_book_user)
 PUBLIC_REG := $(shell cat base/ope_book_registry)/
-PUBLIC_IMAGE := $(PUBLIC_USER)/$(OPE_BOOK)
-PUBLIC_STABLE_TAG := :stable-$(CUST)
-PUBLIC_TEST_TAG := :test-$(CUST)
+PUBLIC_IMAGE := $(PUBLIC_USER)/$(OPE_CONTAINER_NAME)
+PUBLIC_STABLE_TAG := :stable-$(OPE_DEPLOYMENT_NAME)
+PUBLIC_TEST_TAG := :test-$(OPE_DEPLOYMENT_NAME)
 
 BASE_DISTRO_PACKAGES := $(shell cat base/distro_pkgs)
 
@@ -132,9 +136,6 @@ build: IMAGE = $(PRIVATE_IMAGE)
 build: DARGS ?= --build-arg FROM_REG=$(BASE_REG) \
                    --build-arg FROM_IMAGE=$(BASE_IMAGE) \
                    --build-arg FROM_TAG=$(BASE_TAG) \
-                   --build-arg OPE_UID=$(OPE_UID) \
-                   --build-arg OPE_GID=$(OPE_GID) \
-                   --build-arg OPE_GROUP=$(OPE_GROUP) \
                    --build-arg ADDITIONAL_DISTRO_PACKAGES="$(BASE_DISTRO_PACKAGES)" \
                    --build-arg PYTHON_PREREQ_VERSIONS="$(PYTHON_PREREQ_VERSIONS)" \
                    --build-arg PYTHON_INSTALL_PACKAGES="$(PYTHON_INSTALL_PACKAGES)" \
@@ -144,7 +145,18 @@ build: DARGS ?= --build-arg FROM_REG=$(BASE_REG) \
                    --build-arg GDB_BUILD_SRC=$(GDB_BUILD_SRC) \
                    --build-arg UNMIN=$(UNMIN)
 build: ## Make the image customized appropriately
-	docker build $(DARGS) $(DCACHING) --rm --force-rm -t $(PRIVATE_REG)$(IMAGE)$(PRIVATE_TAG) base
+	docker build $(DARGS) $(DCACHING) --rm --force-rm -t $(PRIVATE_REG)$(IMAGE)$(PRIVATE_TAG) --file Dockerfile.build base
+
+
+build_deployment: IMAGE = $(DEPLOYMENT_IMAGE)
+build_deployment: DARGS ?= --build-arg FROM_REG=$(DEPLOYMENT_BASE_REG) \
+                   --build-arg FROM_IMAGE=$(DEPLOYMENT_BASE_IMAGE) \
+                   --build-arg FROM_TAG=$(DEPLOYMENT_BASE_TAG) \
+                   --build-arg OPE_DEPLOYMENT_UID=$(OPE_DEPLOYMENT_UID) \
+                   --build-arg OPE_DEPLOYMENT_GID=$(OPE_DEPLOYMENT_GID) \
+                   --build-arg OPE_DEPLOYMENT_GROUP=$(OPE_DEPLOYMENT_GROUP) 
+build_deployment:  ## build a customized deployment image
+	docker build $(DARGS) $(DCACHING) --rm --force-rm -t $(DEPLOYMENT_REG)$(IMAGE)$(DEPLOYMENT_TAG) --file Dockerfile.build_deployment base
 	-rm base/private_mamba_versions.$(VERSION)
 	make base/private_mamba_versions.$(VERSION)
 	-rm base/private_distro_versions.$(VERSION)
@@ -211,7 +223,7 @@ run: IMAGE = $(PUBLIC_IMAGE)
 run: REG = $(PUBLIC_REG)
 run: TAG = $(PUBLIC_TAG)
 run: ARGS ?=
-run: DARGS ?= -u $(OPE_UID):$(OPE_GID) -v "${HOST_DIR}":"${MOUNT_DIR}" -v "${SSH_AUTH_SOCK}":"${SSH_AUTH_SOCK}" -v "${SSH_AUTH_SOCK}":"${SSH_AUTH_SOCK}" -e SSH_AUTH_SOCK=${SSH_AUTH_SOCK} -p ${SSH_PORT}:22
+run: DARGS ?= -u $(OPE_DEPLOYMENT_UID):$(OPE_DEPLOYMENT_GID) -v "${HOST_DIR}":"${MOUNT_DIR}" -v "${SSH_AUTH_SOCK}":"${SSH_AUTH_SOCK}" -v "${SSH_AUTH_SOCK}":"${SSH_AUTH_SOCK}" -e SSH_AUTH_SOCK=${SSH_AUTH_SOCK} -p ${SSH_PORT}:22
 run: PORT ?= 8888
 run: ## start published version with jupyter lab interface
 	docker run -it --rm -p $(PORT):$(PORT) $(DARGS) $(REG)$(IMAGE)$(TAG) $(ARGS) 
@@ -221,7 +233,7 @@ run-priv: IMAGE = $(PRIVATE_IMAGE)
 run-priv: REG = $(PRIVATE_REG)
 run-priv: TAG = $(PRIVATE_TAG)
 run-priv: ARGS ?=
-run-priv: DARGS ?= -u $(OPE_UID):$(OPE_GID) -v "${HOST_DIR}":"${MOUNT_DIR}" -v "${SSH_AUTH_SOCK}":"${SSH_AUTH_SOCK}" -v "${SSH_AUTH_SOCK}":"${SSH_AUTH_SOCK}" -e SSH_AUTH_SOCK=${SSH_AUTH_SOCK} -p ${SSH_PORT}:22
+run-priv: DARGS ?= -u $(OPE_DEPLOYMENT_UID):$(OPE_DEPLOYMENT_GID) -v "${HOST_DIR}":"${MOUNT_DIR}" -v "${SSH_AUTH_SOCK}":"${SSH_AUTH_SOCK}" -v "${SSH_AUTH_SOCK}":"${SSH_AUTH_SOCK}" -e SSH_AUTH_SOCK=${SSH_AUTH_SOCK} -p ${SSH_PORT}:22
 run-priv: PORT ?= 8888
 run-priv: ## start published version with jupyter lab interface
 	docker run -it --rm -p $(PORT):$(PORT) $(DARGS) $(REG)$(IMAGE)$(TAG) $(ARGS)
