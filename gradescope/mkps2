@@ -1,0 +1,3 @@
+scp bu:/scratch/jappavoo/autograder.zip S23-ps2autograder.zip
+./bin/mkgs cs210-s23-ps2b $(pwd)/S23-ps2autograder.zip
+echo "run ./bin/pushgs cs210-s23-ps2b:<tag>"
