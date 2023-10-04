@@ -1,7 +1,7 @@
 # this was seeded from https://github.com/umsi-mads/education-notebook/blob/master/Makefile
-.PHONEY: help build ope root push publish lab nb python-versions distro-versions image-sha clean
+.PHONY: help build ope root push publish lab nb python-versions distro-versions image-sha clean
 .IGNORE: ope root
-
+SHELL := /bin/bash
 
 # We use this to choose between a jupyter or a gradescope build
 BASE := jupyter
@@ -10,11 +10,11 @@ OPE_CONTAINER_NAME := $(shell cat base/ope_container_name)
 
 # DEPLOYMENT SETTINGS
 # To ensure that the container runs correctly on some particular container deployment instance
-# we provide a target that will customize the containers file  permissions and user credentials 
-# to match what may be required.  This grew out of the nature of openshift instances which
-# start all containers with a preordained user id.  The deploynment customization ensures
-# that the jovyan user has a matching user id in /etc/password and that home directory file
-# credentials and permissions match
+# we provide a target that will customize the container's file  permissions and user credentials 
+# to match what may be required.  This grew approach grew out of the fact that an openshift RHODS
+# cluster starts all containers with a single preordained user id (that is not root).
+# The deploynment customization ensures that the jovyan user has an entry in /etc/password with the
+# specifed deployment uid and that home directory credentials and permissions match
 
 # set the depolyment name if it exists
 OPE_DEPLOYMENT_NAME := $(shell if  [[ -a base/ope_deployment_name ]]; then cat base/ope_deployment_name;  fi)
@@ -69,6 +69,9 @@ UNMIN := yes
 
 # external content
 ARCH64VMTGZ := https://cs-web.bu.edu/~jappavoo/Resources/UC-SLS/aarch64vm.tgz
+
+# extra directories to fix permissions on
+EXTRA_CHOWN := $(shell if  [[ -a base/extra_chown  ]]; then cat base/extra_chown; fi) 
 
 # Common docker run configuration designed to mirror as closely as possible the openshift experience
 # if port mapping for SSH access
@@ -144,7 +147,7 @@ build: DARGS ?= --build-arg FROM_REG=$(BASE_REG) \
                    --build-arg JUPYTER_DISABLE_EXTENSIONS="$(JUPYTER_DISABLE_EXTENSIONS)" \
                    --build-arg GDB_BUILD_SRC=$(GDB_BUILD_SRC) \
                    --build-arg UNMIN=$(UNMIN)
-build: ## Make the image customized appropriately
+build: ## Make the base container image 
 	docker build $(DARGS) $(DCACHING) --rm --force-rm -t $(PRIVATE_REG)$(IMAGE)$(PRIVATE_TAG) --file Dockerfile.build base
 
 
@@ -154,7 +157,8 @@ build_deployment: DARGS ?= --build-arg FROM_REG=$(DEPLOYMENT_BASE_REG) \
                    --build-arg FROM_TAG=$(DEPLOYMENT_BASE_TAG) \
                    --build-arg OPE_DEPLOYMENT_UID=$(OPE_DEPLOYMENT_UID) \
                    --build-arg OPE_DEPLOYMENT_GID=$(OPE_DEPLOYMENT_GID) \
-                   --build-arg OPE_DEPLOYMENT_GROUP=$(OPE_DEPLOYMENT_GROUP) 
+                   --build-arg OPE_DEPLOYMENT_GROUP=$(OPE_DEPLOYMENT_GROUP) \
+		   --build-arg EXTRA_CHOWN=$(EXTRA_CHOWN)
 build_deployment:  ## build a customized deployment image
 	docker build $(DARGS) $(DCACHING) --rm --force-rm -t $(DEPLOYMENT_REG)$(IMAGE)$(DEPLOYMENT_TAG) --file Dockerfile.build_deployment base
 	-rm base/private_mamba_versions.$(VERSION)

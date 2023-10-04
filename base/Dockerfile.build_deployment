@@ -13,22 +13,25 @@ USER root
 # Static Customize for OPE USER ID choices
 # To avoid problems with start.sh logic we do not modify user name
 # FIXME: Add support for swinging home directory if you want to point to a mounted volume
+# FIXME: don't know why we are setting DEFAULT_NB_UID -- leaving for some else to
+# figurel out if we still need it
 ARG DEFAULT_NB_UID=${NB_UID}
-ARG OPE_UID
-ARG OPE_GID
-ARG OPE_GROUP
+ARG OPE_DEPLOYMENT_UID
+ARG OPE_DEPLOYMENT_GID
+ARG OPE_DEPLOYMENT_GID
+ARG EXTRA_CHOWN
 ARG CHOWN_HOME=yes
 ARG CHOWN_HOME_OPTS="-R"
 ARG CHOWN_EXTRA_OPTS='-R'
-ARG CHOWN_EXTRA="/home/aarch64vm /home/RISE ${CONDA_DIR}"
-ENV OPE_UID=${OPE_UID}
-ARG NB_UID=${OPE_UID}
+ARG CHOWN_EXTRA="${EXTRA_CHOWN} ${CONDA_DIR}"
+ENV OPE_DEPLOYMENT_UID=${OPE_DEPLOYMENT_UID}
+ARG NB_UID=${OPE_DEPLOYMENT_UID}
 ENV NB_UID=${NB_UID}
-ENV OPE_GID=${OPE_GID}
-ARG NB_GID=${OPE_GID}
+ENV OPE_DEPLOYMENT_GID=${OPE_DEPLOYMENT_GID}
+ARG NB_GID=${OPE_DEPLOYMENT_GID}
 ENV NB_GID=${NB_GID}
-ENV OPE_GROUP=${OPE_GROUP}
-ARG NB_GROUP=${OPE_GROUP}
+ENV OPE_DEPLOYMENT_GROUP=${OPE_DEPLOYMENT_GROUP}
+ARG NB_GROUP=${OPE_DEPLOYMENT_GROUP}
 ENV NB_GROUP=${NB_GROUP}
 
 # # use built in startup script to setup new user home
