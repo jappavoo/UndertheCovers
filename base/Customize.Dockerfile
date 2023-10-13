@@ -15,24 +15,30 @@ USER root
 # FIXME: Add support for swinging home directory if you want to point to a mounted volume
 # FIXME: don't know why we are setting DEFAULT_NB_UID -- leaving for some else to
 # figurel out if we still need it
-ARG DEFAULT_NB_UID=${NB_UID}
-ARG OPE_DEPLOYMENT_UID
-ARG OPE_DEPLOYMENT_GID
-ARG OPE_DEPLOYMENT_GID
+
+# Don't think we need it, the value needed for the startup scripts
+# is nb_uid which we set later on
+# ARG DEFAULT_NB_UID=${NB_UID}
+
+# FIXME: I do not think we need to specify the ope specific uid and gid as ENV variables,
+# just use them to set the respective NB_UID or NB_GID
+
+ARG CUSTOMIZE_UID
+ENV NB_UID=${CUSTOMIZE_UID}
+
+
+ARG CUSTOMIZE_GID
+ENV NB_GID=${CUSTOMIZE_GID}
+
+ARG CUSTOMIZE_GROUP
+ENV NB_GROUP=${CUSTOMIZE_GROUP}
+
 ARG EXTRA_CHOWN
 ARG CHOWN_HOME=yes
 ARG CHOWN_HOME_OPTS="-R"
 ARG CHOWN_EXTRA_OPTS='-R'
 ARG CHOWN_EXTRA="${EXTRA_CHOWN} ${CONDA_DIR}"
-ENV OPE_DEPLOYMENT_UID=${OPE_DEPLOYMENT_UID}
-ARG NB_UID=${OPE_DEPLOYMENT_UID}
-ENV NB_UID=${NB_UID}
-ENV OPE_DEPLOYMENT_GID=${OPE_DEPLOYMENT_GID}
-ARG NB_GID=${OPE_DEPLOYMENT_GID}
-ENV NB_GID=${NB_GID}
-ENV OPE_DEPLOYMENT_GROUP=${OPE_DEPLOYMENT_GROUP}
-ARG NB_GROUP=${OPE_DEPLOYMENT_GROUP}
-ENV NB_GROUP=${NB_GROUP}
+
 
 # # use built in startup script to setup new user home
 RUN /usr/local/bin/start.sh true; \

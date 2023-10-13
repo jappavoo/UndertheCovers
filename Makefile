@@ -8,22 +8,6 @@ BASE := jupyter
 
 OPE_CONTAINER_NAME := $(shell cat base/ope_container_name)
 
-# DEPLOYMENT SETTINGS
-# To ensure that the container runs correctly on some particular container deployment instance
-# we provide a target that will customize the container's file  permissions and user credentials 
-# to match what may be required.  This grew approach grew out of the fact that an openshift RHODS
-# cluster starts all containers with a single preordained user id (that is not root).
-# The deploynment customization ensures that the jovyan user has an entry in /etc/password with the
-# specifed deployment uid and that home directory credentials and permissions match
-
-# set the depolyment name if it exists
-OPE_DEPLOYMENT_NAME := $(shell if  [[ -a base/ope_deployment_name ]]; then cat base/ope_deployment_name;  fi)
-# USER id
-OPE_DEPLOYMENT_UID := $(shell cat base/ope_deployment_uid)
-# GROUP id
-OPE_DEPLOYMENT_GID := $(shell cat base/ope_deployment_gid)
-# GROUP name
-OPE_DEPLOYMENT_GROUP := $(shell cat base/ope_deployment_group)
 
 # we use this to choose between a build from the blessed known stable version or a test version
 VERSION := stable
@@ -38,14 +22,49 @@ DATE_TAG := $(shell date +"%m.%d.%y_%H.%M.%S")
 PRIVATE_USER := $(shell if  [[ -a base/private_user ]]; then cat base/private_user; else echo ${USER}; fi)
 PRIVATE_REG := $(shell cat base/private_registry)/
 PRIVATE_IMAGE := $(PRIVATE_USER)/$(OPE_CONTAINER_NAME)
-PRIVATE_STABLE_TAG := :stable-$(OPE_DEPLOYMENT_NAME)
-PRIVATE_TEST_TAG := :test-$(OPE_DEPLOYMENT_NAME)
+PRIVATE_STABLE_TAG := :stable-$(OPE_CONTAINER_NAME) 
+PRIVATE_TEST_TAG := :test-$(OPE_CONTAINER_NAME)
 
 PUBLIC_USER := $(shell cat base/ope_book_user)
-PUBLIC_REG := $(shell cat base/ope_book_registry)/
+PUBLIC_REG := $(shell cat base/ope_book_registry)
 PUBLIC_IMAGE := $(PUBLIC_USER)/$(OPE_CONTAINER_NAME)
-PUBLIC_STABLE_TAG := :stable-$(OPE_DEPLOYMENT_NAME)
-PUBLIC_TEST_TAG := :test-$(OPE_DEPLOYMENT_NAME)
+PUBLIC_STABLE_TAG := :stable-$(OPE_CONTAINER_NAME)
+PUBLIC_TEST_TAG := :test-$(OPE_CONTAINER_NAME)
+
+
+# Set customization variables
+
+# To ensure that the container runs correctly on some particular container deployment instance
+# we provide a target that will customize the container's file  permissions and user credentials 
+# to match what may be required.  This approach grew out of the fact that an openshift RHODS
+# cluster starts all containers with a single preordained user id (that is not root).
+# The deploynment customization ensures that the jovyan user has an entry in /etc/password with the
+# specifed deployment uid and that home directory credentials and permissions match
+
+# Variables to define which image is being customized
+# Maybe name CUSTOMIZE_FROM instead of base in order to not confuse between final tagged image vs
+# which image it is actually customizing 
+
+CUSTOMIZE_BASE := $(shell cat base/customize_base) # quay.io/opeffort/ope-test
+
+# Tags represent: container name, options such as customize, date
+
+# <reg>/<ope_project>:<stable|test>-<ope_container>-<customization>-<latest|date>
+# quay.io/ucsls:stable-ucsls-burosa2023prod-latest
+
+CUSTOMIZE_NAME := $(shell cat base/customize_name) 
+
+# Variables to define final tagged image after customize stage
+# CUSTOMIZE_IMAGE := $(CUSTOMIZE_BASE_IMAGE)
+# CUSTOMIZE_TAG := :custom-$(shell tail -c +2 base/customize_base_tag)
+
+# USER id
+CUSTOMIZE_UID := $(shell cat base/customize_uid)
+# GROUP id
+CUSTOMIZE_GID := $(shell cat base/customize_gid)
+# GROUP name
+CUSTOMIZE_GROUP := $(shell cat base/customize_group)
+
 
 BASE_DISTRO_PACKAGES := $(shell cat base/distro_pkgs)
 
@@ -135,7 +154,6 @@ base/aarch64vm/README.md:
 	cd base && wget -O - ${ARCH64VMTGZ} | tar -zxf -
 
 build: base/aarch64vm/README.md
-build: IMAGE = $(PRIVATE_IMAGE)
 build: DARGS ?= --build-arg FROM_REG=$(BASE_REG) \
                    --build-arg FROM_IMAGE=$(BASE_IMAGE) \
                    --build-arg FROM_TAG=$(BASE_TAG) \
@@ -148,27 +166,21 @@ build: DARGS ?= --build-arg FROM_REG=$(BASE_REG) \
                    --build-arg GDB_BUILD_SRC=$(GDB_BUILD_SRC) \
                    --build-arg UNMIN=$(UNMIN)
 build: ## Make the base container image 
-	docker build $(DARGS) $(DCACHING) --rm --force-rm -t $(PRIVATE_REG)$(IMAGE)$(PRIVATE_TAG) --file Dockerfile.build base
+	docker build $(DARGS) $(DCACHING) --rm --force-rm -t $(PRIVATE_REG)$(PRIVATE_IMAGE)$(PRIVATE_TAG) --file base/Build.Dockerfile base
 
 
-build_deployment: IMAGE = $(DEPLOYMENT_IMAGE)
-build_deployment: DARGS ?= --build-arg FROM_REG=$(DEPLOYMENT_BASE_REG) \
-                   --build-arg FROM_IMAGE=$(DEPLOYMENT_BASE_IMAGE) \
-                   --build-arg FROM_TAG=$(DEPLOYMENT_BASE_TAG) \
-                   --build-arg OPE_DEPLOYMENT_UID=$(OPE_DEPLOYMENT_UID) \
-                   --build-arg OPE_DEPLOYMENT_GID=$(OPE_DEPLOYMENT_GID) \
-                   --build-arg OPE_DEPLOYMENT_GROUP=$(OPE_DEPLOYMENT_GROUP) \
-		   --build-arg EXTRA_CHOWN=$(EXTRA_CHOWN)
-build_deployment:  ## build a customized deployment image
-	docker build $(DARGS) $(DCACHING) --rm --force-rm -t $(DEPLOYMENT_REG)$(IMAGE)$(DEPLOYMENT_TAG) --file Dockerfile.build_deployment base
-	-rm base/private_mamba_versions.$(VERSION)
-	make base/private_mamba_versions.$(VERSION)
-	-rm base/private_distro_versions.$(VERSION)
-	make base/private_distro_versions.$(VERSION)
-	-rm base/private_image_info.$(VERSION)
-	make base/private_image_info.$(VERSION)
+customize: DARGS ?= --build-arg FROM_REG=$(CUSTOMIZE_BASE_REG) \
+                   --build-arg FROM_IMAGE=$(CUSTOMIZE_BASE_IMAGE) \
+                   --build-arg FROM_TAG=$(CUSTOMIZE_BASE_TAG) \
+                   --build-arg CUSTOMIZE_UID=$(CUSTOMIZE_UID) \
+                   --build-arg CUSTOMIZE_GID=$(CUSTOMIZE_GID) \
+                   --build-arg CUSTOMIZE_GROUP=$(CUSTOMIZE_GROUP) \
+		               --build-arg EXTRA_CHOWN="$(EXTRA_CHOWN)"
+customize:  ## build a customized deployment image
+	docker build $(DARGS) $(DCACHING) --rm --force-rm -t $(CUSTOMIZE_BASE)-$(CUSTOMIZE_NAME) --file base/Customize.Dockerfile base
 
-push: IMAGE = $(PRIVATE_IMAGE)
+
+push: IMAGE = $(PRIVATE_IMAGE) #remove references to image. reg, tag, place directly 
 push: DARGS ?=
 push: ## push private build
 # make dated version
@@ -240,4 +252,13 @@ run-priv: ARGS ?=
 run-priv: DARGS ?= -u $(OPE_DEPLOYMENT_UID):$(OPE_DEPLOYMENT_GID) -v "${HOST_DIR}":"${MOUNT_DIR}" -v "${SSH_AUTH_SOCK}":"${SSH_AUTH_SOCK}" -v "${SSH_AUTH_SOCK}":"${SSH_AUTH_SOCK}" -e SSH_AUTH_SOCK=${SSH_AUTH_SOCK} -p ${SSH_PORT}:22
 run-priv: PORT ?= 8888
 run-priv: ## start published version with jupyter lab interface
+	docker run -it --rm -p $(PORT):$(PORT) $(DARGS) $(REG)$(IMAGE)$(TAG) $(ARGS)
+
+run-cust: IMAGE = $(CUSTOMIZE_IMAGE)
+run-cust: REG = $(PRIVATE_REG)
+run-cust: TAG = $(CUSTOMIZE_TAG)
+run-cust: ARGS ?=
+run-cust: DARGS ?= -u $(OPE_DEPLOYMENT_UID):$(OPE_DEPLOYMENT_GID) -v "${HOST_DIR}":"${MOUNT_DIR}" -v "${SSH_AUTH_SOCK}":"${SSH_AUTH_SOCK}" -v "${SSH_AUTH_SOCK}":"${SSH_AUTH_SOCK}" -e SSH_AUTH_SOCK=${SSH_AUTH_SOCK} -p ${SSH_PORT}:22
+run-cust: PORT ?= 8888
+run-cust: ## start published version with jupyter lab interface
 	docker run -it --rm -p $(PORT):$(PORT) $(DARGS) $(REG)$(IMAGE)$(TAG) $(ARGS)
