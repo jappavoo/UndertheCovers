@@ -2,11 +2,9 @@
 ## container.  This container contains everything required for authoring OPE courses
 ## Well is should anyway ;-)
 
-ARG FROM_REG
 ARG FROM_IMAGE
-ARG FROM_TAG
 
-FROM ${FROM_REG}${FROM_IMAGE}${FROM_TAG}
+FROM ${FROM_IMAGE}
 
 USER root
 
@@ -25,7 +23,6 @@ USER root
 
 ARG CUSTOMIZE_UID
 ENV NB_UID=${CUSTOMIZE_UID}
-
 
 ARG CUSTOMIZE_GID
 ENV NB_GID=${CUSTOMIZE_GID}

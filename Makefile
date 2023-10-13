@@ -45,14 +45,14 @@ PUBLIC_TEST_TAG := :test-$(OPE_CONTAINER_NAME)
 # Maybe name CUSTOMIZE_FROM instead of base in order to not confuse between final tagged image vs
 # which image it is actually customizing 
 
-CUSTOMIZE_BASE := $(shell cat base/customize_base) # quay.io/opeffort/ope-test
+CUSTOMIZE_BASE := $(shell cat base/customize_base) 
 
 # Tags represent: container name, options such as customize, date
 
-# <reg>/<ope_project>:<stable|test>-<ope_container>-<customization>-<latest|date>
+# <reg>/<ope_project>:<ope_container>-<stable|test>-<customization>-<latest|date>
 # quay.io/ucsls:stable-ucsls-burosa2023prod-latest
 
-CUSTOMIZE_NAME := $(shell cat base/customize_name) 
+CUSTOMIZE_NAME := $(strip $(CUSTOMIZE_BASE))-test-$(shell cat base/customize_name) 
 
 # Variables to define final tagged image after customize stage
 # CUSTOMIZE_IMAGE := $(CUSTOMIZE_BASE_IMAGE)
@@ -169,96 +169,69 @@ build: ## Make the base container image
 	docker build $(DARGS) $(DCACHING) --rm --force-rm -t $(PRIVATE_REG)$(PRIVATE_IMAGE)$(PRIVATE_TAG) --file base/Build.Dockerfile base
 
 
-customize: DARGS ?= --build-arg FROM_REG=$(CUSTOMIZE_BASE_REG) \
-                   --build-arg FROM_IMAGE=$(CUSTOMIZE_BASE_IMAGE) \
-                   --build-arg FROM_TAG=$(CUSTOMIZE_BASE_TAG) \
+customize: DARGS ?= --build-arg FROM_IMAGE=$(CUSTOMIZE_BASE) \
                    --build-arg CUSTOMIZE_UID=$(CUSTOMIZE_UID) \
                    --build-arg CUSTOMIZE_GID=$(CUSTOMIZE_GID) \
                    --build-arg CUSTOMIZE_GROUP=$(CUSTOMIZE_GROUP) \
 		               --build-arg EXTRA_CHOWN="$(EXTRA_CHOWN)"
 customize:  ## build a customized deployment image
-	docker build $(DARGS) $(DCACHING) --rm --force-rm -t $(CUSTOMIZE_BASE)-$(CUSTOMIZE_NAME) --file base/Customize.Dockerfile base
+	docker build $(DARGS) $(DCACHING) --rm --force-rm -t $(CUSTOMIZE_NAME) --file base/Customize.Dockerfile base
 
-
-push: IMAGE = $(PRIVATE_IMAGE) #remove references to image. reg, tag, place directly 
 push: DARGS ?=
 push: ## push private build
 # make dated version
-	docker tag $(PRIVATE_REG)$(IMAGE)$(PRIVATE_TAG) $(PRIVATE_REG)$(IMAGE)$(PRIVATE_TAG)_$(DATE_TAG)
+	docker tag $(PRIVATE_REG)$(PRIVATE_IMAGE)$(PRIVATE_TAG) $(PRIVATE_REG)$(PRIVATE_IMAGE)$(PRIVATE_TAG)_$(DATE_TAG)
 # push to private image repo
-	docker push $(PRIVATE_REG)$(IMAGE)$(PRIVATE_TAG)_$(DATE_TAG)
+	docker push $(PRIVATE_REG)$(PRIVATE_IMAGE)$(PRIVATE_TAG)_$(DATE_TAG)
 # push to update tip to current version
-	docker push $(PRIVATE_REG)$(IMAGE)$(PRIVATE_TAG)
+	docker push $(PRIVATE_REG)$(PRIVATE_IMAGE)$(PRIVATE_TAG)
 
-pull: IMAGE = $(PUBLIC_IMAGE)
-pull: REG = $(PUBLIC_REG)
-pull: TAG = $(PUBLIC_TAG)
 pull: DARGS ?=
 pull: ## pull most recent public version
-	docker pull $(REG)$(IMAGE)$(TAG)
+	docker pull $(PUBLIC_REG)$(PUBLIC_IMAGE)$(PUBLIC_TAG)
 
-pull-priv: IMAGE = $(PRIVATE_IMAGE)
-pull-priv: REG = $(PRIVATE_REG)
-pull-priv: TAG = $(PRIVATE_TAG)
 pull-priv: DARGS ?=
 pull-priv: ## pull most recent private version
-	docker pull $(REG)$(IMAGE)$(TAG)
+	docker pull $(PRIVATE_REG)$(PRIVATE_IMAGE)$(PRIVATE_TAG)
 
-publish: IMAGE = $(PUBLIC_IMAGE)
 publish: DARGS ?=
 publish: ## publish current private build to public published version
 # make dated version
-	docker tag $(PRIVATE_REG)$(PRIVATE_IMAGE)$(PRIVATE_TAG) $(PUBLIC_REG)$(IMAGE)$(PUBLIC_TAG)_$(DATE_TAG)
+	docker tag $(PRIVATE_REG)$(PRIVATE_IMAGE)$(PRIVATE_TAG) $(PUBLIC_REG)$(PUBLIC_IMAGE)$(PUBLIC_TAG)_$(DATE_TAG)
 # push to private image repo
-	docker push $(PUBLIC_REG)$(IMAGE)$(PUBLIC_TAG)_$(DATE_TAG)
+	docker push $(PUBLIC_REG)$(PUBLIC_IMAGE)$(PUBLIC_TAG)_$(DATE_TAG)
 # copy to tip version
-	docker tag $(PUBLIC_REG)$(IMAGE)$(PUBLIC_TAG)_$(DATE_TAG) $(PUBLIC_REG)$(IMAGE)$(PUBLIC_TAG)
+	docker tag $(PUBLIC_REG)$(PUBLIC_IMAGE)$(PUBLIC_TAG)_$(DATE_TAG) $(PUBLIC_REG)$(PUBLIC_IMAGE)$(PUBLIC_TAG)
 # push to update tip to current version
-	docker push $(PUBLIC_REG)$(IMAGE)$(PUBLIC_TAG)
+	docker push $(PUBLIC_REG)$(PUBLIC_IMAGE)$(PUBLIC_TAG)
 	cp base/private_image_info.$(VERSION)  base/public_image_info.$(VERSION)
 	cp base/private_mamba_versions.$(VERSION) base/public_mamba_versions.$(VERSION)
 	cp base/private_distro_versions.$(VERSION) base/public_distro_versions.$(VERSION) 
 
-root: IMAGE = $(PRIVATE_IMAGE)
-root: REG = $(PRIVATE_REG)
-root: TAG = $(PRIVATE_TAG)
 root: ARGS ?= /bin/bash
 root: DARGS ?= -u 0
 root: ## start private version  with root shell to do admin and poke around
-	-docker run -it --rm $(DARGS) $(REG)$(IMAGE)$(TAG) $(ARGS)
+	-docker run -it --rm $(DARGS) $(PRIVATE_REG)$(PRIVATE_IMAGE)$(PRIVATE_TAG) $(ARGS)
 
-user: IMAGE = $(PRIVATE_IMAGE)
-user: REG = $(PRIVATE_REG)
-user: TAG = $(PRIVATE_TAG)
 user: ARGS ?= /bin/bash
 user: DARGS ?=
 user: ## start private version with usershell to poke around
-	-docker run -it --rm $(DARGS) $(REG)$(IMAGE)$(TAG) $(ARGS)
+	-docker run -it --rm $(DARGS) $(PRIVATE_REG)$(PRIVATE_IMAGE)$(PRIVATE_TAG) $(ARGS)
 
-run: IMAGE = $(PUBLIC_IMAGE)
-run: REG = $(PUBLIC_REG)
-run: TAG = $(PUBLIC_TAG)
 run: ARGS ?=
 run: DARGS ?= -u $(OPE_DEPLOYMENT_UID):$(OPE_DEPLOYMENT_GID) -v "${HOST_DIR}":"${MOUNT_DIR}" -v "${SSH_AUTH_SOCK}":"${SSH_AUTH_SOCK}" -v "${SSH_AUTH_SOCK}":"${SSH_AUTH_SOCK}" -e SSH_AUTH_SOCK=${SSH_AUTH_SOCK} -p ${SSH_PORT}:22
 run: PORT ?= 8888
 run: ## start published version with jupyter lab interface
-	docker run -it --rm -p $(PORT):$(PORT) $(DARGS) $(REG)$(IMAGE)$(TAG) $(ARGS) 
+	docker run -it --rm -p $(PORT):$(PORT) $(DARGS) $(PUBLIC_REG)$(PUBLIC_IMAGE)$(PUBLIC_TAG) $(ARGS) 
 
-
-run-priv: IMAGE = $(PRIVATE_IMAGE)
-run-priv: REG = $(PRIVATE_REG)
-run-priv: TAG = $(PRIVATE_TAG)
 run-priv: ARGS ?=
 run-priv: DARGS ?= -u $(OPE_DEPLOYMENT_UID):$(OPE_DEPLOYMENT_GID) -v "${HOST_DIR}":"${MOUNT_DIR}" -v "${SSH_AUTH_SOCK}":"${SSH_AUTH_SOCK}" -v "${SSH_AUTH_SOCK}":"${SSH_AUTH_SOCK}" -e SSH_AUTH_SOCK=${SSH_AUTH_SOCK} -p ${SSH_PORT}:22
 run-priv: PORT ?= 8888
 run-priv: ## start published version with jupyter lab interface
-	docker run -it --rm -p $(PORT):$(PORT) $(DARGS) $(REG)$(IMAGE)$(TAG) $(ARGS)
+	docker run -it --rm -p $(PORT):$(PORT) $(DARGS) $(PRIVATE_REG)$(PRIVATE_IMAGE)$(PRIVATE_TAG) $(ARGS)
 
-run-cust: IMAGE = $(CUSTOMIZE_IMAGE)
-run-cust: REG = $(PRIVATE_REG)
-run-cust: TAG = $(CUSTOMIZE_TAG)
 run-cust: ARGS ?=
 run-cust: DARGS ?= -u $(OPE_DEPLOYMENT_UID):$(OPE_DEPLOYMENT_GID) -v "${HOST_DIR}":"${MOUNT_DIR}" -v "${SSH_AUTH_SOCK}":"${SSH_AUTH_SOCK}" -v "${SSH_AUTH_SOCK}":"${SSH_AUTH_SOCK}" -e SSH_AUTH_SOCK=${SSH_AUTH_SOCK} -p ${SSH_PORT}:22
 run-cust: PORT ?= 8888
 run-cust: ## start published version with jupyter lab interface
-	docker run -it --rm -p $(PORT):$(PORT) $(DARGS) $(REG)$(IMAGE)$(TAG) $(ARGS)
+	docker run -it --rm -p $(PORT):$(PORT) $(DARGS) $(CUSTOMIZE_NAME)$(ARGS)
