@@ -157,6 +157,9 @@ build: base/aarch64vm/README.md
 build: DARGS ?= --build-arg FROM_REG=$(BASE_REG) \
                    --build-arg FROM_IMAGE=$(BASE_IMAGE) \
                    --build-arg FROM_TAG=$(BASE_TAG) \
+                   --build-arg OPE_UID=$(CUSTOMIZE_UID) \
+                   --build-arg OPE_GID=$(CUSTOMIZE_GID) \
+                   --build-arg OPE_GROUP=$(CUSTOMIZE_GROUP) \
                    --build-arg ADDITIONAL_DISTRO_PACKAGES="$(BASE_DISTRO_PACKAGES)" \
                    --build-arg PYTHON_PREREQ_VERSIONS="$(PYTHON_PREREQ_VERSIONS)" \
                    --build-arg PYTHON_INSTALL_PACKAGES="$(PYTHON_INSTALL_PACKAGES)" \
@@ -167,7 +170,6 @@ build: DARGS ?= --build-arg FROM_REG=$(BASE_REG) \
                    --build-arg UNMIN=$(UNMIN)
 build: ## Make the base container image 
 	docker build $(DARGS) $(DCACHING) --rm --force-rm -t $(PRIVATE_REG)$(PRIVATE_IMAGE)$(PRIVATE_TAG) --file base/Build.Dockerfile base
-
 
 customize: DARGS ?= --build-arg FROM_IMAGE=$(CUSTOMIZE_BASE) \
                    --build-arg CUSTOMIZE_UID=$(CUSTOMIZE_UID) \
@@ -219,19 +221,19 @@ user: ## start private version with usershell to poke around
 	-docker run -it --rm $(DARGS) $(PRIVATE_REG)$(PRIVATE_IMAGE)$(PRIVATE_TAG) $(ARGS)
 
 run: ARGS ?=
-run: DARGS ?= -u $(OPE_DEPLOYMENT_UID):$(OPE_DEPLOYMENT_GID) -v "${HOST_DIR}":"${MOUNT_DIR}" -v "${SSH_AUTH_SOCK}":"${SSH_AUTH_SOCK}" -v "${SSH_AUTH_SOCK}":"${SSH_AUTH_SOCK}" -e SSH_AUTH_SOCK=${SSH_AUTH_SOCK} -p ${SSH_PORT}:22
+run: DARGS ?= -u $(CUSTOMIZE_UID):$(CUSTOMIZE_GID) -v "${HOST_DIR}":"${MOUNT_DIR}" -v "${SSH_AUTH_SOCK}":"${SSH_AUTH_SOCK}" -v "${SSH_AUTH_SOCK}":"${SSH_AUTH_SOCK}" -e SSH_AUTH_SOCK=${SSH_AUTH_SOCK} -p ${SSH_PORT}:22
 run: PORT ?= 8888
 run: ## start published version with jupyter lab interface
 	docker run -it --rm -p $(PORT):$(PORT) $(DARGS) $(PUBLIC_REG)$(PUBLIC_IMAGE)$(PUBLIC_TAG) $(ARGS) 
 
 run-priv: ARGS ?=
-run-priv: DARGS ?= -u $(OPE_DEPLOYMENT_UID):$(OPE_DEPLOYMENT_GID) -v "${HOST_DIR}":"${MOUNT_DIR}" -v "${SSH_AUTH_SOCK}":"${SSH_AUTH_SOCK}" -v "${SSH_AUTH_SOCK}":"${SSH_AUTH_SOCK}" -e SSH_AUTH_SOCK=${SSH_AUTH_SOCK} -p ${SSH_PORT}:22
+run-priv: DARGS ?= -u $(CUSTOMIZE_UID):$(CUSTOMIZE_GID) -v "${HOST_DIR}":"${MOUNT_DIR}" -v "${SSH_AUTH_SOCK}":"${SSH_AUTH_SOCK}" -v "${SSH_AUTH_SOCK}":"${SSH_AUTH_SOCK}" -e SSH_AUTH_SOCK=${SSH_AUTH_SOCK} -p ${SSH_PORT}:22
 run-priv: PORT ?= 8888
 run-priv: ## start published version with jupyter lab interface
 	docker run -it --rm -p $(PORT):$(PORT) $(DARGS) $(PRIVATE_REG)$(PRIVATE_IMAGE)$(PRIVATE_TAG) $(ARGS)
 
 run-cust: ARGS ?=
-run-cust: DARGS ?= -u $(OPE_DEPLOYMENT_UID):$(OPE_DEPLOYMENT_GID) -v "${HOST_DIR}":"${MOUNT_DIR}" -v "${SSH_AUTH_SOCK}":"${SSH_AUTH_SOCK}" -v "${SSH_AUTH_SOCK}":"${SSH_AUTH_SOCK}" -e SSH_AUTH_SOCK=${SSH_AUTH_SOCK} -p ${SSH_PORT}:22
+run-cust: DARGS ?= -u $(CUSTOMIZE_UID):$(CUSTOMIZE_GID) -v "${HOST_DIR}":"${MOUNT_DIR}" -v "${SSH_AUTH_SOCK}":"${SSH_AUTH_SOCK}" -v "${SSH_AUTH_SOCK}":"${SSH_AUTH_SOCK}" -e SSH_AUTH_SOCK=${SSH_AUTH_SOCK} -p ${SSH_PORT}:22
 run-cust: PORT ?= 8888
 run-cust: ## start published version with jupyter lab interface
 	docker run -it --rm -p $(PORT):$(PORT) $(DARGS) $(CUSTOMIZE_NAME)$(ARGS)
