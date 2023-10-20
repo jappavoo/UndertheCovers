@@ -22,7 +22,7 @@ DATE_TAG := $(shell date +"%m.%d.%y_%H.%M.%S")
 PRIVATE_USER := $(shell if  [[ -a base/private_user ]]; then cat base/private_user; else echo ${USER}; fi)
 PRIVATE_REG := $(shell cat base/private_registry)/
 PRIVATE_IMAGE := $(PRIVATE_USER)/$(OPE_CONTAINER_NAME)
-PRIVATE_STABLE_TAG := :stable-$(OPE_CONTAINER_NAME) 
+PRIVATE_STABLE_TAG := :stable-$(OPE_CONTAINER_NAME)
 PRIVATE_TEST_TAG := :test-$(OPE_CONTAINER_NAME)
 
 PUBLIC_USER := $(shell cat base/ope_book_user)
